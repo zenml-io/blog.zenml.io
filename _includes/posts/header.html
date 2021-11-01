@@ -1,0 +1,24 @@
+{% capture crosspost %}
+    {% if page.crosspost %}
+         - Crossposted on <a href="{{ page.crosspost.url }}">{{ page.crosspost.name }}</a>
+    {% endif %}
+{% endcapture %}
+<section id="header">
+    <div class="hero-wrap mt-5">
+        <div class="container px-0">
+            <div class="row d-md-flex no-gutters slider-text align-items-center">
+                <div class="d-flex align-items-center ftco-animate">
+                    <div class="container">
+                        <p class="mono"><a href="{{ site.url }}" class="black">Blog</a> / <a href="{{ page.url }}" class="black">{{ page.title }}</a></p>
+                        {% if page.header %}
+                        <img src="{{ page.header }}" class="img-fluid">
+                        {% endif %}
+                        <h2 class="display-4 slim pt-4">{{ page.title }}</h2>
+                        <p class="mono text-lg">{{ page.publish_date }} - {{ page.author }} {{ crosspost }}</p></a>
+                        <hr class="purple">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,38 @@
+{% assign sorted = (site.posts | sort: 'date') | reverse %}
+{% assign posts = sorted | where_exp:"post","post.url != page.url" %}
+<section id="latest" class="bg-light">
+    <div class="container py-5">
+        <h2>More from us:</h2>
+        <div class="row m-3 d-flex align-items-stretch py-3">
+        {% for post in sorted limit:3 %}
+            {% assign uneven = forloop.index0 }} | modulo: 2%}
+            {% capture bg %}
+                {% if uneven == 1 %}
+                    bg-white
+                {% elsif uneven != 1%}
+                    bg-light
+                {% endif %}
+            {% endcapture %}
+            {% capture crosspost %}
+                {% if post.crosspost %}
+                     - Crossposted on <a href="{{ post.crosspost.url }}">{{ post.crosspost.name }}</a>
+                {% endif %}
+            {% endcapture %}
+            <div class="col-md-4 border-right p-3  align-self-stretch">
+                <div><a href="{{ post.url }}">
+                    {% if post.thumbnail %}
+                    <img src="{{ post.thumbnail }}" class="img-fluid">
+                    {% else %}
+                    <img src="{{ site.url }}/assets/thumbnail.svg" class="img-fluid iconify-large">
+                    {% endif %}
+                </a></div>
+                <div><a href="{{ post.url }}" class="text-muted pt-5 pb-0 mb-0"><p class="mono text-sm pb-0 mb-0">{{ post.publish_date }} - {{ post.author }} {{ crosspost }}</p></a></div>
+                <div><a href="{{ post.url }}"><h4>{{ post.title }}</h4></a></div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="row d-flex justify-content-center">
+            <a href="{{ site.url }}" class="btn btn-rnd-square btn-outline-dark text-center px-7 text-lg">See all</a>
+        </div>
+    </div>
+</section>

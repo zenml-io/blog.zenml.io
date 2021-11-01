@@ -1,0 +1,103 @@
+@import url("icomoon.css");
+
+/*acdn START*/
+.customacdn {
+    font-family:Rubik, sans-serif;
+}
+.customacdn ul {
+    list-style:none;
+    margin:0;
+    padding:0;    
+}
+.customacdn li {
+    margin:0;
+    padding:0;
+}
+.customacdn [type=radio], .customacdn [type=checkbox] {
+    display:none;
+}
+.customacdn label {
+    font-family: 'Rubik', sans-serif;
+    color: #000000;
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+
+    display:block;
+    font-size: 2rem;
+    line-height: 1.3;
+}
+.customacdn [type=radio]:checked:before ~ label, .customacdn [type=checkbox]:checked:before ~ label {
+    content: "\f106";
+}
+.customacdn .content {
+    padding-left: 5%;
+    overflow:hidden;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+}
+.customacdn p {
+    color:#424240;
+    margin:0 0 10px;
+}
+
+.customacdn input[type=checkbox] + label:before {
+  font-family: icomoon;
+  display: inline-block;
+  content: "\f078";
+}
+.customacdn input[type=checkbox]:checked + label:before {
+  font-family: icomoon;
+  display: inline-block;
+  content: "\f077";
+}
+
+/* Vertical */
+
+.customvertical [type=checkbox] + label:before {
+  font-family: icomoon;
+  display: inline-block;
+  content: "\f078";
+}
+.customvertical [type=checkbox]:checked + label:before {
+  font-family: icomoon;
+  display: inline-block;
+  content: "\f077";
+}
+
+
+.customvertical ul li {
+    overflow:hidden;
+    margin:0 0 1px;
+}
+.customvertical ul li label {
+    padding:10px;
+}
+.customvertical [type=radio]:checked ~ label, .customvertical [type=checkbox]:checked ~ label {
+
+}
+.customvertical [type=radio] ~ label:before, .customvertical [type=checkbox] ~ label:before {
+    font-family: icomoon;
+    font-size: 1rem;
+    content: "\f078";
+    padding-right: 25px;
+    color: #2bd978;
+}
+.customvertical [type=radio]:checked ~ label:before, .customvertical [type=checkbox]:checked ~ label:before {
+    font-family: icomoon;
+    font-size: 1rem;
+    content: "\f077";
+    padding-right: 25px;
+    color: #2bd978;
+}
+.customvertical ul li label:hover {
+    border:0px; /* We don't want the border to disappear on hover */
+}
+.customvertical ul li .content {
+    height:0px;
+    border-top:0;
+}
+.customvertical [type=radio]:checked ~ label ~ .content, .customvertical [type=checkbox]:checked ~ label ~ .content {
+    height:auto;
+}
+/*acdn END*/

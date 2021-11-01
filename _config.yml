@@ -1,0 +1,110 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+# Site settings
+title: ZenML | Blog
+owner: ZenML GmbH
+email: hello@zenml.io
+description: 
+logo: assets/logo_sq.png
+nav_logo: assets/logo_sq.png
+phone: ""
+author: ZenML GmbH
+future: true 
+
+url: https://blog.zenml.io
+baseurl: ""
+
+links:
+  documentation: "https://docs.zenml.io"
+  github: "https://github.com/zenml-io/zenml"
+  slack-invite: "https://zenml.io/slack-invite/"
+  email: "mailto:support@zenml.io"
+  zenml: "https://zenml.io"
+
+# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
+social:
+  linkedin: https://www.linkedin.com/company/zenml
+  links:
+    - https://twitter.com/zenml_io
+    - https://github.com/zenml-io/zenml
+    - https://www.crunchbase.com/organization/zenml
+
+address:
+  street: Clemensstraße 99
+  city: 80796 München
+
+# Build settings
+markdown: kramdown
+permalink: /:title/
+highlighter: rouge
+
+mini_magick:
+    thumbnail: # Preset name
+        source: img # source directory - change this to whatever you want
+        destination: img/thumbs # generated destination directory
+        resize: "100x70^" # standard imagemagick options - you can chain multiple commands
+        gravity: "center"
+        extent: "100x70"
+
+
+paginate: 5
+paginate_path: "/page:num/"
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  # - jekyll-compress-images
+
+gems:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  collections:
+    - blog
+    # blog:
+    #   path: "/feed.xml"
+
+defaults:
+  - scope:
+      path: "signatures/**"
+    values:
+      sitemap: false
+  - scope:
+      path: "clients/**"
+    values:
+      sitemap: false
+  - scope:
+      path: "jobs/**"
+    values:
+      sitemap: false
+  - scope:
+      path: "services/**"
+    values:
+      sitemap: false
+  - scope:
+      path: "press/**"
+    values:
+      sitemap: false
+  - scope:
+      path: "jobs/**"
+    values:
+      sitemap: false
+
+exclude: [README.md, website-config.json]

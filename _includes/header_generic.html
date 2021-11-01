@@ -1,0 +1,17 @@
+<div class="hero-wrap js-fullheight">
+    <div class="overlay"></div>
+    <div class="container px-0">
+        <div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
+            <img class="one-third js-fullheight align-self-end order-md-last img-fluid" src="{{ page.header }}" alt="">
+            <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
+                <div class="text mt-5">
+                    <span class="subheading ">{{ page.headline }}</span>
+                    <h1 class="mb-3"><span>{{ page.subline }}</span></h1>
+                    {% if page.main_button.target %}
+                    <p class="py-3"><a href="{{ page.main_button.target }}" class="btn btn-primary btn-rnd-square px-4 py-3" id="header-button-{{ page.url | slugify }}">{{ page.main_button.title }}</a></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

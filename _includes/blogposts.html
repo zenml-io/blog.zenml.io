@@ -1,0 +1,40 @@
+
+<section id="blogposts" class="pb-5">
+    {% assign sorted = (site.posts | sort: 'date') | reverse %}
+    {% for post in sorted %}
+    {% assign uneven = forloop.index0 }} | modulo: 2%}
+    {% capture bg %}
+        {% if uneven == 1 %}
+            bg-white
+        {% elsif uneven != 1%}
+            bg-light
+        {% endif %}
+    {% endcapture %}
+    {% capture crosspost %}
+        {% if post.crosspost %}
+             - Crossposted on <a href="{{ post.crosspost.url }}">{{ post.crosspost.name }}</a>
+        {% endif %}
+    {% endcapture %}
+    <div class="{{ bg }} py-2 mb-5">
+        <div class="container">
+            <div class="row py-3 px-lg-5">
+                <div class="col-3 p-3 align-self-center d-none d-md-block">
+                    <a href="{{ post.url }}">
+                        {% if post.thumbnail %}
+                        <img src="{{ post.thumbnail }}" class="img-fluid">
+                        {% else %}
+                        <img src="{{ site.url }}/assets/thumbnail.svg" class="img-fluid">
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="col-9">
+                    <a href="{{ post.url }}"><h3 class="pb-0 mb-0 font-weight-lighter">{{ post.title }}</h3></a>
+                    <a href="{{ post.url }}" class="text-muted"><p class="mono text-sm">{{ post.publish_date }} - {{ post.author }} {{ crosspost }}</p></a>
+                    <hr>
+                    <a href="{{ post.url }}" class="anthrazit">{{ post.excerpt }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>

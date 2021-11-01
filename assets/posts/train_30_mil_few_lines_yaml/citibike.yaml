@@ -1,0 +1,88 @@
+default:  # the default specifies per dtype the pre-processing that should happen for all features, labels and evaluators
+  boolean:
+    filling:
+      method: max
+      parameters: {}
+    label_tuning:
+      method: no_tuning
+      parameters: {}
+    resampling:
+      method: threshold
+      parameters: {c_value: 0, cond: greater, set_value: 1, threshold: 0}
+    transform:
+      method: no_transform
+      parameters: {}
+  float:
+    filling:
+      method: max
+      parameters: {}
+    label_tuning:
+      method: no_tuning
+      parameters: {}
+    resampling:
+      method: mean
+      parameters: {}
+    transform:
+      method: scale_to_z_score
+      parameters: {}
+  integer:
+    filling:
+      method: min
+      parameters: {}
+    label_tuning:
+      method: no_tuning
+      parameters: {}
+    resampling:
+      method: mean
+      parameters: {}
+    transform:
+      method: scale_to_z_score
+      parameters: {}
+  string:
+    filling:
+      method: custom
+      parameters: {custom_value: ''}
+    label_tuning:
+      method: no_tuning
+      parameters: {}
+    resampling:
+      method: mode
+      parameters: {}
+    transform:
+      method: compute_and_apply_vocabulary
+      parameters: {}  #
+evaluator:
+  birth_year: {}  # I'd like to see how I did across each year
+  gender: {}  # I'd like to see if the model biases because of gender
+  start_station_name: {}  # I'd like to see how I did across each station
+features:
+  end_station_id: {}  # id of station where trip ended: INT
+  gender: {}  # gender of person driving the car
+  start_station_id: {}  # if of station where trip started: INT
+  tripduration: {}  # trip time in seconds
+  usertype: {}  # usertype, one of [Customer, Subscriber]
+labels:
+  birth_year:  # year when person was born
+    loss: mse  # mean squared error
+    metrics: [mae]  # mean absolute error
+    transform:
+      method: no_transform  # we want to override the `defaults` here, because we dont want the label normalized
+      parameters: {}
+split:
+  categorize_by: start_station_name  # so that all starting stations are equally represented
+  index_ratio: {eval: 0.1, train: 0.9}  # 0.9 for training and 0.1 for test
+  where:
+    - birth_year > 1900  # the where clause allows a bit more flexibility, so we filter for all people above 1900, and remove nulls in one swoop
+trainer:
+  layers:
+  - {type: dense, units: 64}  # a dense layer 64 units
+  - {type: dense, units: 32}  # a dense layer with 32 units
+  architecture: feedforward  # can be feedforward or sequential
+  last_activation: linear  # last layer: we can take relu, but linear should also be fine
+  num_output_units: 1  # How many units in the last layer? We choose 1 because we want to regress one number (i.e. date_of_birth)
+  optimizer: adam  # optimizer for loss function
+  save_checkpoints_steps: 15000  # how many steps before we do a checkpoint evaluation for our Tensorboard logs
+  eval_batch_size: 256  # batch size for evalulation that happens at every checkpoint
+  train_batch_size: 256  # batch size for training
+  train_steps: 230000  # two epochs
+  type: regression  # choose from [regression, classification, autoencoder]

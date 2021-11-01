@@ -1,0 +1,44 @@
+- name: Apache Beam
+  logo: assets/core/builtwith/beam.svg
+  link: https://beam.apache.org/
+  description: Add some text!
+- name: Google BigQuery
+  logo: assets/core/builtwith/bigquery.svg
+  link: https://cloud.google.com/bigquery
+  description: Add some text!
+- name: Google Dataflow
+  logo: assets/core/builtwith/dataflow.svg
+  link: https://cloud.google.com/dataflow
+  description: Add some text!
+- name: Google Cloud Platform
+  logo: assets/core/builtwith/google-cloud.svg
+  link: https://cloud.google.com/
+  description: Add some text!
+- name: Jupyter Notebooks
+  logo: assets/core/builtwith/jupyter.svg
+  link: https://jupyter.org/
+  description: Add some text!
+- name: Keras
+  logo: assets/core/builtwith/keras.svg
+  link: https://keras.io/
+  description: Add some text!
+- name: Kubeflow
+  logo: assets/core/builtwith/kubeflow.svg
+  link: https://www.kubeflow.org/
+  description: Add some text!
+- name: TensorBoard
+  logo: assets/core/builtwith/tensorboard.svg
+  link: https://github.com/tensorflow/tensorboard
+  description: Add some text!
+- name: TensorFlow
+  logo: assets/core/builtwith/tensorflow.svg
+  link: https://www.tensorflow.org/
+  description: Add some text!
+- name: TensorFlow Extended (TFX)
+  logo: assets/core/builtwith/tfx.svg
+  link: https://www.tensorflow.org/tfx
+  description: Add some text!
+- name: What-If Tool
+  logo: assets/core/builtwith/whatif.svg
+  link: https://pair-code.github.io/what-if-tool/
+  description: Add some text!

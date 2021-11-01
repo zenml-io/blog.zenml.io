@@ -1,0 +1,35 @@
+---
+permalink: /404.html
+layout: 404
+title: Reproducible MLOps pipelines.
+description: "ZenML - Reproducible MLOPs pipelines."
+header: /assets/illustrations/404.svg
+image:
+  path: /assets/logo_sq.png
+  height: 100
+  width: 100
+headline: Something went terribly wrong. Sorry for that.
+subline: 404
+main_button:
+    target: {{ site.url }}
+    title: "Return to safety!"
+---
+
+<div class="hero-wrap js-fullheight">
+    <div class="overlay"></div>
+    <div class="container px-0">
+        <div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
+            <img class="one-third js-fullheight align-self-end order-md-last img-fluid" src="{{ page.header }}" alt="">
+            <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
+                <div class="text mt-5">
+                    <h1 class="mb-3 display-2-force"><span>Page not found.</span></h1>
+                    <span class="subheading display-6-force">Something went terribly wrong. Sorry for that.</span>
+                    <a href="mailto:info@zenml.io" class="underline text-muted mono" id="404-contact">Tell us where you where headed.</a>
+                    <p class="py-5">
+                        <a href="{{ site.url }}" class="btn btn-primary px-5 py-3" id="404-button-{{ page.url | slugify }}">Return to safety!</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

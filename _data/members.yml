@@ -1,0 +1,43 @@
+- name: Adam Probst
+  title: CEO
+  image: assets/images/team/adam_latest.jpg
+  social:
+    linkedin:
+      name: linkedin
+      url: https://www.linkedin.com/in/adam-probst-8134a451/
+  contact: "adam@zenml.io"
+  credentials:
+    - name: MAN SE
+      icon: assets/img/logos/MAN_logo.svg
+    - name: Knorr Bremse
+      icon: assets/img/logos/Knorr-Bremse_logo.svg
+  bio:
+    - Head of Life-Life-Balance
+    - Sailing yacht office facility manager
+    - California classic car importer in charge
+- name: Hamza Tahir
+  title: CTO - AI
+  image: assets/images/team/hamza_latest.jpg
+  social:
+    linkedin:
+      name: linkedin
+      url: https://www.linkedin.com/in/hamza-tahir-506b6676/
+  contact: "hamza@zenml.io"
+  bio:
+    - Has non-artificial intelligence
+    - Musicaly impaired, but redeems himself by playing a few instruments
+    - Loves to cook (but eating is preferred)
+- name: Barış Can Durak
+  title: ML Engineer
+  image: assets/images/team/baris-web.jpg
+  social:
+    linkedin:
+      name: linkedin
+      url: https://www.linkedin.com/in/bcdurak/
+  contact: "baris@zenml.io"
+  bio:
+    - Lets the tensors hit the flow
+    - VP of Caffeination
+    - May have beat OpenAI in Dota2
+    - Brings the meme into the team
+

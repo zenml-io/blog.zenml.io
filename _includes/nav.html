@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand header-logo" href="{{ site.url }}">
+            <img src="{{ site.url }}/{{ site.nav_logo }}" alt="zenml">
+        </a>
+        <a href="{{ site.url }}" class="display-4 m-0 mt-1 black">blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="{{ site.url }}" class="nav-link" id="nav-bloghome-{{ page.url | slugify }}">Home</a></li>
+                <!-- <li class="nav-item mr-lg-5"><a href="https://zenml.io/" class="nav-link green" id="nav-bloghome-{{ page.url | slugify }}">zenml.io</a></li> -->
+                <li class="nav-item"><a href="{{ site.links.zenml }}" target="_blank" class="nav-link btn btn-rnd-square btn-outline-dark" id="nav-zenml-{{ page.url | slugify }}"><span id="nav-signup-{{ page.url | slugify }}">ZenML.</span></a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
