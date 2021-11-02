@@ -5,7 +5,7 @@ title: Avoiding technical debt with ML pipelines
 tags: legacy
 publish_date: June 6th, 2020
 category: zenml
-tags: [bigger-picture, pipelines]
+tags: [bigger-picture, pipelines, zenml]
 date: 2020-06-06T10:20:00Z
 thumbnail: /assets/posts/technical_debt.jpg
 image:

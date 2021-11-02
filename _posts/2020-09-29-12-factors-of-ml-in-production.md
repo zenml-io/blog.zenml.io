@@ -4,7 +4,7 @@ author: Benedikt Koller
 title: 12 Factors of Reproducible Machine Learning in Production
 publish_date: September 28th, 2020
 category: zenml
-tags: [bigger-picture, devops]
+tags: [bigger-picture, devops, zenml]
 date: 2020-09-28T10:20:00Z
 thumbnail: /assets/posts/12factor.svg
 tags: legacy
