@@ -1,8 +1,10 @@
 ---
 layout: post
 author: Benedikt Koller
-title: 12 Factors of reproducible Machine Learning in production
+title: 12 Factors of Reproducible Machine Learning in Production
 publish_date: September 28th, 2020
+category: zenml
+tags: [bigger-picture, devops, zenml]
 date: 2020-09-28T10:20:00Z
 thumbnail: /assets/posts/12factor.svg
 tags: legacy
@@ -12,7 +14,7 @@ image:
   width: 628
 ---
 
-The last two decades have yielded us some great understandings about Software Development. A big part of that is due to the emergence of DevOps and it’s wide adoption throughout the industry. 
+The last two decades have yielded us some great understandings about Software Development. A big part of that is due to the emergence of DevOps and it’s wide adoption throughout the industry.
 
 Leading software companies follow identical patterns: Fast iterations in software development followed by Continuous Integration, Continuous Delivery, Continuous Deployment. Every artefact is tested on its ability to provide value, always has a state of readiness and is deployed through automation.
 
@@ -28,13 +30,13 @@ While obvious to basically all Software Engineers, version control is not an uni
 
 > Version control facilitates coordination, sharing, and collaboration across the entire software development team. Version control software enables teams to work in distributed and asynchronous environments, manage changes and versions of code and artifacts, and resolve merge conflicts and related anomalies.
 
-In short, versioning lets you safely manage the moving parts of Software Development. 
+In short, versioning lets you safely manage the moving parts of Software Development.
 
 As a special form of Software Development, Machine Learning has unique requirements. First, it has not one but two moving parts: Code and Data. Second, model trainings happen in (fast) iterations and introduce a high variance of code (e.g. splitting, preprocessing, models).
 
-As soon as data can be subject to change it needs to be versioned to be able to reproducibly and repeatably conduct experiments and train models. Cruder forms of versioning (read: hard-copies) can go a long way, but especially in team scenarios shared, immutable version control becomes critical. 
+As soon as data can be subject to change it needs to be versioned to be able to reproducibly and repeatably conduct experiments and train models. Cruder forms of versioning (read: hard-copies) can go a long way, but especially in team scenarios shared, immutable version control becomes critical.
 
-Version control of code is even more key. In addition to above's quote, preprocessing code is not just relevant at training but also at serving time and needs to be immutably correlatable with models. Serverless functions can provide an easy-access way to achieve a middle ground between the workflow of Data Scientists and production-ready requirements. 
+Version control of code is even more key. In addition to above's quote, preprocessing code is not just relevant at training but also at serving time and needs to be immutably correlatable with models. Serverless functions can provide an easy-access way to achieve a middle ground between the workflow of Data Scientists and production-ready requirements.
 
 **TL;DR:** You need to version your code, and you need to version your data.
 
@@ -50,7 +52,7 @@ Explicitly defined feature dependencies allow for transparent failure as early a
 
 Good software is descriptive - it can be read and understood easily without reading every line of code.
 
-And while Machine Learning is a unique flavor of Software Development it doesn't exempt practitioners from following established coding guidelines. Basic understanding of coding standard essentials can be picked up with very little effort and in a short amount of time. 
+And while Machine Learning is a unique flavor of Software Development it doesn't exempt practitioners from following established coding guidelines. Basic understanding of coding standard essentials can be picked up with very little effort and in a short amount of time.
 
 Code for both preprocessing and models should follow [PEP8](https://www.python.org/dev/peps/pep-0008/). It should consist of meaningful object names and contain helpful comments. Following PEP8 will improve code legibility, reduce complexity and speed up debugging. Programming paradigms such as [SOLID](https://en.wikipedia.org/wiki/SOLID) provide thought frameworks to make code more maintainable, understandable and flexible for future use cases.
 
@@ -66,14 +68,14 @@ By using pipelines to train models entire teams gain both access and transparenc
 
 **TL;DR:** Use pipelines and automation.
 
-## 5. Testing 
+## 5. Testing
 
-Testing comes in many shapes and forms. To give two examples: 
+Testing comes in many shapes and forms. To give two examples:
 
 - [Unit testing](https://en.wikipedia.org/wiki/Unit_testing) is testing on an atomic level - every function is tested individually on it's own specific criteria.
 - [Integration testing](https://en.wikipedia.org/wiki/Integration_testing) is taking an inverse approach - all elements of a codebase are tested as a group, in conjunction and with clones/mocks of up- and downstream services.
 
-Both paradigms are good starting points for Machine Learning. Preprocessing code is predestined for unit testing - do transforms yield the right results given various inputs? Models are a great use case for integration tests - does your model produce comparable results to evaluation at serving time in a production environment? 
+Both paradigms are good starting points for Machine Learning. Preprocessing code is predestined for unit testing - do transforms yield the right results given various inputs? Models are a great use case for integration tests - does your model produce comparable results to evaluation at serving time in a production environment?
 
 **TL;DR:** Test your code, test your models.
 
@@ -90,7 +92,7 @@ Drift is a legit problem for production scenarios. You need to account for drift
 
 Excel is not a good way to track experiment results. And not just Excel, any decentralized, manual form of tracking will yield non-authoritative and therefore untrustworthy information.
 
-The right approach are automated methods to record training results in a centralized data store. Automation ensures the reliable tracking of every training run, and allows for a later comparability of training runs against each other. Centralized storage of results give transparency across teams and allows for continuous analysis. 
+The right approach are automated methods to record training results in a centralized data store. Automation ensures the reliable tracking of every training run, and allows for a later comparability of training runs against each other. Centralized storage of results give transparency across teams and allows for continuous analysis.
 
 **TL;DR:** Track results via automation.
 
@@ -106,9 +108,9 @@ All understandings unrelated to domain-specific knowledge can however be automat
 
 ## 9. Training-Serving-Skew
 
-The avoidance of skewed training and serving environments is often reduced to correctly embedding all data preprocessing into the model serving environments. This is absolutely correct, and you need to adhere to this rule. However, it is also a too narrow interpretation of Training-Serving-Skew. 
+The avoidance of skewed training and serving environments is often reduced to correctly embedding all data preprocessing into the model serving environments. This is absolutely correct, and you need to adhere to this rule. However, it is also a too narrow interpretation of Training-Serving-Skew.
 
-A little detour to ancient DevOps history: In 2006 the CTO of Amazon, Werner Vogels, coined the term “You build it, you run it”. It’s a descriptive phrase for extending the responsibility of Developers to not only writing but also running the software they build. 
+A little detour to ancient DevOps history: In 2006 the CTO of Amazon, Werner Vogels, coined the term “You build it, you run it”. It’s a descriptive phrase for extending the responsibility of Developers to not only writing but also running the software they build.
 
 A similar dynamic is required for Machine Learning projects - an understanding of both the upstream generation of data and the downstream usage of generated Models is within the responsibility of Data Scientists. What system generates your data for training? Can it break, what’s the system SLO (service level objective), is it the same as for serving? How is your model served? What’s the runtime environment, and how are your preprocessing functions applied during serving? These are questions that Data Scientists need to understand and find answers to.
 
@@ -140,11 +142,10 @@ A similar approach needs to be taken with Machine Learning. It’ll enforce firs
 
 **TL;DR:** Every training pipeline needs to produce a deployable artefact, not “just” a model.
 
-
 ## Closing
 
 This is by no means an exhaustive list. It’s the combination of our experience, and you’re welcome to use it as a boilerplate to benchmark your production architecture, or as a blueprint to design your own.
 
 We used these factors as the guiding principles for ZenML, our ML orchestrator. So before you start from scratch: Sign up and give us a run for your money!
 
-To read more about ZenML head over to our [website](https://zenml.io)for more details. If you want to start using ZenML for your own ML production environment, [contact us](mailto:support@zenml.io)! 
+To read more about ZenML head over to our [website](https://zenml.io)for more details. If you want to start using ZenML for your own ML production environment, [contact us](mailto:support@zenml.io)!
