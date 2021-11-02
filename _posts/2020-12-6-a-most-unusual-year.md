@@ -3,6 +3,8 @@ layout: post
 author: Benedikt Koller
 title: A most unusual year
 publish_date: December 26th, 2020
+category: techstartup
+tags: [covid]
 date: 2020-12-26T00:02:00Z
 thumbnail: /assets/posts/a_most_unusual_year.svg
 image:
@@ -13,11 +15,11 @@ image:
 
 As this is the end of the year, it's a great chance to remind yourself: how did we get here?
 
-Let me beginn with a flashback to 2019. As a company, we're focussed on optimising remaining useful live of industrial assets through clever use of Machine Learning for predictive analysis, root-cause analysis and other forms of reasoning. We managed to secure a few big projects and very promising POCs, and across the board we were able to show good results. One of our projects even got government funding, providing a nice runway going forward.
+Let me begin with a flashback to 2019. As a company, we're focussed on optimizing remaining useful live of industrial assets through clever use of Machine Learning for predictive analysis, root-cause analysis and other forms of reasoning. We managed to secure a few big projects and very promising POCs, and across the board we were able to show good results. One of our projects even got government funding, providing a nice runway going forward.
 
 We got the traditionally lengthy sales cycles with many leading industry players started, and we even hired our first full-time employee.
 
-All was set up for first commercial success of our approach and our "asset optimisation platform" in 2020. 
+All was set up for first commercial success of our approach and our "asset optimization platform" in 2020.
 
 Then the pandemic hit. Within a few weeks, all our sales leads fizzled away - millions of euros in deal sizes, disappeared in thin air. By March, we were looking at an empty sales funnel.
 
@@ -25,7 +27,7 @@ We had find a new path. We took stock, and we acted entrepreneurial.
 
 ## A look at what we've got
 
-Taking stock of what we actually had, in terms of intellectual property, was a great recap of our journey so far [(if you're interested, check out a talk I recently gave on what we learned about ML pipelines)](https://www.youtube.com/watch?v=UDfxoKmc8qc). To summarise, we had to our name:
+Taking stock of what we actually had, in terms of intellectual property, was a great recap of our journey so far [(if you're interested, check out a talk I recently gave on what we learned about ML pipelines)](https://www.youtube.com/watch?v=UDfxoKmc8qc). To summarize, we had to our name:
 
 - A great team (experienced ML engineers, Ops expertise and a good entrepreneurial fit)
 - A purpose-built tech stack for reproducible ML pipelines
@@ -34,19 +36,19 @@ Taking stock of what we actually had, in terms of intellectual property, was a g
 
 ## Talking to people
 
-We saw the economic effects of the pandemic very early - at least from an european perspective. After taking close stock, we had to understand how (and if) Machine Learning would continue to play a role for our leads and network. Taking a page out of the great UX researchers I've had the chance to work with over my career, we decided to do user interviews. Lo and behold, after doing ~30 early interviews, a picture emerged. 
+We saw the economic effects of the pandemic very early - at least from an european perspective. After taking close stock, we had to understand how (and if) Machine Learning would continue to play a role for our leads and network. Taking a page out of the great UX researchers I've had the chance to work with over my career, we decided to do user interviews. Lo and behold, after doing ~30 early interviews, a picture emerged.
 
 Teams engaged in ML projects lost significant chunks of time on unrepeatable projects as well as managing dysfunctional franken-infrastructures. Teams not yet engaged in ML feared it to be a black hole for time and effort to build up a reliable tech stack for getting experiments into production, as existing systems would need integration at many stages of the ML lifecycle.
 
-An interesting side-fact became clear to us, too: there was a lot of scepticism towards ML-based SaaS products, but a lot of trust towards dev-tooling.
+An interesting side-fact became clear to us, too: there was a lot of skepticism towards ML-based SaaS products, but a lot of trust towards dev-tooling.
 
 More importantly, however - we had solved exactly the problems our interviewees faced for ourselves. We were sitting on something commercially relevant, and we were looking at a great opportunity.
 
 ## Understanding your market, part one
 
-With this new-found confirmation we set out to transform our tech-stack from internal-facing supportive tooling to an actual product. Looking at the market, a split was noticeable. 
+With this new-found confirmation we set out to transform our tech-stack from internal-facing supportive tooling to an actual product. Looking at the market, a split was noticeable.
 
-On the one side, open-source tooling like Kubeflow and MLFlow was solving aspects of the MLOps problem space, but posed significant investments to the teams we were talking to in our interviews. Tooling was either missing the point of Data Scientists, or alienated product leads and DevOps teams with convoluted, messy or badly documented paths from experiment to production. 
+On the one side, open-source tooling like Kubeflow and MLFlow was solving aspects of the MLOps problem space, but posed significant investments to the teams we were talking to in our interviews. Tooling was either missing the point of Data Scientists, or alienated product leads and DevOps teams with convoluted, messy or badly documented paths from experiment to production.
 
 On the other side were very expensive commercial solutions, attempting to solve large chunks of the ML lifecycle with proprietary offerings.
 
@@ -56,9 +58,9 @@ Given the layout of the MLOps market, we spotted an opportunity to flip the prov
 
 ## Understanding the market, part two
 
-By now we know: Our hypothesis, teams are just waiting for a managed MLOps solution with usage-based pricing and reproducible pipelines as focus, was off. This was not immediately clear to us, of course. 
+By now we know: Our hypothesis, teams are just waiting for a managed MLOps solution with usage-based pricing and reproducible pipelines as focus, was off. This was not immediately clear to us, of course.
 
-One of our smartest plays saved us in the end - we never stopped doing user interviews. We demo'ed our product status quo multiple times per week, we had two soft-launches and continuously engaged with the community on conferences, reddit, slack - you name it. 
+One of our smartest plays saved us in the end - we never stopped doing user interviews. We demo'ed our product status quo multiple times per week, we had two soft-launches and continuously engaged with the community on conferences, reddit, slack - you name it.
 
 And people loved our take on MLOps. Our vision resonated deeply. All model trainings are guaranteed to be reproducible, tracking is deeply baked-in, integrations to popular tooling are easy and extensible - these are the key concerns of the teams we were talking to.
 

@@ -5,9 +5,9 @@ title: DUPLICATE
 publish_date: May 1st, 2020
 date: 2020-05-01T10:20:00Z
 image:
-    path: /assets/logo_sq.png
-    height: 100
-    width: 100
+  path: /assets/logo_sq.png
+  height: 100
+  width: 100
 ---
 
 I use this article to test shit.
@@ -16,7 +16,7 @@ I use this article to test shit.
 split:
   index_ratio: {train: 0.7, eval: 0.3}
   ...
-  
+
 
 features:
   occupation: {}
@@ -45,3 +45,4 @@ trainer:
   optimizer: adam
   ...
 ``
+```
