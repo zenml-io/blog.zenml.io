@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if lt IE 9]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9]><html class="no-js oldie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html class="no-js" lang="en">
-    <!--<![endif]-->
-    {% include head.html %}
-    <body>        
-        {% include nav.html %}
+  <!--<![endif]-->
+  {% include head.html %}
+  <body>
+    {% include nav.html %} {% include posts/header.html %}
+    <section id="post-content" class="pb-5">
+      <div class="container" id="blogpost">
+        <span
+          >[ {% for tag in page.tags %} {% capture tag_name %}{{ tag }}{%
+          endcapture %}
+          <a href="/tag/{{ tag_name }}"
+            ><code class="highligher-rouge"><nobr>{{ tag_name }}</nobr></code
+            >&nbsp;</a
+          >
+          {% endfor %} ]</span
+        >
+      </div>
+    </section>
 
-        {% include posts/header.html %}
-
-        {% include posts/content.html %}
-
-        {% include sharing.html %}
-
-        {% include posts/latest.html %}
-
-        {% include footer.html %}
-
-        {% include js.html %}
-    </body>
+    {% include posts/content.html %} {% include sharing.html %} {% include
+    posts/latest.html %} {% include footer.html %} {% include js.html %}
+  </body>
 </html>
