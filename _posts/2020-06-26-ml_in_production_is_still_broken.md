@@ -5,6 +5,7 @@ title: Why ML in production is (still) broken - [#MLOps2020]
 publish_date: June 26th, 2020
 date: 2020-06-26T10:20:00Z
 thumbnail: /assets/posts/mlopsworldthumbnail.png
+tags: legacy
 image:
     path: /assets/logo_sq.png
     height: 100

@@ -33,6 +33,9 @@ links:
   slack-invite: "https://zenml.io/slack-invite/"
   email: "mailto:support@zenml.io"
   zenml: "https://zenml.io"
+  newsletter: "https://zenml.io/newsletter"
+  roadmap: "https://zenml.io/roadmap"
+  careers: "https://zenml.io/careers"
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:

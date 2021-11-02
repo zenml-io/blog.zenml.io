@@ -5,6 +5,7 @@ title: 12 Factors of reproducible Machine Learning in production
 publish_date: September 28th, 2020
 date: 2020-09-28T10:20:00Z
 thumbnail: /assets/posts/12factor.svg
+tags: legacy
 image:
   path: /assets/posts/12factors.png
   height: 1200

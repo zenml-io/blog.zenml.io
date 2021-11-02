@@ -5,6 +5,7 @@ title: ZenML will be open source
 publish_date: November 11th, 2020
 date: 2020-11-11T00:02:00Z
 thumbnail: /assets/posts/open-source_1.svg
+tags: legacy
 image:
   path: /assets/posts/sharing-os.png
   height: 1200

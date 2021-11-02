@@ -6,6 +6,7 @@ title: >
 publish_date: November 9th, 2020
 date: 2020-11-09T10:20:00Z
 thumbnail: /assets/posts/learning.svg
+tags: legacy
 image:
   path: /assets/posts/sharing-mlops_learning_from_history.png
   height: 1200
