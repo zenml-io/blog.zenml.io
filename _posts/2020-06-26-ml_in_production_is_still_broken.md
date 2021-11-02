@@ -6,7 +6,7 @@ publish_date: June 26th, 2020
 date: 2020-06-26T10:20:00Z
 thumbnail: /assets/posts/mlopsworldthumbnail.png
 category: mlops
-tags: [bigger-picture, devops, legacy, mlops]
+tags: bigger-picture devops legacy mlops
 image:
   path: /assets/logo_sq.png
   height: 100

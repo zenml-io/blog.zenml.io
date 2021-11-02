@@ -5,7 +5,7 @@ title: Is your Machine Learning Reproducible?
 tags: legacy
 publish_date: January 19th, 2021
 category: mlops
-tags: [machine-learning, reproducibility, zenml]
+tags: machine-learning reproducibility zenml
 date: 2021-01-19T00:02:00Z
 thumbnail: /assets/posts/reproducibility-thumb.svg
 image:

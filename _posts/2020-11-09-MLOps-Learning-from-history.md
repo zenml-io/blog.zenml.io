@@ -5,7 +5,7 @@ title: >
   MLOps: Learning from history
 publish_date: November 9th, 2020
 category: mlops
-tags: [devops, bigger-picture, mlops]
+tags: devops bigger-picture mlops
 date: 2020-11-09T10:20:00Z
 thumbnail: /assets/posts/learning.svg
 tags: legacy

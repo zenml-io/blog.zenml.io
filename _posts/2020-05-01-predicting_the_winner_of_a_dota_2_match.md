@@ -6,7 +6,7 @@ tags: legacy
 publish_date: May 7th, 2020
 date: 2020-05-01T10:20:00Z
 category: zenml
-tags: [applied-zenml, machinelearning, pipelines, zenml]
+tags: applied-zenml machinelearning pipelines zenml
 thumbnail: /assets/posts/dota2.svg
 image:
   path: /assets/logo_sq.png

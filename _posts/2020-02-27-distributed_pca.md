@@ -5,7 +5,7 @@ title: Distributed PCA using TFX
 tags: legacy
 publish_date: February 27, 2020
 date: 2020-02-27T10:20:00Z
-tags: [tensorflow, machine-learning, legacy, mlops]
+tags: tensorflow machine-learning legacy mlops
 category: mlops
 crosspost:
   url: https://blog.tensorflow.org/2020/02/distributed-pca-using-tfx.html
