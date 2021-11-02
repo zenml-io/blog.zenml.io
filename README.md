@@ -1,19 +1,20 @@
 ## Contributing
 
-To contribubte, simply create a feature branch in the format `<your name>/<feature you're working on>`. As an example, if `Bart` works on a feature to add "El Barto" to the imprint, he would be commiting his changes to `bart/el-barto-imprint`.
+To contribute, simply create a feature branch in the format `<your name>/<feature you're working on>`. As an example, if `Bart` works on a feature to add "El Barto" to the imprint, he would be committing his changes to `bart/el-barto-imprint`.
 
 Please check your work locally for the following
 
 - [ ] `bundle exec jekyll serve` works and displays your changes correctly
-- [ ] your changes look as intended in an up-to-date version of Chrome in all viewport sizes
-- [ ] if you commited images, make sure they are a reasonable small size. Use `.svg` where possible.
-- [ ] only linked and necessary resources are commited
+- [ ] Your changes look as intended in an up-to-date version of Chrome in all viewport sizes
+- [ ] If you committed images, make sure they are a reasonable small size. Use `.svg` where possible.
+- [ ] Only linked and necessary resources are committed.
 
 After you're happy with your work, you can push and create merge requests. Please provide relevant information about your merge request in the description.
 
 ## Setup and Usage
 
-Jekyll is just a fancy way of automating the copy-pasting of HTML blocks to form a static website. It offers a scriptable syntax called [Liquid](https://shopify.github.io/liquid/), made by our friends at Shopify. It features conditional logic, loops and other fancy stuff, but can be clunky at times.
+Jekyll is just a fancy way of automating the copy-pasting of HTML blocks to form a static website. It offers a scriptable syntax called [Liquid](https://shopify.github.io/liquid/), made by our friends at Shopify.
+It features conditional logic, loops and other fancy stuff, but can be clunky at times.
 
 ### Prerequisites
 

@@ -2,6 +2,7 @@
 layout: post
 author: Benedikt Koller
 title: A case for declarative configurations for ML training
+tags: legacy
 publish_date: May 17th, 2020
 date: 2020-05-17T20:00:00Z
 thumbnail: /assets/posts/declarative_cfg.svg

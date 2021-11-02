@@ -7,6 +7,7 @@ category: techstartup
 tags: [covid]
 date: 2020-12-26T00:02:00Z
 thumbnail: /assets/posts/a_most_unusual_year.svg
+tags: legacy
 image:
   path: /assets/posts/a_most_unusual_year.png
   height: 1200

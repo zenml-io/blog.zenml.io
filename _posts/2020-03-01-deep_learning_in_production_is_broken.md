@@ -2,6 +2,7 @@
 layout: post
 author: Hamza Tahir
 title: Why deep learning development in production is (still) broken
+tags: legacy
 publish_date: May 1st, 2020
 category: mlops
 tags: [deeplearning, devops, machinelearning, bigger-picture]

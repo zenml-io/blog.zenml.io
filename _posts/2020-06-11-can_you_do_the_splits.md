@@ -2,6 +2,7 @@
 layout: post
 author: Hamza Tahir
 title: Can you do the splits?
+tags: legacy
 publish_date: June 11th, 2020
 date: 2020-06-11T10:20:00Z
 category: mlops

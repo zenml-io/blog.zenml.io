@@ -7,6 +7,7 @@ category: zenml
 tags: [bigger-picture, devops]
 date: 2020-09-28T10:20:00Z
 thumbnail: /assets/posts/12factor.svg
+tags: legacy
 image:
   path: /assets/posts/12factors.png
   height: 1200

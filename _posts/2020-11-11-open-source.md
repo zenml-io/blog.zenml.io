@@ -7,6 +7,7 @@ date: 2020-11-11T00:02:00Z
 category: zenml
 tags: [bigger-picture, open-source]
 thumbnail: /assets/posts/open-source_1.svg
+tags: legacy
 image:
   path: /assets/posts/sharing-os.png
   height: 1200

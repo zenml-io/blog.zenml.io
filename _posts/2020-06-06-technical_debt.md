@@ -2,6 +2,7 @@
 layout: post
 author: Hamza Tahir
 title: Avoiding technical debt with ML pipelines
+tags: legacy
 publish_date: June 6th, 2020
 category: zenml
 tags: [bigger-picture, pipelines]

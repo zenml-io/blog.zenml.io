@@ -2,6 +2,7 @@
 layout: post
 author: Baris Can Durak
 title: Predicting the winner of a DotA 2 match using distributed deep learning pipelines
+tags: legacy
 publish_date: May 7th, 2020
 date: 2020-05-01T10:20:00Z
 category: zenml
