@@ -1,47 +1,114 @@
-{% capture title %} {% if page.title %} {{ page.title }} {% else %} {{ site.title }} {% endif %} {% endcapture %}
-{% capture description %} {% if page.description %} {{ page.description }} {% else %} {{ site.description }} {% endif %} {% endcapture %}
+{% capture title %} {% if page.title %} {{ page.title }} {% else %} {{
+site.title }} {% endif %} {% endcapture %} {% capture description %} {% if
+page.description %} {{ page.description }} {% else %} {{ site.description }} {%
+endif %} {% endcapture %}
 
 <head>
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/klaro.css">
-    <script defer type="text/javascript" src="{{ site.url }}/assets/js/config.js"></script>
-    <script defer type="text/javascript" src="{{ site.url }}/assets/js/klaro.max.js"></script>
-    <!-- Segment -->
-    <script type="opt-in" data-type="application/javascript" data-name="analytics">
-      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var t=analytics.methods[e];analytics[t]=analytics.factory(t)}analytics.load=function(e,t){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+e+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=t};analytics.SNIPPET_VERSION="4.1.0";
-      analytics.load("3Uq5WB59FHnT6EIFF3CL8FUb8mZhosSh");
-      analytics.page({path: window.location.hostname + window.location.pathname});
-      }}();
-    </script>
-    <!-- End Segment -->
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/klaro.css" />
+  <script
+    defer
+    type="text/javascript"
+    src="{{ site.url }}/assets/js/config.js"
+  ></script>
+  <script
+    defer
+    type="text/javascript"
+    src="{{ site.url }}/assets/js/klaro.max.js"
+  ></script>
+  <!-- Segment -->
+  <script
+    type="opt-in"
+    data-type="application/javascript"
+    data-name="analytics"
+  >
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var t=analytics.methods[e];analytics[t]=analytics.factory(t)}analytics.load=function(e,t){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+e+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=t};analytics.SNIPPET_VERSION="4.1.0";
+    analytics.load("3Uq5WB59FHnT6EIFF3CL8FUb8mZhosSh");
+    analytics.page({path: window.location.hostname + window.location.pathname});
+    }}();
+  </script>
+  <!-- End Segment -->
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/animate.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/aos.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/ionicons.min.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/jquery.timepicker.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/flaticon.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/icomoon.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/custom-accordion.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/font-awesome.css">
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/style.css">
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="{{ site.url }}/assets/css/open-iconic-bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/animate.css" />
+  <link
+    rel="stylesheet"
+    href="{{ site.url }}/assets/css/owl.carousel.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="{{ site.url }}/assets/css/owl.theme.default.min.css"
+  />
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/magnific-popup.css" />
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/aos.css" />
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/ionicons.min.css" />
+  <link
+    rel="stylesheet"
+    href="{{ site.url }}/assets/css/bootstrap-datepicker.css"
+  />
+  <link
+    rel="stylesheet"
+    href="{{ site.url }}/assets/css/jquery.timepicker.css"
+  />
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/flaticon.css" />
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/icomoon.css" />
+  <link
+    rel="stylesheet"
+    href="{{ site.url }}/assets/css/custom-accordion.css"
+  />
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/font-awesome.css" />
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/style.css" />
 
-    <!-- favicons ================================================== -->
-    <link rel="shortcut icon" href="{{ site.url }}/assets/favicon.ico" type="image/png">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ site.url }}/assets/favicon-apple-touch-114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ site.url }}/assets/favicon-apple-touch-114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ site.url }}/assets/favicon-apple-touch-144.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.url }}/assets/favicon-apple-touch-144.png">
-    <link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32 48x48" href="{{ site.url }}/assets/favicon.ico">
-    <link rel="icon" sizes="128x128" href="{{ site.url }}/assets/favicon.icns">
-    <link rel="icon" href="{{ site.url }}/assets/favicon.png" type="image/x-icon">
+  <!-- favicons ================================================== -->
+  <link
+    rel="shortcut icon"
+    href="{{ site.url }}/assets/favicon.ico"
+    type="image/png"
+  />
+  <link
+    rel="apple-touch-icon-precomposed"
+    sizes="57x57"
+    href="{{ site.url }}/assets/favicon-apple-touch-114.png"
+  />
+  <link
+    rel="apple-touch-icon-precomposed"
+    sizes="114x114"
+    href="{{ site.url }}/assets/favicon-apple-touch-114.png"
+  />
+  <link
+    rel="apple-touch-icon-precomposed"
+    sizes="72x72"
+    href="{{ site.url }}/assets/favicon-apple-touch-144.png"
+  />
+  <link
+    rel="apple-touch-icon-precomposed"
+    sizes="144x144"
+    href="{{ site.url }}/assets/favicon-apple-touch-144.png"
+  />
+  <link
+    rel="icon"
+    type="image/vnd.microsoft.icon"
+    sizes="32x32 48x48"
+    href="{{ site.url }}/assets/favicon.ico"
+  />
+  <link rel="icon" sizes="128x128" href="{{ site.url }}/assets/favicon.icns" />
+  <link
+    rel="icon"
+    href="{{ site.url }}/assets/favicon.png"
+    type="image/x-icon"
+  />
 
-    <link rel="author" href="{{ site.social.linkedin }}">
-    {% seo %}
+  <link rel="author" href="{{ site.social.linkedin }}" />
+  {% seo %} {% if site.tags != "" %} {% include collecttags.html %} {% endif %}
 </head>
