@@ -33,6 +33,14 @@
             >Home</a
           >
         </li>
+        <li class="nav-item" style="padding-right: 20px">
+          <a
+            href="{{ site.url }}/tags"
+            class="nav-link"
+            id="nav-bloghome-{{ page.url | slugify }}"
+            >Tags</a
+          >
+        </li>
         <!-- <li class="nav-item mr-lg-5"><a href="https://zenml.io/" class="nav-link green" id="nav-bloghome-{{ page.url | slugify }}">zenml.io</a></li> -->
         <li class="nav-item">
           <a
@@ -40,7 +48,7 @@
             target="_blank"
             class="nav-link btn btn-rnd-square btn-outline-dark"
             id="nav-zenml-{{ page.url | slugify }}"
-            ><span id="nav-signup-{{ page.url | slugify }}">ZenML.</span></a
+            ><span id="nav-signup-{{ page.url | slugify }}">ZenML</span></a
           >
         </li>
       </ul>
