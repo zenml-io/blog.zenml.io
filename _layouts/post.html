@@ -10,13 +10,24 @@
     <section id="post-content" class="pb-5">
       <div class="container" id="blogpost">
         <span>
-          {% assign all_tags = page.tags | sort %} {% for tag in all_tags %} {%
-          capture tag_name %}{{ tag }}{% endcapture %}
-          <a href="/tag/{{ tag_name }}"
-            ><code class="highligher-rouge"><nobr>{{ tag_name }}</nobr></code
-            >&nbsp;</a
-          >
-          {% endfor %}</span
+          <div class="btn-group" role="group" aria-label="...">
+            {% assign all_tags = page.tags | sort %} {% for tag in all_tags %}
+            {% capture tag_name %}{{ tag }}{% endcapture %}
+            <a href="/tag/{{ tag_name }}"
+              ><code class="highligher-rouge"
+                ><nobr
+                  ><button
+                    type="button"
+                    class="btn btn-default"
+                    style="border: 1px solid black"
+                  >
+                    {{ tag_name }}
+                  </button></nobr
+                ></code
+              >&nbsp;</a
+            >
+            {% endfor %}
+          </div></span
         >
       </div>
     </section>
