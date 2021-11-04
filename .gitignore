@@ -8,3 +8,5 @@ vendor
 **/.DS_Store
 _blog/dl_is_broken-2.md
 # Gemfile.lock
+.prettierignore
+.vscode
