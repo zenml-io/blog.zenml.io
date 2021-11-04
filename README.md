@@ -46,3 +46,9 @@ As a brief primer on structure:
 - `_layouts/` contain unique layouts. They usually build the structure of a page, and then include the content of a page via `{{ content }}`. [Read more](https://jekyllrb.com/docs/layouts/).
 - For blogs, `_posts` has a special function. [Please read the official documentation for more info](https://jekyllrb.com/docs/posts/).
 - `_data/` is a great place to store site-wide referenced information in `.yaml`-notation.
+
+### Pushing Blog to Production
+
+Any time a new blogpost is added, you must run the `python scripts/tag_generator.py` manually once all blogposts are added to the `_posts` directory, and all tags have been listed in the metadata at the top of each post.
+
+(We are working on a fix for this to run automatically, but for now, make sure )
