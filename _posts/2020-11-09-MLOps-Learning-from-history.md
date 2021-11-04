@@ -1,6 +1,6 @@
 ---
 layout: post
-author: Benedikt Koller
+author: ZenML Team
 title: >
   MLOps: Learning from history
 publish_date: November 9th, 2020

@@ -1,6 +1,6 @@
 ---
 layout: post
-author: Benedikt Koller
+author: ZenML Team
 title: A case for declarative configurations for ML training
 tags: legacy
 publish_date: May 17th, 2020
