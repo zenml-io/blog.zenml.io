@@ -4,7 +4,7 @@ author: Hamza Tahir
 title: Taking on the ML pipeline challenge
 description: Why data scientists need to own their ML workflows in production
 category: zenml
-tags: [pipelines, zenml]
+tags: pipelines zenml
 publish_date: October 27, 2021
 date: 2021-10-27T00:02:00Z
 thumbnail: /assets/posts/ml-pipelines/pipes.jpg
