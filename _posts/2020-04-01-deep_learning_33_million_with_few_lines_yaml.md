@@ -2,11 +2,10 @@
 layout: post
 author: Hamza Tahir
 title: Deep Learning on 33,000,000 data points using a few lines of YAML
-tags: legacy
 publish_date: May 4th, 2020
 date: 2020-04-01T10:20:00Z
 category: zenml
-tags: [applied-zenml, pipelines, machine-learning, zenml]
+tags: applied-zenml pipelines machine-learning zenml
 thumbnail: /assets/posts/nyc_OD.svg
 image:
   path: /assets/logo_sq.png

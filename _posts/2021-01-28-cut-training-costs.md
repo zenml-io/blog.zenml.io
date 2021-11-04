@@ -3,11 +3,10 @@ layout: post
 author: Hamza Tahir
 title: Spot the difference in ML costs
 category: mlops
-tags: [cloud, machine-learning, zenml]
+tags: cloud machine-learning zenml legacy
 publish_date: January 28th, 2021
 date: 2021-01-28T00:02:00Z
 thumbnail: /assets/posts/12factor.svg
-tags: legacy
 image:
   path: /assets/posts/12factors.png
   height: 1910

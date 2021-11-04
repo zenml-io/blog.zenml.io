@@ -1,0 +1,34 @@
+---
+layout: default-tag
+---
+
+<div class="container px-0">
+  <div class="post">
+    <h1>Tag: {{ page.tag }}</h1>
+    <ul>
+      {% for post in site.tags[page.tag] %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a> ({{ post.date |
+        date_to_string }})<br />
+        {{ post.description }}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <hr />
+
+  <div id="tag-cloud" style="padding-left: 50px; padding-right: 50px">
+    {% assign tags = site.tags | sort %} {% for tag in tags %}
+    <span class="site-tag">
+      <a
+        href="/tag/{{ tag | first | slugify }}/"
+        style="font-size: {{ tag | last | size  |  times: 8 | plus: 70  }}%"
+      >
+        <code class="highligher-rouge"
+          >{{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})</code
+        >
+      </a>
+    </span>
+    {% endfor %}
+  </div>
+</div>

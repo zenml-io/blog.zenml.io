@@ -3,7 +3,7 @@ layout: post
 author: Alex Strick van Linschoten
 title: 10 Ways To Level Up Your Testing with Python
 category: tech-startup
-tags: [tech-startup, python, testing, tooling]
+tags: tech-startup python testing tooling
 publish_date: November 4, 2021
 date: 2021-11-04T00:02:00Z
 thumbnail: /assets/posts/testing-glasses.jpg
