@@ -4,6 +4,7 @@ page.description %} {{ page.description }} {% else %} {{ site.description }} {%
 endif %} {% endcapture %}
 
 <head>
+  {% if site.tags != "" %} {% include collecttags.html %} {% endif %}
   <link rel="stylesheet" href="{{ site.url }}/assets/css/klaro.css" />
   <script
     defer
@@ -110,5 +111,5 @@ endif %} {% endcapture %}
   />
 
   <link rel="author" href="{{ site.social.linkedin }}" />
-  {% seo %} {% if site.tags != "" %} {% include collecttags.html %} {% endif %}
+  {% seo %}
 </head>
