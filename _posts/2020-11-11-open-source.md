@@ -1,6 +1,6 @@
 ---
 layout: post
-author: Benedikt Koller
+author: ZenML Team
 title: ZenML will be open source
 publish_date: November 11th, 2020
 date: 2020-11-11T00:02:00Z

@@ -1,6 +1,6 @@
 ---
 layout: post
-author: Benedikt Koller
+author: ZenML Team
 title: A most unusual year
 publish_date: December 26th, 2020
 category: tech-startup
