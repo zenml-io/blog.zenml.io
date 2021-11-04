@@ -5,7 +5,7 @@ title: Predicting the winner of a DotA 2 match using distributed deep learning p
 publish_date: May 7th, 2020
 date: 2020-05-01T10:20:00Z
 category: zenml
-tags: applied-zenml machinelearning pipelines zenml
+tags: applied-zenml machine-learning pipelines zenml
 thumbnail: /assets/posts/dota2.svg
 image:
   path: /assets/logo_sq.png
