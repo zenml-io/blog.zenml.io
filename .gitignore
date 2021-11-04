@@ -9,3 +9,4 @@ vendor
 _blog/dl_is_broken-2.md
 # Gemfile.lock
 .prettierignore
+.vscode
