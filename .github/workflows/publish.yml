@@ -21,6 +21,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Runs tag generation
+      run: python scripts/tag_generator.py
+
     - name: Runs pre-deploy
       run: ./scripts/pre-deploy.sh
 
