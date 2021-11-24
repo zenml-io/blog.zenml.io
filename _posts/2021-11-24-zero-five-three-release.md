@@ -23,8 +23,11 @@ In the latest release we added the concept of visualizations as a first-class ci
 
 We use the built-in FacetStatisticsVisualizer using the [Facets Overview](https://pypi.org/project/facets-overview/) integration. [Facets](https://pair-code.github.io/facets/) is an awesome project that helps users visualize large amounts of data in a coherent way.
 
+| ![Here's what the statistics visualizer looks like](../assets/posts/release_0_5_3/stats.gif) |
+|:--:|
+| *Here's what the statistics visualizer looks like* |
 
-
+<br>
 ## CLI Speed Improvements
 
 You may have noticed that the previous versions of ZenML CLI were a bit slow. 😬 Sorry about that. We've fixed the problem. There were some imports of large libraries happening at inopportune moments. This improvement will get a whole blog post of its own, so watch this space for more details…
@@ -34,7 +37,5 @@ You may have noticed that the previous versions of ZenML CLI were a bit slow. �
 Join our [Slack](https://zenml.io/slack-invite/) to let us know what you think we should build next!
 
 Keep your eyes open for future releases and make sure to [vote](https://github.com/zenml-io/zenml/discussions/categories/roadmap) on your favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets implemented as soon as possible.
-
-*Alex Strick van Linschoten is a Machine Learning Engineer at ZenML.*
 
 [Image credit: Photo by [Al Soot](https://unsplash.com/@anspchee?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/images/things/balloon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)]
