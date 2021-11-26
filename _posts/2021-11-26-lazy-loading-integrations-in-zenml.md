@@ -76,4 +76,6 @@ In this example, the output of the step is a `tf.keras.Model` and normally, in i
 
 ## What is in store for the Integrations in the future?
 
-**Integrations** are a new concept that we recently added to our arsenal and we hope that they will be a great gateway for us and our users to extend **ZenML** as we fit. For us, the next immediate step will likely revolve around implementing an easy way for you to manage your **Integrations** through our CLI tool. If you are interested in **ZenML** or if you have any questions or feedback, make sure
+**Integrations** are a new concept that we recently added to our arsenal and we hope that they will be a great gateway for us and our users to extend **ZenML** wherever we need. For us, the next immediate step will likely revolve around implementing an easy way for you to manage your **Integrations** through our CLI tool. If you are interested in **ZenML** or if you have any questions or feedback, make sure to [join our Slack](https://zenml.io/slack-invite/) to let us know what you think we should build next!
+
+*Barış Can Durak is a Machine Learning Engineer at ZenML.*
