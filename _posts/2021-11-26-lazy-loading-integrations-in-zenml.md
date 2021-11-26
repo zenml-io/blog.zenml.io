@@ -11,7 +11,7 @@ image:
   path: /assets/posts/lazy-loading-integrations/sam_zen_mode.jpg
 ---
 # Lazy Loading Integrations in ZenML
-While you are working on a project in **Python**, it is very likely that you run into an issue where even the simplest of imports can lead to a chain of imports, which in return can cost you a few seconds of run time before you even start to use what you imported. If left unchecked, this eager consumption of time can become even more apparent and annoying if you working on a project where the response time may be critical and there are a wide variety of tools in play. Now, let us put this into perspective for a tool that handles Machine Learning workflows in a production setting.
+When working on a project in **Python**, it is very likely that you will run into an issue where even the simplest of imports can lead to a chain of imports, which in turn can cost you a few seconds of run time before you even start to use what you imported. Left unchecked, this eager consumption of time can become even more apparent and annoying if you working on a project where the response time is critical and there are a wide variety of tools in play. Let's put this into perspective for a tool that handles Machine Learning workflows in a production setting.
 
 ## Fractured space of Machine Learning
 
