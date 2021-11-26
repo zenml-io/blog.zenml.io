@@ -21,7 +21,7 @@ In recent years, the field of Machine Learning has become even more fractured, e
 
 This is something that we have to consider at **ZenML** and it is why we aim to create an environment where our users already have access to some of the widely used tools while having the option to extend the framework as they see fit. Through a set of high-level abstractions, we want to minimize the friction as much as possible between these moving parts of an ML workflow, and at the center of this solution, we have our **Integrations**.
 
-![sam_zen_mode.jpg](../assets/posts/lazy-loading-integrations/sam_zen_mode.jpg)
+![](../assets/posts/lazy-loading-integrations/sam_zen_mode.jpg)
 
 ## What do Integrations bring to the table?
 
