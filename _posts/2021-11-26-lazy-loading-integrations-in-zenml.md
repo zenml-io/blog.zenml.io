@@ -62,7 +62,7 @@ Assuming that you have installed the requirements of an **Integration**, you can
 from zenml.integrations.tensorflow.materializers import KerasMaterializer
 ```
 
-Even though this seems relatively straightforward, we also need to take a look at what happens if the integration you installed brings a component that is not necessarily imported or used within your pipeline creation code. A great example of this can be displayed through the creation of a basic step:
+Even though this seems relatively straightforward, we also need to take a look at what happens if the integration you installed brings a component that is not necessarily imported or used within your pipeline creation code. Let's take a look at what happens when you create a basic step:
 
 Normally, when you are creating a step in **ZenML**, the input- and output annotations play a major role in the execution of the step. If not set otherwise, **ZenML** will take a look at the annotations, find the default `materializer` in its `materializer_registry` for each annotation, and use the dedicated `materializer` object to use for reading or writing. 
 
