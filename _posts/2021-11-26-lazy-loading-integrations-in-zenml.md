@@ -17,7 +17,7 @@ When working on a project in **Python**, it is very likely that you will run int
 
 In recent years, the field of Machine Learning has become even more fractured, especially in a production setting. Anyone who deals with a Machine Learning workflow needs to not only think about designing and training models but also a wide variety of tasks ranging from data ingestion to processing, from training to serving, from distributed processing to orchestration. The solutions to these problems are usually tailored to the problem at hand and they utilize a different set of tools/frameworks to bring forth a solution. Naturally, it is impossible to claim that there is only"**one"** set of tools/frameworks that can solve it all. 
 
-![sam_frustrated.jpg](../assets/posts/lazy-loading-integrations/sam_frustrated.jpg)
+![](../assets/posts/lazy-loading-integrations/sam_frustrated.jpg)
 
 This is something that we have to consider at **ZenML** and it is why we aim to create an environment where our users already have access to some of the widely used tools while having the option to extend the framework as they see fit. Through a set of high-level abstractions, we want to minimize the friction as much as possible between these moving parts of an ML workflow, and at the center of this solution, we have our **Integrations**.
 
