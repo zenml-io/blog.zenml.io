@@ -19,7 +19,7 @@ In the latest years, the area of Machine Learning has become even more fractured
 
 ![sam_frustrated.jpg](../assets/posts/lazy-loading-integrations/sam_frustrated.jpg)
 
-This is something that we have to consider at **ZenML** and it is why we aim to achieve to create an environment where our users already have access to some of the widely used tools while having the option to extend the framework as they see fit. Through a set of high-level abstractions, we want to minimize the friction as much as possible between these moving parts of an ML workflow, and at the center of this solution, we have our **Integrations**.
+This is something that we have to consider at **ZenML** and it is why we aim to create an environment where our users already have access to some of the widely used tools while having the option to extend the framework as they see fit. Through a set of high-level abstractions, we want to minimize the friction as much as possible between these moving parts of an ML workflow, and at the center of this solution, we have our **Integrations**.
 
 ![sam_zen_mode.jpg](../assets/posts/lazy-loading-integrations/sam_zen_mode.jpg)
 
@@ -64,7 +64,7 @@ from zenml.integrations.tensorflow.materializers import KerasMaterializer
 
 Even though this seems relatively straightforward, we also need to take a look at what happens if the integration you installed brings a component that is not necessarily imported or used within your pipeline creation code. A great example of this can be displayed through the creation of a basic step:
 
-Normally, when you are creating a step in **ZenML**, the input- and output annotations play a major role in the execution of the step. If not set otherwise, **ZenML** will take a look at the annotations, find the default `materializer` in its `materializer_registry` for each annotation, and use the dedicated `materializer` object to use to either read or write. 
+Normally, when you are creating a step in **ZenML**, the input- and output annotations play a major role in the execution of the step. If not set otherwise, **ZenML** will take a look at the annotations, find the default `materializer` in its `materializer_registry` for each annotation, and use the dedicated `materializer` object to use for reading or writing. 
 
 ```python
 @step
