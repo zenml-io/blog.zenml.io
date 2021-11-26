@@ -72,7 +72,7 @@ def trainer(X_train: np.ndarray, y_train: np.ndarray) -> tf.keras.Model:
 		...
 ```
 
-In this example, the output of the step is a `tf.keras.Model` and normally, in its barest form, the `materializer_registry` has no `materializer` pre-loaded for this type. This is mainly due to the fact that it will not be needed by everybody who will use our tools and making them load a `materializer` for an annotation that they will not need would be a waste of time. However, to counteract that, we can keep a track of which **Integrations** you have installed in your environment and activate them upon pipeline execution. This way you will have access to the tool within the integration **when it matters.**
+In this example, the output of the step is a `tf.keras.Model` and normally, in its barest form, the `materializer_registry` has no `materializer` pre-loaded for this type. This is mainly due to the fact that it will not be needed by everybody who will use our tools. Making them load a `materializer` for an annotation that they will not need would be a waste of time. However, to counteract that, we can keep a track of which **Integrations** you have installed in your environment and activate them upon pipeline execution. This way you will have access to the tool within the integration **when it matters.**
 
 ## What is in store for the Integrations in the future?
 
