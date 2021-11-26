@@ -19,7 +19,7 @@ In recent years, the field of Machine Learning has become even more fractured, e
 
 ![](../assets/posts/lazy-loading-integrations/sam_frustrated.jpg)
 
-This is something that we have to consider at **ZenML** and it is why we aim to create an environment where our users already have access to some of the widely used tools while having the option to extend the framework as they see fit. Through a set of high-level abstractions, we want to minimize the friction as much as possible between these moving parts of an ML workflow, and at the center of this solution, we have our **Integrations**.
+We think about this all the time at **ZenML** and it is why we aim to create an environment where our users already have access to some of the widely used tools while having the option to extend the framework as they see fit. Through a set of high-level abstractions, we want to minimize the friction as much as possible between these moving parts of an ML workflow. At the core of this solution, we have our **Integrations**.
 
 ![](../assets/posts/lazy-loading-integrations/sam_zen_mode.jpg)
 
@@ -64,7 +64,7 @@ from zenml.integrations.tensorflow.materializers import KerasMaterializer
 
 Even though this seems relatively straightforward, we also need to take a look at what happens if the integration you installed brings a component that is not necessarily imported or used within your pipeline creation code. Let's take a look at what happens when you create a basic step:
 
-Normally, when you are creating a step in **ZenML**, the input- and output annotations play a major role in the execution of the step. If not set otherwise, **ZenML** will take a look at the annotations, find the default `materializer` in its `materializer_registry` for each annotation, and use the dedicated `materializer` object to use for reading or writing. 
+Normally, when you are creating a step in **ZenML**, the input and output annotations play a major role in the execution of the step. If not otherwise set, **ZenML** will take a look at the annotations, find the default `materializer` in its `materializer_registry` for each annotation, and use the dedicated `materializer` object to use for either reading or writing. 
 
 ```python
 @step
@@ -72,7 +72,7 @@ def trainer(X_train: np.ndarray, y_train: np.ndarray) -> tf.keras.Model:
 		...
 ```
 
-In this example, the output of the step is a `tf.keras.Model` and normally, in its barest form, the `materializer_registry` has no `materializer` pre-loaded for this type. This is mainly due to the fact that it will not be needed by everybody who will use our tools. Making them load a `materializer` for an annotation that they will not need would be a waste of time. However, to counteract that, we can keep a track of which **Integrations** you have installed in your environment and activate them upon pipeline execution. This way you will have access to the tool within the integration **when it matters.**
+In this example, the output of the step is a `tf.keras.Model` and normally, in its barest form, the `materializer_registry` has no `materializer` pre-loaded for this type. This is mainly due to the fact that it will not be needed by everybody who will use our tools. Making them load a `materializer` for an annotation that they will not need would be a waste of time. However, to counteract that, we can keep track of which **Integrations** you have installed in your environment and activate them upon pipeline execution. This way you will have access to the tool within the integration *when it matters.*
 
 ## What is in store for the Integrations in the future?
 
