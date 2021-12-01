@@ -21,6 +21,8 @@ how to build an open-source startup in public, and also the biggest challenges
 in Machine Learning. There won't be a strict script and our guests will mainly
 determine the content.
 
+<iframe src="https://player.fireside.fm/v2/vA-gqsEV+H-dOf969?theme=dark" width="740" height="200" frameborder="0" scrolling="no"></iframe>
+
 Alex Strick van Linschoten is the initiator and host of [**Pipeline Conversations**](https://podcast.zenml.io/).
 He's a musician by heart, holds PhD in history, wrote several books about his
 research before he got into coding and Machine Learning. His background will
