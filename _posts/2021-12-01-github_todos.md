@@ -2,25 +2,36 @@
 layout: post
 author: Michael Schuster
 title: How we track our todo comments using GitHub Actions
-category: zenml
-tags: zenml
+category: tech-startup
+tags: tech-startup python tooling
 publish_date: December 01, 2021
 date: 2021-12-01T00:02:00Z
-thumbnail: /assets/posts/todos.jpg
+thumbnail: /assets/posts/github_todos/post_its.jpg
 image:
-  path: /assets/posts/todos.jpg
+  path: /assets/posts/github_todos/post_its.jpg
   # height: 1910
   # width: 1000
 ---
 
 If you're a software developer, you're probably familiar with the following scenario:
 You're working on a new feature or trying to fix a bug, and while reading through some code existing code you notice that there's a nicer way to write it, or maybe a potential edge case isn't handled.
-But where to go from here?
+But where to go from here? Write a todo comment and let your future self handle it of course!
 
-If it's too complicated to implement right away, I usually write a short todo comment in the code for later as I find it can get quite distracting to repeatedly switch to my browser and create an issue with a meaningful description.
+![Problems for future me](../assets/posts/github_todos/todo_meme.jpg)
+
+While this might not be the optimal solution, I still regularly use todo comments if the fix is too complicated to implement right away as I find it can get quite distracting to repeatedly switch to my browser and create an issue with a meaningful description.
+
+## How to keep todo comments in sync with Jira issues
+
 This however brings a problem with it: these todos are separated from our Jira board so we did not take them into account when planning our sprints. 
-Keeping the comments in code in sync with our Jira issues would require quite a lot of additional manual effort, so we decided to write a GitHub Action that helps us track them automatically.
-Each time something is pushed to the main branch, our action simply calls a python script to do the heavy lifting. 
+Keeping the comments in code in sync with our Jira issues manually would require a considerable amount of effort. We would have to periodically go over the entire codebase and create issues for new todos as well as delete issues and todos if their counterpart was removed.
+Instead, we looked at multiple GitHub integrations in the Jira marketplace but couldn't find an existing solution with similar features, so we decided to implement a GitHub Action that helps us track todos automatically.
+
+![TODO](../assets/posts/github_todos/github_action.png)
+
+## GitHub Actions to the rescue
+
+Each time something is pushed to the main branch, a GitHub workflow is triggered which simply calls a python script to do the heavy lifting. 
 The script itself uses the following regular expression to find todo comments in our python files:
 ```python
 pattern = r"(^[ \t]*#) TODO ?\[(LOWEST|LOW|MEDIUM|HIGH|HIGHEST|[A-Z]*?-[0-9]*?)\]:(.*$\n(\1 {2}.*$\n)*)"
