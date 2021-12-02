@@ -23,7 +23,7 @@ Noah is the founder of [Pragmatic A.I. Labs](https://paiml.com), where they prod
 
 Noah also shared his hard-won experiences from working to build up a sports social media startup, as well as his sense of what would be a good place to start as someone seeking to build up their own practical experience in MLOps. Checkout out the full episode below or however you prefer to listen to podcasts!
 
-**INSERT PODCAST EMBED HERE (FOR FULL EPISODE)**
+<iframe src="https://player.fireside.fm/v2/vA-gqsEV+-6NpkzDE?theme=dark" width="740" height="200" frameborder="0" scrolling="no"></iframe>
 
 <br>
 
