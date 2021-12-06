@@ -10,7 +10,7 @@ image:
   width: 100
 ---
 
-I use this article to test shit.
+I use this article to test things.
 
 ```yaml
 split:
