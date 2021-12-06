@@ -4,8 +4,8 @@ author: Alex Strick van Linschoten
 title: What's New in v0.5.4
 category: zenml
 tags: zenml release-notes
-publish_date: December 3, 2021
-date: 2021-12-03T00:02:00Z
+publish_date: December 6, 2021
+date: 2021-12-06T00:02:00Z
 thumbnail: /assets/posts/release_0_5_4/luca-upper-Z-4kOr93RCI-unsplash.jpg
 image:
   path: /assets/posts/release_0_5_4/luca-upper-Z-4kOr93RCI-unsplash.jpg
@@ -13,32 +13,35 @@ image:
   # width: 1000
 ---
 
-ZenML 0.5.4 adds [LIST THE NEW FEATURES]
-
-For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.5.4) a glance. This blog post will cover some of the big-picture changes.
+ZenML 0.5.4 adds visualizations for your native ZenML pipelines as well as
+several bugfixes and updates to our documentation (`init` docstrings galore!).
+We removed a dependency we no longer needed, which will make your `pip`
+installs much faster! For a detailed look at what's changed, give [our full release
+notes](https://github.com/zenml-io/zenml/releases/tag/0.5.4) a glance. This blog
+post will cover the big change we're introducing in the new version.
 
 ## Pipeline Lineage Tracking & Visualization
 
-## Standard Interfaces for Steps
+The [statistics visualizations from the last release](https://blog.zenml.io/zero-five-three-release/) got us all inspired to add a
+few more useful ways of seeing what's going on in your pipelines. It's not
+uncommon for pipelines to be made up of many steps, and those steps can interact
+and intersect with one another in often complex patterns. We've built a way for
+you to inspect what's going on with your ZenML pipeline:
 
-
-
-
-
-## Statistics Visualisations
-
-In the latest release we added the concept of visualizations as a first-class citizen in ZenML. Now you can use awesome third-party libraries to visualize ZenML steps and artifacts. We support the facets visualization for statistics out of the box, to find data drift between your training and test sets.
-
-We use the built-in FacetStatisticsVisualizer using the [Facets Overview](https://pypi.org/project/facets-overview/) integration. [Facets](https://pair-code.github.io/facets/) is an awesome project that helps users visualize large amounts of data in a coherent way.
-
-| ![Here's what the statistics visualizer looks like](../assets/posts/release_0_5_3/stats.gif) |
+| ![Here's what the pipeline lineage tracking visualizer looks like](../assets/posts/release_0_5_4/zenml_lineage.gif) |
 |:--:|
-| *Here's what the statistics visualizer looks like* |
+| *Here's what the pipeline lineage tracking visualizer looks like* |
 
-<br>
-## CLI Speed Improvements
+You can see in this animated diagram that each of the steps and artifacts of the pipeline are
+represented as circles or squares respectively. We included a way to get a quick
+sense of the status of these elements through colour: red shapes means that a
+step has failed, while blue and green show success. (Orange means your step is
+still running in the orchestrator).
 
-You may have noticed that the previous versions of ZenML CLI were a bit slow. 😬 Sorry about that. We've fixed the problem. There were some imports of large libraries happening at inopportune moments. This improvement will get a whole blog post of its own, so watch this space for more details…
+We're also really excited that you can see
+whether a particular step or artifact is cached or not. (Watch this space for a
+blog coming soon on the benefits of caching!) On the right-hand side of the chart, you can view metadata about the particular
+step or artifact, including information about the step's lineage and so on.
 
 ## Contribute to ZenML!
 
