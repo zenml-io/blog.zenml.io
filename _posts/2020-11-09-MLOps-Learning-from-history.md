@@ -1,8 +1,10 @@
 ---
 layout: post
 author: ZenML Team
-title: >
-  MLOps: Learning from history
+title: "MLOps: Learning from history"
+description: "MLOps isn't just about new technologies and coding practices.
+Getting better at productionizing your models also likely requires some institutional
+and/or organisational shifts."
 publish_date: November 9th, 2020
 category: mlops
 tags: devops bigger-picture mlops legacy

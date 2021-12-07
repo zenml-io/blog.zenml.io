@@ -2,6 +2,9 @@
 layout: post
 author: Alex Strick van Linschoten
 title: "Podcast: Practical MLOps with Noah Gift"
+description: "We discuss the role of MLOps in an organisation, some deployment
+war stories from his career as well as what he considers to be 'best practices'
+in production machine learning."
 category: podcast
 tags: zenml podcast mlops
 publish_date: December 2, 2021

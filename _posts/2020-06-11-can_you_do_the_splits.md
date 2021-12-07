@@ -2,6 +2,8 @@
 layout: post
 author: Hamza Tahir
 title: Can you do the splits?
+description: "Splitting up datasets is part of the daily work of a data
+scientist, but there's more complexity and art to it than first meets the eye."
 publish_date: June 11th, 2020
 date: 2020-06-11T10:20:00Z
 category: mlops

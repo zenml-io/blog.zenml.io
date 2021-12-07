@@ -2,6 +2,9 @@
 layout: post
 author: Hamza Tahir
 title: Why ML in production is (still) broken - [#MLOps2020]
+description: "The MLOps movement and associated new tooling is starting to help
+tackle the very real technical debt problems associated with machine learning in
+production."
 publish_date: June 26th, 2020
 date: 2020-06-26T10:20:00Z
 thumbnail: /assets/posts/mlopsworldthumbnail.png

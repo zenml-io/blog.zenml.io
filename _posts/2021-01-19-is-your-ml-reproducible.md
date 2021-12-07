@@ -2,6 +2,7 @@
 layout: post
 author: Hamza Tahir
 title: Is your Machine Learning Reproducible?
+description: "Short answer: not really, but it can become better!"
 publish_date: January 19th, 2021
 category: mlops
 tags: machine-learning reproducibility zenml legacy

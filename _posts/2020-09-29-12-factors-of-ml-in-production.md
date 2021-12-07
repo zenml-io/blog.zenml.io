@@ -2,6 +2,8 @@
 layout: post
 author: ZenML Team
 title: 12 Factors of Reproducible Machine Learning in Production
+description: "A set of guiding principles to help you better productionize your
+machine learning models."
 publish_date: September 28th, 2020
 category: zenml
 tags: bigger-picture devops zenml

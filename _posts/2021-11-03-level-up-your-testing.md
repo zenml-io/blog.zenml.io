@@ -2,6 +2,8 @@
 layout: post
 author: Alex Strick van Linschoten
 title: 10 Ways To Level Up Your Testing with Python
+description: "A mix of mental and technical skills you can develop to get better
+at testing your Python code."
 category: tech-startup
 tags: tech-startup python testing tooling
 publish_date: November 4, 2021

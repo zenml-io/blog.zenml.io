@@ -1,7 +1,10 @@
 ---
 layout: post
 author: Baris Can Durak
-title: Predicting the winner of a DotA 2 match using distributed deep learning pipelines
+title: "Predicting the winner of a DotA 2 match using distributed deep learning
+pipelines"
+description: "ZenML makes it easy to setup training pipelines that give you all
+the benefits of cached steps."
 publish_date: May 7th, 2020
 date: 2020-05-01T10:20:00Z
 category: zenml
