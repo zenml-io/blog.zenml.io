@@ -2,6 +2,8 @@
 layout: post
 author: Adam Probst
 title: "Pipeline Conversations: Our New Podcast"
+description: "We launched a podcast to have conversations with people working to
+productionize their machine learning models and to learn from their experience."
 category: zenml
 tags: zenml podcast mlops
 publish_date: November 19, 2021

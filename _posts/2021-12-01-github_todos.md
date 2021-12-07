@@ -2,6 +2,8 @@
 layout: post
 author: Michael Schuster
 title: How we track our todo comments using GitHub Actions
+description: "A programmatic means of ensuring #TODO comments made in code also
+end up in our Jira ticketing system."
 category: tech-startup
 tags: tech-startup python tooling
 publish_date: December 01, 2021

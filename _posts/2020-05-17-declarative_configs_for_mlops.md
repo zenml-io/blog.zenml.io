@@ -2,6 +2,8 @@
 layout: post
 author: ZenML Team
 title: A case for declarative configurations for ML training
+description: "Using config files to specify infrastructure for training isn't
+widely practiced in the machine learning community, but it helps a lot with reproducibility."
 publish_date: May 17th, 2020
 date: 2020-05-17T20:00:00Z
 thumbnail: /assets/posts/declarative_cfg.svg

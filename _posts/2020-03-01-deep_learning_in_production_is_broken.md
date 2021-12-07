@@ -2,6 +2,9 @@
 layout: post
 author: Hamza Tahir
 title: Why deep learning development in production is (still) broken
+description: "Software engineering best practices have not been brought into the
+machine learning space, with the side-effect that there is a great deal of
+technical debt in these code bases."
 publish_date: May 1st, 2020
 category: mlops
 tags: deep-learning devops machine-learning bigger-picture mlops
@@ -79,6 +82,6 @@ In short, in the ML world, there is largely:
 Most of the problems highlighted above can be solved by proper attention being paid to machine learning development in production,
 from the first training onwards. The field is catching up, slowly but surely, but it is inevitable that machine learning will
 catch up with traditional software engineering quickly. Will we see new, even improving, and exciting ML products in our lives at
-that point? Lets hope so!
+that point? Let's hope so!
 
 Our attempt to solve these problems is ZenML, an extensible, open-source MLOps framework. We recently launched and are now looking for practitioners to solve their problems in production use-cases! So, head over to [GitHub](https://github.com/zenml-io/zenml), and don't forget to leave us a star if you like what you see!
