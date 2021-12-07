@@ -5,8 +5,8 @@ title: Why you should be using caching in your machine learning pipelines
 description: Use caches to save time in your
 category: mlops
 tags: mlops zenml pipelines
-publish_date: December 3, 2021
-date: 2021-12-03T00:02:00Z
+publish_date: December 7, 2021
+date: 2021-12-07T00:02:00Z
 thumbnail: /assets/posts/caching-ml-pipelines/juliana-kozoski-X3-IypGOGSE-unsplash.jpg
 image:
   path: /assets/posts/caching-ml-pipelines/juliana-kozoski-X3-IypGOGSE-unsplash.jpg
@@ -24,9 +24,23 @@ If we organise the steps of our model training smartly, we can ensure that the d
 
 ## Benefits of Caching
 
-I hope it is clear how 
+I hope some of the benefits of caching are clear to you now.
+
+- **🔁 Iteration Efficiency** - When experimenting, it really pays to have a high frequency of iteration. You learn when and how to course correct earlier and more often. Caching brings you closer to that by making the costs of frequent iteration much lower.
+- **💪 Increased Productivity** - The speed-up in iteration frequency will help you solve problems faster, making stakeholders happier and giving you a greater feeling of agency in your machine learning work.
+- **🌳 Environmental Friendliness** - Caching saves you the [needless repeated computation steps](https://machinelearning.piyasaa.com/greening-ai-rebooting-the-environmental-harms-of-machine/) which mean you use up and waste less energy. It all adds up!
+- **＄ Reduced Costs** - Your bottom-line will thank you! Not only do you save the planet, but your monthly cloud bills might be lower on account of your skipping those repeated steps.
 
 ## Get caching for free with ZenML pipelines
+
+ZenML takes care of caching the artifacts that either come in or are output from the steps of your machine learning pipeline. We build on top of the caching that `tfx` enables through its [`MLMetadataStore`](https://www.tensorflow.org/tfx/guide/mlmd), a library that stores information about the pipeline steps and the artifacts that are output.
+
+- how we handle the caching of steps
+- pipeline based workflows with steps as the prerequisite
+- how caching is triggered
+- how caching is invalidated
+- showcase a small example, with time increase
+- showcase the lineage diagram showing caching
 
 ## Plug
 
