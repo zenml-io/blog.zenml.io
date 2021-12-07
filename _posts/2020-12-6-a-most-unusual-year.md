@@ -2,6 +2,9 @@
 layout: post
 author: ZenML Team
 title: A most unusual year
+description: "A retrospective of some of the decisions that caused us to pivot
+from a focused machine learning consultancy to deciding to build an open-source
+MLOps tool."
 publish_date: December 26th, 2020
 category: tech-startup
 tags: covid tech-startup legacy

@@ -2,6 +2,7 @@
 layout: post
 author: Alex Strick van Linschoten
 title: What's New in v0.5.4
+description: "Release notes for the new version of ZenML."
 category: zenml
 tags: zenml release-notes
 publish_date: December 6, 2021

@@ -2,6 +2,8 @@
 layout: post
 author: Hamza Tahir
 title: Distributed PCA using TFX
+description: "We use PCA to reduce the dimension of input vectors while retaining
+maximal variance."
 publish_date: February 27, 2020
 date: 2020-02-27T10:20:00Z
 tags: tensorflow machine-learning legacy mlops

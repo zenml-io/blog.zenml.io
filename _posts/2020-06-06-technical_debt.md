@@ -2,6 +2,8 @@
 layout: post
 author: Hamza Tahir
 title: Avoiding technical debt with ML pipelines
+description: "Pipelines help you think and act better when it comes to how you
+execute your machine learning training workflows."
 publish_date: June 6th, 2020
 category: zenml
 tags: bigger-picture pipelines zenml

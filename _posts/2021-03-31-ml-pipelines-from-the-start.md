@@ -2,7 +2,7 @@
 layout: post
 author: Hamza Tahir
 title: Why ML should be written as pipelines from the get-go
-description: Eliminate technical debt with iterative, reproducible pipelines
+description: "Eliminate technical debt with iterative, reproducible pipelines."
 category: mlops
 tags: mlops zenml pipelines
 publish_date: March 31, 2021

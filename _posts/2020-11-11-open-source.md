@@ -2,6 +2,8 @@
 layout: post
 author: ZenML Team
 title: ZenML will be open source
+description: "An overview of some of the capabilities that ZenML will unlock for
+our users."
 publish_date: November 11th, 2020
 date: 2020-11-11T00:02:00Z
 category: zenml

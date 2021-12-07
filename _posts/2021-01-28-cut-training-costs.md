@@ -2,6 +2,9 @@
 layout: post
 author: Hamza Tahir
 title: Spot the difference in ML costs
+description: "Spot instances are a great option for anyone training machine
+learning models; they're much cheaper than other on-demand options, albeit with
+some drawbacks."
 category: mlops
 tags: cloud machine-learning zenml legacy
 publish_date: January 28th, 2021
