@@ -35,23 +35,57 @@ I hope some of the benefits of caching are clear to you now.
 
 ZenML takes care of caching the artifacts that either come in or are output from the steps of your machine learning pipeline. ZenML builds on [the concept of a Metadata Store](https://docs.zenml.io/core-concepts) and currently we use [`MLMetadataStore`](https://www.tensorflow.org/tfx/guide/mlmd) to power this functionality. This foundational practice of building pipelines made up of steps - with some kind of way to track the metadata around these steps - is necessary for caching to work.
 
-These things are often made clearer with an actual example, so let's jump into the [Boston housing price regression dataset](https://keras.io/api/datasets/boston_housing/). (Follow the steps in our [examples directory](https://github.com/zenml-io/zenml/tree/main/examples/lineage) to get this running on your local machine.)
+These things are often made clearer with an actual example, so let's jump into the [MNIST dataset](https://github.com/tensorflow/datasets/blob/master/tensorflow_datasets/image_classification/mnist.py). (Follow the steps in our [examples directory](https://github.com/zenml-io/zenml/tree/main/examples/caching) to get this running on your local machine.)
 
-On the first run, we can visualise the steps of the pipeline as having all completed. None are cached yet, as you would expect.
+On the first run, we can visualize the steps of the pipeline as having all completed. None are cached yet, as you would expect.
+
+```python
+# Initialise a pipeline run
+run_1 = mnist_pipeline(
+    importer=importer_mnist(),
+    normalizer=normalizer(),
+    trainer=tf_trainer(config=TrainerConfig(epochs=1)),
+    evaluator=tf_evaluator(),
+)
+
+# Run the pipeline
+run_1.run()
+```
 
 | ![First run of our pipeline](../assets/posts/caching-ml-pipelines/run1.png) |
 |:--:|
 | *Here's what the pipeline lineage tracking visualizer looks like* |
 
 <br>
-When we run the pipeline again, you can see that the `importer` step and the resulting artifacts have been cached. This is working as intended: we have manually disabled caching for the later steps, which you can see in the [original code](https://github.com/zenml-io/zenml/blob/5ccb837d53e70d63e8c7e81c34d96a87f48886e5/examples/lineage/run.py#L65).
+When we run the pipeline again, you can see that most of the steps have been cached, aside from the `trainer` step which is different because we change the code slightly so that it will run for two epochs:
+
+```python
+# Initialise a pipeline run again
+run_2 = mnist_pipeline(
+    importer=importer_mnist(),
+    normalizer=normalizer(),
+    trainer=tf_trainer(config=TrainerConfig(epochs=2)),
+    evaluator=tf_evaluator(),
+)
+
+# Run the pipeline again
+run_2.run()
+```
 
 | ![The second run](../assets/posts/caching-ml-pipelines/run2.png) |
 |:--:|
 | *Here's what the pipeline lineage tracking visualizer looks like* |
 
 <br>
-In this case, caching does save us some time but the step wasn't very compute-intensive to start with. Think how much time it would save you in your complex feature engineering pipelines.
+In this case, caching does save us some time even though the steps weren't extraordinarily compute-intensive to start with.
+
+| Step         | Run1 Execution (s)     | Run2 Execution (s) | Speed Increase |
+|--------------|-----------|------------|------------|
+| `importer_mnist` | 1.165      | 0.018        | **64x**
+| `normalizer`      | 1.581  | 0.018       | **87x**
+
+
+Think how much time it will save you in your complex feature engineering pipelines!
 
 Caching is turned on by default. The cache for that particular step's artifact is then invalidated whenever the code signature for the step changes, or when caching is manually disabled by setting the `@step` decorator's `enable_cache` parameter to `False`. We compare the two steps with a simple hashing function to see whether any changes have taken place.
 
