@@ -33,9 +33,7 @@ I hope some of the benefits of caching are clear to you now.
 
 ## Get caching for free with ZenML pipelines
 
-ZenML takes care of caching the artifacts that either come in or are output from the steps of your machine learning pipeline. We build on top of the caching that `tfx` enables through its [`MLMetadataStore`](https://www.tensorflow.org/tfx/guide/mlmd), a library that stores information about the pipeline steps and the artifacts that are output. This foundational practice of building pipelines made up of steps - with some kind of way to track the metadata around these steps - is necessary for caching to work.
-
-Caching is triggered whenever the step does anything dynamically, for example downloading a file from somewhere which might change. The cache for that particular step's artifact is then invalidated whenever the code signature for the step changes, or when caching is manually disabled by setting the `@step` decorator's `enable_cache` parameter to `False`. We compare the two steps with a simple hashing function to see whether any changes have taken place.
+ZenML takes care of caching the artifacts that either come in or are output from the steps of your machine learning pipeline. ZenML builds on [the concept of a Metadata Store](https://docs.zenml.io/core-concepts) and currently we use [`MLMetadataStore`](https://www.tensorflow.org/tfx/guide/mlmd) to power this functionality. This foundational practice of building pipelines made up of steps - with some kind of way to track the metadata around these steps - is necessary for caching to work.
 
 These things are often made clearer with an actual example, so let's jump into the [Boston housing price regression dataset](https://keras.io/api/datasets/boston_housing/). (Follow the steps in our [examples directory](https://github.com/zenml-io/zenml/tree/main/examples/lineage) to get this running on your local machine.)
 
@@ -46,7 +44,7 @@ On the first run, we can visualise the steps of the pipeline as having all compl
 | *Here's what the pipeline lineage tracking visualizer looks like* |
 
 <br>
-When we run the pipeline again, you can see that the `importer` step and the resulting artifacts have been cached.
+When we run the pipeline again, you can see that the `importer` step and the resulting artifacts have been cached. This is working as intended: we have manually disabled caching for the later steps, which you can see in the [original code](https://github.com/zenml-io/zenml/blob/5ccb837d53e70d63e8c7e81c34d96a87f48886e5/examples/lineage/run.py#L65).
 
 | ![The second run](../assets/posts/caching-ml-pipelines/run2.png) |
 |:--:|
@@ -54,6 +52,8 @@ When we run the pipeline again, you can see that the `importer` step and the res
 
 <br>
 In this case, caching does save us some time but the step wasn't very compute-intensive to start with. Think how much time it would save you in your complex feature engineering pipelines.
+
+Caching is turned on by default. The cache for that particular step's artifact is then invalidated whenever the code signature for the step changes, or when caching is manually disabled by setting the `@step` decorator's `enable_cache` parameter to `False`. We compare the two steps with a simple hashing function to see whether any changes have taken place.
 
 ## Plug
 
