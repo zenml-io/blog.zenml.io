@@ -5,8 +5,8 @@ title: What's New in v0.5.5
 description: "Release notes for the new version of ZenML."
 category: zenml
 tags: zenml release-notes
-publish_date: December 14, 2021
-date: 2021-12-15T00:02:00Z
+publish_date: December 13, 2021
+date: 2021-12-13T00:02:00Z
 thumbnail: /assets/posts/release_0_5_5/balloons-pixabay_0_5_5.jpg
 image:
   path: /assets/posts/release_0_5_5/balloons-pixabay_0_5_5.jpg
@@ -15,7 +15,7 @@ image:
 ---
 
 ZenML 0.5.5 is jam-packed with new features to take your ML pipelines to the next level. In this blog post we will 
-highlight our three biggest new features Kubeflow Pipelines, CLI support for our integrations and Standard Interfaces. 
+highlight our three biggest new features: Kubeflow Pipelines, CLI support for our integrations and Standard Interfaces. That's right, Standard Interfaces are back!
 
 For a detailed look at what's changed, give [our full release
 notes](https://github.com/zenml-io/zenml/releases/tag/0.5.5) a glance.
@@ -28,16 +28,16 @@ in the cloud, you change where to run your code with just a few commands.
 
 ![Kubeflow pipeline](../assets/posts/release_0_5_5/kubeflow.png)
 
-## CLI support for integrations
+## CLI Support for Integrations
 
-With release 0.5.5 we made our integrations into the first class citizens they should be. You can now easily
+With release 0.5.5 we made [our integrations](https://docs.zenml.io/features/integrations) into the first class citizens they should be. You can now easily
 list all integrations and see which integrations are active (by having all their requirements installed).
 
 ```
 zenml integration list
 ```
 
-But that not all, installing requirements for our integrations is just as easy now. For example this is how you would 
+But that's not all! Installing requirements for our integrations is just as easy now. For example, this is how you would 
 install all requirements to use our `dash` integration 
 
 ```
