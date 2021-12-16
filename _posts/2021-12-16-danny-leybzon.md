@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Alex Strick van Linschoten
-title: "Podcast: SOMETHING with Danny Leybzon"
+title: "Podcast: Monitoring Your Way to ML Production Nirvana with Danny Leybzon"
 description: "We discuss SOMETHING SOMETHING"
 category: podcast
 tags: zenml podcast mlops monitoring
