@@ -19,7 +19,7 @@ filenames = glob.glob(post_dir + '*md')
 
 total_tags = []
 for filename in filenames:
-    with open(filename, 'r', encoding='utf8') as f:
+    with open(filename, 'r') as f:
         crawl = False
         for line in f:
             if crawl:
