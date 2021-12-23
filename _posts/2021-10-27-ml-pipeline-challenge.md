@@ -107,6 +107,6 @@ To date, ZenML has received:
 - 10 [Contributors](https://github.com/zenml-io/zenml/graphs/contributors)
 - ~200 [Slack](https://zenml.io/slack-invite) Members
 
-It has been fantastic to see people’s interest in what was initially just a simple idea. We’re now building [ZenML out in the open (no stealth here)](https://zenml.io/newsletter), and just made [a major release](https://github.com/zenml-io/zenml/releases) with a complete refactor of the codebase. So, if any of the above appealed to you, it would be lovely if you gave ZenML a spin with an [end-to-end example of deploying a pipeline in production](https://docs.zenml.io/guides/low-level-api). Feedback and contributions are welcome!
+It has been fantastic to see people’s interest in what was initially just a simple idea. We’re now building [ZenML out in the open (no stealth here)](https://zenml.io/newsletter), and just made [a major release](https://github.com/zenml-io/zenml/releases) with a complete refactor of the codebase. So, if any of the above appealed to you, it would be lovely if you gave ZenML a spin with an [end-to-end example of deploying a pipeline in production](https://docs.zenml.io/guides/functional-api). Feedback and contributions are welcome!
 
 *My sincerest thanks to Alex Strick and Adam Probst for helping edit this article.*
