@@ -116,4 +116,4 @@ defaults:
     values:
       sitemap: false
 
-exclude: [README.md, website-config.json]
+exclude: [README.md, website-config.json, Dockerfile, Gemfile, Gemfile.lock, scripts]
