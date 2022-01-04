@@ -53,8 +53,6 @@ GEM
       jekyll (~> 3.3)
     jekyll-sitemap (1.2.0)
       jekyll (~> 3.3)
-    jekyll-tagging (1.1.0)
-      nuggets
     jekyll-watch (2.0.0)
       listen (~> 3.0)
     kramdown (1.17.0)
@@ -64,7 +62,6 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
     mercenary (0.3.6)
-    nuggets (1.6.0)
     pathutil (0.16.1)
       forwardable-extended (~> 2.6)
     progress (3.4.0)
@@ -92,11 +89,10 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-seo-tag
   jekyll-sitemap
-  jekyll-tagging
   rouge
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.5.8p224
 
 BUNDLED WITH
-   2.1.4
+   2.3.4
