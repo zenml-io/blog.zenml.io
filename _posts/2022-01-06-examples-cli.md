@@ -5,8 +5,8 @@ title: Get to know ZenML through examples
 description: "ZenML has a treasure-trove of examples available for users to get to know specific features. Using these examples, running them and pulling refreshed versions is easy with our CLI that takes on the heavy work for you."
 category: zenml
 tags: zenml pipelines tooling applied-zenml
-publish_date: January 5, 2022
-date: 2022-01-05T00:02:00Z
+publish_date: January 6, 2022
+date: 2022-01-06T00:02:00Z
 thumbnail: /assets/posts/examples-cli/cli.png
 image:
   path: /assets/posts/examples-cli/cli.png
@@ -18,16 +18,24 @@ As ZenML continues to grow, we'll be [adding more features and integrations](htt
 
 Right now you can find the following small, practical ways to experiment with ZenML pipelines:
 
-- **airflow_local**: Running pipelines with Airflow locally.
-- **caching**: Using caching to skip data-intensive tasks and save costs.
+## Use Case / Workflow Guides
+
 - **class_based_api**: All the code for the class-based API guide found in the [docs](https://docs.zenml.io/guides/class-based-api).
-- **dag_visualizer**: Visualizing a pipeline.
 - **functional_api**: All the code for the functional API guide found in the [docs](https://docs.zenml.io/guides/functional-api).
-- **kubeflow**: Shows how to orchestrate a pipeline a local Kubeflow stack.
-- **lineage**: Visualizing a pipeline run and showcasing artifact lineage.
+- **caching**: Using caching to skip data-intensive tasks and save costs.
 - **not_so_quickstart**: Shows of the modularity of the pipelines with hot-swapping of TensorFlow, PyTorch, and scikit-learn trainers.
 - **quickstart**: The official quickstart tutorial.
 - **standard_interfaces**: Uses a collection of built-in and integrated standard interfaces to showcase their effect on the overall smoothness of the user experience.
+
+## Orchestrators
+
+- **airflow_local**: Running pipelines with Airflow locally.
+- **kubeflow**: Shows how to orchestrate a pipeline a local Kubeflow stack.
+
+## Visualisation
+
+- **dag_visualizer**: Visualizing a pipeline.
+- **lineage**: Visualizing a pipeline run and showcasing artifact lineage.
 - **statistics**: Automatically extract statistics using facets.
 
 You don't even need to clone our repository to get the goodness of examples! Use the series of commands that begin with `zenml example` to download and even run examples.
