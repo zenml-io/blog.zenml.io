@@ -92,7 +92,7 @@ DEPENDENCIES
   rouge
 
 RUBY VERSION
-   ruby 2.5.8p224
+   ruby 2.4.4p296
 
 BUNDLED WITH
    2.3.4
