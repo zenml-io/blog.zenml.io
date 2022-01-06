@@ -61,4 +61,6 @@ zenml example run quickstart
 
 It's that easy to get started with some examples of ZenML in action! Visit [our guides and walkthroughs](https://docs.zenml.io/) for longer examples showcasing some longer use cases.
 
+The ZenML core team originally started discussing adding the `example run` command as a way of including test runs of our examples as part of our continuous integration that Github Actions invokes whenever merging to `main`. It was only later that we saw how it might also be a useful option for users to be able to run the examples with very little setup or configuration needs.
+
 If you're inspired by our examples to create your own, feel free to let us know by [creating an issue here](https://github.com/zenml-io/zenml/issues) on our GitHub or by reaching out to us [on Slack](https://zenml.io/slack-invite/).
