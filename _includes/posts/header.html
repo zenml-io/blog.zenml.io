@@ -14,7 +14,12 @@
                         <img src="{{ page.header }}" class="img-fluid">
                         {% endif %}
                         <h2 class="display-4 slim pt-4">{{ page.title }}</h2>
-                        <p class="mono text-lg">{{ page.publish_date }} - {{ page.author }} {{ crosspost }}  - {% include read_time.html %} read</p></a>
+                        <p class="mono text-lg">
+                            {{ page.publish_date }} -
+                            {{ page.author }}
+                            {{ crosspost }} -
+                            {% include read_time.html content=page.content %} read
+                        </p></a>
                         <hr class="purple">
                     </div>
                 </div>

@@ -23,7 +23,7 @@
           >
           <a href="{{ post.url }}" class="text-muted"
             ><p class="mono text-sm">
-              {{ post.publish_date }} - {{ post.author }} {{ crosspost }}
+              {{ post.publish_date }} - {{ post.author }} {{ crosspost }} - {% include read_time.html content=post.content %} read
             </p></a
           >
           <hr />
