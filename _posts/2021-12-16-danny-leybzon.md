@@ -2,7 +2,7 @@
 layout: post
 author: Alex Strick van Linschoten
 title: "Podcast: Monitoring Your Way to ML Production Nirvana with Danny Leybzon"
-description: "We discuss SOMETHING SOMETHING"
+description: "We discuss how to monitor models in production, and how it helps you in the long-run."
 category: podcast
 tags: zenml podcast mlops monitoring
 publish_date: December 16, 2021
