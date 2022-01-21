@@ -2,7 +2,7 @@
 layout: post
 author: Alex Strick van Linschoten
 title: Why you should be using caching in your machine learning pipelines
-description: Use caches to save time in your
+description: "Use caches to save time in your training cycles, and potentially to save some money as well!"
 category: mlops
 tags: mlops zenml pipelines
 publish_date: December 7, 2021
