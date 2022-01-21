@@ -96,9 +96,7 @@ We've all encountered opinionated tools that take up mental and physical space. 
 
 ## 8. Evidently is open-source
 
-ZenML has open-source values [in its blood](https://blog.zenml.io/open-source/) and in that way we're happy to work alongside Evidently in this same machine learning tooling ecosystem.
-
-Their development is quite public-facing and they are making regular iterations on the original product and set of features. There are lots of [opportunities to get involved and contribute](https://github.com/evidentlyai/evidently/issues), and the core team actively encourage new issues and bug reports.
+ZenML has open-source values [in its blood](https://blog.zenml.io/open-source/) and in that way we're happy to work alongside Evidently in this same machine learning tooling ecosystem. Their development is quite public-facing and they are making regular iterations on the original product and set of features. There are lots of [opportunities to get involved and contribute](https://github.com/evidentlyai/evidently/issues), and the core team actively encourage new issues and bug reports.
 
 ## 9. A kind and responsive community
 
@@ -106,10 +104,10 @@ The community hub for Evidently is [their Discord chat](https://discord.gg/xZjKR
 
 ## 10. Evidently is here to stay
 
-The core team at Evidently is still relatively small, but it's clear that they're sticking around. Their 2000+ stars on Github shows that there's a clear interest in what they're doing. They took part in the summer 2021 batch of Y Combinator which tells you that they're serious about what they want to achieve with their tool. Moreover, their core team is growing as they take on bigger use cases and problems to solve.
+The core team at Evidently is still relatively small, but it's clear that they're sticking around. Their [2000+ stars](https://github.com/evidentlyai/evidently/stargazers) on Github shows that there's a clear interest in what they're doing. They took part in the [summer 2021 batch](https://www.ycombinator.com/companies/evidently-ai) of Y Combinator which tells you that they're serious about what they want to achieve with their tool. Moreover, their core team is growing as they take on bigger use cases and problems to solve.
 
 * * *
 
 We really enjoyed creating [this integration](https://github.com/zenml-io/zenml/releases/tag/0.5.7) for Evidently visualizations and statistical drift calculation profiles. The tool is focused and easy to use, and also a perfect example of the way ZenML allows you to easily mix and match tools that allow you to get your work done.
 
-Let us know if you end up using the Evidently <-> ZenML integration in your own projects! We would love to hear any feedback you have about your specific use cases and about any ways we can make it even better. As always, join our [Slack](https://zenml.io/slack-invite/) to let us know or look at [our Contributions guide](https://github.com/zenml-io/zenml/blob/main/CONTRIBUTING.md) to submit an issue and/or pull request.
+Let us know if you end up using the Evidently <-> ZenML integration in your own projects! We would love to hear any feedback you have about your specific use cases and about any ways we can make it even better. As always, join our [Slack](https://zenml.io/slack-invite/) to let us know or look at [our contributions guide](https://github.com/zenml-io/zenml/blob/main/CONTRIBUTING.md) to submit an issue and/or pull request.
