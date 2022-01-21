@@ -43,7 +43,7 @@ It would be easy to just dive deep into a technical explanation of statistical c
 Evidently is great for catching those moments when your incoming training data starts to really differ from the original data used to train your models, but that's not the only thing that it can do. You can also get calculations for:
 
 - *numerical and categorical target drift* — whether the numeric and category predictions generated from your current model are drifting from the original averages based on the original model
-- *regression, classification and probabilistic classification model performance* — analyses the ways your model is currently behaving, showing error distributions, confusion matrices and class separation quality.
+- *regression, classification and probabilistic classification model performance* — analyzes the ways your model is currently behaving, showing error distributions, confusion matrices and class separation quality.
 
 ## 5. Visualizing drift is easy
 
@@ -69,7 +69,7 @@ drift_detector = EvidentlyProfileStep(
 )
 ```
 
-Once your pipeline has run, visualising the output is as simple as passing the Evidently output into our ZenML `EvidentlyVisualizer` step:
+There is a little bit more to the example, but this piece suffices to show the creation of the `EvidentlyProfileStep`. (For the full example, please visit [our examples page](https://github.com/zenml-io/zenml/tree/develop/examples/drift_detection)). Once your pipeline has run, visualizing the output is as simple as passing the Evidently output into our ZenML `EvidentlyVisualizer` step:
 
 ```python
 repo = Repository()
@@ -82,7 +82,7 @@ And you get an informative set of charts to explore relating to your dataset(s):
 
 ![](../assets/posts/zenml-loves-evidently/drift_visualization.png)
 
-If you're running this in Jupyter notebooks it'll display the visualisations in-line, and outside it we'll generate a temporary file showing the charts and automatically open your browser to display them.
+If you're running this in Jupyter notebooks it'll display the visualizations in-line, and outside it we'll generate a temporary file showing the charts and automatically open your browser to display them.
 
 ## 6. Easy-to-use in continuous training
 
@@ -92,7 +92,7 @@ You can output the results of this calculation in the form of a JSON object or d
 
 ## 7. Evidently doesn't get in the way
 
-We've all encountered opinionated tools that take up mental and physical space. Evidently is not that. It's a lightweight approach to solving a non-lightweight problem. From the internal API interfaces to the way they've split the functionality cleanly in two, it's refreshing to use a tool that doesn't try to do everything, but rather to do a few things really well.
+We've all encountered opinionated tools that take up mental and physical space. Evidently is not that. It's a lightweight approach to solving a non-lightweight problem. It's refreshing to use a tool that doesn't try to do everything, but rather to do a few things really well.
 
 ## 8. Evidently is open-source
 
@@ -102,7 +102,7 @@ Their development is quite public-facing and they are making regular iterations 
 
 ## 9. A kind and responsive community
 
-The community hub for Evidently is [their Discord chat](https://discord.gg/xZjKRaNp8b) where you'll be welcomed by one of the core team soon after joining. Discussions about support requests or use cases involving Evidently are (in my experience) interesting and you receive quick replies. It's unfortunate that the 'community' sections of many open-source machine learning tools are either uninhabited wastelands or inconsistently frequented by creators and maintainers. Thankfully, Evidently gets it right and I'd encourage you to [join their Discord community](https://discord.gg/xZjKRaNp8b).
+The community hub for Evidently is [their Discord chat](https://discord.gg/xZjKRaNp8b) where you'll be welcomed by one of the core team soon after joining. Discussions about support requests or use cases involving Evidently are (in my experience) interesting and you receive quick replies. It takes some effort and time to create a welcoming and responsive community, and it certainly isn't the norm, so it's great that Evidently gets this right. I'd encourage you to [join their Discord community](https://discord.gg/xZjKRaNp8b).
 
 ## 10. Evidently is here to stay
 
@@ -110,6 +110,6 @@ The core team at Evidently is still relatively small, but it's clear that they'r
 
 * * *
 
-We really enjoyed creating [this integration](https://github.com/zenml-io/zenml/releases/tag/0.5.7) for Evidently visualisations and statistical drift calculation profiles. The tool is focused and easy to use, and also a perfect example of the way ZenML allows you to easily mix and match tools that allow you to get your work done.
+We really enjoyed creating [this integration](https://github.com/zenml-io/zenml/releases/tag/0.5.7) for Evidently visualizations and statistical drift calculation profiles. The tool is focused and easy to use, and also a perfect example of the way ZenML allows you to easily mix and match tools that allow you to get your work done.
 
-Let us know if you end up using [Evidently](https://evidentlyai.com/) in your own projects!
+Let us know if you end up using the Evidently <-> ZenML integration in your own projects! We would love to hear any feedback you have about your specific use cases and about any ways we can make it even better. As always, join our [Slack](https://zenml.io/slack-invite/) to let us know or look at [our Contributions guide](https://github.com/zenml-io/zenml/blob/main/CONTRIBUTING.md) to submit an issue and/or pull request.
