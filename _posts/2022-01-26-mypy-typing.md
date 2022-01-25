@@ -88,4 +88,6 @@ All of these are options and it will definitely depend on your particular situat
 
 > "*Adding type hints to urllib3 was clearly a huge amount of work, hundreds of engineer hours across several months. What we once thought would be a purely developer-facing change ended up making the codebase more robust than ever. Several non-trivial logic errors were fixed and our team is more confident reviewing and merging PRs. This is a big win for our users and a very worthy investment.*" ([link](https://sethmlarson.dev/blog/tests-arent-enough-case-study-after-adding-types-to-urllib3))
 
+There's also a really interesting article from the creator of `mypy` on adding type hints to the Dropbox Python codebase, entitled "[Our journey to type checking 4 million lines of Python](https://dropbox.tech/application/our-journey-to-type-checking-4-million-lines-of-python)"
+
 Do you use type hints in your codebase? Come on over to [our Slack community](https://zenml.io/slack-invite/) and let us know! We'd love to hear from you.
