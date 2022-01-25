@@ -55,18 +55,35 @@ With some type annotations added to our code, we can use a typechecker like `myp
 
 > “type checkers are what allow the type annotations to transcend from communication method to a safety net. It is a form of static analysis.”
 
-If your codebase uses type annotations to communicate intent, and you’re using `mypy` to catch any of those type errors, remember that typecheckers only catch this certain type of errors. You still need to be doing testing and all the other best practices to help catch the rest.
+If your codebase uses type annotations [to communicate intent](https://mlops.systems/robustpython/python/books-i-read/2021/12/29/robust-python-1.html), and you’re using `mypy` to catch any of those type errors, remember that typecheckers only catch this certain type of errors. You still need to be doing testing and all the other best practices to help catch the rest.
 
+There are [a variety of ways](https://mlops.systems/robustpython/python/books-i-read/2022/01/08/robust-python-4.html) to constrain different groupings of types, and some [special rules and syntax](https://mlops.systems/robustpython/python/books-i-read/2022/01/18/robust-python-5.html) for when you use type collections, but otherwise there isn't much you have to know to start skilfully annotating your function signatures.
 
+# How does all of this work in practice at ZenML?
 
-# How does all of this work in practice for us?
+Though there are other type checkers — like [Pyre](https://pyre-check.org/) and [Pyright](https://github.com/microsoft/pyright) — we use `mypy` to keep us accountable and to statically analyse our codebase. It is the most commonly used option for type checking in Python and it does most of what you probably need it for. You can run it via the command line, inline as part of your IDE, or as part of a CI/CD pipeline. We do all three:
 
-- mypy
-- pre-commit checks
-- strict mode
+- via the command line: we have [a script](https://github.com/zenml-io/zenml/blob/main/scripts/lint.sh) which includes a call to `mypy` that gets used very regularly whenever code is changed.
+- inline: [Pyright](https://github.com/microsoft/pyright) is easy to use with VS Code (via [the Pylance extension](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)) and provides visual cues as you write your code
+- as part of our CI/CD pipeline: the script mentioned above [is called](https://github.com/zenml-io/zenml/blob/main/.github/workflows/main.yml) whenever new code is pushed to a branch as a PR, and whenever that code is merged into our [`develop`](https://github.com/zenml-io/zenml/tree/develop) or [`main`](https://github.com/zenml-io/zenml) branches.
 
-# Restate why all of this stuff is helpful
+You can configure `mypy` to your heart’s desire either with inline comments in your code, or via a configuration file. A configuration file is probably the way to go, particularly if you’re versioning your code and sharing these kinds of settings across a team. You can specify how strict you want `mypy` to be when checking your type hints. We err towards the more strict side of things, but the tool in general is flexible enough to support many different options along that strictness spectrum.
 
-# tips for implementing type hints in a legacy codebase
+One extra trick that is pretty invaluable is how we use [`pre-commit`](https://pre-commit.com/) to [ensure that code is not throwing any `mypy` errors](https://github.com/zenml-io/zenml/blob/develop/.pre-commit-config.yaml) before a commit is allowed to be made. I'll be honest and admit that sometimes you get this fun workflow, where you fix one `mypy` error only to find many other errors get spawned as a consequence of the fix:
 
-- stuff from ch. 7
+![](../assets/posts/mypy-typing/xd-programming.gif)
+
+For the most part, however, I haven't found the mypy-enforced discipline around type hints to be much of a burden.
+
+To sum up the benefits: using type hints and a typechecker make your code more robust because it allows you to clearly communicate intent and because it enforces some sort of discipline around how you pass types around your codebase.
+
+If you have a large codebase which has *no* type hints or where they are unpredictably applied, there are a number of strategies mentioned in chapter seven of Viafore's 'Robust Python'. Possible options include:
+
+- Focusing on the pain points — think about where the lack of type hints has already seen bugs emerge in the past
+- Add type hints to new code only, and make a plan to add them to the old code slowly over time
+- Type annotate the pieces of the codebase that actually drive the product or business’ profits — these are the ones that you care most that they are robust, so you might want to start there.
+- Type annotate whatever is complex to understand — these are probably the areas where you could benefit from being explicit with what types are being passed in and around.
+
+All of these are options and it will definitely depend on your particular situation.
+
+Do you use type hints in your codebase? Come on over to [our Slack community](https://zenml.io/slack-invite/) and let us know!
