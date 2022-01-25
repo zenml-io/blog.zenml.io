@@ -84,6 +84,8 @@ If you have a large codebase which has *no* type hints or where they are unpredi
 - Type annotate the pieces of the codebase that actually drive the product or business’ profits — these are the ones that you care most that they are robust, so you might want to start there.
 - Type annotate whatever is complex to understand — these are probably the areas where you could benefit from being explicit with what types are being passed in and around.
 
-All of these are options and it will definitely depend on your particular situation.
+All of these are options and it will definitely depend on your particular situation. If you want to hear more about a different team that went through this process, make sure to [check out the experiences and insights](https://sethmlarson.dev/blog/tests-arent-enough-case-study-after-adding-types-to-urllib3) of the `urllib3` developers and community. Their key takeaway:
+
+> "*Adding type hints to urllib3 was clearly a huge amount of work, hundreds of engineer hours across several months. What we once thought would be a purely developer-facing change ended up making the codebase more robust than ever. Several non-trivial logic errors were fixed and our team is more confident reviewing and merging PRs. This is a big win for our users and a very worthy investment.*" ([link](https://sethmlarson.dev/blog/tests-arent-enough-case-study-after-adding-types-to-urllib3))
 
 Do you use type hints in your codebase? Come on over to [our Slack community](https://zenml.io/slack-invite/) and let us know! We'd love to hear from you.
