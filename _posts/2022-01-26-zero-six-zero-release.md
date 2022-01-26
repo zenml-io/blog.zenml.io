@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Alex Strick van Linschoten
-title: What's New in v0.6.0
-description: "Release notes for the new version of ZenML. ZenML now supports whylogs (from whylabs) that logs data from your ML pipelines in production."
+title: "What's New in v0.6.0: whylogs integration and some big core architecture changes"
+description: "Release notes for the new version of ZenML. ZenML now supports whylogs (from whylabs) that logs data from your ML pipelines in production. We also made some sizeable (breaking 😢) core architecture changes"
 category: zenml
 tags: zenml release-notes
 publish_date: January 26, 2022
@@ -12,59 +12,50 @@ image:
   path: /assets/posts/release_0_6_0/rusty-watson-4Kf97smL2eY-unsplash.jpg
 ---
 
-ZenML 0.5.7 is out now and we bring you not one but two brand new integrations to cover common use cases. ZenML now supports [MLFlow for tracking](https://www.mlflow.org/docs/latest/tracking.html) pipelines as experiments and [Evidently](https://github.com/evidentlyai/evidently) for detecting drift in your ML pipelines in production!
+ZenML 0.6.0 is out now. We've made some big changes under the hood, but our biggest public-facing addition is our new integration to support all your data logging needs: [`whylogs`](https://github.com/whylabs/whylogs). Our core architecture was [thoroughly reworked](https://github.com/zenml-io/zenml/pull/305) and is now in a much better place to support our ongoing development needs.
 
-There are a bunch of other smaller changes, including preventing Kubeflow Pipelines from timing out during the local installation process and a bunch of improvements to the feedback that the ZenML CLI tool gives you. For a detailed look at what's changed, give [our full release
-notes](https://github.com/zenml-io/zenml/releases/tag/0.5.7) a glance.
+Smaller changes that you'll notice include extensive documentation additions, updates and fixes. For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.6.0) a glance.
 
-## MLFlow Tracking
+## 📊 Whylogs logging
 
-[You voted](https://github.com/zenml-io/zenml/discussions/115), we integrated! This new addition of [MLFlow Tracking](https://www.mlflow.org/docs/latest/tracking.html) as part of ZenML's integrations means that you can track your training runs using MLFlow. This gives you a handy web UI that you can use to log and query your experiments. ZenML is tracking all of your parameters and metrics already, but you might prefer to visualise those changes in the MLFlow web UI.
+[Whylogs](https://github.com/whylabs/whylogs) is an open source library that analyzes your data and creates statistical summaries called whylogs profiles. Whylogs profiles can be visualized locally or uploaded to the WhyLabs platform where more comprehensive analyses can be carried out.
 
-![Tracking machine learning training runs with MLFlow](../assets/posts/release_0_5_7/mlflow-screenshot.png)
+ZenML integrates seamlessly with Whylogs and [WhyLabs](https://whylabs.ai/). This example shows how easy it is to enhance steps in an existing ML pipeline with Whylogs profiling features. Changes to the user code are minimal while ZenML takes care of all aspects related to Whylogs session initialization, profile serialization, versioning and persistence and even uploading generated profiles to [Whylabs](https://whylabs.ai/).
 
-We've [written an example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow) that showcases the integration that you can check out by using the `zenml example pull mlflow` CLI command. The `README` file offers full instructions for how to set this up manually, but if you just want to try out the UI and let ZenML handle the local setup for you, just type `zenml example run mlflow`.
+![Example of the visualizations you can make from Whylogs profiles](../assets/posts/release_0_6_0/whylogs-visualizer.png)
 
-Watch this space for more MLFlow goodness coming your way!
+With our `WhylogsVisualizer`, as described in [the associated example notes](https://github.com/zenml-io/zenml/tree/main/examples/whylogs), you can visualize Whylogs profiles generated as part of a pipeline.
 
-## Evidently for Drift Detection
+## ⛩ New Core Architecture
 
-[Evidently](https://github.com/evidentlyai/evidently) is an open-source tool for detecting drift among your data inputs. Machine learning pipelines are built on top of those data inputs, so it is worth checking for drift if you have a model that was trained on a certain distribution of data.
+We implemented [some fundamental changes](https://github.com/zenml-io/zenml/pull/305) to the core architecture to solve some of the issues we previously had and provide a more extensible design to support quicker implementations of different stack components and integrations. The main change was to refactor the `Repository`, `Stack` and `StackComponent` architectures. These changes had a pretty wide impact so involved changes in many files throughout the codebase, especially in the CLI which makes calls to all these pieces.
 
-![Detecting and visualising data drift with Evidently](../assets/posts/release_0_5_7/evidently-screenshot.png)
+We've already seen how it helps us move faster in building integrations and we hope it helps making contributions as pain-free as possible!
 
-The ZenML integration with Evidently implements this functionality in the form of several standardized steps. You select which of the profile sections you want to use in your step by passing a string into the `EvidentlyProfileConfig`. Possible options supported by Evidently are:
+## 🗒 Documentation and Example Updates
 
-- "datadrift"
-- "categoricaltargetdrift"
-- "numericaltargetdrift"
-- "classificationmodelperformance"
-- "regressionmodelperformance"
-- "probabilisticmodelperformance"
+As the codebase and functionality of ZenML grows, we always want to make sure our documentation is clear, up-to-date and easy to use. We made a number of changes in this release that will improve your experience in this regard:
 
-For example, you could define a step to detect drift using our standard interface in the following way:
+- added a number of new explainers on key ZenML concepts and how to use them in your code, notably on [how to create a custom materializer](https://docs.zenml.io/v/0.6.0/guides/index/custom-materializer) and [how to fetch historic pipeline runs](https://docs.zenml.io/v/0.6.0/guides/index/historic-runs) using the `StepContext`
+- fixed a number of typos and broken links
+- added versioning to our API documentation so you can choose to view the reference appropriate to the version that you're using. We now use `mkdocs` for this so you'll notice a slight visual refresh as well.
+- added new examples highlighting specific use cases and integrations:
+	- how to create a custom materializer ([example](https://github.com/zenml-io/zenml/tree/0.6.0/examples/custom_materializer))
+	- how to fetch historical pipeline runs ([example](https://github.com/zenml-io/zenml/tree/0.6.0/examples/fetch_historical_runs))
+	- how to use standard interfaces for common ML patterns ([example](https://github.com/zenml-io/zenml/0.6.0/develop/examples/standard_interfaces))
+	- `whylogs` logging ([example](https://github.com/zenml-io/zenml/tree/0.6.0/examples/whylogs))
 
-```python
-drift_detector = EvidentlyProfileStep(
-    EvidentlyProfileConfig(
-        column_mapping=None,
-        profile_section="datadrift",
-    )
-)
-```
+## ➕ Other updates, additions and fixes
 
-Here you can see that defining the step is extremely simple using our class-based interface and then you just have to pass in the two dataframes when defining the pipeline for the comparison to take place.
+As with most releases, we made a number of small but significant fixes and additions. The most import of these were that you can now access the metadata store via the step context. This enables a number of new possible workflows and pipeline patterns and we're really excited to have this in the release.
 
-```python
-@pipeline
-def drift_detection_pipeline(data_loader, full_data, partial_data, drift_detector):
-    data_loader = data_loader()
-    full_data = full_data(data_loader)
-    partial_data = partial_data(data_loader)
-    drift_detector(reference_dataset=full_data, comparison_dataset=partial_data)
-```
+We added in a markdown parser for the `zenml example info …` command, so now when you want to use our CLI to learn more about specific examples you will see beautifully parsed text and not markdown markup.
 
-As with MLFlow, we've [written an example](https://github.com/zenml-io/zenml/tree/0.5.7/examples/drift_detection) for you to see how it all works in code. You can check it out by using the `zenml example pull drift_detection` CLI command. The `README` file offers full instructions for how to set this up manually, but if you just want to try out the UI and let ZenML handle the local setup for you, just type `zenml example run drift_detection`.
+We improved a few of our error messages, too, like for when the return type of a step function doesn’t match the expected type, or if step is called twice. We hope this makes ZenML just that little bit easier to use.
+
+## 🙌 Community Contributions
+
+We received [a contribution](https://github.com/zenml-io/zenml/pull/317) from [Bhuwan Bhatt](https://github.com/bhattbhuwan13), in which he fixed a documentation error. Thank you, Bhuwan!
 
 ## Contribute to ZenML!
 
