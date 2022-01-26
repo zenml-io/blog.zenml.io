@@ -42,7 +42,7 @@ As the codebase and functionality of ZenML grows, we always want to make sure ou
 - added new examples highlighting specific use cases and integrations:
 	- how to create a custom materializer ([example](https://github.com/zenml-io/zenml/tree/0.6.0/examples/custom_materializer))
 	- how to fetch historical pipeline runs ([example](https://github.com/zenml-io/zenml/tree/0.6.0/examples/fetch_historical_runs))
-	- how to use standard interfaces for common ML patterns ([example](https://github.com/zenml-io/zenml/0.6.0/develop/examples/standard_interfaces))
+	- how to use standard interfaces for common ML patterns ([example](https://github.com/zenml-io/zenml/tree/0.6.0/examples/standard_interfaces))
 	- `whylogs` logging ([example](https://github.com/zenml-io/zenml/tree/0.6.0/examples/whylogs))
 
 ## ➕ Other updates, additions and fixes
