@@ -1,28 +1,30 @@
 ---
 layout: post
 author: Alex Strick van Linschoten
-title: "Podcast: Monitoring Your Way to ML Production Nirvana with Danny Leybzon"
-description: "We discuss how to monitor models in production, and how it helps you in the long-run."
+title: "Podcast: Neurosymbolic AI with Mohan Mahadevan"
+description: "Mohan and Alex discuss neurosymbolic AI and the implications of a shift towards that as a core paradigm for production AI systems. In particular, we discuss the practical consequences of such a shift, both in terms of team composition as well as infrastructure requirements."
 category: podcast
-tags: zenml podcast mlops monitoring
-publish_date: December 16, 2021
-date: 2021-12-16T00:02:00Z
-thumbnail: /assets/posts/danny-leybzon/danny-photo.png
+tags: zenml podcast mlops
+publish_date: January 27, 2022
+date: 2022-01-27-16T00:02:00Z
+thumbnail: /assets/posts/mohan-mahadevan/mohan.png
 image:
-  path: /assets/posts/danny-leybzon/danny-photo.png
+  path: /assets/posts/mohan-mahadevan/mohan.png
   # height: 1910
   # width: 1000
 ---
 
-This week, we spoke with Danny Leybzon, currently working with [WhyLabs](https://whylabs.ai/) to help data scientists monitor their models in production and prevent model performance from degrading. He previously worked as a kind of roving data scientist and engineer, helping companies put their models into production. We were lucky to get to speak to Danny in our new episode of [*Pipeline Conversations*](https://podcast.zenml.io).
+Our guest this week was [Mohan Mahadevan](https://uk.linkedin.com/in/mohan-mahadevan-4999464), a senior VP at [Onfido](https://onfido.com/), a machine-learning powered identity verification platform. He has previously worked at Amazon heading up a computer vision team working on robotics applications as well as for many years at KLA, a leading semiconductor hardware company. He holds a doctorate in theoretical physics from Colorado State University.
 
-You can get a taste of the discussion with this clip, in which Danny explains why it's a problem if you only think about starting to monitor your model after it's already been deployed.
+Mohan had mentioned that he thought it might be interesting to discuss neurosymbolic AI, and the implications of a shift towards that as a core paradigm for production AI systems. In particular, we discuss the practical consequences of such a shift, both in terms of team composition as well as infrastructure requirements.
 
-<iframe src="https://share.descript.com/embed/JX7Eo0kvLCK" width="410" height="410" frameborder="0" allowfullscreen></iframe>
+In this clip, Mohan explains some of the benefits of traditional end-to-end neural networks as compared to neurosymbolic approaches:
 
-We had a really interesting discussion of some of the ways that tooling and the general context for data science sometimes lets practitioners down, and of course we also discussed why monitoring and logging is actually a kind of baseline practice that should be part of any and every data scientist's toolkit. Luckily for us, Danny added in a bunch of examples from his wide experience doing all this in the real world. Check out out the full episode below or however you prefer to listen to podcasts!
+<iframe src="https://share.descript.com/embed/v9MJ6WQcZyB" width="410" height="410" frameborder="0" allowfullscreen></iframe>
 
-<iframe src="https://player.fireside.fm/v2/vA-gqsEV+4puX5KtX?theme=dark" width="740" height="200" frameborder="0" scrolling="no"></iframe>
+I didn't know much about this approach and the tradeoffs before doing some reading ahead of this conversation, and I think it offers a useful overview of some of the tradeoffs to be considered when implementing a neurosymbolic solution to a problem. Check out out the full episode below or however you prefer to listen to podcasts!
+
+<iframe src="https://player.fireside.fm/v2/vA-gqsEV+va39Vuvn?theme=dark" width="740" height="200" frameborder="0" scrolling="no"></iframe>
 
 <br>
 
