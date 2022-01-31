@@ -2,7 +2,10 @@
 layout: post
 author: Alex Strick van Linschoten
 title: "Type hints are good for the soul, or how we use mypy at ZenML"
-description: ""
+description:
+  "A dive into Python type hinting, how implementing them makes your codebase
+  more robust, and some suggestions on how you might approach adding them into a
+  large legacy codebase."
 category: zenml
 tags: tooling python tech-startup
 publish_date: January 31, 2022
