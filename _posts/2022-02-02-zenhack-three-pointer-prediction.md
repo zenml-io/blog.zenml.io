@@ -32,6 +32,8 @@ ZenHack we wanted to show off how to use [evidently](https://evidentlyai.com/) f
 [mlflow](https://mlflow.org/) for model tracking and [kubeflow pipelines](https://www.kubeflow.org/) for 
 orchestration. 
 
+![](../assets/posts/three-pointer-prediction/evidently+mlflow+discord+kubeflow.png)
+
 As we have some hardcore NBA fans on the team, the idea of creating a prediction bot for NBA matches came up. This idea
 caught on quickly and our minds started to put together the story that we wanted to explore.
 
