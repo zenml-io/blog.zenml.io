@@ -19,18 +19,38 @@ image:
 
 Before diving headfirst into this challenge, we got together as a team and brainstormed what our `zenhack` was going to
 be about. A `zenhack` is a small internal hackathon with the intention of taking an idea into production using zenml. 
+This serves a few purposes. 
+For one, it gives us as the zenml team a direct insight into user experience. As such one of
+the side effects is a bouquet of fresh new user-stories, tasks and sometimes bugs to fix. 
+Another benefit of our `zenhack` is to show off our newest features and how they can be assembled into a killer
+machine learning stack. For this `zenhack` specifically we had quite a few new features to showcase. Within this 
+`zenhack` we wanted to show off how to use [evidently](https://evidentlyai.com/) for drift detection, 
+[mlflow](https://mlflow.org/) for model tracking and [kubeflow pipelines](https://www.kubeflow.org/) for 
+orchestration. 
 
 As we have some hardcore NBA fans on the team, the idea of creating a prediction bot for NBA matches came up. This idea
-caught on quickly and our minds started to put together the story that we wanted to explore.
+caught on quickly and our minds started to put together the story that we wanted to explore. 
 
 ## Step 1 - Analyze our Data
 
 Without data there is no pipeline. Luckily for us the [nba](www.nba.com) offers an api with a lot of current and
-historical datapoints. Additionally, there is an easy-to-use python wrapper 
-[nba_api](https://readthedocs.org/projects/nba-api/) out there, that made our lives even easier. After some
+historical datapoints. Additionally, there is an easy-to-use python wrapper out there, that made our lives even easier
+([nba_api](https://readthedocs.org/projects/nba-api/)).  
 
-* Found FG3M column
-* What impact has Stephen Curry had on the amount of three pointers
+After some rummaging through the many endpoints, we found data for every regular season match going back to 2000. 
+This raw data contains the two teams, the date, time and season of the match as well as a bunch of 
+game stats. Exactly what we were looking for!
+
+### Did Steph Curry change how tha game is played?
+
+With data in hand, it was time to explore our data. As we were looking to predict three pointers thrown in a match it 
+only seemed fitting to analyze how the king of three-pointers, Stephen Curry, impacted the role that three-pointers play
+in nba matches. 
+As a reference point the date of [this](https://www.youtube.com/watch?v=GEMVGHoenXM) legendary game of
+the Golden State Warriors, Curry's team, against Oklahoma City, was chosen. 
+
+
+![](../assets/posts/three-pointer-prediction/DriftDetectionPipeline.png "Planned drift detection pipeline")
 
 ### Evidently 
 
@@ -64,6 +84,7 @@ discord channel.
 Here is the very first prediction made:
 
 ![](../assets/posts/three-pointer-prediction/Prediction.png "Diagram showing the planned Architecture")
+
 
 
 ## The Endgame
