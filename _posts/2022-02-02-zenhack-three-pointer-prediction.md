@@ -223,7 +223,7 @@ ZenML at a Meetup organized by [MLOps.community](https://mlops.community/) on Ja
 meetup we pulled off a clutch play of our own: with just a few minutes to spare we put together all the pipelines 
 within the ZenHack and released ZenML 0.6.0 so that participants could code along while we walked through the ZenHack.
 
-Come check out the video of this meetup [here](). Our co-founder and CTO 
+Come check out the video of this meetup [here](https://www.youtube.com/watch?v=Ne-dt9tu11g&t=1s). Our co-founder and CTO 
 [Hamza Tahir](https://www.linkedin.com/in/hamzatahirofficial/) lead an interactive live-coding session together with
 [Ben Epstein](https://www.linkedin.com/in/ben-epstein/), using the substance of this ZenHack as a basis.
 
