@@ -2,7 +2,7 @@
 layout: post 
 author: Alexej Penner 
 title: How to build a three pointer prediction pipeline 
-description: "We challenged ourselves to put our own tool to the test and set up a few pipelines to answer two questions: Did Steph Curry change the game? And how many three pointers will be in the next NBA Game?"
+description: "We challenged ourselves to put our own tool to the test and set up a few pipelines to answer two questions: Did Steph Curry change the game of basketball? And how many three pointers will be in the next NBA Game?"
 category: zenml 
 tags: zenml pipelines tooling applied-zenml  
 publish_date: February 02, 2022 
@@ -27,10 +27,9 @@ the side effects is a bouquet of fresh new user-stories, tasks and sometimes bug
 Another benefit of our ZenHack is to show off our newest features and how they can be assembled into a killer
 machine learning stack. 
 
-For this ZenHack specifically we had quite a few new features to showcase. Within this 
-ZenHack we wanted to show off how to use [evidently](https://evidentlyai.com/) for drift detection, 
-[mlflow](https://mlflow.org/) for model tracking and [kubeflow pipelines](https://www.kubeflow.org/) for 
-orchestration. 
+For this ZenHack specifically we had quite a few new features to showcase. We wanted to show off how to use 
+[evidently](https://evidentlyai.com/) for drift detection, [mlflow](https://mlflow.org/) for model tracking 
+and [kubeflow pipelines](https://www.kubeflow.org/) for orchestration of scheduled repeating pipeline runs. 
 
 ![](../assets/posts/three-pointer-prediction/evidently+mlflow+discord+kubeflow.png)
 
@@ -88,7 +87,7 @@ our question. It appears that the data has drifted ever since 2016-02-27. This m
 claim made about Stephen Curry's impact on the game. But it is a compelling correlation.
 
 
-## Step 2 - Build our Continuous Pipelines 
+## Step 2 - Building our Continuous Pipelines 
 
 With the data exploration behind us, lets advance onto the continuous pipelines. Within or brainstorming session we
 came up with a diagram very similar to the one below, albeit a bit less organized. 
@@ -227,24 +226,30 @@ ZenML at a Meetup organized by [MLOPs.community](https://mlops.community/) on th
 meetup we pulled off a clutch play of our own. With just a few minutes to spare we put together all the pipelines 
 within the ZenHack and released ZenML 0.6.0, so that participants could code along while we walked through the ZenHack.
 
-Come check out the vod of this meetup [here](). In the meetup our founder 
+Come check out the vod of this meetup [here](). In it our founder 
 [Hamza Tahir](https://www.linkedin.com/in/hamzatahirofficial/) was in an interactive live coding session together with
 [Ben Epstein](https://www.linkedin.com/in/ben-epstein/) with this ZenHack as a basis.
 
 ## Conclusion
 
+This ZenHack truly was a fun adventure for us to embark upon. There were so many aspects to it, which makes coming up
+with concise conclusions not very easy. So lets split them up a bit:
 
+### What I hope you can take away from this
 
-
-
-## Your Turn
-
-Try it our for yourself [here](https://github.com/zenml-io/nba-ml-pipeline). We have cleaned up the repository and added
-a comprehensive README so that you can hit the ground running and see how ZenML can bring zen to your machine learning
-pipelines.
-
-We are eager for your feedback, so if you run into any issues or if you like what you see, come join us on
+1. If you too want a discord bot that predicts nba games for you, checkout the code
+[here](https://github.com/zenml-io/nba-ml-pipeline). Feel free to improve the underlying models or steps and make a 
+pullrequest. We are eager for your feedback, so if you run into any issues or if you like what you see, come join us on
 [Slack](https://zenml.io/slack-invite/) and let us know!
 
+2. If you have an idea similar to ours and quickly want to go from **idea** to **continuous training/inference** , then
+**ZenML** is the way to get there.
+
+### My takeaways
+
+1. Personally, I got to know ZenML from a very different angle which is an awesome way to inform our vision 
+going forward.
+2. These ZenHacks are an amazing way to really user test our code. The few smaller issues we found during this ZenHack 
+were directly put into tickets and have been solved already. It is a real testament how fast we can move .
 
 Image credit: Photo by [Markus Spiske](https://unsplash.com/@markusspiske) on [unsplash](https://unsplash.com)
