@@ -20,9 +20,9 @@ image:
 Before diving headfirst into this challenge, we got together as a team and brainstormed what our ZenHack was going to
 be about.
 
-A ZenHack is a small internal hackathon with the intention of taking an idea into production using zenml. 
+A ZenHack is a small internal hackathon with the intention of taking an idea into production using ZenML. 
 This serves a few purposes. 
-For one, it gives us as the zenml team a direct insight into user experience. As such one of
+For one, it gives us as the ZenML team a direct insight into user experience. As such one of
 the side effects is a bouquet of fresh new user-stories, tasks and sometimes bugs to fix. 
 Another benefit of our ZenHack is to show off our newest features and how they can be assembled into a killer
 machine learning stack. 
@@ -140,7 +140,7 @@ The [MLflow Tracking](https://mlflow.org/docs/latest/tracking.html) component is
 code versions, metrics, and output files when running your machine learning code and for later visualizing the results.
 
 We at ZenML are currently actively working on deeply integrating with MLflow and making it as easy as possible
-to utilize mlflow within your zenml pipelines. For this ZenHack we used MLflow tracking for its visualization. 
+to utilize mlflow within your ZenML pipelines. For this ZenHack we used MLflow tracking for its visualization. 
 Keep your eyes peeled though, we have some more MLflow related features coming up in our next releases. 
 
 Within our ZenHack only two lines of code were really necessary to liftoff with MLflow.
