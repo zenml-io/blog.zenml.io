@@ -72,12 +72,6 @@ plugins:
   - jekyll-sitemap
   # - jekyll-compress-images
 
-gems:
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-seo-tag
-  - jekyll-sitemap
-
 feed:
   collections:
     - blog

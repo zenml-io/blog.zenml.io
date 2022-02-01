@@ -1,4 +1,4 @@
-## Contributing
+ ## Contributing
 
 To contribute, simply create a feature branch in the format `<your name>/<feature you're working on>`. As an example, if `Bart` works on a feature to add "El Barto" to the imprint, he would be committing his changes to `bart/el-barto-imprint`.
 
