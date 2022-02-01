@@ -16,18 +16,17 @@ image:
 
 # The Gameplan
 
-Before diving headfirst into this challenge, we got together as a team and brainstormed what our ZenHack was going to
-be about.
+Before diving headfirst into this challenge lets start off with some background information.
 
-A ZenHack is a small internal hackathon with the intention of taking an idea into production using ZenML. 
-This serves a few purposes. 
+This challenge is what we call a ZenHack. A ZenHack is a small internal hackathon with the intention of taking an idea 
+into production using ZenML. This serves a few purposes. 
 For one, it gives us as the ZenML team a direct insight into user experience. As such, one of
 the happy side effects is a bouquet of fresh new user-stories, tasks and sometimes bugs to fix. 
 Another benefit of our ZenHack is to show off our newest features and how they can be assembled into a killer
 machine learning stack. 
 
 For this ZenHack specifically we had quite a few new features to showcase. We wanted to show off how to use 
-[Evidently](https://evidentlyai.com/) for drift detection, [MLFlow](https://mlflow.org/) for model tracking 
+[Evidently](https://evidentlyai.com/) for drift detection, [MLFlow](https://mlflow.org/) for tracking our runs
 and [Kubeflow Pipelines](https://www.kubeflow.org/) for the orchestration of scheduled repeating pipeline runs. 
 
 ![](../assets/posts/three-pointer-prediction/evidently+mlflow+discord+kubeflow.png)
@@ -47,9 +46,9 @@ game stats. Exactly what we were looking for!
 
 ### Did Steph Curry change how the game is played?
 
-With data in hand, it was time to explore our data. As we were looking to predict three-pointers thrown in a match it 
-only seemed fitting to analyze how the king of three-pointers, Stephen Curry, impacted the role that three-pointers play
-in NBA matches. This sounds very much like a drift detection problem. 
+With these stats in hand, it was time to explore the data. As we were looking to predict three-pointers thrown in a 
+match, it only seemed fitting to analyze how the king of three-pointers, Stephen Curry, impacted the role that 
+three-pointers play in NBA matches. This sounds very much like a drift detection problem. 
 [Here](https://medium.com/data-from-the-trenches/a-primer-on-data-drift-18789ef252a6) is a nice article explaining what
 data drift is. 
 
@@ -102,7 +101,7 @@ The training pipeline needs to take in historical data for a given timeframe and
 end. Here is a short description for all the steps we deemed necessary to get from input to output.
 
 1. Importer - Imports data from nba.com for a given set of seasons
-2.Feature Engineer - Additionally filter data by time and add Opponent column to each row
+2. Feature Engineer - Additionally filter data by time and add Opponent column to each row
 3. Encode - Encode Season ID and Team Abbreviations for the benefit of the model
 4. ML Splitter - Split the dataset into train, eval and test set
 5. Trainer - Train a model to predict on the data
@@ -143,7 +142,7 @@ Keep your eyes peeled, though; we have some more MLFlow-related features coming 
 
 Within our ZenHack only two lines of code were really necessary to liftoff with MLFlow.
 
-1. Enabling MLFlow for our pipeline
+1. Enable MLFlow for our pipeline
 ```python
 @enable_mlflow
 @pipeline
@@ -229,24 +228,26 @@ Come check out the video of this meetup [here](https://www.youtube.com/watch?v=N
 
 ## Conclusion
 
-This ZenHack truly was a fun adventure for us to embark upon. There were so many aspects to it which makes coming up
-with concise conclusions not very easy. So let's split them up a bit:
+This ZenHack truly was a fun adventure for us to embark upon. I learned a ton and would like to just sum it all up with 
+these conclusions:
 
-### What I hope you can take away from this
+### What you should take away from this
 
 1. If you too want a Discord bot that predicts NBA games for you, checkout the code
-[here](https://github.com/zenml-io/nba-ml-pipeline). Feel free to improve the underlying models or steps and make a 
-pull request! We are eager for your feedback, so if you run into any issues or if you like what you see, come join us on
-[Slack](https://zenml.io/slack-invite/) and let us know!
+[here](https://github.com/zenml-io/zenfiles/tree/main/nba). Feel free to improve the underlying models or steps and open 
+a pull request! We are eager for your feedback, so if you run into any issues or if you like what you see, come join us 
+on [Slack](https://zenml.io/slack-invite/) and let us know!
 
 2. If you have an idea similar to ours and quickly want to go from **idea** to **continuous training/inference**, then
 **ZenML** is the way to get there.
 
-### My takeaways
+### What I took away from it
 
 1. Personally, I got to know ZenML from a very different angle which is an awesome way to inform our vision 
 going forward.
-2. These ZenHacks are an amazing way to really test out our code from the perspective of a user. The few smaller issues we found during this ZenHack 
-were directly put into tickets and many have been solved already. It is a real testament how fast we can move 💪
+2. These ZenHacks are an amazing way to really test out our code from the perspective of a user. The few smaller 
+issues we found during this ZenHack were directly put into tickets and many have been solved already. It is a real 
+testament to how fast we can move as a [team](https://zenml.io/team/#team) 💪. It is a real privilege working together
+with everyone here.
 
 [*Image credit: Photo by [Markus Spiske](https://unsplash.com/@markusspiske) on [unsplash](https://unsplash.com)*]
