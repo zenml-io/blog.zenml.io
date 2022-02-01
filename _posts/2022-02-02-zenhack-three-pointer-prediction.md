@@ -99,6 +99,10 @@ Let us unpack this diagram together. The objective of this ZenHack was for us to
 upcoming nba matches in our discord channel. So what do we need to get there? Well on the highest level of abstraction
 we need two separate entities. One **continuous training pipeline** and a **prediction pipeline**.
 
+### Training pipeline
+
+![](../assets/posts/three-pointer-prediction/Training_pipeline.png "Diagram showing the planned Architecture")
+
 The training pipeline needs to take in historical data for a given timeframe and spit out a trained model at the other 
 end. Here is a short description for all the steps we deemed necessary to get from input to output.
 
@@ -114,6 +118,10 @@ On the other branch:
 3. Drift Detector - Check if the last 7 days of games have drifted away from the past years of data
 4. Drift  Alert - Send a message to discord so that we can intervene
 
+### Prediction Pipeline
+
+![](../assets/posts/three-pointer-prediction/Prediction_pipeline.png "Diagram showing the planned Architecture")
+
 The prediction pipeline on the other hand needs a schedule for upcoming matches as the input and should
 post our prediction to our discord chat. To achieve this we have also split the problem into a few distinct steps.
 1. Importer - Import game schedule from a different data source
@@ -124,17 +132,75 @@ post our prediction to our discord chat. To achieve this we have also split the 
 4. Model Picker - Decide which model to pick based on scores of the test set in the training pipeline
 5. Predictor - Run an inference on the matches for the upcoming week
 6. Post Prediction - This step has actually turned into two
-   1. Data Postprocessor - To turn one hot encodings back into a human readable form
+   1. Data Postprocessor - To turn one hot encodings back into a human-readable form
    2. Discord Poster - To post our predictions to discord
 
 ### Mlflow tracking
 
+The [MLflow Tracking](https://mlflow.org/docs/latest/tracking.html) component is an API and UI for logging parameters, 
+code versions, metrics, and output files when running your machine learning code and for later visualizing the results.
 
-### Kubeflow pipeline
+We at ZenML are currently actively working on deeply integrating with MLflow and making it as easy as possible
+to utilize mlflow within your zenml pipelines. For this ZenHack we used MLflow tracking for its visualization. 
+Keep your eyes peeled though, we have some more MLflow related features coming up in our next releases. 
+
+Within our ZenHack only two lines of code were really necessary to liftoff with MLflow.
+
+1. Enabling mlflow for out pipeline
+```python
+@enable_mlflow
+@pipeline
+def pipeline_entrypoint(....):
+    ...
+```
+This configures the mlflow backend and the experiment name and establishes a connection between a ZenML pipeline run and
+a mlflow run.
+
+2. Select what to log in code
+```python
+...
+mlflow.sklearn.autolog()
+clf = RandomForestRegressor(max_depth=config.max_depth)
+...
+```
+
+And with just that, we have mlflow tracking in our pipeline. The mlflow ui can now be started from within our
+jupyter notebook:
+
+```
+!mlflow ui --backend-store-uri '{local_mlflow_backend()}' --port 4999
+```
+
+And like that we can use the mlflow ui to quickly compare runs and analyze the different runs.
+
+### Kubeflow Pipelines and Scheduled Runs
+
+[Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/introduction/) is a platform for building and 
+deploying portable, scalable machine learning (ML) workflows based on Docker containers.
+
+Check out our [docs](https://github.com/zenml-io/zenfiles) to find out how to quickly go from standard pipeline 
+orchestration to using kubeflow pipelines for your own applications.
+
+Within our ZenHack we used Kubeflow as the orchestration backend for our scheduled training. After some configuration 
+steps (see screenshot below) Kubeflow Pipelines runs locally. 
 
 ![](../assets/posts/three-pointer-prediction/kubeflowstack.png "Excerpt from jupyter notebook demonstrating
 how to start with kubeflow pipelines")
 
+The python script that is called in the last line of the screenshot instantiates the pipeline and starts a 
+Scheduled run. For demonstration purposes we have choosen to repeat every 10 minutes here. 
+
+```python
+train_pipe = training_pipeline(
+    importer=game_data_importer(),
+    ...
+    drift_alert=discord_alert(),
+)
+
+train_pipe.run(
+    schedule=Schedule(start_time=datetime.now(), interval_second=600)
+    )
+```
 
 ### Discord Step
 
