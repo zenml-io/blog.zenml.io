@@ -36,7 +36,7 @@ caught on quickly and our minds started to put together the story that we wanted
 
 ## Step 1 - Analyze our Data
 
-Without data there is no pipeline. Luckily for us the [NBA](www.nba.com) offers an API with a lot of current and
+Without data there is no pipeline. Luckily for us the [NBA](https://www.nba.com) offers an API with a lot of current and
 historical datapoints. Additionally, there is an easy-to-use Python wrapper out there, that made our lives even easier
 ([nba_api](https://readthedocs.org/projects/nba-api/)).  
 
