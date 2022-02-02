@@ -222,7 +222,11 @@ ZenML at a Meetup organized by [MLOps.community](https://mlops.community/) on Ja
 meetup we pulled off a clutch play of our own: with just a few minutes to spare we put together all the pipelines 
 within the ZenHack and released ZenML 0.6.0 so that participants could code along while we walked through the ZenHack.
 
-Come check out the video of this meetup [here](https://www.youtube.com/watch?v=Ne-dt9tu11g&t=1s). Our co-founder and CTO 
+<div class="embed-responsive embed-responsive-16by9 mb-5">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=Ne-dt9tu11g&t"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+In this video of the meetup you'll see our co-founder and CTO 
 [Hamza Tahir](https://www.linkedin.com/in/hamzatahirofficial/) lead an interactive live-coding session together with
 [Ben Epstein](https://www.linkedin.com/in/ben-epstein/), using the substance of this ZenHack as a basis.
 
@@ -234,7 +238,7 @@ these conclusions:
 ### What you should take away from this
 
 1. If you too want a Discord bot that predicts NBA games for you, checkout the code
-[here](https://github.com/zenml-io/zenfiles/tree/main/nba). Feel free to improve the underlying models or steps and open 
+[here](https://github.com/zenml-io/zenfiles/tree/main). Feel free to improve the underlying models or steps and open 
 a pull request! We are eager for your feedback, so if you run into any issues or if you like what you see, come join us 
 on [Slack](https://zenml.io/slack-invite/) and let us know!
 
