@@ -223,7 +223,7 @@ meetup we pulled off a clutch play of our own: with just a few minutes to spare 
 within the ZenHack and released ZenML 0.6.0 so that participants could code along while we walked through the ZenHack.
 
 <div class="embed-responsive embed-responsive-16by9 mb-5">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=Ne-dt9tu11g&t"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Ne-dt9tu11g"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 In this video of the meetup you'll see our co-founder and CTO 
