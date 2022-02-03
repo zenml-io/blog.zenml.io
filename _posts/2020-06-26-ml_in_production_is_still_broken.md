@@ -19,7 +19,7 @@ image:
 Just a few days ago, I was able to share my thoughts on the state of Machine Learning in production, and why it's (still) broken, on the MLOps World 2020. Read on for a writeup of my presentation, or checkout the recording of the talk on Youtube.
 
 <div class="embed-responsive embed-responsive-16by9 mb-5">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/OF7WmUvEKVs"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PhlS_tnHZsg"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ## From research to production
