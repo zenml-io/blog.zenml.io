@@ -17,7 +17,7 @@ image:
 
 The last two decades have yielded us some great understandings about Software Development. A big part of that is due to the emergence of DevOps and it’s wide adoption throughout the industry.
 
-Leading software companies follow identical patterns: Fast iterations in software development followed by Continuous Integration, Continuous Delivery, Continuous Deployment. Every artefact is tested on its ability to provide value, always has a state of readiness and is deployed through automation.
+Leading software companies follow identical patterns: Fast iterations in software development followed by Continuous Integration, Continuous Delivery, Continuous Deployment. Every artifact is tested on its ability to provide value, always has a state of readiness and is deployed through automation.
 
 As a field, Machine Learning differs from traditional software development, but we can still borrow many learnings and adapt them to “our” industry. For the last few years, we’ve been doing Machine Learning projects in production, so beyond proof-of-concepts, and our goals where the same is in software development: reproducibility. So we built a pipeline orchestrator, strong automations and established a workflow to achieve exactly that.
 
@@ -101,7 +101,7 @@ The right approach are automated methods to record training results in a central
 
 Understanding datasets requires effort. Commonly, this understanding is gathered through experimentation, especially when operating in fields with a lot of hidden domain knowledge. Start a Jupyter Notebook, get some/all of the data into a Pandas Dataframe, do some hours of out-of-sequence magic, train a first model, evaluate results - Job done. Well, unfortunately not.
 
-Experiments serve a purpose in the lifecycle of Machine Learning. The results of these Experiments are however not models, but understanding. Models from explorative Jupyter Notebooks are proof for understanding, not production-ready artefacts. Gained understanding will need more molding and fitting into production-ready training pipelines.
+Experiments serve a purpose in the lifecycle of Machine Learning. The results of these Experiments are however not models, but understanding. Models from explorative Jupyter Notebooks are proof for understanding, not production-ready artifacts. Gained understanding will need more molding and fitting into production-ready training pipelines.
 
 All understandings unrelated to domain-specific knowledge can however be automated. Generate statistics on each data version you’re using to skip any one-time, ad-hoc exploratory work you might have had to do in Jupyter Notebooks, and move straight to the first pipelines. The earlier you experiment in pipelines, the earlier you can collaborate on intermediate results and the earlier you’ll receive production-ready models.
 
@@ -135,13 +135,13 @@ The effect: Data Scientists and teams are responsible for monitoring the models 
 
 ## 12. Deployability of Models
 
-On a technical level every model training pipeline needs to produce an artefact deployable to production. The model results might be horrible, no questions asked, but it needs to end up wrapped up into an artefact you can directly move towards a production environment.
+On a technical level every model training pipeline needs to produce an artifact deployable to production. The model results might be horrible, no questions asked, but it needs to end up wrapped up into an artifact you can directly move towards a production environment.
 
 This is a common theme in Software Development - it’s called Continuous Delivery. Teams should be able to deploy their software at any given moment, and iteration cycles need to be quick enough to accommodate that goal.
 
 A similar approach needs to be taken with Machine Learning. It’ll enforce first and foremost a conversation about reality and the expectations towards models. All stakeholders need to be aware of what's even theoretically possible regarding model results. All stakeholders need to agree on a way to deploy a model, and where it fits into the bigger software architecture around it. It will however also lead to strong automations, and by necessity the adoption of a majority of the factors outlined in the prior paragraphs.
 
-**TL;DR:** Every training pipeline needs to produce a deployable artefact, not “just” a model.
+**TL;DR:** Every training pipeline needs to produce a deployable artifact, not “just” a model.
 
 ## Closing
 

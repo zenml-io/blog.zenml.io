@@ -21,7 +21,7 @@ This being my first time working seriously with Python, there were a few things 
 
 ## 1. One-size-fits-all won't cut it
 
-Looking at things from a higher level, it's important to realise that there are lots of different approaches that you could take to testing. It's a truism that you should 'test intent, not implementation', but I imagine that in some scenarios like for software being deployed on a space shuttle you'd want to maybe also test the implementation as well.
+Looking at things from a higher level, it's important to realize that there are lots of different approaches that you could take to testing. It's a truism that you should 'test intent, not implementation', but I imagine that in some scenarios like for software being deployed on a space shuttle you'd want to maybe also test the implementation as well.
 
 Similarly, different companies and projects have different needs for testing. If you're a huge company, testing is a way of ensuring reliability and preventing catastrophic failures along the way. If you're a small company, where speed of creation and the pace of development is frantic, having too rigid a set of tests may actually end up hurting you by stifling your ability to iterate through ideas and changes quickly.
 

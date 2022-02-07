@@ -42,7 +42,7 @@ As the codebase and functionality of ZenML grows, we always want to make sure [o
 - We improved the error message if your ZenML is missing inside a Kubeflow container entrypoint.
 - We now prevent access to the repository during step execution. This stops bad things from happening inadvertently.
 - The materializer registry now can detect sub-classes of defined types.
-- Our computation of the hashes of steps and materialisers (relied on by our caching behaviour as well as other things) now works in notebooks rather than just in code executed from files.
+- Our computation of the hashes of steps and materialisers (relied on by our caching behavior as well as other things) now works in notebooks rather than just in code executed from files.
 - We improved some error messages to help you better understand what's going on when things go wrong.
 
 ## Contribute to ZenML!

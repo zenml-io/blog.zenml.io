@@ -70,7 +70,7 @@ Implementation of interfaces makes automated processing possible. The resulting 
 
 Standardizing models is hard. Higher-level abstractions like Tensorflow and Keras already provide comprehensive APIs, but complex architectures need custom code injection.
 
-A declarative config will, at least, state which version-controlled code was used. Re-runs on the same input will deliver the same results, re-runs on different inputs can be compared. Automation of training will yield a version-controllable artefact - the model - of a declared and therefore anticipatable shape.
+A declarative config will, at least, state which version-controlled code was used. Re-runs on the same input will deliver the same results, re-runs on different inputs can be compared. Automation of training will yield a version-controllable artifact - the model - of a declared and therefore anticipatable shape.
 
 ### Evaluation
 
