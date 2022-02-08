@@ -19,7 +19,7 @@ notes](https://github.com/zenml-io/zenml/releases/tag/0.5.7) a glance.
 
 ## MLFlow Tracking
 
-[You voted](https://github.com/zenml-io/zenml/discussions/115), we integrated! This new addition of [MLFlow Tracking](https://www.mlflow.org/docs/latest/tracking.html) as part of ZenML's integrations means that you can track your training runs using MLFlow. This gives you a handy web UI that you can use to log and query your experiments. ZenML is tracking all of your parameters and metrics already, but you might prefer to visualise those changes in the MLFlow web UI.
+[You voted](https://github.com/zenml-io/zenml/discussions/115), we integrated! This new addition of [MLFlow Tracking](https://www.mlflow.org/docs/latest/tracking.html) as part of ZenML's integrations means that you can track your training runs using MLFlow. This gives you a handy web UI that you can use to log and query your experiments. ZenML is tracking all of your parameters and metrics already, but you might prefer to visualize those changes in the MLFlow web UI.
 
 ![Tracking machine learning training runs with MLFlow](../assets/posts/release_0_5_7/mlflow-screenshot.png)
 
@@ -31,7 +31,7 @@ Watch this space for more MLFlow goodness coming your way!
 
 [Evidently](https://github.com/evidentlyai/evidently) is an open-source tool for detecting drift among your data inputs. Machine learning pipelines are built on top of those data inputs, so it is worth checking for drift if you have a model that was trained on a certain distribution of data.
 
-![Detecting and visualising data drift with Evidently](../assets/posts/release_0_5_7/evidently-screenshot.png)
+![Detecting and visualizing data drift with Evidently](../assets/posts/release_0_5_7/evidently-screenshot.png)
 
 The ZenML integration with Evidently implements this functionality in the form of several standardized steps. You select which of the profile sections you want to use in your step by passing a string into the `EvidentlyProfileConfig`. Possible options supported by Evidently are:
 

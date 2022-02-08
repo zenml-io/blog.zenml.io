@@ -14,11 +14,11 @@ image:
   # width: 1000
 ---
 
-ZenML 0.5.3 adds support for statistics visualisations, greatly improved speed for CLI commands as well as lots of small improvements to the pipeline and step interface.
+ZenML 0.5.3 adds support for statistics visualizations, greatly improved speed for CLI commands as well as lots of small improvements to the pipeline and step interface.
 
 For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.5.3) a glance. This blog post will cover some of the big-picture changes.
 
-## Statistics Visualisations
+## Statistics Visualizations
 
 In the latest release we added the concept of visualizations as a first-class citizen in ZenML. Now you can use awesome third-party libraries to visualize ZenML steps and artifacts. We support the facets visualization for statistics out of the box, to find data drift between your training and test sets.
 

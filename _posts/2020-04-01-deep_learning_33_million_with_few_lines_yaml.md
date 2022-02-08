@@ -37,7 +37,7 @@ Sound interesting? Alright, let's begin.
 
 ## **Building the Pipeline**
 
-When dealing with a dataset this large, its difficult to do some Pandas magic in a Jupyter notebook to wrangle with our data - I won't subject my poor ThinkPad to that punishment. Thats why we created [ZenML](https://zenml.io/signup/) to deal with this problem ([amongst others](/deep_learning_in_production_is_broken/)).
+When dealing with a dataset this large, its difficult to do some Pandas magic in a Jupyter notebook to wrangle with our data - I won't subject my poor ThinkPad to that punishment. That's why we created [ZenML](https://zenml.io/signup/) to deal with this problem ([amongst others](/deep_learning_in_production_is_broken/)).
 For this post, I will assume you have the `cengine` CLI [installed](https://docs.zenml.io/docs/installation) and ready to go.
 
 As a summary, the `cengine` CLI will create, register and execute training pipelines,
@@ -98,7 +98,7 @@ and train a basic system quickly"_. So lets get to a baseline first.
 
 ### **Step 2: Configure YAML - Label**
 
-Ok next part is the label. Thats also easy:
+Ok next part is the label. That's also easy:
 
 ```yaml
 labels:
@@ -219,14 +219,14 @@ Tensorboard will show tensorboard things: The model graph, the train and eval lo
 
 That is pretty cool - Maybe we overtrained it at the 180,000th step as it took a jump in the loss, but the `mae` seems to keep decreasing. We're close to 9.6 `mae` overall, which isn't bad at all for this baseline model.
 
-How about a deeper dive into the metrics? Thats where TFMA comes into play.
+How about a deeper dive into the metrics? That's where TFMA comes into play.
 TFMA will show the metrics defined in the YAML and add the ability to slice the metric across the columns defined in the `evaluator` key. E.g. Lets slice it across `birth_year` to see how well it did for each year.
 
 ![tfma_logs](/assets/posts/train_30_mil_few_lines_yaml/tfma_1.png)
 
 _Note: If you want to replicate this step just add `birth_year` in the generated notebook code where its specified._
 
-A deeper dive reveals that the model actually guessed the year of people born in 1977 pretty well (Thats tested on ~11000 samples from that year). So its definitely learning something. We can now dive which years it did worse, and also other slices and see if we can gain anything from that when we iterate on our model.
+A deeper dive reveals that the model actually guessed the year of people born in 1977 pretty well (That's tested on ~11000 samples from that year). So its definitely learning something. We can now dive which years it did worse, and also other slices and see if we can gain anything from that when we iterate on our model.
 
 ## Wrap up
 

@@ -55,7 +55,7 @@ or a regression model. The label in such a case could be any of the features or 
 do would be to try to split up the data into sets that are meaningful.
 
 To make things easy, you decide to go make a simple split with `train` and `eval`. You know immediately that a naive random split with
-shuffling won't fly here - the data does have multple sensor streams that are indexed by time after all. So how do you split the data so that order
+shuffling won't fly here - the data does have multiple sensor streams that are indexed by time after all. So how do you split the data so that order
 is maintained and subsequent models are sufficiently generalizable?
 
 ## Another view of the data
@@ -67,7 +67,7 @@ per machine). This would yield the following result:
 
 ## The Horizontal Split
 
-The grouping together suddenly makes the issue of splitting a bit simpler, and largely dependant on your hypothesis. If the machines are running under
+The grouping together suddenly makes the issue of splitting a bit simpler, and largely dependent on your hypothesis. If the machines are running under
 similar conditions, one question you might ask is: `How would a ML model trained on one group generalize to other groups`. That is, if trained on
 `class_1`, `class_2` and `class_3` timestreams how would the model fair on `class_4` and `class_5` timestreams. Here is a visualization of that split:
 
@@ -84,7 +84,7 @@ data. Which brings us to the next split..
 
 ## The Vertical Split
 
-But what if you want to split across time itself? For most time-series modelling, a common way to split the data is `past` and `future`. That is, to
+But what if you want to split across time itself? For most time-series modeling, a common way to split the data is `past` and `future`. That is, to
 take in the training set historical data relative to the data in the eval set. The hypothesis in this case would be: `How would a ML model trained on historical data per group generalize to future data for each group?`. This question might be answered by the so called `Vertical` split:
 
 ![4_vertical](/assets/posts/splits/4_vertical.png)
