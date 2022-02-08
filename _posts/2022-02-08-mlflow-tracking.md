@@ -1,6 +1,5 @@
 ---
 layout: post
-toc: true
 author: Alex Strick van Linschoten
 title: How to improve your experimentation workflows with MLflow Tracking and ZenML
 description: "Use MLflow Tracking to automatically ensure that you're capturing data, metadata and hyperparameters that contribute to how you are training your models. Use the UI interface to compare experiments, and let ZenML handle the boring setup details."
@@ -40,6 +39,8 @@ One really useful feature offered by MLflow Tracking is that of [automatic loggi
 If you're using ZenML to bring together the various tools in your machine learning stack, you'll probably be eager to use some of this tracking goodness and make your own experiments more robust. ZenML actually *already* partly supported what MLflow Tracking does in the sense that any artifacts going in or out of the steps of your ZenML pipeline were being tracked, stored and versioned in your artifact and metadata store. (You're welcome!) But until now we didn't have a great way for you to interact with that metadata about your experiments and pipeline runs that was non-programmatic and also visual.
 
 MLflow Tracking gives you that ability to inspect the various experiments and pipeline runs in the (local) web interface and is probably going to be a friendlier way of interacting with and reasoning about your machine learning experiments.
+
+![Tracking machine learning training runs with MLFlow](../assets/posts/mlflow-tracking/mlflow-screenshot.png)
 
 You could have used MLflow Tracking in the past, too, but with our latest integration updates ZenML handles some of the boilerplate complicated setup that comes with using MLflow. There are [different ways](https://mlflow.org/docs/latest/tracking.html#where-runs-are-recorded) of deploying the tracking infrastructure and servers and it isn't a completely painless task to set all this up and to get going with MLflow Tracking. This is where we make your life a bit easier: we setup everything you need to use it on your (currently: local) machine, connecting the MLFlow Tracking interface to your ZenML artifact store. It can be a bit tricky to configure the relevant connections between the various modular pieces that talk to each other, and we hide this from you beneath an abstraction.
 
