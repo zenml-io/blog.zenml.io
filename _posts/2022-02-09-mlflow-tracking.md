@@ -5,8 +5,8 @@ title: How to improve your experimentation workflows with MLflow Tracking and Ze
 description: "Use MLflow Tracking to automatically ensure that you're capturing data, metadata and hyperparameters that contribute to how you are training your models. Use the UI interface to compare experiments, and let ZenML handle the boring setup details."
 category: zenml
 tags: zenml tooling applied-zenml integrations
-publish_date: February 8, 2022
-date: 2022-02-08T00:02:00Z
+publish_date: February 9, 2022
+date: 2022-02-09T00:02:00Z
 thumbnail: /assets/posts/mlflow-tracking/mlflow-logo.jpeg
 image:
   path: /assets/posts/mlflow-tracking/mlflow-logo.jpeg
@@ -92,6 +92,8 @@ zenml.integrations.mlflow.mlflow_environment import MLFLOW_ENVIRONMENT_NAME
 
 mlflow_env = Environment()[MLFLOW_ENVIRONMENT_NAME]
 ```
+
+Check out [the API docs](https://apidocs.zenml.io/0.6.1/api_docs/environment/) to learn more about the `Environment` object and watch this space for a blog post where we explain more about why we chose to add this recently.
 
 # Over to you now!
 
