@@ -85,11 +85,10 @@ def tf_trainer(
     return model
 ```
 
-While running MLflow from your code, you need to specify global configuration parameters (which then goes on to define how experiments and runs are displayed and stored in the MLflow Tracking UI/system), but beyond that it's pretty easy to use. You specify these global parameters by initializing and setting an `Environment` object:
+If, for any reason, you need to access the global environment parameters used by ZenML to automatically configure MLflow (which define where and how experiments and runs are displayed and stored in the MLflow Tracking UI/system), we've got you covered. These global parameters can be easily accessed through the `Environment` singleton object:
 
 ```python
 zenml.integrations.mlflow.mlflow_environment import MLFLOW_ENVIRONMENT_NAME
-
 mlflow_env = Environment()[MLFLOW_ENVIRONMENT_NAME]
 ```
 
