@@ -116,8 +116,12 @@ Check out [the docs](https://rich.readthedocs.io/en/stable/console.html) for the
 
 [a code snippet? as an image?]
 
-We haven't fully committed to this yet in the ZenML CLI, but if you want all `rich`'s goodies in your 
+We haven't fully committed to this yet in the ZenML CLI, but if you want all `rich`'s goodies in all of your CLI output, use the `rich` logging handler. Simply set [the `RichHandler`](https://rich.readthedocs.io/en/stable/logging.html) as (one of your) logging handlers when you're configuring your `logging` setup.
 
-CTA: let us (and Will) know if you end up using these tips and the rich library to spruce up your CLI! Get the new ZenML 0.6.2 (or whatever) to use the latest richified CLI goodness. 
+In this way, you'll get access to everything that `rich` offers, except now it's in your logs. You probably want to be careful with this, especially if logs are in any sense mission-critical, since the console markup might cause issues when reviewing those logs at a later date. It's nevertheless a full-featured way of handling your logging output and if you don't already have a custom setup, this is probably worth checking out.
+
+***
+
+[Let us know](https://zenml.io/slack-invite/) if you end up using these tips and the `rich` library to spruce up your CLI! Get the latest version of ZenML to use all our latest richified CLI goodness.
 
 *Alex Strick van Linschoten is a Machine Learning Engineer at ZenML.*
