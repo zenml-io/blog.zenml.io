@@ -55,31 +55,68 @@ install(show_locals=True)
 
 ![BEFORE AND AFTER PHOTO showing a rich printout](../assets/posts/richify-your-cli/emoji-sampler.png)
 
-Just like tracebacks in `rich` are better than the Python defaults, you also have a better `print`.
+Just like tracebacks in `rich` are better than the Python defaults, you also have [a better `print`](https://rich.readthedocs.io/en/stable/introduction.html#quick-start). Standard data structures like dicts and lists are converted to strings, syntax highlighting is added and they are clearly presented.
+
+We don't actually use any `print` statements in our CLI tool, but through `rich` our users get access to it for their own purposes, be it debugging or otherwise.
 
 ## 5. Inspect your objects
 
 ![the best ways to use rich's inspect](../assets/posts/richify-your-cli/emoji-sampler.png)
 
+I have been using [`inspect`](https://rich.readthedocs.io/en/stable/introduction.html#rich-inspect) from `rich` ever since I first saw it used. Like most things in this post, it is a convenience function that offers a better default to standard Python ways of inspecting an object. See the above illustration of what the output looks like. If you pass in `methods=True` you'll see what methods can be called on that object. If you pass in `docs=True` you can read the docstrings for that object.
+
+Like `print`, we don't currently use this anywhere in the outputs of our CLI tool, but we have plans to add some of this output and users have full access to `inspect` in their own pipelines.
+
 ## 6. Status Spinners
 
 ![A gif showing the new spinner for init](../assets/posts/richify-your-cli/emoji-sampler.png)
+
+When someone tells you that they upgraded their CLI tool, spinners are what you expect. Who doesn't love a good spinner!? We added only one (when you call `zenml init`) but probably will use more as our tool grows.
+
+You can get a good idea of the kinds of spinners available by running `python -m rich.status` which will output a sort of demo with some spinners. Adding this into your code is painless with a simple context manager:
+
+```python
+with console.status("Doing really important work…"):
+    # do something here
+```
 
 ## 7. Progress Bars
 
 ![A gif showing the zenml integration install process](../assets/posts/richify-your-cli/emoji-sampler.png)
 
+The next step up from a spinner is [a progress bar](https://rich.readthedocs.io/en/stable/progress.html). You get these with `rich` and they're easy to set up:
+
+```python
+from rich.progress import track
+
+some_iterable = []
+for n in track(range(len(some_iterable)), description="Doing important things…"):
+    # do something here with the iterable's values 
+```
+
+Not only do these progress bars offer a visual indication of your progress, `rich` also does some background calculations and it suggests an approximate time until completion (based on how quickly you move through the elements).
+
 ## 8. Tables
 
 ![A before and after image](../assets/posts/richify-your-cli/emoji-sampler.png)
+
+We use all sorts of [tables](https://rich.readthedocs.io/en/stable/tables.html) in our CLI. We display the integrations you have installed, the stacks you have set up, the examples available for download and so on.
+
+A clear table is an easy win to make it easier for the user to interact with CLI output. You can get much, much more with advanced `rich` tabular composition features, but probably you don't need anything complicated. You just need a table with lines where previously you didn't have that.
 
 ## 9. Customised message styles
 
 ![A gif showing a pipeline running with coloured output](../assets/posts/richify-your-cli/emoji-sampler.png)
 
+If you have an application of more than minimal complexity you will likely want to have different variations of how you output to the terminal. Maybe you want specific colours for warning or error messages, or there's a particular style that should only be used in certain situations. For all that, `rich` offers a, well, rich API and set of functionality that allows you to output pretty much everything you'd want to the terminal.
+
+Check out [the docs](https://rich.readthedocs.io/en/stable/console.html) for the full details, but `rich` will handle any kind of styling and colours that you want to include, justification and alignment within the boundaries of the terminal, soft wrapping, and so on.
+
 ## 10. The `rich` logging handler
 
 [a code snippet? as an image?]
+
+We haven't fully committed to this yet in the ZenML CLI, but if you want all `rich`'s goodies in your 
 
 CTA: let us (and Will) know if you end up using these tips and the rich library to spruce up your CLI! Get the new ZenML 0.6.2 (or whatever) to use the latest richified CLI goodness. 
 
