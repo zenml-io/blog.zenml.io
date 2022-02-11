@@ -28,7 +28,7 @@ You can view a list of all the supported emojis by running `python -m rich.emoji
 
 ## 2. Markdown parsing
 
-![BEFORE AND AFTER PHOTO or gif showing paging through the markdown info](../assets/posts/richify-your-cli/emoji-sampler.png)
+![Paging through markdown info about an example](../assets/posts/richify-your-cli/info-cli.gif)
 
 Our CLI allows users to view information about [the examples we provide](https://blog.zenml.io/examples-cli/) to showcase how ZenML works (and how it can be used). Each example already contains a markdown `README.md` file with information about the implementation, installation instructions and so on.
 
@@ -38,7 +38,7 @@ Now, with `rich`, we have a way to parse the raw markdown markup and display it 
 
 ## 3. Beautiful, Informative Tracebacks
 
-![IMAGE or gif showing a rich traceback](../assets/posts/richify-your-cli/emoji-sampler.png)
+![A rich traceback](../assets/posts/richify-your-cli/rich-traceback.png)
 
 Errors are often where the rubber meets the road in software projects. When you're developing you want those error messages to be informative, clear and not some kind of runic message you have to decode.
 
@@ -53,7 +53,7 @@ install(show_locals=True)
 
 ## 4. `print()` gets a makeover
 
-![BEFORE AND AFTER PHOTO showing a rich printout](../assets/posts/richify-your-cli/emoji-sampler.png)
+![A rich printout](../assets/posts/richify-your-cli/rich-print.png)
 
 Just like tracebacks in `rich` are better than the Python defaults, you also have [a better `print`](https://rich.readthedocs.io/en/stable/introduction.html#quick-start). Standard data structures like dicts and lists are converted to strings, syntax highlighting is added and they are clearly presented.
 
@@ -61,7 +61,7 @@ We don't actually use any `print` statements in our CLI tool, but through `rich`
 
 ## 5. Inspect your objects
 
-![the best ways to use rich's inspect](../assets/posts/richify-your-cli/emoji-sampler.png)
+![Using rich's inspect](../assets/posts/richify-your-cli/rich-inspect.png)
 
 I have been using [`inspect`](https://rich.readthedocs.io/en/stable/introduction.html#rich-inspect) from `rich` ever since I first saw it used. Like most things in this post, it is a convenience function that offers a better default to standard Python ways of inspecting an object. See the above illustration of what the output looks like. If you pass in `methods=True` you'll see what methods can be called on that object. If you pass in `docs=True` you can read the docstrings for that object.
 
@@ -69,7 +69,7 @@ Like `print`, we don't currently use this anywhere in the outputs of our CLI too
 
 ## 6. Status Spinners
 
-![A gif showing the new spinner for init](../assets/posts/richify-your-cli/emoji-sampler.png)
+![A gif showing the new spinner for `init`](../assets/posts/richify-your-cli/status-spinner.gif)
 
 When someone tells you that they upgraded their CLI tool, spinners are what you expect. Who doesn't love a good spinner!? We added only one (when you call `zenml init`) but probably will use more as our tool grows.
 
@@ -82,7 +82,7 @@ with console.status("Doing really important work…"):
 
 ## 7. Progress Bars
 
-![A gif showing the zenml integration install process](../assets/posts/richify-your-cli/emoji-sampler.png)
+![A gif showing the zenml integration install process](../assets/posts/richify-your-cli/progress-bar.gif)
 
 The next step up from a spinner is [a progress bar](https://rich.readthedocs.io/en/stable/progress.html). You get these with `rich` and they're easy to set up:
 
@@ -98,7 +98,7 @@ Not only do these progress bars offer a visual indication of your progress, `ric
 
 ## 8. Tables
 
-![A before and after image](../assets/posts/richify-your-cli/emoji-sampler.png)
+![Our new rich tables](../assets/posts/richify-your-cli/rich-tables.jpg)
 
 We use all sorts of [tables](https://rich.readthedocs.io/en/stable/tables.html) in our CLI. We display the integrations you have installed, the stacks you have set up, the examples available for download and so on.
 
@@ -106,15 +106,25 @@ A clear table is an easy win to make it easier for the user to interact with CLI
 
 ## 9. Customised message styles
 
-![A gif showing a pipeline running with coloured output](../assets/posts/richify-your-cli/emoji-sampler.png)
-
 If you have an application of more than minimal complexity you will likely want to have different variations of how you output to the terminal. Maybe you want specific colours for warning or error messages, or there's a particular style that should only be used in certain situations. For all that, `rich` offers a, well, rich API and set of functionality that allows you to output pretty much everything you'd want to the terminal.
 
 Check out [the docs](https://rich.readthedocs.io/en/stable/console.html) for the full details, but `rich` will handle any kind of styling and colours that you want to include, justification and alignment within the boundaries of the terminal, soft wrapping, and so on.
 
 ## 10. The `rich` logging handler
 
-[a code snippet? as an image?]
+```python
+import logging
+from rich.logging import RichHandler
+
+# an example of how to set up a rich logger (from the rich docs)
+FORMAT = "%(message)s"
+logging.basicConfig(
+    level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
+)
+
+log = logging.getLogger("rich")
+log.info("Hello, World!")
+```
 
 We haven't fully committed to this yet in the ZenML CLI, but if you want all `rich`'s goodies in all of your CLI output, use the `rich` logging handler. Simply set [the `RichHandler`](https://rich.readthedocs.io/en/stable/logging.html) as (one of your) logging handlers when you're configuring your `logging` setup.
 
