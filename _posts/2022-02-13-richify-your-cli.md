@@ -104,11 +104,11 @@ We use all sorts of [tables](https://rich.readthedocs.io/en/stable/tables.html) 
 
 A clear table is an easy win to make it easier for the user to interact with CLI output. You can get much, much more with advanced `rich` tabular composition features, but probably you don't need anything complicated. You just need a table with lines where previously you didn't have that.
 
-## 9. Customised message styles
+## 9. Customized message styles
 
-If you have an application of more than minimal complexity you will likely want to have different variations of how you output to the terminal. Maybe you want specific colours for warning or error messages, or there's a particular style that should only be used in certain situations. For all that, `rich` offers a, well, rich API and set of functionality that allows you to output pretty much everything you'd want to the terminal.
+If you have an application of more than minimal complexity you will likely want to have different variations of how you output to the terminal. Maybe you want specific colors for warning or error messages, or there's a particular style that should only be used in certain situations. For all that, `rich` offers a, well, rich API and set of functionality that allows you to output pretty much everything you'd want to the terminal.
 
-Check out [the docs](https://rich.readthedocs.io/en/stable/console.html) for the full details, but `rich` will handle any kind of styling and colours that you want to include, justification and alignment within the boundaries of the terminal, soft wrapping, and so on.
+Check out [the docs](https://rich.readthedocs.io/en/stable/console.html) for the full details, but `rich` will handle any kind of styling and colors that you want to include, justification and alignment within the boundaries of the terminal, soft wrapping, and so on.
 
 ## 10. The `rich` logging handler
 
