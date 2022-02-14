@@ -73,6 +73,7 @@ plugins:
   # - jekyll-compress-images
 
 feed:
+  posts_limit: 20
   collections:
     - blog
     # blog:
