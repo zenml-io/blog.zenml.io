@@ -95,6 +95,8 @@ Pipeline(
 ).process()
 ```
 
+#### Sources
+
 The main challenge involved here lies not in the processing of the data, but in
 the disparate ways in which the data sources need to be accessed. In a perfect
 world, every service would have a REST API endpoint that would let you simply
@@ -102,8 +104,8 @@ and efficiently request the data you want, however even today there are a
 surprising number of platforms that do not report their data except in a web
 interface designed for interactive (human) readers. Luckily there are plenty of
 tools out there that allow you to programmatically crawl web pages, such as
-[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/). This allows
-us for instance to extract the number of posts currently published on this very
+[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/). This allows us
+for instance to extract the number of posts currently published on this very
 blog in an easy way:
 
 ```python
@@ -122,15 +124,52 @@ def get_blog_stats() -> dict[str, int]:
         return {}
 ```
 
-
-For publically available sites this works, however, when data is behind a log-in
+For publicly available sites this works, however, when data is behind a log-in
 (either because it’s from a private project or a paid service) this approach can
 still fall short. If all that is required is Basic Authentication or an API
 token, the `requests` library in Python will handle it just fine, though more
 complex authentication flows can be more challenging. For accessing analytics
-for our [podcast (Pipeline Conversations–go listen to it if you’re a fan of long-form)](https://podcast.zenml.io/),
+for our [podcast (Pipeline Conversations-k--go listen to it if you’re a fan of long-form)](https://podcast.zenml.io/),
 we used the fully-fledged crawling library [Scrapy](https://scrapy.org/), which
 will [handle login forms just fine](https://python.gotrained.com/scrapy-formrequest-logging-in/).
+
+#### Destinations
+
+To keep the team in the loop in a `push` style, once a week the bot also
+includes Discord in its list of destinations. Discord supports implementing
+custom bots very simply, by providing a REST endpoint that messages can be
+posted to, which the bot then sends to the desired Discord channel (including
+supporting basic markup for rich formatting). To coincide with our bi-weekly
+sprint reviews and just to kick off the week, Monday’s run posts a message
+looking like this:
+
+![Weekly Discord message](/assets/posts/aggregating-kpis/discord-hook.png)
+
+This includes looking back to the historic data in notion from 14 days ago and
+comparing how the metrics have shrunk or (hopefully!) grown compared to the last
+sprint.
+
+#### Deployment
+
+At the end of the day, all of this reading, collecting, and writing is fine,
+but we don’t want to have to manually execute it from a terminal on our local
+machines. Instead, we deploy the bot to the cloud, using
+[Google Cloud Functions](https://cloud.google.com/functions),
+which let you run (more or less) arbitrary python code in a serverless manner,
+without having to allocate machines and only paying for the time you use to
+execute. To control when this function is executed, an event trigger must be
+specified, in our case, this is the cloud-based asynchronous communication tool
+[Google PubSub (Publication/Subscription)](https://cloud.google.com/pubsub). The
+cloud function subscribes to a so-called PubSub topic and a
+[Cloud Scheduler](https://cloud.google.com/scheduler) publishes trigger events
+to it according to a cron pattern.
+
+One interesting learning during the development of this bot was that Google runs
+Python Cloud Functions as child threads in a
+[Flask](https://flask.palletsprojects.com/en/2.0.x/) server. This is mostly
+irrelevant to the user, however, it did interfere with the way Scrapy runs its
+web crawlers by default, using multiple threads for parallelization and signals
+to communicate result data between these threads.
 
 If you are interested in seeing the KPI Collector in its entirety, watch this
 space—as soon as it is made open source, the Github repository will be linked
