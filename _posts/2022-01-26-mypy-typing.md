@@ -64,7 +64,7 @@ I personally didn't have much experience working with types in Python prior to
 joining ZenML, so I read the first part of
 [Patrick Viafore](https://www.linkedin.com/in/patviafore)'s excellent book,
 ['Robust Python'](https://www.amazon.com/Robust-Python-Write-Clean-Maintainable/dp/1098100662?tag=soumet-20),
-to understand more. (I wrote a series of articles summarising the chapters in
+to understand more. (I wrote a series of articles summarizing the chapters in
 detail [here](https://mlops.systems/categories/#robustpython), so check that out
 if you want to dive a bit deeper.)
 
@@ -113,13 +113,13 @@ There are
 to constrain different groupings of types, and some
 [special rules and syntax](https://mlops.systems/robustpython/python/books-i-read/2022/01/18/robust-python-5.html)
 for when you use type collections, but otherwise there isn't much you have to
-know to start skilfully annotating your function signatures.
+know to start skillfully annotating your function signatures.
 
 # How does all of this work in practice at ZenML?
 
 Though there are other type checkers — like [Pyre](https://pyre-check.org/) and
 [Pyright](https://github.com/microsoft/pyright) — we use
-[`mypy`](http://mypy-lang.org/) to keep us accountable and to statically analyse
+[`mypy`](http://mypy-lang.org/) to keep us accountable and to statically analyze
 our codebase. It is the most commonly used option for type checking in Python
 and it does most of what you probably need it for. You can run it via the
 command line, inline as part of your IDE, or as part of a CI/CD pipeline. We do

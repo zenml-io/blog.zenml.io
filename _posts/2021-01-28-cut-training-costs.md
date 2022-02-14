@@ -89,7 +89,7 @@ Feel free to share the doc and leave a comment if you find something to add. Her
 Note: All costs in the US region, AWS instance pricing as of January 28, 14:00 CET.
 
 As can be seen, depending on the configuration, there is up to **82%** cost reduction by using spot instances, with the
-average cost savings across multiple cloud and configurations being rougly **74%**. This can equate to hundreds of dollars worth of
+average cost savings across multiple cloud and configurations being roughly **74%**. This can equate to hundreds of dollars worth of
 savings. Especially for hobbyists, smaller companies, or smaller departments experimenting with
 Machine Learning, this may mean the difference between getting a model deployed vs crashing and burning before lift-off.
 

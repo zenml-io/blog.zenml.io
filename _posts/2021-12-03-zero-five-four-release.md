@@ -35,7 +35,7 @@ you to inspect what's going on with your ZenML pipeline:
 
 You can see in this animated diagram that each of the steps and artifacts of the pipeline are
 represented as circles or squares respectively. We included a way to get a quick
-sense of the status of these elements through colour: red shapes means that a
+sense of the status of these elements through color: red shapes means that a
 step has failed, while blue and green show success. (Orange means your step is
 still running in the orchestrator).
 

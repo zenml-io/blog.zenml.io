@@ -32,7 +32,7 @@ Right now you can find the following small, practical ways to experiment with Ze
 - **airflow_local**: Running pipelines with Airflow locally.
 - **kubeflow**: Shows how to orchestrate a pipeline a local Kubeflow stack.
 
-## Visualisation
+## Visualization
 
 - **dag_visualizer**: Visualizing a pipeline.
 - **lineage**: Visualizing a pipeline run and showcasing artifact lineage.

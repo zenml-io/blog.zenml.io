@@ -29,7 +29,7 @@ this one's for you.
         <div class="text-center"><img class="" src="/assets/posts/technical_debt.jpg" alt="Technical Debt in ML"></div>
     </div>
 </div>
-<em>Image Source: <a href="https://www.flickr.com/photos/michael_mayer/8701850930">Michael Mayer on Flickr</a> | Attribution Licence found <a href="https://creativecommons.org/licenses/by/2.0/">here</a></em>
+<em>Image Source: <a href="https://www.flickr.com/photos/michael_mayer/8701850930">Michael Mayer on Flickr</a> | Attribution License found <a href="https://creativecommons.org/licenses/by/2.0/">here</a></em>
 
 Here is the premise: You're a ML/DL/AI engineer/analyst/scientist working in a startup/SME/enterprise.
 Its your job to take a bunch of random data from all over the place, and produce value. What do you do?
@@ -69,7 +69,7 @@ preprocess(eval)
 # CELL 4: Train
 model = some_obfuscated_library.fit(train, eval)  # not being petty at all
 
-# if youre lucky here, just look at some normal metrics like accuracy. otherwise:
+# if you're lucky here, just look at some normal metrics like accuracy. otherwise:
 
 # CELL 5: Evaluate
 complicated_evaluation_methods(model)
@@ -80,13 +80,13 @@ complicated_evaluation_methods(model)
 export_model()
 ```
 
-So you're done right? Thats it - boom. Test set results are great. Lets give it to the
+So you're done right? That's it - boom. Test set results are great. Lets give it to the
 ops guy to deploy in production. Lunch break and reddit for the rest of the day!
 
 Okay, am I grossly exaggerating? **Yes**. Is this scarily close to the truth for some
 businesses? **Also yes**.
 
-# So, whats the problem?
+# So, what's the problem?
 
 The problem is that this notebook above is a ball of technical debt that will keep growing,
 if not culled early enough. Lets break down what was wrong
@@ -98,7 +98,7 @@ When you put generalizable logic into non-versioned, throw-away notebook blocks,
 it is taking away the ability for your team to take advantage of it.
 For example, the logic of loading/extracting your data from your static datasource.
 Sure a `pd.read_json` is easy right now, but what happens if the format changes? Worse, what happens if the data grows and is
-split into multiple files? Even worse, what happens if it wont fit into memory any more? What happens if your colleague
+split into multiple files? Even worse, what happens if it won't fit into memory any more? What happens if your colleague
 runs into the same problem - she'll probably go through the same loops as you did not even knowing its an already solved
 problem. Sure, there are solutions to all these problems but are you going to keep solving them in your local notebook?
 
