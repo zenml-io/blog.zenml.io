@@ -1,13 +1,13 @@
 ---
 layout: post
 author: James W. Browne
-title: Aggregating and Reporting KPIs on a Schedule
-description: "Low barrier of entry reporting pipeline to collect, store, and
-display key performance indicators without a data lake."
+title: Aggregating and Reporting ZenML Company Metrics on a Schedule
+description: "We built a low barrier of entry reporting pipeline tool that
+collects, stores, and displays key performance indicators without a data lake."
 category: tech-startup
 tags: tech-startup python tooling
-publish_date: February 14, 2022
-date: 2022-02-09T00:02:00Z
+publish_date: February 15, 2022
+date: 2022-02-15T00:02:00Z
 thumbnail: /assets/posts/aggregating-kpis/kpi.jpg
 image:
   path: /assets/posts/aggregating-kpis/kpi.jpg
@@ -20,7 +20,7 @@ time, I am also acutely aware of how long and slow of a process it can be to
 set up a data warehouse architecture from scratch, especially when you try to
 adhere to all the best practice guides and keep everything future-proof.
 
-So, keeping in mind the great Donald Knuth’s advice about premature
+So, keeping in mind the great Donald Knuth's advice about premature
 optimization being the root of all evil, this post details a lean approach to
 tracking important business metrics for a software startup.
 
@@ -41,17 +41,18 @@ even with these data you are still at a loss on how to act. For this reason, it
 is also important to decide on a so-called
 [North Star Metric](https://mixpanel.com/blog/north-star-metric/) to guide your
 course, the optimization of which should be the final arbiter of how to act. At
-ZenML we have decided to use the number of unique active users as our north
-star metric, though even this can be viewed in slightly different ways,
+ZenML we have decided to use the number of unique serious active users as our
+North Star Metric, though even this can be viewed in slightly different ways,
 depending on which time scale you aggregate on (daily, weekly, monthly).
 
-For a bit more detail on ZenML’s metrics, check out our Substack post written
-by Hamza:
-[Of metrics and orbits](​​https://zenml.substack.com/p/of-metrics-and-orbits).
+This goal can of course change over time, but it's best to maintain a steady
+course for a significant period of time if you want to get anywhere. For a bit
+more detail on ZenML's metrics, check out our Substack post written by Hamza:
+[Of metrics and orbits](https://zenml.substack.com/p/of-metrics-and-orbits).
 
 ## KPI Collector Bot
 
-KPIs can come from many different places and even those that don’t need any
+KPIs can come from many different places and even those that don't need any
 significant computation to derive from raw data still need to be gathered
 together and stored centrally if they are to be of any use for the business.
 Being a tech startup that deals mostly in Python code, the obvious choice to
@@ -66,8 +67,8 @@ to spread out the aggregated values to multiple destinations.
 There are a plethora of data ingestion/processing/transformation tools out
 there, sprung up in the last decade or so to deal with ever-increasing data
 loads cropping up in the tech space (there is an old trope in big data that
-claims that “90% of the world’s data has been created in the last two years”,
-though I have not been able to find a credible source for that). But In the case
+claims that "90% of the world's data has been created in the last two years",
+though I have not been able to find a credible source for that). But in the case
 of our bot, the data in question are so small that there is no reason to go
 beyond the standard tools available in Python, though
 [Pandas](https://pandas.pydata.org/) provides a more user-friendly API to
@@ -124,12 +125,13 @@ def get_blog_stats() -> dict[str, int]:
         return {}
 ```
 
-For publicly available sites this works, however, when data is behind a log-in
-(either because it’s from a private project or a paid service) this approach can
+For publicly available sites this works, however when data is behind a log-in
+(either because it's from a private project or a paid service) this approach can
 still fall short. If all that is required is Basic Authentication or an API
 token, the `requests` library in Python will handle it just fine, though more
 complex authentication flows can be more challenging. For accessing analytics
-for our [podcast (Pipeline Conversations-k--go listen to it if you’re a fan of long-form)](https://podcast.zenml.io/),
+from [Fireside](https://fireside.fm/) for our podcast
+([Pipeline Conversations---go listen to it if you're a fan of long-form](https://podcast.zenml.io/)),
 we used the fully-fledged crawling library [Scrapy](https://scrapy.org/), which
 will [handle login forms just fine](https://python.gotrained.com/scrapy-formrequest-logging-in/).
 
@@ -140,22 +142,22 @@ includes Discord in its list of destinations. Discord supports implementing
 custom bots very simply, by providing a REST endpoint that messages can be
 posted to, which the bot then sends to the desired Discord channel (including
 supporting basic markup for rich formatting). To coincide with our bi-weekly
-sprint reviews and just to kick off the week, Monday’s run posts a message
+sprint reviews and just to kick off the week, Monday's run posts a message
 looking like this:
 
 ![Weekly Discord message](/assets/posts/aggregating-kpis/discord-hook.png)
 
-This includes looking back to the historic data in notion from 14 days ago and
+This includes looking back to the historic data in Notion from 14 days ago and
 comparing how the metrics have shrunk or (hopefully!) grown compared to the last
 sprint.
 
 #### Deployment
 
 At the end of the day, all of this reading, collecting, and writing is fine,
-but we don’t want to have to manually execute it from a terminal on our local
+but we don't want to have to manually execute it from a terminal on our local
 machines. Instead, we deploy the bot to the cloud, using
 [Google Cloud Functions](https://cloud.google.com/functions),
-which let you run (more or less) arbitrary python code in a serverless manner,
+which let you run (more or less) arbitrary Python code in a serverless manner,
 without having to allocate machines and only paying for the time you use to
 execute. To control when this function is executed, an event trigger must be
 specified, in our case, this is the cloud-based asynchronous communication tool
@@ -167,7 +169,7 @@ to it according to a cron pattern.
 One interesting learning during the development of this bot was that Google runs
 Python Cloud Functions as child threads in a
 [Flask](https://flask.palletsprojects.com/en/2.0.x/) server. This is mostly
-irrelevant to the user, however, it did interfere with the way Scrapy runs its
+irrelevant to the user, however it did interfere with the way Scrapy runs its
 web crawlers by default, using multiple threads for parallelization and signals
 to communicate result data between these threads.
 
