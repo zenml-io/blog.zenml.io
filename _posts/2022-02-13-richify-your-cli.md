@@ -5,8 +5,8 @@ title: "Richify that CLI!"
 description: "We recently reworked a number of parts of our CLI interface. Here are some quick wins we implemented along the way that can help you improve how users interact with your CLI via the popular open-source library, rich."
 category: tech-startup
 tags: tech-startup python tooling open-source zenml
-publish_date: February 13, 2022
-date: 2022-02-13T00:02:00Z
+publish_date: February 22, 2022
+date: 2022-02-22T00:02:00Z
 thumbnail: /assets/posts/richify-your-cli/rich-terminal.png
 image:
   path: /assets/posts/richify-your-cli/rich-terminal.png
@@ -55,7 +55,7 @@ install(show_locals=True)
 
 ![A rich printout](../assets/posts/richify-your-cli/rich-print.png)
 
-Just like tracebacks in `rich` are better than the Python defaults, you also have [a better `print`](https://rich.readthedocs.io/en/stable/introduction.html#quick-start). Standard data structures like dicts and lists are converted to strings, syntax highlighting is added and they are clearly presented.
+Just like tracebacks in `rich` are better than the Python defaults, you also have [a better `print`](https://rich.readthedocs.io/en/stable/introduction.html#quick-start). Standard data structures like dicts and lists are converted to strings, syntax highlighting is added and they are clearly presented. (Python already has a tool for this in the standard library — `pprint` — though it doesn't have the colors.)
 
 We don't actually use any `print` statements in our CLI tool, but through `rich` our users get access to it for their own purposes, be it debugging or otherwise.
 
