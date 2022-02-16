@@ -5,7 +5,7 @@ title: Aggregating and Reporting ZenML Company Metrics on a Schedule
 description: "We built a low barrier of entry reporting pipeline tool that
 collects, stores, and displays key performance indicators without a data lake."
 category: tech-startup
-tags: tech-startup python tooling
+tags: tech-startup python tooling evergreen
 publish_date: February 15, 2022
 date: 2022-02-15T00:02:00Z
 thumbnail: /assets/posts/aggregating-kpis/kpi.jpg
@@ -16,22 +16,22 @@ image:
 As somebody who has attempted to work a variety of jobs that all start with
 "data..." I have had the importance of having data to guide your decision-making
 process in business (or just life in general!) drilled into me. At the same
-time, I am also acutely aware of how long and slow of a process it can be to
-set up a data warehouse architecture from scratch, especially when you try to
-adhere to all the best practice guides and keep everything future-proof.
+time, I am also acutely aware of how long and slow of a process it can be to set
+up a data warehouse architecture from scratch, especially when you try to adhere
+to all the best practice guides and keep everything future-proof.
 
-So, keeping in mind the great Donald Knuth's advice about premature
-optimization being the root of all evil, this post details a lean approach to
-tracking important business metrics for a software startup.
+So, keeping in mind the great Donald Knuth's advice about premature optimization
+being the root of all evil, this post details a lean approach to tracking
+important business metrics for a software startup.
 
 ## Key Performance Indicators
 
-To make sure you are on the right track as a business, it is always good to
-find some easily trackable numeric values that correlate with the financial
-success of your business, also known as Key Performance Indicators (KPIs). In
-the Software-as-a-Service startup space, there is of course plenty of existing
-work that an entrepreneur can use to guide their choice of metrics, such as
-this Substack post by David Sacks and Ethan Ruby:
+To make sure you are on the right track as a business, it is always good to find
+some easily trackable numeric values that correlate with the financial success
+of your business, also known as Key Performance Indicators (KPIs). In the
+Software-as-a-Service startup space, there is of course plenty of existing work
+that an entrepreneur can use to guide their choice of metrics, such as this
+Substack post by David Sacks and Ethan Ruby:
 [The SaaS Metrics That Matter](https://sacks.substack.com/p/the-saas-metrics-that-matter).
 
 Although having many KPIs can be useful, the data scientists among the
@@ -75,8 +75,8 @@ beyond the standard tools available in Python, though
 interact with tabular data.
 
 The structure of the bot is an ETL pipeline—though a very simple one—where
-multiple data sources fan-in to a single collector and these collected data
-then fan-out again to multiple destinations.
+multiple data sources fan-in to a single collector and these collected data then
+fan-out again to multiple destinations.
 
 ![KPI Collector Flow Chart](/assets/posts/aggregating-kpis/flowchart.png)
 
@@ -133,7 +133,8 @@ complex authentication flows can be more challenging. For accessing analytics
 from [Fireside](https://fireside.fm/) for our podcast
 ([Pipeline Conversations---go listen to it if you're a fan of long-form](https://podcast.zenml.io/)),
 we used the fully-fledged crawling library [Scrapy](https://scrapy.org/), which
-will [handle login forms just fine](https://python.gotrained.com/scrapy-formrequest-logging-in/).
+will
+[handle login forms just fine](https://python.gotrained.com/scrapy-formrequest-logging-in/).
 
 #### Destinations
 
@@ -153,14 +154,14 @@ sprint.
 
 #### Deployment
 
-At the end of the day, all of this reading, collecting, and writing is fine,
-but we don't want to have to manually execute it from a terminal on our local
+At the end of the day, all of this reading, collecting, and writing is fine, but
+we don't want to have to manually execute it from a terminal on our local
 machines. Instead, we deploy the bot to the cloud, using
-[Google Cloud Functions](https://cloud.google.com/functions),
-which let you run (more or less) arbitrary Python code in a serverless manner,
-without having to allocate machines and only paying for the time you use to
-execute. To control when this function is executed, an event trigger must be
-specified, in our case, this is the cloud-based asynchronous communication tool
+[Google Cloud Functions](https://cloud.google.com/functions), which let you run
+(more or less) arbitrary Python code in a serverless manner, without having to
+allocate machines and only paying for the time you use to execute. To control
+when this function is executed, an event trigger must be specified, in our case,
+this is the cloud-based asynchronous communication tool
 [Google PubSub (Publication/Subscription)](https://cloud.google.com/pubsub). The
 cloud function subscribes to a so-called PubSub topic and a
 [Cloud Scheduler](https://cloud.google.com/scheduler) publishes trigger events
@@ -177,8 +178,9 @@ If you are interested in seeing the KPI Collector in its entirety, watch this
 space—as soon as it is made open source, the Github repository will be linked
 here.
 
-*James W. Browne is a Machine Learning Engineer at ZenML.*
+_James W. Browne is a Machine Learning Engineer at ZenML._
 
-[Image credit: Photo by
-<a href="https://unsplash.com/@celpax?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Celpax</a>
-on <a href="https://unsplash.com/s/photos/kpi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]
+[Image credit: Photo by <a
+href="https://unsplash.com/@celpax?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Celpax</a>
+on <a
+href="https://unsplash.com/s/photos/kpi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]
