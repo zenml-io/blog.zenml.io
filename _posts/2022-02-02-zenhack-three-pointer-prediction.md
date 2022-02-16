@@ -7,7 +7,7 @@ description:
   pipelines to answer two questions: Did Steph Curry change the game of
   basketball? And how many three-pointers will be in the next NBA game?"
 category: zenml
-tags: zenml pipelines tooling applied-zenml
+tags: zenml pipelines tooling applied-zenml evergreen
 publish_date: February 2, 2022
 date: 2022-02-02T00:02:00Z
 thumbnail: /assets/posts/three-pointer-prediction/hoop.jpg

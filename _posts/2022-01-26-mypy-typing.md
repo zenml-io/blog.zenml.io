@@ -7,7 +7,7 @@ description:
   more robust, and some suggestions on how you might approach adding them into a
   large legacy codebase."
 category: zenml
-tags: tooling python tech-startup
+tags: tooling python tech-startup evergreen
 publish_date: January 31, 2022
 date: 2022-01-31T00:02:00Z
 thumbnail: /assets/posts/mypy-typing/mypy-logo.png
