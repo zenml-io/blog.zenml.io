@@ -24,7 +24,7 @@ Smaller changes that you'll notice include updates to our cloud integrations and
 
 The biggest new feature in the 0.6.2 release is our integration with the parts of MLflow that allow you to serve your models. We [previously added MLflow Tracking](https://blog.zenml.io/zero-five-seven-release/), but now hook into the standard format for packaging machine learning models so that you can deploy them for real-time serving using a range of deployment tools. With the new integration you can locally deploy your models [using a local deployment server](https://mlflow.org/docs/latest/models.html#deploy-mlflow-models).
 
-This is the foundation for the obvious next useful step: non-local deployments using tools like [KServe](https://github.com/kserve/kserve) and [BentoML](https://github.com/bentoml/BentoML). ([Community votes](https://github.com/zenml-io/zenml/discussions/215) on that directed us first towards MLflow, but we realise that there are several other options that are commonly used.)
+This is the foundation for the obvious next useful step: non-local deployments using tools like [KServe](https://github.com/kserve/kserve) and [BentoML](https://github.com/bentoml/BentoML). ([Community votes](https://github.com/zenml-io/zenml/discussions/215) on that directed us first towards MLflow, but we realize that there are several other options that are commonly used.)
 
 As part of this new feature, we added a new concept of a 'service'. The service extends the paradigm of a ZenML pipeline to now cover long-running processes or workflows; you are no longer limited to executing run-to-completion pipelines or mini-jobs. With services you can therefore serve the an artifact created by a pipeline and have it reflected in a running component that you can interact with after-the fact. For machine learning, this is what gives us continuous model deployment.
 
@@ -58,7 +58,7 @@ As the codebase and functionality of ZenML grows, we always want to make sure [o
 - We added [some extra parts](https://github.com/zenml-io/zenml/pull/411) to our PR template, which you'll reach when you contribute to the ZenML codebase.
 - We fixed a bug where the CLI wasn't working if you didn't have `git` already installed. (This mainly applies to Windows machines, and our bug fix doesn't apply to any of the `zenml example…` functionality, since that requires `git`.)
 - Added various logging and informative error messages for edge cases.
-- [Fixed a bug](https://github.com/zenml-io/zenml/pull/416) where an IPython REPL would crash when running examples or code that visualised data.
+- [Fixed a bug](https://github.com/zenml-io/zenml/pull/416) where an IPython REPL would crash when running examples or code that visualized data.
 - We now automatically activate integrations when we are unable to find stack components.
 - We now [handle the failure](https://github.com/zenml-io/zenml/pull/390) of workflows for cases where `ModuleNotFound` errors are raised.
 
