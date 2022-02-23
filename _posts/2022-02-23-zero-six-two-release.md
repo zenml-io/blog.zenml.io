@@ -20,7 +20,7 @@ Smaller changes that you'll notice include updates to our cloud integrations and
 
 ## ♻️ Continuous Deployment with MLflow
 
-![A Continuous Deployment workflow. Achievement unlocked!](../assets/posts/release_0_6_2/alexej.gif)
+![A Continuous Deployment workflow. Achievement unlocked!](../assets/posts/release_0_6_2/ZenML0-6-2.gif)
 
 The biggest new feature in the 0.6.2 release is our integration with the parts of MLflow that allow you to serve your models. We [previously added MLflow Tracking](https://blog.zenml.io/zero-five-seven-release/), but now hook into the standard format for packaging machine learning models so that you can deploy them for real-time serving using a range of deployment tools. With the new integration you can locally deploy your models [using a local deployment server](https://mlflow.org/docs/latest/models.html#deploy-mlflow-models).
 
