@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Alex Strick van Linschoten
-title: "What's New in v0.6.2: ♻️ Continuous Deployment with MLflow Deployment"
-description: "Release notes for the new version of ZenML. You'll also find a lot of smaller improvements and bug fixes in this release."
+title: "What's New in v0.6.2: ♻️ Continuous Deployment and a fresh CLI 👩‍💻"
+description: "Release notes for the new version of ZenML. We've added the ability to serve models using MLflow deployments, and we've refreshed how our CLI looks using the popular 'rich' library. You'll also find a lot of smaller improvements, documentation additions and bug fixes in this release."
 category: zenml
 tags: zenml release-notes
 publish_date: February 23, 2022
@@ -12,40 +12,59 @@ image:
   path: /assets/posts/release_0_6_2/hybrid-uGP_6CAD-14-unsplash.jpg
 ---
 
-ZenML 0.6.2 is out and it's all about Cloud storage ☁️! We have improved your ability to work with AWS services and added a brand-new Azure integration! Run your pipelines on AWS and Azure now and let us know how it went [on our Slack](https://zenml.io/slack-invite/).
+ZenML 0.6.2 brings you the ability to serve models using MLflow deployments as well as an updated CLI interface! For a real continuous deployment cycle, we know that ZenML pipelines should be able to handle everything — from pre-processing to training to serving to monitoring and then potentially re-training and re-serving. The interfaces we created in this release are the foundation on which all of this will build.
 
-Smaller changes that you'll notice include much-awaited updates and fixes, including the first iterations of scheduling pipelines and tracking more reproducibility-relevant data in the metadata store. For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.6.1) a glance.
+We also improved how you interact with ZenML through the CLI. Everything looks so much smarter and readable now with the popular `rich` library integrated into our dependencies.
 
-## ☁️ Cloud Integrations: AWS and Azure
+Smaller changes that you'll notice include updates to our cloud integrations and bug fixes for Windows users. For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.6.2) a glance.
 
-You can now use [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/) and [AWS' S3](https://aws.amazon.com/s3?tag=soumet-20) as your [artifact store](https://docs.zenml.io/core-concepts) for ZenML pipelines. We implemented all the relevant `fileio` methods to enable this. If you prefer to use Amazon's AWS or Microsoft's Azure, we hope these new integrations will be the start of more options for you when using ZenML.
+## ♻️ Continuous Deployment with MLflow
 
-To learn more, check out [the new documentation page](https://docs.zenml.io/features/cloud-pipelines/guide-aws-gcp-azure) we just included to guide you in deploying your pipelines to AWS, GCP and/or Azure.
+![A Continuous Deployment workflow. Achievement unlocked!](../assets/posts/release_0_6_2/alexej.gif)
 
-## 🛠 Stack and Integration Improvements
+The biggest new feature in the 0.6.2 release is our integration with the parts of MLflow that allow you to serve your models. We [previously added MLflow Tracking](https://blog.zenml.io/zero-five-seven-release/), but now hook into the standard format for packaging machine learning models so that you can deploy them for real-time serving using a range of deployment tools. With the new integration you can locally deploy your models [using a local deployment server](https://mlflow.org/docs/latest/models.html#deploy-mlflow-models).
 
-Some significant improvements behind the scenes, though some of these are the first in a series of wider improvements to specific areas:
+This is the foundation for the obvious next useful step: non-local deployments using tools like [KServe](https://github.com/kserve/kserve) and [BentoML](https://github.com/bentoml/BentoML). ([Community votes](https://github.com/zenml-io/zenml/discussions/215) on that directed us first towards MLflow, but we realise that there are several other options that are commonly used.)
 
-- All orchestrators now have the ability to configure `Schedule` objects (with the exception of the local orchestrator). This is the first part of our implementation of scheduled pipelines in ZenML. Watch this space for more!
-- You can now attach custom properties to your pipeline so that they are tracked within the ZenML Metadata Store.
-- Our MLFlow Tracking integration now works well with Kubeflow as well as scheduled pipelines. (You might have had issues when trying to use those two together in the previous release.)
+As part of this new feature, we added a new concept of a 'service'. The service extends the paradigm of a ZenML pipeline to now cover long-running processes or workflows; you are no longer limited to executing run-to-completion pipelines or mini-jobs. With services you can therefore store the result coming out of a pipeline and have it reflected in a running component that you can interact with after-the fact. For machine learning, this is what gives us continuous model deployment.
+
+The MLflow deployment integration means you can implement a workflow — for example — where you train a model, make some decision based on the results (perhaps you evaluate the best model) and immediately see the model updated in production as a prediction service.
+
+We're really excited about the production use cases that this feature enables. To learn more, check out [the new documentation page](INSERTHERE) we just included to guide you in understanding continuous training and continuous deployment. The [`mlflow_deployment` example](https://github.com/zenml-io/zenml/tree/main/examples) is also a great way to understand how to use this new feature. ([Use the CLI](https://blog.zenml.io/examples-cli/) to explore and interact with the examples.)
+
+## Improving our CLI with `rich`
+
+![Our CLI tables look much nicer with 'rich'](../assets/posts/release_0_6_2/rich-tables.jpeg)
+
+If you've been using the ZenML CLI utility for a while, you'll know that it was functional but maybe not always *delightful*. We've [taken a bit of time](https://github.com/zenml-io/zenml/pull/392) to make it more pleasant to use from the user perspective. We used 'rich' to add a visual uplift to most user-facing parts of the `zenml` terminal interface. 
+
+Tables are easier to read, spinners conceal log messages that you didn't really need to see, and tracebacks from errors raised while using ZenML are now much more feature-filled and easy to parse. Now that we've added `rich` into our dependencies it will be easier to continually improve the CLI going forward.
+
+We'll be writing more about how we integrated with `rich` on the blog in the coming days, so stay tuned for that!
 
 ## 🗒 Documentation Updates
 
 As the codebase and functionality of ZenML grows, we always want to make sure [our documentation](https://docs.zenml.io/) is clear, up-to-date and easy to use. We made a number of changes in this release that will improve your experience in this regard:
 
 - Ensure *quickstart* example code is identical across everywhere it is referenced.
-- Fix MLFlow Tracking, lineage, statistics and airflow_local examples.
+- Added core concepts back into the [main glossary](https://docs.zenml.io/reference/glossary) (sorted alphabetically and made concise).
+- Added [cloud-specific guide](https://docs.zenml.io/features/cloud-pipelines/guide-aws-gcp-azure) for deploying pipelines.
+- Inside the codebase itself, removed some parameters specified in docstrings that no longer existed in code.
 - Various spelling and typo corrections.
 
-## ➕ Other updates, additions and fixes
+## ➕ Other Updates, Additions and Fixes
 
-- If you're using ZenML in coordination with `mypy` in your own codebase, we added the relevant file that will mark it as a 'typed' package. You're welcome! We saved you from some `mypy` errors 😄.
-- We improved the error message if your ZenML is missing inside a Kubeflow container entrypoint.
-- We now prevent access to the repository during step execution. This stops bad things from happening inadvertently.
-- The materializer registry now can detect sub-classes of defined types.
-- Our computation of the hashes of steps and materialisers (relied on by our caching behavior as well as other things) now works in notebooks rather than just in code executed from files.
-- We improved some error messages to help you better understand what's going on when things go wrong.
+- Our test suite is now more robust. We run our integration tests on `kubeflow` (as well as on the local stack), and integration tests run in separate virtual environments for each integration test.
+- We added [some extra parts](https://github.com/zenml-io/zenml/pull/411) to our PR template, which you'll reach when you contribute to the ZenML codebase.
+- We fixed a bug where the CLI wasn't working if you didn't have `git` already installed. (This mainly applies to Windows machines, and our bug fix doesn't apply to any of the `zenml example…` functionality, since that requires `git`.)
+- Added various logging and informative error messages for edge cases.
+- [Fixed a bug](https://github.com/zenml-io/zenml/pull/416) where an IPython REPL would crash when running examples or code that visualised data.
+- We now automatically activate integrations when we are unable to find stack components.
+- We now [handle the failure](https://github.com/zenml-io/zenml/pull/390) of workflows for cases where `ModuleNotFound` errors are raised.
+
+## 🙌 Community Contributions
+
+We received [a contribution](https://github.com/zenml-io/zenml/pull/422) from [Rasmus Halvgaard](https://github.com/halvgaard), in which he fixed a number of documentation errors and redundancies in our codebase. Thank you, Rasmus!
 
 ## Contribute to ZenML!
 
