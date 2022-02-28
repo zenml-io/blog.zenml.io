@@ -5,14 +5,14 @@ title: "Richify that CLI!"
 description: "We recently reworked a number of parts of our CLI interface. Here are some quick wins we implemented along the way that can help you improve how users interact with your CLI via the popular open-source library, rich."
 category: tech-startup
 tags: tech-startup python tooling open-source zenml
-publish_date: February 22, 2022
-date: 2022-02-22T00:02:00Z
+publish_date: February 28, 2022
+date: 2022-02-28T00:02:00Z
 thumbnail: /assets/posts/richify-your-cli/rich-terminal.png
 image:
   path: /assets/posts/richify-your-cli/rich-terminal.png
 ---
 
-For an open-source tool without a web frontend, one of the main ways users will interact with [ZenML](https://github.com/zenml-io/zenml) is [our command-line interface or CLI](https://apidocs.zenml.io/0.6.1/cli/). I recently worked on an effort to improve the visual experience of anyone using our CLI by integrating the popular open-source library, [`rich`](https://github.com/Textualize/rich), into the code base.
+For an open-source tool without a web frontend, one of the main ways users will interact with [ZenML](https://github.com/zenml-io/zenml) is [our command-line interface or CLI](https://apidocs.zenml.io/0.6.1/cli/). I recently worked on an effort to improve the visual experience of anyone using our CLI by integrating the popular open-source library, [`rich`](https://github.com/Textualize/rich), into the code base. (This was part of [our latest release](https://blog.zenml.io/zero-six-two-release/), which adds a continuous deployment functionality to ZenML!)
 
 The items that follow are what I consider to be low-hanging fruit for any CLI that is written in Python. You may already have custom solutions or use specific packages that offer certain features. It might be worth considering just getting all of that CLI and terminal goodness from [`rich`](https://github.com/Textualize/rich), however, given that it does so much for you with relatively little dependency bloating that you perhaps might expect.
 
