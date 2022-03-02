@@ -194,7 +194,8 @@ topic...
 
 ## Store Services as Artifacts
 
-<a href="https://imgflip.com/i/675obz"><img src="https://i.imgflip.com/675obz.jpg" title="made at imgflip.com"/></a><div><a href="https://imgflip.com/memegenerator">from Imgflip Meme Generator</a></div>
+<a href="https://imgflip.com/i/675obz"><img src="https://i.imgflip.com/675obz.jpg" title="made at imgflip.com"/></a>
+<p><a href="https://imgflip.com/memegenerator">from Imgflip Meme Generator</a></p>
 
 At first sight, this is a bit confusing. Of course, there exist sophisticated
 technologies that allow "freezing" runtime processes, containers, virtual
