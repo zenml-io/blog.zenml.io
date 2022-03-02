@@ -13,9 +13,9 @@ category: zenml
 tags: zenml mlops deployment serving evergreen
 publish_date: March 2, 2022
 date: 2022-03-02T00:02:00Z
-thumbnail: /assets/posts/mlflow-tracking/mlflow-logo.jpeg
+thumbnail: /assets/posts/continuous-deployment/continuous.gif
 image:
-  path: /assets/posts/mlflow-tracking/mlflow-logo.jpeg
+  path: /assets/posts/continuous-deployment/continuous.gif
 ---
 
 There is something particularly memorable about that moment of achievement
