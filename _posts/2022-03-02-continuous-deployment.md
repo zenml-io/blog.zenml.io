@@ -235,7 +235,7 @@ ZenML Services allow you to start exploring the continuous model deployment
 paradigm even in the early experimentation stages of the ML development.
 [The MLflow Deployment Services](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment)
 are implemented as lightweight daemon processes that run locally on your
-machine, but otherwise exhibit the same general behaviour as other model serving
+machine, but otherwise exhibit the same general behavior as other model serving
 platforms that are usually encountered in production.
 
 The decoupling that ZenML makes between Stacks and Artifacts is a convenience
