@@ -2,7 +2,7 @@
 layout: post
 author: Stefan Nica
 title:
-  Continuous Model Deployment with ZenML Pipelines and Services
+  How to painlessly deploy your ML models with ZenML
 description:
   "Connecting model training pipelines to deploying models in production is
   regarded as a difficult milestone on the way to achieving Machine Learning
@@ -44,7 +44,8 @@ ideas is difficult. Automating the deployment of models to production brings
 many challenges that draw in the collaborative efforts of all roles in the
 Machine Learning team, in particular Data Scientists and ML Engineers:
 
-* bridging between the experimentation paradigm and operational processes
+* bridging the gap between the flexibility of the experimentation phases and the
+rigors of deploying and operating models in production
 * ensuring that models meet production requirements and cost constraints
 * dealing with matters related to infrastructure
 * having to use a plethora of tools that not everyone in the ML team is equally
@@ -192,7 +193,7 @@ topic...
 
 ## Store Services as Artifacts
 
-![Indiana Jones was Han Solo in a Previous Life](../assets/posts/continuous-deployment/indiana-jones-han-solo.jpg)
+<a href="https://imgflip.com/i/675obz"><img src="https://i.imgflip.com/675obz.jpg" title="made at imgflip.com"/></a><div><a href="https://imgflip.com/memegenerator">from Imgflip Meme Generator</a></div>
 
 At first sight, this is a bit confusing. Of course, there exist sophisticated
 technologies that allow "freezing" runtime processes, containers, virtual
@@ -232,7 +233,7 @@ else:
 
 ZenML Services allow you to start exploring the continuous model deployment
 paradigm even in the early experimentation stages of the ML development.
-[The MLflow Deployment Servers](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment).
+[The MLflow Deployment Services](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment)
 are implemented as lightweight daemon processes that run locally on your
 machine, but otherwise exhibit the same general behaviour as other model serving
 platforms that are usually encountered in production.
@@ -254,7 +255,7 @@ endpoints from pipeline steps or even outside the pipeline logic.
 In the case of model serving, the MLflow Deployment Service includes convenient
 client methods that facilitate sending inference requests to the server
 without having to worry about low-level communication details such as data
-serialization or packing and unpacking HTTP requests and responses.
+serialization or handling HTTP requests and responses.
 
 This pipeline step extracted from the inference pipeline that is part of the
 [MLflow continuous deployment example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment)
