@@ -10,7 +10,7 @@ description:
   introduces a novel approach to continuous model deployment that renders a
   smooth transition from experimentation to production."
 category: zenml
-tags: zenml mlops continuous deployment serving evergreen
+tags: zenml mlops deployment serving evergreen
 publish_date: March 2, 2022
 date: 2022-03-02T00:02:00Z
 thumbnail: /assets/posts/mlflow-tracking/mlflow-logo.jpeg
@@ -33,20 +33,20 @@ production.
 If you are still someone who relates to this story, then you will be surprised
 to know that this staged approach to ML development is quickly becoming a thing
 of the past. Machine Learning is moving towards a more streamlined development
-model, one that combines continuous training and continuous model deployment
+model, one that combines continuous training together with continuous model deployment
 to production to achieve faster development cycles and better quality.
 In this new discipline, production readiness is not something you leave to the
-last minute, but rather something you have consider early on and improve with
+last minute, but rather something you consider early on and improve with
 each iteration.
 
 However good they may be, it is nonetheless understandable why exercising these
 ideas is difficult. Automating the deployment of models to production brings
-along many challenges that draw in the collaborative efforts of all roles in the
+many challenges that draw in the collaborative efforts of all roles in the
 Machine Learning team, in particular Data Scientists and ML Engineers:
 
 * bridging between the experimentation paradigm and operational processes
 * ensuring that models meet production requirements and cost constraints
-* dealing with infrastructure related matters
+* dealing with matters related to infrastructure
 * having to use a plethora of tools that not everyone in the ML team is equally
 accustomed to
  
@@ -75,12 +75,12 @@ external database or object storage where the application can access them.
 
 However, if your user-facing application relies on real-time predictions made
 on live data and low latency is critical to ensuring a good user experience,
-you no longer afford the overhead of loading models on-demand. In this case,
+you can no longer afford the overhead of loading models on-demand. In this case,
 automating the end-to-end ML workflow is not complete without continuously
 deploying models to some form of model prediction server or service platform.
 
 The online inference use-case introduces a new challenge: managing the
-life-cycle of multiple model prediction service instances and keeping track of
+life-cycle of multiple model prediction service instances. You also have to keep track of
 their configuration and state in a way that doesn't create an operational gap
 between them and the rest of the ML workflow. _Services_ are a new ZenML core
 abstract concept introduced in the 0.6.2 release that seamlessly connects
@@ -88,7 +88,7 @@ pipelines and external runtime environments such as prediction servers and
 provides a unified view of the different moving pieces that make up the
 automated ML workflow.
 
-In contrast to pipelines, that use the run-to-completion execution model, a
+In contrast to pipelines -- that use the run-to-completion execution model -- a
 Service is the representation of a long-running standalone process that is
 uniquely identifiable, has a well-defined operational state and can be
 provisioned and updated independently of other services and pipelines. A Service
@@ -104,9 +104,9 @@ Let's take a tour of the main improvements that ZenML Services bring to the
 Machine Learning model development workflow. We'll use model serving as our
 example, although ZenML Services are an overarching concept that can be applied
 generally to any type of long-running service that needs to be involved in the
-ML life-cycle.
+ML life cycle.
 
-## Track and Manage Services Continuously from Pipeline Steps
+## Track and Manage Services Continuously through Pipeline Steps
 
 Perhaps the best and most obvious feature that you get out of using Services
 with ZenML pipelines is that they are automatically tracked and managed by
@@ -290,7 +290,7 @@ or [KServe](https://kserve.github.io/website).
 
 Developing the Service abstraction horizontally is also a priority, albeit more
 of a long-term goal. For the model serving case, the Service concept should
-ideally act as a unified, tool agnostic model serving interface, entirely
+ideally act as a unified, tool-agnostic model serving interface, entirely
 independent of the Stack configuration, that allows continuous deployment
 pipelines to be portable not just across different infrastructure domains, but
 also across different model serving tools.
