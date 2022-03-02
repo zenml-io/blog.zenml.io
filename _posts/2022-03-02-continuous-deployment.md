@@ -72,7 +72,8 @@ production. The inference pipeline loads up the latest model from storage, runs
 it on a batch of recently collected data and saves the prediction results in an
 external database or object storage where the application can access them.
 
-![Continuous Training and Batch Inference Pipelines](../assets/posts/continuous-deployment/continuous-training-inference.gif)
+![Continuous Training Pipeline](../assets/posts/continuous-deployment/continuous-training.gif)
+![Batch Offline Inference Pipeline](../assets/posts/continuous-deployment/batch-inference.gif)
 
 However, if your user-facing application relies on real-time predictions made
 on live data and low latency is critical to ensuring a good user experience,
