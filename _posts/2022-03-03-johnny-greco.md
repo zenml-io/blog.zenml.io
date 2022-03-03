@@ -21,7 +21,7 @@ In this clip Johnny explains how he thinks about best practices for working with
 
 <iframe src="https://share.descript.com/embed/2Nqq93Aa97W" width="410" height="410" frameborder="0" allowfullscreen></iframe>
 
-I really liked this characterisation of reproducibility as a sort of north-star metric for how to take a best-practice approach to training and deploying models in production. Check out the full episode below or however you prefer to listen to podcasts! 
+I really liked this characterization of reproducibility as a sort of north-star metric for how to take a best-practice approach to training and deploying models in production. Check out the full episode below or however you prefer to listen to podcasts! 
 
 As always, full show notes and links are available on [our dedicated podcast page](https://podcast.zenml.io/).
 
