@@ -12,22 +12,25 @@ image:
   path: /assets/posts/github-actions/gh_actions.png
 ---
 
+...
+
 As ZenML continuously grows and expands its codebase and especially the integrations with other tools, it is vital to 
 also expand our testing framework. Github Actions are an important cog in the Continuous Testing and Continuous 
 Integration machine that we have set up. Originally, we were using one monolythic workflow to
 perform linting, unit-testing, integration testing and uploading coverage to codecov on a matrix of operating systems 
-and python versions. 
+and python versions. Here is one such sample of what the workflow used to look like.
 
-![Our original github actions](../assets/posts/github-actions/oldActions.png)
+![Our original github actions](../assets/posts/github-actions/oldActionSample.png)
 
 One of the largest problems we ran into was the different dependencies each step needed and the 
-consequential nightmare of unexpected up or downgrades of some low-level packages. This would then lead to some confusing error 
-messages and some very long debugging sessions, at the end of which we would have these sort of reactions.
+consequential nightmare of unexpected up or downgrades of some low-level packages. This would then lead to some 
+confusing error messages and some very long debugging sessions, at the end of which our reaction was something like 
+this:
 
 ![](../assets/posts/github-actions/turboFacepalm.png)
 
-The team was growing frustrated with the long testing times and the sporadic errors and a solution needed to be found. 
-Here are 5 changes we implemented to upgrade our CI-pipeline.
+As you might imagine, the team was growing frustrated with the long testing times and the sporadic errors and a solution
+needed to be found. Here are 5 changes we implemented to upgrade our CI-pipeline.
 
 ## 1. Caching
 Caching is a powerful way to speed up repeating processes. `Poetry install` in one such process that is necessary for 
@@ -67,10 +70,12 @@ pyproject.toml. As a consequence the cache can be invalidated by changing the py
 The keen minded among you might have caught on to an inconsistency in my argument from above. We don't commit the 
 poetry.lock file, as we want to always guarantee compatibility with the bleeding edge changes of our integrations and
 dependencies. But by caching the virtual environment directory as a function of the pyproject.toml, aren't we just 
-locking on to the versions when we cache for the first time? And you're completely correct about 
+locking on to the versions when we cache for the first time? 
 
-> :memo: **Note:** Unfortunately, this caching action currently does not give the user control over when the cache is 
-> written to. Currently, in case there is no cache-hit, the cache entry is created at the end of the job. 
+...
+
+{% include note.html content="Unfortunately, this caching action currently does not give the user control over when the cache
+is written to. Currently, in case there is no cache-hit, the cache entry is created at the end of the job." %}
 
 ...
 
@@ -87,7 +92,7 @@ To ensure that our examples run within a kubeflow pipelines orchestrator we do n
 each operating system. Within our new system the kubeflow pipelines integration tests run only on ubuntu. 
 
 Here's an excerpt from our ci.yml. Within the jobs section, we simply give each step in the job a name and call the 
-corresponding reusable workflow. Within these reusable workflows themselfes we just need to make sure to add 
+corresponding reusable workflow. Within these reusable workflows themselves we just need to make sure to add 
 `workflow call` to the list of triggers under `on:`.
 
 ```yaml
@@ -108,8 +113,8 @@ jobs:
     uses: ./.github/workflows/integration-test.yml
 ```
 
-> :bulb: **Tip:** Each Reusable workflow takes the place of a job and is run on a separate machine. As such outputs
-> from one job need to be defined as outputs/inputs explicitly to pass information between jobs 
+{% include note.html content="Each Reusable workflow takes the place of a job and is run on a separate machine. 
+As such outputs from one job need to be defined as outputs/inputs explicitly to pass information between jobs" %}
 
 ```yaml
 name: Integration Test the Examples
@@ -173,6 +178,15 @@ All that is left to do now is reference this action from within your workflows t
 
 ## 4. Comment Interaction
 
+It is hard finding the correct automized triggers for your workflows. "Should we run this on every pull request?
+Should we only run this on PRs from dev to main? Should we run this only for changes within a given directory?". 
+These are some questions you'll inevitably run into, while growing with your CI pipeline. All these questions are great 
+ways to critically examine the motivations and reasons behind each part of your CI pipeline. 
+
+Automating most of these triggers is a great way to ensure your code deployment runs smoothly with guaranteed checks
+in place. However, there are times when you want to have some more fine-grained control.
+
+We at ZenML ran into one such case. ...
 
 ```yaml
     ...
@@ -203,21 +217,26 @@ on:
 
 ## 5. Dealing with Concurrency
 
+I'm sure this has happened to you before. After some intense hours coding away you are ready to commit and oush your
+work. Mere seconds after you have pushed and opened your PR you realize, that you left something in the code, that does 
+not belong. No problem, you think, and within seconds you make the change, commit and push. 
+
+Trust me, I've been there more times than I care to admit. In these cases I would go into the github actions view and
+manually cancel the github action of the first push, to free up the runners. But there is an easier way. 
+By defining what the github action does in case of concurrency, this can be handled automatically. In our case, we want 
+to cancel the action of the older commit, as we want to know if the most recent code version passes our CI pipeline.
+
 
 ```yaml
     ...
 
     concurrency:
-      group: ci-tests-${{ github.ref }}-1
       # New commit on branch cancels running workflows of the same branch
+      group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
 
     ...
 ```
-
-* Sometimes you push, realize you missed something, commit and push again
-* now you have two actions running
-* concurrency stops the previous action
 
 
 ## Conclusion
