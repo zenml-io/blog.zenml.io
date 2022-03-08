@@ -1,0 +1,231 @@
+---
+layout: post
+author: Alexej Penner
+title: "Github actions in action"
+description: " "
+category: tech-startup
+tags: tech-startup python tooling open-source zenml
+publish_date: March 9, 2022
+date: 2022-03-09T00:02:00Z
+thumbnail: /assets/posts/github-actions/gh_actions.png
+image:
+  path: /assets/posts/github-actions/gh_actions.png
+---
+
+As ZenML continuously grows and expands its codebase and especially the integrations with other tools, it is vital to 
+also expand our testing framework. Github Actions are an important cog in the Continuous Testing and Continuous 
+Integration machine that we have set up. Originally, we were using one monolythic workflow to
+perform linting, unit-testing, integration testing and uploading coverage to codecov on a matrix of operating systems 
+and python versions. 
+
+![Our original github actions](../assets/posts/github-actions/oldActions.png)
+
+One of the largest problems we ran into was the different dependencies each step needed and the 
+consequential nightmare of unexpected up or downgrades of some low-level packages. This would then lead to some confusing error 
+messages and some very long debugging sessions, at the end of which we would have these sort of reactions.
+
+![](../assets/posts/github-actions/turboFacepalm.png)
+
+The team was growing frustrated with the long testing times and the sporadic errors and a solution needed to be found. 
+Here are 5 changes we implemented to upgrade our CI-pipeline.
+
+## 1. Caching
+Caching is a powerful way to speed up repeating processes. `Poetry install` in one such process that is necessary for 
+each aspect of our CI pipeline. We didn't want to commit the poetry.lock file to ensure we would keep ZenML compatible 
+with the newest versions of packages that we are integrating with and test regardless of the state on the developers
+machine. On average the poetry installation would take between 10-15 minutes for each cell on the OS-Python Version
+matrix. 
+[Time taken by poetry install](../assets/posts/github-actions/dependencies.png)
+
+Using caching we are able to make this step nearly instantaneous, given a cached venv is available. See the yaml excerpt
+below to see how caching is done within a github actions workflow.
+
+```yaml
+    ...
+      
+    - name: Load cached venv
+      id: cached-poetry-dependencies
+      uses: actions/cache@v2.1.6
+      with:
+        path: |
+          .venv
+          poetry.lock
+        # Cache the complete venv dir for a given os, python version, pyproject.toml
+        key: venv-${{ runner.os }}-python-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}
+
+    - name: Install Project
+      shell: bash
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: poetry install
+    
+    ...
+```
+
+As you can see the cache is saved with a unique key as a function of the runner os, the python version and a hash of the
+pyproject.toml. As a consequence the cache can be invalidated by changing the pyproject.toml. 
+
+The keen minded among you might have caught on to an inconsistency in my argument from above. We don't commit the 
+poetry.lock file, as we want to always guarantee compatibility with the bleeding edge changes of our integrations and
+dependencies. But by caching the virtual environment directory as a function of the pyproject.toml, aren't we just 
+locking on to the versions when we cache for the first time? And you're completely correct about 
+
+> :memo: **Note:** Unfortunately, this caching action currently does not give the user control over when the cache is 
+> written to. Currently, in case there is no cache-hit, the cache entry is created at the end of the job. 
+
+...
+
+## 2. Reusable Workflows
+Reusable workflows are a way to use full fledged workflows as jobs within an overarching workflow.
+In our case this means we have one CI-workflow that calls the Linting, Unit-Test and Integration-Test workflows
+respectively. This enables us to use any combination of these sub-workflows but also trigger them separately. What this 
+also gives us is perfect encapsulation of each separate job. Now our linting dependencies do not affect the
+integrations that we must install for our integration tests. This also allows us more fine grained control over the 
+runners, python versions and other peripheral configurations that can now be done at the level of each reusable 
+workflow.
+
+To ensure that our examples run within a kubeflow pipelines orchestrator we do not need to run integration tests one 
+each operating system. Within our new system the kubeflow pipelines integration tests run only on ubuntu. 
+
+Here's an excerpt from our ci.yml. Within the jobs section, we simply give each step in the job a name and call the 
+corresponding reusable workflow. Within these reusable workflows themselfes we just need to make sure to add 
+`workflow call` to the list of triggers under `on:`.
+
+```yaml
+jobs:
+  poetry-install:
+    uses: ./.github/workflows/poetry-install.yml
+
+  lint-code:
+    needs: poetry-install
+    uses: ./.github/workflows/lint.yml
+
+  unit-test:
+    needs: poetry-install
+    uses: ./.github/workflows/unit-test.yml
+
+  integration-test:
+    needs: poetry-install
+    uses: ./.github/workflows/integration-test.yml
+```
+
+> :bulb: **Tip:** Each Reusable workflow takes the place of a job and is run on a separate machine. As such outputs
+> from one job need to be defined as outputs/inputs explicitly to pass information between jobs 
+
+```yaml
+name: Integration Test the Examples
+
+on: workflow_call
+
+jobs:
+    ...
+```
+
+As you can see the jobs that reference the different workflows have dependencies on one another. Here we make sure the 
+poetry install only has to be done once per os/python-version combination before branching into the 3 separate 
+workflows. Currently each of the sub-workflows are running on the same matrix. One downside of this approach is that the
+poetry-install job is only considered done, when all 6 matrix cells are complete. This means even if the ubuntu/py3.8 
+runner is done with the `poetry-install` after 1 minute, the ubuntu/py3.8 runner for `lint-code` can only start once 
+every other runner on the `poetry-install` job are done. 
+
+
+## 3. Composite Actions
+As we were designing the different reusable workflows it became obvious that we were generating a lot of duplicated 
+code. Each workflow would set up python, do some os specific fine-tuning, install poetry and load the cached venv
+or create it. 
+
+This is where composite actions come into play. A composite workflow condenses multiple steps into one step and makes it
+usable as a step across all of your workflows. Here is a small example of how we use it. 
+
+In the `.github` directory we create an `actions` folder which in turn is populated by a folder for each composite 
+action that you want to create. In our case `.github/actions/setup_environment`. Within this folder you then create 
+a file with the name `action.yml`. Now you just need to add all your steps to the `runs` section and add the 
+`using: "composite"` entry to it. 
+`
+
+```yaml
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+
+    ...
+```
+
+All that is left to do now is reference this action from within your workflows to start using it.
+
+```yaml
+    ...
+      
+    - name: Setup environment with Poetry
+    uses: ./.github/actions/setup_environment
+
+    ...
+```
+
+## 4. Comment Interaction
+
+
+```yaml
+    ...
+    
+on:
+  pull_request:
+    types: [opened, synchronize]
+  issue_comment:
+    types: [created]
+    
+    ...
+      
+    check_comments:
+      runs-on: ubuntu-latest
+      outputs:
+        kf_trigger: ${{ steps.check.outputs.triggered }}
+      steps:
+        - uses: khan/pull-request-comment-trigger@master
+          id: check
+          with:
+            trigger: 'LTKF!'
+            reaction: rocket
+          env:
+            GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+
+    ...
+```
+
+## 5. Dealing with Concurrency
+
+
+```yaml
+    ...
+
+    concurrency:
+      group: ci-tests-${{ github.ref }}-1
+      # New commit on branch cancels running workflows of the same branch
+      cancel-in-progress: true
+
+    ...
+```
+
+* Sometimes you push, realize you missed something, commit and push again
+* now you have two actions running
+* concurrency stops the previous action
+
+
+## Conclusion
+
+
+
+Check it out yourself [here](https://github.com/zenml-io/zenml/blob/develop/.github/workflows/ci.yml)
+![Time taken by poetry install](../assets/posts/github-actions/newActions.png)
+
+
+*Alexej Penner is a Machine Learning Engineer at ZenML.*
