@@ -186,7 +186,21 @@ ways to critically examine the motivations and reasons behind each part of your 
 Automating most of these triggers is a great way to ensure your code deployment runs smoothly with guaranteed checks
 in place. However, there are times when you want to have some more fine-grained control.
 
-We at ZenML ran into one such case. ...
+We at ZenML ran into one such case. One of our integrations is kubeflow pipelines. This integration needs
+to spin up a cluster of pods using k3d in order to deploy kubeflow pipelines. Then all of our other integration tests
+are run on this cluster. This whole process takes about 1 hour to run. This is not something we want running for each 
+push on each PR. Instead, we want to have some control over when it is appropriate. 
+
+The first step there is, to include `workflow_dispatch` as one of the triggers of our reusable workflow that is
+dedicated to kubeflow pipelines integration tests. In order to make this even easier and more integrated into our 
+normal workflow surrounding pull requests, we also added the `pull-request-comment-trigger` action to our ci-pipeline.
+
+Given a specific comment on a pull request, the test gets activated for this pr, meaning that each commit on that pr
+will now trigger the specified kubeflow integration test. 
+
+As we are using the step as a basis to decide if a certain workflow should be executed, it needs to be part of a job of 
+its own. As such we are explicitly defining the output of the check_comments job, so it can be used to conditionally 
+run the kubeflow-tests job. 
 
 ```yaml
     ...
@@ -198,22 +212,37 @@ on:
     types: [created]
     
     ...
-      
-    check_comments:
-      runs-on: ubuntu-latest
-      outputs:
-        kf_trigger: ${{ steps.check.outputs.triggered }}
-      steps:
-        - uses: khan/pull-request-comment-trigger@master
-          id: check
-          with:
-            trigger: 'LTKF!'
-            reaction: rocket
-          env:
-            GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
 
-    ...
+jobs:
+  
+  ... 
+  
+  check_comments:
+    runs-on: ubuntu-latest
+    outputs:
+      kf_trigger: ${{ steps.check.outputs.triggered }}
+    steps:
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: 'LTKF!'
+          reaction: rocket
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+
+  kubeflow-tests:
+    needs: [poetry-install, check_comments]
+    # Run this one only pull-request-comment-trigger was triggered
+    if: ${{ needs.check_comments.outputs.kf_trigger == 'true' }}
+    uses: ./.github/workflows/kubeflow.yml
 ```
+
+{% include note.html content="Make sure you add pull_request and issue_comment to the workflow triggers if you want 
+to use the pull-request-comment-trigger." %}
+
+You may have noticed that there is also a reaction that can be specified `reaction: rocket`. This might be more gimmick 
+than anything. But isn't it the tiny things like this that can take your code from being functional to next level of
+delightful?
 
 ## 5. Dealing with Concurrency
 
@@ -241,10 +270,20 @@ to cancel the action of the older commit, as we want to know if the most recent 
 
 ## Conclusion
 
+When I set out on the journey improving our CI pipelines, the github actions weren't even part of the plan. 
+All I wanted to do was create a pytest fixture that creates a separate virtual environment for each integration test
+(If this is something that interests you, let us know, and we'll do a separate blogpost on that whole story).
+The changes to our github actions just happened naturally on the side. The whole process did feel a bit like 
+[this](https://www.youtube.com/watch?v=AbSehcT19u0) though.
 
+As of 02.03.2022 this is the new ci pipeline that we use here at [ZenML](https://github.com/zenml-io/zenml) and the 
+feedback has been very positive overall. I am sure there will be tweaks, changes and refactorings in the future, but for
+now, this feels Zen. 
 
-Check it out yourself [here](https://github.com/zenml-io/zenml/blob/develop/.github/workflows/ci.yml)
 ![Time taken by poetry install](../assets/posts/github-actions/newActions.png)
 
+Check it out yourself [here](https://github.com/zenml-io/zenml/blob/develop/.github/workflows/ci.yml) and feel free to 
+drop in on [Slack](https://zenml.io/slack-invite/) and let us know if this helped you or even if you know how we can do 
+even better.
 
 *Alexej Penner is a Machine Learning Engineer at ZenML.*
