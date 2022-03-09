@@ -48,7 +48,7 @@ perfectly encapsulated from one another. The user can choose between a few opera
 the 'job.strategy' attribute. However, when developing a Python library, you might want it to be tested on all operating 
 systems and maybe even on multiple Python versions; enter 'strategy matrices'. A matrix allows you to define a set of
 environment configurations. In our case we chose three operating systems (Linux, MacOS, Windows) and two different Python 
-versions (3.7 and 3.8). The matrix then makes sure that the job is run for all 6 possible permutations of these 
+versions (3.7 and 3.8). The matrix then makes sure that the job is run for all six possible permutations of these 
 configurations (eg MacOS + Python 3.7). 
 
 Finally, a job consists of one or many 'steps'. Such steps can be defined through arbitrary command line commands. 
@@ -60,13 +60,13 @@ they can read and write to and from the same filesystem. Information from previo
 # :steam_locomotive: Where we start our journey
 
 Here at ZenML, we've made it our mission to build a tool that spans the complete development process of machine learning 
-solutions in python. Such a lofty vision comes with its own set of challenges. Not least of which is the shear scale 
+solutions in Python. Such a lofty vision comes with its own set of challenges. Not least of which is the shear scale 
 of other tools that need to be integrated. You might have guessed where this is going. Many Integrated tools implies a 
 large amount of integration tests. This is especially true if you also want to verify interoperability.
 
 We start this journey in a very standard, cookie cutter, monolithic workflow. I'm sure many projects start out this way. 
-One yaml file defines a workflow that checks out the code, performs linting, unit-testing, integration testing and 
-finally uploads test coverage to codecov on a matrix of operating systems and python versions. Here is one such sample 
+One yaml file defines a workflow that checks out the code, perform linting, unit testing, integration testing and 
+uploading coverage to [codecov](https://codecov.io/) on a matrix of operating systems and Python versions. Here is one such sample 
 of what the workflow used to look like.
 
 ![Our original Github Actions](../assets/posts/github-actions/oldActionSample.png)
@@ -143,9 +143,9 @@ into multiple, sub-workflows with one purpose each. Luckily, github actions got 
 'Reusable workflows' are a way to use full-fledged workflows as jobs within an overarching workflow.
 In our case this means we have one CI workflow that calls the linting, unit test and integration test workflows
 respectively. This enables us to use any combination of these sub-workflows but also trigger them separately. What this 
-also gives us is perfect encapsulation of each separate job. Now our linting dependencies do not interfere with the
+also gives us is a perfect encapsulation of each separate job. Now our linting dependencies do not interfere with the
 integrations that we must install for our integration tests. This also allows us more fine-grained control over the 
-runners, python versions and other peripheral configurations that can now be done at the level of each 'reusable 
+runners, Python versions and other peripheral configurations that can now be done at the level of each 'reusable 
 workflow'.
 
 Here's an excerpt from our 'ci.yml' file. Within the jobs section, we simply give each step in the job a name and call the 
@@ -190,7 +190,7 @@ As you can see the jobs that reference the different workflows have dependencies
 workflows. Currently, each of the sub-workflows are running on the same matrix. 
 
 {% include note.html content=" One downside of this approach is that the poetry-install job is only considered done, 
-when all 6 matrix cells are complete. This means even if the ubuntu/py3.8 runner is done with the 'poetry-install' 
+when all six matrix cells are complete. This means even if the ubuntu/py3.8 runner is done with the 'poetry-install' 
 after 1 minute, the ubuntu/py3.8 runner for 'lint-code' can only start once every other runner on the 'poetry-install' 
 job are done." %}
 
@@ -254,8 +254,8 @@ ways to critically examine the motivations and reasons behind each part of your 
 Automating most of these triggers helps ensure your code deployment runs smoothly with guaranteed checks
 in place. However, there are times when you want to have some more fine-grained control.
 
-We ran into one such case at ZenML. One of our integrations is Kubeflow Pipelines. This integration needs
-to spin up a cluster of pods using [k3d](https://k3d.io/) in order to deploy Kubeflow Pipelines. Then all of our other integration tests
+We ran into one such case at ZenML. One of our integrations is [Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/).
+This integration needs to spin up a cluster of pods using [k3d](https://k3d.io/) in order to deploy Kubeflow Pipelines. Then all of our other integration tests
 are run on this cluster. This whole process takes about 1 hour to run and so it is not something we want running for each 
 push on each PR. Instead, we want to have some control over when it is appropriate. 
 
