@@ -19,7 +19,8 @@ image:
 Software projects are complex beasts with a multitude of moving pieces that can affect each other in surprising ways. 
 If you're reading this then chances are, you've been part of such projects where you have to build and improve software 
 while ensuring you don't break anything in the process. Testing and Code Standards are the main antidote at your 
-disposal. As such these two tools should be considered integral parts of the software development lifecycle.
+disposal. As such these two tools should be considered integral parts of the software development lifecycle to allow
+for Continuous Integration.
 
 The first thing that pops up when you search for the term 'Continuous Integration' is the following definition:
 'Continuous integration (CI) is the practice of automating the integration of code changes from multiple contributors 
