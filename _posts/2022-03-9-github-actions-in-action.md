@@ -1,8 +1,9 @@
 ---
 layout: post
 author: Alexej Penner
-title: "Github actions in action"
-description: " "
+title: "Five actions to take on your github actions"
+description: "As we outgrew our template github action, these are the five things we added to our github action 
+arsenal to fit our growing needs."
 category: tech-startup
 tags: tech-startup python tooling open-source zenml
 publish_date: March 9, 2022
@@ -12,11 +13,9 @@ image:
   path: /assets/posts/github-actions/gh_actions.png
 ---
 
-...
-
 As ZenML continuously grows and expands its codebase and especially the integrations with other tools, it is vital to 
 also expand our testing framework. Github Actions are an important cog in the Continuous Testing and Continuous 
-Integration machine that we have set up. Originally, we were using one monolythic workflow to
+Integration machine that we have set up. Originally, we were using one monolithic workflow to
 perform linting, unit-testing, integration testing and uploading coverage to codecov on a matrix of operating systems 
 and python versions. Here is one such sample of what the workflow used to look like.
 
@@ -67,6 +66,11 @@ below to see how caching is done within a github actions workflow.
 As you can see the cache is saved with a unique key as a function of the runner os, the python version and a hash of the
 pyproject.toml. As a consequence the cache can be invalidated by changing the pyproject.toml. 
 
+{% include note.html content="Unfortunately, this caching action currently does not give the user control over the exact
+point in the pipeline when the cache is written to. Currently, in case there is no cache-hit, the cache entry is created
+at the end of the job. This means you need to structure your jobs purposefully in such a way, that they reflect the 
+state you want to cache, at their end." %}
+
 The keen minded among you might have caught on to an inconsistency in my argument from above. We don't commit the 
 poetry.lock file, as we want to always guarantee compatibility with the bleeding edge changes of our integrations and
 dependencies. But by caching the virtual environment directory as a function of the pyproject.toml, aren't we just 
@@ -74,10 +78,8 @@ locking on to the versions when we cache for the first time? That is correct, ho
 state on a developers machine, instead we have a state for each combo of os and python version. On top of this, we can 
 now decide on a cadence in which we periodically invalidate the cache.
 
-{% include note.html content="Unfortunately, this caching action currently does not give the user control over the exact
-point in the pipeline when the cache is written to. Currently, in case there is no cache-hit, the cache entry is created
-at the end of the job. This means you need to structure your jobs purposefully in such a way, that they reflect the 
-state you want to cache, at their end." %}
+{% include note.html content="Currently there is no way to explicitly invalidate cache, so you'll have to use a 
+workaround, like changing something innocuous in a hashed file, or to add date-stubs in the cache-key." %}
 
 ## 2. Reusable Workflows
 Reusable workflows are a way to use full-fledged workflows as jobs within an overarching workflow.
