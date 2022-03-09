@@ -70,21 +70,21 @@ pyproject.toml. As a consequence the cache can be invalidated by changing the py
 The keen minded among you might have caught on to an inconsistency in my argument from above. We don't commit the 
 poetry.lock file, as we want to always guarantee compatibility with the bleeding edge changes of our integrations and
 dependencies. But by caching the virtual environment directory as a function of the pyproject.toml, aren't we just 
-locking on to the versions when we cache for the first time? 
+locking on to the versions when we cache for the first time? That is correct, however we now are not dependent on the 
+state on a developers machine, instead we have a state for each combo of os and python version. On top of this, we can 
+now decide on a cadence in which we periodically invalidate the cache.
 
-...
-
-{% include note.html content="Unfortunately, this caching action currently does not give the user control over when the cache
-is written to. Currently, in case there is no cache-hit, the cache entry is created at the end of the job." %}
-
-...
+{% include note.html content="Unfortunately, this caching action currently does not give the user control over the exact
+point in the pipeline when the cache is written to. Currently, in case there is no cache-hit, the cache entry is created
+at the end of the job. This means you need to structure your jobs purposefully in such a way, that they reflect the 
+state you want to cache, at their end." %}
 
 ## 2. Reusable Workflows
-Reusable workflows are a way to use full fledged workflows as jobs within an overarching workflow.
+Reusable workflows are a way to use full-fledged workflows as jobs within an overarching workflow.
 In our case this means we have one CI-workflow that calls the Linting, Unit-Test and Integration-Test workflows
 respectively. This enables us to use any combination of these sub-workflows but also trigger them separately. What this 
 also gives us is perfect encapsulation of each separate job. Now our linting dependencies do not affect the
-integrations that we must install for our integration tests. This also allows us more fine grained control over the 
+integrations that we must install for our integration tests. This also allows us more fine-grained control over the 
 runners, python versions and other peripheral configurations that can now be done at the level of each reusable 
 workflow.
 
@@ -127,10 +127,10 @@ jobs:
 
 As you can see the jobs that reference the different workflows have dependencies on one another. Here we make sure the 
 poetry install only has to be done once per os/python-version combination before branching into the 3 separate 
-workflows. Currently each of the sub-workflows are running on the same matrix. One downside of this approach is that the
-poetry-install job is only considered done, when all 6 matrix cells are complete. This means even if the ubuntu/py3.8 
-runner is done with the `poetry-install` after 1 minute, the ubuntu/py3.8 runner for `lint-code` can only start once 
-every other runner on the `poetry-install` job are done. 
+workflows. Currently, each of the sub-workflows are running on the same matrix. One downside of this approach is that 
+the poetry-install job is only considered done, when all 6 matrix cells are complete. This means even if the 
+ubuntu/py3.8 runner is done with the `poetry-install` after 1 minute, the ubuntu/py3.8 runner for `lint-code` can only 
+start once every other runner on the `poetry-install` job are done. 
 
 
 ## 3. Composite Actions
@@ -280,7 +280,7 @@ As of 02.03.2022 this is the new ci pipeline that we use here at [ZenML](https:/
 feedback has been very positive overall. I am sure there will be tweaks, changes and refactorings in the future, but for
 now, this feels Zen. 
 
-![Time taken by poetry install](../assets/posts/github-actions/newActions.png)
+![Time taken by poetry install](../assets/posts/github-actions/newGhActions.gif)
 
 Check it out yourself [here](https://github.com/zenml-io/zenml/blob/develop/.github/workflows/ci.yml) and feel free to 
 drop in on [Slack](https://zenml.io/slack-invite/) and let us know if this helped you or even if you know how we can do 
