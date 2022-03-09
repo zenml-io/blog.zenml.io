@@ -1,9 +1,10 @@
 ---
 layout: post
 author: Alexej Penner
-title: "How we made our integration tests delightful by optimizing the way our GitHub actions run our test suite "
-description: "As we outgrew our template github action, these are the five things we added to our github action 
-arsenal to fit our growing needs."
+title: "How we made our integration tests delightful by optimizing the way our GitHub Actions run our test suite "
+description: "As we outgrew our initial template Github Action workflow, here's the five things we added to our 
+Github Action arsenal to fit our growing needs; Caching, Reusable Workflows, Composite Actions, Comment Triggers and
+Concurrency Management."
 category: tech-startup
 tags: tech-startup python tooling open-source zenml
 publish_date: March 9, 2022
@@ -13,12 +14,17 @@ image:
   path: /assets/posts/github-actions/gh_actions.png
 ---
 
-# :round_pushpin: Whats the point of Github Actions?
+# :round_pushpin: What's the point of Github Actions?
 
-The first thing that pops up when you google the term `Continuous Integration` is the following definition:
-`Continuous integration (CI) is the practice of automating the integration of code changes from multiple contributors 
-into a single software project.` A big part of CI is automated quality control before allowing the code increment
-to be merged into the productive code base. This quality control can get arbitrarily complex, layered and even
+Software projects are complex beasts with a multitude of moving pieces that can affect each other in surprising ways. 
+If you're reading this then chances are, you've been part of such projects where you have to build and improve software 
+while ensuring you don't break anything in the process. Testing and Code Standards are the main antidote at your 
+disposal. As such these two tools should be considered integral parts of the software development lifecycle.
+
+The first thing that pops up when you search for the term 'Continuous Integration' is the following definition:
+'Continuous integration (CI) is the practice of automating the integration of code changes from multiple contributors 
+into a single software project.' A big part of CI is automated quality control before allowing the new code
+to be merged into the productive codebase. This quality control can get arbitrarily complex, layered and even
 convoluted. As such it is important to grow your quality control framework at the same pace as your product increases
 in scale and complexity.
 
