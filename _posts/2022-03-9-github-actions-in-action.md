@@ -87,11 +87,13 @@ each aspect of our CI pipeline. We didn't want to commit the 'poetry.lock' file 
 with the newest versions of packages that we are integrating with and test regardless of the state on the developer's
 machine. On average the [Poetry](https://python-poetry.org/) installation would take between 10-15 minutes for each cell on the OS-Python Version
 matrix. 
-[Time taken by poetry install](../assets/posts/github-actions/dependencies.png)
+
+![Time taken by poetry install](../assets/posts/github-actions/dependencies.png)
 
 Using caching we are able to make this step nearly instantaneous, assuming a cached venv is available. See the *yaml* excerpt
 below to see how caching is done within a Github Actions workflow.
 
+{% raw %}
 ```yaml
     ...
       
@@ -112,6 +114,7 @@ below to see how caching is done within a Github Actions workflow.
     
     ...
 ```
+{% endraw %}
 
 As you can see the cache is saved with a unique key as a function of the runner operating system, the Python version and a hash of the
 'pyproject.toml'. As a consequence the cache can be invalidated by changing the 'pyproject.toml'.
@@ -132,7 +135,7 @@ now decide on a cadence by which we periodically invalidate the cache.
 workaround, like changing something innocuous in a hashed file, or to add date-stubs in the cache-key." %}
 
 ## :factory: 2. Modularize your monolith with reusable workflows
-The [Separation of Concerns (SoC)]{https://nalexn.github.io/separation-of-concerns/} is an important principle
+The [Separation of Concerns (SoC)](https://nalexn.github.io/separation-of-concerns/) is an important principle
 in software development: "The principle is simple: don’t write your program as one solid block,
 instead, break up the code into chunks that are finalized tiny pieces of the system each able to complete a 
 simple distinct job." This makes your code more understandable, reusable and maintainable.
@@ -153,6 +156,7 @@ corresponding reusable workflow. Within these reusable workflows themselves we j
 `workflow_call` to the list of triggers under `on:`.
 
 '.github/workflows/lint.yml'
+{% raw %}
 ```yaml
 name: Integration Test the Examples
 
@@ -161,8 +165,10 @@ on: workflow_call
 jobs:
     ...
 ```
+{% endraw %}
 
 '.github/workflows/ci.yml'
+{% raw %}
 ```yaml
 jobs:
   poetry-install:
@@ -180,6 +186,8 @@ jobs:
     needs: poetry-install
     uses: ./.github/workflows/integration-test.yml
 ```
+{% endraw %}
+
 
 {% include note.html content="Each reusable workflow takes the place of a job and is run on a separate machine. 
 As such outputs from one job need to be defined as outputs/inputs explicitly to pass information between jobs." %}
@@ -209,6 +217,7 @@ a file with the name 'action.yml'. Now you just need to add all your steps to th
 
 
 '.github/actions/setup_environment/action.yaml'
+{% raw %}
 ```yaml
 runs:
   using: "composite"
@@ -226,10 +235,12 @@ runs:
 
     ...
 ```
+{% endraw %}
 
 All that is left to do now is reference this action from within your workflows to start using it.
 
 '.github/workflows/lint.yml'
+{% raw %}
 ```yaml
     ...
       
@@ -238,6 +249,7 @@ All that is left to do now is reference this action from within your workflows t
 
     ...
 ```
+{% endraw %}
 
 You might be asking yourself: "What is the difference between these 'composite actions' and 'reusable workflows'?" Short 
 answer is, 'composite actions' are a collection of commands while 'reusable workflows' also contain information on where
@@ -271,6 +283,7 @@ its own. As such we are explicitly defining the output of the 'check_comments' j
 run the Kubeflow tests job. 
 
 '.github/workflows/ci.yml'
+{% raw %}
 ```yaml
     ...
     
@@ -305,6 +318,7 @@ jobs:
     if: ${{ needs.check_comments.outputs.kf_trigger == 'true' }}
     uses: ./.github/workflows/kubeflow.yml
 ```
+{% endraw %}
 
 {% include note.html content="Make sure you add 'pull_request' and 'issue_comment' to the workflow triggers if you want 
 to use the 'pull-request-comment-trigger'." %}
@@ -316,7 +330,7 @@ You may have noticed that there is also a reaction that can be specified `reacti
 than anything. But isn't it the tiny things like this that can take your code from being functional to next level of
 delightful?
 
-!(Comment on PR with a rocket-emoji reaction)[../assets/posts/github-actions/Rocket.png]
+![Comment on PR with a rocket-emoji reaction](../assets/posts/github-actions/Rocket.png)
 
 {% include note.html content="Using 'issue-comment' as a trigger seems to currently be only supported if the workflow with
 this type of trigger has ended up on the default branch of the repo already. As such this feature is not fully tested on
@@ -334,7 +348,7 @@ manually cancel the Github Action of the first push to free up the runners. But 
 By defining what the Github Action does in case of concurrency, this can be handled automatically. In our case, we want 
 to cancel the action of the older commit, as we want to know if the most recent code version passes our CI pipeline.
 
-
+{% raw %}
 ```yaml
     ...
 
@@ -345,6 +359,7 @@ to cancel the action of the older commit, as we want to know if the most recent 
 
     ...
 ```
+{% endraw %}
 
 # :rocket: Our final process (for now)
 
