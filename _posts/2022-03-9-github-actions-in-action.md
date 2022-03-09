@@ -1,9 +1,9 @@
 ---
 layout: post
 author: Alexej Penner
-title: "How we made our integration tests delightful by optimizing the way our GitHub Actions run our test suite "
+title: "How we made our integration tests delightful by optimizing the way our GitHub Actions run our test suite"
 description: "As we outgrew our initial template Github Action workflow, here's the five things we added to our 
-Github Action arsenal to fit our growing needs; Caching, Reusable Workflows, Composite Actions, Comment Triggers and
+Github Action arsenal to fit our growing needs: Caching, Reusable Workflows, Composite Actions, Comment Triggers and
 Concurrency Management."
 category: tech-startup
 tags: tech-startup python tooling open-source zenml
@@ -18,7 +18,7 @@ image:
 
 Software projects are complex beasts with a multitude of moving pieces that can affect each other in surprising ways. 
 If you're reading this then chances are, you've been part of such projects where you have to build and improve software 
-while ensuring you don't break anything in the process. Testing and Code Standards are the main antidote at your 
+while ensuring you don't break anything in the process. Testing and code standards are the main antidote at your 
 disposal. As such these two tools should be considered integral parts of the software development lifecycle to allow
 for Continuous Integration.
 
@@ -36,7 +36,7 @@ Unit and integration tests are also important ways of adding quality control you
 
 The practice of DevOps aims to seamlessly integrate such quality control workflows into the development workflow. 
 When you use Github for code versioning, you can use Github Actions as a tool that can orchestrate these code quality 
-checks. Github Actions enables you to define workflows in 'yaml' files. A 'workflow' is a recipe of instructions that you
+checks. Github Actions enables you to define workflows in *yaml* files. A 'workflow' is a recipe of instructions that you
 would like to run at a given time. 
 
 'Workflows' can be equipped with triggers that define when it should run. Your workflow could run, for example, when someone makes a 
@@ -45,7 +45,7 @@ more 'jobs'.
 
 A 'job' is a collection of instructions that is run on a virtual machine of its own. As such jobs are 
 perfectly encapsulated from one another. The user can choose between a few operating systems for each 'job' as part of 
-the 'job.strategy' attribute. However, when developing a Python library, you might want it to be tested on all operating 
+the `job.strategy` attribute. However, when developing a Python library, you might want it to be tested on all operating 
 systems and maybe even on multiple Python versions; enter 'strategy matrices'. A matrix allows you to define a set of
 environment configurations. In our case we chose three operating systems (Linux, MacOS, Windows) and two different Python 
 versions (3.7 and 3.8). The matrix then makes sure that the job is run for all six possible permutations of these 
@@ -53,7 +53,7 @@ configurations (eg MacOS + Python 3.7).
 
 Finally, a job consists of one or many 'steps'. Such steps can be defined through arbitrary command line commands. 
 Bash scripts can be invoked, Python scripts can be called or you can use a plethora of steps produced by the broader 
-community (see [Github Action Merketplace](https://github.com/marketplace?type=actions)). These community steps are 
+community (see [Github Action Marketplace](https://github.com/marketplace?type=actions)). These community steps are 
 called 'actions'. Steps can be executed conditionally. Importantly, all steps of a job run on the same machine. As such
 they can read and write to and from the same filesystem. Information from previous steps can also be directly accessed.
 
@@ -61,10 +61,10 @@ they can read and write to and from the same filesystem. Information from previo
 
 Here at ZenML, we've made it our mission to build a tool that spans the complete development process of machine learning 
 solutions in Python. Such a lofty vision comes with its own set of challenges. Not least of which is the shear scale 
-of other tools that need to be integrated. You might have guessed where this is going. Many Integrated tools implies a 
-large amount of integration tests. This is especially true if you also want to verify interoperability.
+of other tools that need to be integrated. You might have guessed where this is going. Many integrated tools implies a 
+large number of integration tests. This is especially true if you also want to verify interoperability.
 
-We start this journey in a very standard, cookie cutter, monolithic workflow. I'm sure many projects start out this way. 
+We start this journey in a very standard, cookie-cutter, monolithic workflow. I'm sure many projects start out this way. 
 One yaml file defines a workflow that checks out the code, perform linting, unit testing, integration testing and 
 uploading coverage to [codecov](https://codecov.io/) on a matrix of operating systems and Python versions. Here is one such sample 
 of what the workflow used to look like.
@@ -81,15 +81,15 @@ this:
 As you might imagine, the team was growing frustrated with the long testing times and the sporadic errors and a solution
 needed to be found. Here are five changes we implemented to upgrade our CI pipeline.
 
-## :fast_forward: 1. Speed up your workflows with 'Caching'
-Caching is a powerful way to speed up repeating processes. We run 'poetry install' in one such process that is necessary for 
-each aspect of our CI pipeline. We didn't want to commit the 'poetry.lock' file to ensure we would keep ZenML compatible 
+## :fast_forward: 1. Speed up your workflows with caching
+Caching is a powerful way to speed up repeating processes. We run `poetry install` in one such process that is necessary for 
+each aspect of our CI pipeline. We didn't want to commit the `poetry.lock` file to ensure we would keep ZenML compatible 
 with the newest versions of packages that we are integrating with and test regardless of the state on the developer's
 machine. On average the [Poetry](https://python-poetry.org/) installation would take between 10-15 minutes for each cell on the OS-Python Version
 matrix. 
 [Time taken by poetry install](../assets/posts/github-actions/dependencies.png)
 
-Using caching we are able to make this step nearly instantaneous, assuming a cached venv is available. See the yaml excerpt
+Using caching we are able to make this step nearly instantaneous, assuming a cached venv is available. See the *yaml* excerpt
 below to see how caching is done within a Github Actions workflow.
 
 ```yaml
@@ -114,7 +114,7 @@ below to see how caching is done within a Github Actions workflow.
 ```
 
 As you can see the cache is saved with a unique key as a function of the runner operating system, the Python version and a hash of the
-'pyproject.toml'. As a consequence the cache can be invalidated by changing the 'pyproject.toml'. 
+`pyproject.toml`. As a consequence the cache can be invalidated by changing the `pyproject.toml`.
 
 {% include note.html content="Unfortunately, this caching action currently does not give the user control over the exact
 moment in the pipeline when the cache is written to. As things currently stand, if there is no cache-hit then the cache entry is created
@@ -122,8 +122,8 @@ at the end of the job. This means you need to structure your jobs purposefully i
 state you want to cache, at their end." %}
 
 The keen-minded among you might have caught on to an inconsistency in my argument from above. We don't commit the 
-'poetry.lock' file, as we want to always guarantee compatibility with the bleeding-edge changes of our integrations and
-dependencies. But by caching the virtual environment directory as a function of the 'pyproject.toml', aren't we just 
+`poetry.lock` file, as we want to always guarantee compatibility with the bleeding-edge changes of our integrations and
+dependencies. But by caching the virtual environment directory as a function of the `pyproject.toml`, aren't we just 
 locking on to the versions when we cache for the first time? That is correct, however we now are not dependent on the 
 state on a developer's machine; instead we have a state for each combination of OS and Python version. On top of this, we can 
 now decide on a cadence by which we periodically invalidate the cache.
@@ -131,24 +131,24 @@ now decide on a cadence by which we periodically invalidate the cache.
 {% include note.html content="Currently there is no way to explicitly invalidate the cache, so you'll have to use a 
 workaround, like changing something innocuous in a hashed file, or to add date-stubs in the cache-key." %}
 
-## :factory: 2. Modularize your monolith with 'Reusable Workflows'
+## :factory: 2. Modularize your monolith with reusable workflows
 The [Separation of Concerns (SoC)]{https://nalexn.github.io/separation-of-concerns/} is an important principle
-in software development. It basically states: "The principle is simple: don’t write your program as one solid block,
+in software development: "The principle is simple: don’t write your program as one solid block,
 instead, break up the code into chunks that are finalized tiny pieces of the system each able to complete a 
 simple distinct job." This makes your code more understandable, reusable and maintainable.
 
-In order to grow our github actions that meant splitting the monolithic workflow that was responsible for everything
-into multiple, sub-workflows with one purpose each. Luckily, github actions got us coverd.
+In order to grow our Github Actions that meant splitting the monolithic workflow that was responsible for everything
+into multiple, sub-workflows with one purpose each. Luckily, Github Actions could do all this.
 
-'Reusable workflows' are a way to use full-fledged workflows as jobs within an overarching workflow.
+Reusable workflows are a way to use full-fledged workflows as jobs within an overarching workflow.
 In our case this means we have one CI workflow that calls the linting, unit test and integration test workflows
 respectively. This enables us to use any combination of these sub-workflows but also trigger them separately. What this 
 also gives us is a perfect encapsulation of each separate job. Now our linting dependencies do not interfere with the
 integrations that we must install for our integration tests. This also allows us more fine-grained control over the 
 runners, Python versions and other peripheral configurations that can now be done at the level of each 'reusable 
-workflow'.
+workflow.
 
-Here's an excerpt from our 'ci.yml' file. Within the jobs section, we simply give each step in the job a name and call the 
+Here's an excerpt from our `ci.yml` file. Within the jobs section, we simply give each step in the job a name and call the 
 corresponding reusable workflow. Within these reusable workflows themselves we just need to make sure to add 
 `workflow_call` to the list of triggers under `on:`.
 
@@ -189,12 +189,12 @@ As you can see the jobs that reference the different workflows have dependencies
 'poetry install' only has to be done once per OS/Python version combination before branching into the three separate 
 workflows. Currently, each of the sub-workflows are running on the same matrix. 
 
-{% include note.html content=" One downside of this approach is that the poetry-install job is only considered done, 
+{% include note.html content=" One downside of this approach is that the `poetry install` job is only considered done, 
 when all six matrix cells are complete. This means even if the ubuntu/py3.8 runner is done with the 'poetry-install' 
-after 1 minute, the ubuntu/py3.8 runner for 'lint-code' can only start once every other runner on the 'poetry-install' 
+after 1 minute, the Ubuntu/Py3.8 runner for `lint-code` can only start once every other runner on the `poetry-install` 
 job are done." %}
 
-## :repeat: 3. Avoid code duplication with 'Composite Actions'
+## :repeat: 3. Avoid code duplication with composite actions
 As we were designing the different reusable workflows it became obvious that we were generating a lot of duplicated 
 code. Each workflow would set up Python, do some OS-specific fine-tuning, install Poetry and load the cached venv
 or create it. 
@@ -202,9 +202,9 @@ or create it.
 This is where composite actions come into play. A composite action condenses multiple steps into one step and makes it
 usable as a step across all of your workflows. Here is a small example of how we use it. 
 
-In the '.github' directory we create an 'actions' folder which in turn is populated by a folder for each composite 
-action that you want to create -- in our case '.github/actions/setup_environment'. Within this folder you then create 
-a file with the name 'action.yml'. Now you just need to add all your steps to the `runs` section and add the 
+In the `.github` directory we create an `actions` folder which in turn is populated by a folder for each composite 
+action that you want to create -- in our case `.github/actions/setup_environment`. Within this folder you then create 
+a file with the name `action.yml`. Now you just need to add all your steps to the `runs` section and add the 
 `using: "composite"` entry to it. 
 
 
@@ -244,10 +244,10 @@ answer is, 'composite actions' are a collection of commands while 'reusable work
 and how to be executed. For more information check out [this](https://chris48s.github.io/blogmarks/github/2021/11/06/composite-actions-reusable-workflows.html#:~:text=A%20composite%20action%20is%20presented,separately%20in%20the%20summary%20output.)
 blogpost that goes a bit more in detail on the differences.
 
-## :speech_balloon: 4. Expose control of github actions to developers with 'Comment Interaction'
+## :speech_balloon: 4. Expose control of Github Actions to developers with comment interaction
 
-It is hard finding the correct automized triggers for your workflows. "Should we run this on every pull request?
-Should we only run this on PRs from 'dev' to 'main'? Should we run this only for changes within a given directory?" 
+It is hard finding the correct atomized triggers for your workflows. "Should we run this on every pull request?
+Should we only run this on PRs from `dev` to `main`? Should we run this only for changes within a given directory?" 
 These are some questions you'll inevitably run into while growing with your CI pipeline. All these questions are useful 
 ways to critically examine the motivations and reasons behind each part of your CI pipeline. 
 
@@ -259,15 +259,15 @@ This integration needs to spin up a cluster of pods using [k3d](https://k3d.io/)
 are run on this cluster. This whole process takes about 1 hour to run and so it is not something we want running for each 
 push on each PR. Instead, we want to have some control over when it is appropriate. 
 
-The first part of the fix to this problem is to include 'workflow_dispatch' as one of the triggers for our reusable workflow that is
+The first part of the fix to this problem is to include `workflow_dispatch` as one of the triggers for our reusable workflow that is
 dedicated to Kubeflow Pipelines integration tests. In order to make this even easier and more integrated into our 
-normal workflow surrounding pull requests, we also added the 'pull-request-comment-trigger' action to our CI pipeline.
+normal workflow surrounding pull requests, we also added the `pull-request-comment-trigger` action to our CI pipeline.
 
 Given a specific comment on a pull request, the test gets activated for this PR, meaning that each commit on that PR 
 will now trigger the specified Kubeflow Pipelines integration test. 
 
 As we are using the step as a basis to decide if a certain workflow should be executed, it needs to be part of a job of 
-its own. As such we are explicitly defining the output of the 'check_comments' job, so it can be used to conditionally 
+its own. As such we are explicitly defining the output of the `check_comments` job, so it can be used to conditionally 
 run the Kubeflow tests job. 
 
 '.github/workflows/ci.yml'
@@ -306,24 +306,24 @@ jobs:
     uses: ./.github/workflows/kubeflow.yml
 ```
 
-{% include note.html content="Make sure you add 'pull_request' and 'issue_comment' to the workflow triggers if you want 
-to use the 'pull-request-comment-trigger'." %}
+{% include note.html content="Make sure you add `pull_request` and `issue_comment` to the workflow triggers if you want 
+to use the `pull-request-comment-trigger`." %}
 
-In our case, if you want to run integration tests on kubeflow pipelines specifically, you simply comment 'LTKF!', short
+In our case, if you want to run integration tests on Kubeflow Pipelines specifically, you simply comment 'LTKF!', short
 for 'Let The Kubes Flow'.
 
-You may have noticed that there is also a reaction that can be specified 'reaction: rocket'. This might be more gimmick 
+You may have noticed that there is also a reaction that can be specified `reaction: rocket`. This might be more gimmick 
 than anything. But isn't it the tiny things like this that can take your code from being functional to next level of
 delightful?
 
 !(Comment on PR with a rocket-emoji reaction)[../assets/posts/github-actions/Rocket.png]
 
-{% include note.html content="Using issue-comment as a trigger seems to currently be only supported if the workflow with
+{% include note.html content="Using `issue-comment` as a trigger seems to currently be only supported if the workflow with
 this type of trigger has ended up on the default branch of the repo already. As such this feature is not fully tested on
 our side yet as it will only reach our main branch in the coming week. I'll make sure to update this if something
 changes along the way." %}
 
-## :recycle: 5. Reduce wasted compute resources by avoiding unwanted 'Concurrency'
+## :recycle: 5. Reduce wasted compute resources by avoiding unwanted concurrency
 
 I'm sure this has happened to you before. After some intense hours coding away you are ready to commit and oush your
 work. Mere seconds after you have pushed and opened your PR you realize that you left something in the code that does 
