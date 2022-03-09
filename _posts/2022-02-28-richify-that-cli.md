@@ -15,15 +15,6 @@ image:
 For an open-source tool without a web frontend, one of the main ways users will interact with [ZenML](https://github.com/zenml-io/zenml) is [our command-line interface or CLI](https://apidocs.zenml.io/0.6.1/cli/). I recently worked on an effort to improve the visual experience of anyone using our CLI by integrating the popular open-source library, [`rich`](https://github.com/Textualize/rich), into the code base. (This was part of [our latest release](https://blog.zenml.io/zero-six-two-release/), which adds a continuous deployment functionality to ZenML!)
 
 The items that follow are what I consider to be low-hanging fruit for any CLI that is written in Python. You may already have custom solutions or use specific packages that offer certain features. It might be worth considering just getting all of that CLI and terminal goodness from [`rich`](https://github.com/Textualize/rich), however, given that it does so much for you with relatively little dependency bloating that you perhaps might expect.
-```yaml
-    ...
-
-    concurrency:
-      # New commit on branch cancels running workflows of the same branch
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
-
-```
 
 ## 1. All the Emojis!
 
