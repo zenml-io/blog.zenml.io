@@ -45,7 +45,7 @@ more 'jobs'.
 
 A 'job' is a collection of instructions that is run on a virtual machine of its own. As such jobs are 
 perfectly encapsulated from one another. The user can choose between a few operating systems for each 'job' as part of 
-the `job.strategy` attribute. However, when developing a Python library, you might want it to be tested on all operating 
+the 'job.strategy' attribute. However, when developing a Python library, you might want it to be tested on all operating 
 systems and maybe even on multiple Python versions; enter 'strategy matrices'. A matrix allows you to define a set of
 environment configurations. In our case we chose three operating systems (Linux, MacOS, Windows) and two different Python 
 versions (3.7 and 3.8). The matrix then makes sure that the job is run for all six possible permutations of these 
@@ -82,8 +82,8 @@ As you might imagine, the team was growing frustrated with the long testing time
 needed to be found. Here are five changes we implemented to upgrade our CI pipeline.
 
 ## :fast_forward: 1. Speed up your workflows with caching
-Caching is a powerful way to speed up repeating processes. We run `poetry install` in one such process that is necessary for 
-each aspect of our CI pipeline. We didn't want to commit the `poetry.lock` file to ensure we would keep ZenML compatible 
+Caching is a powerful way to speed up repeating processes. We run 'poetry install' in one such process that is necessary for 
+each aspect of our CI pipeline. We didn't want to commit the 'poetry.lock' file to ensure we would keep ZenML compatible 
 with the newest versions of packages that we are integrating with and test regardless of the state on the developer's
 machine. On average the [Poetry](https://python-poetry.org/) installation would take between 10-15 minutes for each cell on the OS-Python Version
 matrix. 
@@ -114,7 +114,7 @@ below to see how caching is done within a Github Actions workflow.
 ```
 
 As you can see the cache is saved with a unique key as a function of the runner operating system, the Python version and a hash of the
-`pyproject.toml`. As a consequence the cache can be invalidated by changing the `pyproject.toml`.
+'pyproject.toml'. As a consequence the cache can be invalidated by changing the 'pyproject.toml'.
 
 {% include note.html content="Unfortunately, this caching action currently does not give the user control over the exact
 moment in the pipeline when the cache is written to. As things currently stand, if there is no cache-hit then the cache entry is created
@@ -122,8 +122,8 @@ at the end of the job. This means you need to structure your jobs purposefully i
 state you want to cache, at their end." %}
 
 The keen-minded among you might have caught on to an inconsistency in my argument from above. We don't commit the 
-`poetry.lock` file, as we want to always guarantee compatibility with the bleeding-edge changes of our integrations and
-dependencies. But by caching the virtual environment directory as a function of the `pyproject.toml`, aren't we just 
+'poetry.lock' file, as we want to always guarantee compatibility with the bleeding-edge changes of our integrations and
+dependencies. But by caching the virtual environment directory as a function of the 'pyproject.toml', aren't we just 
 locking on to the versions when we cache for the first time? That is correct, however we now are not dependent on the 
 state on a developer's machine; instead we have a state for each combination of OS and Python version. On top of this, we can 
 now decide on a cadence by which we periodically invalidate the cache.
@@ -148,7 +148,7 @@ integrations that we must install for our integration tests. This also allows us
 runners, Python versions and other peripheral configurations that can now be done at the level of each 'reusable 
 workflow.
 
-Here's an excerpt from our `ci.yml` file. Within the jobs section, we simply give each step in the job a name and call the 
+Here's an excerpt from our 'ci.yml' file. Within the jobs section, we simply give each step in the job a name and call the 
 corresponding reusable workflow. Within these reusable workflows themselves we just need to make sure to add 
 `workflow_call` to the list of triggers under `on:`.
 
@@ -189,9 +189,9 @@ As you can see the jobs that reference the different workflows have dependencies
 'poetry install' only has to be done once per OS/Python version combination before branching into the three separate 
 workflows. Currently, each of the sub-workflows are running on the same matrix. 
 
-{% include note.html content=" One downside of this approach is that the `poetry install` job is only considered done, 
+{% include note.html content=" One downside of this approach is that the 'poetry-install' job is only considered done, 
 when all six matrix cells are complete. This means even if the ubuntu/py3.8 runner is done with the 'poetry-install' 
-after 1 minute, the Ubuntu/Py3.8 runner for `lint-code` can only start once every other runner on the `poetry-install` 
+after 1 minute, the Ubuntu/Py3.8 runner for 'lint-code' can only start once every other runner on the 'poetry-install' 
 job are done." %}
 
 ## :repeat: 3. Avoid code duplication with composite actions
@@ -202,9 +202,9 @@ or create it.
 This is where composite actions come into play. A composite action condenses multiple steps into one step and makes it
 usable as a step across all of your workflows. Here is a small example of how we use it. 
 
-In the `.github` directory we create an `actions` folder which in turn is populated by a folder for each composite 
-action that you want to create -- in our case `.github/actions/setup_environment`. Within this folder you then create 
-a file with the name `action.yml`. Now you just need to add all your steps to the `runs` section and add the 
+In the '.github' directory we create an 'actions' folder which in turn is populated by a folder for each composite 
+action that you want to create -- in our case '.github/actions/setup_environment'. Within this folder you then create 
+a file with the name 'action.yml'. Now you just need to add all your steps to the `runs` section and add the 
 `using: "composite"` entry to it. 
 
 
@@ -247,7 +247,7 @@ blogpost that goes a bit more in detail on the differences.
 ## :speech_balloon: 4. Expose control of Github Actions to developers with comment interaction
 
 It is hard finding the correct atomized triggers for your workflows. "Should we run this on every pull request?
-Should we only run this on PRs from `dev` to `main`? Should we run this only for changes within a given directory?" 
+Should we only run this on PRs from 'dev' to 'main'? Should we run this only for changes within a given directory?" 
 These are some questions you'll inevitably run into while growing with your CI pipeline. All these questions are useful 
 ways to critically examine the motivations and reasons behind each part of your CI pipeline. 
 
@@ -261,13 +261,13 @@ push on each PR. Instead, we want to have some control over when it is appropria
 
 The first part of the fix to this problem is to include `workflow_dispatch` as one of the triggers for our reusable workflow that is
 dedicated to Kubeflow Pipelines integration tests. In order to make this even easier and more integrated into our 
-normal workflow surrounding pull requests, we also added the `pull-request-comment-trigger` action to our CI pipeline.
+normal workflow surrounding pull requests, we also added the 'pull-request-comment-trigger' action to our CI pipeline.
 
 Given a specific comment on a pull request, the test gets activated for this PR, meaning that each commit on that PR 
 will now trigger the specified Kubeflow Pipelines integration test. 
 
 As we are using the step as a basis to decide if a certain workflow should be executed, it needs to be part of a job of 
-its own. As such we are explicitly defining the output of the `check_comments` job, so it can be used to conditionally 
+its own. As such we are explicitly defining the output of the 'check_comments' job, so it can be used to conditionally 
 run the Kubeflow tests job. 
 
 '.github/workflows/ci.yml'
@@ -306,8 +306,8 @@ jobs:
     uses: ./.github/workflows/kubeflow.yml
 ```
 
-{% include note.html content="Make sure you add `pull_request` and `issue_comment` to the workflow triggers if you want 
-to use the `pull-request-comment-trigger`." %}
+{% include note.html content="Make sure you add 'pull_request' and 'issue_comment' to the workflow triggers if you want 
+to use the 'pull-request-comment-trigger'." %}
 
 In our case, if you want to run integration tests on Kubeflow Pipelines specifically, you simply comment 'LTKF!', short
 for 'Let The Kubes Flow'.
@@ -318,7 +318,7 @@ delightful?
 
 !(Comment on PR with a rocket-emoji reaction)[../assets/posts/github-actions/Rocket.png]
 
-{% include note.html content="Using `issue-comment` as a trigger seems to currently be only supported if the workflow with
+{% include note.html content="Using 'issue-comment' as a trigger seems to currently be only supported if the workflow with
 this type of trigger has ended up on the default branch of the repo already. As such this feature is not fully tested on
 our side yet as it will only reach our main branch in the coming week. I'll make sure to update this if something
 changes along the way." %}
