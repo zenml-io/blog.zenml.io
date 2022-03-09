@@ -81,7 +81,7 @@ this:
 As you might imagine, the team was growing frustrated with the long testing times and the sporadic errors and a solution
 needed to be found. Here are five changes we implemented to upgrade our CI pipeline.
 
-## :fast_forward: 1. Speed up your workflows with caching
+## ⏩ 1. Speed up your workflows with caching
 Caching is a powerful way to speed up repeating processes. We run 'poetry install' in one such process that is necessary for 
 each aspect of our CI pipeline. We didn't want to commit the 'poetry.lock' file to ensure we would keep ZenML compatible 
 with the newest versions of packages that we are integrating with and test regardless of the state on the developer's
