@@ -29,7 +29,7 @@ to be merged into the productive codebase. This quality control can get arbitrar
 convoluted. As such it is important to grow your quality control framework at the same pace as your product increases
 in scale and complexity.
 
-This quality control can adress multiple different aspects of the code. Static code analysis, otherwise known as 
+This quality control can address multiple different aspects of the code. Static code analysis, otherwise known as 
 [linting](https://www.perforce.com/blog/qac/what-lint-code-and-why-linting-important), is one such aspect of code quality 
 control. Linting deals with programmatic and stylistic issues, such as making sure typed inputs and outputs match up. 
 Unit and integration tests are also important ways of adding quality control your code.
@@ -242,7 +242,7 @@ All that is left to do now is reference this action from within your workflows t
 You might be asking yourself: "What is the difference between these 'composite actions' and 'reusable workflows'?" Short 
 answer is, 'composite actions' are a collection of commands while 'reusable workflows' also contain information on where
 and how to be executed. For more information check out [this](https://chris48s.github.io/blogmarks/github/2021/11/06/composite-actions-reusable-workflows.html#:~:text=A%20composite%20action%20is%20presented,separately%20in%20the%20summary%20output.)
-blogpost that goes a bit more in detail on teh differences.
+blogpost that goes a bit more in detail on the differences.
 
 ## :speech_balloon: 4. Expose control of github actions to developers with 'Comment Interaction'
 
