@@ -32,7 +32,7 @@ When you use Github for code versioning, you can use Github Actions as a tool th
 checks. Github Actions enables you to define workflows in `yaml` files. A 'workflow' is a recipe of instructions that you
 would like to run at a given time. 
 
-`Workflows` can be equipped with triggers that tell it when it should run. Triggers can include among others 
+'Workflows' can be equipped with triggers that define when it should run. Your workflow could run, for example, when someone makes a 
 commit on a branch, creates a pull request for a specific branch or when manually triggered from the UI. Workflows contain one or 
 more 'jobs'. 
 
