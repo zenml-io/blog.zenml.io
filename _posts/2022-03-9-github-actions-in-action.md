@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Alexej Penner
-title: "How I made our integration tests delightful while optimizing the way our GitHub actions run our test suite "
+title: "How we made our integration tests delightful by optimizing the way our GitHub actions run our test suite "
 description: "As we outgrew our template github action, these are the five things we added to our github action 
 arsenal to fit our growing needs."
 category: tech-startup
@@ -44,7 +44,7 @@ configurations. In our case we chose three operating systems (Linux, MacOs, Wind
 versions (3.7, 3.8). The Matrix then makes sure, that the job is run for all 6 possible  permutations of these 
 configurations (eg MacOs + python 3.7). 
 
-Fínally, a job consists of one or many `steps`. Such steps can be defined through arbitrary command line commands. 
+Finally, a job consists of one or many `steps`. Such steps can be defined through arbitrary command line commands. 
 Bash scripts can be invoked, python scripts can be called or you can use a plethora of steps produced by the broader 
 community (see [Github Action Merketplace](https://github.com/marketplace?type=actions)), these community steps are 
 called `actions`. Steps can be executed conditionally. Importantly, all steps of a job run on the same machine. As such
@@ -52,11 +52,15 @@ they can read and write to and from the same filesystem. Information from previo
 
 # :steam_locomotive: Where we start our Journey
 
-As ZenML continuously grows and expands its codebase and especially the integrations with other tools, it is vital to 
-also expand our testing framework. Github Actions are an important cog in the Continuous Testing and Continuous 
-Integration machine that we have set up. Originally, we were using one monolithic workflow to
-perform linting, unit-testing, integration testing and uploading coverage to codecov on a matrix of operating systems 
-and python versions. Here is one such sample of what the workflow used to look like.
+Here at ZenML, we've made it our mission to build a tool that spans the complete development process of machine learning 
+solutions in python. Such a lofty vision comes with its own set of challenges. Not least of which is the shear scale 
+of other tools that need to be integrated. You might have guessed where this is going. Many Integrated tools implies a 
+large amount of integration tests. This is especially true if you also want to verify interoperability.
+
+We start this journey in a very standard, cookie cutter, monolithic workflow. I'm sure many projects start out this way. 
+One yaml file defines a workflow that checks out the code, performs linting, unit-testing, integration testing and 
+finally uploads test coverage to codecov on a matrix of operating systems and python versions. Here is one such sample 
+of what the workflow used to look like.
 
 ![Our original github actions](../assets/posts/github-actions/oldActionSample.png)
 
@@ -70,7 +74,7 @@ this:
 As you might imagine, the team was growing frustrated with the long testing times and the sporadic errors and a solution
 needed to be found. Here are 5 changes we implemented to upgrade our CI-pipeline.
 
-## :fast_forward: 1. Speed up your Workflows with Caching
+## :fast_forward: 1. Speed up your workflows with `Caching`
 Caching is a powerful way to speed up repeating processes. `Poetry install` in one such process that is necessary for 
 each aspect of our CI pipeline. We didn't want to commit the poetry.lock file to ensure we would keep ZenML compatible 
 with the newest versions of packages that we are integrating with and test regardless of the state on the developers
@@ -120,22 +124,38 @@ now decide on a cadence in which we periodically invalidate the cache.
 {% include note.html content="Currently there is no way to explicitly invalidate cache, so you'll have to use a 
 workaround, like changing something innocuous in a hashed file, or to add date-stubs in the cache-key." %}
 
-## :repeat: 2. Reusable Workflows
-Reusable workflows are a way to use full-fledged workflows as jobs within an overarching workflow.
+## :factory: 2. Modularize your monolith with `Reusable Workflows`
+The [Separation of Concerns (SoC)]{https://nalexn.github.io/separation-of-concerns/} is an important principle
+in software development. It basically states: "The principle is simple: don’t write your program as one solid block,
+instead, break up the code into chunks that are finalized tiny pieces of the system each able to complete a 
+simple distinct job." This makes your code more understandable, reusable and maintainable.
+
+In order to grow our github actions that meant splitting the monolithic workflow that was responsible for everything
+into multiple, sub-workflows with one purpose each. Luckily, github actions got us coverd.
+
+`Reusable workflows` are a way to use full-fledged workflows as jobs within an overarching workflow.
 In our case this means we have one CI-workflow that calls the Linting, Unit-Test and Integration-Test workflows
 respectively. This enables us to use any combination of these sub-workflows but also trigger them separately. What this 
-also gives us is perfect encapsulation of each separate job. Now our linting dependencies do not affect the
+also gives us is perfect encapsulation of each separate job. Now our linting dependencies do not interfere with the
 integrations that we must install for our integration tests. This also allows us more fine-grained control over the 
-runners, python versions and other peripheral configurations that can now be done at the level of each reusable 
-workflow.
-
-To ensure that our examples run within a kubeflow pipelines orchestrator we do not need to run integration tests one 
-each operating system. Within our new system the kubeflow pipelines integration tests run only on ubuntu. 
+runners, python versions and other peripheral configurations that can now be done at the level of each `reusable 
+workflow`.
 
 Here's an excerpt from our ci.yml. Within the jobs section, we simply give each step in the job a name and call the 
 corresponding reusable workflow. Within these reusable workflows themselves we just need to make sure to add 
 `workflow call` to the list of triggers under `on:`.
 
+`.github/workflows/lint.yml`
+```yaml
+name: Integration Test the Examples
+
+on: workflow_call
+
+jobs:
+    ...
+```
+
+`.github/workflows/ci.yml`
 ```yaml
 jobs:
   poetry-install:
@@ -157,29 +177,22 @@ jobs:
 {% include note.html content="Each Reusable workflow takes the place of a job and is run on a separate machine. 
 As such outputs from one job need to be defined as outputs/inputs explicitly to pass information between jobs" %}
 
-```yaml
-name: Integration Test the Examples
-
-on: workflow_call
-
-jobs:
-    ...
-```
 
 As you can see the jobs that reference the different workflows have dependencies on one another. Here we make sure the 
 poetry install only has to be done once per os/python-version combination before branching into the 3 separate 
-workflows. Currently, each of the sub-workflows are running on the same matrix. One downside of this approach is that 
-the poetry-install job is only considered done, when all 6 matrix cells are complete. This means even if the 
-ubuntu/py3.8 runner is done with the `poetry-install` after 1 minute, the ubuntu/py3.8 runner for `lint-code` can only 
-start once every other runner on the `poetry-install` job are done. 
+workflows. Currently, each of the sub-workflows are running on the same matrix. 
 
+{% include note.html content=" One downside of this approach is that the poetry-install job is only considered done, 
+when all 6 matrix cells are complete. This means even if the ubuntu/py3.8 runner is done with the `poetry-install` 
+after 1 minute, the ubuntu/py3.8 runner for `lint-code` can only start once every other runner on the `poetry-install` 
+job are done." %}
 
-## 3. Composite Actions
+## :repeat: 3. Avoid code duplication with `Composite Actions`
 As we were designing the different reusable workflows it became obvious that we were generating a lot of duplicated 
 code. Each workflow would set up python, do some os specific fine-tuning, install poetry and load the cached venv
 or create it. 
 
-This is where composite actions come into play. A composite workflow condenses multiple steps into one step and makes it
+This is where composite actions come into play. A composite action condenses multiple steps into one step and makes it
 usable as a step across all of your workflows. Here is a small example of how we use it. 
 
 In the `.github` directory we create an `actions` folder which in turn is populated by a folder for each composite 
@@ -188,6 +201,7 @@ a file with the name `action.yml`. Now you just need to add all your steps to th
 `using: "composite"` entry to it. 
 `
 
+`.github/actions/setup_environment/action.yaml`
 ```yaml
 runs:
   using: "composite"
@@ -208,6 +222,7 @@ runs:
 
 All that is left to do now is reference this action from within your workflows to start using it.
 
+`.github/workflows/lint.yml`
 ```yaml
     ...
       
@@ -217,7 +232,12 @@ All that is left to do now is reference this action from within your workflows t
     ...
 ```
 
-## :pencil: 4. Comment Interaction
+You might be asking yourself: "What is the difference between these `composite actions` and `reusable workflows`?" Short 
+answer is, `composite actions` are a collection of commands while `reusable workflows` also contain information on where
+and how to be executed. For more information check out [this](https://chris48s.github.io/blogmarks/github/2021/11/06/composite-actions-reusable-workflows.html#:~:text=A%20composite%20action%20is%20presented,separately%20in%20the%20summary%20output.)
+blogpost that goes a bit more in detail on teh differences.
+
+## :speech_balloon: 4. Make github actions fun with`Comment Interaction`
 
 It is hard finding the correct automized triggers for your workflows. "Should we run this on every pull request?
 Should we only run this on PRs from dev to main? Should we run this only for changes within a given directory?". 
@@ -243,6 +263,7 @@ As we are using the step as a basis to decide if a certain workflow should be ex
 its own. As such we are explicitly defining the output of the check_comments job, so it can be used to conditionally 
 run the kubeflow-tests job. 
 
+`.github/workflows/ci.yml`
 ```yaml
     ...
     
@@ -281,11 +302,14 @@ jobs:
 {% include note.html content="Make sure you add pull_request and issue_comment to the workflow triggers if you want 
 to use the pull-request-comment-trigger." %}
 
+In our case, if you want to run integration tests on kubeflow pipelines specifically, you simply comment 'LTKF!', short
+for 'Let The Kubes Flow'.
+
 You may have noticed that there is also a reaction that can be specified `reaction: rocket`. This might be more gimmick 
 than anything. But isn't it the tiny things like this that can take your code from being functional to next level of
 delightful?
 
-## 5. Dealing with Concurrency
+## :recycle: 5. Reduce wasted compute resources by avoiding unwanted `Concurrency`
 
 I'm sure this has happened to you before. After some intense hours coding away you are ready to commit and oush your
 work. Mere seconds after you have pushed and opened your PR you realize, that you left something in the code, that does 
@@ -308,7 +332,6 @@ to cancel the action of the older commit, as we want to know if the most recent 
     ...
 ```
 
-
 # :rocket: The Process we ended up with (for now)
 
 When I set out on the journey improving our CI pipelines, the github actions weren't even part of the plan. 
@@ -324,7 +347,7 @@ now, this feels Zen.
 ![Time taken by poetry install](../assets/posts/github-actions/newGhActions.gif)
 
 Check it out yourself [here](https://github.com/zenml-io/zenml/blob/develop/.github/workflows/ci.yml) and feel free to 
-drop in on [Slack](https://zenml.io/slack-invite/) and let us know if this helped you or even if you know how we can do 
-even better.
+drop in on [Slack](https://zenml.io/slack-invite/) and let us know if this helped you or if you have tips on how we can 
+do even better.
 
 *Alexej Penner is a Machine Learning Engineer at ZenML.*
