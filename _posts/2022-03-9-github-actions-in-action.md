@@ -14,7 +14,7 @@ image:
   path: /assets/posts/github-actions/gh_actions.png
 ---
 
-# :round_pushpin: What's the point of Github Actions?
+# 📍 What's the point of Github Actions?
 
 Software projects are complex beasts with a multitude of moving pieces that can affect each other in surprising ways. 
 If you're reading this then chances are, you've been part of such projects where you have to build and improve software 
@@ -57,7 +57,7 @@ community (see [Github Action Marketplace](https://github.com/marketplace?type=a
 called 'actions'. Steps can be executed conditionally. Importantly, all steps of a job run on the same machine. As such
 they can read and write to and from the same filesystem. Information from previous steps can also be directly accessed.
 
-# :steam_locomotive: Where we start our journey
+# 🚂 Where we start our journey
 
 Here at ZenML, we've made it our mission to build a tool that spans the complete development process of machine learning 
 solutions in Python. Such a lofty vision comes with its own set of challenges. Not least of which is the shear scale 
@@ -134,7 +134,7 @@ now decide on a cadence by which we periodically invalidate the cache.
 {% include note.html content="Currently there is no way to explicitly invalidate the cache, so you'll have to use a 
 workaround, like changing something innocuous in a hashed file, or to add date-stubs in the cache-key." %}
 
-## :factory: 2. Modularize your monolith with reusable workflows
+## 🏭 2. Modularize your monolith with reusable workflows
 The [Separation of Concerns (SoC)](https://nalexn.github.io/separation-of-concerns/) is an important principle
 in software development: "The principle is simple: don’t write your program as one solid block,
 instead, break up the code into chunks that are finalized tiny pieces of the system each able to complete a 
@@ -202,7 +202,7 @@ when all six matrix cells are complete. This means even if the ubuntu/py3.8 runn
 after 1 minute, the Ubuntu/Py3.8 runner for 'lint-code' can only start once every other runner on the 'poetry-install' 
 job are done." %}
 
-## :repeat: 3. Avoid code duplication with composite actions
+## 🔁 3. Avoid code duplication with composite actions
 As we were designing the different reusable workflows it became obvious that we were generating a lot of duplicated 
 code. Each workflow would set up Python, do some OS-specific fine-tuning, install Poetry and load the cached venv
 or create it. 
@@ -256,7 +256,7 @@ answer is, 'composite actions' are a collection of commands while 'reusable work
 and how to be executed. For more information check out [this](https://chris48s.github.io/blogmarks/github/2021/11/06/composite-actions-reusable-workflows.html#:~:text=A%20composite%20action%20is%20presented,separately%20in%20the%20summary%20output.)
 blogpost that goes a bit more in detail on the differences.
 
-## :speech_balloon: 4. Expose control of Github Actions to developers with comment interaction
+## 💬 4. Expose control of Github Actions to developers with comment interaction
 
 It is hard finding the correct atomized triggers for your workflows. "Should we run this on every pull request?
 Should we only run this on PRs from 'dev' to 'main'? Should we run this only for changes within a given directory?" 
@@ -337,7 +337,7 @@ this type of trigger has ended up on the default branch of the repo already. As 
 our side yet as it will only reach our main branch in the coming week. I'll make sure to update this if something
 changes along the way." %}
 
-## :recycle: 5. Reduce wasted compute resources by avoiding unwanted concurrency
+## ♻️ 5. Reduce wasted compute resources by avoiding unwanted concurrency
 
 I'm sure this has happened to you before. After some intense hours coding away you are ready to commit and oush your
 work. Mere seconds after you have pushed and opened your PR you realize that you left something in the code that does 
@@ -361,7 +361,7 @@ to cancel the action of the older commit, as we want to know if the most recent 
 ```
 {% endraw %}
 
-# :rocket: Our final process (for now)
+# 🚀 Our final process (for now)
 
 When I set out on the journey to improve our CI pipelines, the Github Actions weren't even part of the plan. 
 All I wanted to do was create a [pytest](https://docs.pytest.org/) fixture that creates a separate virtual environment for each integration test
