@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Alexej Penner
-title: "Five actions to take on your github actions"
+title: "..."
 description: "As we outgrew our template github action, these are the five things we added to our github action 
 arsenal to fit our growing needs."
 category: tech-startup
@@ -12,6 +12,32 @@ thumbnail: /assets/posts/github-actions/gh_actions.png
 image:
   path: /assets/posts/github-actions/gh_actions.png
 ---
+
+The first thing that pops up when you google the term `Continuous Integration` is the following definition:
+`Continuous integration (CI) is the practice of automating the integration of code changes from multiple contributors 
+into a single software project.` A big part of CI is automated quality control before allowing the code increment
+to be merged into the productive code base. This quality control can get arbitrarily complex, layered and even
+convoluted. As such it is important to grow your quality control framework at the same pace as your product increases
+in scale and complexity.
+
+This quality control can adress multiple different aspects of the code. Static code analysis, otherwise known as 
+[Linting](https://www.perforce.com/blog/qac/what-lint-code-and-why-linting-important) is one such aspect of code quality 
+control. Linting deals with programmatic and stylistic  issues, such as making sure typed inputs and outputs match up. 
+Unit- and Integration Tests are also important ways to quality control your code.
+
+The practice of DevOps aims to seamlessly integrate such quality control workflows into the development workflow. 
+When you use Github for code versioning, you can use Github Actions as a tool that can orchestrate these code quality 
+checks. Github actions enables you to define workflows in yaml-files. A `workflow` is a recipe of instructions that you
+would like to run at a given time.
+
+`Workflows` can be equipped with triggers that tell it when it should run. Triggers can include among others 
+commits on a branch, pull requests onto a specific branch or manual dispatch from the UI. Workflows contain one or 
+multiple `jobs`.  A `job` is a collection of instructions that is run on a virtual machine of its own. As such jobs are 
+perfectly encapsulated from one another. The user can choose between a few operating system for each `job`. 
+
+
+Explain pip denpendencies, poetry, etc ...
+
 
 As ZenML continuously grows and expands its codebase and especially the integrations with other tools, it is vital to 
 also expand our testing framework. Github Actions are an important cog in the Continuous Testing and Continuous 
