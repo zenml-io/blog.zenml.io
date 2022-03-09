@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Alexej Penner
-title: "..."
+title: "How I made our integration tests delightful while optimizing the way our GitHub actions run our test suite "
 description: "As we outgrew our template github action, these are the five things we added to our github action 
 arsenal to fit our growing needs."
 category: tech-startup
@@ -12,6 +12,8 @@ thumbnail: /assets/posts/github-actions/gh_actions.png
 image:
   path: /assets/posts/github-actions/gh_actions.png
 ---
+
+# :round_pushpin: Whats the point of Github Actions?
 
 The first thing that pops up when you google the term `Continuous Integration` is the following definition:
 `Continuous integration (CI) is the practice of automating the integration of code changes from multiple contributors 
@@ -28,16 +30,27 @@ Unit- and Integration Tests are also important ways to quality control your code
 The practice of DevOps aims to seamlessly integrate such quality control workflows into the development workflow. 
 When you use Github for code versioning, you can use Github Actions as a tool that can orchestrate these code quality 
 checks. Github actions enables you to define workflows in yaml-files. A `workflow` is a recipe of instructions that you
-would like to run at a given time.
+would like to run at a given time. 
 
 `Workflows` can be equipped with triggers that tell it when it should run. Triggers can include among others 
 commits on a branch, pull requests onto a specific branch or manual dispatch from the UI. Workflows contain one or 
-multiple `jobs`.  A `job` is a collection of instructions that is run on a virtual machine of its own. As such jobs are 
-perfectly encapsulated from one another. The user can choose between a few operating system for each `job`. 
+multiple `jobs`.  
 
+A `job` is a collection of instructions that is run on a virtual machine of its own. As such jobs are 
+perfectly encapsulated from one another. The user can choose between a few operating system for each `job` as part of 
+the `job.strategy` attribute. However, when developing a python library, you might want it to be tested on all operating 
+systems and maybe even on multiple python versions; enter `strategy matrices`. A matrix allows you to define a set of
+configurations. In our case we chose three operating systems (Linux, MacOs, Windows) and two different python 
+versions (3.7, 3.8). The Matrix then makes sure, that the job is run for all 6 possible  permutations of these 
+configurations (eg MacOs + python 3.7). 
 
-Explain pip denpendencies, poetry, etc ...
+Fínally, a job consists of one or many `steps`. Such steps can be defined through arbitrary command line commands. 
+Bash scripts can be invoked, python scripts can be called or you can use a plethora of steps produced by the broader 
+community (see [Github Action Merketplace](https://github.com/marketplace?type=actions)), these community steps are 
+called `actions`. Steps can be executed conditionally. Importantly, all steps of a job run on the same machine. As such
+they can read and write to and from the same filesystem. Information from previous steps can also be directly accessed.
 
+# :steam_locomotive: Where we start our Journey
 
 As ZenML continuously grows and expands its codebase and especially the integrations with other tools, it is vital to 
 also expand our testing framework. Github Actions are an important cog in the Continuous Testing and Continuous 
@@ -57,7 +70,7 @@ this:
 As you might imagine, the team was growing frustrated with the long testing times and the sporadic errors and a solution
 needed to be found. Here are 5 changes we implemented to upgrade our CI-pipeline.
 
-## 1. Caching
+## :fast_forward: 1. Speed up your Workflows with Caching
 Caching is a powerful way to speed up repeating processes. `Poetry install` in one such process that is necessary for 
 each aspect of our CI pipeline. We didn't want to commit the poetry.lock file to ensure we would keep ZenML compatible 
 with the newest versions of packages that we are integrating with and test regardless of the state on the developers
@@ -107,7 +120,7 @@ now decide on a cadence in which we periodically invalidate the cache.
 {% include note.html content="Currently there is no way to explicitly invalidate cache, so you'll have to use a 
 workaround, like changing something innocuous in a hashed file, or to add date-stubs in the cache-key." %}
 
-## 2. Reusable Workflows
+## :repeat: 2. Reusable Workflows
 Reusable workflows are a way to use full-fledged workflows as jobs within an overarching workflow.
 In our case this means we have one CI-workflow that calls the Linting, Unit-Test and Integration-Test workflows
 respectively. This enables us to use any combination of these sub-workflows but also trigger them separately. What this 
@@ -204,7 +217,7 @@ All that is left to do now is reference this action from within your workflows t
     ...
 ```
 
-## 4. Comment Interaction
+## :pencil: 4. Comment Interaction
 
 It is hard finding the correct automized triggers for your workflows. "Should we run this on every pull request?
 Should we only run this on PRs from dev to main? Should we run this only for changes within a given directory?". 
@@ -296,7 +309,7 @@ to cancel the action of the older commit, as we want to know if the most recent 
 ```
 
 
-## Conclusion
+# :rocket: The Process we ended up with (for now)
 
 When I set out on the journey improving our CI pipelines, the github actions weren't even part of the plan. 
 All I wanted to do was create a pytest fixture that creates a separate virtual environment for each integration test

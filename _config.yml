@@ -70,6 +70,7 @@ plugins:
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jemoji
   # - jekyll-compress-images
 
 feed:

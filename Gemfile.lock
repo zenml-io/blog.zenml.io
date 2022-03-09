@@ -1,6 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (6.0.4.6)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+      zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     bigdecimal (1.3.5)
@@ -14,6 +20,10 @@ GEM
     ffi (1.9.25)
     forwardable-extended (2.6.0)
     fspath (3.1.0)
+    gemoji (3.0.1)
+    html-pipeline (2.14.0)
+      activesupport (>= 2)
+      nokogiri (>= 1.4)
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -55,6 +65,10 @@ GEM
       jekyll (~> 3.3)
     jekyll-watch (2.0.0)
       listen (~> 3.0)
+    jemoji (0.12.0)
+      gemoji (~> 3.0)
+      html-pipeline (~> 2.2)
+      jekyll (>= 3.0, < 5.0)
     kramdown (1.17.0)
     liquid (4.0.0)
     listen (3.1.5)
@@ -62,10 +76,16 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
     mercenary (0.3.6)
+    mini_portile2 (2.8.0)
+    minitest (5.15.0)
+    nokogiri (1.13.3)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     pathutil (0.16.1)
       forwardable-extended (~> 2.6)
     progress (3.4.0)
     public_suffix (3.0.2)
+    racc (1.6.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -77,6 +97,10 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+    thread_safe (0.3.6)
+    tzinfo (1.2.9)
+      thread_safe (~> 0.1)
+    zeitwerk (2.5.4)
 
 PLATFORMS
   ruby
@@ -89,10 +113,11 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-seo-tag
   jekyll-sitemap
+  jemoji
   rouge
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.7.0p0
 
 BUNDLED WITH
    2.3.4
