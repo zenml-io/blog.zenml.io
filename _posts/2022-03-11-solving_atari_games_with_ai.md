@@ -159,7 +159,7 @@ class dqn_materializer(BaseMaterializer):
             pickle.dump(clf, fid)
 ```
 
-The handle_input and handle_return functions are important.
+The `handle_input` and `handle_return` methods are important for defining how the materializer knows how to do its job.
 
 - `handle_input` is responsible for reading the artifact from the artifact store.
 - `handle_return` is responsible for writing the artifact to the artifact store.
