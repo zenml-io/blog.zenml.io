@@ -86,7 +86,7 @@ We can see we have several steps that make up this pipeline, so let's break it d
 
 - `build_dqn`: It builds the DQN model in Keras.
 
-- `replay_buffer`: The replay buffer is a class that holds all the experiences a DQN has seen, and samples from it randomly to train the DQN. It takes care of managing the stored experiences and sampling them on demand.
+- `replay_buffer`: The replay buffer is a class that holds all the experiences a DQN has seen and samples from it randomly to train the DQN. It takes care of managing the stored experiences and sampling them on demand.
 
 - `agent`: Implements a standard DDDQN agent
 
