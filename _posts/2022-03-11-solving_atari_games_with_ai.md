@@ -47,7 +47,7 @@ We're ready to go now. You can run the code, using the run_pipeline.py script.
 python run_pipeline.py train
 ```
 
-## Explanation of codebase and the pipeline steps
+## How it works
 
 We have `trainin_pipeline.py` script which is the main script that runs the training pipeline. The following is the code for the training pipeline:-
 
