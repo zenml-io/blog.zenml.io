@@ -9,9 +9,9 @@ category: zenml
 tags: zenml release-notes
 publish_date: March 14, 2022
 date: 2022-03-14T00:02:00Z
-thumbnail: /assets/posts/release_0_6_2/hybrid-uGP_6CAD-14-unsplash.jpg
+thumbnail: /assets/posts/release_0_6_3/eyestetix-studio-l8qIZmNuD1E-unsplash.jpg
 image:
-  path: /assets/posts/release_0_6_2/hybrid-uGP_6CAD-14-unsplash.jpg
+  path: /assets/posts/release_0_6_3/eyestetix-studio-l8qIZmNuD1E-unsplash.jpg
 ---
 
 ZenML 0.6.2 brings you the ability to serve models using MLflow deployments as well as an updated CLI interface! For a real continuous deployment cycle, we know that ZenML pipelines should be able to handle everything — from pre-processing to training to serving to monitoring and then potentially re-training and re-serving. The interfaces we created in this release are the foundation on which all of this will build.
