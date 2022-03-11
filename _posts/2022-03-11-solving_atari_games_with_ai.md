@@ -28,7 +28,7 @@ ZenML pipelines execute ML-specific workflows from sourcing data to splitting, p
 
 We suggest you make one virtual environment and then work on these things. You can create a virtual environment using conda by following steps:-
 
-```
+```shell
 conda create -n envname python=x.x anaconda
 conda activate envname
 ```
