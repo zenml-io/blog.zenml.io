@@ -96,7 +96,7 @@ We can see we have several steps that make up this pipeline, so let's break it d
 
 ![Steps in the ZenML pipeline used to train the agent](/assets/posts/pipeline_steps.PNG)
 
-Now, we have seen about the steps in the pipeline and now let's see how to run the pipeline using the `run_pipeline` function. We are importing every step from the steps folder and then giving it to the `train_pipeline` function to run the pipeline. We can see that the pipeline is a function that takes in a function as an argument.
+Now that you're familiar with the individual steps of the pipeline, let's take a look about how we run it with the `run_pipeline` function. We import every step from the steps folder. We can see that the pipeline is a function that takes various functions as arguments.
 
 ```python
 from steps.game_wrap import game_wrap
