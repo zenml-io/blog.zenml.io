@@ -70,8 +70,7 @@ def train_pipeline(game_wrap, build_dqn, replay_buffer, agent, get_information_m
     :param agent: The agent that will be used to play the game
     :param get_information_meta: This is a function that returns the frame number, rewards, and loss
     list
-    :param train: The function that will be called inside the train_pipeline function. This is the
-    function that will be called
+    :param train: The function that will be called inside the train_pipeline function
     """
     game_wrapper = game_wrap()
     main_dqn, target_dqn = build_dqn(game_wrapper)
