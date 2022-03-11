@@ -166,6 +166,6 @@ The handle_input and handle_return functions are important.
 
 ## Conclusion
 
-Deep Q Network are not the newest and most efficient algorithm to play games. But they are still very effective and can be used to play games like Atari games. They lay the foundation for reinforcement learning. In this post we have seen how to build a DQN and train it to play games like Atari games. We have made use of zenml to build production grade pipelines that are reproducible and scalable.
+Deep Q Network are not the newest or most efficient algorithm when it comes to playing games. Nevertheless, they are still very effective and can be used for games like the Atari games described in this blogpost. They lay the foundation for reinforcement learning. In this post we have seen how to build a DQN and train it to play Atari games. We have made use of ZenML to build production-grade pipelines that are reproducible and scalable.
 
 If you’re interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
