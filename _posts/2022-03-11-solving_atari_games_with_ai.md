@@ -5,8 +5,8 @@ title: Solving Atari Games with Reinforcement Learning (AI)
 description: "We trained a model to solve Atari games using reinforcement learning. We used the Deep Q algorithm as the basis of our implementation. It allowed us to get a working solution fairly quickly."
 publish_date: March 11, 2022
 date: 2022-03-11T10:20:00Z
-tags: tensorflow machine-learning legacy mlops evergreen
-category: mlops
+tags: tensorflow machine-learning mlops evergreen applied-zenml pipelines reinforcement-learning
+category: zenml
 crosspost:
   url: https://blog.tensorflow.org/2020/02/atari-games-with-reinforcement-learning.html
   name: Reinforcement Learning Blog
