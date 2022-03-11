@@ -80,7 +80,7 @@ def train_pipeline(game_wrap, build_dqn, replay_buffer, agent, get_information_m
     train(game_wrapper, loss_list, rewards, frame_number, agent)
 ```
 
-We can see we have several steps/components in this pipeline, so let's break it down and talk about each step in detail. All the steps can be found in ``steps/``` folder.
+We can see we have several steps that make up this pipeline, so let's break it down and talk about each step in detail. All the steps can be found in the ``steps/``` folder.
 
 - `game_wrap`: This is a function that returns a GameWrapper object. The GameWrapper object wraps over the game that you want to train on. The GameWrapper class wraps the Open AI Gym environment and provides some useful functions such as resetting the environment and keeping track of useful statistics such as lives left.
 
