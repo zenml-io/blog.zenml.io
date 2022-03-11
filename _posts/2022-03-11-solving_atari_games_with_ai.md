@@ -2,7 +2,7 @@
 layout: post
 author: Ayush Singh
 title: Solving Atari Games with Reinforcement Learning (AI)
-description: "We will use zenml to build a model that can solve Atari games using reinforcement learning."
+description: "We trained a model to solve Atari games using reinforcement learning. We used the Deep Q algorithm as the basis of our implementation. It allowed us to get a working solution fairly quickly."
 publish_date: March 11, 2022
 date: 2022-03-11T10:20:00Z
 tags: tensorflow machine-learning legacy mlops evergreen
