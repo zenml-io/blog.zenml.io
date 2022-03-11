@@ -126,7 +126,7 @@ def run_training():
 
 If you have noticed that some of the steps in this pipeline requires custom materializer to be used, so let's have a look at the custom materializer.
 
-### A Note on Materializer
+### A custom materializer to pass data between the steps
 
 The precise way that data passes between the steps is dictated by materializers. The data that flows through steps are stored as artifacts and artifacts are stored in artifact stores. The logic that governs the reading and writing of data to and from the artifact stores lives in the materializers.
 
