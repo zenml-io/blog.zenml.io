@@ -164,7 +164,7 @@ The `handle_input` and `handle_return` methods are important for defining how th
 - `handle_input` is responsible for reading the artifact from the artifact store.
 - `handle_return` is responsible for writing the artifact to the artifact store.
 
-## Conclusion
+## What we learned
 
 Deep Q Network are not the newest or most efficient algorithm when it comes to playing games. Nevertheless, they are still very effective and can be used for games like the Atari games described in this blogpost. They lay the foundation for reinforcement learning. In this post we have seen how to build a DQN and train it to play Atari games. We have made use of ZenML to build production-grade pipelines that are reproducible and scalable.
 
