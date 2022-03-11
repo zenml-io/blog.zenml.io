@@ -49,7 +49,7 @@ python run_pipeline.py train
 
 ## How it works
 
-We have `trainin_pipeline.py` script which is the main script that runs the training pipeline. The following is the code for the training pipeline:-
+We have the `training_pipeline.py` script which is the main script that runs the training pipeline. The following is the code for the training pipeline:
 
 ```python
 from zenml.pipelines import pipeline
