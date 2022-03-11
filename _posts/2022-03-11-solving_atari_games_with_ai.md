@@ -33,7 +33,7 @@ conda create -n envname python=x.x anaconda
 conda activate envname
 ```
 
-Before running this project, you must install some python packages in your environment which you can do by following steps:-
+Before running this project, you must install some Python packages in your environment which you can do with the following steps:
 
 ```python
 git clone https://github.com/zenml-io/zenfiles.git
