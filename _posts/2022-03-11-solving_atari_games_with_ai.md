@@ -41,7 +41,7 @@ cd Atari-Game-Player
 pip install -r requirements.txt
 ```
 
-We're ready to go now. You can run the code, using the run_pipeline.py script.
+We're ready to go now. You can run the code, using the `run_pipeline.py` script.
 
 ```python
 python run_pipeline.py train
