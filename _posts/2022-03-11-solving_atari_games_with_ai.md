@@ -19,14 +19,20 @@ image:
 
 Reinforcement learning is a type of machine learning that works on a problem that is solved by a model that is trying to learn to perform actions in a way that maximizes the reward in a particular situation. In Supervised learning, we are given the target label which acts as the ground truth for the model so that we can train the model to predict the label for unseen examples but In reinforcement learning, there is no target label but the reinforcement agent decides what to do to perform the given task or action in a particular situation and the agent learns from it's experience.
 
-In this article, we will be using ZenML to build a model that can solve Atari games using reinforcement learning. We will be using the [Atari 2600](https://en.wikipedia.org/wiki/Atari_2600) game environment. We will be using the [Deep Q-Learning](https://en.wikipedia.org/wiki/Deep_Q-learning) algorithm to solve the game. We found this Github repo, [Building a Powerful DQN in TensorFlow 2.0](https://github.com/sebtheiler/tutorials/tree/main/dqn), to get started with our solution. In the end, we were successfully able to showcase how it is possible to use ZenML to build end-to-end reinforcement learning applications.
+According to wikipedia, Reinforcement learning is an area of machine learning inspired by behavioural psychology, concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
 
+An application of reinforcement learning in the field of Computational Finance is Automated trading problem. Here the agent is trading software, environment is other traders, State is price history, Action is buy/sell/hold, Reward is profit/loss.
+
+Another application of reinforcement learning in the field of Operations research is vehicle routing problem. Here the agent is vehicle routing software, environment is stochastic demand, State is vehicle location, capacity and depot requests, Action is vehicle route, Reward is travel costs.
+
+In this article, I will be using ZenML to build a model that can solve Atari games using reinforcement learning. I will be using the [Atari 2600](https://en.wikipedia.org/wiki/Atari_2600) game environment. I will be using the [Deep Q-Learning](https://en.wikipedia.org/wiki/Deep_Q-learning) algorithm to solve the game. I found this Github repo, [Building a Powerful DQN in TensorFlow 2.0](https://github.com/sebtheiler/tutorials/tree/main/dqn), to get started with our solution.
+In real world, building reinforcement learning applications can be a challenging so I will be using Zenml (A MLOps Framework) which allows to deploy the models which can be used across the organization.
 ZenML is an extensible, open-source MLOps framework to create production-ready machine learning pipelines. Built for data scientists, it has a simple, flexible syntax, is cloud- and tool-agnostic, and has interfaces/abstractions that are catered towards ML workflows.
 ZenML pipelines execute ML-specific workflows from sourcing data to splitting, preprocessing, training, all the way to the evaluation of results and even serving.
 
 ## Setting up the project
 
-We suggest you create and work out of a virtual environment. You can create a virtual environment using `conda` by following these steps, but of course you can also use whatever you're familiar with:
+I suggest you create and work out of a virtual environment. You can create a virtual environment using `conda` by following these steps, but of course you can also use whatever you're familiar with:
 
 ```shell
 conda create -n envname python=x.x anaconda
@@ -49,7 +55,7 @@ python run_pipeline.py train
 
 ## How it works
 
-We have the `training_pipeline.py` script which is the main script that runs the training pipeline. The following is the code for the training pipeline:
+We have the `training_pipeline.py` script which is the main script that runs the training pipeline. In brief the training pipeline consists of several steps which include `game_wrap` which wraps over the game environment that you want to train on, `build_dqn` which builds keras model, `replay_buffer` which stores past experience of the agent, `get_information_meta` which restores the model from given checkpoint, `train` which trains the dqn agent. Every step is connected with each other in a way that output from one step is given input to another step. The following is the code for the training pipeline:
 
 ```python
 from zenml.pipelines import pipeline
@@ -88,9 +94,9 @@ We can see we have several steps that make up this pipeline, so let's break it d
 
 - `replay_buffer`: The replay buffer is a class that holds all the experiences a DQN has seen and samples from it randomly to train the DQN. It takes care of managing the stored experiences and sampling them on demand.
 
-- `agent`: Implements a standard DDDQN agent
+- `agent`: Implements a standard (Double Dueling Deep Q-Learning Network) DDDQN agent, you can learn more about it from [here](https://towardsdatascience.com/dueling-double-deep-q-learning-using-tensorflow-2-x-7bbbcec06a2a)
 
-- `get_information_meta`: If we're loading from a checkpoint, load the information from the checkpoint. Otherwise, start from scratch. This is a step that returns the frame number, rewards, and loss list.
+- `get_information_meta`: If we're loading from a checkpoint, load the information from the checkpoint. Otherwise, start from scratch. This is a step that returns the frame number, rewards, and loss list, frame number is the number of frames that have been played, rewards is the list of rewards that have been accumulated, loss list is the list of losses that have been accumulated.
 
 - `train`: We initialize the agent, the game environment, and the TensorBoard writer. Then, we train the agent until the game is over.
 
@@ -107,9 +113,7 @@ from steps.get_information_meta import get_information_meta
 from steps.train import train
 from pipelines.training_pipeline import train_pipeline
 import argparse
-
 from materializer.dqn_custom_materializer import dqn_materializer
-
 
 def run_training():
     training = train_pipeline(
@@ -128,7 +132,7 @@ You'll have probably noticed that some of the steps in this pipeline require cus
 
 ### A custom materializer to pass data between the steps
 
-The precise way that data passes between the steps is dictated by materializers. The data that flows through steps are stored as artifacts and artifacts are stored in artifact stores. The logic that governs the reading and writing of data to and from the artifact stores lives in the materializers.
+The precise way that data passes between the steps is dictated by materializers. The data that flows through steps are stored as artifacts and artifacts are stored in artifact stores. The logic that governs the reading and writing of data to and from the artifact stores lives in the materializers. You can learn more about custom materializers in the [Materializer](https://docs.zenml.io/guides/index/custom-materializer) docs.
 
 ```python
 DEFAULT_FILENAME = "PyEnvironment"
@@ -163,6 +167,8 @@ The `handle_input` and `handle_return` methods are important for defining how th
 
 - `handle_input` is responsible for reading the artifact from the artifact store.
 - `handle_return` is responsible for writing the artifact to the artifact store.
+
+You can tune the configurations for the model training which you can find in `config.py` file. I urge you to increase the `batch_size` and `epochs` to get a better training result. You can also change the `learning_rate` to get a better training result. You can also tune several other parameters in the `config.py` file.
 
 ## What we learned
 
