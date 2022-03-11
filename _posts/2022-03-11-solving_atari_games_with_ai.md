@@ -161,7 +161,7 @@ class dqn_materializer(BaseMaterializer):
 
 The handle_input and handle_return functions are important.
 
-- `handle_input` is responsible for reading the artifact(Artifacts is a common ML term used to describe the output created by a particular step.) from the artifact store.
+- `handle_input` is responsible for reading the artifact from the artifact store.
 - `handle_return` is responsible for writing the artifact to the artifact store.
 
 ## Conclusion
