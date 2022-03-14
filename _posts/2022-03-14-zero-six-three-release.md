@@ -12,140 +12,53 @@ image:
   path: /assets/posts/release_0_6_3/eyestetix-studio-l8qIZmNuD1E-unsplash.jpg
 ---
 
-With ZenML 0.6.3, you can now run your ZenML steps on Sagemaker and AzureML! It's normal to have certain steps that require specific hardware on which to run model training, for example, and 
+With ZenML 0.6.3, you can now run your ZenML steps on Sagemaker and AzureML! It's normal to have certain steps that require specific hardware on which to run model training, for example, and this latest release gives you the power to switch out hardware for individual steps to support this.
 
-ZenML 0.6.3 brings you the ability to serve models using MLflow deployments as well as an updated CLI interface! For a real continuous deployment cycle, we know that ZenML pipelines should be able to handle everything — from pre-processing to training to serving to monitoring and then potentially re-training and re-serving. The interfaces we created in this release are the foundation on which all of this will build.
+We added a new Tensorboard visualisation that you can make use of when using our Kubeflow Pipelines integration. We handle the background processes needed to spin up this interactive web interface that you can use to visualise your model's performance over time.
 
-We also improved how you interact with ZenML through the CLI. Everything looks so much smarter and readable now with the popular `rich` library integrated into our dependencies.
+Behind the scenes we gave our integration testing suite a massive upgrade, fixed a number of smaller bugs and made documentation updates. For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.6.3) a glance.
 
-Smaller changes that you'll notice include updates to our cloud integrations and bug fixes for Windows users. For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.6.2) a glance.
+## ☁️ Run Your Steps on Sagemaker and AzureML
 
+![Running your steps on cloud hardware provided by Sagemaker and AzureML](../assets/posts/release_0_6_3/zen-in-the-clouds.gif)
 
-# Cloud backend
+As your pipelines become more mature and complex, you might want to use specialised hardware for certain steps of your pipeline. A clear example is wanting to run your training step on GPU machines that get spun up automagically without you having to worry too much about that deployment. Amazon's [Sagemaker](https://aws.amazon.com/sagemaker) and Microsoft's [AzureML](https://ml.azure.com/) both offer custom hardware on which you can run your steps.
 
-- AzureML / Sagemaker
-- single line to enable a custom step operator
-- new concept: step operator
-- current limitations
-	- currently only one per pipeline
-	- Sagemaker & AzureML
-- use cases:
-	- for when you have a heavy step involving some custom hardware maybe
-	- to help speed up the iteration process
-- how to get going: see the example, configure stack, add the one line
-- 
-# Tensorboard visualisation PR
-* Add Kubeflow tensorboard viz and fix tensorflow file IO for cloud back-ends by @stefannica in https://github.com/zenml-io/zenml/pull/447
-- check KubeFlow example (demo)
-- logs history of a model
-- interactive UI you leave running in the background
-- also can track the curves of your accuracy while your model is still running
-- integrate with S3 backends (doesn't matter locally or everyothing on AWS… they're all hosted in Amazon managed services)
+The code required to add this to your pipeline and step definition is as minimal as can be. Simply add the following like above the step that you'd like to run on your cloud hardware:
 
-1. tensor board as a service (new feature for ZenML) - use it to manage lifecycle.
-2. start tensor board button (a KubeFlow feature… same thing in a KubeFlow setting as point #1)
+```python
+@step(custom_step_operator='sagemaker') # or azureml
+```
 
-# Integration Tests / Venv
+Sagemaker and AzureML offers specialised compute instances to run your training jobs and offer a beautiful UI to track and manage your models and logs. All you have to do is configure your ZenML stack with the relevant parameters and you're good to go.
 
-- long ticket. huge GitHub actions refactoring + virtual environment fixtures for our tests
-- see the blog alexej wrote on this.
+To get going with this, checkout the [two](https://github.com/zenml-io/zenml/tree/main/examples/sagemaker_step_operator) [examples](https://github.com/zenml-io/zenml/tree/main/examples/azureml_step_operator) we created, configure your stack and add that line mentioned above.
 
+We'll be publishing more about this use case in the coming days, so stay tuned for that!
 
+## 📊 Visualise Your Model History with Tensorboard
 
-## Dependency Fixes
+![Visualising model history with Tensorboard](../assets/posts/release_0_6_3/tensorboard.png)
 
-* Remove tabulate dependency (replaced by rich) by @jwwwb in https://github.com/zenml-io/zenml/pull/436
-* Remove support for python 3.6 by @schustmi in https://github.com/zenml-io/zenml/pull/437
-* Upgrade TFX to 1.6.1 by @jwwwb in https://github.com/zenml-io/zenml/pull/441
-* Upgrade `rich` from 11.0 to 12.0 by @strickvl in https://github.com/zenml-io/zenml/pull/458
+[Tensorboard](https://www.tensorflow.org/tensorboard/) is a way to visualise your machine learning models and training outputs. In this release we added a custom visualisation for Kubeflow which allows you to see the entire history of a model logged by a step.
 
-## Dev and Test Environment
+Behind the scenes, we implemented a `TensorboardService` which tracks and manages locally running Tensorboard daemons. This interactive UI runs in the background and works even while your pipeline is running. To use this feature, the easiest way is to click the 'Start Tensorboard' button inside the Kubeflow UI.
 
-* Fix potential issue with local integration tests by @schustmi in https://github.com/zenml-io/zenml/pull/428
-* Create clean test repos in separate folders by @michael-zenml in https://github.com/zenml-io/zenml/pull/430
-* Pytest-fixture for separate virtual environments for each integration test by @AlexejPenner in https://github.com/zenml-io/zenml/pull/405
-* Bugfix/fix failing tests due to comments step by @AlexejPenner in https://github.com/zenml-io/zenml/pull/444
-* Added --use-virtualenvs option to allow choosing envs to run by @AlexejPenner in https://github.com/zenml-io/zenml/pull/445
-* Added basic integration tests for remaining examples by @strickvl in https://github.com/zenml-io/zenml/pull/439
-* Another boyscout pr on the gh actions by @AlexejPenner in https://github.com/zenml-io/zenml/pull/455
+This new functionality has also been integrated into [our Kubeflow example](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow) from previous releases.
 
-## Typos
+## 💻 User Experience Improvements
 
-* fix typo by @wjayesh in https://github.com/zenml-io/zenml/pull/432
-* Fix typo in mysql password parameter by @pafpixel in https://github.com/zenml-io/zenml/pull/438
+We added a new `explain` command that works for all stack components (orchestrator, container registry and so on). Use it if you ever need a reminder of the function of this component. Typing `zenml orchestrator explain` will output the relevant parts of the documentation that explain some basics about the orchestrator component.
 
-## CLI Improvements
-
-* Fix CLI stack component describe/list commands by @schustmi in https://github.com/zenml-io/zenml/pull/450
-* Implementing the `explain` subcommand by @bcdurak in https://github.com/zenml-io/zenml/pull/460
-* 
-## User Experience Improvements
-
-* Log whether a step was cached by @strickvl in https://github.com/zenml-io/zenml/pull/435
-* Improve error message when provisioning local kubeflow resources with a non-local container registry. by @schustmi in https://github.com/zenml-io/zenml/pull/442
-
-
-## What's Changed
-
-* Copy explicit materializers before modifying, log correct class by @schustmi in https://github.com/zenml-io/zenml/pull/434
-* Enable generic step inputs and outputs by @schustmi in https://github.com/zenml-io/zenml/pull/440
-* Removed old reference to a step that no longer exists by @AlexejPenner in https://github.com/zenml-io/zenml/pull/452
-* Correctly use custom kubernetes context if specified by @schustmi in https://github.com/zenml-io/zenml/pull/451
-* Ignore type of any tfx proto file by @schustmi in https://github.com/zenml-io/zenml/pull/453
-* Added ZenFiles to README by @htahir1 in https://github.com/zenml-io/zenml/pull/457
-
-
-
-
-
-
-
-
-
-
-## ♻️ Continuous Deployment with MLflow
-
-![A Continuous Deployment workflow. Achievement unlocked!](../assets/posts/release_0_6_2/ZenML0-6-2.gif)
-
-The biggest new feature in the 0.6.2 release is our integration with the parts of MLflow that allow you to serve your models. We [previously added MLflow Tracking](https://blog.zenml.io/zero-five-seven-release/), but now hook into the standard format for packaging machine learning models so that you can deploy them for real-time serving using a range of deployment tools. With the new integration you can locally deploy your models [using a local deployment server](https://mlflow.org/docs/latest/models.html#deploy-mlflow-models).
-
-This is the foundation for the obvious next useful step: non-local deployments using tools like [KServe](https://github.com/kserve/kserve) and [BentoML](https://github.com/bentoml/BentoML). ([Community votes](https://github.com/zenml-io/zenml/discussions/215) on that directed us first towards MLflow, but we realize that there are several other options that are commonly used.)
-
-As part of this new feature, we added a new concept of a 'service'. The service extends the paradigm of a ZenML pipeline to now cover long-running processes or workflows; you are no longer limited to executing run-to-completion pipelines or mini-jobs. With services you can therefore serve the an artifact created by a pipeline and have it reflected in a running component that you can interact with after-the fact. For machine learning, this is what gives us continuous model deployment.
-
-The MLflow deployment integration means you can implement a workflow — for example — where you train a model, make some decision based on the results (perhaps you evaluate the best model) and immediately see the model updated in production as a prediction service.
-
-We're really excited about the production use cases that this feature enables. To learn more, check out [the new documentation page](https://docs.zenml.io/features/continous-training-and-deployment) we just included to guide you in understanding continuous training and continuous deployment. The [`mlflow_deployment` example](https://github.com/zenml-io/zenml/tree/main/examples) is also a great way to understand how to use this new feature. ([Use the CLI](https://blog.zenml.io/examples-cli/) to explore and interact with the examples.)
-
-## Improving our CLI with `rich`
-
-![Our CLI tables look much nicer with 'rich'](../assets/posts/release_0_6_2/rich-tables.jpeg)
-
-If you've been using the ZenML CLI utility for a while, you'll know that it was functional but maybe not always *delightful*. We've [taken a bit of time](https://github.com/zenml-io/zenml/pull/392) to make it more pleasant to use from the user perspective. We used 'rich' to add a visual uplift to most user-facing parts of the `zenml` terminal interface. 
-
-Tables are easier to read, spinners conceal log messages that you didn't really need to see, and tracebacks from errors raised while using ZenML are now much more feature-filled and easy to parse. Now that we've added `rich` into our dependencies it will be easier to continually improve the CLI going forward.
-
-We'll be writing more about how we integrated with `rich` on the blog in the coming days, so stay tuned for that!
-
-## 🗒 Documentation Updates
-
-As the codebase and functionality of ZenML grows, we always want to make sure [our documentation](https://docs.zenml.io/) is clear, up-to-date and easy to use. We made a number of changes in this release that will improve your experience in this regard:
-
-- Ensure *quickstart* example code is identical across everywhere it is referenced.
-- Added core concepts back into the [main glossary](https://docs.zenml.io/reference/glossary) (sorted alphabetically and made concise).
-- Added [cloud-specific guide](https://docs.zenml.io/features/cloud-pipelines/guide-aws-gcp-azure) for deploying pipelines.
-- Inside the codebase itself, removed some parameters specified in docstrings that no longer existed in code.
-- Various spelling and typo corrections.
+We added functionality to output whether a step is being executed from a cached version or is actually being executed for the first time. We also improved error messages when provisioning local Kubeflow resources with a non-local container registry.
 
 ## ➕ Other Updates, Additions and Fixes
 
-- Our test suite is now more robust. We run our integration tests on `kubeflow` (as well as on the local stack), and integration tests run in separate virtual environments for each integration test.
-- We added [some extra parts](https://github.com/zenml-io/zenml/pull/411) to our PR template, which you'll reach when you contribute to the ZenML codebase.
-- We fixed a bug where the CLI wasn't working if you didn't have `git` already installed. (This mainly applies to Windows machines, and our bug fix doesn't apply to any of the `zenml example…` functionality, since that requires `git`.)
-- Added various logging and informative error messages for edge cases.
-- [Fixed a bug](https://github.com/zenml-io/zenml/pull/416) where an IPython REPL would crash when running examples or code that visualized data.
-- We now automatically activate integrations when we are unable to find stack components.
-- We now [handle the failure](https://github.com/zenml-io/zenml/pull/390) of workflows for cases where `ModuleNotFound` errors are raised.
+We made a number of changes to how our test suite works as run by Github Actions. Alexej blogged about this for the ZenML blog here: "[How we made our integration tests delightful by optimizing the way our GitHub Actions run our test suite](https://blog.zenml.io/github-actions-in-action/)". We also completed the implementation of all integration tests such that they run on our test suite.
+
+We enabled the use of generic step inputs and outputs as part of your pipeline.
+
+Finally, we made a number of under-the-hood dependency changes that you probably won't notice, but that either reduce the overall size of ZenML or fix some old or deprecated packages. Notably, ZenML no longer supports Python 3.6.
 
 ## 🙌 Community Contributions
 
