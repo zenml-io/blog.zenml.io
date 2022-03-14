@@ -30,7 +30,7 @@ The code required to add this to your pipeline and step definition is as minimal
 @step(custom_step_operator='sagemaker') # or azureml
 ```
 
-Sagemaker and AzureML offers specialized compute instances to run your training jobs and offer a beautiful UI to track and manage your models and logs. All you have to do is configure your ZenML stack with the relevant parameters and you're good to go.
+Sagemaker and AzureML offers specialized compute instances to run your training jobs and offer a beautiful UI to track and manage your models and logs. All you have to do is configure your ZenML stack with the relevant parameters and you're good to go. You'll have to set up the infrastructure with credentials; check out [our documentation](https://docs.zenml.io/features/cloud-pipelines/guide-aws-gcp-azure) for a guide how to do that.
 
 To get going with this, checkout the [two](https://github.com/zenml-io/zenml/tree/main/examples/sagemaker_step_operator) [examples](https://github.com/zenml-io/zenml/tree/main/examples/azureml_step_operator) we created, configure your stack and add that line mentioned above.
 
@@ -48,13 +48,13 @@ This new functionality has also been integrated into [our Kubeflow example](http
 
 ## 💻 User Experience Improvements
 
-We added a new `explain` command that works for all stack components (orchestrator, container registry and so on). Use it if you ever need a reminder of the function of this component. Typing `zenml orchestrator explain` will output the relevant parts of the documentation that explain some basics about the orchestrator component.
+If you ever need a reminder of the function of a particular stack, there's a new `explain` command that works for all stack components (orchestrator, container registry and so on). Typing `zenml orchestrator explain` will output the relevant parts of the documentation that explain some basics about the orchestrator component.
 
 We added functionality to output whether a step is being executed from a cached version or is actually being executed for the first time. We also improved error messages when provisioning local Kubeflow resources with a non-local container registry.
 
 ## ➕ Other Updates, Additions and Fixes
 
-We made a number of changes to how our test suite works as run by Github Actions. Alexej blogged about this for the ZenML blog here: "[How we made our integration tests delightful by optimizing the way our GitHub Actions run our test suite](https://blog.zenml.io/github-actions-in-action/)". We also completed the implementation of all integration tests such that they run on our test suite.
+Our test suite was thoroughly reimagined and reworked to get the most out of Github Actions. Alexej blogged about this for the ZenML blog here: "[How we made our integration tests delightful by optimizing the way our GitHub Actions run our test suite](https://blog.zenml.io/github-actions-in-action/)". We also completed the implementation of all integration tests such that they run on our test suite.
 
 We enabled the use of generic step inputs and outputs as part of your pipeline.
 
