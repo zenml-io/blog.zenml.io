@@ -2,7 +2,7 @@
 layout: post
 author: Alex Strick van Linschoten
 title: "What's New in v0.6.3: Run Steps on Sagemaker and AzureML ☁️"
-description: "Release notes for the new version of ZenML. We've added the ability to run steps on AWS Sagemaker and AzureML. We added a new Tensorboard visualisation that runs when using the Kubeflow orchestrator. You'll also find a lot of smaller improvements, documentation additions and bug fixes in this release."
+description: "Release notes for the new version of ZenML. We've added the ability to run steps on AWS Sagemaker and AzureML. We added a new Tensorboard visualization that runs when using the Kubeflow orchestrator. You'll also find a lot of smaller improvements, documentation additions and bug fixes in this release."
 category: zenml
 tags: zenml release-notes
 publish_date: March 14, 2022
@@ -14,7 +14,7 @@ image:
 
 With ZenML 0.6.3, you can now run your ZenML steps on Sagemaker and AzureML! It's normal to have certain steps that require specific hardware on which to run model training, for example, and this latest release gives you the power to switch out hardware for individual steps to support this.
 
-We added a new Tensorboard visualisation that you can make use of when using our Kubeflow Pipelines integration. We handle the background processes needed to spin up this interactive web interface that you can use to visualise your model's performance over time.
+We added a new Tensorboard visualization that you can make use of when using our Kubeflow Pipelines integration. We handle the background processes needed to spin up this interactive web interface that you can use to visualize your model's performance over time.
 
 Behind the scenes we gave our integration testing suite a massive upgrade, fixed a number of smaller bugs and made documentation updates. For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.6.3) a glance.
 
@@ -22,7 +22,7 @@ Behind the scenes we gave our integration testing suite a massive upgrade, fixed
 
 ![Running your steps on cloud hardware provided by Sagemaker and AzureML](../assets/posts/release_0_6_3/zen-in-the-clouds.gif)
 
-As your pipelines become more mature and complex, you might want to use specialised hardware for certain steps of your pipeline. A clear example is wanting to run your training step on GPU machines that get spun up automagically without you having to worry too much about that deployment. Amazon's [Sagemaker](https://aws.amazon.com/sagemaker) and Microsoft's [AzureML](https://ml.azure.com/) both offer custom hardware on which you can run your steps.
+As your pipelines become more mature and complex, you might want to use specialized hardware for certain steps of your pipeline. A clear example is wanting to run your training step on GPU machines that get spun up automagically without you having to worry too much about that deployment. Amazon's [Sagemaker](https://aws.amazon.com/sagemaker) and Microsoft's [AzureML](https://ml.azure.com/) both offer custom hardware on which you can run your steps.
 
 The code required to add this to your pipeline and step definition is as minimal as can be. Simply add the following like above the step that you'd like to run on your cloud hardware:
 
@@ -30,17 +30,17 @@ The code required to add this to your pipeline and step definition is as minimal
 @step(custom_step_operator='sagemaker') # or azureml
 ```
 
-Sagemaker and AzureML offers specialised compute instances to run your training jobs and offer a beautiful UI to track and manage your models and logs. All you have to do is configure your ZenML stack with the relevant parameters and you're good to go.
+Sagemaker and AzureML offers specialized compute instances to run your training jobs and offer a beautiful UI to track and manage your models and logs. All you have to do is configure your ZenML stack with the relevant parameters and you're good to go.
 
 To get going with this, checkout the [two](https://github.com/zenml-io/zenml/tree/main/examples/sagemaker_step_operator) [examples](https://github.com/zenml-io/zenml/tree/main/examples/azureml_step_operator) we created, configure your stack and add that line mentioned above.
 
 We'll be publishing more about this use case in the coming days, so stay tuned for that!
 
-## 📊 Visualise Your Model History with Tensorboard
+## 📊 visualize Your Model History with Tensorboard
 
-![Visualising model history with Tensorboard](../assets/posts/release_0_6_3/tensorboard.png)
+![Visualizing model history with Tensorboard](../assets/posts/release_0_6_3/tensorboard.png)
 
-[Tensorboard](https://www.tensorflow.org/tensorboard/) is a way to visualise your machine learning models and training outputs. In this release we added a custom visualisation for Kubeflow which allows you to see the entire history of a model logged by a step.
+[Tensorboard](https://www.tensorflow.org/tensorboard/) is a way to visualize your machine learning models and training outputs. In this release we added a custom visualization for Kubeflow which allows you to see the entire history of a model logged by a step.
 
 Behind the scenes, we implemented a `TensorboardService` which tracks and manages locally running Tensorboard daemons. This interactive UI runs in the background and works even while your pipeline is running. To use this feature, the easiest way is to click the 'Start Tensorboard' button inside the Kubeflow UI.
 
