@@ -17,7 +17,7 @@ image:
   width: 100
 ---
 
-Reinforcement learning is a type of machine learning that works on a problem that is solved by a model that is trying to learn to perform actions in a way that maximizes the reward in a particular situation. In Supervised learning, we are given the target label which acts as the ground truth for the model so that we can train the model to predict the label for unseen examples but In reinforcement learning, there is no target label but the reinforcement agent decides what to do to perform the given task or action in a particular situation and the agent learns from it's experience.
+Reinforcement learning is a type of machine learning in which an agent tries to perform actions in a way that maximizes the reward for a particular situation. In supervised learning, we are given the target label which acts as the ground truth for the model so that we can train the model to predict the label for unseen examples. In reinforcement learning, by contrast, there is no target label but the reinforcement agent decides what to do to perform the given task or action in a particular situation and the agent learns from its experience.
 
 According to wikipedia, Reinforcement learning is an area of machine learning inspired by behavioural psychology, concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
 
