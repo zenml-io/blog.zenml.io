@@ -176,7 +176,7 @@ The `handle_input` and `handle_return` methods are important for defining how th
 - `handle_input` is responsible for reading the artifact from the artifact store.
 - `handle_return` is responsible for writing the artifact to the artifact store.
 
-You can tune the configurations for the model training which you can find in `config.py` file. I urge you to increase the `batch_size` and `epochs` to get a better training result. You can also change the `learning_rate` to get a better training result. You can also tune several other parameters in the `config.py` file.
+You can tune the configurations for the model training which you can find in `config.py` file. I urge you to increase the `batch_size` and `epochs` to get a better training result. You can also change the `learning_rate` to get a better training result. You can also fine-tune several other parameters in the `config.py` file.
 
 ## What we learned
 
