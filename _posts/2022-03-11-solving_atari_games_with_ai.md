@@ -14,16 +14,16 @@ image:
   width: 100
 ---
 
-Reinforcement learning is a type of machine learning that works on a problem that is solved by a model that is trying to learn to perform actions in a way that maximizes the reward in a particular situation. In Supervised learning, we are given the target label which acts as the ground truth for the model so that we can train the model to predict the label for unseen examples but In reinforcement learning, there is no target label but the reinforcement agent decides what to do to perform the given task or action in a particular situation and the agent learns from it's experience.
+Reinforcement learning is a type of machine learning in which an agent tries to perform actions in a way that maximizes the reward for a particular situation. In supervised learning, we are given the target label which acts as the ground truth for the model so that we can train the model to predict the label for unseen examples. In reinforcement learning, by contrast, there is no target label but the reinforcement agent decides what to do to perform the given task or action in a particular situation and the agent learns from its experience.
 
 According to wikipedia, Reinforcement learning is an area of machine learning inspired by behavioural psychology, concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
 
-An application of reinforcement learning in the field of Computational Finance is Automated trading problem. Here the agent is trading software, environment is other traders, State is price history, Action is buy/sell/hold, Reward is profit/loss.
+An application of reinforcement learning in the field of computational finance is where you want to have a model handle automated trading of stocks and shares. Here the agent is the specific software needed to make trades, the environment is other traders, the state is price history, the possible actions are buy or sell or hold, and the reward is profit/loss.
 
-Another application of reinforcement learning in the field of Operations research is vehicle routing problem. Here the agent is vehicle routing software, environment is stochastic demand, State is vehicle location, capacity and depot requests, Action is vehicle route, Reward is travel costs.
+Another application of reinforcement learning in the field of operations research is exemplified by the challenge taken on by a company like Uber. When calculating how to route vehicles, a naive application of this might be a reinforcement learning algorithm. In this case, the agent is the vehicle routing software, the environment is the stochastic demand, the state is the vehicle locations, capacity and depot requests, the action is the particular route taken by a vehicle, and the reward is the travel costs.
 
 In this article, I will be using ZenML to build a model that can solve Atari games using reinforcement learning. I will be using the [Atari 2600](https://en.wikipedia.org/wiki/Atari_2600) game environment. I will be using the [Deep Q-Learning](https://en.wikipedia.org/wiki/Deep_Q-learning) algorithm to solve the game. I found this Github repo, [Building a Powerful DQN in TensorFlow 2.0](https://github.com/sebtheiler/tutorials/tree/main/dqn), to get started with our solution.
-In real world, building reinforcement learning applications can be a challenging so I will be using Zenml (A MLOps Framework) which allows to deploy the models which can be used across the organization.
+In the real world, building reinforcement learning applications can be challenging so I will be using ZenML (an MLOps framework) which allows for the deployment of models which can be used across the organization.
 ZenML is an extensible, open-source MLOps framework to create production-ready machine learning pipelines. Built for data scientists, it has a simple, flexible syntax, is cloud- and tool-agnostic, and has interfaces/abstractions that are catered towards ML workflows.
 ZenML pipelines execute ML-specific workflows from sourcing data to splitting, preprocessing, training, all the way to the evaluation of results and even serving.
 
@@ -52,7 +52,15 @@ python run_pipeline.py train
 
 ## How it works
 
-We have the `training_pipeline.py` script which is the main script that runs the training pipeline. In brief the training pipeline consists of several steps which include `game_wrap` which wraps over the game environment that you want to train on, `build_dqn` which builds keras model, `replay_buffer` which stores past experience of the agent, `get_information_meta` which restores the model from given checkpoint, `train` which trains the dqn agent. Every step is connected with each other in a way that output from one step is given input to another step. The following is the code for the training pipeline:
+The `training_pipeline.py` script is the main file that runs the training pipeline. In brief, the training pipeline consists of several steps which include:
+
+- `game_wrap` which wraps over the game environment that you want to train on
+- `build_dqn` which builds a Keras model
+- `replay_buffer` which stores the past experiences of the agent
+- `get_information_meta` which restores the model from a given checkpoint
+- `train` which trains the dqn agent. 
+
+Every step is connected with each other in a way such that output from one step is given as input to another step. The following is the code for the training pipeline:
 
 ```python
 from zenml.pipelines import pipeline
@@ -125,7 +133,7 @@ def run_training():
     training.run()
 ```
 
-You'll have probably noticed that some of the steps in this pipeline require custom materializers to be used, so let's take a closer look at those.
+You'll probably have noticed that some of the steps in this pipeline require custom materializers to be used, so let's take a closer look at those.
 
 ### A custom materializer to pass data between the steps
 
@@ -165,10 +173,10 @@ The `handle_input` and `handle_return` methods are important for defining how th
 - `handle_input` is responsible for reading the artifact from the artifact store.
 - `handle_return` is responsible for writing the artifact to the artifact store.
 
-You can tune the configurations for the model training which you can find in `config.py` file. I urge you to increase the `batch_size` and `epochs` to get a better training result. You can also change the `learning_rate` to get a better training result. You can also tune several other parameters in the `config.py` file.
+You can tune the configurations for the model training which you can find in `config.py` file. I urge you to increase the `batch_size` and `epochs` to get a better training result. You can also change the `learning_rate` to get a better training result. You can also fine-tune several other parameters in the `config.py` file.
 
 ## What we learned
 
-Deep Q Network are not the newest or most efficient algorithm when it comes to playing games. Nevertheless, they are still very effective and can be used for games like the Atari games described in this blogpost. They lay the foundation for reinforcement learning. In this post we have seen how to build a DQN and train it to play Atari games. We have made use of ZenML to build production-grade pipelines that are reproducible and scalable.
+Deep Q Networks are not the newest or most efficient algorithm when it comes to playing games. Nevertheless, they are still very effective and can be used for games like the Atari games described in this blogpost. They lay the foundation for reinforcement learning. In this post we have seen how to build a DQN and train it to play Atari games. We have made use of ZenML to build production-grade pipelines that are reproducible and scalable.
 
 If you’re interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
