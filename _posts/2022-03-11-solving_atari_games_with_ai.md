@@ -7,9 +7,6 @@ publish_date: March 11, 2022
 date: 2022-03-11T10:20:00Z
 tags: tensorflow machine-learning mlops evergreen applied-zenml pipelines reinforcement-learning
 category: zenml
-crosspost:
-  url: https://blog.tensorflow.org/2020/02/atari-games-with-reinforcement-learning.html
-  name: Reinforcement Learning Blog
 thumbnail: /assets/posts/atari.gif
 image:
   path: /assets/posts/atari.gif
