@@ -21,7 +21,7 @@ Reinforcement learning is a type of machine learning in which an agent tries to 
 
 According to wikipedia, Reinforcement learning is an area of machine learning inspired by behavioural psychology, concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
 
-An application of reinforcement learning in the field of Computational Finance is Automated trading problem. Here the agent is trading software, environment is other traders, State is price history, Action is buy/sell/hold, Reward is profit/loss.
+An application of reinforcement learning in the field of computational finance is where you want to have a model handle automated trading of stocks and shares. Here the agent is the specific software needed to make trades, the environment is other traders, the state is price history, the possible actions are buy or sell or hold, and the reward is profit/loss.
 
 Another application of reinforcement learning in the field of Operations research is vehicle routing problem. Here the agent is vehicle routing software, environment is stochastic demand, State is vehicle location, capacity and depot requests, Action is vehicle route, Reward is travel costs.
 
