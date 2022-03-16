@@ -3,8 +3,8 @@ layout: post
 author: Ayush Singh
 title: Solving Atari Games with Reinforcement Learning (AI)
 description: "We trained a model to solve Atari games using reinforcement learning. We used the Deep Q algorithm as the basis of our implementation. It allowed us to get a working solution fairly quickly."
-publish_date: March 11, 2022
-date: 2022-03-11T10:20:00Z
+publish_date: March 16, 2022
+date: 2022-03-16T10:20:00Z
 tags: tensorflow machine-learning mlops evergreen applied-zenml pipelines reinforcement-learning
 category: zenml
 thumbnail: /assets/posts/atari.gif
@@ -16,13 +16,13 @@ image:
 
 Reinforcement learning is a type of machine learning in which an agent tries to perform actions in a way that maximizes the reward for a particular situation. In supervised learning, we are given the target label which acts as the ground truth for the model so that we can train the model to predict the label for unseen examples. In reinforcement learning, by contrast, there is no target label but the reinforcement agent decides what to do to perform the given task or action in a particular situation and the agent learns from its experience.
 
-According to wikipedia, Reinforcement learning is an area of machine learning inspired by behavioural psychology, concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
+According to wikipedia, `Reinforcement learning` is an area of machine learning inspired by behavioural psychology, concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
 
 An application of reinforcement learning in the field of computational finance is where you want to have a model handle automated trading of stocks and shares. Here the agent is the specific software needed to make trades, the environment is other traders, the state is price history, the possible actions are buy or sell or hold, and the reward is profit/loss.
 
 Another application of reinforcement learning in the field of operations research is exemplified by the challenge taken on by a company like Uber. When calculating how to route vehicles, a naive application of this might be a reinforcement learning algorithm. In this case, the agent is the vehicle routing software, the environment is the stochastic demand, the state is the vehicle locations, capacity and depot requests, the action is the particular route taken by a vehicle, and the reward is the travel costs.
 
-In this article, I will be using ZenML to build a model that can solve Atari games using reinforcement learning. I will be using the [Atari 2600](https://en.wikipedia.org/wiki/Atari_2600) game environment. I will be using the [Deep Q-Learning](https://en.wikipedia.org/wiki/Deep_Q-learning) algorithm to solve the game. I found this Github repo, [Building a Powerful DQN in TensorFlow 2.0](https://github.com/sebtheiler/tutorials/tree/main/dqn), to get started with our solution.
+In this article, I will be using ZenML to build a model that can solve Atari games using reinforcement learning. I will be using the [Atari 2600](https://en.wikipedia.org/wiki/Atari_2600) game environment. I will be using the [Deep Q-Learning](https://en.wikipedia.org/wiki/Deep_Q-learning) algorithm to solve the game. I found this Github repo, [Building a Powerful DQN in TensorFlow 2.0](https://github.com/sebtheiler/tutorials/tree/main/dqn), to get started with our solution. I will be using OpenAI Gym which is a toolkit that provides a wide variety of simulated environments (Atari games, board games, 2D and 3D physical simulations, and so on), so you can train agents, compare them. I will be using the `BreakoutDeterministic-v4` environment from OpenAI Gym.
 In the real world, building reinforcement learning applications can be challenging so I will be using ZenML (an MLOps framework) which allows for the deployment of models which can be used across the organization.
 ZenML is an extensible, open-source MLOps framework to create production-ready machine learning pipelines. Built for data scientists, it has a simple, flexible syntax, is cloud- and tool-agnostic, and has interfaces/abstractions that are catered towards ML workflows.
 ZenML pipelines execute ML-specific workflows from sourcing data to splitting, preprocessing, training, all the way to the evaluation of results and even serving.
@@ -40,14 +40,14 @@ Before running this project, you must install some Python packages in your envir
 
 ```python
 git clone https://github.com/zenml-io/zenfiles.git
-cd Atari-Game-Player
+cd atari-game-play
 pip install -r requirements.txt
 ```
 
 We're ready to go now. You can run the code, using the `run_pipeline.py` script.
 
 ```python
-python run_pipeline.py train
+python run_pipeline.py
 ```
 
 ## How it works
@@ -58,7 +58,9 @@ The `training_pipeline.py` script is the main file that runs the training pipeli
 - `build_dqn` which builds a Keras model
 - `replay_buffer` which stores the past experiences of the agent
 - `get_information_meta` which restores the model from a given checkpoint
-- `train` which trains the dqn agent. 
+- `train` which trains the dqn agent.
+
+![Pipeline Steps](..\assets\posts\updatedreinforcementlearning.gif)
 
 Every step is connected with each other in a way such that output from one step is given as input to another step. The following is the code for the training pipeline:
 
