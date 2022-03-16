@@ -55,7 +55,15 @@ python run_pipeline.py train
 
 ## How it works
 
-We have the `training_pipeline.py` script which is the main script that runs the training pipeline. In brief the training pipeline consists of several steps which include `game_wrap` which wraps over the game environment that you want to train on, `build_dqn` which builds keras model, `replay_buffer` which stores past experience of the agent, `get_information_meta` which restores the model from given checkpoint, `train` which trains the dqn agent. Every step is connected with each other in a way that output from one step is given input to another step. The following is the code for the training pipeline:
+The `training_pipeline.py` script is the main file that runs the training pipeline. In brief, the training pipeline consists of several steps which include:
+
+- `game_wrap` which wraps over the game environment that you want to train on
+- `build_dqn` which builds a Keras model
+- `replay_buffer` which stores the past experiences of the agent
+- `get_information_meta` which restores the model from a given checkpoint
+- `train` which trains the dqn agent. 
+
+Every step is connected with each other in a way such that output from one step is given as input to another step. The following is the code for the training pipeline:
 
 ```python
 from zenml.pipelines import pipeline
