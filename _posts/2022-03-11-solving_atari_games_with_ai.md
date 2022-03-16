@@ -136,7 +136,7 @@ def run_training():
     training.run()
 ```
 
-You'll have probably noticed that some of the steps in this pipeline require custom materializers to be used, so let's take a closer look at those.
+You'll probably have noticed that some of the steps in this pipeline require custom materializers to be used, so let's take a closer look at those.
 
 ### A custom materializer to pass data between the steps
 
