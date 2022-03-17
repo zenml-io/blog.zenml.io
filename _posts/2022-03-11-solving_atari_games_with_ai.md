@@ -27,6 +27,7 @@ In the real world, building reinforcement learning applications can be challengi
 ZenML is an extensible, open-source MLOps framework to create production-ready machine learning pipelines. Built for data scientists, it has a simple, flexible syntax, is cloud- and tool-agnostic, and has interfaces/abstractions that are catered towards ML workflows.
 ZenML pipelines execute ML-specific workflows from sourcing data to splitting, preprocessing, training, all the way to the evaluation of results and even serving.
 
+If you prefer consuming your content in video form, then [this](https://youtu.be/04DbbEzE9ig) video covers the same which we cover in this blogpost. 
 ## Setting up the project
 
 I suggest you create and work out of a virtual environment. You can create a virtual environment using `conda` by following these steps, but of course you can also use whatever you're familiar with:
