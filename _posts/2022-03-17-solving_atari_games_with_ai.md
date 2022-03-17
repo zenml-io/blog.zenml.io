@@ -3,8 +3,8 @@ layout: post
 author: Ayush Singh
 title: Solving Atari Games with Reinforcement Learning (AI)
 description: "We trained a model to solve Atari games using reinforcement learning. We used the Deep Q algorithm as the basis of our implementation. It allowed us to get a working solution fairly quickly."
-publish_date: March 16, 2022
-date: 2022-03-16T10:20:00Z
+publish_date: March 17, 2022
+date: 2022-03-17T10:20:00Z
 tags: tensorflow machine-learning mlops evergreen applied-zenml pipelines reinforcement-learning
 category: zenml
 thumbnail: /assets/posts/atari.gif
@@ -16,18 +16,24 @@ image:
 
 Reinforcement learning is a type of machine learning in which an agent tries to perform actions in a way that maximizes the reward for a particular situation. In supervised learning, we are given the target label which acts as the ground truth for the model so that we can train the model to predict the label for unseen examples. In reinforcement learning, by contrast, there is no target label but the reinforcement agent decides what to do to perform the given task or action in a particular situation and the agent learns from its experience.
 
-According to wikipedia, `Reinforcement learning` is an area of machine learning inspired by behavioural psychology, concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
+According to Wikipedia, 'reinforcement learning' is an area of machine learning inspired by behavioural psychology, concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
 
 An application of reinforcement learning in the field of computational finance is where you want to have a model handle automated trading of stocks and shares. Here the agent is the specific software needed to make trades, the environment is other traders, the state is price history, the possible actions are buy or sell or hold, and the reward is profit/loss.
 
 Another application of reinforcement learning in the field of operations research is exemplified by the challenge taken on by a company like Uber. When calculating how to route vehicles, a naive application of this might be a reinforcement learning algorithm. In this case, the agent is the vehicle routing software, the environment is the stochastic demand, the state is the vehicle locations, capacity and depot requests, the action is the particular route taken by a vehicle, and the reward is the travel costs.
 
-In this article, I will be using ZenML to build a model that can solve Atari games using reinforcement learning. I will be using the [Atari 2600](https://en.wikipedia.org/wiki/Atari_2600) game environment. I will be using the [Deep Q-Learning](https://en.wikipedia.org/wiki/Deep_Q-learning) algorithm to solve the game. I found this Github repo, [Building a Powerful DQN in TensorFlow 2.0](https://github.com/sebtheiler/tutorials/tree/main/dqn), to get started with our solution. I will be using OpenAI Gym which is a toolkit that provides a wide variety of simulated environments (Atari games, board games, 2D and 3D physical simulations, and so on), so you can train agents, compare them. I will be using the `BreakoutDeterministic-v4` environment from OpenAI Gym.
-In the real world, building reinforcement learning applications can be challenging so I will be using ZenML (an MLOps framework) which allows for the deployment of models which can be used across the organization.
-ZenML is an extensible, open-source MLOps framework to create production-ready machine learning pipelines. Built for data scientists, it has a simple, flexible syntax, is cloud- and tool-agnostic, and has interfaces/abstractions that are catered towards ML workflows.
-ZenML pipelines execute ML-specific workflows from sourcing data to splitting, preprocessing, training, all the way to the evaluation of results and even serving.
+In this article, I will be using ZenML to build a model that can solve Atari games using reinforcement learning. I will be using the [Atari 2600](https://en.wikipedia.org/wiki/Atari_2600) game environment. I will be using the [Deep Q-Learning](https://en.wikipedia.org/wiki/Deep_Q-learning) algorithm to solve the game. I found this Github repo, [Building a Powerful DQN in TensorFlow 2.0](https://github.com/sebtheiler/tutorials/tree/main/dqn), to get started with our solution. 
 
-If you prefer consuming your content in video form, then [this](https://youtu.be/04DbbEzE9ig) video covers the same which we cover in this blogpost. 
+I will be using [OpenAI Gym](https://gym.openai.com/) which is a toolkit that provides a wide variety of simulated environments (Atari games, board games, 2D and 3D physical simulations, and so on), so you can train agents and compare them. I will be using the `BreakoutDeterministic-v4` environment from OpenAI Gym.
+
+In the real world, building reinforcement learning applications can be challenging so I will be using [ZenML](https://zenml.io/) (an MLOps framework) which allows for the deployment of models which can be used across the organization. ZenML is an extensible, open-source MLOps framework to create production-ready machine learning pipelines. Built for data scientists, it has a simple, flexible syntax, is cloud- and tool-agnostic, and has interfaces/abstractions that are catered towards ML workflows. ZenML pipelines execute ML-specific workflows from sourcing data to splitting, preprocessing, training, all the way to the evaluation of results and even serving.
+
+If you prefer consuming your content in video form, then [this](https://youtu.be/04DbbEzE9ig) video covers the same which we cover in this blogpost.
+
+<div class="embed-responsive embed-responsive-16by9 mb-5">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/04DbbEzE9ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ## Setting up the project
 
 I suggest you create and work out of a virtual environment. You can create a virtual environment using `conda` by following these steps, but of course you can also use whatever you're familiar with:
@@ -180,6 +186,6 @@ You can tune the configurations for the model training which you can find in `co
 
 ## What we learned
 
-Deep Q Networks are not the newest or most efficient algorithm when it comes to playing games. Nevertheless, they are still very effective and can be used for games like the Atari games described in this blogpost. They lay the foundation for reinforcement learning. In this post we have seen how to build a DQN and train it to play Atari games. We have made use of ZenML to build production-grade pipelines that are reproducible and scalable.
+Deep Q Networks are not the newest or most efficient algorithm when it comes to playing games. Nevertheless, they are still very effective and can be used for games like the Atari games described in this blogpost. They lay the foundation for reinforcement learning. In this post we have seen how to build a DQN and train it to play Atari games. We used ZenML to build production-grade pipelines that are reproducible and scalable.
 
 If you’re interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
