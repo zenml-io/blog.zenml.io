@@ -10,7 +10,12 @@
     <section id="post-content" class="pb-5">
       <div class="container" id="blogpost">
         <span>
-          <div class="btn-group" role="group" aria-label="...">
+          <div
+            class="btn-group"
+            role="group"
+            aria-label="..."
+            style="display: block"
+          >
             {% assign all_tags = page.tags | sort %} {% for tag in all_tags %}
             {% capture tag_name %}{{ tag }}{% endcapture %}
             <a href="/tag/{{ tag_name }}"
