@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Alex Strick van Linschoten
-title: "🎙 Podcast: Practical Production ML with Emmanuel Ameisen"
+title: "Podcast: Practical Production ML with Emmanuel Ameisen"
 description: "This week I spoke with Emmanuel Ameisen, a data scientist and ML engineer currently based at Stripe. Emmanuel also wrote an excellent O'Reilly book called "Building Machine Learning Powered Applications", a book I find myself often returning to for inspiration and that I was pleased to get the chance to reread in preparation for our discussion."
 category: podcast
 tags: podcast mlops evergreen bigger-picture tooling education machine-learning
