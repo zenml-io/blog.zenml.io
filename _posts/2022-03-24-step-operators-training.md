@@ -12,7 +12,7 @@ image:
   path: /assets/posts/step-operators-training/clouds.jpg
 ---
 
-_If you are of a more visual disposition, please check out this blogs [accompanying video tutorial](https://www.youtube.com/watch?v=b5TXRYkdL3w)._
+_If you are of a more visual disposition, please check out this blog's [accompanying video tutorial](https://www.youtube.com/watch?v=b5TXRYkdL3w)._
 
 # What is a step operator?
 
@@ -25,7 +25,9 @@ There are two step operators (for **AzureML** and **AWS Sagemaker**) that are im
 {% endhint %}
 
 ![ZenML step operators allow training in the cloud](../assets/posts/step-operators-training/zen_in_clouds.gif)
-
+<div class="embed-responsive embed-responsive-16by9 mb-5">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/04DbbEzE9ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 # I’m confused 🤔. How is it different from an orchestrator?
 
 An orchestrator is a higher level entity than a step operator. It is what executes the 
@@ -34,7 +36,7 @@ entire ZenML pipeline code and decides what specifications and backends to use f
 The orchestrator runs the code which launches your step in a backend of your choice. If you don’t specify a step operator, then the step code runs on the same compute instance as your orchestrator.
 
 While an orchestrator defines how and where your entire pipeline runs, a step operator defines how and where an individual 
-step runs. This can be useful in a variety of scenarios. An example could be if one step within a pipeline should run on a 
+step runs. This can be useful in a variety of scenarios. An example could be if one step within a pipeline needed to run on a 
 separate environment equipped with a GPU (like a trainer step).
 
 Generically, this operator can be registered like any other stack component:
