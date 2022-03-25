@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Hamza Tahir
-title: "Run your steps on the cloud with Sagemaker, Vertex, and AzureML"
+title: "Run your steps on the cloud with Sagemaker, Vertex AI, and AzureML"
 description: "With ZenML 0.6.3, you can now run your ZenML steps on Sagemaker, Vertex AI, and AzureML! It’s normal to have certain steps that require specific infrastructure (e.g. a GPU-enabled environment) on which to run model training, and Step Operators give you the power to switch out infrastructure for individual steps to support this."
 category: zenml
 tags: zenml cloud evergreen integrations
@@ -12,11 +12,9 @@ image:
   path: /assets/posts/step-operators-training/clouds.jpg
 ---
 
-_If you are of a more visual disposition, please check out this blog's [accompanying video tutorial](https://www.youtube.com/watch?v=b5TXRYkdL3w)._
+_If you are of a more visual disposition, please check out this blog's [accompanying video tutorial](https://www.youtube.com/watch?v=rMf10sjJjZM)._
 
-<div class="embed-responsive embed-responsive-16by9 mb-5">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/04DbbEzE9ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rMf10sjJjZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 _[Subscribe to the ZenML YouTube Channel](https://www.youtube.com/channel/UCi79n61eV2sVyYxJOqk_bMw)._
 
@@ -112,7 +110,7 @@ zenml step-operator register sagemaker \
     --experiment_name=<SAGEMAKER_EXPERIMENT_NAME>
 ```
 
-The command to register the stack component would look like the following. More details about the parameters that you can configure can be found in the class definition of Sagemaker Step Operator in the API docs (https://apidocs.zenml.io/). 
+The command to register the stack component would look like the following. More details about the parameters that you can configure can be found in the class definition of Sagemaker Step Operator in the [API docs](https://apidocs.zenml.io/). 
 
 - Register the sagemaker stack with the same pattern as always:
 
