@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Hamza Tahir
-title: "Training for agnostics: Run your steps on the cloud"
+title: "Run your steps on the cloud with Sagemaker, Vertex, and AzureML"
 description: ""
 category: zenml
 tags: zenml python tooling applied-zenml
