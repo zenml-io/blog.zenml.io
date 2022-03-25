@@ -60,6 +60,7 @@ def trainer(...) -> ...:
 
 <iframe src="https://giphy.com/embed/lrW5C1vjtWKb3X2oom" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>The step operator makes you feel like this -- <a href="https://giphy.com/gifs/BoschGlobal-like-a-boss-likeabosch-bosch-lrW5C1vjtWKb3X2oom">via GIPHY</a></p>
 
+
 ZenML's cloud integrations are now extended to include step operators that run an individual step in all of the public cloud providers hosted ML platform offerings. The ZenML [GitHub repository](https://github.com/zenml-io/zenml/tree/main/examples) gives a great example of how to use these integrations. Let's walk through one example, with AWS Sagemaker, in this blog. The other two clouds are quite similar and follow the same pattern.
 
 ## Introduction to AWS Sagemaker
@@ -145,6 +146,7 @@ ZenML will take care of packaging the step for you into a docker image, pushing 
 You can also switch the "sagemaker" operator with any other operator of your choosing, and it will work with the same step code as you always have. Modularity at its best!
 
 So what are you waiting for? Read more about step operators in the [docs](https://docs.zenml.io), or try it yourself with the [full example at the GitHub repository](https://github.com/zenml-io/zenml/tree/main/examples). Make sure to leave a star if you do end up there!
+
 
 [Image credit: Photo by <a
 href="https://unsplash.com/@lukaszlada?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">lukaszlada</a>
