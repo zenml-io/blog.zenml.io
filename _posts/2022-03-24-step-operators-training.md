@@ -2,7 +2,7 @@
 layout: post
 author: Hamza Tahir
 title: "Run your steps on the cloud with Sagemaker, Vertex, and AzureML"
-description: ""
+description: "With ZenML 0.6.3, you can now run your ZenML steps on Sagemaker and AzureML! It’s normal to have certain steps that require specific infrastructure (e.g. a GPU-enabled environment) on which to run model training, and Step Operators give you the power to switch out infrastructure for individual steps to support this."
 category: zenml
 tags: zenml python tooling applied-zenml
 publish_date: March 25, 2022
