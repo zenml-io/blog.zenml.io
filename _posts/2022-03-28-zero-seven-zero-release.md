@@ -37,21 +37,92 @@ ZenML 0.7.0 a more pleasant user experience. For a detailed look at what's
 changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.7.0)
 a glance.
 
-## Profiles
+## 🗿 Profiles and Global Stack Storage
 
-Lorem Ipsum, meow.
+Ever wanted to use the same stack configuration in multiple projects? Well now
+you can! ZenML 0.7.0 moves the storage of stack configurations out of the `.zen`
+folder inside of each individual project and into the system-wide ZenML
+application configuration folder. What this means is you can now interact with
+ZenML using CLI commands from anywhere, not just in zen repository projects
+with a `.zen` folder. Adding a new stack component, for instance an
+orchestrator using
+```sh
+zenml orchestrator register kubeflow_orchestrator --type=kubeflow
+```
+means that this orchestrator will now be available to use in any ZenML projects
+on your local machine.
 
-## Secrets
+Still want separation of concerns with isolated environments for each project?
+This is where profiles come in. You can now register a new profile using
 
-Hocus Pocus.
+```sh
+zenml profile create NEW_PROFILE_NAME
+zenml profile activate NEW_PROFILE_NAME
+```
 
-## Vertex AI and more
+This provides you with a completely fresh environment that only has the default
+local stack pre-registered, where you can work without disturbing other
+profiles or projects. You can specify both globally and on a project (folder)
+level which profile to default to using. For ease of transition, any legacy Zen
+repositories (projects) will automatically be migrated to a new isolated
+profile so you can maintain the separation you are used to:
 
-Lorem Checksum.
+![Migration of Legacy Profiles](../assets/posts/release_0_7_0/legacy-migration.png)
+
+## 🔑 Secret Management
+
+Most projects involving either cloud infrastructure or of a certain complexity
+will involve secrets of some kind. You use secrets, for example, when connecting
+to AWS, which requires an `access_key_id` and a `secret_access_key` which it
+(usually) stores in your `~/.aws/credentials` file.
+You might find you need to access those secrets from within your Kubernetes
+cluster as it runs individual steps, or you might just want a centralized
+location for the storage of secrets across your project. From this release,
+ZenML offers a basic [local secrets manager](https://docs.zenml.io/v/0.7.0/features/secrets)
+and an integration with the managed [AWS Secrets Manager](https://aws.amazon.com/secrets-manager).
+
+This now lets you easily specify secrets as dependencies for pipelines from
+the decorator:
+
+```python
+@pipeline(required_integrations=[TENSORFLOW], secrets=["aws"], enable_cache=True)
+def mnist_pipeline(importer, normalizer, trainer, evaluator):
+    """Steps that require access to an AWS account here"""
+```
 
 ## ➕ Other Updates, Additions and Fixes
 
-Dolor amet sic.
+Google Cloud's Vertex AI is now available as a step operator to run individual
+steps of your pipeline in the cloud. Simply register it as you would any other
+stack component from the CLI:
+
+```bash
+zenml step-operator register vertex \
+    --type=vertex \
+    --project=zenml-core \
+    --service_account_path=... \
+    --region=europe-west1 \
+    --machine_type=n1-standard-4 \
+    --base_image=<CUSTOM_BASE_IMAGE> \
+    --accelerator_type=...
+```
+
+ More details about the parameters that you can configure can be found in the
+ class definition of Vertex Step Operator in the API docs (https://apidocs.zenml.io/).
+
+Another change addresses the fact that while in most cases
+[materializers](https://docs.zenml.io/guides/functional-api/materialize-artifacts)
+should be used to control how artifacts are consumed and output from steps in a
+pipeline, there is sometimes a need to have a completely non-materialized
+artifact in a step. ZenML now provides this option of
+[bypassing materialization](https://docs.zenml.io/v/0.7.0/guides/index/skip-materialization).
+
+
+## 🙌 Community Contributions
+
+We received [a contribution](https://github.com/zenml-io/zenml/pull/485) from
+[Avram](https://github.com/avramdj), in which he fixed a typo in our
+documentation. Thank you, Avram!
 
 ## Contribute to ZenML!
 
