@@ -8,3 +8,10 @@ repos:
         entry: bash scripts/check-spelling.sh
         language: system
 
+  - repo: local
+    hooks:
+      - id: taggeneration
+        name: taggeneration
+        entry: python scripts/tag_generator.py
+        language: python
+
