@@ -53,7 +53,7 @@ means that this orchestrator will now be available to use in any ZenML projects
 on your local machine.
 
 Still want separation of concerns with isolated environments for each project?
-This is where profiles come in. You can now register a new profile using
+This is where profiles come in. You can now register a new profile using:
 
 ```sh
 zenml profile create NEW_PROFILE_NAME
