@@ -20,7 +20,7 @@ With ZenML 0.7.0, a lot has been revamped under the hood about how things are
 stored. Importantly what this means is that ZenML now has system-wide profiles
 that let you register stacks to share across several of your projects! If you
 still want to manage your stacks for each project folder individually, profiles
-still let you do that as well.
+let you continue to do that as well.
 
 Most projects of any complexity will require passwords or tokens to access data
 and infrastructure, and for this purpose ZenML 0.7.0 introduces the Secrets
@@ -71,14 +71,15 @@ profile so you can maintain the separation you are used to:
 
 ## 🔑 Secret Management
 
-Most projects involving either cloud infrastructure or of a certain complexity
-will involve secrets of some kind. You use secrets, for example, when connecting
-to AWS. These secrets, in this case the `access_key_id` and `secret_access_key`, are usually stored in the `~/.aws/credentials` file.
-You might find you need to access those secrets from within your Kubernetes
-cluster as it runs individual steps, or you might just want a centralized
-location for the storage of secrets across your project. From this release,
-ZenML offers a basic [local secrets manager](https://docs.zenml.io/v/0.7.0/features/secrets)
-and an integration with the managed [AWS Secrets Manager](https://aws.amazon.com/secrets-manager).
+Most projects of a certain complexity or using cloud infrastructure will
+involve secrets of some kind. You use secrets, for example, when connecting to
+AWS. These secrets, in this case the `access_key_id` and `secret_access_key`,
+are usually stored in the `~/.aws/credentials` file. You might find you need to
+access those secrets from within your Kubernetes cluster as it runs individual
+steps, or you might just want a centralized location for the storage of secrets
+across your project. As of this release, ZenML offers a basic
+[local secrets manager](https://docs.zenml.io/v/0.7.0/features/secrets) and an
+integration with the managed [AWS Secrets Manager](https://aws.amazon.com/secrets-manager).
 
 This now lets you easily specify secrets as dependencies for pipelines from
 the decorator:
