@@ -63,7 +63,7 @@ zenml profile activate NEW_PROFILE_NAME
 This provides you with a completely fresh environment that only has the default
 local stack pre-registered, where you can work without disturbing other
 profiles or projects. You can specify both globally and on a project (folder)
-level which profile to default to using. For ease of transition, any legacy Zen
+level which profile to default to using. For ease of transition, any legacy ZenML
 repositories (projects) will automatically be migrated to a new isolated
 profile so you can maintain the separation you are used to:
 
@@ -107,7 +107,7 @@ zenml step-operator register vertex \
 ```
 
  More details about the parameters that you can configure can be found in the
- class definition of Vertex Step Operator in the API docs (https://apidocs.zenml.io/).
+ class definition of Vertex Step Operator in the [API docs](https://apidocs.zenml.io/0.7.0/api_docs/integrations/#zenml.integrations.vertex.step_operators.vertex_step_operator).
 
 Another change addresses the fact that while in most cases
 [materializers](https://docs.zenml.io/guides/functional-api/materialize-artifacts)
