@@ -12,3 +12,6 @@ Gemfile.lock
 # Code editor things
 .prettierignore
 .vscode
+
+# pyenv things
+.python-version
