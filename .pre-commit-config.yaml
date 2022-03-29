@@ -1,0 +1,10 @@
+fail_fast: true
+
+repos:
+  - repo: local
+    hooks:
+      - id: spellcheck
+        name: spellcheck
+        entry: bash scripts/check-spelling.sh
+        language: system
+
