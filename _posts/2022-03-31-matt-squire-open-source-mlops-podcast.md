@@ -7,38 +7,35 @@ category: podcast
 tags: podcast mlops evergreen bigger-picture tooling education machine-learning
 publish_date: March 31, 2022
 date: 2022-03-31T00:02:00Z
-thumbnail: /assets/posts/emmanuel-ameisen/portrait.jpg
+thumbnail: /assets/posts/matt-squire/matt-squire-profile.jpeg
 image:
-  path: /assets/posts/emmanuel-ameisen/portrait.jpg
+  path: /assets/posts/matt-squire/matt-squire-profile.jpeg
 ---
 
-This week I spoke with [Emmanuel Ameisen](https://www.linkedin.com/in/ameisen/),
-a data scientist and ML engineer currently based at Stripe. Emmanuel also wrote
-an excellent O'Reilly book called
-"[Building Machine Learning Powered Applications](https://www.amazon.com/Building-Machine-Learning-Powered-Applications/dp/149204511X?tag=soumet-20)",
-a book I find myself often returning to for inspiration and that I was pleased
-to get the chance to reread in preparation for our discussion.
+This week I spoke with [Matt Squire](https://www.linkedin.com/in/matt-squire-a19896125/), the CTO and co-founder of [Fuzzy Labs](https://www.fuzzylabs.ai/), where they help partner organizations think through how best to productionize their machine learning workflows.
 
-Emmanuel has previously worked at
-[Insight Data Science](https://insightfellows.com) where he was involved in
-mentoring and guiding dozens of data scientists who were working on building
-their ML portfolio projects. He brings a wealth of experience to the table and
-I'm really excited to present our conversation to you.
+Matt and FuzzyLabs are also behind the '[Awesome Open Source MLOps](https://github.com/fuzzylabs/awesome-open-mlops)' GitHub repo where you can find all the options for an open-source MLOps stack of your dreams.
 
-In this clip Emmanuel talks through some common patterns he's seen when ML
-practitioners go from no model to their first model, and how tooling can support
-that process:
+Matt has been an enthusiastic early supporter of the work we do at ZenML so it was really amazing to get to talk to him and  get his take based on the many experiences he's had seeing how machine learning is done out in the field.
 
-<iframe src="https://share.descript.com/embed/xDlwX6Vakc4" width="410" height="410" frameborder="0" allowfullscreen></iframe>
+In this clip, Matt talks through the components that would make up his ideal MLOps stack:
 
-Emmanuel's book is packed with practical and useful examples of how to iterate
-quickly and deliver something that has value in the real world (as opposed to
-something that simply performs well in terms of a single metric).
+<iframe src="https://share.descript.com/embed/7QxoXz3v8ZN" width="410" height="410" frameborder="0" allowfullscreen></iframe>
+
+Matt has also recently been writing a series of blog posts about ZenML over at the Fuzzy Labs Blog:
+
+![Fuzzy Lab blog posts](../assets/posts/matt-squire/blogposts.png)
+
+Only the [first](https://www.fuzzylabs.ai/blog-post/the-road-to-zen-part-1-getting-started-pipelines) [two](https://www.fuzzylabs.ai/blog-post/the-road-to-zen-running-experiments) parts are out, but they cover the basics of running ZenML pipelines as well as experiment tracking with MLflow. Towards the end of the first one, Matt lays out the case for why a tool like ZenML is important in a machine learning workflow:
+
+> "The first is reproducibility. By writing really clear, modular pipelines, we can efficiently re-run a pipeline many times over. ZenML not only encourages this clear programming style, it also helps us to capture pipeline dependencies, which we’ve done by adding a special PIP requirements file (pipeline-requirements.txt). […] The pipeline that we’ve written can be run on any data scientist’s machine, and it will always do the same thing, produce the same model. It can also run using a dedicated model training environment, like KubeFlow, which you might do if you wanted more compute power than your own machine has. You don’t need to modify your pipeline in any way to do this; ZenML figures out how to run the pipeline in whatever target environment you’re using. The notion of writing a pipeline once and running it anywhere is one of the unique things about ZenML. It means your pipelines are decoupled from your infrastructure, which in turn enables a data scientist to focus just on the pipeline, without worrying about what infrastructure it will run on.
+
+We encourage you to [visit the Fuzzy Labs Blog](https://www.fuzzylabs.ai/blog) and read the full series along with the other articles that they have there.
 
 As always, full show notes and links are available on
 [our dedicated podcast page](https://podcast.zenml.io/).
 
-<iframe src="https://player.fireside.fm/v2/vA-gqsEV+cfRKSHeF?theme=dark" width="740" height="200" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://player.fireside.fm/v2/vA-gqsEV+UsZ0ZY4P?theme=dark" width="740" height="200" frameborder="0" scrolling="no"></iframe>
 
 <br>
 
