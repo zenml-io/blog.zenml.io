@@ -27,7 +27,7 @@ I will be using [ZenML](https://zenml.io/) (MLOps Framework) to build an End to 
 
 Now you may be thinking `Why do we require pipelines?` We can't just train our model in our local system as we need to serve to the users as well, so we need it to be deployed in the cloud. For doing Machine learning at scale we need machine learning pipelines which is an end-to-end construct that orchestrates the flow of data into, and output from, a machine learning model (or set of multiple models). It includes raw data input, features, outputs, the machine learning model and model parameters, and prediction outputs. and All these capbilities are built on top of the zenml framework.  
 
-I will be also using one of the amazing integrations of zenml which is `mlflow deployment` for building `continous deployment pipeline` and `Inference pipeline` for our customer satisfaction system. 
+I will be also using the MLflow deployment integration that ZenML provides to help build a continuous deployment pipeline and an inference pipeline for our customer satisfaction system. 
 
 ## Setting up the project
 
