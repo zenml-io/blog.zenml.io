@@ -2,7 +2,7 @@
 layout: post
 author: Ayush Singh
 title: End to End Customer Satisfaction Pipeline with ZenML
-description: "We built an end to end continuous deployment pipeline using ZenML for a customer satisfaction model that uses historical data of the customer predict the review score for the next order or purchase."
+description: "We built an end to end continous deployment pipeline using ZenML for a customer satisfaction model that uses historical data of the customer predict the review score for the next order or purchase."
 publish_date: April 1, 2022
 date: 2022-04-01T10:20:00Z
 tags: tensorflow machine-learning mlops evergreen applied-zenml pipelines 
@@ -14,11 +14,11 @@ image:
   width: 100
 ---
 
-Customer satisfaction is a measure of how satisfied a customer is with a product or service of a company. It is a subjective measure of the quality of a product or service. It is measured by the customer, and is usually used to evaluate the quality of a product or service. In this article, I will be building a customer satisfaction model that uses historical data of the customer predict the review score for the next order or purchase. 
+Customer satisfaction is a measure of how satisfied a customer is with a product or service of a company. It is a subjective measure of the quality of a product or service. It is measured by the customer, and is usually used to evaluate the quality of a product or service. In this article, I built a customer satisfaction model that uses historical data of the customer predict the review score for the next order or purchase. 
 
-I will be using [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset, The data-set has information of 100k orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allow viewing orders from multiple dimensions: from order status, price, payment, and freight performance to customer location, product attributes and finally reviews written by customers. The objective here is to predict the customer satisfaction score for a given order based on the given features like order status, price, payment, etc.
+I used [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset, The data-set has information of 100k orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allow viewing orders from multiple dimensions: from order status, price, payment, and freight performance to customer location, product attributes and finally reviews written by customers. The objective here is to predict the customer satisfaction score for a given order based on the given features like order status, price, payment, etc.
 
-I will be using [ZenML](https://zenml.io/) (MLOps Framework) to build an End to End Customer Satisfaction Pipeline. I will be using zenml traditional pipeline to build training pipeline which includes several steps like: 
+I used [ZenML](https://zenml.io/) (MLOps Framework) to build an End to End Customer Satisfaction Pipeline. I used zenml traditional pipeline to build training pipeline which includes several steps like: 
 
 * `ingest_data`  :- This step will ingest the data from source and will return a dataframe.
 * `clean_data`   :- This step will clean the data and remove the unwanted columns. 
@@ -27,7 +27,7 @@ I will be using [ZenML](https://zenml.io/) (MLOps Framework) to build an End to 
 
 Now you may be thinking `Why do we require pipelines?` We can't just train our model in our local system as we need to serve to the users as well, so we need it to be deployed in the cloud. For doing Machine learning at scale we need machine learning pipelines which is an end-to-end construct that orchestrates the flow of data into, and output from, a machine learning model (or set of multiple models). It includes raw data input, features, outputs, the machine learning model and model parameters, and prediction outputs. and All these capbilities are built on top of the zenml framework.  
 
-I will be also using the MLflow deployment integration that ZenML provides to help build a continuous deployment pipeline and an inference pipeline for our customer satisfaction system. 
+I used one of the amazing integrations of zenml which is `mlflow deployment` for building `continous deployment pipeline` and `Inference pipeline` for our customer satisfaction system. 
 
 ## Setting up the project
 
