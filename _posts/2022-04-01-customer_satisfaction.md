@@ -17,7 +17,7 @@ image:
 Customer satisfaction is a measure of how satisfied a customer is with a product or service of a company. It is a subjective measure of the quality of a product or service. It is measured by the customer, and is usually used to evaluate the quality of a product or service. In this article, I built a customer satisfaction model that uses historical data of the customer predict the review score for the next order or purchase. 
 
 I used [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset, The data-set has information of 100k orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allow viewing orders from multiple dimensions: from order status, price, payment, and freight performance to customer location, product attributes and finally reviews written by customers. The objective here is to predict the customer satisfaction score for a given order based on the given features like order status, price, payment, etc.
-
+![High Level Overview ](/assets/posts/high_level_overview.png)
 I used [ZenML](https://zenml.io/) (MLOps Framework) to build an End to End Customer Satisfaction Pipeline. I used ZenML traditional pipeline to build training pipeline which includes several steps like: 
 
 * `ingest_data`  :- This step will ingest the data from source and will return a dataframe.
@@ -27,7 +27,7 @@ I used [ZenML](https://zenml.io/) (MLOps Framework) to build an End to End Custo
 
 Now you may be thinking `Why do we require pipelines?` We can't just train our model in our local system as we need to serve to the users as well, so we need it to be deployed in the cloud. For doing Machine learning at scale we need machine learning pipelines which is an end-to-end construct that orchestrates the flow of data into, and output from, a machine learning model (or set of multiple models). It includes raw data input, features, outputs, the machine learning model and model parameters, and prediction outputs. and All these capbilities are built on top of the zenml framework. Using ZenML, you can run the parts of the project on the cloud, caching of steps so that you don't waste your time / processing power, easy integration with tools that allow you to compare experiments (i.e. MLflow), easy deployment of models that you've trained and easy monitoring of deployed models. 
 
-I used one of the amazing integrations of ZenML which is `MLflow deployment` for building `continous deployment pipeline` and `Inference pipeline` for our customer satisfaction system. 
+I will be also using the MLflow deployment integration that ZenML provides to help build a continuous deployment pipeline and an inference pipeline for our customer satisfaction system. 
 
 ## Setting up the project
 
@@ -181,6 +181,23 @@ The deployment pipeline has caching enabled to avoid re-training the model if th
 We also have an inference pipeline that interacts with the prediction server deployed by the continuous deployment pipeline to get online predictions based on live data. The inference pipeline simulates loading data from a dynamic external source, then uses that data to perform online predictions using the running MLflow prediction server.
 
 ![Steps in the ZenML continuous deployment pipeline ](/assets/posts/trainandinf.png) 
+
+## Results 
+
+We have experimented with 2 ensemble and tree based models and compared the performance of each model. The results are as follows: 
+
+
+| Models | MSE | RMSE | 
+| ------------- | - | - |
+| **LightGBM** | 1.804 |  1.343 |
+| **XGboost** | 1.781| 1.335 | 
+
+I framed our problem as a regression problem and used the "LightGBM" model as our final model. You can also put this in multi-class classification problem and analyze the results, continous output can be adjusted according to threshold, say for an example that we can round the output to it's nearest integer. 
+
+If you want to see the live demo of this zenfile, then you can see it [here](). You can give the details about the product/service and then you will get a prediction from the models which predicts the satisfactory rate.
+
+Following figure shows how important each feature is in the model that contributes to the target variable or contributes in predicting customer satisfaction rate. 
+![FeatureImportance](/assets/posts/feature_importance_gain.png) 
 
 ## What we learned
 
