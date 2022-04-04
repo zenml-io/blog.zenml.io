@@ -2,7 +2,7 @@
 layout: post
 author: Ayush Singh
 title: End to End Customer Satisfaction Pipeline with ZenML
-description: "We built an end to end continous deployment pipeline using ZenML for a customer satisfaction model that uses historical data of the customer predict the review score for the next order or purchase."
+description: "We built an end to end continuous deployment pipeline using ZenML for a customer satisfaction model that uses historical data of the customer predict the review score for the next order or purchase."
 publish_date: April 4, 2022
 date: 2022-04-04T10:20:00Z
 tags: tensorflow machine-learning mlops evergreen applied-zenml pipelines zenfile
@@ -192,7 +192,7 @@ We have experimented with 2 ensemble and tree based models and compared the perf
 | **LightGBM** | 1.804 |  1.343 |
 | **XGboost** | 1.781| 1.335 | 
 
-I framed our problem as a regression problem and used the "LightGBM" model as our final model. You can also put this in multi-class classification problem and analyze the results, continous output can be adjusted according to threshold, say for an example that we can round the output to it's nearest integer. 
+I framed our problem as a regression problem and used the "LightGBM" model as our final model. You can also put this in multi-class classification problem and analyze the results, continuous output can be adjusted according to threshold, say for an example that we can round the output to it's nearest integer. 
 
 If you want to see the live demo of this zenfile, then you can see it [here](). You can give the details about the product/service and then you will get a prediction from the models which predicts the satisfactory rate.
 
