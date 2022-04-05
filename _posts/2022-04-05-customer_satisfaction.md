@@ -34,7 +34,7 @@ I will also use the MLflow deployment integration that ZenML provides to help bu
 
 I suggest you create and work out of a virtual environment. You can create a virtual environment using `conda` by following these steps, but of course, you can also use whatever you're familiar with:
 
-"`shell
+```shell
 conda create -n envname python=x.x anaconda
 conda activate envname
 ```
@@ -49,19 +49,19 @@ pip install -r requirements.txt
 
 If you are running the `run_deployment.py` script, you will also need to install some integrations using ZenML:
 
-"`bash
+```bash
 zenml integration install mlflow -f
 ```
 
 We're ready to go now. Now you can run the project, and You have two pipelines to run, `run_pipeline.py`, a traditional ZenML Pipeline and `run_deployment.py`, a continuous deployment pipeline. So, if you want to run `run_pipeline.py`, you can run the following command: 
 
-"`bash
+```bash
 python run_pipeline.py
 ```
 
 And this will run the standard ZenML pipeline. If you want to run `run_deployment.py`, you can run the following command:
 
-"`bash
+```bash
 python run_deployment.py
 ```
 
@@ -69,7 +69,7 @@ python run_deployment.py
 
 Let's start with the `run_pipeline.py`, which is a traditional ZenML pipeline, the code for this pipeline is as follows:
 
-"`python
+```python
 def run_training(): 
     training = train_pipeline(
         ingest_data(),
