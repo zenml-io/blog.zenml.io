@@ -195,9 +195,10 @@ We have experimented with two ensemble and tree-based models and compared the pe
 
 I framed our problem as a regression problem and used the "LightGBM" model as our final model. You can also put this in a multi-class classification problem and analyze the results. Output from a model can be adjusted according to a threshold; for example, we can round the work to its nearest integer; say, for example, that we can round the output to its nearest integer. 
 
-If you want to see the live demo of this zen file, you can see it [here](). You can give the details about the product/service, and then you will get a prediction from the models which predicts the satisfactory rate.
+If you want to see the live demo of this zen file, you can see it [here](https://share.streamlit.io/ayush714/customer-satisfaction/main). You can give the details about the product/service, and then you will get a prediction from the models which predicts the satisfactory rate.
 
 The following figure shows how important each feature is in the model that contributes to the target variable or predicting customer satisfaction rate. 
+
 ![FeatureImportance](/assets/posts/feature_importance_gain.png) 
 
 ## What we learned
