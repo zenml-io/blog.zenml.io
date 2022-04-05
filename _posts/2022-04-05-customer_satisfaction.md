@@ -41,7 +41,7 @@ conda activate envname
 
 Before running this project, you must install some Python packages in your environment, which you can do with the following steps:
 
-"`bash
+```bash
 git clone https://github.com/zenml-io/zenfiles.git
 cd customer_satisfaction
 pip install -r requirements.txt
