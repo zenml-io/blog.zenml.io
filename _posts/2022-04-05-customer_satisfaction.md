@@ -16,14 +16,13 @@ image:
 
 Customer satisfaction is a measure of how satisfied a customer is with a product or service of a company. It is a subjective measure of the quality of a product or service. It is measured by the customer and is usually used to evaluate the quality of a product or service. In this article, I built a customer satisfaction model that uses historical customer data to predict the review score for the next order or purchase. 
 
-I used [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset; The dataset has information on 100k orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allow viewing charges from various dimensions: from order status, price, payment, freight performance to customer location, product attributes and finally, reviews written by customers. The objective here is to predict the customer satisfaction score for a given order based on features like order status, price, payment, etc.
-![High-Level Overview ](/assets/posts/high_level_overview.png)
-I used [ZenML](https://zenml.io/) (MLOps Framework) to build an End to End Customer Satisfaction Pipeline. I used ZenML traditional pipeline to construct a training pipeline, which includes several steps like: 
+I will be using the [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). This dataset has information on 100,000 orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allow viewing charges from various dimensions: from order status, price, payment, freight performance to customer location, product attributes and finally, reviews written by customers. The objective here is to predict the customer satisfaction score for a given order based on features like order status, price, payment, etc. I will be using [ZenML](https://zenml.io/) to build a production-ready pipeline to predict the customer satisfaction score for the next order or purchase.
 
-* `ingest_data`: This step will ingest the source data and return a data frame.
+* `ingest_data`: This step will ingest the data and create a `DataFrame`.
 * `clean_data`:- This step will clean the data and remove the unwanted columns. 
 * `model_train`:- This step will train the model and save the model using MLflow autologging. 
-* `evaluation`:- This step will evaluate the model and save the metrics using MLFlow autologging into the artifact store.  
+* `evaluation`:- This step will evaluate the model and save the metrics using MLFlow autologging into the artifact.
+
 
 Now you may be thinking, `Why do we require pipelines?` We can't just train our model in our local system as we need to serve the users, so we need it to be deployed in the cloud. For doing Machine learning at the scale, we need machine learning pipelines, an end-to-end construct that orchestrates the flow of data into, and output from, a machine learning model (or set of multiple models). It includes raw data input, features, results, the machine learning model and model parameters, and prediction outputs. And All these capabilities are built on top of the ZenML framework. Using ZenML, you can run the components of the project on the cloud, and it helps in caching steps so that you don't waste your time/processing power.
 It has easy integration with tools that allow you to compare experiments (i.e. MLflow), easy deployment of models that you've trained and easy monitoring of deployed models. 
@@ -99,11 +98,11 @@ It will run the following steps:
 * `ingest_data`: This step will ingest the data from the source and return a data frame; the CSV file is in the `data` folder. 
 * `clean_data`:- This step will clean the data and remove the unwanted columns. It removes columns that contribute less to the target variable and fills null values with mean. 
 * `model_train`:- This step will train different models like xgboost, lightgbm, and random forest. I am also using `MLflow tracking` to track our model performance, parameters, metrics and saving the model. 
-* `evaluation`:- This step will evaluate the model and save the metrics using MLflow autologging into the artifact store. Autologging can be used to compare the performance of different models and decide to select the best model. It will also help in doing an error analysis of our model chosen. 
+* `evaluation`:- This step will evaluate the model and save the metrics using MLflow autologging into the artifact store. autologging can be used to compare the performance of different models and decide to select the best model. It will also help in doing an error analysis of our model chosen. 
 
 ![Steps in the ZenML traditional pipeline ](/assets/posts/training_pipeline.png)
 
-Now we will move to the `run_deployment.py`, which is a continuous deployment pipeline, the code for this pipeline is as follows:
+We have another pipeline, the `deployment_pipeline.py`, that implements a continuous deployment workflow. It ingests and processes input data, trains a model and then (re)deploys the prediction server that serves the model if it meets our evaluation criteria. For us this is the [mean squared error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error); you can also set your own minimum mse.
 
 ```python 
 def main(min_accuracy: float, stop_service: bool): 
@@ -173,7 +172,7 @@ if __name__ == "__main__":
 
 It implements a continuous deployment workflow. It ingests and processes input data, trains a model and then (re)deploys the prediction server that serves the model if it meets some evaluation criteria.
 
-In the deployment pipeline, ZenML's MLflow tracking integration is used for logging the hyperparameter values and the trained model itself and the model evaluation metrics -- as MLflow experiment tracking artifacts into the local MLflow backend. This pipeline also launches a local MLflow deployment server to serve the latest MLflow model if its accuracy is above a configured threshold.
+In the deployment pipeline, ZenML's MLflow tracking integration is used for logging the hyperparameter values and the trained model itself and the model evaluation metrics -- as MLflow experiment tracking artifacts -- into the local MLflow backend. This pipeline also launches a local MLflow deployment server to serve the latest MLflow model if its accuracy is above a configured threshold.
 
 The MLflow deployment server runs locally as a daemon process that will continue to run in the background after the example execution is complete.
 
@@ -195,11 +194,32 @@ We have experimented with two ensemble and tree-based models and compared the pe
 
 I framed our problem as a regression problem and used the "LightGBM" model as our final model. You can also put this in a multi-class classification problem and analyze the results. Output from a model can be adjusted according to a threshold; for example, we can round the work to its nearest integer; say, for example, that we can round the output to its nearest integer. 
 
-If you want to see the live demo of this zen file, you can see it [here](https://share.streamlit.io/ayush714/customer-satisfaction/main). You can give the details about the product/service, and then you will get a prediction from the models which predicts the satisfactory rate.
-
 The following figure shows how important each feature is in the model that contributes to the target variable or predicting customer satisfaction rate. 
 
 ![FeatureImportance](/assets/posts/feature_importance_gain.png) 
+
+## 🕹 Demo App
+We also made a live demo of this project using [Streamlit](https://streamlit.io/) which you can find [here](https://share.streamlit.io/ayush714/customer-satisfaction/main). It takes some input features for the product and predicts the customer satisfaction rate using our trained models.
+
+![DemoApp](/assets/posts/screenshotofweb.png)
+
+This app is designed to predict the customer satisfaction score for a given customer. You can input the features of the product listed below and get the customer satisfaction score. 
+
+| Models        | Description   | 
+| ------------- | -------------      | 
+| **Payment Sequential** | Customer may pay an order with more than one payment method. If he does so, a sequence will be created to accommodate all payments. | 
+| **Payment Installments**   | Number of installments chosen by the customer. |  
+| **Payment Value** |       Total amount paid by the customer. | 
+| **Price** |       Price of the product. |
+| **Freight Value** |    Freight value of the product.  | 
+| **Product Name length** |    Length of the product name. |
+| **Product Description length** |    Length of the product description. |
+| **Product photos Quantity** |    Number of product published photos |
+| **Product weight (gms)** |    Weight of the product measured in grams. | 
+| **Product length (CMs)** |    Length of the product measured in centimeters. |
+| **Product height (CMs)** |    Height of the product measured in centimeters. |
+| **Product width (CMs)** |    Width of the product measured in centimeters. |
+
 
 ## What we learned
 
