@@ -17,7 +17,7 @@ and how it is driving MLOps practices today. In this article, I would like to ma
 how a shift for data science from script-driven development to pipeline-driven development is one of the best ways to 
 set a ML team up for MLOps success.
 
-# MLOps is not just about deploying models
+## MLOps is not just about deploying models
 
 Often, when speaking about MLOps, developers confuse it with it being laser focused on deploying models. 
 
@@ -46,36 +46,55 @@ However, the reality is that the process looks more like this:
 </div>
 
 It is in these gaps where MLOps ultimately lives. It is not enough to do this process once: A successful ML team needs to execute this 
-process over and over again, and in a manner that the system can be trusted.
+process over and over again, and in a manner that the system can be trusted. 
+
+Said simply, MLOps is a set of practices that aims to to deploy and maintain machine learning models in production reliably and efficiently. This is including and beyond getting these models deployed into production.
 
 <div align="center">
   <img src="../assets/posts/data-centric-ml/mlops_process_2.png" width="700" />
 </div>
 
-# Post-deployment Woes
+## Post-deployment Woes
 
-When looked at from this perspective, it is clear that the trouble really starts after the first deployment is 
-already done.
+When looked at from this perspective, it is more intuitive to understand that the trouble really starts after the first deployment.
 
 Here are just a few examples
 
-- Latency problems
-- Maintaining fairness and avoiding bias
-- Lack of explaiability and auditability
-- Painfully slow development cycles
-- Model, concepts, and data drifts
+### Latency problems: 
+
+If latency is not accounted for [Test](https://www.thinkwithgoogle.com/consumer-insights/consumer-trends/mobile-site-load-time-statistics/). Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+
+### Maintaining fairness and avoiding bias
+
+[Bias](https://www.nytimes.com/2016/03/25/technology/microsoft-created-a-twitter-bot-to-learn-from-users-it-quickly-became-a-racist-jerk.html) Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+
+### Lack of explaiability and auditability
+
+[European Commision](https://ec.europa.eu/commission/presscorner/detail/en/IP_21_1682)Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+
+### Painfully slow development cycles
+
+[2020 State of Enterprise machine learning](https://algorithmia.com/state-of-ml)Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+
+### Model, concepts, and data drifts
+
+[Zillow disaster](https://www.geekwire.com/2021/zillow-shutter-home-buying-business-lay-off-2k-employees-big-real-estate-bet-falters/)Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
 
 
-# Model-centric vs Data-centric Machine Learning
+## Model-centric vs Data-centric Machine Learning
 
 Andrew Ng recently popularized the term data-centric machine learning with his excellent talk in 2020. Watch the full video 
 below:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/06-AZXmwHjo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+
 <div align="center">
   <img src="../assets/posts/data-centric-ml/model_vs_data_centric.png" width="700" />
 </div>
+
+Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
 
 # Towards data-centric ML(Ops): From scripting to pipelines
 
