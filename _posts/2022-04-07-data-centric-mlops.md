@@ -22,7 +22,9 @@ set a ML team up for MLOps success.
 
 The need for MLOPs 
 
-<img src="../assets/posts/data-centric-ml/mlops_tweet.png" width="400" />
+<div align="center">
+  <img src="../assets/posts/data-centric-ml/mlops_tweet.png" width="600" />
+</div>
 
 If not exposed to real world ML systems, one can be forgiven with simplifying ML development by breaking it down into the following relatively simple processes. 
 
