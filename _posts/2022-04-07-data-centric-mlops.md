@@ -23,13 +23,14 @@ set a ML team up for MLOps success.
 The need for MLOPs 
 
 <div align="center">
-  <img src="../assets/posts/data-centric-ml/mlops_tweet.png" width="600" />
+  <img src="../assets/posts/data-centric-ml/mlops_tweet.png" width="700" />
 </div>
 
 If not exposed to real world ML systems, one can be forgiven with simplifying ML development by breaking it down into the following relatively simple processes. 
 
-![MLOps: What we think it is](../assets/posts/data-centric-ml/mlops_process_0.png)
-
+<div align="center">
+  <img src="../assets/posts/data-centric-ml/mlops_process_0.png" width="700" />
+</div>
 
 Taken in their silos, these processes don't sound too hard: 
 
@@ -40,12 +41,16 @@ cloud provider.
 
 However, the reality is that the process looks more like this:
 
-![MLOps: What it really is](../assets/posts/data-centric-ml/mlops_process_1.png)
+<div align="center">
+  <img src="../assets/posts/data-centric-ml/mlops_process_1.png" width="700" />
+</div>
 
 It is in these gaps where MLOps ultimately lives. It is not enough to do this process once: A successful ML team needs to execute this 
 process over and over again, and in a manner that the system can be trusted.
 
-![MLOps lives in these loops](../assets/posts/data-centric-ml/mlops_process_2.png)
+<div align="center">
+  <img src="../assets/posts/data-centric-ml/mlops_process_2.png" width="700" />
+</div>
 
 # Post-deployment Woes
 
@@ -68,9 +73,9 @@ below:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/06-AZXmwHjo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
-
-![Model vs data centric](../assets/posts/data-centric-ml/model_vs_data_centric.png)
+<div align="center">
+  <img src="../assets/posts/data-centric-ml/model_vs_data_centric.png" width="700" />
+</div>
 
 # Towards data-centric ML(Ops): From scripting to pipelines
 
