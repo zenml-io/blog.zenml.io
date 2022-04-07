@@ -107,6 +107,10 @@ A concrete shift to data-centric machine learning often involves an ML team shif
 
 Here it is important to make a distinction between data-driven pipelines vs task-driven pipelines. This means that serious teams develop ML code as chunks of steps, using some form of tooling to isolate the orchestration of execution of steps from each other. This has the following benefits:
 
+<div align="center">
+  <img src="../assets/posts/data-centric-ml/pipeline_advantages.png" width="700" />
+</div>
+
 Often this means stepping out of a notebook environment or finding some way of transporting notebook code to such a paradigm. 
 
 ## Takeaways
