@@ -12,15 +12,14 @@ image:
   path: /assets/posts/matt-squire/matt-squire-profile.jpeg
 ---
 
+You start your day with `jupyter notebook`, and look at the latest state of affairs from yesterday. The notebook springs up on port 8888 and you see your matplotlib graph from yesterday, annoyingly stuck at 80% accuracy. After a few hours of hard work, you finally find a hyper-parameter that works. You set it, go through the cells, and suddenly you're at 95% accuracy. You re-check it over and over, and after making sure you did everything right, you export your model into a file and hand over the code and model to engineering, a smile on your face, and with the assurance that **you** did your job well. Now you can sit back and see the bottom line growing. Right?
 
+Wrong. Your engineer glares back at you and asks for your requirements file. He cannot reproduce your results - there is an error on their machine. They ask what data you trained on, which OS you developed on, and just generally about following "MLOps" principles. You go back and try to answer these questions but now you're in a painful loop which do not want to be in.
 
-
-
-What even is a MLOps pipeline, and why is it relevant to my work? A classically trained data scientist could be forgiven for this sentiment as the ML in production (MLOps) scene gains more and more hype.
-
+Does any of this sound familiar? As a classicaly trained data scientist, we have been tuned to stay within a notebook environment and iterate on the code and model. Doing this can lead to unintended consequences and optimizing for the wrong result. Perhaps you would have faired better if you had taken a slightly different approach to your model development, and rooted yourself from the start in these MLOps principles engineering keeps talking about.
 
 There is an ever-increasing plethora of resources around MLOps (see the end of this article) and an increasing amount regarding the shift from model-centric to data-centric machine learning. However, few speak about the link between data-centric machine learning 
-and how it is driving MLOps practices today. In this article, we go deeper into how a pipeline-driven approach to machine learning is one of the best ways to set up an ML team up for MLOps success.
+and how it is driving MLOps practices today. In this article, we go deeper into how a data-centric, pipeline-based approach to machine learning is one of the best way to follow MLOps principles, and how you as a data scientist would benefit greatly from understanding why that is the case.
 
 ## MLOps is not just about deploying models
 
