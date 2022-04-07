@@ -145,4 +145,4 @@ If you'd like to get more into MLOPs, I would recommend the following excellent 
 
 ## References
 
-Some images inspired by Andrew Ng's "From Model-centric to Data-centric AI" on YouTube: https://www.youtube.com/watch?v=06-AZXmwHjo
+Some images inspired by Andrew Ng's talk "From Model-centric to Data-centric AI" [on YouTube](https://www.youtube.com/watch?v=06-AZXmwHjo)
