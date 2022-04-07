@@ -70,11 +70,11 @@ If latency is not accounted for whilst developing ML models, then it can have a 
 
 ### Lack of explaiability and auditability
 
-If bias and fairness are not maintained in a system, then legislators will be in their full right to come after ML practitioners. The [European Commision](https://ec.europa.eu/commission/presscorner/detail/en/IP_21_1682) is already rolling out new laws and checks, and we can only expect this to grow over time. Practitioners should be able to answer questions such as why a certain prediction was made, and how a certain model was trained and on which slice of data. These audit trails are all parts of the MLOps workflow.
+If bias and fairness are not maintained in a system, then legislators will be in their full right to come after ML practitioners. The [European Commission](https://ec.europa.eu/commission/presscorner/detail/en/IP_21_1682) is already rolling out new laws and checks, and we can only expect this to grow over time. Practitioners should be able to answer questions such as why a certain prediction was made, and how a certain model was trained and on which slice of data. These audit trails are all parts of the MLOps workflow.
 
 ### Painfully slow development cycles
 
-Getting a model in production can take [upto a year for many companies](https://algorithmia.com/state-of-ml). That means going through the above process only once can costs hundreds of thousands of dollars, let alone having to do it again and again. Teams need to automate most of the tedious stuff away if they are to have any sort of argument for a legitimate ROI for machine learning being applied in a business.
+Getting a model in production can take [up to a year for many companies](https://algorithmia.com/state-of-ml). That means going through the above process only once can costs hundreds of thousands of dollars, let alone having to do it again and again. Teams need to automate most of the tedious stuff away if they are to have any sort of argument for a legitimate ROI for machine learning being applied in a business.
 
 ### Model, concepts, and data drifts
 
@@ -97,7 +97,7 @@ When taking a look at the challenges facing ML in production today, it is clear 
 
 Here is an example of a model-centric decision vs a data-centric decision, that also showcases its link with MLOps. Let's say a data scientist has a dataset for the last year and is tasked with developing a model. The model-centric way of approaching such a task would be to use the entire data to train the model with a little bit left over as a test set to verify the model metrics. Perhaps hyper-parameter tuning is applied to squeeze out the maximum accuracy from the model and data.
 
-On the other hand, a data-centric decision, and a decision that would help ultimately in production, would be to partition the data in a way that a portion of it (let's say the first three quarters of the year) is used for the training process, and the last quarter is used as a seperate dataset to see how the model drifts over time. This would perhaps incur a slight loss in accuracy for the model, but give key information about the behavior of the model by simulating it being deployed out in the real-world. 
+On the other hand, a data-centric decision, and a decision that would help ultimately in production, would be to partition the data in a way that a portion of it (let's say the first three quarters of the year) is used for the training process, and the last quarter is used as a separate dataset to see how the model drifts over time. This would perhaps incur a slight loss in accuracy for the model, but give key information about the behavior of the model by simulating it being deployed out in the real-world. 
 
 In the end, While being model-centric has its benefits, adding data-centric decisions into the mix is ultimately what is the best path forward when applying ML in the real-world. With that, there is a natural synergy between this and the adoption of MLOps.
 
