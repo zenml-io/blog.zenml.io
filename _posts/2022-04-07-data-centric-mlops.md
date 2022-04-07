@@ -95,7 +95,7 @@ The essence of the talk is as follows: You can get a lot of bang for your buck f
 
 This of course is in stark contrast to how ML is taught in crash courses and universities, where the process usually starts in a notebook with reading a static, well prepared dataset, and training a model on it. While being model-centric has its benefits, adding data-centric decisions into the mix is ultimately what is the best path forward when applying ML in the real-world.
 
-# Towards data-centric ML(Ops): From scripting to pipelines
+## Towards data-centric ML(Ops): From scripting to pipelines
 
 A concrete shift to data-centric machine learning often involves a ML team shifting focus from script-based development to 
 pipeline-based development. Machine learning lends itself very nicely to developing in terms of pipelines because most development does consist of a sequence of steps carried out in order.
@@ -106,7 +106,7 @@ Said another way, this means that serious teams develop ML code as chunks of ste
 
 Often this means stepping out of a notebook environment, or finding some way of transporting notebook code to such a paradigm. 
 
-# Takeaways
+## Takeaways
 
 So, in short, here is the link between MLOps and data-centric machine learning:
 
@@ -126,12 +126,15 @@ Shamless plug: If you'd like to start the shift towards data-centric machine lea
 
 ## Resources
 
-Learning MLOps
+If you'd like to get more into MLOPs, I would recommend the following excellent resources to get started:
 
-- MadewithML
-- Fullstack deep learning
-- Chip Huyen CS329
-- ZenBytes
+- MLOps Course MadeWithML: https://madewithml.com/
+
+- CS 329S: Machine Learning Systems Design: https://mlsys.stanford.edu/
+
+- Full Stack Deep Learning: https://fullstackdeeplearning.com/ 
+
+- ZenBytes - learn MLOps through ZenML: https://github.com/zenml-io/zenbytes
 
 ## References
 
