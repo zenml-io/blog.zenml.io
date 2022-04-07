@@ -2,7 +2,7 @@
 layout: post
 author: Hamza Tahir
 title: ""It's the data, silly!" How data-centric AI is driving MLOps."
-description: "ML practitioners today are embracing data-centric machine learning, because of its substantive effect on MLOps practices. In this article, we take a brief excursion into how data-centric machine learning is fueling MLOps best practices."
+description: "ML practitioners today are embracing data-centric machine learning, because of its substantive effect on MLOps practices. In this article, we take a brief excursion into how data-centric machine learning is fueling MLOps best practices, and why you should care about this change."
 category: mlops
 tags: mlops evergreen bigger-picture education machine-learning pipeline
 publish_date: April 07, 2022
@@ -12,20 +12,23 @@ image:
   path: /assets/posts/matt-squire/matt-squire-profile.jpeg
 ---
 
+
+
+
+
+What even is a MLOps pipeline, and why is it relevant to my work? A classically trained data scientist could be forgiven for this sentiment as the ML in production (MLOps) scene gains more and more hype.
+
+
 There is an ever-increasing plethora of resources around MLOps (see the end of this article) and an increasing amount regarding the shift from model-centric to data-centric machine learning. However, few speak about the link between data-centric machine learning 
-and how it is driving MLOps practices today. In this article, I would like to make a case for data-centric MLOps, and 
-how a shift in data science from script-driven development to pipeline-driven development is one of the best ways to 
-set an ML team up for MLOps success.
+and how it is driving MLOps practices today. In this article, we go deeper into how a pipeline-driven approach to machine learning is one of the best ways to set up an ML team up for MLOps success.
 
 ## MLOps is not just about deploying models
-
-When speaking about MLOps, developers often confuse it with the simple act of deployment. 
 
 <div align="center">
   <img src="../assets/posts/data-centric-ml/mlops_tweet.png" width="700" />
 </div>
 
-Conversations like the above do not simply refer to deploying models. Machine Learning engineering tackles a broader set of challenges that encompass and span across merely wrapping up a model in a server and deploying it.
+When speaking about MLOps, developers often confuse it with the simple act of deployment. However, conversations such as the above do not simply refer to deploying models. Machine Learning engineering tackles a broader set of challenges that span more than merely wrapping up a model in a server application and deploying it.
 
 ML development may be broken down into the following relatively simple processes. 
 
@@ -35,7 +38,7 @@ ML development may be broken down into the following relatively simple processes
 
 Taken in silos, these processes don't sound too hard: 
 
-- Feature engineering is getting easier with feature stores such as [Feast](https://feast.dev/)
+- Feature engineering is getting easier with feature stores such as [Feast](https://feast.dev/).
 - The training loop is made easier by thousands of tools that help in the iterative process, from experiment tracking tools like [MLflow](https://mlflow.org/) and [Weights&Bases](https://wandb.ai/site) to advanced training frameworks like [PyTorch Lightning](https://www.pytorchlightning.ai/).
 - Deploying models are also getting easier with the advent of advanced tooling such as [Seldon Core](https://github.com/SeldonIO/seldon-core), or managed services offered by all the major cloud providers.
 
@@ -45,8 +48,9 @@ However, the reality is that the process looks more like this:
   <img src="../assets/posts/data-centric-ml/mlops_process_1.png" width="700" />
 </div>
 
-It is in these gaps where MLOps ultimately lives. It is not enough to do this process once: A successful ML team needs to execute this 
-process over and over again, and in a manner that the system can be trusted. 
+More than code, in machine learning **data** affects the output of the system directly. There are feedback loops that happen implcitly and often explcitly within the lifetime of a model that is deployed in production. While in classical software development, one could simply test and vet code as it passes through various stages to production, it is more complex and difficult to this in a system affected by data.
+
+It is in these feedback loops where MLOps ultimately lives. It is not enough to do this process once: A successful ML team needs to execute this process over and over again, and in a manner that the system can be trusted. 
 
 Said simply, MLOps is a set of practices that aims to deploy and maintain machine learning models in production reliably and efficiently. This is including and beyond getting these models deployed into production.
 
@@ -56,9 +60,7 @@ Said simply, MLOps is a set of practices that aims to deploy and maintain machin
 
 ## Post-deployment Woes
 
-When looked at from this perspective, it is more intuitive to understand that the trouble starts after the first deployment.
-
-Here are just a few examples:
+When looked at from this perspective, it is more intuitive to understand that the trouble starts after the first deployment. Here are just a few examples:
 
 ### Latency problems: 
 
@@ -66,11 +68,11 @@ If latency is not accounted for whilst developing ML models, it can have a huge 
 
 ### Maintaining fairness and avoiding bias
 
-[Microsoft's rogue racist Twitter bot](https://www.nytimes.com/2016/03/25/technology/microsoft-created-a-twitter-bot-to-learn-from-users-it-quickly-became-a-racist-jerk.html) is an example of not setting up systems to maintain fairness and bias in ML development. If left unchecked, 
+If left unchecked, bias can creep into a ML system very easily. [Microsoft's rogue racist Twitter bot](https://www.nytimes.com/2016/03/25/technology/microsoft-created-a-twitter-bot-to-learn-from-users-it-quickly-became-a-racist-jerk.html) is an example of not setting up systems to maintain fairness in ML development. If a model is not inspected closely (e.g. in terms of slicing metrics), then a practitioner risks that they might unintentionally model bias into the system. This is where examining data closely is critical to ensure a robust and fair system.
 
 ### Lack of explainability and auditability
 
-If bias and fairness are not maintained in a system, then legislators will be in their full right to come after ML practitioners. The [European Commission](https://ec.europa.eu/commission/presscorner/detail/en/IP_21_1682) is already rolling out new laws and checks, and we can only expect this to grow over time. Practitioners should be able to answer questions such as why a certain prediction was made, how a certain model was trained, and on which slice of data. These audit trails are all parts of the MLOps workflow.
+If fairness is not maintained in a system, then legislators will be in their full right to come after ML practitioners. The [European Commission](https://ec.europa.eu/commission/presscorner/detail/en/IP_21_1682) is already rolling out new laws and checks, and we can only expect this to grow over time. Practitioners should be able to answer questions such as why a certain prediction was made, how a certain model was trained, and on which slice of data. These audit trails are all parts of the MLOps workflow.
 
 ### Painfully slow development cycles
 
@@ -144,4 +146,4 @@ If you'd like to get more into MLOPs, I would recommend the following excellent 
 
 ## References
 
-Some images inspired by Andrew Ng's "From Data-centric to Model-centric Machine Learning" on YouTube: https://www.youtube.com/watch?v=06-AZXmwHjo
+Some images inspired by Andrew Ng's "From Model-centric to Data-centric AI" on YouTube: https://www.youtube.com/watch?v=06-AZXmwHjo
