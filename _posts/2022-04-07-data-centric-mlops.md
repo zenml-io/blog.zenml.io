@@ -87,13 +87,19 @@ below:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/06-AZXmwHjo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-The essence of the talk is as follows: You can get a lot of bang for your buck from your data by being data-centric rather than model-centric. This means that rather than iterating on the model/code and holding the data static in ML development, it would pay more dividents if you were to hold the code/model static (or even start with a simple model) and try to simulate real world behavior with the data.
+The essence of the talk is as follows: You can get a lot of bang for your buck from your data by being data-centric rather than model-centric. This means that rather than iterating on the model/code and holding the data static in ML development, it would pay more dividents if you were to hold the code/model static (or even start with a simple model) and try to simulate real world behavior with the data. This of course is in stark contrast to how ML is taught in crash courses and universities, where the process usually starts in a notebook with reading a static, well prepared dataset, and training a model on it. 
 
 <div align="center">
   <img src="../assets/posts/data-centric-ml/model_vs_data_centric.png" width="700" />
 </div>
 
-This of course is in stark contrast to how ML is taught in crash courses and universities, where the process usually starts in a notebook with reading a static, well prepared dataset, and training a model on it. While being model-centric has its benefits, adding data-centric decisions into the mix is ultimately what is the best path forward when applying ML in the real-world.
+When taking a look at the challenges facing ML in production today, it is clear that a shift towards being data-centric is simply the natural mind-set shift that is required. Latency problems can be solved by exposing data scientists to real-world data ingestion patterns. Fairness and bias can be avoided by inspecting the data as the moment of model training. Audability trails can be kept if data is versioned and tracked as models are developed. The development cycle can also be accelerated vastly by creating data-centric workflows that can adapt to changing data. Finally, drift and data quality can be accounted for early on in the development process.
+
+Here is an example of a model-centric decision vs a data-centric decision, that also showcases its link with MLOps. Let's say a data scientist has a dataset for the last year and is tasked with developing a model. The model-centric way of approaching such a task would be to use the entire data to train the model with a little bit left over as a test set to verify the model metrics. Perhaps hyper-parameter tuning is applied to squeeze out the maximum accuracy from the model and data.
+
+On the other hand, a data-centric decision, and a decision that would help ultimately in production, would be to partition the data in a way that a portion of it (let's say the first three quarters of the year) is used for the training process, and the last quarter is used as a seperate dataset to see how the model drifts over time. This would perhaps incur a slight loss in accuracy for the model, but give key information about the behavior of the model by simulating it being deployed out in the real-world. 
+
+In the end, While being model-centric has its benefits, adding data-centric decisions into the mix is ultimately what is the best path forward when applying ML in the real-world. With that, there is a natural synergy between this and the adoption of MLOps.
 
 ## Towards data-centric ML(Ops): From scripting to pipelines
 
