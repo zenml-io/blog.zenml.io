@@ -1,25 +1,24 @@
 ---
 layout: post
 author: Hamza Tahir
-title: ""It's the data, silly!" How data-centric AI is driving MLOps."
-description: "ML practitioners today are embracing data-centric machine learning, because of its substantive effect on MLOps practices. In this article, we take a brief excursion into how data-centric machine learning is fueling MLOps best practices, and why you should care about this change."
+title: "'It's the data, silly!' How data-centric AI is driving MLOps"
+description: "ML practitioners today are embracing data-centric machine learning, because of its substantive effect on MLOps practices. In this article, we take a brief excursion into how data-centric machine learning is fuelling MLOps best practices, and why you should care about this change."
 category: mlops
 tags: mlops evergreen bigger-picture education machine-learning pipeline
 publish_date: April 07, 2022
 date: 2022-04-07T00:02:00Z
-thumbnail: /assets/posts/matt-squire/matt-squire-profile.jpeg
+thumbnail: /assets/posts/data-centric-mlops/data-centric.png
 image:
-  path: /assets/posts/matt-squire/matt-squire-profile.jpeg
+  path: /assets/posts/data-centric-mlops/data-centric.png
 ---
 
-You start your day with `jupyter notebook`, and look at the latest state of affairs from yesterday. The notebook springs up on port 8888 and you see your matplotlib graph from yesterday, annoyingly stuck at 80% accuracy. After a few hours of hard work, you finally find a hyper-parameter that works. You set it, go through the cells, and suddenly you're at 95% accuracy. You re-check it over and over, and after making sure you did everything right, you export your model into a file and hand over the code and model to engineering, a smile on your face, and with the assurance that **you** did your job well. Now you can sit back and see the bottom line growing. Right?
+You start your day with `jupyter lab`, and look at the latest state of affairs from yesterday. The notebook springs up on port 8888 and you see your matplotlib graph from yesterday, annoyingly stuck at 80% accuracy. After a few hours of hard work, you finally find a hyperparameter that works. You set it, go through the cells, and suddenly you're at 95% accuracy. You re-check it over and over, and after making sure you did everything right, you export your model into a file and hand over the code and model to engineering, a smile on your face, and with the assurance that **you** did your job well. Now you can sit back and see the bottom line growing. Right?
 
-Wrong. Your engineer glares back at you and asks for your requirements file. He cannot reproduce your results - there is an error on their machine. They ask what data you trained on, which OS you developed on, and just generally about following "MLOps" principles. You go back and try to answer these questions but now you're in a painful loop which do not want to be in.
+Wrong. Your engineer glares back at you and asks for your `requirements.txt` file. He cannot reproduce your results — there is an error on their machine. They ask what data you trained on, which operating system you developed on, and just generally about following "MLOps" principles. You go back and try to answer these questions but now you're in a painful debugging loop.
 
-Does any of this sound familiar? As a classicaly trained data scientist, we have been tuned to stay within a notebook environment and iterate on the code and model. Doing this can lead to unintended consequences and optimizing for the wrong result. Perhaps you would have faired better if you had taken a slightly different approach to your model development, and rooted yourself from the start in these MLOps principles engineering keeps talking about.
+Does any of this sound familiar? As classically-trained data scientists, we have been tuned to stay within a notebook environment and iterate on the code and model. Doing this can lead to unintended consequences and optimizing for the wrong result. Perhaps you would have faired better if you would have taken a slightly different approach to your model development, rooting yourself from the start in these MLOps principles engineers keep talking about.
 
-There is an ever-increasing plethora of resources around MLOps (see the end of this article) and an increasing amount regarding the shift from model-centric to data-centric machine learning. However, few speak about the link between data-centric machine learning 
-and how it is driving MLOps practices today. In this article, we go deeper into how a data-centric, pipeline-based approach to machine learning is one of the best way to follow MLOps principles, and how you as a data scientist would benefit greatly from understanding why that is the case.
+There is an ever-increasing plethora of resources around MLOps (see the end of this article) and an increasing amount regarding the shift from model-centric to data-centric machine learning. However, few speak about the link between data-centric machine learning and how it is driving MLOps practices today. In this article, I go deeper into how a data-centric, pipeline-based approach to machine learning is one of the best ways to follow MLOps principles, and how you as a data scientist would benefit greatly from understanding why that is the case.
 
 ## MLOps is not just about deploying models
 
@@ -27,18 +26,18 @@ and how it is driving MLOps practices today. In this article, we go deeper into 
   <img src="../assets/posts/data-centric-ml/mlops_tweet.png" width="700" />
 </div>
 
-When speaking about MLOps, developers often confuse it with the simple act of deployment. However, conversations such as the above do not simply refer to deploying models. Machine Learning engineering tackles a broader set of challenges that span more than merely wrapping up a model in a server application and deploying it.
+When speaking about MLOps, developers often confuse it with the simple act of deployment. However, conversations such as the above do not simply refer to deploying models. Machine learning engineering tackles a broader set of challenges that span more than merely wrapping up a model in a server application and deploying it.
 
-ML development may be broken down into the following relatively simple processes. 
+ML development may be broken down into the following (relatively) simple processes. 
 
 <div align="center">
   <img src="../assets/posts/data-centric-ml/mlops_process_0.png" width="700" />
 </div>
 
-Taken in silos, these processes don't sound too hard: 
+Taken as silos, these processes don't sound too hard: 
 
 - Feature engineering is getting easier with feature stores such as [Feast](https://feast.dev/).
-- The training loop is made easier by thousands of tools that help in the iterative process, from experiment tracking tools like [MLflow](https://mlflow.org/) and [Weights&Bases](https://wandb.ai/site) to advanced training frameworks like [PyTorch Lightning](https://www.pytorchlightning.ai/).
+- The training loop is made easier by thousands of tools that help in the iterative process, from experiment tracking tools like [MLflow](https://mlflow.org/) and [Weights & Biases](https://wandb.ai/site) to advanced training frameworks like [PyTorch Lightning](https://www.pytorchlightning.ai/).
 - Deploying models are also getting easier with the advent of advanced tooling such as [Seldon Core](https://github.com/SeldonIO/seldon-core), or managed services offered by all the major cloud providers.
 
 However, the reality is that the process looks more like this:
@@ -47,11 +46,11 @@ However, the reality is that the process looks more like this:
   <img src="../assets/posts/data-centric-ml/mlops_process_1.png" width="700" />
 </div>
 
-More than code, in machine learning **data** affects the output of the system directly. There are feedback loops that happen implcitly and often explcitly within the lifetime of a model that is deployed in production. While in classical software development, one could simply test and vet code as it passes through various stages to production, it is more complex and difficult to this in a system affected by data.
+More than code, in machine learning **data** affects the output of the system directly. There are feedback loops that happen implicitly and often explicitly within the lifetime of a model that is deployed in production. While in classical software development one could simply test and vet code as it passes through various stages to production, it is more complex and difficult to this in a system affected by data.
 
-It is in these feedback loops where MLOps ultimately lives. It is not enough to do this process once: A successful ML team needs to execute this process over and over again, and in a manner that the system can be trusted. 
+It is in these feedback loops where MLOps ultimately lives. It is not enough to do this process once: A successful ML team needs to execute this process over and over again, and in a manner such that the system can be trusted. 
 
-Said simply, MLOps is a set of practices that aims to deploy and maintain machine learning models in production reliably and efficiently. This is including and beyond getting these models deployed into production.
+Simply stated, MLOps is a set of practices that aims to deploy and maintain machine learning models in production reliably and efficiently. This is including and beyond getting these models deployed into production.
 
 <div align="center">
   <img src="../assets/posts/data-centric-ml/mlops_process_2.png" width="700" />
@@ -63,7 +62,7 @@ When looked at from this perspective, it is more intuitive to understand that th
 
 ### Latency problems: 
 
-If latency is not accounted for whilst developing ML models, it can have a huge impact on a business. You could lose [half your traffic](https://www.thinkwithgoogle.com/consumer-insights/consumer-trends/mobile-site-load-time-statistics/) with a slow load-up of your application. This means that when employing models in production, one needs to be cognizant of latency requirements in production.
+If latency is not accounted for whilst developing ML models, it can have a huge impact on a business. You could lose [half your traffic](https://www.thinkwithgoogle.com/consumer-insights/consumer-trends/mobile-site-load-time-statistics/) with a slow load-up of your application. This means that when employing models in production, one needs to be cognisant of latency requirements in production.
 
 ### Maintaining fairness and avoiding bias
 
@@ -75,7 +74,7 @@ If fairness is not maintained in a system, then legislators will be in their ful
 
 ### Painfully slow development cycles
 
-Getting a model into production can take [up to a year for many companies](https://algorithmia.com/state-of-ml). That means going through the above process only once can cost hundreds of thousands of dollars, let alone having to do it again and again. Teams need to automate most of the tedious stuff away if they are to have any sort of argument for a legitimate ROI for machine learning being applied in a business.
+Getting a model into production can take [up to a year for many companies](https://algorithmia.com/state-of-ml). That means going through the above process only once can cost hundreds of thousands of dollars, let alone having to do it again and again. Teams need to automate most of the tedious stuff away if they are to have any sort of argument for a legitimate return-on-investment for machine learning being applied in a business.
 
 ### Model, concepts, and data drifts
 
@@ -96,20 +95,17 @@ The essence of the talk is as follows: You can get a lot of bang for your buck f
 
 When taking a look at the challenges facing ML in production today, it is clear that a shift towards being data-centric is simply the natural mindset shift that is required. Latency problems can be solved by exposing data scientists to real-world data ingestion patterns. Fairness and bias can be avoided by inspecting the data at the moment of model training. Auditability trails can be kept if data is versioned and tracked as models are developed. The development cycle can also be accelerated vastly by creating data-centric workflows that can adapt to changing data. Finally, drift and data quality can be accounted for early on in the development process.
 
-Here is an example of a model-centric decision vs a data-centric decision, that also showcases its link with MLOps. Let's say a data scientist has a dataset for the last year and is tasked with developing a model. The model-centric way of approaching such a task would be to use the entire data to train the model with a little bit leftover as a test set to verify the model metrics. Perhaps hyper-parameter tuning is applied to squeeze out the maximum accuracy from the model and data.
+Here is an example of a model-centric decision vs a data-centric decision, that also showcases its link with MLOps. Let's say a data scientist has a dataset for the last year and is tasked with developing a model. The model-centric way of approaching such a task would be to use the entire data to train the model with a little bit leftover as a test set to verify the model metrics. Perhaps hyperparameter tuning is applied to squeeze out the maximum accuracy from the model and data.
 
 On the other hand, a data-centric decision, and a decision that would help ultimately in production, would be to partition the data in a way that a portion of it (let's say the first three quarters of the year) is used for the training process, and the last quarter is used as a separate dataset to see how the model drifts over time. This would perhaps incur a slight loss in accuracy for the model, but give key information about the behavior of the model by simulating it being deployed out in the real world. 
 
-In the end, While being model-centric has its benefits, adding data-centric decisions into the mix is ultimately what is the best path forward when applying ML in the real world. With that, there is a natural synergy between this and the adoption of MLOps.
+In the end, while being model-centric has its benefits, adding data-centric decisions into the mix is ultimately what is the best path forward when applying ML in the real world. With that, there is a natural synergy between this and the adoption of MLOps.
 
 ## Towards data-centric ML(Ops): From scripting to pipelines
 
-A concrete shift to data-centric machine learning often involves an ML team shifting focus from script-based development to 
-pipeline-based development. Machine learning lends itself very nicely to developing in terms of pipelines because most development does consist of a sequence of steps carried out in order.
+A concrete shift to data-centric machine learning often involves an ML team shifting focus from script-based development to pipeline-based development. Machine learning lends itself very nicely to developing in terms of pipelines because most development does consist of a sequence of steps carried out in order.
 
-Here it is important to make a distinction between data-driven pipelines vs task-driven pipelines.
-
-Said another way, this means that serious teams develop ML code as chunks of steps, using some form of tooling to isolate the orchestration of execution of steps from each other. This has the following benefits:
+Here it is important to make a distinction between data-driven pipelines vs task-driven pipelines. This means that serious teams develop ML code as chunks of steps, using some form of tooling to isolate the orchestration of execution of steps from each other. This has the following benefits:
 
 Often this means stepping out of a notebook environment or finding some way of transporting notebook code to such a paradigm. 
 
@@ -135,13 +131,13 @@ Shameless plug: If you'd like to start the shift towards data-centric machine le
 
 If you'd like to get more into MLOPs, I would recommend the following excellent resources to get started:
 
-- MLOps Course MadeWithML: https://madewithml.com/
+- MLOps Course [MadeWithML](https://madewithml.com/)
 
-- CS 329S: Machine Learning Systems Design: https://mlsys.stanford.edu/
+- [CS 329S: Machine Learning Systems Design](https://mlsys.stanford.edu/)
 
-- Full Stack Deep Learning: https://fullstackdeeplearning.com/ 
+- [Full Stack Deep Learning](https://fullstackdeeplearning.com/)
 
-- ZenBytes - learn MLOps through ZenML: https://github.com/zenml-io/zenbytes
+- [ZenBytes - learn MLOps through ZenML](https://github.com/zenml-io/zenbytes)
 
 ## References
 
