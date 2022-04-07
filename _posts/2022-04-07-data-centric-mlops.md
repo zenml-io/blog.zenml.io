@@ -20,9 +20,12 @@ set a ML team up for MLOps success.
 
 # MLOps is not just about deploying a model
 
-[!slide Tweet from chip?]
+![ML is more than training models](../assets/posts/data-centric-ml/mlops_tweet.png)
 
 If not exposed to real world ML systems, one can be forgiven with simplifying ML development by breaking it down into the following relatively simple processes. 
+
+![MLOps: What we think it is](../assets/posts/data-centric-ml/mlops_process_0.png)
+
 
 Taken in their silos, these processes don't sound too hard: 
 
@@ -33,8 +36,12 @@ cloud provider.
 
 However, the reality is that the process looks more like this:
 
+![MLOps: What it really is](../assets/posts/data-centric-ml/mlops_process_1.png)
+
 It is in these gaps where MLOps ultimately lives. It is not enough to do this process once: A successful ML team needs to execute this 
 process over and over again, and in a manner that the system can be trusted.
+
+![MLOps lives in these loops](../assets/posts/data-centric-ml/mlops_process_2.png)
 
 # Post-deployment Woes
 
@@ -57,6 +64,9 @@ below:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/06-AZXmwHjo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
+
+![Model vs data centric](../assets/posts/data-centric-ml/model_vs_data_centric.png)
 
 # Towards data-centric ML(Ops): From scripting to pipelines
 
@@ -87,9 +97,6 @@ Shamless plug: If you'd like to start the shift towards data-centric machine lea
 - Be infrastructure and tooling agnostic across the MLOps stack.
 - Start writing your pipeline in a notebook and carry it easily into the cloud with minimum effort.
 
-_[Subscribe to Pipeline Conversations](https://podcast.zenml.io/subscribe) with_
-_your favorite podcast player [here](https://podcast.zenml.io/subscribe)._
-
 ## Resources
 
 Learning MLOps
@@ -98,3 +105,7 @@ Learning MLOps
 - Fullstack deep learning
 - Chip Huyen CS329
 - ZenBytes
+
+## References
+
+Some images inspired by Andrew Ng's "From Data-centric to Model-centric Machine Learning" on YouTube: https://www.youtube.com/watch?v=06-AZXmwHjo
