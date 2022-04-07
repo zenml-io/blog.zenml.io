@@ -18,9 +18,11 @@ and how it is driving MLOps practices today. In this article, I would like to ma
 how a shift for data science from script-driven development to pipeline-driven development is one of the best ways to 
 set a ML team up for MLOps success.
 
-# MLOps is not just about deploying a model
+# MLOps is not just about deploying model
 
-![ML is more than training models](../assets/posts/data-centric-ml/mlops_tweet.png)
+The need for MLOPs 
+
+<img src="../assets/posts/data-centric-ml/mlops_tweet.png" width="400" />
 
 If not exposed to real world ML systems, one can be forgiven with simplifying ML development by breaking it down into the following relatively simple processes. 
 
