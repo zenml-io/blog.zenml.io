@@ -58,28 +58,27 @@ Said simply, MLOps is a set of practices that aims to to deploy and maintain mac
 
 When looked at from this perspective, it is more intuitive to understand that the trouble really starts after the first deployment.
 
-Here are just a few examples
+Here are just a few examples:
 
 ### Latency problems: 
 
-If latency is not accounted for [Test](https://www.thinkwithgoogle.com/consumer-insights/consumer-trends/mobile-site-load-time-statistics/). Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+If latency is not accounted for whilst developing ML models, then it can have a huge impact on a business. You could lose [half your traffic](https://www.thinkwithgoogle.com/consumer-insights/consumer-trends/mobile-site-load-time-statistics/) with a slow load-up of your application. This means that when employing models in production, one needs to be cognizant of latency requirements in production.
 
 ### Maintaining fairness and avoiding bias
 
-[Bias](https://www.nytimes.com/2016/03/25/technology/microsoft-created-a-twitter-bot-to-learn-from-users-it-quickly-became-a-racist-jerk.html) Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+[Microsoft's rogue racist twitter bot](https://www.nytimes.com/2016/03/25/technology/microsoft-created-a-twitter-bot-to-learn-from-users-it-quickly-became-a-racist-jerk.html) is an example of not setting up systems to maintain fairness and bias in ML development. If left unchecked, 
 
 ### Lack of explaiability and auditability
 
-[European Commision](https://ec.europa.eu/commission/presscorner/detail/en/IP_21_1682)Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+If bias and fairness are not maintained in a system, then legislators will be in their full right to come after ML practitioners. The [European Commision](https://ec.europa.eu/commission/presscorner/detail/en/IP_21_1682) is already rolling out new laws and checks, and we can only expect this to grow over time. Practitioners should be able to answer questions such as why a certain prediction was made, and how a certain model was trained and on which slice of data. These audit trails are all parts of the MLOps workflow.
 
 ### Painfully slow development cycles
 
-[2020 State of Enterprise machine learning](https://algorithmia.com/state-of-ml)Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+Getting a model in production can take [upto a year for many companies](https://algorithmia.com/state-of-ml). That means going through the above process only once can costs hundreds of thousands of dollars, let alone having to do it again and again. Teams need to automate most of the tedious stuff away if they are to have any sort of argument for a legitimate ROI for machine learning being applied in a business.
 
 ### Model, concepts, and data drifts
 
-[Zillow disaster](https://www.geekwire.com/2021/zillow-shutter-home-buying-business-lay-off-2k-employees-big-real-estate-bet-falters/)Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
-
+The real world is not static. Training models on data that does not change is willingly ignoring the fact that this does not happen in the real-world. The recent [disaster at Zillow](https://www.geekwire.com/2021/zillow-shutter-home-buying-business-lay-off-2k-employees-big-real-estate-bet-falters/) is illustrative of how drift can cost a business dearly. As the world changes, MLOps systems need to be robust to these changes and deal with them as they arise.
 
 ## Model-centric vs Data-centric Machine Learning
 
@@ -88,13 +87,13 @@ below:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/06-AZXmwHjo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+The essence of the talk is as follows: You can get a lot of bang for your buck from your data by being data-centric rather than model-centric. This means that rather than iterating on the model/code and holding the data static in ML development, it would pay more dividents if you were to hold the code/model static (or even start with a simple model) and try to simulate real world behavior with the data.
 
 <div align="center">
   <img src="../assets/posts/data-centric-ml/model_vs_data_centric.png" width="700" />
 </div>
 
-Some filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some fillerSome filler some filler some filler
+This of course is in stark contrast to how ML is taught in crash courses and universities, where the process usually starts in a notebook with reading a static, well prepared dataset, and training a model on it. While being model-centric has its benefits, adding data-centric decisions into the mix is ultimately what is the best path forward when applying ML in the real-world.
 
 # Towards data-centric ML(Ops): From scripting to pipelines
 
