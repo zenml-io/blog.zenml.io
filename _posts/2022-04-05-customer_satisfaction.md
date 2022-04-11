@@ -102,7 +102,7 @@ It will run the following steps:
 
 ![Steps in the ZenML traditional pipeline ](/assets/posts/training_pipeline.png)
 
-We have another pipeline, the `deployment_pipeline.py`, that implements a continuous deployment workflow. It ingests and processes input data, trains a model and then (re)deploys the prediction server that serves the model if it meets our evaluation criteria. For us this is the [mean squared error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error); you can also set your own minimum mse.
+We have another pipeline, the `deployment_pipeline.py`, that implements a continuous deployment workflow. It ingests and processes input data, trains a model and then (re)deploys the prediction server that serves the model if it meets our evaluation criteria. For us this is the [mean squared error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error); you can also set your own minimum MSE.
 
 ```python 
 def main(min_accuracy: float, stop_service: bool): 
