@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Ayush Singh
-title: Predicting how a customer will feel about a product before he even ordered it
+title: Predicting how a customer will feel about a product before they even ordered it
 description: "We built an end to end continuous deployment pipeline using ZenML for a customer satisfaction model that uses historical data of the customer predict the review score for the next order or purchase."
 publish_date: April 11, 2022
 date: 2022-11-04T10:20:00Z
