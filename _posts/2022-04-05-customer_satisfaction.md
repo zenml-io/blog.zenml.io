@@ -166,8 +166,6 @@ def main(min_accuracy: float, stop_service: bool):
             f" To stop the service, re-run the same command and supply the"
             f" `--stop-service` argument."
         )
-if __name__ == "__main__":
-    main()
 ```
 
 It implements a continuous deployment workflow. It ingests and processes input data, trains a model and then (re)deploys the prediction server that serves the model if it meets some evaluation criteria.
