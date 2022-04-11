@@ -207,7 +207,7 @@ This app is designed to predict the customer satisfaction score for a given cust
 
 | Models        | Description   | 
 | ------------- | -------------      | 
-| **Payment Sequential** | Customer may pay an order with more than one payment method. If he does so, a sequence will be created to accommodate all payments. | 
+| **Payment Sequential** | Customer may pay for an order with more than one payment method. If he does so, a sequence will be created to accommodate all payments. | 
 | **Payment Installments**   | Number of installments chosen by the customer. |  
 | **Payment Value** |       Total amount paid by the customer. | 
 | **Price** |       Price of the product. |
