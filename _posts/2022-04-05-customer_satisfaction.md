@@ -95,10 +95,10 @@ if __name__ == "__main__":
 
 It will run the following steps: 
 
-* `ingest_data`: This step will ingest the data from the source and return a data frame; the CSV file is in the `data` folder. 
-* `clean_data`:- This step will clean the data and remove the unwanted columns. It removes columns that contribute less to the target variable and fills null values with mean. 
-* `model_train`:- This step will train different models like xgboost, lightgbm, and random forest. I am also using `MLflow tracking` to track our model performance, parameters, metrics and saving the model. 
-* `evaluation`:- This step will evaluate the model and save the metrics using MLflow autologging into the artifact store. autologging can be used to compare the performance of different models and decide to select the best model. It will also help in doing an error analysis of our model chosen. 
+* `ingest_data`: This step will ingest the data from the source and return a data frame; the CSV file is in the `data` folder.
+* `clean_data`: This step will clean the data and remove the unwanted columns. It removes columns that contribute less to the target variable and fills null values with mean.
+* `model_train`: This step will train different models like xgboost, lightgbm, and random forest. I am also using MLflow to track our model performance, parameters, metrics and for saving the model. 
+* `evaluation`: This step will evaluate the model and save the metrics using MLflow autologging into the artifact store. Autologging can be used to compare the performance of different models and decide to select the best model. It will also help in doing an error analysis of our model chosen. 
 
 ![Steps in the ZenML traditional pipeline ](/assets/posts/training_pipeline.png)
 
