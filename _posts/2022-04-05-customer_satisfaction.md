@@ -25,7 +25,7 @@ I will be using the [Brazilian E-Commerce Public Dataset by Olist](https://www.k
 
 
 Now you may be wondering why we need pipelines in the first place. We can't just train our model in our local system as we need to serve the users, so we need it to be deployed in the cloud. For doing machine learning at scale, we need machine learning pipelines, an end-to-end construct that orchestrates the flow of data into and out of a machine learning model (or set of multiple models). It includes raw data input, features, results, the machine learning model and model parameters, as well as prediction outputs. And all these capabilities are built on top of ZenML. Using ZenML, you can run the components of the project on the cloud, and it helps in caching steps so that you don't waste your time/processing power.
-It has easy integration with tools that allow you to compare experiments (i.e. MLflow), easy deployment of models that you've trained and easy monitoring of deployed models. 
+It integrates with tools that allow you to compare experiments (i.e. MLflow), easily deploy models that you've trained and easily monitor your deployed models. 
 
 I will also use the MLflow deployment integration that ZenML provides to help build a continuous deployment pipeline and an inference pipeline for our customer satisfaction system. 
 
