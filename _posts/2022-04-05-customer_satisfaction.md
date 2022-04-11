@@ -1,11 +1,11 @@
 ---
 layout: post
 author: Ayush Singh
-title: End to End Customer Satisfaction Pipeline with ZenML
+title: Predicting how a customer will feel about a product before he even ordered it
 description: "We built an end to end continuous deployment pipeline using ZenML for a customer satisfaction model that uses historical data of the customer predict the review score for the next order or purchase."
-publish_date: April 5, 2022
-date: 2022-05-04T10:20:00Z
-tags: tensorflow machine-learning mlops evergreen applied-zenml pipelines zenfile
+publish_date: April 11, 2022
+date: 2022-11-04T10:20:00Z
+tags: machine-learning mlops evergreen applied-zenml pipelines zenfile
 category: zenml
 thumbnail: /assets/posts/Customer_Satisfaction.png
 image:
