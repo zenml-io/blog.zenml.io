@@ -225,6 +225,6 @@ This app simulates what happens when predicting the customer satisfaction score 
 
 The e-commerce sector is rapidly evolving as internet accessibility increases in different parts of the world over the years. As a result, the demand for online shopping has grown. Businesses want to know how satisfied their customers are with their products and services to make better decisions. Machine learning plays a significant role in various aspects of business like sales prediction, customer segmentation, product recommendation, customer satisfaction, etc. 
 
-In this blog post, we have seen how to build a model that can predict customer satisfaction based on the data provided by the customers. We have also seen how to use the MLflow to track the model's performance and how to deploy the model for online prediction.  
+In this blog post, we have seen how to build a model that can predict customer satisfaction based on data provided by customers. We have also seen how to use MLflow to track the model's performance and how to deploy the model for online prediction.  
 
 If you're interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
