@@ -203,7 +203,7 @@ We also made a live demo of this project using [Streamlit](https://streamlit.io/
 
 ![DemoApp](/assets/posts/screenshotofweb.png)
 
-This app is designed to predict the customer satisfaction score for a given customer. You can input the features of the product listed below and get the customer satisfaction score. 
+This app simulates what happens when predicting the customer satisfaction score for a given customer. You can input the features of the product listed below and get the customer satisfaction score. 
 
 | Models        | Description   | 
 | ------------- | -------------      | 
