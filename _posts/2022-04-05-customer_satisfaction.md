@@ -18,10 +18,10 @@ Customer satisfaction is a measure of how satisfied a customer is with a product
 
 I will be using the [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). This dataset has information on 100,000 orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allow viewing charges from various dimensions: from order status, price, payment, freight performance to customer location, product attributes and finally, reviews written by customers. The objective here is to predict the customer satisfaction score for a given order based on features like order status, price, payment, etc. I will be using [ZenML](https://zenml.io/) to build a production-ready pipeline to predict the customer satisfaction score for the next order or purchase.
 
-* `ingest_data`: This step will ingest the data and create a `DataFrame`.
-* `clean_data`:- This step will clean the data and remove the unwanted columns. 
-* `model_train`:- This step will train the model and save the model using MLflow autologging. 
-* `evaluation`:- This step will evaluate the model and save the metrics using MLFlow autologging into the artifact.
+- `ingest_data`: This step will ingest the data and create a `DataFrame`.
+- `clean_data`: This step will clean the data and remove the unwanted columns.
+- `model_train`: This step will train the model and save the model using [MLflow autologging](https://www.mlflow.org/docs/latest/tracking.html).
+- `evaluation`: This step will evaluate the model and save the metrics -- using MLflow autologging -- into the artifact store.
 
 
 Now you may be wondering why we need pipelines in the first place. We can't just train our model in our local system as we need to serve the users, so we need it to be deployed in the cloud. For doing machine learning at scale, we need machine learning pipelines, an end-to-end construct that orchestrates the flow of data into and out of a machine learning model (or set of multiple models). It includes raw data input, features, results, the machine learning model and model parameters, as well as prediction outputs. And all these capabilities are built on top of ZenML. Using ZenML, you can run the components of the project on the cloud, and it helps in caching steps so that you don't waste your time/processing power.
