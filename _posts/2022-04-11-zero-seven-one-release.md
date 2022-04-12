@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_7_1/ian-dooley-DuBNA1QMpPA-unsplash.jpg
 ---
 
+![Seldon Core Logo](../assets/posts/release_0_7_1/release-0-7-1.gif)
+
 The release introduces the [Seldon Core](https://github.com/SeldonIO/seldon-core) ZenML integration, featuring the *Seldon Core Model Deployer* and a *Seldon Core standard model deployer step*. The [*Model Deployer*](https://docs.zenml.io/core-concepts#model-deployer) is a new type of stack component that enables you to develop continuous model deployment pipelines that train models and continuously deploy them to an external model serving tool, service, or platform. You can read more on deploying models to production with Seldon Core in our [Continuous Training and Deployment documentation section](https://docs.zenml.io/features/continuous-training-and-deployment) and our [Seldon Core deployment example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).
 
 We also two two new integrations: Feast and NeuralProphet. [Feast](https://feast.dev) is ZenML's first feature store integration. Feature stores allow data teams to serve data via an offline store and an online low-latency store where data is kept in sync between the two. It also offers a centralized registry where features (and feature schemas) are stored for use within a team or wider organization. ZenML currently supports connecting to a Redis-backed Feast feature store as a stack component integration. Check out the [full example](https://github.com/zenml-io/zenml/tree/release/0.7.1/examples/feature_store) to see it in action!
