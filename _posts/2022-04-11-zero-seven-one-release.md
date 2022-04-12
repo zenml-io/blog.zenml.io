@@ -1,6 +1,6 @@
 ---
 layout: post
-author: Alex Strick van Linschoten
+author: Hamza Tahir
 title: "What's New in v0.7.1: Fetch data from your feature store and deploy models on Kubernetes"
 description: "The release introduces the Seldon Core ZenML integration, featuring the Seldon Core Model Deployer and a Seldon Core standard model deployer step. It also includes two new integrations with Feast as ZenML's first feature store addition and NeuralProphet adding to the growing list of training libraries supported."
 category: zenml
