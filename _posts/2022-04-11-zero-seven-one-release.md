@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Alex Strick van Linschoten
-title: "What's New in v0.7.1: XXX"
-description: "Release notes for the new version of ZenML. We've added XXX. You'll also find a lot of smaller improvements, documentation additions and bug fixes in this release."
+title: "What's New in v0.7.1: Fetch data from your feature store and deploy models on Kubernetes."
+description: "The release introduces the Seldon Core ZenML integration, featuring the Seldon Core Model Deployer and a Seldon Core standard model deployer step. It also includes two new integrations with Feast as ZenML's first feature store addition and NeuralProphet adding to the growing list of training libraries supported."
 category: zenml
 tags: zenml release-notes
 publish_date: April 11, 2022
@@ -12,63 +12,51 @@ image:
   path: /assets/posts/release_0_7_1/ian-dooley-DuBNA1QMpPA-unsplash.jpg
 ---
 
-With ZenML 0.6.3, you can now run your ZenML steps on Sagemaker and AzureML! It's normal to have certain steps that require specific hardware on which to run model training, for example, and this latest release gives you the power to switch out hardware for individual steps to support this.
+The release introduces the [Seldon Core](https://github.com/SeldonIO/seldon-core) ZenML integration, featuring the *Seldon Core Model Deployer* and a *Seldon Core standard model deployer step*. The [*Model Deployer*](https://docs.zenml.io/core-concepts#model-deployer) is a new type of stack component that enables you to develop continuous model deployment pipelines that train models and continuously deploy them to an external model serving tool, service or platform. You can read more on deploying models to production with Seldon Core in our [Continuous Training and Deployment documentation section](https://docs.zenml.io/features/continuous-training-and-deployment) and our [Seldon Core deployment example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).
 
-We added a new Tensorboard visualization that you can make use of when using our Kubeflow Pipelines integration. We handle the background processes needed to spin up this interactive web interface that you can use to visualize your model's performance over time.
+We also see two new integrations with [Feast](https://feast.dev) as ZenML's first feature store integration. Feature stores allow data teams to serve data via an offline store and an online low-latency store where data is kept in sync between the two. It also offers a centralized registry where features (and feature schemas) are stored for use within a team or wider organization. ZenML now supports connecting to a Redis-backed Feast feature store as a stack component integration. Check out the [full example](https://github.com/zenml-io/zenml/tree/release/0.7.1/examples/feature_store) to see it in action! 
 
-Behind the scenes we gave our integration testing suite a massive upgrade, fixed a number of smaller bugs and made documentation updates. For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.6.3) a glance.
+0.7.1 also brings  an addition to ZenML training library integrations with [NeuralProphet](https://neuralprophet.com/html/index.html). Check out the new [example](https://github.com/zenml-io/zenml/tree/main/examples) for more details, and the [docs](https://docs.zenml.io) for more further detail on all new features!
 
-## ☁️ Run Your Steps on Sagemaker and AzureML
+## ☁️ Deploy models continuously on Kubernetes
 
-![Running your steps on cloud hardware provided by Sagemaker and AzureML](../assets/posts/release_0_6_3/zen-in-the-clouds.gif)
+![Seldon Core Logo](../assets/posts/release_0_7_1/seldon-core-logo.png)
 
-As your pipelines become more mature and complex, you might want to use specialized hardware for certain steps of your pipeline. A clear example is wanting to run your training step on GPU machines that get spun up automagically without you having to worry too much about that deployment. Amazon's [Sagemaker](https://aws.amazon.com/sagemaker) and Microsoft's [AzureML](https://ml.azure.com/) both offer custom hardware on which you can run your steps.
+We are proud to release one of the most requested features from our [community roadmap](https://zenml.io/roadmap) today! With 0.7.1, you can serve your models continuously on Kubernetes using the Seldon Core integration!
 
-The code required to add this to your pipeline and step definition is as minimal as can be. Simply add the following like above the step that you'd like to run on your cloud hardware:
+[Seldon Core](https://github.com/SeldonIO/seldon-core) is a production grade open source model serving platform. It packs a wide range of features built around deploying models to REST/GRPC microservices that include monitoring and  logging, model explainers, outlier detectors and various continuous deployment
+strategies such as A/B testing, canary deployments and more.
 
-```python
-@step(custom_step_operator='sagemaker') # or azureml
-```
+Seldon Core also comes equipped with a set of built-in model server implementations designed to work with standard formats for packaging ML models that greatly simplify the process of serving models for real-time inference.
 
-Sagemaker and AzureML offers specialized compute instances to run your training jobs and offer a beautiful UI to track and manage your models and logs. All you have to do is configure your ZenML stack with the relevant parameters and you're good to go. You'll have to set up the infrastructure with credentials; check out [our documentation](https://docs.zenml.io/features/cloud-pipelines/guide-aws-gcp-azure) for a guide how to do that.
+The [full example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment) demonstrates how easy it is to build a continuous deployment pipeline that trains a model and then serves it with Seldon Core as the industry-ready model deployment tool of choice.
 
-To get going with this, checkout the [two](https://github.com/zenml-io/zenml/tree/main/examples/sagemaker_step_operator) [examples](https://github.com/zenml-io/zenml/tree/main/examples/azureml_step_operator) we created, configure your stack and add that line mentioned above.
+After [serving models locally with MLflow](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment), switching to a ZenML MLOps stack that features Seldon Core as a model deployer component makes for a seamless transition from running experiments locally to deploying models in production.
 
-We'll be publishing more about this use case in the coming days, so stay tuned for that!
+## 🗄️ Fetch data from your Feature Store
 
-## 📊 visualize Your Model History with Tensorboard
+0.7.1 introduces [Feast](https://feast.dev) as ZenML's first feature store integration. Feature stores allow data teams to serve data via an offline store and an online low-latency store where data is kept in sync between the two. It also offers a centralized registry where features (and feature schemas) are stored for use within a team or wider organization. ZenML now supports connecting to a Redis-backed Feast feature store as a stack component integration. Check out the [full example](https://github.com/zenml-io/zenml/tree/release/0.7.1/examples/feature_store) to see it in action! 
 
-![Visualizing model history with Tensorboard](../assets/posts/release_0_6_3/tensorboard.png)
+![Feast Architecture](../assets/posts/release_0_7_1/feast-archtecture.svg)
+Picture Source: [Feast website](https://feast.dev)
 
-[Tensorboard](https://www.tensorflow.org/tensorboard/) is a way to visualize your machine learning models and training outputs. In this release we added a custom visualization for Kubeflow which allows you to see the entire history of a model logged by a step.
+There are two core functions that feature stores enable: access to data from an offline / batch store for training and access to online data at inference time. The ZenML Feast integration enables both of these behaviors.
 
-Behind the scenes, we implemented a `TensorboardService` which tracks and manages locally running Tensorboard daemons. This interactive UI runs in the background and works even while your pipeline is running. To use this feature, the easiest way is to click the 'Start Tensorboard' button inside the Kubeflow UI.
-
-This new functionality has also been integrated into [our Kubeflow example](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow) from previous releases.
-
-## 💻 User Experience Improvements
-
-If you ever need a reminder of the function of a particular stack, there's a new `explain` command that works for all stack components (orchestrator, container registry and so on). Typing `zenml orchestrator explain` will output the relevant parts of the documentation that explain some basics about the orchestrator component.
-
-We added functionality to output whether a step is being executed from a cached version or is actually being executed for the first time. We also improved error messages when provisioning local Kubeflow resources with a non-local container registry.
+The full [example](https://github.com/zenml-io/zenml/tree/main/examples/feature_store) show-cases how to fetch a configured feature store in a ZenML step.  This example showcases a local implementation where the whole setup runs on a single machine, but we assume that users of the ZenML Feast integration will have set up their own feature store already. We encourage users to check out [Feast's documentation](https://docs.feast.dev/) and [guides](https://docs.feast.dev/how-to-guides/) on how to setup your offline and online data sources via the configuration `yaml` file.
 
 ## ➕ Other Updates, Additions and Fixes
 
-Our test suite was thoroughly reimagined and reworked to get the most out of Github Actions. Alexej blogged about this for the ZenML blog here: "[How we made our integration tests delightful by optimizing the way our GitHub Actions run our test suite](https://blog.zenml.io/github-actions-in-action/)". We also completed the implementation of all integration tests such that they run on our test suite.
+Abstract Stores and FileIO were overhauled in this store: Abstract Stores now have a way cleaner abstraction with the FileIO methods embedded. Check out the [BaseArtifactStore](https://github.com/zenml-io/zenml/blob/main/src/zenml/artifact_stores/base_artifact_store.py#L68) for more information.
 
-We enabled the use of generic step inputs and outputs as part of your pipeline.
+This release marks the beginnings of a ZenML Service with PR [#496](https://github.com/zenml-io/zenml/pull/496). This service will keep track of pipelines, users, teams, and stacks in a centralized manner and can be deployed to the cloud! Watch out for the next release for this exciting new update!
 
-Finally, we made a number of under-the-hood dependency changes that you probably won't notice, but that either reduce the overall size of ZenML or fix some old or deprecated packages. Notably, ZenML no longer supports Python 3.6.
+## Join us for the inaugural MLOps hour
 
-## 🙌 Community Contributions
+We're hosting an MLOps Hour! On Wednesday, 13th April 9AM PT / 6PM CET, we'll be gathering the ZenML community (and beyond) to showcase CI/CD/CT in MLOps using the latest release features!
 
-We received [a contribution](https://github.com/zenml-io/zenml/pull/438) from [Ben](https://github.com/pafpixel), in which he fixed a typo in our documentation. Thank you, Ben!
+Don't miss out, register now: https://www.eventbrite.de/e/zenml-mlops-hour-from-experimentation-to-continuous-deployment-tickets-313855027837
 
-## Contribute to ZenML!
-
-Join our [Slack](https://zenml.io/slack-invite/) to let us know what you think we should build next!
-
-Keep your eyes open for future releases and make sure to [vote](https://github.com/zenml-io/zenml/discussions/categories/roadmap) on your favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets implemented as soon as possible.
+Alternatively, chat with us directly by joining our [Slack](https://zenml.io/slack-invite/). Have a good one!
 
 [Photo by <a
 href="https://unsplash.com/@sadswim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">ian
