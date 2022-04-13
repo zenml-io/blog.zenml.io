@@ -217,6 +217,8 @@ This app simulates what happens when predicting the customer satisfaction score 
 | **Product height (CMs)**       | Height of the product measured in centimeters.                                                                                          |
 | **Product width (CMs)**        | Width of the product measured in centimeters.                                                                                           |
 
+In the inference part of this application, we are fetching our continuous deployment pipeline from the initialized repository and the pipeline trains the model and (re) deploys the model and this application make use of the latest model from the pipeline in order to predict the customer satisfaction score for the next order or purchase.
+
 ## What we learned
 
 The e-commerce sector is rapidly evolving as internet accessibility increases in different parts of the world over the years. As a result, the demand for online shopping has grown. Businesses want to know how satisfied their customers are with their products and services to make better decisions. Machine learning plays a significant role in various aspects of business like sales prediction, customer segmentation, product recommendation, customer satisfaction, etc.
