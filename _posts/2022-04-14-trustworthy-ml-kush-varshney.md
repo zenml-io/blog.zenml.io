@@ -12,15 +12,15 @@ image:
   path: /assets/posts/kush-varshney/kush.png
 ---
 
-This week I spoke with [Matt Squire](https://www.linkedin.com/in/matt-squire-a19896125/), the CTO and co-founder of [Fuzzy Labs](https://www.fuzzylabs.ai/), where they help partner organizations think through how best to productionize their machine learning workflows.
+I enthusiastically read [Kush Varshney](http://krvarshney.github.io/)'s book when it was released for free to the world several months back. [*Trustworthy Machine Learning*](http://www.trustworthymachinelearning.com/) offers a concise and clear overview of many of the ways that machine learning can go wrong, and so I was especially keen to get Kush on to talk more about his work and research.
 
-Matt and FuzzyLabs are also behind the '[Awesome Open Source MLOps](https://github.com/fuzzylabs/awesome-open-mlops)' GitHub repo where you can find all the options for an open-source MLOps stack of your dreams.
+I also got a stronger sense and appreciation for how good MLOps practices and workflows offered a clear path to ensuring that your machine learning models and behaviors could become more trustworthy. Kush has done a lot of interesting work, particularly with the [AI Fairness 360](https://ai-fairness-360.org/) and [AI Explainability 360](https://ai-explainability-360.org/) toolkits that I'm sure listeners of this podcast would find worth checking out.
 
-Matt has been an enthusiastic early supporter of the work we do at ZenML so it was really amazing to get to talk to him and  get his take based on the many experiences he's had seeing how machine learning is done out in the field.
-
-In this clip, Matt talks through the components that would make up his ideal MLOps stack:
+In this clip, Kush thinks through the key roles that will likely remain following an automation away of certain tasks:
 
 <iframe src="https://share.descript.com/embed/Z456IJKQonM" width="410" height="410" frameborder="0" allowfullscreen></iframe>
+
+[*Trustworthy Machine Learning*](http://www.trustworthymachinelearning.com/) is available to read for free at the website linked and I would recommend you give it a read.
 
 As always, full show notes and links are available on
 [our dedicated podcast page](https://podcast.zenml.io/).
