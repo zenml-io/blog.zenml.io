@@ -7,9 +7,9 @@ publish_date: April 20, 2022
 date: 2022-04-20T10:20:00Z
 tags: machine-learning mlops evergreen applied-zenml pipelines zenfile
 category: zenml
-thumbnail: /assets/posts/Customer_Satisfaction.png
+thumbnail: /assets/posts/customer-satisfaction/Customer_Satisfaction.png
 image:
-  path: /assets/posts/Customer_Satisfaction.png
+  path: /assets/posts/customer-satisfaction/Customer_Satisfaction.png
   height: 100
   width: 100
 ---
@@ -70,27 +70,13 @@ Let's start with the `run_pipeline.py`, which is a traditional ZenML pipeline, t
 
 ```python
 def run_training():
-    training = train_pipeline(
+    ...
+    train_pipeline(
         ingest_data(),
         clean_data().with_return_materializers(cs_materializer),
         train_model(),
         evaluation(),
-    )
-
-    training.run()
-
-
-if __name__ == "__main__":
-    run_training()
-
-    with global_mlflow_env() as mlflow_env:
-        print(
-            "Now run \n "
-            f"    mlflow ui --backend-store-uri {mlflow_env.tracking_uri}\n"
-            "To inspect your experiment runs within the mlflow ui.\n"
-            "You can find your runs tracked within the `mlflow_example_pipeline`"
-            "experiment. Here you'll also be able to compare the two runs.)"
-        )
+    ).run()
 ```
 
 It will run the following steps:
@@ -100,72 +86,22 @@ It will run the following steps:
 - `model_train`: This step will train different models like xgboost, lightgbm, and random forest. I am also using MLflow to track our model performance, parameters, metrics and for saving the model.
 - `evaluation`: This step will evaluate the model and save the metrics using MLflow autologging into the artifact store. Autologging can be used to compare the performance of different models and decide to select the best model. It will also help in doing an error analysis of our model chosen.
 
-![Steps in the ZenML training pipeline ](/assets/posts/training_pipeline.png)
-
 We have another pipeline, the `deployment_pipeline.py`, that extends the training pipeline, and implements a continuous deployment workflow. It ingests and processes input data, trains a model and then (re)deploys the prediction server that serves the model if it meets our evaluation criteria. The criteria that we have chosen is a configurable threshold on the [mean squared error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error) of the training.
 
 ```python
-def main(min_accuracy: float, stop_service: bool):
-
-    '''Run the MLflow example pipeline'''
-    if stop_service:
-        service = load_last_service_from_step(
-            pipeline_name="continuous_deployment_pipeline",
-            step_name="model_deployer",
-            running=True,
+deployment = continuous_deployment_pipeline(
+    ingest_data(),
+    clean_data().with_return_materializers(cs_materializer),
+    train_model(),
+    evaluation(),
+    deployment_trigger=deployment_trigger(
+        config=DeploymentTriggerConfig(
+            min_accuracy=min_accuracy,  # set a min threshold for deployment
         )
-        if service:
-            service.stop(timeout=10)
-        return
-
-    deployment = continuous_deployment_pipeline(
-        ingest_data(),
-        clean_data().with_return_materializers(cs_materializer),
-        train_model(),
-        evaluation(),
-        deployment_trigger=deployment_trigger(
-            config=DeploymentTriggerConfig(
-                min_accuracy=min_accuracy,
-            )
-        ),
-        model_deployer=model_deployer(config=MLFlowDeployerConfig(workers=3)),
-    )
-    deployment.run()
-
-    inference = inference_pipeline(
-        dynamic_importer=dynamic_importer().with_return_materializers(cs_materializer),
-        prediction_service_loader=prediction_service_loader(
-            MLFlowDeploymentLoaderStepConfig(
-                pipeline_name="continuous_deployment_pipeline",
-                step_name="model_deployer",
-            )
-        ),
-        predictor=predictor(),
-    )
-    inference.run()
-
-    with global_mlflow_env() as mlflow_env:
-    print(
-        "Now run \n "
-        f"    mlflow ui --backend-store-uri {mlflow_env.tracking_uri}\n"
-        "To inspect your experiment runs within the mlflow ui.\n"
-        "You can find your runs tracked within the `mlflow_example_pipeline`"
-        "experiment. Here you'll also be able to compare the two runs.)"
-    )
-
-    service = load_last_service_from_step(
-        pipeline_name="continuous_deployment_pipeline",
-        step_name="model_deployer",
-        running=True,
-    )
-    if service:
-        print(
-            f "The MLflow prediction server is running locally as a daemon process."
-            f" and accepts inference requests at:\n."
-            f"    {service.prediction_uri}\n"
-            f" To stop the service, re-run the same command and supply the"
-            f" `--stop-service` argument."
-        )
+    ),
+    model_deployer=mlflow_model_deployer(...),  # use mlflow to deploy
+)
+deployment.run()
 ```
 
 In the deployment pipeline, ZenML's [MLflow tracking integration](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking) is used for logging the hyperparameter values and the trained model itself and the model evaluation metrics -- as MLflow experiment tracking artifacts -- into the local MLflow backend. This pipeline also launches a local MLflow deployment server to serve the latest MLflow model if its accuracy is above a configured threshold.
@@ -190,7 +126,7 @@ If you want to run this Streamlit app in your local system, you can run the foll
 streamlit run streamlit_app.py
 ```
 
-![Steps in the ZenML continuous deployment pipeline ](/assets/posts/trainandinf.png)
+![Steps in the ZenML continuous deployment pipeline ](/assets/posts/customer-satisfaction/trainingandif.png)
 
 ## Results
 
@@ -205,13 +141,13 @@ I framed our problem as a regression problem and used the "LightGBM" model as ou
 
 The following figure shows how important each feature is in the model that contributes to the target variable or predicting customer satisfaction rate.
 
-![FeatureImportance](/assets/posts/feature_importance_gain.png)
+![FeatureImportance](/assets/posts/customer-satisfaction/feature_importance_gain.png)
 
 ## 🕹 Demo App
 
 We also made a live demo of this project using [Streamlit](https://streamlit.io/) which you can find [here](https://share.streamlit.io/ayush714/customer-satisfaction/main). It takes some input features for the product and predicts the customer satisfaction rate using our trained models.
 
-![DemoApp](/assets/posts/screenshotofweb.png)
+![DemoApp](/assets/posts/customer-satisfaction/screenshotofweb.png)
 
 This app simulates what happens when predicting the customer satisfaction score for a given customer. You can input the features of the product listed below and get the customer satisfaction score.
 
