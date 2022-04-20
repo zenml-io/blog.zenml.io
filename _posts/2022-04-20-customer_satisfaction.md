@@ -120,7 +120,7 @@ service = load_last_service_from_step(
 service.predict(...)  # Predict on incoming data from the application
 ```
 
-If you want to run this Streamlit app in your local system, you can run the following command:-
+If you want to run this Streamlit app in your local system, you can run the following command:
 
 ```bash
 streamlit run streamlit_app.py
