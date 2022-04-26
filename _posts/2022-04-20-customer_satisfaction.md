@@ -29,6 +29,12 @@ In order to build a real-world workflow, it is not enough to just train the mode
 
 ZenML helps to build such a pipeline in a simple, yet powerful, way. It integrates with tools that allow you to compare experiments (i.e. MLflow), easily deploy models that you've trained, and then later fetch them for inference with a simple command.
 
+If you prefer consuming your content in video form, then [this](https://youtu.be/L3_pFTlF9EQ) video covers the same which we cover in this blogpost.
+
+<div class="embed-responsive embed-responsive-16by9 mb-5">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/L3_pFTlF9EQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ## Setting up the project
 
 I suggest you create and work out of a virtual environment. You can create a virtual environment using `conda` by following these steps, but of course, you can also use whatever you're familiar with:
