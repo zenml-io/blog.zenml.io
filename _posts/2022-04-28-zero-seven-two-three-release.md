@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Hamza Tahir
-title: "What's New in v0.7.2 and v0.7.3: HuggingFace, Weights&Biases, LightGBM, 
-XGBoost, and more"
+title: "What's New in v0.7.2 and v0.7.3: HuggingFace, Weights & Biases, LightGBM, 
+XGBoost, and more!"
 category: zenml
 tags: zenml release-notes
 publish_date: April 28, 2022
