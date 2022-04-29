@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Hamza Tahir
-title: "What's New in v0.7.2 and v0.7.3: Experiment Tracking components, HuggingFace, Weights&Biases, LightGBM, 
-XGBoost, improved S3ArtifactStore, and better stack management!"
+title: "What's New in v0.7.2 and v0.7.3: HuggingFace, Weights&Biases, LightGBM, 
+XGBoost, and more"
 category: zenml
 tags: zenml release-notes
 publish_date: April 29, 2022
@@ -11,12 +11,6 @@ thumbnail: /assets/posts/release_0_7_2_and_3/balloons.jpg
 image:
   path: /assets/posts/release_0_7_2_and_3/balloons.jpg
 ---
-
-- Experiment tracking
-- S3FS
-- XGBoost and LightGBM
-- Update Stack components
-- Kubeflow metadata store, Secrets manager, Seldon Model Deployer, PyTorch materializer
 
 We missed the last release blog, so we're making it up with a longer one today.
 ZenML 0.7.2 and 0.7.3 are both a doozy in terms of new and exciting features, 
