@@ -40,8 +40,7 @@ However, let's say you want to have a stack that points to a shared MLflow insta
 You can simply create a new stack now pointing to that configuration:
 
 ```bash
-zenml experiment-tracker register remote_mlflow_tracker  --type=mlflow 
-zenml experiment-tracker register gcp_mlflow \
+zenml experiment-tracker register remote_mlflow_tracker \
     --type=mlflow \
     --tracking_uri=https://mlflow-dot-zenml-mlflow-man.ew.r.appspot.com/ \
     --tracking_token=<YOUR_TOKEN>
