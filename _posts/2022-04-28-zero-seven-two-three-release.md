@@ -145,4 +145,4 @@ and the Kubeflow Metadata Store can be easily queried locally.
 Join our [Slack](https://zenml.io/slack-invite/) to be part of the growing ZenML community. We would love to 
 talk to you and see if ZenML is helping you, and get your input as to where it should go next!
 
-[Photo by <a href="https://unsplash.com/@amyshamblen?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Amy Shamblen</a> on <a href="https://unsplash.com/s/photos/baloons?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>] 
+[Photo by <a href="https://unsplash.com/@amyshamblen?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Amy Shamblen</a> on <a href="https://unsplash.com/s/photos/balloons?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>] 
