@@ -95,7 +95,7 @@ and [#538](https://github.com/zenml-io/zenml/pull/538) for more details.
 
 ## 📂 Parameterized S3FS support to enable non-AWS S3 storage (minio, ceph)
 
-A big complaint of the [S3 Artifact Store]() integration was that it was hard to parameterize it in a way that it supports 
+A big complaint of the [S3 Artifact Store](https://github.com/zenml-io/zenml/blob/main/src/zenml/integrations/s3/artifact_stores/s3_artifact_store.py) integration was that it was hard to parameterize it in a way that it supports 
 non-AWS S3 storage like [minio](https://min.io/) and [ceph](https://docs.ceph.com/en/latest/radosgw/s3/). The latest release 
 made this super simple! When you want to register an S3ArtifactStore from the CLI, you can now pass in  
 `client_kwargs`, `config_kwargs` or `s3_additional_kwargs` as a JSON string. For example:
