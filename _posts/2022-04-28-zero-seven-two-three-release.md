@@ -3,6 +3,7 @@ layout: post
 author: Hamza Tahir
 title: "What's New in v0.7.2 and v0.7.3: HuggingFace, Weights & Biases, LightGBM, 
 XGBoost, and more!"
+description: "The release adds experiment tracking stack components, integrations with HuggingFace, Weights & Biases and also improvements to how the Seldon Core deployer handles secrets from the secrets manager component."
 category: zenml
 tags: zenml release-notes
 publish_date: April 28, 2022
