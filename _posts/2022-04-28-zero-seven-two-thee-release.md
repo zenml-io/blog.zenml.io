@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Hamza Tahir
-title: "What's New in v0.7.2 and v0.7.3: Experiment Tracking components, new materializers, improved 
-s3fs filio and better stack management!"
+title: "What's New in v0.7.2 and v0.7.3: Experiment Tracking components, HuggingFace, Weights&Biases, LightGBM, 
+XGBoost, improved S3ArtifactStore, and better stack management!"
 category: zenml
 tags: zenml release-notes
 publish_date: April 29, 2022
@@ -20,7 +20,7 @@ image:
 
 We missed the last release blog, so we're making it up with a longer one today.
 ZenML 0.7.2 and 0.7.3 are both a doozy in terms of new and exciting features, 
-from new materializers to better stack management, and experiment tracking components!
+from exciting new integrations to better stack management. Read on to learn more!
 
 ## 📊 Experiment Tracking Components
 
@@ -104,7 +104,7 @@ and [#538](https://github.com/zenml-io/zenml/pull/538) for more details.
 A big complaint of the [S3 Artifact Store]() integration was that it was hard to parameterize it in a way that it supports 
 non-AWS S3 storage like [minio](https://min.io/) and [ceph](https://docs.ceph.com/en/latest/radosgw/s3/). The latest release 
 made this super simple! When you want to register an S3ArtifactStore from the CLI, you can now pass in  
-`client_kwargs`, `config_kwargs` or `s3_additional_kwargs` as a json string. For example:
+`client_kwargs`, `config_kwargs` or `s3_additional_kwargs` as a JSON string. For example:
 
 ```shell
 zenml artifact-store register my_s3_store --type=s3 --path=s3://my_bucket \
@@ -139,7 +139,7 @@ already-present stack components. They can also rename their stack and individua
 The Seldon Core Model Deployer stack component was updated in this release
 to allow the configuration of ZenML secrets with credentials that authenticate
 Seldon to access the Artifact Store. The Seldon Core integration provides 3
-different secret schemas for the 3 flavors of Artifact Store: AWS, GCP and Azure,
+different secret schemas for the 3 flavors of Artifact Store: AWS, GCP, and Azure,
 but custom secrets can be used as well. For more information on how to use this
 feature please refer to our [Seldon Core deployment example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).
 
