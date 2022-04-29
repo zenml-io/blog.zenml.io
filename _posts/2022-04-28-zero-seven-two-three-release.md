@@ -5,8 +5,8 @@ title: "What's New in v0.7.2 and v0.7.3: HuggingFace, Weights&Biases, LightGBM,
 XGBoost, and more"
 category: zenml
 tags: zenml release-notes
-publish_date: April 29, 2022
-date: 2022-04-29T00:02:00Z
+publish_date: April 28, 2022
+date: 2022-04-28T00:02:00Z
 thumbnail: /assets/posts/release_0_7_2_and_3/balloons.jpg
 image:
   path: /assets/posts/release_0_7_2_and_3/balloons.jpg
@@ -18,12 +18,12 @@ from exciting new integrations to better stack management. Read on to learn more
 
 ## 📊 Experiment Tracking Components
 
-[PR 530](https://github.com/zenml-io/zenml/pull/530) adds a new stack component to ZenMLs ever-growing list: 
+[PR 530](https://github.com/zenml-io/zenml/pull/530) adds a new stack component to ZenML's ever-growing list: 
 `experiment_trackers` allows users to configure your experiment tracking tools with ZenML. Examples of experiment tracking 
-tools are [Weights&Biases](https://wandb.ai), [mlflow](https://mlflow.org), [Neptune](https://neptune.ai), amongst others.
+tools are [Weights & Biases](https://wandb.ai), [MLflow](https://mlflow.org), [Neptune](https://neptune.ai), amongst others.
 
-Existing users might be confused, as ZenML has had MLflow and wandb support for a while now without such a component. However, this 
-component allows uses more control over the configuration of MLflow and wandb with the new `MLFlowExperimentTracker` and 
+Existing users might be confused as ZenML has had MLflow and wandb support for a while now without such a component. However, this 
+component allows users more control over the configuration of MLflow and wandb with the new `MLFlowExperimentTracker` and 
 `WandbExperimentTracker` components. This allows these tools to work in more scenarios than the currently limiting local use-cases.
 
 As an example, let's take the `MLFlowExperimentTracker`. Users can add it to the stack as follows:
@@ -33,7 +33,7 @@ zenml experiment-tracker register local_mlflow_tracker  --type=mlflow
 zenml stack create mlflow_local_stack -o default -m default -a default -e local_mlflow_tracker
 ```
 
-And the above will be pointed towards a local mlflow instance. 
+And the above will be pointed towards a local MLflow instance. 
 
 However, let's say you want to have a stack that points to a shared MLflow instance. 
 You can simply create a new stack now pointing to that configuration:
@@ -49,14 +49,15 @@ zenml stack create mlflow_remote_stack -o default -m default -a default -e remot
 ```
 
 And that's it, we have a shared experiment tracking component in our stack.
-We have tested this on a deployed MLFlow instance on GCP using the default orchestrator. Pro-tip: MLFlow can be deployed 
+We have tested this on a deployed MLflow instance on GCP using the default orchestrator. Pro-tip: MLflow can be deployed 
 easily with one click using this [awesome repo by Artefactory](https://github.com/artefactory/one-click-mlflow/).
 
-## 🤗 HuggingFace Support + Weights&Biases + ZenML 💗 By The Community
+## 🤗 HuggingFace Support + Weights & Biases + ZenML 💗 By The Community
 
-The latest ZenML release brings two amazing new integrations with HuggingFace and Weights&Biases. Both these 
+The latest ZenML release brings two amazing new integrations with HuggingFace
+and Weights & Biases. Both these 
 integrations were contributions from the growing ZenML community and we could not be more grateful 🙏! In a timely 
-fashion, [Richard Socher](https://de.wikipedia.org/wiki/Richard_Socher) gave a shout-out to all three companies in his [latest interview with Future by 
+fashion, [Richard Socher](https://de.wikipedia.org/wiki/Richard_Socher) gave a shoutout to all three companies in his [latest interview with Future by 
 a16z](https://future.a16z.com/a-decade-of-deep-learning-ai-startup/).
 
 ![Richard Socher](../assets/posts/release_0_7_2_and_3/richard_socher_shoutout.png)
@@ -65,7 +66,7 @@ a16z](https://future.a16z.com/a-decade-of-deep-learning-ai-startup/).
 [see full example](https://github.com/zenml-io/zenml/tree/main/examples/huggingface). 
 Huge shoutout to [@Ankur3107](https://github.com/Ankur3107) for PR [#467](https://github.com/zenml-io/zenml/pull/467).
 
-You can also now track your pipeline runs with [Weights&Biases](https://wandb.ai) with the new `enable_wandb` decorator 
+You can also now track your pipeline runs with [Weights & Biases](https://wandb.ai) with the new `enable_wandb` decorator 
 [see full example](https://github.com/zenml-io/zenml/tree/main/examples/wandb_tracking). 
 Huge shoutout to [@soumik12345](https://github.com/soumik12345) for PR [#486](https://github.com/zenml-io/zenml/pull/486).
 
@@ -73,7 +74,7 @@ Huge shoutout to [@soumik12345](https://github.com/soumik12345) for PR [#486](ht
 
 [XGBoost](https://xgboost.readthedocs.io/en/stable/) and [LightGBM](https://lightgbm.readthedocs.io/) are one of the 
 most widely used boosting algorithm libraries out there. That's why we introduced new materializers for both in the latest 
-ZenML release! Now you can pass in your steps the following objects:
+ZenML release! Now you can pass the following objects into your steps:
 
 ```python
 import xgboost as xgb
@@ -90,7 +91,7 @@ def predictor_lightgbm(model: lgb.Booster, mat: lgb.Dataset) -> np.ndarray:
     return model.predict(np.random.rand(7, 28))
 ```
 
-Check out [both examples here](https://github.com/zenml-io/zenml/tree/main/examples) and PR's [#544](https://github.com/zenml-io/zenml/pull/544) 
+Check out [both examples here](https://github.com/zenml-io/zenml/tree/main/examples) and PRs [#544](https://github.com/zenml-io/zenml/pull/544) 
 and [#538](https://github.com/zenml-io/zenml/pull/538) for more details.
 
 ## 📂 Parameterized S3FS support to enable non-AWS S3 storage (minio, ceph)
@@ -132,8 +133,8 @@ already-present stack components. They can also rename their stack and individua
 
 The Seldon Core Model Deployer stack component was updated in this release
 to allow the configuration of ZenML secrets with credentials that authenticate
-Seldon to access the Artifact Store. The Seldon Core integration provides 3
-different secret schemas for the 3 flavors of Artifact Store: AWS, GCP, and Azure,
+Seldon to access the Artifact Store. The Seldon Core integration provides three
+different secret schemas for the three flavors of Artifact Store: AWS, GCP, and Azure,
 but custom secrets can be used as well. For more information on how to use this
 feature please refer to our [Seldon Core deployment example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).
 
