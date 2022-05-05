@@ -106,7 +106,7 @@ If you want to run the pipeline on other cloud providers like GCP or Azure, you 
 
 Following diagram which showcases our Kubeflow stack on AWS:
 
-[CloudKubeflowStack](/assets/posts/customer-chull/aws_kubeflow_stack.png)
+![CloudKubeflowStack](/assets/posts/customer-chull/aws_kubeflow_stack.png)
 
 Now, I will configure the Kubeflow Pipelines stack on AWS and run the pipeline on AWS, following are the steps for doing so:
 
@@ -147,7 +147,7 @@ kubectl --namespace kubeflow port-forward svc/ml-pipeline-ui 8080:80
 ```
 
 Now, you can go to [the localhost URL](http://localhost:8080/#/runs) to see the UI. If everything is working, you should see the model deployed and running as below:
-[CloudKubeflowStack](/assets/posts/customer-chull/runsuccesskubeflow.png)
+![SuccessfulPipelineRun](/assets/posts/customer-chull/runsuccesskubeflow.png)
 
 ### Connecting Kubeflow Pipelines with Streamlit
 
