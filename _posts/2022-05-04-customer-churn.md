@@ -171,3 +171,113 @@ You can run the Streamlit app by running the following command:
 ```bash
 streamlit run streamlit_apps/streamlit_app_kubeflow.py
 ```
+
+## Continuous model deployment with Seldon Core
+
+While building the real-world workflow for predicting whether a customer will churn or not, you might not want to train the model once and deploy it to production. Instead, you might want to train the model and deploy it to production when something gets triggered. This is where one of our recent integrations is valuable: [Seldon Core](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).
+
+[Seldon Core](https://github.com/SeldonIO/seldon-core) is a production-grade open-source model serving platform. It packs a wide range of features built around deploying models to REST/GRPC microservices, including monitoring and logging, model explainers, outlier detectors, and various continuous deployment strategies such as A/B testing and canary deployments, and more.
+
+In this project, I built continuous deployment pipeline that trains a model and then serves it with Seldon Core as the industry-ready model deployment tool of choice. If you are interested in learning more about Seldon Core, you can check out the [ZenML example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment). The following diagram shows the flow of the whole pipeline:
+![seldondeployment](/assets/posts/customer-churn/seldoncorecontinousdeployment.gif)
+
+Let's start by setting up our full AWS stack to run the pipeline using Seldon Core.
+
+1. Install the Seldon Core integration, a set of ZenML extensions that integrate with Seldon Core.
+
+```bash
+zenml integration install seldon
+```
+
+2. Register the stack components
+
+```bash
+aws eks --region us-east-1 update-kubeconfig --name zenml-cluster --alias zenml-eks
+```
+
+To configure ECR registry access locally, run, e.g.:
+
+```bash
+aws ecr get-login-password --region us-east-1 | docker login --username AWS \
+  --password-stdin 715803424590.dkr.ecr.us-east-1.amazonaws.com
+```
+
+Extract the URL where the Seldon Core model server exposes its prediction API, e.g.:
+
+```bash
+export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway \
+  -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+```
+
+Configuring the stack can be done like this:
+
+```shell
+zenml integration install s3 aws kubeflow Seldon
+
+zenml artifact-store register aws --type=s3 --path=s3://mybucket
+zenml model-deployer register seldon_aws --type=seldon \
+  --kubernetes_context=zenml-eks --kubernetes_namespace=kubeflow \
+  --base_url=http://$INGRESS_HOST \
+  --secret=s3-store
+zenml container-registry register aws --type=default --uri=715803424590.dkr.ecr.us-east-1.amazonaws.com
+zenml metadata-store register aws --type=kubeflow
+zenml orchestrator register aws --type=kubeflow --kubernetes_context=zenml-eks --synchronous=True
+zenml secrets-manager register aws -t aws
+zenml stack register aws -m aws -a aws -o aws -c aws -d seldon_aws -x aws
+zenml stack set aws
+```
+
+Following diagram that explains our pipeline and stack components in much more detail:
+![seldondeploymentstackaws](/assets/posts/customer-churn/aws_stack_seldon.png)
+
+4. Do a pipeline run
+
+```shell
+python run_seldon_deployment_pipeline.py --secret seldon-init-container-secret --deploy
+```
+
+You can control which pipeline to run by passing the `--deploy` and the `--predict` flag to the `run_seldon_deployment_pipeline.py` launcher. If you run the pipeline with the `--deploy` flag, the pipeline will train the model and deploy if the model meets the evaluation criteria and then Seldon Core will serve the model for inference. If you run the pipeline with the `--predict` flag, this tells the pipeline only to run the inference pipeline and not the training pipeline.
+
+You can also set the `--min-accuracy` to control the evaluation criteria.
+
+5. Configure port Forwarding and check the Kubeflow UI to see if the model is deployed and running! 🚀
+
+```bash
+kubectl --namespace kubeflow port-forward svc/ml-pipeline-ui 8080:80
+```
+
+Now, you can go to the [localhost:8080](http://localhost:8080/#/runs) to see the UI. If everything is working, you should see the model deployed and running as below:
+![SuccessfulPipelineRunContinuous](/assets/posts/customer-churn/continous_deployment_pipeline.png)
+
+If you want to run the pipeline with the `--predict` flag, you can run the following command to run the pipeline:
+
+```bash
+python run_seldon_deployment_pipeline.py --secret seldon-init-container-secret --predict
+```
+
+This will run the inference pipeline that will serve the model for inference. You can check the model is serving by going to the [localhost:8080](http://localhost:8080/#/runs) and see the model is serving as below in your inference pipeline run:
+![SuccessfulPipelineRunInference](/assets/posts/customer-churn/inferencepipelinerun.png)
+
+### Connecting Seldon Core Pipelines with Streamlit
+
+Now I have deployed our pipeline using Seldon Core. I'm going to connect the pipeline with Streamlit to make inference from our model service, Following code is core logic for connecting the pipeline to Streamlit:
+
+```python
+from zenml.services import load_last_service_from_step
+service = load_last_service_from_step(
+            pipeline_name="continuous_deployment_pipeline",
+            step_name="model_deployer",
+            running=True,
+        )
+input_details = [..., ..., ...]
+data = np.array(input_details)
+pred = service.predict(input_details)
+```
+
+I'm fetching our `model_deployer` step from the `continuous_deployment_pipeline` pipeline and retrieving the model service using the `load_last_service_from_step` function and making use of the `predict` method to make inference.
+
+## What we learned
+
+In this blog post, I showed you how to build a model that can predict the whether a customer will leave the company or not. I also showed you how to deploy our pipeline using Kubeflow Pipelines and Seldon Core on AWS. I also showed you how to connect the pipeline with Streamlit to make inference from our model service.
+
+If you're interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
