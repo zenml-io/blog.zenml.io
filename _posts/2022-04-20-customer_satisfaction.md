@@ -55,7 +55,7 @@ pip install -r requirements.txt
 If you are running the `run_deployment.py` script, you will also need to install some integrations using ZenML:
 
 ```bash
-zenml integration install mlflow -f
+zenml integration install mlflow -y
 ```
 
 We're ready to go now. Now you can run the project, and You have two pipelines to run, `run_pipeline.py`, a pipeline that only trains the model and `run_deployment.py`, a pipeline that also continuously deploys the model. If you only want to run the former, you can do:
