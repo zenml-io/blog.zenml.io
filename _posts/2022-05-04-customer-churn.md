@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Ayush Singh
-title: Will they stay or go? Building a Customer Loyalty Predictor
+title: Will they stay or will they go? Building a Customer Loyalty Predictor
 description: "We built an end-to-end production-grade pipeline using ZenML for a customer churn model that can predict whether a customer will remain engaged with the company or not."
 publish_date: April 20, 2022
 date: 2022-04-20T10:20:00Z
@@ -14,7 +14,9 @@ image:
   width: 100
 ---
 
-When someone leaves a company, and when that customer stops paying a business for its services or products, we call that 'churn.' We can calculate a churn rate for a company by dividing the number of customers who churned by the total number of customers and then multiplying that number by 100 to reach a percentage value. If you want to learn more about customer churn, you can read this [Wikipedia article](https://en.wikipedia.org/wiki/Churn_rate). In this article, I show how I used a ZenML pipeline to build a customer churn model and present two deployment options:-
+When a customer stops using a business for its services or products, we call that 'churn.' We can calculate a churn rate for a company by dividing the number of customers who churned by the total number of customers and then multiplying that number by 100 to reach a percentage value. If you want to learn more about customer churn, you can read this [Wikipedia article](https://en.wikipedia.org/wiki/Churn_rate). 
+
+In this article, I show how I used a ZenML pipeline to build a customer churn model and present two deployment options:-
 
 - `Deployment using Kubeflow Pipelines`: I will be using [Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/) to build and run our ZenML pipeline on the cloud and deploy it in a production environment.
 - `Continuous Deployment using Seldon Core`: I will be using [Seldon Core](https://docs.seldon.io/projects/seldon-core/en/latest/index.html), a production-grade open-source model serving platform, to build our continuous deployment pipeline that trains a model and then serves it with Seldon Core.
