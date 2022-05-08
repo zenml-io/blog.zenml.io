@@ -14,7 +14,7 @@ image:
   width: 100
 ---
 
-When a customer stops using a business for its services or products, we call that 'churn.' We can calculate a churn rate for a company by dividing the number of customers who churned by the total number of customers and then multiplying that number by 100 to reach a percentage value. If you want to learn more about customer churn, you can read this [Wikipedia article](https://en.wikipedia.org/wiki/Churn_rate). 
+When a customer stops using a business for its services or products, we call that 'churn.' We can calculate a churn rate for a company by dividing the number of customers who churned by the total number of customers and then multiplying that number by 100 to reach a percentage value. If you want to learn more about customer churn, you can read this [Wikipedia article](https://en.wikipedia.org/wiki/Churn_rate).
 
 In this article, I show how I used a ZenML pipeline to build a customer churn model and present two deployment options:-
 
