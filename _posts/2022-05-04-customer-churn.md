@@ -18,14 +18,14 @@ When a customer stops using a business for its services or products, we call tha
 
 In this article, I show how I used a ZenML pipeline to build a customer churn model and present two deployment options:-
 
-- `Deployment using Kubeflow Pipelines`: I will be using [Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/) to build and run our ZenML pipeline on the cloud and deploy it in a production environment.
-- `Continuous Deployment using Seldon Core`: I will be using [Seldon Core](https://docs.seldon.io/projects/seldon-core/en/latest/index.html), a production-grade open-source model serving platform, to build our continuous deployment pipeline that trains a model and then serves it with Seldon Core.
+- 'Deployment using Kubeflow Pipelines': I will be using [Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/) to build and run our ZenML pipeline on the cloud and deploy it in a production environment.
+- 'Continuous Deployment using Seldon Core': I will be using [Seldon Core](https://docs.seldon.io/projects/seldon-core/en/latest/index.html), a production-grade open-source model serving platform, to build our continuous deployment pipeline that trains a model and then serves it with Seldon Core.
 
 I will be using the [Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn?datasetId=13996&sortBy=voteCount) dataset for building an end to end production-grade machine learning system that can predict whether the customer will stay loyal or not. The dataset has 20 input features and a target variable for 7043 customers.
 
 ## Deployment using Kubeflow Pipelines
 
-To build a real-world workflow for predicting whether a customer will churn or not, you will probably develop your pipelines on your local machine initially, allowing for quick iteration and debugging. However, at a certain point, when you are finished with its design, you might want to transition to a more production-ready setting and deploy the pipeline to a more robust environment. This is where ZenML comes in.
+To build a real-world workflow for predicting whether a customer will churn or not, you will probably develop your pipelines on your local machine initially, allowing for quick iteration and debugging. However, at a certain point, when you are finished with its design, you might want to transition to a more production-ready setting and deploy the pipeline to a more robust environment. This painless transition from development to production stqack is where ZenML shines.
 
 I will be using ZenML's [Kubeflow](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow) integration to deploy pipelines to production using Kubeflow Pipelines on the cloud.
 
@@ -142,7 +142,7 @@ zenml stack set cloud_kubeflow_stack
 python run_kubeflow_pipeline.py
 ```
 
-5. Configure port Forwarding and check the Kubeflow UI to see if the model is deployed and running! 🚀
+5. Configure port forwarding and check the Kubeflow UI to see if the model is deployed and running! 🚀
 
 ```bash
 kubectl --namespace kubeflow port-forward svc/ml-pipeline-ui 8080:80
@@ -153,7 +153,7 @@ Now, to see the UI, you can go to [the localhost URL](http://localhost:8080/#/ru
 
 ### Connecting Kubeflow Pipelines with Streamlit
 
-We have a running pipeline deployed using Kubeflow Pipelines on AWS; Now, I will connect the pipeline to a data application like Streamlit to use the model for prediction. The following code is the core logic for connecting the pipeline to Streamlit.
+We have a running pipeline deployed using Kubeflow Pipelines on AWS. Now I can connect the pipeline to a data application like [Streamlit](https://streamlit.io/) to use the model for prediction. The following code is the core logic for connecting the pipeline to Streamlit:
 
 ```python
 repo = Repository()
@@ -229,20 +229,20 @@ zenml stack register aws -m aws -a aws -o aws -c aws -d seldon_aws -x aws
 zenml stack set aws
 ```
 
-The following diagram explains our pipeline and stack components in much more detail:
+The following diagram shows our pipeline and stack components in much more detail:
 ![seldondeploymentstackaws](/assets/posts/customer-churn/aws_stack_seldon.png)
 
-4. Do a pipeline run
+4. Run a pipeline
 
 ```shell
-python run_seldon_deployment_pipeline.py --secret Seldon-init-container-secret --deploy
+python run_seldon_deployment_pipeline.py --secret seldon-init-container-secret --deploy
 ```
 
-You can control which pipeline to run, bypassing the `--deploy` and the `--predict` flag to the `run_seldon_deployment_pipeline.py` launcher. If you run the pipeline with the `--deploy` flag, the pipeline will train the model and deploy if the model meets the evaluation criteria, and then Seldon Core will serve the model for inference. If you run the pipeline with the `--predict` flag, this tells the pipeline only to run the inference pipeline and not the training pipeline.
+You can control which pipeline to run, by passing the `--deploy` and the `--predict` flag to the `run_seldon_deployment_pipeline.py` launcher. If you run the pipeline with the `--deploy` flag, the pipeline will train the model and deploy if the model meets the evaluation criteria, and then Seldon Core will serve the model for inference. If you run the pipeline with the `--predict` flag, this tells the pipeline only to run the inference pipeline and not the training pipeline.
 
 You can also set the `--min-accuracy` to control the evaluation criteria.
 
-5. Configure port Forwarding and check the Kubeflow UI to see if the model is deployed and running! 🚀
+5. Configure port forwarding and check the Kubeflow UI to see if the model is deployed and running! 🚀
 
 ```bash
 kubectl --namespace kubeflow port-forward svc/ml-pipeline-ui 8080:80
@@ -280,6 +280,6 @@ I'm fetching our `model_deployer` step from the `continuous_deployment_pipeline`
 
 ## What we learned
 
-In this blog post, I showed you how to build a model that can predict whether a customer will leave the company or not. I also showed you how to deploy our pipeline using Kubeflow Pipelines and Seldon Core on AWS. I also showed you how to connect the pipeline with Streamlit to infer from our model service.
+In this blog post, I showed you how to build a model that can predict whether a customer will take their business elsewhere or not. I showed you how to deploy the pipeline using Kubeflow Pipelines and Seldon Core on AWS. I also showed you how to connect the pipeline with Streamlit for inference from our model service.
 
 If you're interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
