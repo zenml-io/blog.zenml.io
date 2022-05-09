@@ -31,9 +31,9 @@ I show how I used a ZenML pipeline to build a customer churn model and present t
 
 ## Deployment using Kubeflow Pipelines
 
-To build a real-world workflow for predicting whether a customer will churn or not, you will probably develop your pipelines on your local machine initially, allowing for quick iteration and debugging. However, at a certain point, when you are finished with its design, you might want to transition to a more production-ready setting and deploy the pipeline to a more robust environment. This painless transition from development to production stqack is where ZenML shines.
+To build a real-world workflow for predicting whether a customer will churn or not, you will probably develop your pipelines on your local machine initially, allowing for quick iteration and debugging. However, at a certain point, when you are finished with its design, you might want to transition to a more production-ready setting and deploy the pipeline to a more robust environment. This painless transition from development to production stack is where ZenML shines.
 
-I will be using ZenML's [Kubeflow](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow) integration to deploy pipelines to production using Kubeflow Pipelines on the cloud.
+I will be using ZenML's [Kubeflow](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow) integration to deploy pipelines to production using Kubeflow Pipelines on the cloud. I will show you how to deploy your pipeline using Kubeflow Pipelines transitioning from local to cloud stack. Currently ZenML supports `Airflow` and `Kubeflow` as third-party orchestrators for your ML pipeline code.
 
 Our training pipeline `run_kubeflow_pipeline.py` consists of the following steps:
 
@@ -47,12 +47,19 @@ Our training pipeline `run_kubeflow_pipeline.py` consists of the following steps
 - `model_trainer`: Train, the model.
 - `evaluation`: Evaluate the trained model.
 
-if you want to run the pipeline with `default` stack settings, you can run the following command:
+if you want to run the pipeline with `default` stack settings which means you can run the whole pipeline as traditional ZenML pipelines, you can run the following command to run it:
 
 ```bash
 zenml stack set default
 python run_kubeflow_pipeline.py
 ```
+
+Before going on next step, let's review some of the core concepts of ZenML:
+
+- **Artifact store**: Artifacts are the data that power your experimentation and model training. It is actually steps that produce artifacts, An artifact store is a place where artifacts are stored. These artifacts may have been produced by the pipeline steps, or they may be the data first ingested into a pipeline via an ingestion step.
+- **Metadata store**: Metadata are the pieces of information tracked about the pipelines, experiments and configurations that you are running with ZenML. Metadata are stored inside the metadata store.
+- **Container registry**: Some orchestrators will require you to containerize the steps of your pipeline. A container registry is a store for these (Docker) containers. A ZenML workflow involving a container registry will containerize your code and store the resulting container in the registry.
+- **Kubeflow orchestrator**: An orchestrator manages the running of each step of the pipeline, administering the actual pipeline runs. It controls how and where each individual step within a pipeline is executed.
 
 ### Run the same pipeline on a local Kubeflow Pipelines deployment
 
@@ -61,12 +68,12 @@ Previously I ran our pipeline in default stack settings; now, I will transition 
 With all the installation and initialization out of the way, all that's left to do is configure our ZenML stack. For this example, the stack we create consists of the following four parts:
 
 - The **local artifact store** stores step outputs on your hard disk.
-- The **local metadata store** stores metadata like the pipeline name and step
-  parameters inside a local SQLite database.
+
+- The **local metadata store** stores metadata like the pipeline name and step parameters inside a local SQLite database.
+
 - The Docker images created to run your pipeline are stored in a local
   Docker **container registry**.
-- The **Kubeflow orchestrator** is responsible for running your ZenML pipeline
-  in Kubeflow Pipelines.
+- The **Kubeflow orchestrator** is responsible for running your ZenML pipeline in Kubeflow Pipelines. An orchestrator manages the running of each step of the pipeline, administering the actual pipeline runs.
 
 ```bash
 # Make sure to create the local registry on port 5000 for it to work
