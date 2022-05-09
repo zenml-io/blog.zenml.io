@@ -7,21 +7,27 @@ publish_date: April 20, 2022
 date: 2022-04-20T10:20:00Z
 tags: machine-learning mlops evergreen applied-zenml pipelines zenfile
 category: zenml
-thumbnail: /assets/posts/customer-satisfaction/Customer_Satisfaction.png
+thumbnail: /assets/posts/customer-churn/poster.jpg
 image:
-  path: /assets/posts/customer-satisfaction/Customer_Satisfaction.png
+  path: /assets/posts/customer-churn/poster.jpg
   height: 100
   width: 100
 ---
 
-When a customer stops using a business for its services or products, we call that 'churn.' We can calculate a churn rate for a company by dividing the number of customers who churned by the total number of customers and then multiplying that number by 100 to reach a percentage value. If you want to learn more about customer churn, you can read this [Wikipedia article](https://en.wikipedia.org/wiki/Churn_rate).
+Churn rate measures the number of customers who stops paying for a company's services or products for over a specific period. Churn rate is a proper indication of customer dissatisfaction with a company product or service or better offers from the competition or lack of customer loyalty.
 
-In this article, I show how I used a ZenML pipeline to build a customer churn model and present two deployment options:-
+Customer churn rate is one the important metric for measuring the customer retention of a company, Improving customer retention is a continuous process, and understanding churn rate is the first step in the right direction for improvement in customer retention. Other than that customer churn helps to Identify How good or bad the product/service is, and this is useful for identifying the areas to improve.
 
-- 'Deployment using Kubeflow Pipelines': I will be using [Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/) to build and run our ZenML pipeline on the cloud and deploy it in a production environment.
+According to [Wikipedia](https://en.wikipedia.org/wiki/Churn_rate), Using AI and machine-learning as a means to calculate customer churn has become increasingly common for large retailers and service providers.
+
+In this blog, I show how to build a customer churn prediction system where we have given customer's historical features such as services that each customer has signed up for, customer account information and demographic information about customers. I will be using [ZenML](https://zenml.io/) to build an end to end production-grade machine learning system that can predict whether the customer will stay loyal or not, using [Telco customer churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn?datasetId=13996&sortBy=voteCount).
+
+I show how I used a ZenML pipeline to build a customer churn model and present two deployment solutions:-
+
+- 'Deployment using Kubeflow Pipelines': I will be using [Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/) to build and run our ZenML pipelines on the cloud and deploy it in a production environment. Kubeflow is an integration of ZenML, so one can use Kubeflow pipelines within ZenML which enables connecting other tools/frameworks to Kubeflow and ZenML allows you easily switch between local and cloud environments. You can learn more about ZenML [here](https://docs.zenml.io/).
+
 - 'Continuous Deployment using Seldon Core': I will be using [Seldon Core](https://docs.seldon.io/projects/seldon-core/en/latest/index.html), a production-grade open-source model serving platform, to build our continuous deployment pipeline that trains a model and then serves it with Seldon Core.
-
-I will be using the [Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn?datasetId=13996&sortBy=voteCount) dataset for building an end to end production-grade machine learning system that can predict whether the customer will stay loyal or not. The dataset has 20 input features and a target variable for 7043 customers.
+  Seldon-Core is an integration of ZenML, so we can connect seldon-core with other tools/features within ZenML, One such is feature is building Continuous Deployment pipeline which refers to the paradigm where a newly trained models are automatically deployed to a prediction service/server, when a criterion in production is fulfilled (e.g. if a trained model has a certain accuracy, or overall performs better than the previous one, deploy it in production.) ZenML allows you to build a continuous deployment pipeline by connecting it with Seldon-core without too much effort, you can learn more about continuous deployment [here](https://docs.zenml.io/features/continuous-training-and-deployment).
 
 ## Deployment using Kubeflow Pipelines
 
