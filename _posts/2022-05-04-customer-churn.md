@@ -293,6 +293,6 @@ I'm fetching our `model_deployer` step from the `continuous_deployment_pipeline`
 
 ## What we learned
 
-In this blog post, I showed you how to build a model that can predict whether a customer will take their business elsewhere or not. I showed you how to deploy the pipeline using Kubeflow Pipelines and Seldon Core on AWS. I also showed you how to connect the pipeline with Streamlit for inference from our model service.
+In this blog post, I showed you how to build production grade machine learning system that can predict customer churn. I showed you how to deploy the pipeline using Kubeflow Pipelines and transition from default setting to production setting. I also showed you how to build a Continuous deployment pipeline using Seldon Core which I deployed on AWS. I also showed you how to connect the pipeline with Streamlit for inference from our model service.
 
 If you're interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
