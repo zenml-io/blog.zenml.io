@@ -2,23 +2,19 @@
 layout: post
 author: Safoine El Khabich
 title:
-  CI/CT/CD ML pipelines with ZenML
+  "All Continuous, All the Time: from Experimentation to Production with ZenML Pipelines"
 description:
-  "Connecting model training pipelines to deploying models in production is
-  regarded as a difficult milestone on the way to achieving Machine Learning
-  operations maturity for an organization. ZenML rises to the challenge and
-  introduces a novel approach to continuous model deployment that renders a
-  smooth transition from experimentation to production."
+  "Connecting model training pipelines to deploying models in production is regarded as a difficult milestone on the way to achieving MLOps maturity for an organization. ZenML rises to the challenge and introduces a novel approach to continuous model deployment that renders a smooth transition from experimentation to production."
 category: zenml
-tags: cicd mlops deployment seldon mlflow devops
-publish_date: May 10, 2022
-date: 2022-03-02T00:02:00Z
+tags: mlops deployment seldon mlflow devops
+publish_date: May 11, 2022
+date: 2022-05-11T00:02:00Z
 thumbnail: /assets/posts/continuous-deployment/continuous.gif
 image:
   path: /assets/posts/continuous-deployment/continuous.gif
 ---
 
-As MLOps start getting more attention and organizations start developing across the MLOps maturity model (read more in our blog about [MLOps maturity models](https://blog.zenml.io/mlops-maturity-models/) ) , the terms Continuous Integration, Continuous Training and Continuous Deployment (CI/CT/CD) get more relevant since MLOps is all about applying DevOps principles to ML systems.
+As MLOps start getting more attention and organizations start developing across the MLOps maturity model (read more in our blog about [MLOps maturity models](https://blog.zenml.io/mlops-maturity-models/)), the terms Continuous Integration, Continuous Training and Continuous Deployment (CI/CT/CD) get more relevant since MLOps is all about applying DevOps principles to ML systems.
 
 In the next following lines we will try to understand what does the terms CI/CT/CD means in the context of ML Pipelines and how it differs from DevOps , and see how ZenML is pushing forward to make ML assets a first class citizens of CI/CD Systems - ZenML Model deployers as an example.
 
@@ -29,7 +25,7 @@ In the next following lines we will try to understand what does the terms CI/CT/
 
 
 
-### ****What is Continuous Integration and Continuous Delivery/Deployment  (CI/CD) ?****
+### What is Continuous Integration and Continuous Delivery/Deployment (CI/CD)?
 
 Continuous integration is a set of practices that revolves around automating the building and testing and validating phase for new code, automating the process ensures that new code is always production ready quality which accelerate the releasing cycle. 
 
@@ -43,7 +39,7 @@ Continuous Deployment is the following step of continuous delivery which means e
 
 
 
-### ****What does make CI/CD for ML systems different than other software systems****
+### What does make CI/CD for ML systems different from other software systems?
 
 To point the difference between CI/CD for ML and other softwares we need first to understand ML system is also a software system and it shares lot of Communalities with traditional one but the fact that ML isn’t just about code but also about data and maybe even more about data than code ( read more about [Data centric AI](https://blog.zenml.io/data-centric-mlops/) and how it’s driving MLOps) makes ML systems about versioning both codes and data, and keeping track of different algorithms, features, modeling techniques, and hyper-parameters to maintain maximum reproducibility and code reusability. in ML we need to validate and test data as addition to unit and integration tests. Also delivering and deploying models isn’t the end of the process we need to monitoring those models to make sure it’s always performing at the expected level especially that ML performance can degrade over time (article about data drift and concept drift maybe) and retrain automatically when needed.
 
@@ -56,7 +52,6 @@ based on all this we can identify CI/CD for ML systems as the following:
 **CT**: new process and practices which deals with automating training of ML models.
 
 ![CI/CD for ML Systems](../assets/posts/ci-ct-cd-with-zenml/ci-cd-for-ml-systems.gif)
-
 
 ### ZenML and CI/CT/CD Systems
 
