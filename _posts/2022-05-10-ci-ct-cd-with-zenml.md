@@ -23,8 +23,6 @@ As MLOps start getting more attention and organizations start developing across 
 In the next following lines, we will try to understand what does the terms CI/CT/CD means in the context of ML Pipelines and how it differs from DevOps, and see how ZenML is pushing forward to make ML assets first-class citizens of CI/CD Systems - ZenML Model deployers as an example.
 
 
-💡 ``we can maybe write DevOps vs MLOps article``
-
 ### ****What is Continuous Integration and Continuous Delivery/Deployment  (CI/CD) ?****
 
 Continuous integration is a set of practices that revolve around automating the building and testing and validating phase for new code, automating the process ensures that new code is always of production-ready quality which accelerates the releasing cycle. 
@@ -36,11 +34,8 @@ Continuous Deployment is the following step of continuous delivery which means e
 ### ****What does make CI/CD for ML systems different than other software systems****
 
 To emphasize the difference between CI/CD for ML and other software, we must first understand that the ML system is also a software system and shares many commonalities with traditional systems, but the fact that ML is not only about code but also about data and perhaps even more about data than code (read more about [Data centric AI](https://blog.zenml.io/data-centric-mlops/) and how it's leading MLOps World) makes ML systems about code and data versioning and tracking different algorithms, features, modeling techniques, and hyperparameters to maintain maximum code reproducibility and reusability. Within ML we need to validate and test data in addition to unit and integration testing. 
-Not like other applications model delivery and deployment is not the end of the process, we need to monitor these models to ensure that they are still performing at the expected level, especially since ML performance can degrade over time 
+Not like other applications model delivery and deployment is not the end of the process, we need to monitor these models to ensure that they are still performing at the expected level, especially since ML performance can degrade over time because of data drifts or concepts drifts.
 
-``(article on data drift and concept drift) and automatically retrain itself if necessary.``
-
-Translated with www.DeepL.com/Translator (free version)
 
 based on all this we can identify CI/CD for ML systems as the following:
 
