@@ -25,7 +25,7 @@ In the next following lines we will try to understand what does the terms CI/CT/
 
 
 
-### What is Continuous Integration and Continuous Delivery/Deployment (CI/CD)?
+## What is Continuous Integration and Continuous Delivery/Deployment (CI/CD)?
 
 Continuous integration is a set of practices that revolves around automating the building and testing and validating phase for new code, automating the process ensures that new code is always production ready quality which accelerate the releasing cycle. 
 
@@ -39,7 +39,7 @@ Continuous Deployment is the following step of continuous delivery which means e
 
 
 
-### What does make CI/CD for ML systems different from other software systems?
+## What does make CI/CD for ML systems different from other software systems?
 
 To point the difference between CI/CD for ML and other softwares we need first to understand ML system is also a software system and it shares lot of Communalities with traditional one but the fact that ML isn’t just about code but also about data and maybe even more about data than code ( read more about [Data centric AI](https://blog.zenml.io/data-centric-mlops/) and how it’s driving MLOps) makes ML systems about versioning both codes and data, and keeping track of different algorithms, features, modeling techniques, and hyper-parameters to maintain maximum reproducibility and code reusability. in ML we need to validate and test data as addition to unit and integration tests. Also delivering and deploying models isn’t the end of the process we need to monitoring those models to make sure it’s always performing at the expected level especially that ML performance can degrade over time (article about data drift and concept drift maybe) and retrain automatically when needed.
 
@@ -53,7 +53,7 @@ based on all this we can identify CI/CD for ML systems as the following:
 
 ![CI/CD for ML Systems](../assets/posts/ci-ct-cd-with-zenml/ci-cd-for-ml-systems.gif)
 
-### ZenML and CI/CT/CD Systems
+## ZenML and CI/CT/CD Systems
 
 As it is an extensible open-source MLOps framework to create production-ready machine learning pipelines ZenML is pushing forward to make created pipelines  CI/CT/CD paradigms supported and that is done by automating the model preparation, model training and model deployment. With the Built in functionalities like [Schedules](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md), [Model Deployers](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md#model-deployer) and [Services](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md#service) you can create an end-to-end ML workflows with Continuous Training and Deployment that deploys your model in local environment with MLFlow integration or even in production level environment like Kubernetes with Seldon core integration.
 
@@ -216,3 +216,7 @@ To achieve this model deployers plays 3 major roles as stack components:
     
     $ zenml served-models delete 8cbe671b-9fce-4394-a051-68e001f92765
     ```
+    
+## CONCLUSION
+
+[ADD SOMETHING HERE]
