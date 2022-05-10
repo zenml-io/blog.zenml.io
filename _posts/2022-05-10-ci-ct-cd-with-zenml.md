@@ -18,49 +18,45 @@ image:
   path: /assets/posts/continuous-deployment/continuous.gif
 ---
 
-As MLOps start getting more attention and organizations start developing across the MLOps maturity model (read more in our blog about [MLOps maturity models](https://blog.zenml.io/mlops-maturity-models/) ) , the terms Continuous Integration, Continuous Training and Continuous Deployment (CI/CT/CD) get more relevant since MLOps is all about applying DevOps principles to ML systems.
+As MLOps start getting more attention and organizations start developing across the MLOps maturity model (read more in our blog about [MLOps maturity models](https://blog.zenml.io/mlops-maturity-models/), the terms Continuous Integration, Continuous Training and Continuous Deployment (CI/CT/CD) get more relevant since MLOps is all about applying DevOps principles to ML systems.
 
-In the next following lines we will try to understand what does the terms CI/CT/CD means in the context of ML Pipelines and how it differs from DevOps , and see how ZenML is pushing forward to make ML assets a first class citizens of CI/CD Systems - ZenML Model deployers as an example.
-
-
-<aside>
-💡 after how it differs from DevOps: we can maybe create DevOps vs MLOps article and mention it there
-</aside>
+In the next following lines, we will try to understand what does the terms CI/CT/CD means in the context of ML Pipelines and how it differs from DevOps, and see how ZenML is pushing forward to make ML assets first-class citizens of CI/CD Systems - ZenML Model deployers as an example.
 
 
+💡 ``we can maybe write DevOps vs MLOps article``
 
 ### ****What is Continuous Integration and Continuous Delivery/Deployment  (CI/CD) ?****
 
-Continuous integration is a set of practices that revolves around automating the building and testing and validating phase for new code, automating the process ensures that new code is always production ready quality which accelerate the releasing cycle. 
+Continuous integration is a set of practices that revolve around automating the building and testing and validating phase for new code, automating the process ensures that new code is always of production-ready quality which accelerates the releasing cycle. 
 
-Continuous delivery refers to automated packaging and delivering of new code from testing and development environment to staging or production environment.
+Continuous delivery refers to the automated packaging and delivery of new code from the testing and development environment to the staging or production environment.
 
 Continuous Deployment is the following step of continuous delivery which means every piece of code that passes the previous two phases can be deployed automatically into production.
 
-<aside>
-💡 illustration here for simple cicd workflow
-</aside>
-
-
-
 ### ****What does make CI/CD for ML systems different than other software systems****
 
-To point the difference between CI/CD for ML and other softwares we need first to understand ML system is also a software system and it shares lot of Communalities with traditional one but the fact that ML isn’t just about code but also about data and maybe even more about data than code ( read more about [Data centric AI](https://blog.zenml.io/data-centric-mlops/) and how it’s driving MLOps) makes ML systems about versioning both codes and data, and keeping track of different algorithms, features, modeling techniques, and hyper-parameters to maintain maximum reproducibility and code reusability. in ML we need to validate and test data as addition to unit and integration tests. Also delivering and deploying models isn’t the end of the process we need to monitoring those models to make sure it’s always performing at the expected level especially that ML performance can degrade over time (article about data drift and concept drift maybe) and retrain automatically when needed.
+To emphasize the difference between CI/CD for ML and other software, we must first understand that the ML system is also a software system and shares many commonalities with traditional systems, but the fact that ML is not only about code but also about data and perhaps even more about data than code (read more about [Data centric AI](https://blog.zenml.io/data-centric-mlops/) and how it's leading MLOps World) makes ML systems about code and data versioning and tracking different algorithms, features, modeling techniques, and hyperparameters to maintain maximum code reproducibility and reusability. Within ML we need to validate and test data in addition to unit and integration testing. 
+Not like other applications model delivery and deployment is not the end of the process, we need to monitor these models to ensure that they are still performing at the expected level, especially since ML performance can degrade over time 
+
+``(article on data drift and concept drift) and automatically retrain itself if necessary.``
+
+Translated with www.DeepL.com/Translator (free version)
 
 based on all this we can identify CI/CD for ML systems as the following:
 
 **CI**: Automate the testing and validation for code, data, and models.
 
-**CD**: Automate delivering and packaging of custom systems and deploying them when certain criterion in production is fulfilled.
+**CD**: Automate delivering and packaging of custom systems and deploy them when certain criterion in production is fulfilled.
 
 **CT**: new process and practices which deals with automating training of ML models.
+
 
 ![CI/CD for ML Systems](../assets/posts/ci-ct-cd-with-zenml/ci-cd-for-ml-systems.gif)
 
 
 ### ZenML and CI/CT/CD Systems
 
-As it is an extensible open-source MLOps framework to create production-ready machine learning pipelines ZenML is pushing forward to make created pipelines  CI/CT/CD paradigms supported and that is done by automating the model preparation, model training and model deployment. With the Built in functionalities like [Schedules](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md), [Model Deployers](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md#model-deployer) and [Services](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md#service) you can create an end-to-end ML workflows with Continuous Training and Deployment that deploys your model in local environment with MLFlow integration or even in production level environment like Kubernetes with Seldon core integration.
+As it is an extensible open-source MLOps framework to create production-ready machine learning pipelines ZenML is pushing forward to make created pipelines  CI/CT/CD paradigms supported and that is done by automating the model preparation and model training and model deployment. With the Built-in functionalities like [Schedules](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md), [Model Deployers](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md#model-deployer) and [Services](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md#service) you can create end-to-end ML workflows with Continuous Training and Deployment that deploys your model in a local environment with MLFlow integration or even in production level environment like Kubernetes with Seldon core integration.
 
 **Pipeline schedule ZenML window to Continuous Training:** 
 
@@ -70,16 +66,16 @@ As it is an extensible open-source MLOps framework to create production-ready ma
 
 **Model Deployers interacting with services for Continuous Deployment:**
 
-Model Deployers integrate with external tools, services or platforms responsible for online model serving. And by Online serving we mean the process of hosting and loading machine-learning models as part of a managed web service and providing access to the models through an API endpoint like HTTP or GRPC. Taking into consideration that there is some scenarios where data scientists training the models may not be experienced software developers with a background in service-oriented design or  in Kubernetes. ZenML Abstraction for Model Deployers deals with functionality concerning the life-cycle management and tracking of external model deployment servers (e.g. processes, containers, Kubernetes " deployments etc.)
+Model Deployers integrate with external tools, services or platforms responsible for online model serving. And by Online serving, we mean the process of hosting and loading machine-learning models as part of a managed web service and providing access to the models through an API endpoint like HTTP or GRPC. Taking into consideration that there are some scenarios where data scientists training the models may not be experienced software developers with a background in service-oriented design or in Kubernetes. ZenML Abstraction for Model Deployers deals with functionality concerning the life-cycle management and tracking of external model deployment servers (e.g. processes, containers, Kubernetes " deployments etc.)
 
 and using [MLFlow](https://mlflow.org/docs/latest/models.html#deploy-mlflow-models) and [Seldon Core](https://github.com/SeldonIO/seldon-core) as two examples of Model Deployers already provided by ZenML as an integration, with many other Model Deployers to follow. All users have to do is run pipelines with acceptance criteria, and models get deployed instantly.
 
 
 ![Seldon Model Deployer](../assets/posts/ci-ct-cd-with-zenml/seldon-model-deployer.gif)
 
-To achieve this model deployers plays 3 major roles as stack components:
+To achieve this model deployers play 3 major roles as stack components:
 
-1. holding all the stack related configuration attributes required to interact with the remote model serving tool, service or platform (e.g. hostnames, URLs, references to credentials, other client related configuration parameters)
+1. holding all the stack related configuration attributes required to interact with the remote model serving tool, service or platform (e.g. hostnames, URLs, references to credentials, other client-related configuration parameters)
     
     ```bash
     #MLFlow model deployer as a stack component
@@ -146,7 +142,7 @@ To achieve this model deployers plays 3 major roles as stack components:
         return service
     ```
     
-3. the Model Deployer acts as a registry for all Services that represent remote model servers. External model deployment servers can be listed and filtered using a variety of criteria, such as the name of the model or the names of the pipeline and step that was used to deploy the model. The Service objects returned by the Model Deployer can be used to interact with the remote model server, e.g. to get the operational status of a model server, the prediction URI that it exposes, or to stop or delete a model server.
+3. the Model Deployer acts as a registry for all Services that represent remote model servers. External model deployment servers can be listed and filtered using a variety of criteria, such as the name of the model or the names of the pipeline and the step that was used to deploy the model. The Service objects returned by the Model Deployer can be used to interact with the remote model server, e.g. to get the operational status of a model server, the prediction URI that it exposes, or to stop or delete a model server.
     
     ```python
     from zenml.integrations.seldon.model_deployers import SeldonModelDeployer
