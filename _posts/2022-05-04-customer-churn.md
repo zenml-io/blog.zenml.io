@@ -14,26 +14,26 @@ image:
   width: 100
 ---
 
-Churn rate measures the number of customers who stops paying for a company's services or products for over a specific period. Churn rate is a proper indication of customer dissatisfaction with a company product or service or better offers from the competition or lack of customer loyalty.
+The churn rate measures the number of customers who stop paying for a company's services or products over a specific period. A churn rate indicates customer dissatisfaction with a company product or service or better offers from the competition, or lack of customer loyalty.
 
-Customer churn rate is one the important metric for measuring the customer retention of a company, Improving customer retention is a continuous process, and understanding churn rate is the first step in the right direction for improvement in customer retention. Other than that customer churn helps to Identify How good or bad the product/service is, and this is useful for identifying the areas to improve.
+Customer churn rate is one of the critical metrics for measuring a company's customer retention; improving customer retention is a continuous process, and understanding churn rate is the first step in the right direction for improvement in customer retention. Other than that, customer churn helps identify how good or bad the product/service is, which helps determine the areas to improve.
 
-According to [Wikipedia](https://en.wikipedia.org/wiki/Churn_rate), Using AI and machine-learning as a means to calculate customer churn has become increasingly common for large retailers and service providers.
+According to [Wikipedia](https://en.wikipedia.org/wiki/Churn_rate), Using AI and machine learning to calculate customer churn has become increasingly common for large retailers and service providers.
 
-In this blog, I show how to build a customer churn prediction system where we have given customer's historical features such as services that each customer has signed up for, customer account information and demographic information about customers. I will be using [ZenML](https://zenml.io/) to build an end to end production-grade machine learning system that can predict whether the customer will stay loyal or not, using [Telco customer churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn?datasetId=13996&sortBy=voteCount).
+This blog shows how to build a customer churn prediction system. We have given customers historical features such as services that each customer has signed up for, customer account information, and demographic information about customers. I will be using [ZenML](https://zenml.io/) to build an end-to-end production-grade machine learning system that can predict whether the customer will stay loyal or not, using [Telco customer churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn?datasetId=13996&sortBy=voteCount).
 
 I show how I used a ZenML pipeline to build a customer churn model and present two deployment solutions:-
 
-- 'Deployment using Kubeflow Pipelines': I will be using [Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/) to build and run our ZenML pipelines on the cloud and deploy it in a production environment. Kubeflow is an integration of ZenML, so one can use Kubeflow pipelines within ZenML which enables connecting other tools/frameworks to Kubeflow and ZenML allows you easily switch between local and cloud environments. You can learn more about ZenML [here](https://docs.zenml.io/).
+- 'Deployment using Kubeflow Pipelines': I will be using [Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/) to build and run our ZenML pipelines on the cloud and deploy them in a production environment. Kubeflow is an integration of ZenML, so one can use Kubeflow pipelines within ZenML, which enables connecting other tools/frameworks to Kubeflow, and ZenML allows you easily switch between local and cloud environments. You can learn more about ZenML [here](https://docs.zenml.io/).
 
 - 'Continuous Deployment using Seldon Core': I will be using [Seldon Core](https://docs.seldon.io/projects/seldon-core/en/latest/index.html), a production-grade open-source model serving platform, to build our continuous deployment pipeline that trains a model and then serves it with Seldon Core.
-  Seldon-Core is an integration of ZenML, so we can connect seldon-core with other tools/features within ZenML, One such is feature is building Continuous Deployment pipeline which refers to the paradigm where a newly trained models are automatically deployed to a prediction service/server, when a criterion in production is fulfilled (e.g. if a trained model has a certain accuracy, or overall performs better than the previous one, deploy it in production.) ZenML allows you to build a continuous deployment pipeline by connecting it with Seldon-core without too much effort, you can learn more about continuous deployment [here](https://docs.zenml.io/features/continuous-training-and-deployment).
+  Seldon-Core is an integration of ZenML so that we can connect Seldon-core with other tools/features within ZenML; One such is feature building Continuous Deployment pipeline which refers to the paradigm where newly trained models are automatically deployed to a prediction service/server when a criterion in production is fulfilled (e.g., if a trained model has a sure accuracy, or overall performs better than the previous one, deploy it in production.) ZenML allows you to build a continuous deployment pipeline by connecting it with Seldon-core without too much effort; you can learn more about continuous Deployment [here](https://docs.zenml.io/features/continuous-training-and-deployment).
 
 ## Deployment using Kubeflow Pipelines
 
 To build a real-world workflow for predicting whether a customer will churn or not, you will probably develop your pipelines on your local machine initially, allowing for quick iteration and debugging. However, at a certain point, when you are finished with its design, you might want to transition to a more production-ready setting and deploy the pipeline to a more robust environment. This painless transition from development to production stack is where ZenML shines.
 
-I will be using ZenML's [Kubeflow](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow) integration to deploy pipelines to production using Kubeflow Pipelines on the cloud. I will show you how to deploy your pipeline using Kubeflow Pipelines transitioning from local to cloud stack. Currently ZenML supports `Airflow` and `Kubeflow` as third-party orchestrators for your ML pipeline code.
+I will be using ZenML's [Kubeflow](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow) integration to deploy pipelines to production using Kubeflow Pipelines on the cloud. I will show you how to deploy your pipeline using Kubeflow Pipelines transitioning from local to cloud stack. ZenML supports `Airflow` and `Kubeflow` as third-party orchestrators for your ML pipeline code.
 
 Our training pipeline `run_kubeflow_pipeline.py` consists of the following steps:
 
@@ -44,7 +44,7 @@ Our training pipeline `run_kubeflow_pipeline.py` consists of the following steps
 - `handle_imbalanced_data`: Handle imbalanced data.
 - `drop_cols`: Dropping irrelevant columns.
 - `data_splitter`: Split the data into training and test sets.
-- `model_trainer`: Train, the model.
+- `model_trainer`: Train the model.
 - `evaluation`: Evaluate the trained model.
 
 if you want to run the pipeline with `default` stack settings which means you can run the whole pipeline as traditional ZenML pipelines, you can run the following command to run it:
@@ -53,13 +53,6 @@ if you want to run the pipeline with `default` stack settings which means you ca
 zenml stack set default
 python run_kubeflow_pipeline.py
 ```
-
-Before going on next step, let's review some of the core concepts of ZenML:
-
-- **Artifact store**: Artifacts are the data that power your experimentation and model training. It is actually steps that produce artifacts, An artifact store is a place where artifacts are stored. These artifacts may have been produced by the pipeline steps, or they may be the data first ingested into a pipeline via an ingestion step.
-- **Metadata store**: Metadata are the pieces of information tracked about the pipelines, experiments and configurations that you are running with ZenML. Metadata are stored inside the metadata store.
-- **Container registry**: Some orchestrators will require you to containerize the steps of your pipeline. A container registry is a store for these (Docker) containers. A ZenML workflow involving a container registry will containerize your code and store the resulting container in the registry.
-- **Kubeflow orchestrator**: An orchestrator manages the running of each step of the pipeline, administering the actual pipeline runs. It controls how and where each individual step within a pipeline is executed.
 
 ### Run the same pipeline on a local Kubeflow Pipelines deployment
 
@@ -108,7 +101,7 @@ pipeline run [here](http://localhost:8080/#/runs).
 
 ### Transitioning to Production with Kubeflow on AWS
 
-Now I will transition our pipeline to a more production-ready setting and deploy it in a more robust environment because I don't want to deploy our pipeline locally; I want to deploy it on the cloud. In this section, I will run the same pipeline on a Kubeflow Pipelines deployment on AWS.
+Now I will transition our pipeline to a more production-ready setting and deploy it in a more robust environment because I don't want to deploy our pipeline locally; I want to deploy it on the cloud. The reason why I need to deploy it on the cloud because training and deploying ML/DL models can be memory-intensive and requires more compute power to train the model, and there are several reasons for deployment on cloud; And ZenML makes it painless to transition from local stack to cloud. In this section, I will run the same pipeline on a Kubeflow Pipelines deployment on AWS.
 
 There are two steps to continue:
 
@@ -161,7 +154,7 @@ python run_kubeflow_pipeline.py
 kubectl --namespace kubeflow port-forward svc/ml-pipeline-ui 8080:80
 ```
 
-Now, to see the UI, you can go to [the localhost URL](http://localhost:8080/#/runs). If everything is working, you should see the model deployed and running as below:
+To see the UI, you can go to [the localhost URL](http://localhost:8080/#/runs). If everything is working, you should see the model deployed and running as below:
 ![SuccessfulPipelineRun](/assets/posts/customer-churn/runsuccesskubeflow.png)
 
 ### Connecting Kubeflow Pipelines with Streamlit
@@ -251,7 +244,7 @@ The following diagram shows our pipeline and stack components in much more detai
 python run_seldon_deployment_pipeline.py --secret seldon-init-container-secret --deploy
 ```
 
-You can control which pipeline to run, by passing the `--deploy` and the `--predict` flag to the `run_seldon_deployment_pipeline.py` launcher. If you run the pipeline with the `--deploy` flag, the pipeline will train the model and deploy if the model meets the evaluation criteria, and then Seldon Core will serve the model for inference. If you run the pipeline with the `--predict` flag, this tells the pipeline only to run the inference pipeline and not the training pipeline.
+You can control which pipeline to run, bypassing the `--deploy` and the `--predict` flag to the `run_seldon_deployment_pipeline.py` launcher. If you run the pipeline with the `--deploy` flag, the pipeline will train the model and deploy if the model meets the evaluation criteria, and then Seldon Core will serve the model for inference. If you run the pipeline with the `--predict` flag, this tells the pipeline only to run the inference pipeline and not the training pipeline.
 
 You can also set the `--min-accuracy` to control the evaluation criteria.
 
@@ -261,7 +254,7 @@ You can also set the `--min-accuracy` to control the evaluation criteria.
 kubectl --namespace kubeflow port-forward svc/ml-pipeline-ui 8080:80
 ```
 
-Now, to see the UI, you can go to the [localhost:8080](http://localhost:8080/#/runs). If everything is working, you should see the model deployed and running as below:
+To see the UI, you can go to the [localhost:8080](http://localhost:8080/#/runs). If everything is working, you should see the model deployed and running as below:
 ![SuccessfulPipelineRunContinuous](/assets/posts/customer-churn/continous_deployment_pipeline.png)
 
 If you want to run the pipeline with the `--predict` flag, you can run the following command to run the pipeline:
@@ -293,6 +286,6 @@ I'm fetching our `model_deployer` step from the `continuous_deployment_pipeline`
 
 ## What we learned
 
-In this blog post, I showed you how to build production grade machine learning system that can predict customer churn. I showed you how to deploy the pipeline using Kubeflow Pipelines and transition from default setting to production setting. I also showed you how to build a Continuous deployment pipeline using Seldon Core which I deployed on AWS. I also showed you how to connect the pipeline with Streamlit for inference from our model service.
+In this blog post, I showed you how to build a production-grade machine learning system that can predict customer churn. I showed you how to deploy the pipeline using Kubeflow Pipelines and transition from the default setting to the production setting. I also showed you how to build a continuous deployment pipeline using Seldon Core which I deployed on AWS. I also showed you how to connect the pipeline with Streamlit for inference from our model service.
 
 If you're interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
