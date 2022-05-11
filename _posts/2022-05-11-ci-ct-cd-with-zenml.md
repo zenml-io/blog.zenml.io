@@ -233,12 +233,10 @@ This project comes with a live demo built with [Streamlit](https://streamlit.io/
 
 The app on the live demo simulates what happens when predicting the customer satisfaction score for a given customer. You can input the features of the product listed below and get the customer satisfaction score.
 
-## Conculsion
+## Conclusion
 
-ML Pipelines add extra challenges to the DevOps CI/CD paradigms because it's taking care of the code and data as it is the core of ML systems.
-But with ZenML you can create models that get trained and deployed continuously in any environment without worrying about any of the underlying complexities.
+ML pipelines add extra challenges to the DevOps CI/CD paradigms because they taking care of the code as well as data. When you use ZenML you can create models that get trained and deployed continuously in any environment without worrying about any of the underlying complexities.
 
-Start your MLOps journey today with ZenML Go and explore how ZenML is working to solve real-world machine learning problems as an open-source framework:
-https://github.com/zenml-io/zenml
+Start your MLOps journey today with `zenml go` and explore how we're working to solve real-world machine learning problems as [an open-source framework](https://github.com/zenml-io/zenml).
 
-Join our slack and show us your projects and tell us more about your experience with ZenML [ZenML Slack](https://zenml.io/slack-invite/)
+[Join our Slack](https://zenml.io/slack-invite/) and show us your projects and tell us more about your experiences with ZenML!
