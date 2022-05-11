@@ -7,9 +7,9 @@ category: zenml
 tags: cicd mlops deployment seldon mlflow devops evergreen
 publish_date: May 11, 2022
 date: 2022-05-11T00:02:00Z
-thumbnail: /assets/posts/continuous-deployment/continuous.gif
+thumbnail: /assets/posts/ci-ct-cd-with-zenml/ci-cd-zenml.png
 image:
-  path: /assets/posts/continuous-deployment/continuous.gif
+  path: /assets/posts/ci-ct-cd-with-zenml/ci-cd-zenml.png
 ---
 
 As MLOps start getting more attention and organizations start growing their own understanding of the MLOps maturity model, the terms Continuous Integration, Continuous Training and Continuous Deployment (CI/CT/CD) become more relevant since MLOps is all about applying DevOps principles to ML systems. (Read more about MLOps maturity models [on the blog](https://blog.zenml.io/mlops-maturity-models/).)
