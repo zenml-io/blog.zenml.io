@@ -160,10 +160,8 @@ To achieve this end, model deployers play three major roles as stack components:
     ```
     
     And with the ZenML CLI we can interact with list of served models, start, stop or delete deployments that the active model deployer is responsible for.
-    
-    —> INSERT IMAGE OF CLI COMMAND & OUTPUT INSTEAD OF JUST TEXT
-    
-    ![Use the ZenML CLI to interact with your served models](../assets/posts/ci-ct-cd-with-zenml/SOMEIMAGE.png)
+        
+    ![Use the ZenML CLI to interact with your served models](../assets/posts/ci-ct-cd-with-zenml/served-models-cli.png)
     
 ## How we built a CT/CD customer satisfaction ML system with ZenML
 
@@ -229,4 +227,22 @@ service = load_last_service_from_step(
 ...
 service.predict(...)  # Predict on incoming data from the application
 ```
+This project comes with a live demo built with [Streamlit](https://streamlit.io/) which you can find [here](https://share.streamlit.io/ayush714/customer-satisfaction/main).
+
+![DemoApp](/assets/posts/customer-satisfaction/screenshotofweb.png)
+
+The app on the live demo simulates what happens when predicting the customer satisfaction score for a given customer. You can input the features of the product listed below and get the customer satisfaction score.
+
+## Make your ML projects continously deployed!!
+
+ML Pipelines add extra challenges to the DevOps CI/CD paradigms because it's taking care of the code and data as it is the core of ML systems.
+But with ZenML you can create models that get trained and deployed continously at any environment without worrying about any of the underlying complexities.
+
+Start your MLOps journey today with ZenML Go and explore how ZenML is working to solve real-world machine learning problems as an open source framework:
+https://github.com/zenml-io/zenml
+
+Join our slack and show us your projects and tell us more about your experience with ZenML [ZenML Slack](https://zenml.io/slack-invite/)
+
+
+ 
 
