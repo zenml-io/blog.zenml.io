@@ -35,6 +35,8 @@ To build a real-world workflow for predicting whether a customer will churn or n
 
 I will be using ZenML's [Kubeflow](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow) integration to deploy pipelines to production using Kubeflow Pipelines on the cloud. I will show you how to deploy your pipeline using Kubeflow Pipelines transitioning from local to cloud stack. ZenML supports `Airflow` and `Kubeflow` as third-party orchestrators for your ML pipeline code.
 
+### Run the pipeline regularly
+
 Our training pipeline `run_kubeflow_pipeline.py` consists of the following steps:
 
 ![PipelineStepExplanation](/assets/posts/customer-churn/pipelinestepsexplanation.png)
@@ -187,7 +189,7 @@ While building the real-world workflow for predicting whether a customer will ch
 [Seldon Core](https://github.com/SeldonIO/seldon-core) is a production-grade open-source model serving platform. It packs a wide range of features built around deploying models to REST/GRPC microservices, including monitoring and logging, model explainers, outlier detectors, and various continuous deployment strategies such as A/B testing and canary deployments, and more.
 
 In this project, I built a continuous deployment pipeline that trains a model and then serves it with Seldon Core as the industry-ready model deployment tool of choice. If you are interested in learning more about Seldon Core, you can check out the [ZenML example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment). The following diagram shows the flow of the whole pipeline:
-![seldondeployment](/assets/posts/customer-churn/seldoncorecontinousdeployment.gif)
+![seldondeployment](/assets/posts/customer-churn/seldoncondeploy.gif)
 
 Let's set up our full AWS stack to run the pipeline using Seldon Core.
 
