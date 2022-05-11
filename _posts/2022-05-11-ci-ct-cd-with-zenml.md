@@ -10,9 +10,9 @@ description:
   introduces a novel approach to continuous model deployment that renders a
   smooth transition from experimentation to production."
 category: zenml
-tags: cicd mlops deployment seldon mlflow devops
-publish_date: May 10, 2022
-date: 2022-03-02T00:02:00Z
+tags: cicd mlops deployment seldon mlflow devops evergreen
+publish_date: May 11, 2022
+date: 2022-05-11T00:02:00Z
 thumbnail: /assets/posts/continuous-deployment/continuous.gif
 image:
   path: /assets/posts/continuous-deployment/continuous.gif
