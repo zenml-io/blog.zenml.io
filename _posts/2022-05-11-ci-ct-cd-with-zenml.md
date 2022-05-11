@@ -1,14 +1,8 @@
 ---
 layout: post
 author: Safoine El Khabich
-title:
-  CI/CT/CD ML pipelines with ZenML
-description:
-  "Connecting model training pipelines to deploying models in production is
-  regarded as a difficult milestone on the way to achieving Machine Learning
-  operations maturity for an organization. ZenML rises to the challenge and
-  introduces a novel approach to continuous model deployment that renders a
-  smooth transition from experimentation to production."
+title: "All Continuous, All The Time: Pipeline Deployment Patterns with ZenML"
+description: "Connecting model training pipelines to deploying models in production is seen as a difficult milestone on the way to achieving MLOps maturity for an organization. ZenML rises to the challenge and introduces a novel approach to continuous model deployment that renders a smooth transition from experimentation to production."
 category: zenml
 tags: cicd mlops deployment seldon mlflow devops evergreen
 publish_date: May 11, 2022
@@ -18,70 +12,64 @@ image:
   path: /assets/posts/continuous-deployment/continuous.gif
 ---
 
-As MLOps start getting more attention and organizations start developing across the MLOps maturity model (read more in our blog about [MLOps maturity models](https://blog.zenml.io/mlops-maturity-models/), the terms Continuous Integration, Continuous Training and Continuous Deployment (CI/CT/CD) get more relevant since MLOps is all about applying DevOps principles to ML systems.
+As MLOps start getting more attention and organizations start growing their own understanding of the MLOps maturity model, the terms Continuous Integration, Continuous Training and Continuous Deployment (CI/CT/CD) become more relevant since MLOps is all about applying DevOps principles to ML systems. (Read more about MLOps maturity models [on the blog](https://blog.zenml.io/mlops-maturity-models/).)
 
-In the next following lines, we will try to understand what does the terms CI/CT/CD means in the context of ML Pipelines and how it differs from DevOps, and see how ZenML is pushing forward to make ML assets first-class citizens of CI/CD Systems - ZenML Model deployers as an example.
+In this blogpost I will show what the terms CI, CT and CD mean in the context of machine learning pipelines, explore how MLOps differs from DevOps, and see how ZenML makes machine learning assets first-class citizens of CI/CD systems. I'll use ZenML's model deployers to illustrate this.
 
+# What is Continuous Integration and Continuous Delivery / Deployment (CI/CD)?
 
-## ****What is Continuous Integration and Continuous Delivery/Deployment  (CI/CD) ?****
+Continuous Integration is a set of practices that revolve around automating the building and testing and validating phase for new code. Automating the process ensures that new code is always of production-ready quality which accelerates the release cycle: your product or assets get out into the world faster.
 
-Continuous integration is a set of practices that revolve around automating the building and testing and validating phase for new code, automating the process ensures that new code is always of production-ready quality which accelerates the releasing cycle. 
+Continuous Delivery refers to the automated packaging and delivery of new code from the testing and development environment to the staging or production environment.
 
-Continuous delivery refers to the automated packaging and delivery of new code from the testing and development environment to the staging or production environment.
+Continuous Deployment is the step that follows continuous delivery which means every piece of code that passes the previous two phases can be deployed automatically into production.
 
-Continuous Deployment is the following step of continuous delivery which means every piece of code that passes the previous two phases can be deployed automatically into production.
+# What's so special about CI/CD for ML systems?
 
-## ****What does make CI/CD for ML systems different than other software systems****
+To emphasize the difference between CI/CD for ML and other software, we must first understand that the ML system is also a software system and shares many commonalities with traditional systems. A crucial difference, however, is the fact that ML is not only about code but also about data and perhaps even more about data than code. (Read more in [our blog on data-centric AI](https://blog.zenml.io/data-centric-mlops/).)  ML systems therefore have to handle code *and* data versioning, track different algorithms, features, modeling techniques, and hyperparameters to maintain maximum code reproducibility and reusability. For ML systems we need to validate and test data for machine learning in addition to running basic unit and integration tests.
 
-To emphasize the difference between CI/CD for ML and other software, we must first understand that the ML system is also a software system and shares many commonalities with traditional systems, but the fact that ML is not only about code but also about data and perhaps even more about data than code (read more about [Data centric AI](https://blog.zenml.io/data-centric-mlops/) and how it's leading MLOps World) makes ML systems about code and data versioning and tracking different algorithms, features, modeling techniques, and hyperparameters to maintain maximum code reproducibility and reusability. Within ML we need to validate and test data in addition to unit and integration testing. 
-Not like other applications model delivery and deployment is not the end of the process, we need to monitor these models to ensure that they are still performing at the expected level, especially since ML performance can degrade over time because of data drifts or concepts drifts.
+Even once our model or application is deployed and being used, these systems are living things and require continuous monitoring to ensure that they are still performing as expected. (Performance can degrade over time as a result of data drift or concept drift, a downstream consequence of how central data is to how machine learning works.)
 
+Based on all this we can identify CI/CD for ML systems as consisting of the following:
 
-based on all this we can identify CI/CD for ML systems as the following:
-
-**CI**: Automate the testing and validation for code, data, and models.
-
-**CD**: Automate delivering and packaging of custom systems and deploy them when certain criterion in production is fulfilled.
-
-**CT**: new process and practices which deals with automating training of ML models.
-
+- **CI**: Automate the testing and validation for code, data, and models.
+- **CD**: Automate delivering and packaging of custom systems and deploy them when certain criterion in production is fulfilled.
+- **CT**: new process and practices which deals with automating training of ML models.
 
 ![CI/CD for ML Systems](../assets/posts/ci-ct-cd-with-zenml/ci-cd-for-ml-systems.gif)
 
+# How ZenML enables CI/CT/CD
 
-## ZenML and CI/CT/CD Systems
+As an extensible open-source MLOps framework to create production-ready machine learning pipelines, ZenML building a world where CI/CT/CD paradigms for ML pipelines are supported from the get-go. We do this by automating the model preparation and model training and model deployment. With the built-in functionalities like [Schedules](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md), [Model Deployers](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md#model-deployer) and [Services](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md#service) you can create end-to-end ML workflows with Continuous Training and Deployment that deploys your model in a local environment with MLFlow integration or even in a production-grade environment like Kubernetes with our [Seldon Core](https://docs.seldon.io/projects/seldon-core/en/latest/index.html) integration.
 
-As it is an extensible open-source MLOps framework to create production-ready machine learning pipelines ZenML is pushing forward to make created pipelines  CI/CT/CD paradigms supported and that is done by automating the model preparation and model training and model deployment. With the Built-in functionalities like [Schedules](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md), [Model Deployers](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md#model-deployer) and [Services](https://github.com/zenml-io/zenml/blob/main/docs/book/introduction/core-concepts.md#service) you can create end-to-end ML workflows with Continuous Training and Deployment that deploys your model in a local environment with MLFlow integration or even in production level environment like Kubernetes with Seldon core integration.
+## Pipeline schedules as the door to Continuous Training
 
-**Pipeline schedule ZenML window to Continuous Training:** 
+In the context of a ZenML pipeline, pipeline scheduling refers to the process of automating pipelines so that they are executed at fixed times, dates or intervals. 
 
-In the context of a ZenML pipeline, pipeline scheduling refers to the process of automating pipelines executed at fixed times, dates or intervals. 
-The site 
-Making ML pipelines fire automatically will allow users or teams to have continuous training on new (fresh) data. (For example, every two weeks, take the latest data from an API and train a new model on it.)
+If ML pipelines fire automatically this will allow users or teams to have continuous training on new (fresh) data. (For example, every two weeks, take the latest data from an API and train a new model on it.)
 
-<iframe src="https://giphy.com/embed/SKcxqI1GiASU783uT2" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pong-wsobp-world-series-of-beer-SKcxqI1GiASU783uT2">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/SKcxqI1GiASU783uT2" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
-**Model Deployers interacting with services for Continuous Deployment:**
+## Model Deployers interacting with services for Continuous Deployment
 
-Model Deployers integrate with external tools, services or platforms responsible for online model serving. And by Online serving, we mean the process of hosting and loading machine-learning models as part of a managed web service and providing access to the models through an API endpoint like HTTP or GRPC. Taking into consideration that there are some scenarios where data scientists training the models may not be experienced software developers with a background in service-oriented design or in Kubernetes. ZenML Abstraction for Model Deployers deals with functionality concerning the life-cycle management and tracking of external model deployment servers (e.g. processes, containers, Kubernetes " deployments etc.)
+Model Deployers integrate with external tools, services or platforms responsible for online model serving. And by online serving we mean the process of hosting and loading machine-learning models as part of a managed web service and providing access to the models through an API endpoint like HTTP or GRPC. ZenML understands there are some scenarios where data scientists training the models may not be experienced software developers with a background in service-oriented design or in Kubernetes. The ZenML abstraction for Model Deployers handles the functionality concerning the life-cycle management and tracking of external model deployment servers (e.g. processes, containers, Kubernetes deployments and so on.).
 
-and using [MLFlow](https://mlflow.org/docs/latest/models.html#deploy-mlflow-models) and [Seldon Core](https://github.com/SeldonIO/seldon-core) as two examples of Model Deployers already provided by ZenML as an integration, with many other Model Deployers to follow. All users have to do is run pipelines with acceptance criteria, and models get deployed instantly.
-
+[MLFlow](https://mlflow.org/docs/latest/models.html#deploy-mlflow-models) and [Seldon Core](https://github.com/SeldonIO/seldon-core) are two examples of Model Deployers already provided by ZenML as an integration, with other Model Deployers to follow. All users have to do is run pipelines with the appropriate and easy-to-use configuration, and models get deployed instantly.
 
 ![Seldon Model Deployer](../assets/posts/ci-ct-cd-with-zenml/seldon-model-deployer.gif)
 
-To achieve this model deployers play 3 major roles as stack components:
+To achieve this end, model deployers play three major roles as stack components:
 
-1. holding all the stack related configuration attributes required to interact with the remote model serving tool, service or platform (e.g. hostnames, URLs, references to credentials, other client-related configuration parameters)
+1. They hold all the stack-related configuration attributes required to interact with the remote model serving tool, service or platform (e.g. hostnames, URLs, references to credentials, other client-related configuration parameters)
     
-    ```bash
+    ```shell
     #MLFlow model deployer as a stack component
     zenml integration install mlflow
     zenml model-deployer register mlflow --type=mlflow
     zenml stack register local_with_mlflow -m default -a default -o default -d mlflow
     zenml stack set local_with_mlflow
     
-    #Seldon core model deployer as a stack component
+    # Seldon core model deployer as a stack component
     zenml integration install seldon
     zenml model-deployer register seldon --type=seldon \
     --kubernetes_context=zenml-eks --kubernetes_namespace=zenml-workloads \
@@ -90,7 +78,7 @@ To achieve this model deployers play 3 major roles as stack components:
     zenml stack register seldon_stack -m default -a aws -o default -d seldon
     ```
     
-2. implements the continuous deployment logic necessary to deploy models in a way that updates an existing model server that is already serving a previous version of the same model instead of creating a new model server for every new model version. Every model server that the Model Deployer provisions externally to deploy a model is represented internally as a `Service` object that may be accessed for visibility and control over a single model deployment. This functionality can be consumed directly from ZenML pipeline steps, but it can also be used outside of the pipeline to deploy ad-hoc models.
+2. They implement the Continuous Deployment logic necessary to deploy models in a way that updates an existing model server that is already serving a previous version of the same model instead of creating a new model server for every new model version. Every model server that the Model Deployer provisions externally to deploy a model is represented internally as a `Service` object that may be accessed for visibility and control over a single model deployment. This functionality can be consumed directly from ZenML pipeline steps, but it can also be used outside of the pipeline to deploy ad-hoc models.
     
     ```python
     from zenml.environment import Environment
@@ -139,7 +127,7 @@ To achieve this model deployers play 3 major roles as stack components:
         return service
     ```
     
-3. the Model Deployer acts as a registry for all Services that represent remote model servers. External model deployment servers can be listed and filtered using a variety of criteria, such as the name of the model or the names of the pipeline and the step that was used to deploy the model. The Service objects returned by the Model Deployer can be used to interact with the remote model server, e.g. to get the operational status of a model server, the prediction URI that it exposes, or to stop or delete a model server.
+3. The Model Deployer acts as a registry for all services that represent remote model servers. External model deployment servers can be listed and filtered using a variety of criteria, such as the name of the model or the names of the pipeline and the step that was used to deploy the model. The service objects returned by the Model Deployer can be used to interact with the remote model server, e.g. to get the operational status of a model server, the prediction URI that it exposes, or to stop or delete a model server.
     
     ```python
     from zenml.integrations.seldon.model_deployers import SeldonModelDeployer
@@ -171,63 +159,24 @@ To achieve this model deployers play 3 major roles as stack components:
         model_deployer.delete_service(services[0].uuid, timeout=100, force=False)
     ```
     
-    And with ZenML CLI we can interact with list of served models, start, stop or delete deployments that the active model deployer is responsible for.
+    And with the ZenML CLI we can interact with list of served models, start, stop or delete deployments that the active model deployer is responsible for.
     
-    ```bash
-    $ zenml served-models list
-    ┏━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-    ┃ STATUS │ UUID                                 │ PIPELINE_NAME                  │ PIPELINE_STEP_NAME         ┃
-    ┠────────┼──────────────────────────────────────┼────────────────────────────────┼────────────────────────────┨
-    ┃   ✅   │ 8cbe671b-9fce-4394-a051-68e001f92765 │ continuous_deployment_pipeline │ seldon_model_deployer_step ┃
-    ┗━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+    —> INSERT IMAGE OF CLI COMMAND & OUTPUT INSTEAD OF JUST TEXT
     
-    $ zenml served-models describe 8cbe671b-9fce-4394-a051-68e001f92765
-                              Properties of Served Model 8cbe671b-9fce-4394-a051-68e001f92765                          
-    ┏━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-    ┃ MODEL SERVICE PROPERTY │ VALUE                                                                                  ┃
-    ┠────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┨
-    ┃ MODEL_NAME             │ mnist                                                                                  ┃
-    ┠────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┨
-    ┃ MODEL_URI              │ s3://zenfiles/seldon_model_deployer_step/output/884/seldon                             ┃
-    ┠────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┨
-    ┃ PIPELINE_NAME          │ continuous_deployment_pipeline                                                         ┃
-    ┠────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┨
-    ┃ PIPELINE_RUN_ID        │ continuous_deployment_pipeline-11_Apr_22-09_39_27_648527                               ┃
-    ┠────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┨
-    ┃ PIPELINE_STEP_NAME     │ seldon_model_deployer_step                                                             ┃
-    ┠────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┨
-    ┃ PREDICTION_URL         │ http://abb84c444c7804aa98fc8c097896479d-377673393.us-east-1.elb.amazonaws.com/seldon/… ┃
-    ┠────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┨
-    ┃ SELDON_DEPLOYMENT      │ zenml-8cbe671b-9fce-4394-a051-68e001f92765                                             ┃
-    ┠────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┨
-    ┃ STATUS                 │ ✅                                                                                     ┃
-    ┠────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┨
-    ┃ STATUS_MESSAGE         │ Seldon Core deployment 'zenml-8cbe671b-9fce-4394-a051-68e001f92765' is available       ┃
-    ┠────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────┨
-    ┃ UUID                   │ 8cbe671b-9fce-4394-a051-68e001f92765                                                   ┃
-    ┗━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+    ![Use the ZenML CLI to interact with your served models](../assets/posts/ci-ct-cd-with-zenml/SOMEIMAGE.png)
     
-    $ zenml served-models get-url 8cbe671b-9fce-4394-a051-68e001f92765
-      Prediction URL of Served Model 8cbe671b-9fce-4394-a051-68e001f92765 is:
-      http://abb84c444c7804aa98fc8c097896479d-377673393.us-east-1.elb.amazonaws.com/seldon/zenml-workloads/zenml-8cbe67
-    1b-9fce-4394-a051-68e001f92765/api/v0.1/predictions
-    
-    $ zenml served-models delete 8cbe671b-9fce-4394-a051-68e001f92765
-    ```
+## How we built a CT/CD customer satisfaction ML system with ZenML
 
-## How we built CT/CD customer satisfaction ML System with ZenML
-
-The e-commerce sector is rapidly evolving as internet accessibility increases in different parts of the world over the years. As a result, the demand for online shopping has grown. Businesses want to know how satisfied their customers are with their products and services to make better decisions. Machine learning plays a significant role in various aspects of business like sales prediction, customer segmentation, product recommendation, customer satisfaction, etc.
-in this example, we have built a model that can predict customer satisfaction based on data provided by customers. Use ZenML MLflow Integration to track the model's performance and how to deploy the model for online prediction. Finally, we have to deploy and interact with a web application that consumes a deployed model with StreamLit.
+The e-commerce sector is rapidly evolving as internet accessibility increases in different parts of the world. As a result, the demand for online shopping has grown. Businesses want to know how satisfied their customers are with their products and services to make better decisions. Machine learning plays a significant role in various aspects of business like sales prediction, customer segmentation, product recommendation, customer satisfaction and so on. In this example, we have built a model that can predict customer satisfaction based on data provided by customers. We use ZenML's MLflow integration to [track the model's performance](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking) and [to deploy the model](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment) for online prediction. Finally, we deploy and interact with a web application that consumes a deployed model with [Streamlit](https://streamlit.io/).
 
 ![Steps in the ZenML continuous deployment pipeline ](/assets/posts/customer-satisfaction/trainingandif.png)
 <p align="center">
-  <a  href="https://github.com/zenml-io/zenfiles/tree/main/customer-satisfaction"> See the full project code in our ZenFiles.</a>
+  See the full project code <a href="https://github.com/zenml-io/zenfiles/tree/main/customer-satisfaction">in our ZenFiles</a>
 </p>
 
 ### How does it work?
 
-Let's start with the main pipeline definition, which is a traditional ZenML pipeline:
+Let's start with the main pipeline definition, a basic ZenML pipeline:
 
 ```python
 def run_training():
@@ -245,9 +194,9 @@ This pipeline will run the following steps:
 - `ingest_data`: This step will ingest the data from the source and return a data frame; the CSV file is in the `data` folder.
 - `clean_data`: This step will clean the data and remove the unwanted columns. It removes columns that contribute less to the target variable and fills null values with mean.
 - `model_train`: This step will train different models like XGBoost, LightGBM, and random forest. I am also using MLflow to track our model performance, parameters, and metrics and for saving the model.
-- `evaluation`: This step will evaluate the model and save the metrics using MLflow auto logging into the Artifact store. Auto logging can be used to compare the performance of different models and decide to select the best model. It will also help in doing an error analysis of our model chosen.
+- `evaluation`: This step will evaluate the model and save the metrics using MLflow auto-logging into the Artifact store. Auto-logging can be used to compare the performance of different models and decide to select the best model. It will also help in doing an error analysis of our chosen model.
 
-We have another pipeline, the `deployment_pipeline.py`, that extends the training pipeline, and implements a continuous deployment workflow. It ingests and processes input data, trains a model and then (re)deploys the prediction server that serves the model if it meets our evaluation criteria. The criteria that we have chosen is a configurable threshold on the [mean squared error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error) of the training.
+We have another pipeline, defined in `deployment_pipeline.py`, that extends the training pipeline and implements a continuous deployment workflow. It ingests and processes input data, trains a model and then (re)deploys the prediction server that serves the model if it meets our evaluation criteria. The criterion that we have chosen is a configurable threshold on the [mean squared error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error) of the training.
 
 ```python
 deployment = continuous_deployment_pipeline(
@@ -265,11 +214,11 @@ deployment = continuous_deployment_pipeline(
 deployment.run()
 ```
 
-In the deployment pipeline, ZenML's [MLflow tracking integration](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking) is used for logging the hyperparameter values and the trained model itself and the model evaluation metrics -- as MLflow experiment tracking Artifacts -- into the local MLflow backend. This pipeline also launches a local MLflow deployment server to serve the latest MLflow model if its accuracy is above a configured threshold.
+In the deployment pipeline, ZenML's [MLflow tracking integration](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking) is used for logging the hyperparameter values and the trained model itself and the model evaluation metrics — as MLflow experiment tracking Artifacts — into the local MLflow backend. This pipeline also launches a local MLflow deployment server to serve the latest MLflow model if its accuracy is above a configured threshold.
 
 The MLflow deployment server runs locally as a daemon process that will continue to run in the background after the example execution is complete. When a new pipeline is run which produces a model that passes the accuracy threshold validation, the pipeline automatically updates the currently running MLflow deployment server to serve the new model instead of the old one. While this ZenFile trains and deploys a model locally, other ZenML integrations such as the [Seldon](https://github.com/zenml-io/zenml/tree/main/examples/) deployer can also be used similarly to deploy the model in a more production setting (such as on a Kubernetes cluster).
 
-To round it off, we deploy a Streamlit application that consumes the latest model service asynchronously from the pipeline logic. This can be done easily with ZenML within the StreamLit code:
+To round it off, we deploy a [Streamlit](https://streamlit.io/) application that consumes the latest model service asynchronously from the pipeline logic. This can be done easily with ZenML within the StreamLit code:
 
 ```python
 service = load_last_service_from_step(
