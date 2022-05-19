@@ -91,7 +91,11 @@ considerably when interacting with your stacks!
 - We've been adding more and more stack components to handle the full MLOps
   story, so the list of options in the CLI has been growing and growing. With
   this release you'll see that the CLI options are split into menu groups which
-  should make everything a lot more comprehensible and navigable!
+  should make everything a lot more comprehensible and navigable! Check it out!
+  Doesn't it look beautiful now?
+
+![Screenshot of how our CLI looks
+now](../assets/posts/release_0_8_0/zenml-cli.png)
 
 ## 🚀 New Integrations
 
@@ -105,7 +109,8 @@ considerably when interacting with your stacks!
 
 - We completely overhauled the ZenBytes introductory guide. You not only learn
   about ZenML but we teach some MLOps basics from the ground up. Check out the
-  [notebook-based lessons here](https://github.com/zenml-io/zenbytes)!
+  [notebook-based lessons here](https://github.com/zenml-io/zenbytes)! (Shout
+  out to Felix for making this happen!)
 - Like our CLI commands, our examples directory was starting to get a bit
   unwieldy with all the additions so we updated how that all looks and is
   presented. [The main
