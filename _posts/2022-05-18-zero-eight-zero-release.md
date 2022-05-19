@@ -86,6 +86,8 @@ considerably when interacting with your stacks!
   components and their configuration when using the CLI tool, so we made some
   fixes and tweaks to make sure text doesn't get shortened. Instead, it just
   wraps onto the next line.
+- We added a `zenml go` command which launches an easy tutorial on how to get
+  started with ZenML and some of its features.
 - We've noticed that the CLI has started to become a little sluggish and took
   the first steps towards adding some 🚄 speed back in.
 - We've been adding more and more stack components to handle the full MLOps
