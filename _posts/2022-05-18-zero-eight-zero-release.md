@@ -38,9 +38,9 @@ ZenML framework!
 
 From talking to many of you in our Slack community, we know that custom stack
 components and integrations is often at the top of your collective minds. ZenML
-0.8.0 makes it much easier to extend the core ZenML framework through changes to
-the underlying code and better documentation and guides on exactly how to do
-this.
+0.8.0 makes it much easier to extend the core ZenML framework. To achieve this,
+we changed the underlying code and wrote better documentation and guides on
+exactly how to do this.
 
 * We added the ability to register custom stack component flavors, and `type`
   was renamed to `flavor` everywhere.
@@ -48,8 +48,6 @@ this.
   documentation on how you can do this yourself.
 * Our documentation for stacks, stack components and flavors has been fully
   fleshed out. We know you're going to love it!
-* We have updated how you configure the `S3ArtifactStore` to allow you to
-  connect to non-AWS S3 storage.
 * We added in new MySQL metadata stores along with the ability to use SSL to
   connect to those MySQL clients (e.g. in the cloud)
 
@@ -116,43 +114,47 @@ considerably when interacting with your stacks!
 
 ## ➕ Other Updates, Additions and Fixes
 
-- Experiment Trackers are now a full-fledged stack component.
 - We improved how secrets are passed around in a deployed or cloud setting.
 - We added additional metadata tracking for pipeline runs which adds to what you
-  can see as part of the post-execution workflow.
+  can see as part of the post-execution workflow. (This includes tracking the
+  Git SHA, the Docker SHA as well as docstrings.)
 - Model deployer logs can now be streamed through the CLI and not just accessed
-  post-facto.
+  post-facto. Viewing the logs is as simple as calling `zenml served-models
+  logs` from the CLI.
 - After popular request, the `-f` or `--force` flag has now been replaced with
   `-y` or `--yes`. Don't worry, though, this won't break your workflows just
   yet. We've deprecated the `-f` flags and you'll see an error message for a
   while before we remove it completely.
 - You can now pass in-line pip requirements into your pipeline decorator instead
-  of only being able to pass in a `requirements.txt` file.
+  of only being able to pass in a `requirements.txt` file. We also renamed this
+  parameter from `requirements_file` to just `requirements`, but don't worry we
+  just deprecated the old parameter to give you time to adjust your code.
 - We fixed [the Evidently drift detection
   visualizer](https://github.com/zenml-io/zenml/tree/main/examples/evidently_drift_detection)
-  so that it now works on Google Colab notebooks again.
+  so that it now works on Google Colab notebooks again. (Hamza is doing an AMA
+  with the Evidently community on May 24; [click
+  here](https://www.eventbrite.co.uk/e/ama-whamza-tahir-co-founder-zenml-tickets-336732525047)
+  to register!)
 
 ## 🙌 Community Contributions
 
-We received some community contributions during this release cycle, two of which
-were from new contributors!
-
-* @Ankur3107 made their first contribution in
-  https://github.com/zenml-io/zenml/pull/467
-* @MateusGheorghe made their first contribution in
-  https://github.com/zenml-io/zenml/pull/523
-* @avramdj added support for scipy sparse matrices in
-  https://github.com/zenml-io/zenml/pull/534
+We received a new community contribution during this release cycle, from Avram
+Ðorđević in Belgrade. It's great to have the community returning to contribute
+to the codebase! Avram added support for scipy sparse matrices [in his
+PR](https://github.com/zenml-io/zenml/pull/534).
 
 ## 👩‍💻 Contribute to ZenML!
 
-Join our [Slack](https://zenml.io/slack-invite/) to let us know what you think
-we should build next!
+Join our [Slack](https://zenml.io/slack-invite/) to let us know if you have an
+idea for a feature or something you'd like to contribute to the framework.
 
-Keep your eyes open for future releases and make sure to
-[vote](https://github.com/zenml-io/zenml/discussions/categories/roadmap) on your
-favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets
-implemented as soon as possible.
+![Screenshot of the new hub for our
+roadmap](../assets/posts/release_0_8_0/roadmap.png)
+
+We're super excited to be able to share [the new home for our
+roadmap](https://zenml.io/roadmap) where you can vote on your favorite upcoming
+feature or propose new ideas for what the core team should work on. You can vote
+without needing to log in, so please do let us know what you want us to build!
 
 [Photo by <a href="https://unsplash.com/@avmartin">Audrey Martin</a> on <a
 href="https://unsplash.com/photos/FJpHcqMud_Y">Unsplash</a>] 
