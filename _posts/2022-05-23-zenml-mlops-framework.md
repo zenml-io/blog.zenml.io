@@ -53,7 +53,7 @@ description barely scratches the surface of what is required to build a
 successful MLOps platform and we haven't even mentioned the infrastructure
 layer with all its intricacies.
 
-<iframe src="https://giphy.com/embed/Yq2SKEsscV85lPRJdu" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>If it looks complicated, it probably is<a href="https://giphy.com/gifs/Yq2SKEsscV85lPRJdu">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/Yq2SKEsscV85lPRJdu" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>If it looks complicated, it probably is (<a href="https://giphy.com/gifs/Yq2SKEsscV85lPRJdu">via GIPHY</a>)</p>
 
 Confronted with this overwhelming complexity, AI/ML teams usually go one of
 two ways: either they adopt a full fledged managed MLOps platform and benefit
@@ -91,7 +91,7 @@ the challenges ahead carries a high risk. Even when the requirements are clear,
 incompatibilities may not become evident until much later, when it's too late to
 alter course.
 
-<iframe src="https://giphy.com/embed/mTXSKTk3BsT6w" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Seemed like a good idea at the time...<a href="https://giphy.com/gifs/mTXSKTk3BsT6w">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/mTXSKTk3BsT6w" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Seemed like a good idea at the time... (<a href="https://giphy.com/gifs/mTXSKTk3BsT6w">via GIPHY</a>)</p>
 
 Another disadvantage of managed platforms is that they are inflexible and slow
 to change. They might provide 80% of the functionality we require, but it is
@@ -170,8 +170,9 @@ code refactoring.
 ZenML makes a stellar job of decoupling the ML pipeline code from the tooling
 and infrastructure required to run it. With ZenML, you can start experimenting
 with a local Stack from day one, and then gradually switch to using more
-production ready Stacks as your project grows and its requirements get more
-demanding. All this with nearly zero code changes!
+elaborate Stack configurations that are fit for production, as your project
+grows and its requirements get more demanding. All this with nearly zero code
+changes!
 
 ### Representative Abstractions
 
@@ -201,10 +202,13 @@ needs.
 At ZenML, we follow the [S.O.L.I.D.](https://en.wikipedia.org/wiki/SOLID)
 and [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)design principles to maintain a loose coupling between core and external
 components and ensure that the framework is easy to extend and customize.
+
+![MLOps Extensible Stacks](../assets/posts/zenml-framework/zenml-stacks.png)
+
 All ZenML Stack components have well defined and well documented interfaces.
 This makes it possible to [extend ZenML to add new Stack component implementations](https://docs.zenml.io/extending-zenml/stacks-components-flavors)
 without having to modify the core code and without invalidating any of the
-inter-operability guarantees that ZenML provides. The following are some
+interoperability guarantees that ZenML provides. The following are some
 examples of the extensibility options supported by ZenML:
 
 * you can [add a new Artifact Store flavor](https://docs.zenml.io/extending-zenml/artifact-store)
@@ -218,7 +222,7 @@ the [Model Deployer interface can be extended](https://docs.zenml.io/extending-z
 to accommodate any library or platform that serves that function.
 
 The extensibility of ZenML gives ML practitioners the freedom of DYI with all
-the benefits of inter-operability and makes ZenML a powerful tool for building
+the benefits of interoperability and makes ZenML a powerful tool for building
 MLOps systems specifically tailored to the needs of any ML project.
 
 ## Talk to Us
