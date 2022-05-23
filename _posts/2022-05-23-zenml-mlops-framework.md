@@ -53,8 +53,7 @@ description barely scratches the surface of what is required to build a
 successful MLOps platform and we haven't even mentioned the infrastructure
 layer with all its intricacies.
 
-TODO: image/caricature of some cacophony or unmageable/overwhelming complexity
-(e.g. an unnecessarily over-engineered wiring system)
+<iframe src="https://giphy.com/embed/Yq2SKEsscV85lPRJdu" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>If it looks complicated, it probably is<a href="https://giphy.com/gifs/Yq2SKEsscV85lPRJdu">via GIPHY</a></p>
 
 Confronted with this overwhelming complexity, AI/ML teams usually go one of
 two ways: either they adopt a full fledged managed MLOps platform and benefit
@@ -92,8 +91,7 @@ the challenges ahead carries a high risk. Even when the requirements are clear,
 incompatibilities may not become evident until much later, when it's too late to
 alter course.
 
-TODO: some funny image capturing the idea of a seemingly good decision gone bad
-(e.g. some of Will E. Coyote's contraptions)
+<iframe src="https://giphy.com/embed/mTXSKTk3BsT6w" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Seemed like a good idea at the time...<a href="https://giphy.com/gifs/mTXSKTk3BsT6w">via GIPHY</a></p>
 
 Another disadvantage of managed platforms is that they are inflexible and slow
 to change. They might provide 80% of the functionality we require, but it is
@@ -122,6 +120,8 @@ changes in requirements or to adapt it to new projects can be challenging and
 costly.
 
 ## The Zen of MLOps Frameworks
+
+![MLOps Zen](../assets/posts/zenml-framework/mlops-zen.png)
 
 The machine learning ecosystem is still in a state of rapid evolution and being
 locked into a rigid platform is not advisable if you want to stay ahead of
