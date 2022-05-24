@@ -237,13 +237,14 @@ MLOps systems specifically tailored to the needs of any ML project.
 
 In any discipline, best practices and tools are being developed, they evolve and
 eventually converge. There comes a moment when a critical point is reached where
-crystallization of the underlying principles and patterns occurs. This also
+a crystallization of the underlying principles and patterns occurs. This also
 happens to be tied to another generic principle that differentiates successful
 frameworks from short lived ones: timing.
 
-In machine learning, this turning point is now and it is time for MLOps
-frameworks to do what they do best: to nourish this convergence phenomenon and
-to bring more structure to an ecosystem that is ripe for standardization. 
+In machine learning, this turning point is happening right now and it is time
+for MLOps frameworks to shine and do what they do best: to further nourish the
+convergence of ML tools and best practices and to bring more structure to an
+ecosystem that is ripe for standardization.
 
 ## Talk to Us
 
