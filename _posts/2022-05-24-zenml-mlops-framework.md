@@ -1,7 +1,8 @@
 ---
 layout: post
 author: Stefan Nica
-title: "On the subject of MLOps frameworks and why we should have one."
+title: "The Framework Way is the Best Way: the pitfalls of MLOps and how to
+avoid them"
 description: "As our AI/ML projects evolve and mature, our processes and tooling
 also need to keep up with the growing demand for automation, quality and
 performance. But how can we possibly reconcile our need for flexibility
@@ -12,8 +13,8 @@ created equal. In this post, we take a critical look at what makes an MLOps
 framework worth using and what we should expect from one."
 category: mlops
 tags: mlops tooling zenml evergreen bigger-picture devops
-publish_date: May 23, 2022
-date: 2022-05-23T00:02:00Z
+publish_date: May 24, 2022
+date: 2022-05-24T00:02:00Z
 thumbnail: /assets/posts/zenml-framework/zenml-framework.gif
 image:
   path: /assets/posts/zenml-framework/zenml-framework.gif
@@ -26,6 +27,8 @@ and perilous one. Without proper planning and guidance, too many projects fail
 to reach their full potential and end up in drift limbo, or they accrue an
 unmanageable amount of technical debt and complexity along the way which makes
 them nearly impossible to maintain and evolve in the long run.
+
+<iframe src="https://giphy.com/embed/Yq2SKEsscV85lPRJdu" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Somewhere on the way to production ML (<a href="https://giphy.com/gifs/Yq2SKEsscV85lPRJdu">via GIPHY</a>)</p>
 
 If the history of traditional software development is any indication, MLOps
 frameworks should be the much needed solution that ML practitioners and AI/ML
@@ -52,8 +55,6 @@ and function in sync to achieve a continuous automated workflow. This brief
 description barely scratches the surface of what is required to build a
 successful MLOps platform and we haven't even mentioned the infrastructure
 layer with all its intricacies.
-
-<iframe src="https://giphy.com/embed/Yq2SKEsscV85lPRJdu" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>If it looks complicated, it probably is (<a href="https://giphy.com/gifs/Yq2SKEsscV85lPRJdu">via GIPHY</a>)</p>
 
 Confronted with this overwhelming complexity, AI/ML teams usually go one of
 two ways: either they adopt a full fledged managed MLOps platform and benefit
@@ -91,7 +92,7 @@ the challenges ahead carries a high risk. Even when the requirements are clear,
 incompatibilities may not become evident until much later, when it's too late to
 alter course.
 
-<iframe src="https://giphy.com/embed/mTXSKTk3BsT6w" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Seemed like a good idea at the time... (<a href="https://giphy.com/gifs/mTXSKTk3BsT6w">via GIPHY</a>)</p>
+<iframe src="https://giphy.com/embed/mTXSKTk3BsT6w" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Seemed like a good idea on paper... (<a href="https://giphy.com/gifs/mTXSKTk3BsT6w">via GIPHY</a>)</p>
 
 Another disadvantage of managed platforms is that they are inflexible and slow
 to change. They might provide 80% of the functionality we require, but it is
@@ -111,6 +112,8 @@ constructed to respond to a very concrete set of necessities and implemented
 with a focus on functionality and fast results often limited by budgetary
 restrictions. Flexibility is classified as a luxury that few organizations want
 to invest in, resulting in systems that are equally opinionated and rigid.
+
+<iframe src="https://giphy.com/embed/m12EDnP8xGLy8" width="480" height="384" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>My model is in here somewhere (<a href="https://giphy.com/gifs/room-fix-lan-m12EDnP8xGLy8">via GIPHY</a>)</p>
 
 This limitation of DYI platforms does not become apparent until the machine
 learning project needs to do a strategic shift to respond to a change in
