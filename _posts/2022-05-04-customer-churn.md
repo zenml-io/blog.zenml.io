@@ -71,8 +71,8 @@ With all the installation and initialization out of the way, all that's left to 
 
 ```bash
 # Make sure to create the local registry on port 5000 for it to work
-zenml container-registry register local_registry --type=default --uri=localhost:5000
-zenml orchestrator register kubeflow_orchestrator --type=kubeflow
+zenml container-registry register local_registry --flavor=default --uri=localhost:5000
+zenml orchestrator register kubeflow_orchestrator --flavor=kubeflow
 zenml stack register local_kubeflow_stack \
     -m default \
     -a default \
@@ -130,10 +130,10 @@ zenml integration install aws
 2. Register the stack components
 
 ```bash
-zenml container-registry register cloud_registry --type=default --uri=$PATH_TO_YOUR_CONTAINER_REGISTRY
-zenml orchestrator register cloud_orchestrator --type=kubeflow --custom_docker_base_image_name=YOUR_IMAGE
-zenml metadata-store register kubeflow_metadata_store --type=kubeflow
-zenml artifact-store register cloud_artifact_store --type=s3 --path=$PATH_TO_YOUR_BUCKET
+zenml container-registry register cloud_registry --flavor=default --uri=$PATH_TO_YOUR_CONTAINER_REGISTRY
+zenml orchestrator register cloud_orchestrator --flavor=kubeflow --custom_docker_base_image_name=YOUR_IMAGE
+zenml metadata-store register kubeflow_metadata_store --flavor=kubeflow
+zenml artifact-store register cloud_artifact_store --flavor=s3 --path=$PATH_TO_YOUR_BUCKET
 
 # Register the cloud stack
 zenml stack register cloud_kubeflow_stack -m kubeflow_metadata_store -a cloud_artifact_store -o cloud_orchestrator -c cloud_registry
@@ -231,20 +231,20 @@ Configuring the stack can be done like this:
 zenml integration install s3 aws kubeflow Seldon
 
 # Register container registry
-zenml container-registry register ecr_registry --type=default --uri={ECR_REGISTRY_NAME}
+zenml container-registry register ecr_registry --flavor=default --uri={ECR_REGISTRY_NAME}
 
 # Register orchestrator (Kubeflow on AWS)
-zenml orchestrator register eks_orchestrator --type=kubeflow --kubernetes_context={KUBE_CONTEXT} --synchronous=True
+zenml orchestrator register eks_orchestrator --flavor=kubeflow --kubernetes_context={KUBE_CONTEXT} --synchronous=True
 
 # Register metadata store and artifact store
-zenml metadata-store register kubeflow_metadata_store --type=kubeflow
-zenml artifact-store register s3_store --type=s3 --path={S3_BUCKET_NAME}
+zenml metadata-store register kubeflow_metadata_store --flavor=kubeflow
+zenml artifact-store register s3_store --flavor=s3 --path={S3_BUCKET_NAME}
 
 # Register the Seldon Core model deployer (Seldon on AWS)
-zenml model-deployer register eks_seldon --type=seldon --kubernetes_context={KUBE_CONTEXT} --kubernetes_namespace={KUBEFLOW_NAMESPACE} --base_url=http://{INGRESS_HOST[0]} --secret=s3_store
+zenml model-deployer register eks_seldon --flavor=seldon --kubernetes_context={KUBE_CONTEXT} --kubernetes_namespace={KUBEFLOW_NAMESPACE} --base_url=http://{INGRESS_HOST[0]} --secret=s3_store
 
 # Register a secret manager
-zenml secrets-manager register aws_secret_manager --type=aws
+zenml secrets-manager register aws_secret_manager --flavor=aws
 
 # Register the aws_kubeflow_stack
 zenml stack register aws_kubeflow_stack -m kubeflow_metadata_store -a s3_store -o eks_orchestrator -c ecr_registry -d eks_seldon -x aws_secret_manager
