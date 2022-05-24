@@ -31,8 +31,8 @@ them nearly impossible to maintain and evolve in the long run.
 <iframe src="https://giphy.com/embed/Yq2SKEsscV85lPRJdu" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Somewhere on the way to production ML (<a href="https://giphy.com/gifs/Yq2SKEsscV85lPRJdu">via GIPHY</a>)</p>
 
 If the history of traditional software development is any indication, MLOps
-frameworks should be the much needed solution that ML practitioners and AI/ML
-teams need to manage the extensive and often difficult to navigate ecosystem
+frameworks should be the much-needed solution that ML practitioners and AI/ML
+teams need to manage the extensive and often-difficult-to-navigate ecosystem
 of ML tools. But not all libraries and tools labeled as MLOps frameworks are
 created equal. Some only focus on tool orchestration while others are limited in
 the range of tools they can integrate with and are not easily extensible. This
@@ -43,12 +43,12 @@ framework that stands up well to these evaluation criteria.
 
 ## The Burdens of Unhindered Development
 
-To advance a machine learning project past the initial stages of ideation and
-experimentation, a continuously growing set of features, tools and technologies
-are required. Experiment tracking is needed to record, recall and share results.
+We need a continuously growing set of features, tools and technologies
+if we want to advance a machine learning project past the initial stages of ideation and
+experimentation. Experiment tracking is required to record, recall and share results.
 Getting the model accuracy up to acceptable levels in decent time often
 involves employing distributed data processing, model training and
-hyper-parameter search techniques. For online inference, a model serving system
+hyperparameter search techniques. For online inference, a model serving system
 must be present, followed by monitoring, data profiling and drift detection.
 Some form of orchestration is crucial to getting all these features to interact
 and function in sync to achieve a continuous automated workflow. This brief
@@ -57,14 +57,17 @@ successful MLOps platform and we haven't even mentioned the infrastructure
 layer with all its intricacies.
 
 Confronted with this overwhelming complexity, AI/ML teams usually go one of
-two ways: either they adopt a full fledged managed MLOps platform and benefit
-from the guarantees that they offer from day one, or they construct their own
+two ways: 
+
+- either they adopt a full fledged managed MLOps platform and benefit
+from the guarantees that they offer from day one
+- or they construct their own
 custom MLOps system by incrementally connecting together the tool components
 mandated by their particular needs and preserving a high degree of control over
 tooling and infrastructure choices in the process.
 
 While there certainly are downsides and advantages to both approaches, we argue
-that enrolling an MLOps framework is a great compromise between the two. It
+that using an MLOps framework is a great compromise between the two pathways. It
 avoids inheriting the technical debt of reinventing the wheel without taking
 away any of the benefits of flexible and extensible tooling. 
 
@@ -78,10 +81,10 @@ expectations.
 
 Adopting a managed MLOps platform has a lot of appeal, especially if we want to
 avoid the overhead of having to manage our own tools and infrastructure.
-Cloud based platforms like Amazon SageMaker, Azure Machine Learning and Google
+Cloud-based platforms like Amazon SageMaker, Azure Machine Learning and Google
 Cloud AI Platform are immediately available and can significantly accelerate
-the machine learning project development with a fraction of the cost of
-building and operating a custom made platform. However, there are several
+the machine learning project development. Moreover, they require a fraction of the cost of
+building and operating a custom-made platform. However, there are several
 drawbacks to adopting a managed MLOps platform, some quite subtle, that should
 not be easily overlooked.
 
@@ -96,16 +99,16 @@ alter course.
 
 Another disadvantage of managed platforms is that they are inflexible and slow
 to change. They might provide 80% of the functionality we require, but it is
-often the case that the missing 20% provides functionality that is mission
-critical for machine learning projects. The closed design and architecture
-nature of managed platforms makes it difficult to make even the most trivial
+often the case that the missing 20% provides functionality that is *mission
+critical* for machine learning projects. The closed design and architecture
+of managed platforms makes it difficult to make even the most trivial
 changes. To compensate for this lack of flexibility, we often have to design
-custom, inefficient and difficult to maintain mechanisms that add technical debt
+custom, inefficient and hard-to-maintain mechanisms that add technical debt
 to the project.
 
 ### The Pitfalls of DIY MLOps Platforms
 
-Switching to the other side of the coin, MLOps platforms that are built in house
+Switching to the other side of the coin, MLOps platforms that are built in-house
 are more flexible and easier to adapt to future requirements but retain many of
 the disadvantages of their managed counterparts. For one, they are usually
 constructed to respond to a very concrete set of necessities and implemented
@@ -115,7 +118,7 @@ to invest in, resulting in systems that are equally opinionated and rigid.
 
 <iframe src="https://giphy.com/embed/m12EDnP8xGLy8" width="480" height="384" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>My model is in here somewhere (<a href="https://giphy.com/gifs/room-fix-lan-m12EDnP8xGLy8">via GIPHY</a>)</p>
 
-This limitation of DYI platforms does not become apparent until the machine
+This limitation of DIY platforms does not become apparent until the machine
 learning project needs to do a strategic shift to respond to a change in
 customer behavior or requirements, or to incorporate a newer or more performant
 set of tools and technologies. Refactoring any platform to reflect external
@@ -126,9 +129,7 @@ costly.
 
 ![MLOps Zen](../assets/posts/zenml-framework/mlops-zen.png)
 
-The machine learning ecosystem is still in a state of rapid evolution and being
-locked into a rigid platform is not advisable if you want to stay ahead of
-the curve. Revolutionary machine learning tools and techniques are continuously
+The machine learning ecosystem is still in a state of rapid evolution and you probably don't want to be locked into a rigid platform if you want to stay ahead of the curve. Revolutionary machine learning tools and techniques are continuously
 emerging and evolving, and the need for a flexible and easily extensible MLOps
 framework is indisputable.
 
@@ -147,7 +148,7 @@ proven time and time again by democratizing remarkable technological advances
 such as virtualization, containerization, cloud, cloud-native and serverless
 computing.
 
-The recent 0.8.0 ZenML release marks a major shift in perspective that the
+The [recent 0.8.0 ZenML release](https://blog.zenml.io/zero-eight-zero-release/) marks a major shift in perspective that the
 project has been undergoing for the past couple of months. The focus was moved
 away from merely orchestrating a growing [list of available integrations](https://docs.zenml.io/advanced-guide/integrations)
 and towards making ZenML a vastly extensible MLOps framework that addresses all
@@ -170,7 +171,7 @@ MLOps frameworks must make the transition from experimentation to production
 as smooth as possible, to reduce or even eliminate the need for costly
 code refactoring.
 
-ZenML makes a stellar job of decoupling the ML pipeline code from the tooling
+ZenML does a stellar job of decoupling the ML pipeline code from the tooling
 and infrastructure required to run it. With ZenML, you can start experimenting
 with a local Stack from day one, and then gradually switch to using more
 elaborate Stack configurations that are fit for production, as your project
@@ -181,7 +182,7 @@ changes!
 
 MLOps frameworks detach the user experience from the underlying complexity by
 defining relatable and easy to use high-level machine learning abstractions.
-These abstractions must be easy to understand and use and above all they must be
+These abstractions must be easy to understand and use. Above all they must be
 evocative of the set of concepts that ML and practitioners deal with on a daily
 basis. ZenML uses [an expressive range of machine learning concepts](https://docs.zenml.io/core-concepts) that are continuously distilled and evolved from the classes of
 problems tackled by the ML tooling ecosystem.
@@ -198,17 +199,16 @@ Reliability Engineers. More than an MLOps framework, ZenML is also
 ### Highly Customizable through Extensible Design
 
 MLOps frameworks must be extensible by definition. Integration boundaries must
-be clearly delineated and modeled as separate libraries or modules, with well
-defined interfaces that can be extended and tailored to specific functionality
+be clearly delineated and modeled as separate libraries or modules, with well-defined interfaces that can be extended and tailored to specific functionality
 needs.
 
 At ZenML, we follow the [S.O.L.I.D.](https://en.wikipedia.org/wiki/SOLID)
-and [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)design principles to maintain a loose coupling between core and external
+and [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) design principles to maintain a loose coupling between core and external
 components and ensure that the framework is easy to extend and customize.
 
 ![MLOps Extensible Stacks](../assets/posts/zenml-framework/zenml-stacks.png)
 
-All ZenML Stack components have well defined and well documented interfaces.
+All ZenML Stack components have well-defined and well-documented interfaces.
 This makes it possible to [extend ZenML to add new Stack component implementations](https://docs.zenml.io/extending-zenml/stacks-components-flavors)
 without having to modify the core code and without invalidating any of the
 interoperability guarantees that ZenML provides. The following are some
@@ -216,15 +216,15 @@ examples of the extensibility options supported by ZenML:
 
 * you can [add a new Artifact Store flavor](https://docs.zenml.io/extending-zenml/artifact-store)
 by defining a few basic IO operations and seamlessly transition your existing
-code to use the storage backend of your choice.
+code to use the storage backend of your choice
 * if you need to use a custom pipeline orchestration tool that is not already
 included in ZenML's list of integrations, you can
 [write your own Orchestrator plugin](https://docs.zenml.io/extending-zenml/orchestrator)
 * to serve models using the model deployment tool of your choosing,
 the [Model Deployer interface can be extended](https://docs.zenml.io/extending-zenml/model-deployer)
-to accommodate any library or platform that serves that function.
+to accommodate any library or platform that serves that function
 
-The extensibility of ZenML gives ML practitioners the freedom of DYI with all
+The extensibility of ZenML gives ML practitioners the freedom of DIY with all
 the benefits of interoperability and makes ZenML a powerful tool for building
 MLOps systems specifically tailored to the needs of any ML project.
 
