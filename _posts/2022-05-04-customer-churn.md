@@ -256,7 +256,7 @@ zenml stack register aws_kubeflow_stack -m kubeflow_metadata_store -a s3_store -
 zenml stack set aws_kubeflow_stack
 ```
 
-4. Do a pipeline run
+4. Run a pipeline
 
 ```shell
 python run_seldon_deployment_pipeline.py --secret seldon-init-container-secret --deploy
