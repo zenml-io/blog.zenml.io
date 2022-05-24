@@ -9,8 +9,8 @@ performance. But how can we possibly reconcile our need for flexibility
 with the overwhelming complexity of a continuously evolving ecosystem of tools
 and technologies? MLOps frameworks promise to deliver the ideal balance between
 flexibility, usability and maintainability, but not all MLOps frameworks are
-created equal. In this post, we take a critical look at what makes an MLOps
-framework worth using and what we should expect from one."
+created equal. In this post, I take a critical look at what makes an MLOps
+framework worth using and what you should expect from one."
 category: mlops
 tags: mlops tooling zenml evergreen bigger-picture devops
 publish_date: May 24, 2022
@@ -20,13 +20,10 @@ image:
   path: /assets/posts/zenml-framework/zenml-framework.gif
 ---
 
-The journey that machine learning projects embark on from inception until the
-moment our machine learning models are continuously trained and deployed to
-production with the desired quality and performance characteristics is a long
-and perilous one. Without proper planning and guidance, too many projects fail
-to reach their full potential and end up in drift limbo, or they accrue an
-unmanageable amount of technical debt and complexity along the way which makes
-them nearly impossible to maintain and evolve in the long run.
+The paths that machine learning projects take on their way to production are
+long and perilous. Too many projects fail to reach their full potential and
+end up in drift limbo, or they accrue technical debt and complexity to the
+point where they become nearly impossible to maintain and evolve.
 
 <iframe src="https://giphy.com/embed/Yq2SKEsscV85lPRJdu" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Somewhere on the way to production ML (<a href="https://giphy.com/gifs/Yq2SKEsscV85lPRJdu">via GIPHY</a>)</p>
 
@@ -53,7 +50,7 @@ must be present, followed by monitoring, data profiling and drift detection.
 Some form of orchestration is crucial to getting all these features to interact
 and function in sync to achieve a continuous automated workflow. This brief
 description barely scratches the surface of what is required to build a
-successful MLOps platform and we haven't even mentioned the infrastructure
+successful MLOps platform and I haven't even mentioned the infrastructure
 layer with all its intricacies.
 
 Confronted with this overwhelming complexity, AI/ML teams usually go one of
@@ -66,14 +63,14 @@ custom MLOps system by incrementally connecting together the tool components
 mandated by their particular needs and preserving a high degree of control over
 tooling and infrastructure choices in the process.
 
-While there certainly are downsides and advantages to both approaches, we argue
+While there certainly are upsides and downsides to both approaches, I argue
 that using an MLOps framework is a great compromise between the two pathways. It
 avoids inheriting the technical debt of reinventing the wheel without taking
 away any of the benefits of flexible and extensible tooling. 
 
 ## Are MLOps Platforms the Answer?
 
-Before we begin to dive into MLOps frameworks, it will be worth revisiting
+Before I begin to dive into MLOps frameworks, it will be worth revisiting
 the limitations of MLOps *platforms* to set down some basic references and
 expectations.
 
@@ -114,7 +111,8 @@ the disadvantages of their managed counterparts. For one, they are usually
 constructed to respond to a very concrete set of necessities and implemented
 with a focus on functionality and fast results often limited by budgetary
 restrictions. Flexibility is classified as a luxury that few organizations want
-to invest in, resulting in systems that are equally opinionated and rigid.
+to invest in, resulting in systems that are as opinionated and rigid as managed
+platforms.
 
 <iframe src="https://giphy.com/embed/m12EDnP8xGLy8" width="480" height="384" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>My model is in here somewhere (<a href="https://giphy.com/gifs/room-fix-lan-m12EDnP8xGLy8">via GIPHY</a>)</p>
 
@@ -138,23 +136,28 @@ simply, they coordinate the movement of code, data, models and other machine
 learning artifacts between software components that are otherwise not directly
 compatible and interoperable.
 
-The defining characteristic of integration frameworks is the ability to
-identify functional and architectural patterns repeated in a large set of
-libraries or systems and to leverage these patterns to define a representative
-set of high-level abstractions implemented by said libraries or systems through
-an extensible set of adapters. This strategy of extracting simplicity out of
-complexity is key to the success of any integration framework and has been
-proven time and time again by democratizing remarkable technological advances
-such as virtualization, containerization, cloud, cloud-native and serverless
-computing.
+The defining characteristic of integration frameworks could be summarized as:
 
-The [recent 0.8.0 ZenML release](https://blog.zenml.io/zero-eight-zero-release/) marks a major shift in perspective that the
-project has been undergoing for the past couple of months. The focus was moved
+1. identifying functional and architectural patterns repeated in a
+large set of libraries or systems
+2. leveraging these patterns to define a representative set of high-level
+abstractions
+3. providing implementations for these abstractions through a modular and
+extensible set of integration adapters
+
+This strategy of extracting simplicity out of complexity is key to the success
+of any integration framework and has been proven time and time again by
+democratizing remarkable technological advances such as virtualization,
+containerization, cloud, cloud-native and serverless computing.
+
+The [recent 0.8.0 ZenML release](https://blog.zenml.io/zero-eight-zero-release/)
+marks a major change in perspective that the
+ZenML team has undertaken for the past couple of months. We shifted our focus
 away from merely orchestrating a growing [list of available integrations](https://docs.zenml.io/advanced-guide/integrations)
 and towards making ZenML a vastly extensible MLOps framework that addresses all
-the shortcomings of MLOps platforms. In the second part of this article, we
-rationalize the principles that MLOps frameworks must abide by and explore how
-we designed and continuously reinvent ZenML to be their concrete embodiment.
+the shortcomings of MLOps platforms. In the second part of this article, I
+define some important principles that all mature MLOps frameworks should abide
+by and reveal how they are reflected in the ZenML framework.
 
 ### Portable Pipelines
 
@@ -167,9 +170,9 @@ different tooling and infrastructure configurations targeting different
 production environments suitable for large-scale data processing pipelines,
 distributed storage, orchestration and model deployment.
 
-MLOps frameworks must make the transition from experimentation to production
+_MLOps frameworks must make the transition from experimentation to production
 as smooth as possible, to reduce or even eliminate the need for costly
-code refactoring.
+code refactoring._
 
 ZenML does a stellar job of decoupling the ML pipeline code from the tooling
 and infrastructure required to run it. With ZenML, you can start experimenting
@@ -180,27 +183,29 @@ changes!
 
 ### Representative Abstractions
 
-MLOps frameworks detach the user experience from the underlying complexity by
+_MLOps frameworks detach the user experience from the underlying complexity by
 defining relatable and easy to use high-level machine learning abstractions.
 These abstractions must be easy to understand and use. Above all they must be
 evocative of the set of concepts that ML and practitioners deal with on a daily
-basis. ZenML uses [an expressive range of machine learning concepts](https://docs.zenml.io/core-concepts) that are continuously distilled and evolved from the classes of
+basis_
+
+ZenML uses [an expressive range of machine learning concepts](https://docs.zenml.io/core-concepts) that are continuously distilled and evolved from the classes of
 problems tackled by the ML tooling ecosystem.
 
 At the same time, the ZenML team acknowledges that AI/ML teams are an amalgam of
 diverse roles and responsibilities and their challenges are not only technical
 but equally organizational. We design the ZenML framework abstractions as the
 foundation of a common machine learning software development language that all
-roles involved in the machine learning project lifecycle can learn, understand
+personas involved in the machine learning project lifecycle can learn, understand
 and relate to, from Data Scientists and ML Engineers to Operations and Site
 Reliability Engineers. More than an MLOps framework, ZenML is also
 [a collaboration framework](https://docs.zenml.io/collaborate/collaborate).
 
 ### Highly Customizable through Extensible Design
 
-MLOps frameworks must be extensible by definition. Integration boundaries must
-be clearly delineated and modeled as separate libraries or modules, with well-defined interfaces that can be extended and tailored to specific functionality
-needs.
+_MLOps frameworks must be extensible by definition. Integration boundaries must
+be clearly delineated and modeled as separate libraries or modules, with well-defined
+interfaces that can be extended and tailored to specific functionality needs._
 
 At ZenML, we follow the [S.O.L.I.D.](https://en.wikipedia.org/wiki/SOLID)
 and [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) design principles to maintain a loose coupling between core and external
@@ -227,6 +232,18 @@ to accommodate any library or platform that serves that function
 The extensibility of ZenML gives ML practitioners the freedom of DIY with all
 the benefits of interoperability and makes ZenML a powerful tool for building
 MLOps systems specifically tailored to the needs of any ML project.
+
+## The Future is Now
+
+In any discipline, best practices and tools are being developed, they evolve and
+eventually converge. There comes a moment when a critical point is reached where
+crystallization of the underlying principles and patterns occurs. This also
+happens to be tied to another generic principle that differentiates successful
+frameworks from short lived ones: timing.
+
+In machine learning, this turning point is now and it is time for MLOps
+frameworks to do what they do best: to nourish this convergence phenomenon and
+to bring more structure to an ecosystem that is ripe for standardization. 
 
 ## Talk to Us
 
