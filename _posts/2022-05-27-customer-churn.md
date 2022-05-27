@@ -104,7 +104,8 @@ pipeline run [here](http://localhost:8080/#/runs).
 
 Now I will transition our pipeline to a more production-ready setting and deploy it in a more robust environment because I don't want to deploy our pipeline locally; I want to deploy it on the cloud. I need to deploy it on the cloud because training and deploying ML/DL models can be memory-intensive and requires more compute power to train the model. ZenML makes it painless to transition from local stack to cloud. In this section, I will run the same pipeline on a Kubeflow Pipelines deployment on AWS.
 
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/OKWmASuqUiIKl6ohO6" width="50%" height="50%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/OKWmASuqUiIKl6ohO6">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/OKWmASuqUiIKl6ohO6" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/OKWmASuqUiIKl6ohO6">via GIPHY</a></p>
+
 There are two steps to continue:
 
 - Set up the necessary cloud resources on the provider of your choice
@@ -166,7 +167,8 @@ below:
 
 We have a running pipeline deployed using Kubeflow Pipelines on AWS. Now I can connect the pipeline to a data application like [Streamlit](https://streamlit.io/) to use the model for prediction. The following code is the core logic for connecting the pipeline to Streamlit:
 
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/QvGCMeHuP1vLYl2hLb" width="50%" height="50%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/connect-plugin-integration-QvGCMeHuP1vLYl2hLb">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/QvGCMeHuP1vLYl2hLb" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/connect-plugin-integration-QvGCMeHuP1vLYl2hLb">via GIPHY</a></p>
+
 ```python
 repo = Repository()
 p = repo.get_pipeline("training_pipeline")
