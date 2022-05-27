@@ -47,7 +47,7 @@ Our training pipeline `run_kubeflow_pipeline.py` consists of the following steps
 - `model_trainer`: Train the model.
 - `evaluation`: Evaluate the trained model.
 
-if you want to run the pipeline with `default` stack settings (i.e. you can run the whole pipeline as traditional ZenML pipelines), you can run the following command to run it:
+If you want to run the pipeline with `default` stack settings (i.e. you can run the whole pipeline as traditional ZenML pipelines), you can run the following command to run it:
 
 ```bash
 zenml stack set default
@@ -96,7 +96,7 @@ python run_kubeflow_pipeline.py
 ```
 
 By running the script, it will build a Docker image containing all the necessary Python packages and
-files, push it to the local container registry and schedule a pipeline run-in
+files, push it to the local container registry and schedule a pipeline run in
 Kubeflow Pipelines. Once the script is finished, you should be able to see the
 pipeline run [here](http://localhost:8080/#/runs).
 
@@ -104,7 +104,7 @@ pipeline run [here](http://localhost:8080/#/runs).
 
 Now I will transition our pipeline to a more production-ready setting and deploy it in a more robust environment because I don't want to deploy our pipeline locally; I want to deploy it on the cloud. I need to deploy it on the cloud because training and deploying ML/DL models can be memory-intensive and requires more compute power to train the model. ZenML makes it painless to transition from local stack to cloud. In this section, I will run the same pipeline on a Kubeflow Pipelines deployment on AWS.
 
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/OKWmASuqUiIKl6ohO6" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/OKWmASuqUiIKl6ohO6">via GIPHY</a></p>
+<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/OKWmASuqUiIKl6ohO6" width="50%" height="50%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/OKWmASuqUiIKl6ohO6">via GIPHY</a></p>
 There are two steps to continue:
 
 - Set up the necessary cloud resources on the provider of your choice
@@ -156,14 +156,17 @@ python run_kubeflow_pipeline.py train
 kubectl --namespace kubeflow port-forward svc/ml-pipeline-ui 8080:80
 ```
 
-To see the UI, you can go to [the localhost URL](http://localhost:8080/#/runs). If everything is working, you should see the model deployed and running as below:
+To see the UI, you can go to [the localhost URL](http://localhost:8080/#/runs).
+If everything is working, you should see the model deployed and running as
+below:
+
 ![SuccessfulPipelineRun](/assets/posts/customer-churn/runsuccesskubeflow.png)
 
 ### Connecting Kubeflow Pipelines with Streamlit
 
 We have a running pipeline deployed using Kubeflow Pipelines on AWS. Now I can connect the pipeline to a data application like [Streamlit](https://streamlit.io/) to use the model for prediction. The following code is the core logic for connecting the pipeline to Streamlit:
 
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/QvGCMeHuP1vLYl2hLb" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/connect-plugin-integration-QvGCMeHuP1vLYl2hLb">via GIPHY</a></p>
+<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/QvGCMeHuP1vLYl2hLb" width="50%" height="50%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/connect-plugin-integration-QvGCMeHuP1vLYl2hLb">via GIPHY</a></p>
 ```python
 repo = Repository()
 p = repo.get_pipeline("training_pipeline")
@@ -193,7 +196,7 @@ While building the real-world workflow for predicting whether a customer will ch
 In this project, I built a continuous deployment pipeline that trains a model and then serves it with Seldon Core as the industry-ready model deployment tool of choice. If you are interested in learning more about Seldon Core, you can check out the [ZenML example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment). The following diagram shows the flow of the whole pipeline:
 ![seldondeployment](/assets/posts/customer-churn/seldoncondeploy.gif)
 
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/8BlnoV6o8IH7im8Eud" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/animation-art-design-8BlnoV6o8IH7im8Eud">via GIPHY</a></p>
+<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/8BlnoV6o8IH7im8Eud" width="50%" height="50%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/animation-art-design-8BlnoV6o8IH7im8Eud">via GIPHY</a></p>
 
 Let's set up our full AWS stack to run the pipeline using Seldon Core.
 
@@ -305,6 +308,6 @@ I'm fetching our `model_deployer` step from the `continuous_deployment_pipeline`
 
 In this blog post, I showed you how to build a production-grade machine learning system that can predict customer churn. I showed you how to deploy the pipeline using Kubeflow Pipelines and transition from the default setting to the production setting. I also showed you how to build a continuous deployment pipeline using Seldon Core which I deployed on AWS. I also showed you how to connect the pipeline with Streamlit for inference from our model service.
 
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/BPJmthQ3YRwD6QqcVD" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/HBOMax-hbomax-the-great-gatsby-2013-thegreatgatsbyonhbomax-BPJmthQ3YRwD6QqcVD">via GIPHY</a></p>
+<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/BPJmthQ3YRwD6QqcVD" width="50%" height="50%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/HBOMax-hbomax-the-great-gatsby-2013-thegreatgatsbyonhbomax-BPJmthQ3YRwD6QqcVD">via GIPHY</a></p>
 
 If you're interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
