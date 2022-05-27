@@ -193,10 +193,14 @@ While building the real-world workflow for predicting whether a customer will ch
 
 [Seldon Core](https://github.com/SeldonIO/seldon-core) is a production-grade open-source model serving platform. It packs a wide range of features built around deploying models to REST/GRPC microservices, including monitoring and logging, model explainers, outlier detectors, and various continuous deployment strategies such as A/B testing and canary deployments, and more.
 
-In this project, I built a continuous deployment pipeline that trains a model and then serves it with Seldon Core as the industry-ready model deployment tool of choice. If you are interested in learning more about Seldon Core, you can check out the [ZenML example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment). The following diagram shows the flow of the whole pipeline:
-![seldondeployment](/assets/posts/customer-churn/seldoncondeploy.gif)
+In this project, I built a continuous deployment pipeline that trains a model
+and then serves it with Seldon Core as the industry-ready model deployment tool
+of choice. If you are interested in learning more about Seldon Core, you can
+check out the [ZenML
+example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).
+The following diagram shows the flow of the whole pipeline:
 
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/8BlnoV6o8IH7im8Eud" width="50%" height="50%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/animation-art-design-8BlnoV6o8IH7im8Eud">via GIPHY</a></p>
+![seldondeployment](/assets/posts/customer-churn/seldoncondeploy.gif)
 
 Let's set up our full AWS stack to run the pipeline using Seldon Core.
 
