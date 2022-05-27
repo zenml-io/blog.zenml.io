@@ -3,8 +3,8 @@ layout: post
 author: Ayush Singh
 title: Will they stay or will they go? Building a Customer Loyalty Predictor
 description: "We built an end-to-end production-grade pipeline using ZenML for a customer churn model that can predict whether a customer will remain engaged with the company or not."
-publish_date: April 20, 2022
-date: 2022-04-20T10:20:00Z
+publish_date: May 27, 2022
+date: 2022-05-27T10:20:00Z
 tags: machine-learning mlops evergreen applied-zenml pipelines zenfile
 category: zenml
 thumbnail: /assets/posts/customer-churn/poster.jpg
@@ -42,7 +42,6 @@ Our training pipeline `run_kubeflow_pipeline.py` consists of the following steps
 
 - `ingest_data`: Ingest the data from the source and create a DataFrame.
 - `encode_cat_cols`: Encode categorical columns.
-- `handle_imbalanced_data`: Handle imbalanced data.
 - `drop_cols`: Dropping irrelevant columns.
 - `data_splitter`: Split the data into training and test sets.
 - `model_trainer`: Train the model.
@@ -148,7 +147,7 @@ zenml stack set cloud_kubeflow_stack
 4. Run the pipeline
 
 ```shell
-python run_kubeflow_pipeline.py
+python run_kubeflow_pipeline.py train
 ```
 
 5. Configure port forwarding and check the Kubeflow UI to see if the model is deployed and running! 🚀
