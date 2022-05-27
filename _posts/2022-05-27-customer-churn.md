@@ -312,6 +312,6 @@ I'm fetching our `model_deployer` step from the `continuous_deployment_pipeline`
 
 In this blog post, I showed you how to build a production-grade machine learning system that can predict customer churn. I showed you how to deploy the pipeline using Kubeflow Pipelines and transition from the default setting to the production setting. I also showed you how to build a continuous deployment pipeline using Seldon Core which I deployed on AWS. I also showed you how to connect the pipeline with Streamlit for inference from our model service.
 
-<div style="width:50%;height:0;position:relative;"><iframe src="https://giphy.com/embed/BPJmthQ3YRwD6QqcVD" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/HBOMax-hbomax-the-great-gatsby-2013-thegreatgatsbyonhbomax-BPJmthQ3YRwD6QqcVD">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/BPJmthQ3YRwD6QqcVD" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/HBOMax-hbomax-the-great-gatsby-2013-thegreatgatsbyonhbomax-BPJmthQ3YRwD6QqcVD">via GIPHY</a></p>
 
 If you're interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
