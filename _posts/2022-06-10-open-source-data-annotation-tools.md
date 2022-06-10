@@ -20,7 +20,7 @@ The tradeoffs for both are often similar to the broader tools around choosing op
 
 With all this in mind, I gathered together a list of all the open-source data labeling tools available currently. You can check out our [`awesome-open-data-annotation` repository here](https://github.com/zenml-io/awesome-open-data-annotation). The core selection criteria were as follows:
 
-- The tool needs to have an open-source license
+- The tool needs to have an open-source license.
 - The tool needs to be actively maintained. (Someone's hobby project from 5 years ago probably isn't going to be of much use in a production environment in 2022.)
 - The tool should be functional and fit for purpose.
 
