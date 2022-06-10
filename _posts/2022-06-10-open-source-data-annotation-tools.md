@@ -18,7 +18,11 @@ We've been reviewing the space of annotation and labeling, and how it intersects
 
 The tradeoffs for both are often similar to the broader tools around choosing open-source for MLOps. (See [Matt Squire's blog](https://www.fuzzylabs.ai/blog-post/why-open-source-mlops-is-awesome) on why open-source MLOps is awesome for a strong position on why you should go with open-source.) In broad strokes, open-source gives you flexibility and freedom albeit with the caveat that there might be some initial hurdles to get things set up and working in exactly the way you want. If you find a closed-source platform that fits completely with your situation and needs then that might be the way to go (at least initially). Eventually and inevitably, your needs will change and at that point you will likely feel the pain of being stuck in a box that doesn't allow you the flexibility to reshape how the tool serves your needs. This is one of the clear and standout advantages of choosing the open-source route.
 
-With all this in mind, I gathered together a list of all the open-source data labeling tools available currently. You can check out our [`awesome-open-data-annotation` repository here](https://github.com/zenml-io/awesome-open-data-annotation). The core selection criteria were as follows:
+With all this in mind, I gathered together a list of all the open-source data labeling tools available currently. You can check out our [`awesome-open-data-annotation` repository here](https://github.com/zenml-io/awesome-open-data-annotation). 
+
+![Our new open-source data annotation repository](../assets/posts/labeling/awesome_data_annotation_small.gif)
+
+The core selection criteria were as follows:
 
 - The tool needs to have an open-source license.
 - The tool needs to be actively maintained. (Someone's hobby project from 5 years ago probably isn't going to be of much use in a production environment in 2022.)
