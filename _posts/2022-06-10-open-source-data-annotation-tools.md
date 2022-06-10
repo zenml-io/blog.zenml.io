@@ -2,7 +2,7 @@
 layout: post
 author: Alex Strick van Linschoten
 title: "Need an open-source data annotation tool? We've got you covered!"
-description: "48 tools"
+description: "We put together a list of 48 open-source annotation and labeling tools to support different kinds of machine-learning projects."
 category: mlops
 tags: mlops evergreen machine-learning deep-learning open-source
 publish_date: June 10, 2022
@@ -24,10 +24,10 @@ With all this in mind, I gathered together a list of all the open-source data la
 - The tool needs to be actively maintained. (Someone's hobby project from 5 years ago probably isn't going to be of much use in a production environment in 2022.)
 - The tool should be functional and fit for purpose.
 
-The repository showcases 48 tools with different specialisms, from text to images to cross-domain options. I was a little surprised to find so many but 
+The repository showcases 48 tools with different specialisms, from text to images to cross-domain options. I was pleasantly surprised to find so many. Moreover, the selection include some that have been around for a few years and also others that are much newer. This shows that the space is still seen as one where it makes sense to invest in engineering robust solutions.  As one example of this, we were excited to see companies like [Recognai](https://www.recogn.ai/en/) push forward in their development of the textual annotation tool [Rubrix](https://www.rubrix.ml/).
 
-resources — humans in the loop blog on the tools
+We welcome contributions [to this repository](https://github.com/zenml-io/awesome-open-data-annotation). From suggestions for tools that we've missed to categories of annotation that we weren't aware of, please feel free to [send us your Pull Requests](https://github.com/zenml-io/awesome-open-data-annotation)!
 
-At ZenML, we're starting work to incorporate data labeling and annotation tools into our framework so that you can gain all the benefits described above as a core part of your workflow. If you have a use case which requires data annotation in your pipelines, please let us know what you're building and there are tools you feel like you couldn't live without! The easiest way to contact us is via our Slack community which [you can join here](https://zenml.io/slack-invite/).
+🔥 Do you use these tools or do you want to add one to your MLOps stack? At ZenML, **we are looking for design partnerships and collaboration** to develop the integrations and workflows around using annotation within the MLOps lifecycle. If you have a use case which requires data annotation in your pipelines, **please let us know what you're building** and there are tools you feel like you couldn't live without! The easiest way to contact us is via our Slack community which [you can join here](https://zenml.io/slack-invite/).
 
 [*Cover photo by [Darya Tryfanava](https://unsplash.com/@darya_tryfanava) on [Unsplash](https://unsplash.com/s/photos/stickers)*]
