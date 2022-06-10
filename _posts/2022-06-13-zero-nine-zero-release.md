@@ -163,5 +163,4 @@ roadmap](https://zenml.io/roadmap) where you can vote on your favorite upcoming
 feature or propose new ideas for what the core team should work on. You can vote
 without needing to log in, so please do let us know what you want us to build!
 
-[Photo by <a href="https://unsplash.com/@avmartin">Audrey Martin</a> on <a
-href="https://unsplash.com/photos/FJpHcqMud_Y">Unsplash</a>] 
+[Photo by <a href="https://unsplash.com/@allisonh328">Allison Louise</a> on <a href="https://unsplash.com/photos/xABgmlX4ABE">Unsplash</a>]
