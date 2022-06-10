@@ -49,4 +49,7 @@ You will probably never regret spending time with your data, exposed to all the 
 
 At ZenML, we're starting work to incorporate data labeling and annotation tools into our framework so that you can gain all the benefits described above as a core part of your workflow. If you have a use case which requires data annotation in your pipelines, please let us know what you're building and there are tools you feel like you couldn't live without! The easiest way to contact us is via our Slack community which [you can join here](https://zenml.io/slack-invite/).
 
-[*Cover photo by [Alina Grubnyak](https://unsplash.com/photos/ZiQkhI7417A#:~:text=Photo%20by-,Alina%20Grubnyak,-on%20Unsplash) on [Unsplash](https://unsplash.com/photos/ZiQkhI7417A#:~:text=Alina%20Grubnyak%20on-,Unsplash,-Want%20to%20launch)*]
+[*Cover photo by [Alina
+Grubnyak](https://unsplash.com/photos/ZiQkhI7417A#:~:text=Photo%20by-,Alina%20Grubnyak,-on%20Unsplash)
+on
+[Unsplash](https://unsplash.com/photos/ZiQkhI7417A#:~:text=Alina%20Grubnyak%20on-,Unsplash,-Want%20to%20launch)*]

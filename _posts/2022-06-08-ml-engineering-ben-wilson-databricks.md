@@ -4,7 +4,7 @@ author: Alex Strick van Linschoten
 title: "Podcast: ML Engineering with Ben Wilson"
 description: "This week I spoke with Ben Wilson, author of 'Machine Learning Engineering in Action', a jam-backed guide to all the lessons that Ben has learned over his years working to help companies get models out into the world and run them in production."
 category: podcast
-tags: podcast evergreen bigger-picture tooling education machine-learning, mlops
+tags: podcast evergreen bigger-picture tooling education machine-learning mlops
 publish_date: June 8, 2022
 date: 2022-06-08T00:02:00Z
 thumbnail: /assets/posts/ben-wilson/Wilson_Ben_S20NA.jpg
