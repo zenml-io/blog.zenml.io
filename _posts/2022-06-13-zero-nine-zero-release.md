@@ -20,7 +20,7 @@ Beyond this, as usual we included a number of smaller bugfixes and documentation
 
 Who says you need complicated infrastructure setup to run your pipeline? Just use GitHub Actions 😊 With [this new addition](https://github.com/zenml-io/zenml/pull/685) to ZenML's ever-growing list of built-in orchestrators, you can run your pipelines using GitHub Actions to manage the dependencies between steps.
 
-![Running your pipelines using GitHub Actions as orchestrator](../assets/posts/release_0_9_0/IMAGENAME)
+![Running your pipelines using GitHub Actions as orchestrator](../assets/posts/release_0_9_0/github_actions_ui.png)
 
 You wouldn't want your secrets floating around openly in your code commits, so we made sure to integrate with [the way GitHub stores secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) as encrypted environment variables.
 
