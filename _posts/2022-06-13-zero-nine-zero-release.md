@@ -1,11 +1,11 @@
 ---
 layout: post
-author: Hamza Tahir
-title: "What's New in v0.9.0: Extend ZenML Any Way You Like!"
+author: Alex Strick van Linschoten
+title: "What's New in v0.9.0: Everyone Gets an Orchestrator!"
 description: ""
 category: zenml
 tags: zenml release-notes
-publish_date: May 18, 2022
+publish_date: June 13, 2022
 date: 2022-06-13T00:02:00Z
 thumbnail: /assets/posts/release_0_9_0/allison-louise-xABgmlX4ABE-unsplash.jpg
 image:
@@ -22,17 +22,6 @@ Beyond this, a host of smaller bugfixes and documentation changes combine to
 make ZenML 0.8.0 a more pleasant user experience overall. For a detailed look at
 what's changed, give [our full release
 notes](https://github.com/zenml-io/zenml/releases/tag/0.8.0) a glance.
-
-## ⏲️ EVENT: Join the ZenML team for an MLOps Day
-
-We are hosting a MLOps day on Wednesday, May 25, where we'll be building a
-vendor-agnostic MLOps pipeline from scratch.
-
-Sign up
-[here](https://www.eventbrite.com/e/zenml-mlops-day-join-us-in-building-a-vendor-agnostic-mlops-pipeline-tickets-336331515617)
-to join the entire ZenML team in showcasing the latest release, answering the
-community's questions, and live-coding vendor-agnostic MLOps features with the
-ZenML framework!
 
 ## 🧘‍♀️ Extensibility is our middle name
 
