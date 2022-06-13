@@ -28,7 +28,7 @@ Needless to say, the GitHub Actions orchestrator is an exciting new addition to 
 
 ## ☁ Vertex AI Orchestrator: To Google and Beyond!
 
-We previously added a way to run individual steps on [Vertex AI](https://cloud.google.com/vertex-ai) as step operators, but now [Gabriel Martín Blázquez](https://github.com/gabrielmbmb) has [added a way](https://github.com/zenml-io/zenml/pull/640) to orchestrate your entire pipelines.
+We previously added a way to run individual steps on [Vertex AI](https://cloud.google.com/vertex-ai) as step operators. One of our amazing community members, [Gabriel Martín Blázquez](https://github.com/gabrielmbmb), has [added a way](https://github.com/zenml-io/zenml/pull/640) to orchestrate your entire pipelines using Vertex AI Pipelines.
 
 The most exciting thing about this new orchestrator is that it came as a direct result of our documentation and extensibility improvements in [our last release](https://blog.zenml.io/zero-eight-zero-release/). We look forward to seeing what other integrations users add to their stacks…
 
