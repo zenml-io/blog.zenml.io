@@ -75,11 +75,11 @@ The latest release include several smaller features and updates to existing func
 
 We received several new community contributions during this release cycle. We mentioned Gabriel's Vertex AI orchestrator above already, but we also saw the following contributions:
 
-* @anencore94 made their first contribution in https://github.com/zenml-io/zenml/pull/644
-* @hectorLop made their first contribution in https://github.com/zenml-io/zenml/pull/648
-* @gabrielmbmb made their first contribution in https://github.com/zenml-io/zenml/pull/640
-* @ketangangal made their first contribution in https://github.com/zenml-io/zenml/pull/628
-* @Reed-Schimmel made their first contribution in https://github.com/zenml-io/zenml/pull/684
+* [@anencore94](https://github.com/anencore94) made their first contribution in [https://github.com/zenml-io/zenml/pull/644](https://github.com/zenml-io/zenml/pull/644)
+* [@hectorLop](https://github.com/hectorLop) made their first contribution in [https://github.com/zenml-io/zenml/pull/648](https://github.com/zenml-io/zenml/pull/648)
+* [@gabrielmbmb](https://github.com/gabrielmbmb) made their first contribution in [https://github.com/zenml-io/zenml/pull/640](https://github.com/zenml-io/zenml/pull/640)
+* [@ketangangal](https://github.com/ketangangal) made their first contribution in [https://github.com/zenml-io/zenml/pull/628](https://github.com/zenml-io/zenml/pull/628)
+* [@Reed-Schimmel](https://github.com/Reed-Schimmel) made their first contribution in [https://github.com/zenml-io/zenml/pull/684](https://github.com/zenml-io/zenml/pull/684)
 
 ## 👩‍💻 Contribute to ZenML!
 
