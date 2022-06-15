@@ -34,18 +34,29 @@ This tutorial assumes that you have
 ## Azure Setup
 
 ### Create an account
+
+If you don't have an Azure account yet, go to https://azure.microsoft.com/en-gb/free/ and create one.
+
+### Create a resource group
+
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups
+### Create a storage account
+https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal
+
 ### Create an Azure Blob Storage Container
 
 
 Note down:
 - <ACCOUNT_NAME>
 - <ACCOUNT_KEY>
-- <BLOB_STORAGE_CONTAINER_PATH>
+- <BLOB_STORAGE_CONTAINER_NAME>
 
 ### Host a MySQL database
 
 Azure Database for MySQL
 
+
+Wait until the deployment if finished.
 
 Note down: 
 - <USERNAME>
