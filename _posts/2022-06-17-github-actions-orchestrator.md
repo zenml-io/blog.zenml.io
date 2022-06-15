@@ -206,26 +206,24 @@ zenml secret register azure_store_auth \
 ## Run the pipeline
 
 That was quite a lot of setup, but luckily we're (almost) done now.
-Let's execute the python script that "runs" our pipeline and take a look at what happens:
+Let's execute the python script that "runs" our pipeline and quickly discuss what it is doing:
 ```bash
 python run.py
 ```
 
-1) ZenML will build a Docker image with our pipeline code and all the requirements installed and push it to the GitHub container registry.
-2) The orchestrator will write a [GitHub Actions workflow file](https://docs.github.com/en/actions/using-workflows/about-workflows) to the directory `.github/workflows`. Pushing this workflow file will trigger the executing of our ZenML pipeline. We'll explain later at how to automate this step, but for our first pipeline run there is one last configuration step we need to do.
+This script runs a ZenML pipeline using our active GitHub stack. The orchestrator will now build a Docker image with our pipeline code and all the requirements installed and push it to the GitHub container registry.
+Once the image is pushed, the orchestrator will write a [GitHub Actions workflow file](https://docs.github.com/en/actions/using-workflows/about-workflows) to the directory `.github/workflows`. Pushing this workflow
+file will trigger the actual execution of our ZenML pipeline. We'll explain later at how to automate this step, but for our first pipeline run there is one last configuration step we need to do: We need to make sure
+our GitHub Actions are allowed to pull the Docker image that ZenML just pushed.
 
-### ...
-
-Now that our Docker image is pushed, we need to allow GitHub Actions to pull this image:
 1) Head to `https://github.com/users/<GITHUB_USERNAME>/packages/container/package/zenml-github-actions` (replace `<GITHUB_USERNAME>` with your GitHub username) and select `Package settings` on the right side:
 ![Package permissions step 1](../assets/posts/github-actions-orchestrator/package_permissions_0.png)
 2) In the `Manage Actions access` section, click on `Add Repository`:
 ![Package permissions step 2](../assets/posts/github-actions-orchestrator/package_permissions_1.png)
 3) Search for your forked repository `github-actions-orchestrator-tutorial` and give it read permissions. Your package settings should then look like this:
 ![Package permissions step 3](../assets/posts/github-actions-orchestrator/package_permissions_2.png)
-### Commit and push the workflow
 
-Congratulations on coming so far! Now all that's left to do is commit and push the workflow file:
+Done! Now all that's left to do is commit and push the workflow file:
 ```bash
 git add .github/workflows
 git commit -m "Add ZenML pipeline workflow"
