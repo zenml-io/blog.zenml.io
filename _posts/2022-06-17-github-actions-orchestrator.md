@@ -22,6 +22,7 @@ This tutorial assumes that you have
 * Docker installed
 * git installed
 * python installed (3.7-3.9)
+* GitHub account
 
 ## Azure Setup
 
@@ -204,7 +205,7 @@ python run.py
 ### ...
 
 Now that our Docker image is pushed, we need to allow GitHub Actions to pull this image:
-1) Head to https://github.com/users/<GITHUB_USERNAME>/packages/container/package/zenml-github-actions (replace `<GITHUB_USERNAME>` with your GitHub username) click on `Package settings` on the right side:
+1) Head to `https://github.com/users/<GITHUB_USERNAME>/packages/container/package/zenml-github-actions` (replace `<GITHUB_USERNAME>` with your GitHub username) and select `Package settings` on the right side:
 2) In the `Manage Actions access` section, click on `Add Repository`:
 3) TODO
 
