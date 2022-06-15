@@ -12,24 +12,36 @@ image:
   path: /assets/posts/github-actions-orchestrators/roman-synkevych-wX2L8L-fGeA-unsplash.jpg
 ---
 
+Move over Kubeflow! GitHub Actions is the new sheriff in town!
 
-[GitHub Actions](https://docs.github.com/en/actions) is a platform that allows you to execute arbitrary software development workflows right in your GitHub repository. It's most commonly used for CI/CD pipelines, but using the GitHub Actions orchestrator ZenML now enables you to easily run and schedule your machine learning pipelines as GitHub Actions workflows.
+We're really proud of our Kubeflow integration. It gives you a ton of power and flexibility and is a production-ready tool. But we also know that for many of you it's one step too many. Setting up a Kubernetes cluster is probably nobody's ideal way to spend their time, and it certainly requires some time investment to maintain.
 
-[GH Action example](https://github.com/zenml-io/zenml/tree/main/examples/github_actions_orchestration)
+We thought this was a concern worth addressing so I worked to build an alternative during the ZenHack Day we recently ran. [GitHub Actions](https://docs.github.com/en/actions) is a platform that allows you to execute arbitrary software development workflows right in your GitHub repository. It is most commonly used for CI/CD pipelines, but using the GitHub Actions orchestrator ZenML now enables you to easily run and schedule your machine learning pipelines as GitHub Actions workflows.
 
+## GitHub Actions: best in class for what?
 
+Most technical decisions come with various kinds of tradeoffs, and it's worth taking a moment to assess why you might want to use the GitHub Actions orchestrator in the first place.
 
-Note: 
-* Some of the commands in this tutorial rely on environment variables or a specific working directory from previous commands, so make sure to run them in the same shell.
-* In this tutorial we're going to use Microsoft's Azure platform for cloud storage and our MySQL database, but it works just as well on AWS or GCP.
+Let's start with the downsides:
+
+- You don't have as much flexibility as with a tool like Kubeflow in terms of specifying exactly what kinds of hardware are used to run your steps.
+- The orchestrator itself runs on the hardware that GitHub Actions provides (generously and [for free](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/)). This isn't the fastest or or most performant infrastructure setup, and it generally is much slower than even your local CPU machine. There are also memory and storage constraints to [the machines they provide](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources) as GitHub Actions runners.
+- GitHub offers no guarantees about when your actions will be executed; at peak times you might be waiting a while before the hardware is allocated and provisioned to run. If you are planning on running ZenML pipelines on a schedule (every ten minutes, for example) then this might not work as expected.
+
+So what's the point, then? These are indeed some serious downsides. Firstly and foremostly, there's the cost: running your pipelines on GitHub Actions is **free**. If you're interested in running your pipelines in the cloud on serverless infrastructure, there's probably no easier way to get started than to try out this orchestrator.
+
+You are also spared the pain of maintaining a Kubernetes cluster. Once you've configured it (see below for instructions) there's basically nothing you have to do on an ongoing basis. I hope you're sold on trying it out and want to get started, so let's not hold off any more.
+
+(Note that some of the commands in this tutorial rely on environment variables or a specific working directory from previous commands, so be sure to run them in the same shell. In this tutorial we're going to use [Microsoft's Azure platform](https://azure.microsoft.com/) for cloud storage and our MySQL database, but it works just as well on AWS or GCP.
 
 ## Prerequisites
 
-This tutorial assumes that you have
+This tutorial assumes that you have:
+
 * Docker installed
-* git installed
-* python installed (3.7-3.9)
-* GitHub account
+* `git` installed
+* Python installed (3.7-3.9)
+* a GitHub account
 
 ## Azure Setup
 
