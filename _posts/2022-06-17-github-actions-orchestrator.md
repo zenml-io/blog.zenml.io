@@ -71,17 +71,6 @@ Download:
 - <SSL_CLIENT_KEY>
 
 ## GitHub Setup
-
-
-### Fork the tutorial repository
-
-
-```bash
-git clone <>
-cd <>
-```
-
-
 ### Create a GitHub Personal Access Token
 
 Next up, we'll need to create a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that ZenML will use to authenticate with the GitHub API in order to store secrets and upload Docker images.
@@ -108,8 +97,24 @@ export GITHUB_AUTHENTICATION_TOKEN=<PERSONAL_ACCESS_TOKEN>
 
 When we'll run our pipeline later, ZenML will build a Docker image for us which will be used to execute the steps of the pipeline. In order to access this image inside GitHub Actions workflow, we'll push it to the GitHub container registry. Running the following command will use the personal access token created in the previous step to authenticate our local Docker client with this container registry:
 ```bash
-docker login ghcr.io -u $GITHUB_USERNAME -p $GITHUB_AUTHENTICATION_TOKEN
+echo "$GITHUB_AUTHENTICATION_TOKEN" | docker login ghcr.io -u "$GITHUB_USERNAME" --password-stdin
 ```
+
+### Fork and clone the tutorial repository
+
+Time to fork and clone an example repository which contains a very simple ZenML pipeline that trains a SKLearn SVC classifier on the [digits dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_digits_last_image.html).
+
+1) Go to https://github.com/zenml-io/github-actions-orchestrator-tutorial
+2) Click on `Fork` in the top right:
+![Fork step 1](../assets/posts/github-actions-orchestrator/fork_0.png)
+3) Click on `Create fork`:
+![Fork step 2](../assets/posts/github-actions-orchestrator/fork_1.png)
+4) Clone the repository to your local machine:
+    ```bash
+    git clone git@github.com:"$GITHUB_USERNAME"/github-actions-orchestrator-tutorial.git
+    # or `git clone https://github.com/"$GITHUB_USERNAME"/github-actions-orchestrator-tutorial.git` if you want to authenticate with HTTPS instead of SSL
+    cd github-actions-orchestrator-tutorial
+    ```
 
 ## ZenML Setup
 
@@ -137,15 +142,15 @@ A [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors) 
     zenml container-registry register github_container_registry \
         --flavor=github \
         --automatic_token_authentication=true \
-        --uri=ghcr.io/$GITHUB_USERNAME
+        --uri=ghcr.io/"$GITHUB_USERNAME"
     ```
 
 * The **secrets manager** is used to securely store all your credentials so ZenML can use them to authenticate with other components like your metadata or artifact store. We're going to use a secrets manager implementation that stores these credentials as [encrypted GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets):
     ```bash
     zenml secrets_manager register github_secrets_manager \
         --flavor=github \
-        --owner=$GITHUB_USERNAME \
-        --repository=zenml-github-actions-tutorial
+        --owner="$GITHUB_USERNAME" \
+        --repository=github-actions-orchestrator-tutorial
     ```
 
 * **Metadata stores** keep track of all the metadata associated with pipeline runs. They enable [ZenML's caching functionality](https://docs.zenml.io/developer-guide/caching) and allow us to query the parameters and inputs/outputs of steps of past pipeline runs. We'll register the MySQL database we created before with the following command (after replacing the `<PLACEHOLDERS>` with the values we [noted down](#host-a-mysql-database)):
@@ -219,15 +224,17 @@ python run.py
 ```
 
 1) ZenML will build a Docker image with our pipeline code and all the requirements installed and push it to the GitHub container registry.
-2) The orchestrator will write a [GitHub Actions workflow file](https://docs.github.com/en/actions/using-workflows/about-workflows) to the directory `.github/workflows`. Pushing this workflow file will trigger the executing of your ZenML pipeline. We'll explain later at how to automate this step, but for our first pipeline run there is one last configuration step we need to do.
+2) The orchestrator will write a [GitHub Actions workflow file](https://docs.github.com/en/actions/using-workflows/about-workflows) to the directory `.github/workflows`. Pushing this workflow file will trigger the executing of our ZenML pipeline. We'll explain later at how to automate this step, but for our first pipeline run there is one last configuration step we need to do.
 
 ### ...
 
 Now that our Docker image is pushed, we need to allow GitHub Actions to pull this image:
 1) Head to `https://github.com/users/<GITHUB_USERNAME>/packages/container/package/zenml-github-actions` (replace `<GITHUB_USERNAME>` with your GitHub username) and select `Package settings` on the right side:
+![Package permissions step 1](../assets/posts/github-actions-orchestrator/package_permissions_0.png)
 2) In the `Manage Actions access` section, click on `Add Repository`:
-3) TODO
-
+![Package permissions step 2](../assets/posts/github-actions-orchestrator/package_permissions_1.png)
+3) Search for your forked repository `github-actions-orchestrator-tutorial` and give it read permissions. Your package settings should then look like this:
+![Package permissions step 3](../assets/posts/github-actions-orchestrator/package_permissions_2.png)
 ### Commit and push the workflow
 
 Congratulations on coming so far! Now all that's left to do is commit and push the workflow file:
@@ -237,9 +244,10 @@ git commit -m "Add ZenML pipeline workflow"
 git push
 ```
 
-If we now go to our GitHub repository and click on the `Actions` tab, we should see our pipeline running! 🎉
+If we now check out the GitHub Actions for our repository here `https://github.com/<GITHUB_USERNAME>/github-actions-orchestrator-tutorial/actions` we should see our pipeline running! 🎉
 
-TODO: images
+![Running pipeline](../assets/posts/github-actions-orchestrator/success_0.png)
+![Finished pipeline](../assets/posts/github-actions-orchestrator/success_1.png)
 
 ## Automate the committing and pushing
 
