@@ -1,20 +1,19 @@
 ---
 layout: post
 author: Michael Schuster
-title: "Who needs Kubeflow when you have Github Actions"
+title: "Who needs Kubeflow when have Github Actions"
 description: ""
 category: zenml
-tags: zenml release-notes
-publish_date: June 17, 2022
-date: 2022-06-17T00:02:00Z
+tags: zenml integrations cloud
+publish_date: June 15, 2022
+date: 2022-06-15T00:02:00Z
 thumbnail: /assets/posts/release_0_9_0/allison-louise-xABgmlX4ABE-unsplash.jpg
 image:
   path: /assets/posts/release_0_9_0/allison-louise-xABgmlX4ABE-unsplash.jpg
 ---
 
 Note: 
-* The commands in this tutorial depend on each other, so make sure to run them in the same terminal (otherwise some environment variables might not be set or the working directory will be wrong)
-
+* Some of the commands in this tutorial rely on environment variables or a specific working directory from previous commands, so make sure to run them in the same shell.
 * In this tutorial we're going to use Azure for cloud storage and our MySQL database, but it works just as well on AWS or GCP.
 
 ## Prerequisites
@@ -54,7 +53,7 @@ Download:
 ## GitHub Setup
 
 
-### Create and clone a GitHub repository
+### Fork the tutorial repository
 
 
 ```bash
@@ -65,34 +64,40 @@ cd <>
 
 ### Create a GitHub Personal Access Token
 
+Next up, we'll need to create a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that ZenML will use to authenticate with the GitHub API in order to store secrets and upload Docker images.
 
+1) Go to https://github.com, click on your profile image in the top right corner and select `Settings`:
+![PAT step 1](../assets/posts/github-actions-orchestrator/pat_0.png)
+2) Scroll to the bottom and click on `Developer Settings` on the left side:
+![PAT step 2](../assets/posts/github-actions-orchestrator/pat_1.png)
+3) Select `Personal access tokens` and click on `Generate new token`:
+![PAT step 3](../assets/posts/github-actions-orchestrator/pat_2.png)
+![PAT step 4](../assets/posts/github-actions-orchestrator/pat_3.png)
+4) Give your token a descriptive name for future reference and select the `repo` and `write:packages` scopes:
+![PAT step 5](../assets/posts/github-actions-orchestrator/pat_4.png)
+5) Scroll to the bottom and click on `Generate token`. This will bring you to a page that allows you to copy your newly generated token:
+![PAT step 6](../assets/posts/github-actions-orchestrator/pat_5.png)
 
-Let's set the values for this 
-
+Now that we've got our token, let's store it in an environment variable for future steps. We'll also store our GitHub username that this token was created for. Replace the `<PLACEHOLDERS>` in the following command and run it:
 ```bash
-# Set environment variables for your GitHub username as well as the personal access token that you created earlier.
-# These will be used to authenticate with the GitHub API in order to store credentials as GitHub secrets.
 export GITHUB_USERNAME=<GITHUB_USERNAME>
-export GITHUB_AUTHENTICATION_TOKEN=<GITHUB_AUTHENTICATION_TOKEN>
+export GITHUB_AUTHENTICATION_TOKEN=<PERSONAL_ACCESS_TOKEN>
 ```
-
 
 ### Login to the Container registry
 
-When we'll run our pipeline later, ZenML will build a Docker image for us which will be used to execute the steps of the pipeline. In order to access this image inside GitHub Actions workflow, we'll push it to the GitHub container registry. Running the following command will use the personal access token created in the previous step to authenticate our Docker client with this container registry:
+When we'll run our pipeline later, ZenML will build a Docker image for us which will be used to execute the steps of the pipeline. In order to access this image inside GitHub Actions workflow, we'll push it to the GitHub container registry. Running the following command will use the personal access token created in the previous step to authenticate our local Docker client with this container registry:
 ```bash
 docker login ghcr.io -u $GITHUB_USERNAME -p $GITHUB_AUTHENTICATION_TOKEN
 ```
 
 ## ZenML Setup
 
-Now that we're done configuring all our infrastructure and external dependencies, it's time to install ZenML and configure a ZenML stack that connects all these elements together.
-
+Now that we're done setting up and configuring all our infrastructure and external dependencies, it's time to install ZenML and configure a ZenML stack that connects all these elements together.
 
 ### Installation
 
-- Virtualenv
-
+Let's install ZenML and all the additional packages that we're going to need to run our pipeline:
 ```bash
 pip install zenml
 zenml integration install github azure
@@ -100,49 +105,45 @@ zenml integration install github azure
 
 ### Registering the stack
 
-A ZenML stack consists of many components which all play a role in making your ML pipeline run in a smooth and reproducible manner. Let's go over all the components that we'll use for this example ...
+A [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors) consists of many components which all play a role in making your ML pipeline run in a smooth and reproducible manner. Let's register all the components that we're going to need for this tutorial!
 
+* The **orchestrator** is responsible for running all the steps in your machine learning pipeline. In this tutorial we'll use the new GitHub Actions orchestrator which, as the name already indicates, uses GitHub Actions workflows to orchestrate your ZenML pipeline. Registering the orchestrator is as simple as running the following command:
+    ```bash
+    zenml orchestrator register github_orchestrator --flavor=github  
+    ```
 
-The **orchestrator** is responsible for running all the steps in your machine learning pipeline. In this tutorial we'll use the GitHub Actions orchestrator which, as the name already indicates, uses GitHub Action workflows to run your ZenML pipeline.
-Registering the orchestrator is as simple as running the following command:
-```bash
-zenml orchestrator register github_orchestrator --flavor=github  
-```
+* We'll also need to configure a **container registry** which will point ZenML to a Docker registry to store the images that ZenML builds in order to run your pipeline. Luckily, your GitHub account already comes with a free container registry! To register it simply run:
+    ```bash
+    zenml container-registry register github_container_registry \
+        --flavor=github \
+        --automatic_token_authentication=true \
+        --uri=ghcr.io/$GITHUB_USERNAME
+    ```
 
-We'll also need a **container registry** which will store the Docker images that ZenML builds in order to run your pipeline. Luckily, your GitHub account already comes with a free container registry! To register it simply run:
-```bash
-zenml container-registry register github_container_registry \
-    --flavor=github \
-    --automatic_token_authentication=true \
-    --uri=ghcr.io/$GITHUB_USERNAME
-```
+* The **secrets manager** is used to securely store all your credentials so ZenML can use them to authenticate with other components like your metadata or artifact store. We're going to use a secrets manager implementation that stores these credentials as [encrypted GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets):
+    ```bash
+    zenml secrets_manager register github_secrets_manager \
+        --flavor=github \
+        --owner=$GITHUB_USERNAME \
+        --repository=zenml-github-actions-tutorial
+    ```
 
-The **secrets manager** is used to securely store all your credentials so ZenML can use them to authenticate with other components like your metadata or artifact store. We're going to use a secrets manager implementation that stores these credentials as [encrypted GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets):
-```bash
-zenml secrets_manager register github_secrets_manager \
-    --flavor=github \
-    --owner=$GITHUB_USERNAME \
-    --repository=zenml-github-actions-tutorial
-```
+* **Metadata stores** keep track of all the metadata associated with pipeline runs. They enable [ZenML's caching functionality](https://docs.zenml.io/developer-guide/caching) and allow us to query the parameters and inputs/outputs of steps of past pipeline runs. We'll register the MySQL database we created before with the following command (after replacing the `<PLACEHOLDERS>` with the values we [noted down](#host-a-mysql-database)):
+    ```bash
+    zenml metadata-store register azure_metadata_store \
+        --flavor=mysql \
+        --secret=azure_mysql_secret \
+        --host=<HOST> \
+        --database=<DATABASE_NAME> \
+    ```
 
-(If you've used a different name when [creating your GitHub repository earlier](#create-a-github-repository) (or reused an existing repository), replace the `zenml-github-actions-tutorial` with the name of the GitHub repository that you're using for this tutorial.)
-
-**Metadata stores** 
-```bash
-zenml metadata-store register azure_metadata_store \
-    --flavor=mysql \
-    --secret=azure_mysql_secret \
-    --host=<HOST> \
-    --database=<DATABASE_NAME> \
-```
-
-The **artifact store** stores all the artifacts that get passed as inputs and outputs of your pipeline steps. To register it, replace the `<BLOB_STORAGE_CONTAINER_PATH>` placeholder in the following command with the path we saved when [creating the blob storage container](#create-an-azure-blob-storage-container) and run it:
-```bash
-zenml artifact-store register azure_artifact_store \
-    --flavor=azure \
-    --authentication_secret=azure_store_auth \
-    --path=<BLOB_STORAGE_CONTAINER_PATH>
-```
+* The **artifact store** stores all the artifacts that get passed as inputs and outputs of your pipeline steps. To register our blob storage container, replace the `<BLOB_STORAGE_CONTAINER_PATH>` placeholder in the following command with the path we saved when [creating the blob storage container](#create-an-azure-blob-storage-container) and run it:
+    ```bash
+    zenml artifact-store register azure_artifact_store \
+        --flavor=azure \
+        --authentication_secret=azure_store_auth \
+        --path=<BLOB_STORAGE_CONTAINER_PATH>
+    ```
 
 These are all the components that we're going to use for this tutorial, but ZenML offers additional components like:
 * **Step operators** to run individual steps of your pipeline in specialized environments.
@@ -164,13 +165,13 @@ zenml stack register github_actions_stack \
 
 Once the stack is active, we can register the secrets that ZenML needs to authenticate with some of our stack components.
 
-Let's start with the secret for our metadata store. For this, we're going to need some of the information we've saved when [hosting the MySQL database](#host-a-mysql-database) earlier. More specifically, we're going to the need:
+Let's start with the secret for our metadata store. For this, we'll use some of the information we've saved when [hosting the MySQL database](#host-a-mysql-database) earlier. More specifically, we're going to the need:
 - the username and password to authenticate with the MySQL database
 - paths to the three SSL certificates that we downloaded
 
 Replace the `<PLACEHOLDERS>` in the following command with those concrete values and run it:
 ```bash
-# the @ prefix in front of the SSL certificate paths tells ZenML to load the secret value from a file instead of using the string that was passed as the argument value
+# the `@` prefix in front of the SSL certificate paths tells ZenML to load the secret value from a file instead of using the string that was passed as the argument value
 zenml secret register azure_mysql_secret \
     --schema=mysql \
     --user=<USERNAME> \
@@ -189,7 +190,41 @@ zenml secret register azure_store_auth \
     --account_key=<ACCOUNT_KEY>
 ```
 
-## Create the pipeline
-
-
 ## Run the pipeline
+
+That was quite a lot of setup, but luckily we're (almost) done now.
+Let's execute the python script that "runs" our pipeline and take a look at what happens:
+```bash
+python run.py
+```
+
+1) ZenML will build a Docker image with our pipeline code and all the requirements installed and push it to the GitHub container registry.
+2) The orchestrator will write a [GitHub Actions workflow file](https://docs.github.com/en/actions/using-workflows/about-workflows) to the directory `.github/workflows`. Pushing this workflow file will trigger the executing of your ZenML pipeline. We'll explain later at how to automate this step, but for our first pipeline run there is one last configuration step we need to do.
+
+### ...
+
+Now that our Docker image is pushed, we need to allow GitHub Actions to pull this image:
+1) Head to https://github.com/users/<GITHUB_USERNAME>/packages/container/package/zenml-github-actions (replace `<GITHUB_USERNAME>` with your GitHub username) click on `Package settings` on the right side:
+2) In the `Manage Actions access` section, click on `Add Repository`:
+3) TODO
+
+### Commit and push the workflow
+
+Congratulations on coming so far! Now all that's left to do is commit and push the workflow file:
+```bash
+git add .github/workflows
+git commit -m "Add ZenML pipeline workflow"
+git push
+```
+
+If we now go to our GitHub repository and click on the `Actions` tab, we should see our pipeline running! 🎉
+
+TODO: images
+## Automate the committing and pushing
+
+If we want the orchestrator to automatically commit and push the workflow file for us, we can enable it with the following command:
+```bash
+zenml orchestrator update github_orchestrator --push=true
+```
+
+After this update, calling `python run.py` should automatically build and push a Docker image, commit and push the workflow file which will in turn run our pipeline on GitHub Actions.
