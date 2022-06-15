@@ -52,34 +52,68 @@ If you don't have an Azure account yet, go to https://azure.microsoft.com/en-gb/
 ### Create a resource group
 
 https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups
+
+![Resource group step 1](../assets/posts/github-actions-orchestrator/resource_group_0.png)
+![Resource group step 2](../assets/posts/github-actions-orchestrator/resource_group_1.png)
+![Resource group step 3](../assets/posts/github-actions-orchestrator/resource_group_2.png)
+
 ### Create a storage account
 https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal
 
+![Storage account step 1](../assets/posts/github-actions-orchestrator/storage_account_0.png)
+![Storage account step 2](../assets/posts/github-actions-orchestrator/storage_account_1.png)
+![Storage account step 3](../assets/posts/github-actions-orchestrator/storage_account_2.png)
+![Storage account step 4](../assets/posts/github-actions-orchestrator/storage_account_3.png)
+![Storage account step 5](../assets/posts/github-actions-orchestrator/storage_account_4.png)
+![Storage account step 6](../assets/posts/github-actions-orchestrator/storage_account_5.png)
+
+In last picture note down:
+- <STORAGE_ACCOUNT_NAME>: name of the storage account
+- <STORAGE_ACCOUNT_KEY>: value of the key
+
 ### Create an Azure Blob Storage Container
 
+![Blob storage container step 1](../assets/posts/github-actions-orchestrator/container_0.png)
+![Blob storage container step 2](../assets/posts/github-actions-orchestrator/container_1.png)
+![Blob storage container step 3](../assets/posts/github-actions-orchestrator/container_2.png)
 
 Note down:
-- <ACCOUNT_NAME>
-- <ACCOUNT_KEY>
-- <BLOB_STORAGE_CONTAINER_NAME>
+
+- <BLOB_STORAGE_CONTAINER_NAME>: name of the container that you created
 
 ### Host a MySQL database
 
-Azure Database for MySQL
+![MySQL database step 1](../assets/posts/github-actions-orchestrator/mysql_0.png)
 
+Search for `Azure Database for MySQL`
 
-Wait until the deployment if finished.
+![MySQL database step 2](../assets/posts/github-actions-orchestrator/mysql_1.png)
+![MySQL database step 3](../assets/posts/github-actions-orchestrator/mysql_2.png)
+![MySQL database step 4](../assets/posts/github-actions-orchestrator/mysql_3.png)
 
-Note down: 
-- <USERNAME>
-- <PASSWORD>
-- <HOST>
-- <DATABASE_NAME>
+Note down:
+- <MYSQL_USERNAME>: username that you just set
+- <MYSQL_PASSWORD>: password that you just set
 
-Download:
-- <PATH_TO_SSL_SERVER_CERTIFICATE>
-- <SSL_CLIENT_CERTIFICATE>
-- <SSL_CLIENT_KEY>
+![MySQL database step 5](../assets/posts/github-actions-orchestrator/mysql_4.png)
+
+Click on `Add 0.0.0.0 - 255.255.255.255` to allow access from all public IPs.
+
+![MySQL database step 6](../assets/posts/github-actions-orchestrator/mysql_5.png)
+![MySQL database step 7](../assets/posts/github-actions-orchestrator/mysql_6.png)
+![MySQL database step 8](../assets/posts/github-actions-orchestrator/mysql_7.png)
+
+Wait until the deployment is finished.
+
+![MySQL database step 9](../assets/posts/github-actions-orchestrator/mysql_8.png)
+![MySQL database step 10](../assets/posts/github-actions-orchestrator/mysql_9.png)
+Note down:
+- <MYSQL_SERVER_NAME>: server name shown in the top right
+
+![MySQL database step 11](../assets/posts/github-actions-orchestrator/mysql_10.png)
+
+Download the SSL Certificate and note down:
+- <PATH_TO_SSL_CERTIFICATE>: path to the file you just downloaded
 
 ## GitHub Setup
 ### Create a GitHub Personal Access Token
@@ -164,21 +198,22 @@ A [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors) 
         --repository=github-actions-orchestrator-tutorial
     ```
 
-* **Metadata stores** keep track of all the metadata associated with pipeline runs. They enable [ZenML's caching functionality](https://docs.zenml.io/developer-guide/caching) and allow us to query the parameters and inputs/outputs of steps of past pipeline runs. We'll register the MySQL database we created before with the following command (after replacing the `<PLACEHOLDERS>` with the values we [noted down](#host-a-mysql-database)):
+* **Metadata stores** keep track of all the metadata associated with pipeline runs. They enable [ZenML's caching functionality](https://docs.zenml.io/developer-guide/caching) and allow us to query the parameters and inputs/outputs of steps of past pipeline runs. We'll register the MySQL database we created before with the following command (after replacing `<MYSQL_SERVER_NAME>` with the value we [noted down](#host-a-mysql-database)):
     ```bash
     zenml metadata-store register azure_metadata_store \
         --flavor=mysql \
-        --secret=azure_mysql_secret \
-        --host=<HOST> \
-        --database=<DATABASE_NAME> \
+        --secret=azure_mysql_auth \
+        --database=zenml \
+        --host=<MYSQL_SERVER_NAME>
     ```
 
 * The **artifact store** stores all the artifacts that get passed as inputs and outputs of your pipeline steps. To register our blob storage container, replace the `<BLOB_STORAGE_CONTAINER_PATH>` placeholder in the following command with the path we saved when [creating the blob storage container](#create-an-azure-blob-storage-container) and run it:
     ```bash
+    # The `az://` in front of the container name tells ZenML that this is an Azure container that it needs to read from/write to
     zenml artifact-store register azure_artifact_store \
         --flavor=azure \
         --authentication_secret=azure_store_auth \
-        --path=<BLOB_STORAGE_CONTAINER_PATH>
+        --path=az://<BLOB_STORAGE_CONTAINER_NAME>
     ```
 
 These are all the components that we're going to use for this tutorial, but ZenML offers additional components like:
@@ -190,7 +225,7 @@ With all components registered, we can now create and activate our ZenML stack. 
 ```bash
 zenml stack register github_actions_stack \
     -o github_orchestrator \
-    -s github_secrets_manager \
+    -x github_secrets_manager \
     -c github_container_registry \
     -m azure_metadata_store \
     -a azure_artifact_store \
@@ -203,27 +238,25 @@ Once the stack is active, we can register the secrets that ZenML needs to authen
 
 Let's start with the secret for our metadata store. For this, we'll use some of the information we've saved when [hosting the MySQL database](#host-a-mysql-database) earlier. More specifically, we're going to the need:
 - the username and password to authenticate with the MySQL database
-- paths to the three SSL certificates that we downloaded
+- the path to the SSL certificate that we downloaded
 
 Replace the `<PLACEHOLDERS>` in the following command with those concrete values and run it:
 ```bash
-# the `@` prefix in front of the SSL certificate paths tells ZenML to load the secret value from a file instead of using the string that was passed as the argument value
-zenml secret register azure_mysql_secret \
+# the `@` prefix in front of the SSL certificate path tells ZenML to load the secret value from a file instead of using the string that was passed as the argument value
+zenml secret register azure_mysql_auth \
     --schema=mysql \
-    --user=<USERNAME> \
-    --password=<PASSWORD> \
-    --ssl_ca=@<PATH_TO_SSL_SERVER_CERTIFICATE> \
-    --ssl_cert=@<PATH_TO_SSL_CLIENT_CERTIFICATE> \
-    --ssl_key=@<PATH_TO_SSL_CLIENT_KEY>
+    --user=<MYSQL_USERNAME> \
+    --password=<MYSQL_PASSWORD> \
+    --ssl_ca=@<PATH_TO_SSL_CERTIFICATE>
 ```
 
-For the artifact store secret, we're going to need the **account name** and **account key** that we saved when we [created our blob storage container](#create-an-azure-blob-storage-container).
+For the artifact store secret, we're going to need the **storage account name** and **key** that we saved when we [created our storage account earlier](#create-a-storage-account).
 Replace the `<PLACEHOLDERS>` in the following command with those concrete values and run it:
 ```bash
 zenml secret register azure_store_auth \
     --schema=azure \
-    --account_name=<ACCOUNT_NAME> \
-    --account_key=<ACCOUNT_KEY>
+    --account_name=<STORAGE_ACCOUNT_NAME> \
+    --account_key=<STORAGE_ACCOUNT_KEY>
 ```
 
 ## Run the pipeline
