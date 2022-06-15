@@ -12,9 +12,12 @@ image:
   path: /assets/posts/github-actions-orchestrators/roman-synkevych-wX2L8L-fGeA-unsplash.jpg
 ---
 
+
 [GitHub Actions](https://docs.github.com/en/actions) is a platform that allows you to execute arbitrary software development workflows right in your GitHub repository. It's most commonly used for CI/CD pipelines, but using the GitHub Actions orchestrator ZenML now enables you to easily run and schedule your machine learning pipelines as GitHub Actions workflows.
 
 [GH Action example](https://github.com/zenml-io/zenml/tree/main/examples/github_actions_orchestration)
+
+
 
 Note: 
 * Some of the commands in this tutorial rely on environment variables or a specific working directory from previous commands, so make sure to run them in the same shell.
