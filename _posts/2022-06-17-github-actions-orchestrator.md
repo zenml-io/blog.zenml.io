@@ -1,20 +1,27 @@
 ---
 layout: post
 author: Michael Schuster
-title: "Who needs Kubeflow when have Github Actions"
+title: "Who needs Kubeflow when have Github Actions?"
 description: ""
 category: zenml
-tags: zenml integrations cloud
-publish_date: June 15, 2022
-date: 2022-06-15T00:02:00Z
-thumbnail: /assets/posts/release_0_9_0/allison-louise-xABgmlX4ABE-unsplash.jpg
+tags: zenml integrations cloud evergreen cicd mlops
+publish_date: June 16, 2022
+date: 2022-06-16T00:02:00Z
+thumbnail: /assets/posts/github-actions-orchestrators/roman-synkevych-wX2L8L-fGeA-unsplash.jpg
 image:
-  path: /assets/posts/release_0_9_0/allison-louise-xABgmlX4ABE-unsplash.jpg
+  path: /assets/posts/github-actions-orchestrators/roman-synkevych-wX2L8L-fGeA-unsplash.jpg
 ---
+
+
+[GitHub Actions](https://docs.github.com/en/actions) is a platform that allows you to execute arbitrary software development workflows right in your GitHub repository. It's most commonly used for CI/CD pipelines, but using the GitHub Actions orchestrator ZenML now enables you to easily run and schedule your machine learning pipelines as GitHub Actions workflows.
+
+[GH Action example](https://github.com/zenml-io/zenml/tree/main/examples/github_actions_orchestration)
+
+
 
 Note: 
 * Some of the commands in this tutorial rely on environment variables or a specific working directory from previous commands, so make sure to run them in the same shell.
-* In this tutorial we're going to use Azure for cloud storage and our MySQL database, but it works just as well on AWS or GCP.
+* In this tutorial we're going to use Microsoft's Azure platform for cloud storage and our MySQL database, but it works just as well on AWS or GCP.
 
 ## Prerequisites
 
@@ -238,3 +245,5 @@ zenml orchestrator update github_orchestrator --push=true
 ```
 
 After this update, calling `python run.py` should automatically build and push a Docker image, commit and push the workflow file which will in turn run our pipeline on GitHub Actions.
+
+[*Image Credit: Photo by [Roman Synkevych](https://unsplash.com/@synkevych) on [Unsplash](https://unsplash.com/s/photos/github)*]
