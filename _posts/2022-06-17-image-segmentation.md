@@ -19,3 +19,5 @@ image:
 So I will create a model to automatically segment the stomach and intestines on Magnetic resonance imaging (MRI) scans. I will be using data from [UW-Madison GI Tract Image Segmentation Competiton](https://www.kaggle.com/competitions/uw-madison-gi-tract-image-segmentation/data) to build our model.
 
 This blog shows you how to build such model which will segment the stomach and intestines from MRI scans using [ZenML](https://zenml.io/). Our aim is not to build the best model or win this competiton but to show you, but to show you the power of the ZenML that how it can ease the whole process with it's amazing features like caching, easily switching stacks from local to cloud, training on different cloud service provider using `StepOperator`, integrating with experiment tracking tools like wandb.
+
+## Running the pipeline using StepOperator stack
