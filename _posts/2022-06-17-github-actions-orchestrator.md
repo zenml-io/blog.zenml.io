@@ -5,8 +5,8 @@ title: "Who needs Kubeflow when have Github Actions?"
 description: ""
 category: zenml
 tags: zenml integrations cloud evergreen cicd mlops
-publish_date: June 16, 2022
-date: 2022-06-16T00:02:00Z
+publish_date: June 20, 2022
+date: 2022-06-20T00:02:00Z
 thumbnail: /assets/posts/github-actions-orchestrators/roman-synkevych-wX2L8L-fGeA-unsplash.jpg
 image:
   path: /assets/posts/github-actions-orchestrators/roman-synkevych-wX2L8L-fGeA-unsplash.jpg
@@ -37,11 +37,10 @@ You are also spared the pain of maintaining a Kubernetes cluster. Once you've co
 ## Prerequisites
 
 This tutorial assumes that you have:
-
-* [Docker](https://www.docker.com/) installed and running
-* [Git](https://git-scm.com/) installed
 * [Python](https://www.python.org/) installed (version 3.7-3.9)
+* [Git](https://git-scm.com/) installed
 * a [GitHub](https://github.com/) account
+* [Docker](https://www.docker.com/) installed and running
 
 ## Azure Setup
 
@@ -51,8 +50,7 @@ If you don't have an Azure account yet, go to https://azure.microsoft.com/en-gb/
 
 ### Create a resource group
 
-[Resource groups](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups) are an Azure concept that allows us to bundle different resources that share a similar lifecycle.
-
+[Resource groups](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups) are a concept in Azure that allows us to bundle different resources that share a similar lifecycle. We'll create a new resource group for this tutorial so we'll be able to differentiate them from other resources in our account and easily delete them at the end.
 
 Go to [the Azure portal](https://portal.azure.com/#home), click the hamburger button in the top left to open up the portal menu. Then, hover over the `Resource groups` section until a popup appears and click on the `+ Create` button:
 ![Resource group step 1](../assets/posts/github-actions-orchestrator/resource_group_0.png)
@@ -62,8 +60,8 @@ Verify that all the information is correct and click on `Create`:
 ![Resource group step 3](../assets/posts/github-actions-orchestrator/resource_group_2.png)
 
 ### Create a storage account
-https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal
-must be unique name
+
+An [Azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) is a grouping of Azure data storage objects which also provides a namespace and authentication options to access them. We'll need a storage account to hold the blob storage container we'll create in the next step.
 
 Open up the portal menu again, but this time hover over the `Storage accounts` section and click on the `+ Create` button in the popup once it appears: 
 ![Storage account step 1](../assets/posts/github-actions-orchestrator/storage_account_0.png)
@@ -105,7 +103,7 @@ Make sure you select `Flexible server` and then continue by clicking the `Create
 Select a **resource group** and **region** and fill in values for the **server name** as well as **admin username** and **password**. Note down the username and password you chose as we're going to need them later for the `<MYSQL_USERNAME>` and `<MYSQL_PASSWORD>` placeholders. Then click on `Next: Networking`:
 ![MySQL database step 4](../assets/posts/github-actions-orchestrator/mysql_3.png)
 
-Now click on `Add 0.0.0.0 - 255.255.255.255` to allow access from all public IPs. This is necessary so the machines running our GitHub Actions can access this database. It is still protected by your username and password as well as a required SSL certificate which we'll download later.
+Now click on `Add 0.0.0.0 - 255.255.255.255` to allow access from all public IPs. This is necessary so the machines running our GitHub Actions can access this database. It will still require username, password as well as a SSL certificate to authenticate.
 
 ![MySQL database step 5](../assets/posts/github-actions-orchestrator/mysql_4.png)
 
@@ -169,8 +167,18 @@ echo "$GITHUB_AUTHENTICATION_TOKEN" | docker login ghcr.io -u "$GITHUB_USERNAME"
 
 ### Fork and clone the tutorial repository
 
-Time to fork and clone an example repository which contains a very simple ZenML pipeline that trains a SKLearn SVC classifier on the [digits dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_digits_last_image.html).
+Time to fork and clone an [example repository](https://github.com/zenml-io/github-actions-orchestrator-tutorial) which contains a very simple ZenML pipeline that trains 
+a SKLearn SVC classifier on the [digits dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_digits_last_image.html).
 
+If you're new to ZenML, let's quickly go over some [basic concepts](https://docs.zenml.io/core-concepts#basics-steps-and-pipelines) that help you understand what the code in this repository is doing:
+* A **pipeline** in ZenML allows you to group a series of steps in whatever order makes sense for your particular use case. The [example pipeline](https://github.com/zenml-io/github-actions-orchestrator-tutorial/blob/main/pipelines/training_pipeline/training_pipeline.py) consists of three steps which import data, train a model and evaluate the model.
+* A **step** is very similar to a Python function and contains arbitrary business logic. The three steps in our example do the following:
+    - The [data loader step](https://github.com/zenml-io/github-actions-orchestrator-tutorial/blob/main/steps/data_loader_step/data_loader_step.py) loads the digits dataset and splits it into train and test set.
+    - The [trainer step](https://github.com/zenml-io/github-actions-orchestrator-tutorial/blob/main/steps/trainer_step/trainer_step.py) trains a SKLearn SVC classifier on the training set returned by the data loader step.
+    - The [evaluator step](https://github.com/zenml-io/github-actions-orchestrator-tutorial/blob/main/steps/evaluator_step/evaluator_step.py) evaluates the model returned by the trainer step on the test set.
+
+
+Let's get going:
 1) Go to https://github.com/zenml-io/github-actions-orchestrator-tutorial
 2) Click on `Fork` in the top right:
 ![Fork step 1](../assets/posts/github-actions-orchestrator/fork_0.png)
@@ -338,5 +346,7 @@ In the popup on the right side, type the resource group name and click `Delete`:
 ![Cleanup step 3](../assets/posts/github-actions-orchestrator/cleanup_2.png)
 
 This will take a few minutes, but after it's finished all the resources we created should be gone.
+
+## TODO: Call to action
 
 [*Image Credit: Photo by [Roman Synkevych](https://unsplash.com/@synkevych) on [Unsplash](https://unsplash.com/s/photos/github)*]
