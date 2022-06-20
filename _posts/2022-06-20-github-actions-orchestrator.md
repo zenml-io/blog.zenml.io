@@ -44,7 +44,7 @@ This tutorial assumes that you have:
 
 ### Create an account
 
-If you don't have an Azure account yet, go to https://azure.microsoft.com/en-gb/free/ and create one.
+If you don't have an Azure account yet, go to [https://azure.microsoft.com/en-gb/free/](https://azure.microsoft.com/en-gb/free/) and create one.
 
 ### Create a resource group
 
