@@ -238,7 +238,7 @@ Now that we're done setting up and configuring all our infrastructure and extern
 Let's install ZenML and all the additional packages that we're going to need to run our pipeline:
 ```bash
 pip install zenml
-zenml integration install github azure
+zenml integration install github azure sklearn
 ```
 
 We're also going to initialize a [ZenML repository](https://docs.zenml.io/developer-guide/repo-and-config#the-zenml-repository) to indicate which directories and files ZenML should include
