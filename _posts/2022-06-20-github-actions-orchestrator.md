@@ -161,27 +161,27 @@ To finish up the Azure setup, click on `Download SSL Certificate` on the top. Ma
 
 Next up, we'll need to create a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that ZenML will use to authenticate with the GitHub API in order to store secrets and upload Docker images.
 
-1) Go to https://github.com, click on your profile image in the top right corner and select `Settings`:
+1. Go to https://github.com, click on your profile image in the top right corner and select `Settings`:
 
-![PAT step 1](../assets/posts/github-actions-orchestrator/pat_0.png)
+    ![PAT step 1](../assets/posts/github-actions-orchestrator/pat_0.png)
 
-2) Scroll to the bottom and click on `Developer Settings` on the left side:
+2. Scroll to the bottom and click on `Developer Settings` on the left side:
 
-![PAT step 2](../assets/posts/github-actions-orchestrator/pat_1.png)
+    ![PAT step 2](../assets/posts/github-actions-orchestrator/pat_1.png)
 
-3) Select `Personal access tokens` and click on `Generate new token`:
+3. Select `Personal access tokens` and click on `Generate new token`:
 
-![PAT step 3](../assets/posts/github-actions-orchestrator/pat_2.png)
+    ![PAT step 3](../assets/posts/github-actions-orchestrator/pat_2.png)
 
-![PAT step 4](../assets/posts/github-actions-orchestrator/pat_3.png)
+    ![PAT step 4](../assets/posts/github-actions-orchestrator/pat_3.png)
 
-4) Give your token a descriptive name for future reference and select the `repo` and `write:packages` scopes:
+4. Give your token a descriptive name for future reference and select the `repo` and `write:packages` scopes:
 
-![PAT step 5](../assets/posts/github-actions-orchestrator/pat_4.png)
+    ![PAT step 5](../assets/posts/github-actions-orchestrator/pat_4.png)
 
-5) Scroll to the bottom and click on `Generate token`. This will bring you to a page that allows you to copy your newly generated token:
+5. Scroll to the bottom and click on `Generate token`. This will bring you to a page that allows you to copy your newly generated token:
 
-![PAT step 6](../assets/posts/github-actions-orchestrator/pat_5.png)
+    ![PAT step 6](../assets/posts/github-actions-orchestrator/pat_5.png)
 
 Now that we've got our token, let's store it in an environment variable for future steps. We'll also store our GitHub username that this token was created for. Replace the `<PLACEHOLDERS>` in the following command and run it:
 ```bash
