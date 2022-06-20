@@ -213,7 +213,7 @@ If you're new to ZenML, let's quickly go over some [basic concepts](https://docs
 
 Let's get going:
 
-1. Go to https://github.com/zenml-io/github-actions-orchestrator-tutorial
+1. Go to [https://github.com/zenml-io/github-actions-orchestrator-tutorial](https://github.com/zenml-io/github-actions-orchestrator-tutorial)
 2. Click on `Fork` in the top right:
 
     ![Fork step 1](../assets/posts/github-actions-orchestrator/fork_0.png)
