@@ -161,7 +161,7 @@ To finish up the Azure setup, click on `Download SSL Certificate` on the top. Ma
 
 Next up, we'll need to create a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that ZenML will use to authenticate with the GitHub API in order to store secrets and upload Docker images.
 
-1. Go to https://github.com, click on your profile image in the top right corner and select `Settings`:
+1. Go to [https://github.com](https://github.com), click on your profile image in the top right corner and select `Settings`:
 
     ![PAT step 1](../assets/posts/github-actions-orchestrator/pat_0.png)
 
@@ -213,7 +213,7 @@ If you're new to ZenML, let's quickly go over some [basic concepts](https://docs
 
 Let's get going:
 
-1. Go to https://github.com/zenml-io/github-actions-orchestrator-tutorial
+1. Go to [https://github.com/zenml-io/github-actions-orchestrator-tutorial](https://github.com/zenml-io/github-actions-orchestrator-tutorial)
 2. Click on `Fork` in the top right:
 
     ![Fork step 1](../assets/posts/github-actions-orchestrator/fork_0.png)
