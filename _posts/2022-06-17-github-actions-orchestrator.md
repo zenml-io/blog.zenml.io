@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Michael Schuster
-title: "Who needs Kubeflow when have Github Actions?"
-description: ""
+title: "Move over Kubeflow, there's a new sheriff in town: Github Actions 🤠"
+description: "This tutorial presents an easy and quick way to use GitHub Actions to run ML pipelines in the cloud. We showcase this functionality using Microsoft's Azure Cloud but you can use any cloud provider you like."
 category: zenml
 tags: zenml integrations cloud evergreen cicd mlops
 publish_date: June 20, 2022
@@ -11,8 +11,6 @@ thumbnail: /assets/posts/github-actions-orchestrator/roman-synkevych-wX2L8L-fGeA
 image:
   path: /assets/posts/github-actions-orchestrator/roman-synkevych-wX2L8L-fGeA-unsplash.jpg
 ---
-
-Move over Kubeflow! GitHub Actions is the new sheriff in town!
 
 We're really proud of our Kubeflow integration. It gives you a ton of power and flexibility and is a production-ready tool. But we also know that for many of you it's one step too many. Setting up a Kubernetes cluster is probably nobody's ideal way to spend their time, and it certainly requires some time investment to maintain.
 
@@ -398,6 +396,9 @@ In the popup on the right side, type the resource group name and click `Delete`:
 
 This will take a few minutes, but after it's finished all the resources we created should be gone.
 
-## TODO: Call to action
+## Where to go from here?
+
+If you have any question or feedback regarding this tutorial, let us know [here](https://zenml.hellonext.co/p/github-actions-orchestrator-tutorial-feedback) or join our [weekly community hour](https://www.eventbrite.com/e/zenml-meet-the-community-tickets-354426688767).
+If you want to know more about ZenML or see more examples, check out our [docs](https://docs.zenml.io), [examples](https://github.com/zenml-io/zenml/tree/main/examples) or join our [Slack](https://zenml.io/slack-invite/).
 
 [*Image Credit: Photo by [Roman Synkevych](https://unsplash.com/@synkevych) on [Unsplash](https://unsplash.com/s/photos/github)*]
