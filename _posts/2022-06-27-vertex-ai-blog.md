@@ -41,7 +41,6 @@ any of our other Orchestrators.
 This tutorial assumes that you have:
 
 * [Python](https://www.python.org/) installed (version 3.7-3.9)
-* [ZenML](https://github.com/zenml-io/zenml) installed (version >= 0.9.0 )
 * [Docker](https://www.docker.com/) installed and running
 * Access to a [gcp](https://cloud.google.com/) project space
 * [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine
@@ -153,6 +152,14 @@ but buckle up, we'll take this same pipeline to the next level momentarily.
 
 ## Setup of GCP Project and Resources
 
+Before we can orchestrate our pipeline using Vertex AI we will need to set up 
+all the required resources and permissions on GCP. This is a one time effort
+that you will not need to repeat. Feel free to skip and adjust these steps 
+as you see fit. 
+
+To start we will create a new gcp project for the express purpose of having all 
+our resources encapsulated into one overarching entity. 
+
 Click on the project select box
 
 ![Create Project 1](../assets/posts/vertex/GCP_project0.png)
@@ -161,7 +168,7 @@ Create a `New Project`
 
 ![Create Project 2](../assets/posts/vertex/GCP_project1.png)
 
-Name your project
+and name your project
 
 ![Create Project 3](../assets/posts/vertex/GCP_project2.png)
 
@@ -172,7 +179,7 @@ up all required resources.
 You will need the project name and project id in the following steps again.
 
 * The project name will be referred to as <gcp_project_name>
-* The [project Id](https://support.google.com/googleapi/answer/7014113?hl=en)
+* The [project ID](https://support.google.com/googleapi/answer/7014113?hl=en)
   will be referred to as <gcp_project_id>
 
 ### CloudSQL
