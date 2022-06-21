@@ -96,7 +96,7 @@ def importer() -> Output(
     y_train = train["y"].to_numpy()
     y_test = test["y"].to_numpy()
 
-    return (X_train, X_test, y_train, y_test)
+    return X_train, X_test, y_train, y_test
 
 
 @step
@@ -149,6 +149,32 @@ python run.py
 
 And voilà, we've run our machine learning pipeline locally. Not too impressive, 
 but buckle up, we'll take this same pipeline to the next level momentarily. 
+But first lets look at our current stack to understand how our pipeline was run
+and tracked. 
+
+```shell
+zenml stack describe
+```
+
+And you'll probably get the following printout:
+
+```
+        Stack Configuration        
+┏━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┓
+┃ COMPONENT_TYPE │ COMPONENT_NAME ┃
+┠────────────────┼────────────────┨
+┃ ARTIFACT_STORE │ default        ┃
+┠────────────────┼────────────────┨
+┃ METADATA_STORE │ default        ┃
+┠────────────────┼────────────────┨
+┃ ORCHESTRATOR   │ default        ┃
+┗━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
+      'local' stack (ACTIVE) 
+```
+
+This is your ZenML stack that describes the different components that work 
+hand-in-hand to run and track your pipeline including its artifacts and 
+metadata. This is what we'll now need to replace with a GCP stack.
 
 ## Setup of GCP Project and Resources
 
@@ -184,9 +210,10 @@ You will need the project name and project id in the following steps again.
 
 ### CloudSQL
 
-* Why? ...
+We'll start off by creating a MySQL Database to store the metadata of our
+pipeline runs.
 
-Search `cloud sql` or use this link `https://console.cloud.google.com/sql/
+Search `cloud sql` or use this [link](https://console.cloud.google.com/sql/)
 
 ![Create SQL 1](../assets/posts/vertex/GCP_SQL0.png)
 
