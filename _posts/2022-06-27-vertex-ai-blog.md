@@ -204,7 +204,7 @@ client certificates
 
 ![Create SQL 5](../assets/posts/vertex/GCP_SQL4.png)
 
-Add a new user account for zenml to use
+Add a new user account for ZenML to use
 
 ![Create SQL 6](../assets/posts/vertex/GCP_SQL5.png)
 
@@ -229,7 +229,7 @@ Search `cloud storage` or use this link
 
 ![Create Storage 1](../assets/posts/vertex/GCP_Storage0.png)
 
-Once the bucket is created, you can find the storage uri as follows.
+Once the bucket is created, you can find the storage URI as follows.
 
 ![Create Storage 2](../assets/posts/vertex/GCP_Storage1.png)
 
@@ -253,7 +253,7 @@ your projects' container registry
 For the creation of the [ZenML Metadata Store](#zenml-container-registry) you
 will need the following data:
 
-URI this is constructed as follows
+URI - this is constructed as follows
 `<registry_host>/<gcp_project_name>/<custom_name>` with the `<custom_name>`
 being configurable for each different project that you might want to run.
 
@@ -265,7 +265,7 @@ being configurable for each different project that you might want to run.
 ![Enable Secret_Manager 1](../assets/posts/vertex/GCP_SM0.png)
 
 You won't need to do anything else here. The Secret Manager will be uniquely
-identifiable by the <gcp_project_id>.
+identifiable by the `<gcp_project_id>` .
 
 ### Vertex AI
 
@@ -275,7 +275,7 @@ Search `vertex ai` or use this link
 ![Enable Vertex AI 1](../assets/posts/vertex/GCP_Vertex0.png)
 
 Make sure you choose the appropriate region for your location. You will need
-to remember this location for the [ZenML orchestrator](#zenml-orchestrator).
+to remember this location for the [ZenML Orchestrator](#zenml-orchestrator).
 
 ## Set up Permissions
 
