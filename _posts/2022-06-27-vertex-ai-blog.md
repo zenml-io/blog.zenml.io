@@ -2,7 +2,7 @@
 layout: post
 author: Alexej Penner
 title: "Serverless MLOps with Vertex AI "
-description: "How ZenML lets you have the best of both worlds, serverless 
+description: "How ZenML lets you have the best of both worlds, serverless
 managed infrastructure without the vendor lock in."
 category: tech-startup
 tags: tech-startup python tooling open-source zenml
@@ -10,52 +10,57 @@ publish_date: June 27, 2022
 date: 2022-06-27T00:02:00Z
 thumbnail: /assets/posts/VertexLogo.png
 image:
-  path: /assets/posts/VertexLogo.png
+path: /assets/posts/VertexLogo.png
 ---
 
-# Serverless MLOps with Vertex AI 
+# Serverless MLOps with Vertex AI
 
-A serverless architecture allows you to run code without having to directly 
-manage infrastructure. This helps the developer focus on the code without 
-worrying about managing infrastructure or costs racking up for continuously 
-running (virtual) machines. Additionally, serverless architectures can quickly 
-scale up to meet the changing needs for computation. 
-[Vertex AI pipelines](https://cloud.google.com/vertex-ai/docs/pipelines/introduction) 
-is Googles' very own serverless pipeline orchestration tool that we will be 
+A serverless architecture allows you to run code without having to directly
+manage infrastructure. This helps the developer focus on the code without
+worrying about managing infrastructure or costs racking up for continuously
+running (virtual) machines. Additionally, serverless architectures can quickly
+scale up to meet the changing needs for computation.
+[Vertex AI pipelines](https://cloud.google.com/vertex-ai/docs/pipelines/introduction)
+is Googles' very own serverless pipeline orchestration tool that we will be
 using today.
 
-However, the advantages are only part of the story. As much as serverless 
+However, the advantages are only part of the story. As much as serverless
 architectures can help you quickly scale, they come with a hidden cost: vendor
 lock-in. As you build your processes and services around the provider specific
-APIs and you become more and more dependent on the specific provider with 
+APIs and you become more and more dependent on the specific provider with
 significant costs associated with a potential switch.
 
 ![Lock-In](../assets/posts/vertex/lockin.jpg)
 
-But fret not, ZenML is the perfect abstraction layer that will make it as easy 
+But fret not, ZenML is the perfect abstraction layer that will make it as easy
 as pie to quickly switch your pipeline orchestration from local to vertex AI to
 any of our other Orchestrators.
 
 ## Prerequisites
 
 This tutorial assumes that you have:
+
 * [Python](https://www.python.org/) installed (version 3.7-3.9)
 * [ZenML](https://github.com/zenml-io/zenml) installed (version >= 0.9.0 )
 * [Docker](https://www.docker.com/) installed and running
 * Access to a [gcp](https://cloud.google.com/) project space
 * [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine
-and authenticated
+  and authenticated
 
 ## Starting locally
 
 To get started we will set everything up locally to initially run our pipeline
-on our own machine. 
+on our own machine. To do so we first have to install zenml, the `sklearn`
+integration, and we also initialize a zenml repo.
 
 ```shell
 pip install zenml
 zenml integration install sklearn
 zenml init
 ```
+
+Now we create a python file with the following contents in the same
+directory where we ran `zenml init`:
 
 ```python
 import os
@@ -97,7 +102,7 @@ def importer() -> Output(
 
 @step
 def vectorizer(
-    train: np.ndarray, test: np.ndarray
+        train: np.ndarray, test: np.ndarray
 ) -> Output(count_vec=BaseEstimator, X_train=csr_matrix, X_test=csr_matrix):
     count_vec = CountVectorizer(ngram_range=(1, 4), min_df=3)
     train = count_vec.fit_transform(train)
@@ -107,8 +112,8 @@ def vectorizer(
 
 @step
 def trainer(
-    X_train: csr_matrix,
-    y_train: np.ndarray,
+        X_train: csr_matrix,
+        y_train: np.ndarray,
 ) -> ClassifierMixin:
     model = LogisticRegression(solver="liblinear")
     model.fit(X_train, y_train)
@@ -117,9 +122,9 @@ def trainer(
 
 @step
 def predictor(
-    transformer: BaseEstimator,
-    model: ClassifierMixin,
-    X: np.ndarray,
+        transformer: BaseEstimator,
+        model: ClassifierMixin,
+        X: np.ndarray,
 ) -> np.ndarray:
     X = transformer.transform(X)
     return model.predict(X)
@@ -132,14 +137,23 @@ def training_pipeline(importer, vectorizer, trainer, predictor):
     model = trainer(X_train_vec, y_train)
     predictor(vec_transformer, model, X_test)
 
-pipe = training_pipeline(importer(), vectorizer(), trainer(), predictor())
-pipe.run()
+if __name__ == "__main__":
+    pipe = training_pipeline(importer(), vectorizer(), trainer(), predictor())
+    pipe.run()
 ```
 
+Finally, we can run this python file:
+
+```shell
+python run.py
+```
+
+And voilà, we've run our machine learning pipeline locally. Not too impressive, 
+but buckle up, we'll take this same pipeline to the next level momentarily. 
 
 ## Setup of GCP Project and Resources
 
-Click on the project select box 
+Click on the project select box
 
 ![Create Project 1](../assets/posts/vertex/GCP_project0.png)
 
@@ -155,11 +169,11 @@ It will take some time for your project to be created. Once it is
 created you will need to enable billing for the project so that you can set
 up all required resources.
 
-You will need the project name and project id in the following steps again. 
+You will need the project name and project id in the following steps again.
 
 * The project name will be referred to as <gcp_project_name>
-* The [project Id](https://support.google.com/googleapi/answer/7014113?hl=en) 
-will be referred to as <gcp_project_id>
+* The [project Id](https://support.google.com/googleapi/answer/7014113?hl=en)
+  will be referred to as <gcp_project_id>
 
 ### CloudSQL
 
@@ -173,13 +187,13 @@ Choose MySQL
 
 ![Create SQL 2](../assets/posts/vertex/GCP_SQL1.png)
 
-Name the instance, give it a root password and configure it and allow public 
+Name the instance, give it a root password and configure it and allow public
 connections
 
 ![Create SQL 3](../assets/posts/vertex/GCP_SQL2.png)
 
-Make sure to only allow SSL connections and create and download 
-client certificates 
+Make sure to only allow SSL connections and create and download
+client certificates
 
 ![Create SQL 5](../assets/posts/vertex/GCP_SQL4.png)
 
@@ -191,7 +205,7 @@ In the Overview page you can find the public IP address
 
 ![Create SQL 7](../assets/posts/vertex/GCP_SQL6.png)
 
-For the creation of the [ZenML Metadata Store](#zenml-metadata-store) you 
+For the creation of the [ZenML Metadata Store](#zenml-metadata-store) you
 will need the following data:
 
 * Public IP
@@ -203,7 +217,7 @@ will need the following data:
 
 * Why? ...
 
-Search `cloud storage` or use this link 
+Search `cloud storage` or use this link
 `https://console.cloud.google.com/storage/`
 
 ![Create Storage 1](../assets/posts/vertex/GCP_Storage0.png)
@@ -212,70 +226,70 @@ Once the bucket is created, you can find the storage uri as follows.
 
 ![Create Storage 2](../assets/posts/vertex/GCP_Storage1.png)
 
-For the creation of the [ZenML Artifact Store](#zenml-artifact-store) you 
+For the creation of the [ZenML Artifact Store](#zenml-artifact-store) you
 will need the following data:
 
-* gsutil URI 
+* gsutil URI
 
 ### Container Registry
 
-Search `container registry` or use this link 
+Search `container registry` or use this link
 `https://console.cloud.google.com/marketplace/product/google/containerregistry.googleapis.com`
 
 ![Enable Container Registry 0](../assets/posts/vertex/GCP_GCR0.png)
 
-You can find your container registry host (`<registry_host>`) under settings of 
+You can find your container registry host (`<registry_host>`) under settings of
 your projects' container registry
 
 ![Enable Container Registry 1](../assets/posts/vertex/GCP_GCR1.png)
 
-For the creation of the [ZenML Metadata Store](#zenml-container-registry) you 
+For the creation of the [ZenML Metadata Store](#zenml-container-registry) you
 will need the following data:
 
 URI this is constructed as follows
-`<registry_host>/<gcp_project_name>/<custom_name>` with the `<custom_name>` 
+`<registry_host>/<gcp_project_name>/<custom_name>` with the `<custom_name>`
 being configurable for each different project that you might want to run.
 
 ### Secret Manager
 
 * Search `secret manager` or use this link
   `https://console.cloud.google.com/marketplace/product/google/secretmanager.googleapis.com`
-  
+
 ![Enable Secret_Manager 1](../assets/posts/vertex/GCP_SM0.png)
 
-You won't need to do anything else here. The Secret Manager will be uniquely 
+You won't need to do anything else here. The Secret Manager will be uniquely
 identifiable by the <gcp_project_id>.
 
 ### Vertex AI
 
-Search `vertex ai` or use this link 
+Search `vertex ai` or use this link
 `https://console.cloud.google.com/vertex-ai`.
 
 ![Enable Vertex AI 1](../assets/posts/vertex/GCP_Vertex0.png)
 
-Make sure you choose the appropriate region for your location. You will need 
+Make sure you choose the appropriate region for your location. You will need
 to remember this location for the [ZenML orchestrator](#zenml-orchestrator).
 
 ## Set up Permissions
 
 With all the resources set up you will now need to set up a service account with
-all the right permissions. This service account will need to be able to 
+all the right permissions. This service account will need to be able to
 access all the different resources that we have set up so far.
 
-Start by searching for `IAM` in the search bar or use this link: 
+Start by searching for `IAM` in the search bar or use this link:
 `https://console.cloud.google.com/iam-admin`. Here you will need to create a
 new Service Account.
 
 ![Enable Service Account 1](../assets/posts/vertex/GCP_Service0.png)
 
-First off you'll need to name the service account. Make sure to give it a 
+First off you'll need to name the service account. Make sure to give it a
 clear name and description.
 
 ![Enable Service Account 2](../assets/posts/vertex/GCP_Service1.png)
 
 This service account will need to have the roles of:
 `Vertex AI Custom Code Service Agent`, `Vertex AI Service Agent` and
-`Secret Manager Admin` (for some reason the `Secret Manager Secret Accessor` 
+`Secret Manager Admin` (for some reason the `Secret Manager Secret Accessor`
 role is not enough here).
 
 ![Enable Service Account 3](../assets/posts/vertex/GCP_Service2.png)
@@ -286,7 +300,7 @@ manage this service account to perform changes later on.
 
 ![Enable Service Account 4](../assets/posts/vertex/GCP_Service3.png)
 
-Finally, you can now find your new service account in the `IAM` tab. You'll need 
+Finally, you can now find your new service account in the `IAM` tab. You'll need
 the Principal when creating your [ZenML Orchestrator](#zenml-orchestrator).
 
 ![Enable Service Account 4](../assets/posts/vertex/GCP_Service4.png)
@@ -298,10 +312,11 @@ With everything on the GCP side done, we can now jump into the ZenML side.
 ### ZenML metadata-store
 
 The `DB_HOST_IP` is the public IP Address of your Database `xx.xx.xxx.xxx`.
-The `DB_PORT` is `3306` by default - set this in case this default does not 
-apply to your database instance. The `DB_NAME` is the name of the database that 
-you have created in [GCP](#cloudsql) as the metadata store. The `mysql_secret` 
+The `DB_PORT` is `3306` by default - set this in case this default does not
+apply to your database instance. The `DB_NAME` is the name of the database that
+you have created in [GCP](#cloudsql) as the metadata store. The `mysql_secret`
 will be created once the secrets manager is created and the stack is active.
+
 ```shell
 
 zenml metadata-store register gcp_metadata_store --flavor=mysql --host=<DB_HOST_IP> --port=<DB_PORT> --database=<DB_NAME> --secret=mysql_secret
@@ -318,7 +333,7 @@ zenml artifact-store register gcp_artifact_store --flavor=gcp --path=<gsutil-URI
 
 ### ZenML container-registry
 
-The CONTAINER_REGISTRY_URI will have a format like this `eu.gcr.io/xxx/xxx`. 
+The CONTAINER_REGISTRY_URI will have a format like this `eu.gcr.io/xxx/xxx`.
 Refer to the [gcp container registry](#container-registry)
 
 ```shell
@@ -335,15 +350,14 @@ zenml secrets-manager register gcp_secrets_manager --flavor=gcp_secrets_manager 
 
 ### ZenML orchestrator
 
-The orchestrator needs the PROJECT_ID and the GCP_LOCATION in which to run the 
-Vertex AI pipeline. Additionally, you should set the WORKLOAD_SERVICE_ACCOUNT 
-to the service account you created with secret manager access, it will be in 
+The orchestrator needs the PROJECT_ID and the GCP_LOCATION in which to run the
+Vertex AI pipeline. Additionally, you should set the WORKLOAD_SERVICE_ACCOUNT
+to the service account you created with secret manager access, it will be in
 the format: xxx@xxx.iam.gserviceaccount.com.
 
 ```shell
 zenml orchestrator register vertex_orch --flavor=vertex --project=<PROJECT_ID> --location=<GCP_LOCATION> --workload_service_account=<SERVICE_ACCOUNT>
 ```
-
 
 ### Combine your stack
 
@@ -355,7 +369,7 @@ zenml stack register gcp_vertex_stack -m gcp_metadata_store -a gcp_artifact_stor
 
 ### Configure the `mysql_secret`
 
-With the stack up and running, we can now supply the credentials for the 
+With the stack up and running, we can now supply the credentials for the
 mysql metadata store. You generated the SSL certificates when setting up the
 [CloudSQL](#cloudsql) within the GCP UI.
 
@@ -369,7 +383,5 @@ zenml secret register mysql_secret --schema=mysql --user=<DB_USER> --password=<P
 ## Running
 
 You're ready to run your code on Vertex AI now.
-
-
 
 ![Running Pipeline](../assets/posts/vertex/vertex_ai_ui.png)
