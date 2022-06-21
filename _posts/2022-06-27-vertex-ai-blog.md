@@ -1,8 +1,9 @@
 ---
 layout: post
 author: Alexej Penner
-title: ""
-description: ""
+title: "Serverless MLOps with Vertex AI "
+description: "How ZenML lets you have the best of both worlds, serverless 
+managed infrastructure without the vendor lock in."
 category: tech-startup
 tags: tech-startup python tooling open-source zenml
 publish_date: June 27, 2022
@@ -12,7 +13,7 @@ image:
   path: /assets/posts/VertexLogo.png
 ---
 
-# Motivation
+# Serverless MLOps with Vertex AI 
 
 ZenML is cool, so is Vertex AI.
 
