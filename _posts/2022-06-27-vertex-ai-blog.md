@@ -15,7 +15,26 @@ image:
 
 # Serverless MLOps with Vertex AI 
 
-ZenML is cool, so is Vertex AI.
+A serverless architecture allows you to run code without having to directly 
+manage infrastructure. This helps the developer focus on the code without 
+worrying about managing infrastructure or costs racking up for continuously 
+running (virtual) machines. Additionally, serverless architectures can quickly 
+scale up to meet the changing needs for computation. 
+[Vertex AI pipelines](https://cloud.google.com/vertex-ai/docs/pipelines/introduction) 
+is Googles' very own serverless pipeline orchestration tool that we will be 
+using today.
+
+However, the advantages are only part of the story. As much as serverless 
+architectures can help you quickly scale, they come with a hidden cost: vendor
+lock-in. As you build your processes and services around the provider specific
+APIs and you become more and more dependent on the specific provider with 
+significant costs associated with a potential switch.
+
+![Lock-In](../assets/posts/vertex/lockin.jpg)
+
+But fret not, ZenML is the perfect abstraction layer that will make it as easy 
+as pie to quickly switch your pipeline orchestration from local to vertex AI to
+any of our other Orchestrators.
 
 ## Prerequisites
 
@@ -26,6 +45,97 @@ This tutorial assumes that you have:
 * Access to a [gcp](https://cloud.google.com/) project space
 * [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine
 and authenticated
+
+## Starting locally
+
+To get started we will set everything up locally to initially run our pipeline
+on our own machine. 
+
+```shell
+pip install zenml
+zenml integration install sklearn
+zenml init
+```
+
+```python
+import os
+import re
+
+import numpy as np
+import pandas as pd
+from scipy.sparse import csr_matrix
+from sklearn.base import BaseEstimator, ClassifierMixin
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.linear_model import LogisticRegression
+
+from zenml.integrations.constants import SKLEARN
+from zenml.pipelines import pipeline
+from zenml.steps import Output, step
+
+TRAIN_PATH = os.path.join(os.path.dirname(__file__), "data", "train.csv")
+TEST_PATH = os.path.join(os.path.dirname(__file__), "data", "test.csv")
+
+
+def clean_text(text: str):
+    return re.sub(r"\W", " ", text.lower())
+
+
+@step
+def importer() -> Output(
+    X_train=np.ndarray, X_test=np.ndarray, y_train=np.ndarray, y_test=np.ndarray
+):
+    train = pd.read_csv(TRAIN_PATH)
+    test = pd.read_csv(TEST_PATH)
+
+    X_train = train["x"].apply(clean_text).to_numpy()
+    X_test = test["x"].apply(clean_text).to_numpy()
+    y_train = train["y"].to_numpy()
+    y_test = test["y"].to_numpy()
+
+    return (X_train, X_test, y_train, y_test)
+
+
+@step
+def vectorizer(
+    train: np.ndarray, test: np.ndarray
+) -> Output(count_vec=BaseEstimator, X_train=csr_matrix, X_test=csr_matrix):
+    count_vec = CountVectorizer(ngram_range=(1, 4), min_df=3)
+    train = count_vec.fit_transform(train)
+    test = count_vec.transform(test)
+    return count_vec, train, test
+
+
+@step
+def trainer(
+    X_train: csr_matrix,
+    y_train: np.ndarray,
+) -> ClassifierMixin:
+    model = LogisticRegression(solver="liblinear")
+    model.fit(X_train, y_train)
+    return model
+
+
+@step
+def predictor(
+    transformer: BaseEstimator,
+    model: ClassifierMixin,
+    X: np.ndarray,
+) -> np.ndarray:
+    X = transformer.transform(X)
+    return model.predict(X)
+
+
+@pipeline(required_integrations=[SKLEARN])
+def training_pipeline(importer, vectorizer, trainer, predictor):
+    X_train, X_test, y_train, y_test = importer()
+    vec_transformer, X_train_vec, X_test_vec = vectorizer(X_train, X_test)
+    model = trainer(X_train_vec, y_train)
+    predictor(vec_transformer, model, X_test)
+
+pipe = training_pipeline(importer(), vectorizer(), trainer(), predictor())
+pipe.run()
+```
+
 
 ## Setup of GCP Project and Resources
 
@@ -258,51 +368,8 @@ zenml secret register mysql_secret --schema=mysql --user=<DB_USER> --password=<P
 
 ## Running
 
-You're ready to run your code on Vertex AI now. Here is a minimal example to
-help you get started.
-
-```python
-import random
-
-from zenml.pipelines import pipeline
-from zenml.steps import Output, step
+You're ready to run your code on Vertex AI now.
 
 
-@step
-def get_first_num() -> Output(first_num=int):
-    """Returns an integer."""
-    return 10
-
-
-@step(enable_cache=False)
-def get_random_int() -> Output(random_num=int):
-    """Get a random integer between 0 and 10"""
-    return random.randint(0, 10)
-
-
-@step
-def subtract_numbers(first_num: int, random_num: int) -> Output(result=int):
-    """Subtract random_num from first_num."""
-    return first_num - random_num
-
-
-@pipeline
-def vertex_example_pipeline(get_first_num, get_random_int, subtract_numbers):
-    # Link all the steps artifacts together
-    first_num = get_first_num()
-    random_num = get_random_int()
-    subtract_numbers(first_num, random_num)
-
-
-# Initialize a new pipeline run
-pipe = vertex_example_pipeline(
-    get_first_num=get_first_num(),
-    get_random_int=get_random_int(),
-    subtract_numbers=subtract_numbers(),
-)
-
-
-pipe.run()
-```
 
 ![Running Pipeline](../assets/posts/vertex/vertex_ai_ui.png)
