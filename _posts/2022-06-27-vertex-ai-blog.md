@@ -62,83 +62,47 @@ Now we create a python file with the following contents in the same
 directory where we ran `zenml init`:
 
 ```python
-import os
-import re
+import random
 
-import numpy as np
-import pandas as pd
-from scipy.sparse import csr_matrix
-from sklearn.base import BaseEstimator, ClassifierMixin
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.linear_model import LogisticRegression
-
-from zenml.integrations.constants import SKLEARN
 from zenml.pipelines import pipeline
 from zenml.steps import Output, step
 
-TRAIN_PATH = os.path.join(os.path.dirname(__file__), "data", "train.csv")
-TEST_PATH = os.path.join(os.path.dirname(__file__), "data", "test.csv")
+
+@step
+def get_first_num() -> Output(first_num=int):
+    """Returns an integer."""
+    return 10
 
 
-def clean_text(text: str):
-    return re.sub(r"\W", " ", text.lower())
+@step(enable_cache=False)
+def get_random_int() -> Output(random_num=int):
+    """Get a random integer between 0 and 10"""
+    return random.randint(0, 10)
 
 
 @step
-def importer() -> Output(
-    X_train=np.ndarray, X_test=np.ndarray, y_train=np.ndarray, y_test=np.ndarray
-):
-    train = pd.read_csv(TRAIN_PATH)
-    test = pd.read_csv(TEST_PATH)
-
-    X_train = train["x"].apply(clean_text).to_numpy()
-    X_test = test["x"].apply(clean_text).to_numpy()
-    y_train = train["y"].to_numpy()
-    y_test = test["y"].to_numpy()
-
-    return X_train, X_test, y_train, y_test
+def subtract_numbers(first_num: int, random_num: int) -> Output(result=int):
+    """Subtract random_num from first_num."""
+    return first_num - random_num
 
 
-@step
-def vectorizer(
-        train: np.ndarray, test: np.ndarray
-) -> Output(count_vec=BaseEstimator, X_train=csr_matrix, X_test=csr_matrix):
-    count_vec = CountVectorizer(ngram_range=(1, 4), min_df=3)
-    train = count_vec.fit_transform(train)
-    test = count_vec.transform(test)
-    return count_vec, train, test
+@pipeline
+def vertex_example_pipeline(get_first_num, get_random_int, subtract_numbers):
+    # Link all the steps artifacts together
+    first_num = get_first_num()
+    random_num = get_random_int()
+    subtract_numbers(first_num, random_num)
 
 
-@step
-def trainer(
-        X_train: csr_matrix,
-        y_train: np.ndarray,
-) -> ClassifierMixin:
-    model = LogisticRegression(solver="liblinear")
-    model.fit(X_train, y_train)
-    return model
+# Initialize a new pipeline run
+pipe = vertex_example_pipeline(
+    get_first_num=get_first_num(),
+    get_random_int=get_random_int(),
+    subtract_numbers=subtract_numbers(),
+)
 
 
-@step
-def predictor(
-        transformer: BaseEstimator,
-        model: ClassifierMixin,
-        X: np.ndarray,
-) -> np.ndarray:
-    X = transformer.transform(X)
-    return model.predict(X)
-
-
-@pipeline(required_integrations=[SKLEARN])
-def training_pipeline(importer, vectorizer, trainer, predictor):
-    X_train, X_test, y_train, y_test = importer()
-    vec_transformer, X_train_vec, X_test_vec = vectorizer(X_train, X_test)
-    model = trainer(X_train_vec, y_train)
-    predictor(vec_transformer, model, X_test)
-
-if __name__ == "__main__":
-    pipe = training_pipeline(importer(), vectorizer(), trainer(), predictor())
-    pipe.run()
+pipe.run()
 ```
 
 Finally, we can run this python file:
@@ -172,16 +136,20 @@ And you'll probably get the following printout:
       'local' stack (ACTIVE) 
 ```
 
-This is your ZenML stack that describes the different components that work 
-hand-in-hand to run and track your pipeline including its artifacts and 
-metadata. This is what we'll now need to replace with a GCP stack.
+This is your [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors)
+that describes the different components that work hand-in-hand to run and track 
+your pipeline including its artifacts and metadata. This is what we'll now need 
+to replace with a GCP stack later on.
 
 ## Setup of GCP Project and Resources
 
 Before we can orchestrate our pipeline using Vertex AI we will need to set up 
 all the required resources and permissions on GCP. This is a one time effort
 that you will not need to repeat. Feel free to skip and adjust these steps 
-as you see fit. 
+as you see fit. In total, we will create a gcp project, with a MySQL database on
+[CloudSQL](#cloudsql), a storage container using 
+[Cloud storage](#cloud-storage), a [container registry](#container-registry),
+a [secret manager](#secret-manager) and [vertex ai](#vertex-ai) enabled.
 
 To start we will create a new gcp project for the express purpose of having all 
 our resources encapsulated into one overarching entity. 
@@ -213,7 +181,7 @@ You will need the project name and project id in the following steps again.
 We'll start off by creating a MySQL Database to store the metadata of our
 pipeline runs.
 
-Search `cloud sql` or use this [link](https://console.cloud.google.com/sql/)
+Search `cloud sql` or use this [link](https://console.cloud.google.com/sql/).
 
 ![Create SQL 1](../assets/posts/vertex/GCP_SQL0.png)
 
@@ -249,10 +217,8 @@ will need the following data:
 
 ### Cloud Storage
 
-* Why? ...
-
-Search `cloud storage` or use this link
-`https://console.cloud.google.com/storage/`
+Search `cloud storage` or use this
+[link](https://console.cloud.google.com/storage/).
 
 ![Create Storage 1](../assets/posts/vertex/GCP_Storage0.png)
 
@@ -267,8 +233,8 @@ will need the following data:
 
 ### Container Registry
 
-Search `container registry` or use this link
-`https://console.cloud.google.com/marketplace/product/google/containerregistry.googleapis.com`
+Search `container registry` or use this 
+[link](https://console.cloud.google.com/marketplace/product/google/containerregistry.googleapis.com).
 
 ![Enable Container Registry 0](../assets/posts/vertex/GCP_GCR0.png)
 
@@ -286,8 +252,8 @@ being configurable for each different project that you might want to run.
 
 ### Secret Manager
 
-* Search `secret manager` or use this link
-  `https://console.cloud.google.com/marketplace/product/google/secretmanager.googleapis.com`
+* Search `secret manager` or use this 
+[link](https://console.cloud.google.com/marketplace/product/google/secretmanager.googleapis.com)
 
 ![Enable Secret_Manager 1](../assets/posts/vertex/GCP_SM0.png)
 
@@ -296,8 +262,8 @@ identifiable by the `<gcp_project_id>` .
 
 ### Vertex AI
 
-Search `vertex ai` or use this link
-`https://console.cloud.google.com/vertex-ai`.
+Search `vertex ai` or use this 
+[link](https://console.cloud.google.com/vertex-ai).
 
 ![Enable Vertex AI 1](../assets/posts/vertex/GCP_Vertex0.png)
 
@@ -345,44 +311,68 @@ With everything on the GCP side done, we can now jump into the ZenML side.
 
 ### ZenML metadata-store
 
-The `DB_HOST_IP` is the public IP Address of your Database `xx.xx.xxx.xxx`.
-The `DB_PORT` is `3306` by default - set this in case this default does not
-apply to your database instance. The `DB_NAME` is the name of the database that
-you have created in [GCP](#cloudsql) as the metadata store. The `mysql_secret`
-will be created once the secrets manager is created and the stack is active.
+**Metadata stores** keep track of all the metadata associated with pipeline 
+runs. They enable 
+[ZenML's caching functionality](https://docs.zenml.io/developer-guide/caching) 
+and allow us to query the parameters and inputs/outputs of steps of past 
+pipeline runs. We'll register the MySQL database we created before with the 
+following command:
 
 ```shell
 
 zenml metadata-store register gcp_metadata_store --flavor=mysql --host=<DB_HOST_IP> --port=<DB_PORT> --database=<DB_NAME> --secret=mysql_secret
 ```
 
+The `DB_HOST_IP` is the public IP Address of your Database `xx.xx.xxx.xxx`.
+The `DB_PORT` is `3306` by default - set this in case this default does not
+apply to your database instance. The `DB_NAME` is the name of the database that
+you have created in [GCP](#cloudsql) as the metadata store. The `mysql_secret`
+will be created once the secrets manager is created and the stack is active.
+
 ### ZenML artifact-store
 
-The PATH_TO_YOUR_GCP_BUCKET is the path to your GCP bucket in the following
-format `gs://xxx` .
+The **artifact store** stores all the artifacts that get passed as inputs and 
+outputs of your pipeline steps. To register our blob storage container,
 
 ```shell
 zenml artifact-store register gcp_artifact_store --flavor=gcp --path=<gsutil-URI>
 ```
 
+The PATH_TO_YOUR_GCP_BUCKET is the path to your GCP bucket in the following
+format `gs://xxx` .
+
 ### ZenML container-registry
 
-The CONTAINER_REGISTRY_URI will have a format like this `eu.gcr.io/xxx/xxx`.
-Refer to the [gcp container registry](#container-registry)
+We'll also need to configure a **container registry** which will point ZenML to 
+a Docker registry to store the images that ZenML builds in order to run your 
+pipeline.
 
 ```shell
 zenml container-registry register gcp_registry --flavor=gcp --uri=<CONTAINER_REGISTRY_URI>
 ```
 
+The CONTAINER_REGISTRY_URI will have a format like this `eu.gcr.io/xxx/xxx`.
+Refer to the [gcp container registry](#container-registry)
+
 ### ZenML secret-manager
 
-For the secrets manager, all we'll need is the gcp PROJECT_ID.
+The **secrets manager** is used to securely store all your credentials so ZenML
+can use them to authenticate with other components like your metadata or 
+artifact store. At a later step we will use it to store the mysql_secret that
+is used for our metadata store.
 
 ```shell
 zenml secrets-manager register gcp_secrets_manager --flavor=gcp_secrets_manager --project_id=<PROJECT_ID>
 ```
 
+For the secrets manager, all we'll need is the gcp PROJECT_ID.
+
 ### ZenML orchestrator
+
+The **orchestrator** is responsible for running all the steps in your machine
+learning pipeline. In this tutorial we'll use the new Vertex AI 
+orchestrator which, as the name already indicates, uses Vertex AI pipelines
+to orchestrate your ZenML pipeline.
 
 The orchestrator needs the PROJECT_ID and the GCP_LOCATION in which to run the
 Vertex AI pipeline. Additionally, you should set the WORKLOAD_SERVICE_ACCOUNT
@@ -416,6 +406,57 @@ zenml secret register mysql_secret --schema=mysql --user=<DB_USER> --password=<P
 
 ## Running
 
-You're ready to run your code on Vertex AI now.
+Wow, we've made it past all the setting-up steps, and we're finally ready to run 
+our code on Vertex AI now. All we gotta do is call our python function from 
+earlier, sit back and wait.
+
+```bash
+python run.py
+```
+
+In the background zenml will use the active stack to run the pipeline using 
+Vertex AI. To do this the orchestrator will build a Docker image that contains 
+all your pipeline code, including its requirements and push it to the 
+container registry. Additionally, a Vertex AI pipeline job is created which
+contains the information of how the separate steps of the pipeline are related 
+to each other through their inputs and outputs. Once the docker image is 
+pushed, Vertex AI can now pull the image and use it to run each step of the 
+pipeline in the correct order. You will see a printout in your terminal
+that will take you into the Vertex AI UI where you'll be able to observe live, 
+as your pipeline get executed. It should look a little bit like this:
 
 ![Running Pipeline](../assets/posts/vertex/vertex_ai_ui.png)
+
+## Cleanup 
+
+Cleanup should be fairly straightforward now, in case you bundled all of these
+resources into one separate project. Simply navigate to the 
+[Cloud Resource Manager](https://console.cloud.google.com/cloud-resource-manager)
+and delete your project:
+
+![Running Pipeline](../assets/posts/vertex/GCP_Delete0.png)
+
+
+## Conclusion
+
+I hope this guide was able to show you how easy it is to take your code and
+deploy it on Vertex AI pipelines through the magic of the ZenML Stack without
+changing the code itself. What this means is, that you will be fully free to 
+switch your orchestrator away from Vertex AI and GCP at any point with minimal
+effort. For example, you could switch to using our 
+[Kubeflow Pipelines Orchestrator](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow_pipelines_orchestration)
+to run pipelines on top of Cloud or On-Prem Infrastructure. Alternatively,
+you could also switch to the completely free 
+[Github Actions Orchestrator](https://blog.zenml.io/github-actions-orchestrator/).
+
+If you have any question or feedback regarding this tutorial, let us know
+[here](https://zenml.hellonext.co/p/github-actions-orchestrator-tutorial-feedback) 
+or join our 
+[weekly community hour](https://www.eventbrite.com/e/zenml-meet-the-community-tickets-354426688767).
+If you want to know more about ZenML 
+or see more examples, check out our [docs](https://docs.zenml.io), 
+[examples](https://github.com/zenml-io/zenml/tree/main/examples) or 
+join our [Slack](https://zenml.io/slack-invite/).
+
+[*Image Credit: Photo by [Google](https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-launches-vertex-ai-unified-platform-for-mlops)*]
+
