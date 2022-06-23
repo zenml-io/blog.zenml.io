@@ -38,6 +38,12 @@ conversation is worth pairing with [the Humans in the Loop
 blog](https://humansintheloop.org/resources/blog/) where you can find many
 in-depth reviews of these tools.
 
+If you're interested in tools, also be sure to check out [our
+`awesome-open-data-annotation`
+repository](https://github.com/zenml-io/awesome-open-data-annotation) where
+we've gathered together the best open-source annotation tools available at the
+moment.
+
 As always, full show notes and links are available on
 [our dedicated podcast page](https://podcast.zenml.io/).
 
