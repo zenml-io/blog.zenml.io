@@ -288,7 +288,7 @@ clear name and description.
 ![Enable Service Account 2](../assets/posts/vertex/GCP_Service1.png)
 
 This service account will need to have the roles of:
-`Vertex AI Custom Code Service Agent`, `Vertex AI Service Agent` and
+`Vertex AI Custom Code Service Agent`, `Vertex AI Service Agent`, `Container Registry Service Agent` and
 `Secret Manager Admin` (for some reason the `Secret Manager Secret Accessor`
 role is not enough here).
 
