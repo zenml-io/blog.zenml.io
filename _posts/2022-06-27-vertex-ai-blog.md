@@ -243,7 +243,7 @@ your projects' container registry
 
 ![Enable Container Registry 1](../assets/posts/vertex/GCP_GCR1.png)
 
-For the creation of the [ZenML Conatiner Registry](#zenml-container-registry) you
+For the creation of the [ZenML Container Registry](#zenml-container-registry) you
 will need the following data:
 
 URI - this is constructed as follows
