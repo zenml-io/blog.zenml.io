@@ -49,12 +49,12 @@ This tutorial assumes that you have:
 ## Starting locally
 
 To get started we will set everything up locally to initially run our pipeline
-on our own machine. To do so we first have to install zenml, the `sklearn`
-integration, and we also initialize a ZenML repo.
+on our own machine then we will run the pipeline with Vertex AI. To do so we first have to install zenml `sklearn`
+and `gcp` integrations, and we also initialize a ZenML repo.
 
 ```shell
 pip install zenml
-zenml integration install sklearn
+zenml integration install sklearn gcp
 zenml init
 ```
 
@@ -243,7 +243,7 @@ your projects' container registry
 
 ![Enable Container Registry 1](../assets/posts/vertex/GCP_GCR1.png)
 
-For the creation of the [ZenML Metadata Store](#zenml-container-registry) you
+For the creation of the [ZenML Conatiner Registry](#zenml-container-registry) you
 will need the following data:
 
 URI - this is constructed as follows
