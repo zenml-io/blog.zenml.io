@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Alexej Penner
-title: "Serverless MLOps with Vertex AI "
+title: "Serverless MLOps with Vertex AI"
 description: "How ZenML lets you have the best of both worlds, serverless
 managed infrastructure without the vendor lock in."
 category: tech-startup
@@ -21,7 +21,7 @@ worrying about managing infrastructure or costs racking up for continuously
 running (virtual) machines. Additionally, serverless architectures can quickly
 scale up to meet the changing needs for computation.
 [Vertex AI pipelines](https://cloud.google.com/vertex-ai/docs/pipelines/introduction)
-is Googles' very own serverless pipeline orchestration tool that we will be
+is Google's very own serverless pipeline orchestration tool that we will be
 using today.
 
 However, the advantages are only part of the story. As much as serverless
@@ -33,7 +33,7 @@ significant costs associated with a potential switch.
 ![Lock-In](../assets/posts/vertex/lockin.jpg)
 
 But fret not, ZenML is the perfect abstraction layer that will make it as easy
-as pie to quickly switch your pipeline orchestration from local to vertex AI to
+as pie to quickly switch your pipeline orchestration from local to Vertex AI to
 any of our other Orchestrators.
 
 ## Prerequisites
@@ -50,7 +50,7 @@ This tutorial assumes that you have:
 
 To get started we will set everything up locally to initially run our pipeline
 on our own machine. To do so we first have to install zenml, the `sklearn`
-integration, and we also initialize a zenml repo.
+integration, and we also initialize a ZenML repo.
 
 ```shell
 pip install zenml
@@ -58,7 +58,7 @@ zenml integration install sklearn
 zenml init
 ```
 
-Now we create a python file with the following contents in the same
+Now we create a Python file with the following contents in the same
 directory where we ran `zenml init`:
 
 ```python
@@ -407,7 +407,7 @@ zenml secret register mysql_secret --schema=mysql --user=<DB_USER> --password=<P
 ## Running
 
 Wow, we've made it past all the setting-up steps, and we're finally ready to run 
-our code on Vertex AI now. All we gotta do is call our python function from 
+our code on Vertex AI now. All we have to do is call our Python function from 
 earlier, sit back and wait.
 
 ```bash
@@ -419,7 +419,7 @@ Vertex AI. To do this the orchestrator will build a Docker image that contains
 all your pipeline code, including its requirements and push it to the 
 container registry. Additionally, a Vertex AI pipeline job is created which
 contains the information of how the separate steps of the pipeline are related 
-to each other through their inputs and outputs. Once the docker image is 
+to each other through their inputs and outputs. Once the Docker image is 
 pushed, Vertex AI can now pull the image and use it to run each step of the 
 pipeline in the correct order. You will see a printout in your terminal
 that will take you into the Vertex AI UI where you'll be able to observe live, 
