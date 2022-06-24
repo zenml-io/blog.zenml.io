@@ -8,12 +8,10 @@ category: tech-startup
 tags: tech-startup python tooling open-source zenml
 publish_date: June 27, 2022
 date: 2022-06-27T00:02:00Z
-thumbnail: /assets/posts/VertexLogo.png
+thumbnail: /assets/posts/vertex/VertexLogo.png
 image:
-path: /assets/posts/VertexLogo.png
+path: /assets/posts/vertex/VertexLogo.png
 ---
-
-# Serverless MLOps with Vertex AI
 
 A serverless architecture allows you to run code without having to directly
 manage infrastructure. This helps the developer focus on the code without
