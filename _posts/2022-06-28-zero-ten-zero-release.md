@@ -51,7 +51,7 @@ checkpoint results created by pipeline steps 😍
 
 Got feedback or just want to let us know how you feel? [Connect with us](https://zenml.io/slack-invite/) or join us for a [Community Meetup](https://www.eventbrite.de/e/zenml-meet-the-community-tickets-354426688767?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=escb) 👋 which happens every Wednesday!
 
-🔐 A Vault Secret Manager
+## 🔐 A Vault Secret Manager
 
 To add to our growing list of secret managers, we now have a Vault integration, courtesy of one of our community members, [Karim Habouch](https://github.com/karimhabush)! We are grateful for their contribution ⭐
 
