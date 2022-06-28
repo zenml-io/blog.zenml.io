@@ -26,6 +26,8 @@ This orchestrator is a lightweight alternative to other distributed orchestrator
 It's amazing but don't take my word for it; try it on your own or wait for the dedicated blog post that we've planned, 
 which, by the way, also features a little surprise to make it easier for you to follow along 😉
 
+![Kubernetes Orchestration pods](../assets/posts/release_0_10_0/k8s.png)
+
 There's a lot to love about this integration.
 * Every step gets executed in its own pod and the logs from all of them are streamed to your terminal!
 * You can schedule pipeline runs as CRON jobs.
