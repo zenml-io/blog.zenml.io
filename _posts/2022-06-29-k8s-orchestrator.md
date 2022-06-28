@@ -1,0 +1,416 @@
+---
+layout: post
+author: Felix Altenberger
+title: "Kubernetes-native ML Orchestration"
+description: "Getting started with distributed ML in the cloud: How to orchestrate ML workflows natively on Amazon Elastic Kubernetes Service (EKS)."
+category: zenml
+tags: zenml integrations cloud mlops
+publish_date: June 29, 2022
+date: 2022-06-29T00:02:00Z
+thumbnail: /assets/posts/k8s-orchestrator/zenml_kubernetes_orchestrator_teaser.png
+image:
+path: /assets/posts/k8s-orchestrator/zenml_kubernetes_orchestrator_teaser.png
+---
+
+In this tutorial we will learn how to easily migrate ML workflows to a
+distibuted and scalable cloud setup using ZenML's new Kubernetes-native
+orchestrator and Kubernetes metadata store.
+
+In order to run in the cloud, we will also provision various resources on
+AWS: an S3 bucket for artifact storage, an ECR container registry, as well as 
+an Amazon EKS Kubernetes cluster, on which we will orchestrate our ML
+pipelines.
+
+The following figure shows an overview of the MLOps stack we will set up within
+this tutorial:
+
+![Kubernetes AWS Stack Overview](../assets/posts/k8s-orchestrator/zenml_kubernetes_aws_stack_overview.png)
+
+Now, why would we want to orchestrate ML workflows natively in Kubernetes in
+the first place?
+Couldn't we just use [Kubeflow](https://www.kubeflow.org/) to run jobs on
+Kubernetes for us?
+Yes and no.
+Kubeflow is an awesome, battle-tested tool, and it certainly is the most
+production-ready Kubernetes orchestration tool out there. 
+However, Kubeflow also comes with a lot of additional requirements and general
+added complexity that not every team might want.
+
+If you are looking for a minimalist, lightweight way of running ML workflows on
+Kubernetes, then this post is for you:
+At the end, you will be able to orchestrate ML pipelines on Kubernetes without
+any additional packages apart from the
+[official Kubernetes Python API](https://github.com/kubernetes-client/python).
+
+## How it works
+
+### Orchestration
+
+Similar to Kubeflow, this Kubernetes-native orchestrator runs the steps of
+an ML pipeline in separate Kubernetes pods and executes them in parallel where
+possible.
+However, the orchestration of the different pods is not done by Kubeflow but by
+a separate master job, which figures out the order of steps using
+topological sort, starts Kubernetes jobs for each step, and aggregates logs of
+all pods and streams them back to the user client.
+
+### Metadata Storage
+
+ZenML's new Kubernetes metadata store automatically saves your ML metadata in a
+fresh MySQL database deployed within your Kubernetes cluster.
+
+To understand how this works, we need to dive a bit deeper into core Kubernetes
+concepts:
+The most important concept in Kubernetes is the pod, which is the smallest 
+deployable unit of computation.
+Each pod runs on a node, which is the underlying physical or virtual machine, 
+and it is comprised of one or more Docker containers with optional shared
+resources.
+Pods can either be provisioned manually (as we do during the orchestration)
+or through a deployment, which automatically creates and maintains a desired 
+number of replicas of a given pod to ensure high availability of the deployed
+resources.
+A Kubernetes service can then be used to expose pods as a network service so
+that we can access those pods from within other pods or from outside the
+cluster.
+See the following figure for a visualization.
+
+![Kubernetes Overview](../assets/posts/k8s-orchestrator/kubernetes_overview.png)
+
+ZenML's Kubernetes metadata store spins up a deployment under the hood, which
+manages pods that are connected to a MySQL database in a persitent volume.
+The deployed pods are exposed via a service that can be accessed by the step
+pods to read and write metadata.
+
+## Running on Kubernetes in the Cloud
+
+Let's now see how to use the aforementioned Kubernetes components to run ML 
+workflows in the cloud. 
+
+In this example, we will use AWS as our cloud provider of choice and provision
+an EKS Kubernetes cluster, as well as a S3 bucket to store our ML artifacts 
+and an ECR container registry to manage the Docker images that Kubernetes 
+needs.
+However, this could also be done in a similar fashion on any other cloud 
+provider.
+
+### Requirements
+
+In order to follow this tutorial, you need to have the following software
+installed on your local machine:
+
+* [Python](https://www.python.org/) (version 3.7-3.9)
+* [Docker](https://www.docker.com/)
+* [kubectl](https://kubernetes.io/docs/tasks/tools/)
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+### EKS Setup
+
+First, create an EKS cluster on AWS according to
+[this tutorial](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html).
+TODO: replace by in-depth tutorial with screenshots
+
+Next, configure your local `kubectl` to connect to the EKS cluster we just
+created:
+
+```bash
+aws eks --region <AWS_REGION> update-kubeconfig
+    --name <AWS_EKS_CLUSTER>
+    --alias <KUBE_CONTEXT>
+```
+
+
+### S3 Bucket Setup
+
+Next, let us create an S3 bucket where our ML artifacts can later be stored.
+You can do so by following
+[this tutorial](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html).
+TODO: replace by in-depth tutorial with screenshots
+
+The path for your bucket should be in this format `s3://your-bucket`.
+
+Now we still need to authorize our EKS cluster to access the S3 bucket we just
+created.
+For simplicity, we will do this by simply assigning an `AmazonS3FullAccess` 
+policy to the cluster node group's IAM role.
+
+TODO: in-depth tutorial with screenshots
+
+### ECR Container Registry Setup
+
+Since each of the Kubernetes pods will require a custom Docker image, we will
+also set up an ECR container registry to manage those.
+You can do so by following
+[this tutorial](https://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html).
+TODO: replace by in-depth tutorial with screenshots
+
+In order to push container images to ECR, we now still need to authenticate our
+local docker CLI:
+
+```bash
+aws ecr get-login-password --region <AWS_REGION> | docker login 
+    --username AWS 
+    --password-stdin 
+    <ECR_REGISTRY_NAME>
+```
+
+## Run an example with ZenML
+Let's now see the Kubernetes-native orchestration in action with a simple
+example using ZenML.
+
+The following code defines a four step pipeline that loads NumPy training and 
+test datasets, checks them for training-serving skew with Facets, trains a 
+sklearn model on the training set, and then evaluates it on the test set:
+
+```python
+import numpy as np
+import pandas as pd
+from sklearn.base import ClassifierMixin
+from sklearn.svm import SVC
+
+from zenml.integrations.facets.visualizers.facet_statistics_visualizer import (
+    FacetStatisticsVisualizer,
+)
+from zenml.integrations.sklearn.helpers.digits import get_digits
+from zenml.pipelines import pipeline
+from zenml.repository import Repository
+from zenml.steps import Output, step
+
+
+@step
+def importer() -> Output(
+    X_train=np.ndarray, X_test=np.ndarray, y_train=np.ndarray, y_test=np.ndarray
+):
+    """Loads the digits array as normal numpy arrays."""
+    X_train, X_test, y_train, y_test = get_digits()
+    return X_train, X_test, y_train, y_test
+
+
+@step
+def svc_trainer(
+    X_train: np.ndarray,
+    y_train: np.ndarray,
+) -> ClassifierMixin:
+    """Train a sklearn SVC classifier."""
+    model = SVC(gamma=0.001)
+    model.fit(X_train, y_train)
+    return model
+
+
+@step
+def evaluator(
+    X_test: np.ndarray,
+    y_test: np.ndarray,
+    model: ClassifierMixin,
+) -> float:
+    """Calculate the accuracy on the test set"""
+    test_acc = model.score(X_test, y_test)
+    print(f"Test accuracy: {test_acc}")
+    return test_acc
+
+
+@step
+def skew_comparison(
+    reference_input: np.ndarray,
+    comparison_input: np.ndarray,
+) -> Output(reference=pd.DataFrame, comparison=pd.DataFrame):
+    """Convert data from numpy to pandas for skew comparison."""
+    columns = [str(x) for x in list(range(reference_input.shape[1]))]
+    return pd.DataFrame(reference_input, columns=columns), pd.DataFrame(
+        comparison_input, columns=columns
+    )
+
+
+@pipeline(
+    enable_cache=False,
+    required_integrations=["sklearn", "facets"],
+)
+def kubernetes_example_pipeline(importer, trainer, evaluator, skew_comparison):
+    """data loading -> train -> test with skew comparison in parallel."""
+    X_train, X_test, y_train, y_test = importer()
+    model = trainer(X_train=X_train, y_train=y_train)
+    evaluator(X_test=X_test, y_test=y_test, model=model)
+    skew_comparison(X_train, X_test)
+
+
+if __name__ == "__main__":
+    kubernetes_example_pipeline(
+        importer=importer(),
+        trainer=svc_trainer(),
+        evaluator=evaluator(),
+        skew_comparison=skew_comparison(),
+    ).run()
+
+    repo = Repository()
+    runs = repo.get_pipeline(pipeline_name="kubernetes_example_pipeline").runs
+    last_run = runs[-1]
+    train_test_skew_step = last_run.get_step(name="skew_comparison")
+    FacetStatisticsVisualizer().visualize(train_test_skew_step)
+```
+
+In order to run this code later, simply copy it into a file called `run.py`.
+
+Next, install zenml, as well as its `sklearn`, `facets`, `kubernetes`, and 
+`aws` integrations:
+
+```bash
+pip install zenml
+zenml integration install sklearn facets kubernetes aws -y
+```
+
+### Registering a ZenML Stack
+To bring the Kubernetes orchestrator, metadata store, and all the AWS
+infrastructure together, we will register them together in a ZenML stack.
+
+First, initialize ZenML in the same folder where you created the `run.py` file:
+```shell
+zenml init
+```
+
+Next, register the Kubernetes orchestrator and metadata store, using the
+`<KUBE_CONTEXT>` you defined when setting up your EKS cluster above:
+
+```bash
+zenml orchestrator register k8s_orchestrator
+    --flavor=kubernetes
+    --kubernetes_context=<KUBE_CONTEXT>
+    --kubernetes_namespace=zenml
+    --synchronous=True
+```
+```bash
+zenml metadata-store register k8s_store 
+    --flavor=kubernetes
+    --kubernetes_context==<KUBE_CONTEXT>
+    --kubernetes_namespace=zenml
+    --deployment_name=mysql
+```
+
+Similarly, use the `<ECR_REGISTRY_NAME>` and `<REMOTE_ARTIFACT_STORE_PATH>` you
+defined when setting up the ECR and S3 components to register them in ZenML.
+
+```bash
+zenml container-registry register ecr_registry 
+    --flavor=default 
+    --uri=<ECR_REGISTRY_NAME>
+```
+```bash
+zenml artifact-store register s3_store 
+    --flavor=s3 
+    --path=<REMOTE_ARTIFACT_STORE_PATH>
+```
+
+Now we can bring everything together in a ZenML stack:
+
+```bash
+zenml stack register k8s_stack 
+    -m k8s_store 
+    -a s3_store 
+    -o k8s_orchestrator 
+    -c ecr_registry
+```
+
+Let's set this stack as active so we use it by default for the remainder of
+this tutorial:
+
+```shell
+zenml stack set k8s_stack
+```
+
+### Spinning Up Resources
+Once all of our components are defined together in a ZenML stack, we can spin
+them all up at once with a single command:
+```zenml stack up```
+
+In our case, this will provision the metadata store by deploying the MySQL
+database within the EKS cluster and forward the respective ports.
+
+### Running the Example
+
+Having all of our MLOps components registered in a ZenML stack makes it now
+trivial to execute our example on Kubernetes in the cloud.
+Simply execute the following command:
+
+```bash
+python run.py
+```
+
+If all went well, you should now see the logs of all Kubernetes pods in your terminal, similar to what is shown below.
+
+```
+Using stack k8s_stack to run pipeline kubernetes_example_pipeline...
+Waiting for Kubernetes orchestrator pod...
+Kubernetes orchestrator pod started.
+Waiting for pod of step importer to start...
+Step importer has started.
+Step importer has finished in 8.501s.
+Pod of step importer completed.
+Waiting for pod of step svc_trainer to start...
+Waiting for pod of step skew_comparison to start...
+Step skew_comparison has started.
+Step svc_trainer has started.
+Step svc_trainer has finished in 5.178s.
+Pod of step svc_trainer completed.
+Step skew_comparison has finished in 7.154s.
+Waiting for pod of step evaluator to start...
+Pod of step skew_comparison completed.
+Step evaluator has started.
+Test accuracy: 0.9688542825361512
+Step evaluator has finished in 6.219s.
+Pod of step evaluator completed.
+Orchestration pod completed.
+Pipeline run finished.
+Pipeline run kubernetes_example_pipeline-07_Jun_22-14_26_14_450641 has finished in 1m57s.
+```
+
+When running `kubectl get pods -n zenml`, you should now also be able to see
+that a pod was created in your cluster for each pipeline step:
+
+![kubectl get_pods() output](../assets/posts/k8s-orchestrator/kubectl_get_pods_output.png)
+
+## Cleanup
+
+### Delete Example Run Pods
+If you just want to delete the pods created by the example run, execute the 
+following command:
+
+```bash
+kubectl get pods -l pipeline=kubernetes_example_pipeline
+```
+
+### Delete ZenML Metadata Store
+If you also want to delete the MySQL metadata store, run:
+
+```bash
+zenml stack down --force
+```
+
+### Delete AWS Resources
+Lastly, if you even want to deprovision all of the infrastructure we created,
+simply delete the respective resources in your AWS console.
+
+TODO: in-depth tutorial with screenshots
+
+## Conclusion
+
+In this tutorial we learned about orchestration on Kubernetes, set up EKS, ECR,
+and S3 resources on AWS, and saw how this enables us to run arbitrary ML
+pipelines in a scalable cloud environment.
+Using ZenML, we were able to do all of this without having to change a single
+line of our ML code. 
+Furthermore, it will now be almost trivial to switch out stack components
+whenever our requirements change.
+For instance, a smooth way to production-grade orchestration could be to start
+with the stack we have defined in this tutorial, and then switch out the
+Kubernetes-native orchestrator in favor of ZenML's
+[Kubeflow Pipelines Orchestrator](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow_pipelines_orchestration)
+once the pipelines are in such high demand that guaranteed availability and
+infinite scalability are critical.
+
+If you have any question or feedback regarding this tutorial, let us know
+[here](https://zenml.hellonext.co/p/github-actions-orchestrator-tutorial-feedback) 
+or join our 
+[weekly community hour](https://www.eventbrite.com/e/zenml-meet-the-community-tickets-354426688767).
+If you want to know more about ZenML 
+or see more examples, check out our [docs](https://docs.zenml.io), 
+[examples](https://github.com/zenml-io/zenml/tree/main/examples) or 
+join our [Slack](https://zenml.io/slack-invite/).
