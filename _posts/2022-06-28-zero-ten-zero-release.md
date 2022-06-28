@@ -12,7 +12,7 @@ image:
   path: /assets/posts/release_0_10_0/release-zero-ten-balloon.jpg
 ---
 
-The 0.10.0 release continues our streak of extending ZenML with support for new orchestrators, this time by adding the Kubernetes Native Orchestrator. Also included are: a Data Validator stack component and Great Expectations implementation and a community-contributed Vault secret manager amonng a host of other things! ✨
+The 0.10.0 release continues our streak of extending ZenML with support for new orchestrators, this time by adding the Kubernetes Native Orchestrator. Also included are: a Data Validator stack component and Great Expectations implementation and a community-contributed Vault secret manager among a host of other things! ✨
 
 Beyond this, as usual we included a number of smaller bugfixes and documentation changes to cumulatively improve experience of using ZenML as a user. 
 For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.10.0) a glance.
