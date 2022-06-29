@@ -91,7 +91,7 @@ Take a look at [mlops-stacks by ZenML](https://github.com/zenml-io/mlops-stacks)
 Now, coming back to the setup, you can leverage the "eks-s3-seldon-mlflow" recipe for this example. 
 
 > **Note**
-> You need to have Terraform installed to conitnue.
+> You need to have [Terraform installed](https://learn.hashicorp.com/tutorials/terraform/install-cli) to continue.
 
 Follow these steps and you'll have your stack ready to be registered with ZenML!
 
