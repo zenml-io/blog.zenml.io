@@ -359,7 +359,7 @@ terminal, similar to what is shown below.
 ![python run.py output](../assets/posts/k8s-orchestrator/python_run_output.png)
 
 Additionally, a window should have opened in your local browser where you can
-see a training-serving skew Analysis in Facets like the following:
+see a training-serving skew analysis in Facets like the following:
 
 ![Facets Analysis](../assets/posts/k8s-orchestrator/facets_analysis_output.png)
 
