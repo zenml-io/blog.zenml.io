@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Felix Altenberger
-title: "Kubernetes-native ML Orchestration"
+title: "How to run production ML workflows natively on Kubernetes"
 description: "Getting started with distributed ML in the cloud: How to orchestrate ML workflows natively on Amazon Elastic Kubernetes Service (EKS)."
 category: zenml
 tags: zenml integrations cloud mlops
@@ -12,80 +12,49 @@ image:
 path: /assets/posts/k8s-orchestrator/zenml_kubernetes_orchestrator_teaser.png
 ---
 
-In this tutorial we will learn how to easily migrate ML workflows to a
-distibuted and scalable cloud setup using ZenML's new Kubernetes-native
-orchestrator and Kubernetes metadata store.
-
-In order to run in the cloud, we will also provision various resources on
-AWS: an S3 bucket for artifact storage, an ECR container registry, as well as 
-an Amazon EKS Kubernetes cluster, on which we will orchestrate our ML
-pipelines.
-
-The following figure shows an overview of the MLOps stack we will set up within
-this tutorial:
-
-![Kubernetes AWS Stack Overview](../assets/posts/k8s-orchestrator/zenml_kubernetes_aws_stack_overview.png)
+Orchestrating ML workflows natively in Kubernetes has been one of the most
+requested features at ZenML.
+We have heard you and have just released a brand new Kubernetes-native
+orchestrator for you, which executes each pipeline step in a separate pod,
+streams the logs of all pods to your terminal, and even supports CRON job
+scheduling.
+Moreover, we have even added a new Kubernetes metadata store that you can
+use with the orchestrator to save your ML metadata in a fresh MySQL database
+automatically deployed within your Kubernetes cluster.
 
 Now, why would we want to orchestrate ML workflows natively in Kubernetes in
-the first place?
-Couldn't we just use [Kubeflow](https://www.kubeflow.org/) to run jobs on
-Kubernetes for us?
-Yes and no.
-Kubeflow is an awesome, battle-tested tool, and it certainly is the most
+the first place when ZenML already integrates with 
+[Kubeflow](https://www.kubeflow.org/) which can run jobs on Kubernetes for us?
+Well, Kubeflow is an awesome, battle-tested tool, and it certainly is the most
 production-ready Kubernetes orchestration tool out there. 
 However, Kubeflow also comes with a lot of additional requirements and general
-added complexity that not every team might want.
+added complexity that not every team might want:
+Kubeflow Pipelines (kfp) alone requires a list of 21 other packages aside from
+Kubernetes, it includes an UI that you might not need as well as a lot of
+Google Cloud specific functionality that is essentially dead code if you are 
+using a different cloud provider.
+Most importantly, someone needs to install it on your cluster, configure it, 
+and actively managed it.
 
 If you are looking for a minimalist, lightweight way of running ML workflows on
 Kubernetes, then this post is for you:
-At the end, you will be able to orchestrate ML pipelines on Kubernetes without
-any additional packages apart from the
+By the time we are done, you will be able to orchestrate ML pipelines on 
+Kubernetes without any additional packages apart from the
 [official Kubernetes Python API](https://github.com/kubernetes-client/python).
 
-## How it works
+In this post we will use the new Kubernetes-native orchestrator and Kubernetes
+metadata store to easily run ML workflows in a distibuted and scalable cloud 
+setting on AWS.
+To do so, we will provision various resources on AWS: an S3 bucket for artifact
+storage, an ECR container registry, as well as an Amazon EKS cluster, on which 
+the Kubernetes-native components will run.
 
-### Orchestration
+The following figure shows an overview of the MLOps stack we will build
+throughout this tutorial:
 
-Similar to Kubeflow, this Kubernetes-native orchestrator runs the steps of
-an ML pipeline in separate Kubernetes pods and executes them in parallel where
-possible.
-However, the orchestration of the different pods is not done by Kubeflow but by
-a separate master job, which figures out the order of steps using
-topological sort, starts Kubernetes jobs for each step, and aggregates logs of
-all pods and streams them back to the user client.
+![Kubernetes AWS Stack Overview](../assets/posts/k8s-orchestrator/zenml_kubernetes_aws_stack_overview.png)
 
-### Metadata Storage
-
-ZenML's new Kubernetes metadata store automatically saves your ML metadata in a
-fresh MySQL database deployed within your Kubernetes cluster.
-
-To understand how this works, we need to dive a bit deeper into core Kubernetes
-concepts:
-The most important concept in Kubernetes is the pod, which is the smallest 
-deployable unit of computation.
-Each pod runs on a node, which is the underlying physical or virtual machine, 
-and it is comprised of one or more Docker containers with optional shared
-resources.
-Pods can either be provisioned manually (as we do during the orchestration)
-or through a deployment, which automatically creates and maintains a desired 
-number of replicas of a given pod to ensure high availability of the deployed
-resources.
-A Kubernetes service can then be used to expose pods as a network service so
-that we can access those pods from within other pods or from outside the
-cluster.
-See the following figure for a visualization.
-
-![Kubernetes Overview](../assets/posts/k8s-orchestrator/kubernetes_overview.png)
-
-ZenML's Kubernetes metadata store spins up a deployment under the hood, which
-manages pods that are connected to a MySQL database in a persitent volume.
-The deployed pods are exposed via a service that can be accessed by the step
-pods to read and write metadata.
-
-## Running on Kubernetes in the Cloud
-
-Let's now see how to use the aforementioned Kubernetes components to run ML 
-workflows in the cloud. 
+## Setting Up AWS Resources
 
 In this example, we will use AWS as our cloud provider of choice and provision
 an EKS Kubernetes cluster, as well as a S3 bucket to store our ML artifacts 
@@ -107,8 +76,7 @@ installed on your local machine:
 ### EKS Setup
 
 First, create an EKS cluster on AWS according to
-[this tutorial](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html).
-TODO: replace by in-depth tutorial with screenshots
+[this AWS tutorial](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html).
 
 Next, configure your local `kubectl` to connect to the EKS cluster we just
 created:
@@ -119,13 +87,11 @@ aws eks --region <AWS_REGION> update-kubeconfig
     --alias <KUBE_CONTEXT>
 ```
 
-
 ### S3 Bucket Setup
 
 Next, let us create an S3 bucket where our ML artifacts can later be stored.
 You can do so by following
-[this tutorial](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html).
-TODO: replace by in-depth tutorial with screenshots
+[this AWS tutorial](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html).
 
 The path for your bucket should be in this format `s3://your-bucket`.
 
@@ -141,8 +107,7 @@ TODO: in-depth tutorial with screenshots
 Since each of the Kubernetes pods will require a custom Docker image, we will
 also set up an ECR container registry to manage those.
 You can do so by following
-[this tutorial](https://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html).
-TODO: replace by in-depth tutorial with screenshots
+[this AWS tutorial](https://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html).
 
 In order to push container images to ECR, we now still need to authenticate our
 local docker CLI:
