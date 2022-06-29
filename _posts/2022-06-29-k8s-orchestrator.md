@@ -86,7 +86,7 @@ installed on your local machine:
 If you're looking for a really quick way to have all the resources deployed and ready, we have something interesting for you!
 We are building a set of "recipes" for the most popular MLOps stacks so that you can get to the execution phase faster. 
 
-Take a look at [mlops-stacks by ZenML](https://github.com/zenml-io/mlops-stacks) 😍. It's open source and maintained by the ZenML core team.
+Take a look at [mlops-stacks by ZenML](https://github.com/zenml-io/mlops-stacks) 😍. It's open-source and maintained by the ZenML core team.
 
 Now, coming back to the setup, you can leverage the "eks-s3-seldon-mlflow" recipe for this example. 
 
@@ -108,7 +108,7 @@ Follow these steps and you'll have your stack ready to be registered with ZenML!
     ```
     terraform apply
     ```
-    This will give you an overview of all resources that will be createad. Select "yes" and just sit back 😉
+    This will give you an overview of all resources that will be created. Select "yes" and just sit back 😉
     It can take up to 20 minutes to set everything up.
     
 4. Your stack is now ready! 🚀 
@@ -148,7 +148,7 @@ You can do so by following
 
 ### Configure your local kubectl and Docker
 
-All that is left to do is to configure your local `kubectl` to connect to the EKS cluster,
+All that is left to do is to configure your local `kubectl` to connect to the EKS cluster
 and to authenticate your local Docker CLI to connect to the ECR.
 
 > **Note**
