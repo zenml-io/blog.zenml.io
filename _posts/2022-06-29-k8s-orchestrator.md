@@ -81,7 +81,7 @@ installed on your local machine:
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
-### Taking the Highway
+### 🚅 Take the Express Train: Terraform-based provisioning of resources
 
 If you're looking for a really quick way to have all the resources deployed and ready, we have something interesting for you!
 We are building a set of "recipes" for the most popular MLOps stacks so that you can get to the execution phase faster. 
@@ -112,23 +112,30 @@ Follow these steps and you'll have your stack ready to be registered with ZenML!
     It can take up to 20 minutes to set everything up.
     
 4. Your stack is now ready! 🚀 
-5. Configure your local `kubectl` client with the newly created cluster.
-   ```
-   aws eks update-kubeconfig --region REGION --name CLUSTER_NAME --alias terraform
-   ```
-   The values for the region and the name of the cluster can be obtained by looking at the output of the `terraform apply` command.
 
-You can skip directly to the next section now! 😎
+All that is left to do is to configure your local `kubectl` to connect to the EKS cluster,
+and to authenticate your local Docker CLI to connect to the ECR.
+The values for the region and the name of the cluster can be obtained by looking at the output of the `terraform apply` command.
 
----
+```bash
+aws eks --region <AWS_REGION> update-kubeconfig
+    --name <AWS_EKS_CLUSTER>
+    --alias <KUBE_CONTEXT>
+```
+```bash
+aws ecr get-login-password --region <AWS_REGION> | docker login 
+    --username AWS 
+    --password-stdin 
+    <ECR_REGISTRY_NAME>
+```
 
-If you want more insight into how each of the stack components are built and would want to create them manually, follow along.
-
----
-
-If you want more insight into how each of the stack components are built and would want to create them manually, follow along.
+Now you can skip directly to [running the example](#run-an-example-with-zenml) now! 😎
 
 ### 🚂 Take the Slower Train: Manual provisioning of resources
+
+If you would like to manually provision the resources instead of using the Terraform-based approach described above, this section is for you. You can skip this section if you already have the resources deployed at this point.
+
+#### EKS Setup
 
 First, create an EKS cluster on AWS according to
 [this AWS tutorial](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html).
@@ -142,7 +149,7 @@ aws eks --region <AWS_REGION> update-kubeconfig
     --alias <KUBE_CONTEXT>
 ```
 
-### S3 Bucket Setup
+#### S3 Bucket Setup
 
 Next, let us create an S3 bucket where our ML artifacts can later be stored.
 You can do so by following
@@ -155,7 +162,7 @@ created.
 For simplicity, we will do this by simply assigning an `AmazonS3FullAccess` 
 policy to the cluster node group's IAM role.
 
-### ECR Container Registry Setup
+#### ECR Container Registry Setup
 
 Since each Kubernetes pod will require a custom Docker image, we will
 also set up an ECR container registry to manage those.
@@ -403,8 +410,6 @@ zenml stack down --force
 ### Delete AWS Resources
 Lastly, if you even want to deprovision all of the infrastructure we created,
 simply delete the respective resources in your AWS console.
-
-TODO: in-depth tutorial with screenshots
 
 ## Conclusion
 
