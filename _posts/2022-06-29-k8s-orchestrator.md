@@ -29,11 +29,12 @@ Well, Kubeflow is an awesome, battle-tested tool, and it certainly is the most
 production-ready Kubernetes orchestration tool out there. 
 However, Kubeflow also comes with a lot of additional requirements and general
 added complexity that not every team might want:
-Kubeflow Pipelines (kfp) alone requires a list of 21 other packages aside from
-Kubernetes, it includes a UI that you might not need as well as a lot of
+- Kubeflow Pipelines (kfp) alone requires a list of 21 other packages aside from
+Kubernetes
+- It includes a UI that you might not need as well as a lot of
 Google Cloud specific functionality that is essentially dead code if you are 
 using a different cloud provider.
-Most importantly, someone must install it on your cluster, configure it, 
+- Most importantly, someone must install it on your cluster, configure it, 
 and actively manage it.
 
 If you are looking for a minimalist, lightweight way of running ML workflows on
