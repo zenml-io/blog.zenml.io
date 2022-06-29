@@ -278,15 +278,15 @@ zenml integration install sklearn facets kubernetes aws s3 -y
 
 ### Registering a ZenML Stack
 To bring the Kubernetes orchestrator, metadata store, and all the AWS
-infrastructure together, we will register them in a ZenML stack.
+infrastructure together, we will register them together in a ZenML stack.
 
 First, initialize ZenML in the same folder where you created the `run.py` file:
 ```shell
 zenml init
 ```
 
-Next, register the Kubernetes orchestrator and metadata store using the
-`<KUBE_CONTEXT>` you defined when setting up your EKS cluster above:
+Next, register the Kubernetes orchestrator and metadata store, using the
+`<KUBE_CONTEXT>` you used above:
 
 ```bash
 zenml orchestrator register k8s_orchestrator
@@ -298,13 +298,15 @@ zenml orchestrator register k8s_orchestrator
 ```bash
 zenml metadata-store register k8s_store 
     --flavor=kubernetes
-    --kubernetes_context=<KUBE_CONTEXT>
+    --kubernetes_context==<KUBE_CONTEXT>
     --kubernetes_namespace=zenml
     --deployment_name=mysql
 ```
 
 Similarly, use the `<ECR_REGISTRY_NAME>` and `<REMOTE_ARTIFACT_STORE_PATH>` you
-defined when setting up the ECR and S3 components to register them in ZenML.
+defined when setting up the ECR and S3 components to register them in ZenML. If you have used the 
+recipe, the ECR registry name would be in the format <ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com and the 
+name of the artifact store can be taken from the output of the `terraform apply` command.
 
 ```bash
 zenml container-registry register ecr_registry 
