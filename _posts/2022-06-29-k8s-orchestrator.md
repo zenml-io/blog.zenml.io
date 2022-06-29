@@ -84,7 +84,7 @@ installed on your local machine:
 If you're looking for a really quick way to have all the resources deployed and ready, we have something interesting for you!
 We are building a set of "recipes" for the most popular MLOps stacks so that you can get to the execution phase faster. 
 
-Take a look at mlops-stacks by ZenML 😍. It's open source and maintained by the ZenML core team.
+Take a look at `[mlops-stacks](https://github.com/zenml-io/mlops-stacks)` by ZenML 😍. It's open-source and maintained by the ZenML core team.
 
 Now, coming back to the setup, you can leverage the "eks-s3-seldon-mlflow" recipe for this example. 
 
