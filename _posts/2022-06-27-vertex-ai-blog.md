@@ -4,8 +4,8 @@ author: Alexej Penner
 title: "Serverless MLOps with Vertex AI"
 description: "How ZenML lets you have the best of both worlds, serverless
 managed infrastructure without the vendor lock in."
-category: tech-startup
-tags: tech-startup python tooling open-source zenml
+category: zenml
+tags: zenml integrations cloud mlops
 publish_date: June 27, 2022
 date: 2022-06-27T00:02:00Z
 thumbnail: /assets/posts/vertex/VertexLogo.png
