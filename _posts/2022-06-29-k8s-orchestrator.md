@@ -113,41 +113,18 @@ Follow these steps and you'll have your stack ready to be registered with ZenML!
     
 4. Your stack is now ready! 🚀 
 
-All that is left to do is to configure your local `kubectl` to connect to the EKS cluster,
-and to authenticate your local Docker CLI to connect to the ECR.
-The values for the region and the name of the cluster can be obtained by looking at the output of the `terraform apply` command.
-
-```bash
-aws eks --region <AWS_REGION> update-kubeconfig
-    --name <AWS_EKS_CLUSTER>
-    --alias <KUBE_CONTEXT>
-```
-```bash
-aws ecr get-login-password --region <AWS_REGION> | docker login 
-    --username AWS 
-    --password-stdin 
-    <ECR_REGISTRY_NAME>
-```
-
-Now you can skip directly to [running the example](#run-an-example-with-zenml) now! 😎
+Now you can skip directly to [configuring your local Docker and kubectl](#configure-your-local-kubectl-and-docker)! 😎
 
 ### 🚂 Take the Slower Train: Manual provisioning of resources
 
-If you would like to manually provision the resources instead of using the Terraform-based approach described above, this section is for you. You can skip this section if you already have the resources deployed at this point.
+If you would like to manually provision the resources instead of using the Terraform-based approach described above, this section is for you.
+You can [skip this section](#configure-your-local-kubectl-and-docker)
+if you already have the resources deployed at this point.
 
 #### EKS Setup
 
 First, create an EKS cluster on AWS according to
 [this AWS tutorial](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html).
-
-Next, configure your local `kubectl` to connect to the EKS cluster we just
-created:
-
-```bash
-aws eks --region <AWS_REGION> update-kubeconfig
-    --name <AWS_EKS_CLUSTER>
-    --alias <KUBE_CONTEXT>
-```
 
 #### S3 Bucket Setup
 
@@ -169,9 +146,19 @@ also set up an ECR container registry to manage those.
 You can do so by following
 [this AWS tutorial](https://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html).
 
-In order to push container images to ECR, we now still need to authenticate our
-local docker CLI:
+### Configure your local kubectl and Docker
 
+All that is left to do is to configure your local `kubectl` to connect to the EKS cluster,
+and to authenticate your local Docker CLI to connect to the ECR.
+
+> **Note**
+> If you have used Terraform above, you can obtain the values needed for the following commands by looking at the output of the `terraform apply` command.
+
+```bash
+aws eks --region <AWS_REGION> update-kubeconfig
+    --name <AWS_EKS_CLUSTER>
+    --alias <KUBE_CONTEXT>
+```
 ```bash
 aws ecr get-login-password --region <AWS_REGION> | docker login 
     --username AWS 
@@ -181,11 +168,11 @@ aws ecr get-login-password --region <AWS_REGION> | docker login
 
 ## Run an example with ZenML
 Let's now see the Kubernetes-native orchestration in action with a simple
-example using ZenML.
+example using [ZenML](https://github.com/zenml-io/zenml/).
 
 The following code defines a four-step pipeline that loads NumPy training and 
-test datasets, checks them for training-serving skew with Facets, trains a 
-sklearn model on the training set, and then evaluates it on the test set:
+test datasets, checks them for training-serving skew with [Facets](https://pair-code.github.io/facets/), trains a 
+[sklearn](https://scikit-learn.org/stable/) model on the training set, and then evaluates it on the test set:
 
 ```python
 import numpy as np
@@ -421,10 +408,9 @@ line of our ML code.
 Furthermore, it will now be almost trivial to switch out stack components
 whenever our requirements change.
 
-If you have any questions or feedback regarding this tutorial, let us know
-[here](https://zenml.hellonext.co/p/github-actions-orchestrator-tutorial-feedback) 
-or join our 
+If you have any questions or feedback regarding this tutorial, join our 
 [weekly community hour](https://www.eventbrite.com/e/zenml-meet-the-community-tickets-354426688767).
+
 If you want to know more about ZenML 
 or see more examples, check out our [docs](https://docs.zenml.io) and
 [examples](https://github.com/zenml-io/zenml/tree/main/examples) or 
