@@ -86,7 +86,7 @@ We are building a set of "recipes" for the most popular MLOps stacks so that you
 
 Take a look at `[mlops-stacks](https://github.com/zenml-io/mlops-stacks)` by ZenML 😍. It's open-source and maintained by the ZenML core team.
 
-Now, coming back to the setup, you can leverage the "eks-s3-seldon-mlflow" recipe for this example. 
+Now, coming back to the setup, you can leverage the ["eks-s3-seldon-mlflow"](https://github.com/zenml-io/mlops-stacks/tree/main/eks-s3-seldon-mlflow) recipe for this example. 
 
 > **Note**
 > You need to have Terraform installed to conitnue.
