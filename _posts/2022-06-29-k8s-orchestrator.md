@@ -69,6 +69,8 @@ needs.
 However, this could also be done in a similar fashion on any other cloud 
 provider.
 
+In this tutorial, we provide two methods on how to provision infrastructure. 
+Choose the one that you are more comfortable with!
 ### Requirements
 
 In order to follow this tutorial, you need to have the following software
