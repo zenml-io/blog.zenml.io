@@ -104,7 +104,7 @@ Follow these steps and you'll have your stack ready to be registered with ZenML!
     ```
     terraform apply
     ```
-    This will give you an overview of all resources that will be createad. Select "yes" and just sit back 😉
+    This will give you an overview of all resources that will be created. Select "yes" and just sit back 😉
     It can take upto 20 minutes to set everything up.
     
 4. Your stack is now ready! 🚀 
