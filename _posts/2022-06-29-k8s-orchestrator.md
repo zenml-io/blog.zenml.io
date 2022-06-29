@@ -78,6 +78,42 @@ installed on your local machine:
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
+### Taking the Highway
+
+If you're looking for a really quick way to have all the resources deployed and ready, we have something interesting for you!
+We are building a set of "recipes" for the most popular MLOps stacks so that you can get to the execution phase faster. 
+
+Take a look at mlops-stacks by ZenML 😍. It's open source and maintained by the ZenML core team.
+
+Now, coming back to the setup, you can leverage the "eks-s3-seldon-mlflow" recipe for this example. 
+
+> **Note**
+> You need to have Terraform installed to conitnue.
+
+Follow these steps and you'll have your stack ready to be registered with ZenML!
+
+1. Clone the repository. 
+2. Move into the "eks-s3-seldon-mlflow" directory and run the following command.
+   ```
+   terraform init
+   ```
+   This will download some provider information to your repository and can take up to a minute to run.
+
+3. After the `init` has completed, you can now apply your resources. For that, execute this command.
+    ```
+    terraform apply
+    ```
+    This will give you an overview of all resources that will be createad. Select "yes" and just sit back 😉
+    It can take upto 20 minutes to set everything up.
+    
+4. Your stack is now ready! 🚀 
+
+You can skip directly to the stack registration section now! 😎
+
+---
+
+If you want more insight into how each of the stack components are built and would want to create them manually, follow along.
+
 ### EKS Setup
 
 First, create an EKS cluster on AWS according to
@@ -104,8 +140,6 @@ Now we still need to authorize our EKS cluster to access the S3 bucket we just
 created.
 For simplicity, we will do this by simply assigning an `AmazonS3FullAccess` 
 policy to the cluster node group's IAM role.
-
-TODO: in-depth tutorial with screenshots
 
 ### ECR Container Registry Setup
 
