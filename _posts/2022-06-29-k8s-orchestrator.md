@@ -86,17 +86,19 @@ installed on your local machine:
 If you're looking for a really quick way to have all the resources deployed and ready, we have something interesting for you!
 We are building a set of "recipes" for the most popular MLOps stacks so that you can get to the execution phase faster. 
 
-Take a look at `[mlops-stacks](https://github.com/zenml-io/mlops-stacks)` by ZenML 😍. It's open-source and maintained by the ZenML core team.
+Take a look at [mlops-stacks by ZenML](https://github.com/zenml-io/mlops-stacks) 😍. It's open source and maintained by the ZenML core team.
 
-Now, coming back to the setup, you can leverage the ["eks-s3-seldon-mlflow"](https://github.com/zenml-io/mlops-stacks/tree/main/eks-s3-seldon-mlflow) recipe for this example. 
+Now, coming back to the setup, you can leverage the "eks-s3-seldon-mlflow" recipe for this example. 
 
 > **Note**
 > You need to have Terraform installed to conitnue.
 
 Follow these steps and you'll have your stack ready to be registered with ZenML!
 
-1. Clone the repository. 
-2. Move into the "eks-s3-seldon-mlflow" directory and run the following command.
+1. Clone the [repository](https://github.com/zenml-io/mlops-stacks). 
+2. Move into the "eks-s3-seldon-mlflow" directory and open the `locals.tf` file.
+3. Edit the "prefix" variable to your desired name and modify any other variables if needed.
+4. Now, run the following command.
    ```
    terraform init
    ```
@@ -106,12 +108,21 @@ Follow these steps and you'll have your stack ready to be registered with ZenML!
     ```
     terraform apply
     ```
-    This will give you an overview of all resources that will be created. Select "yes" and just sit back 😉
-    It can take up to 20 minutes to set everything up.
+    This will give you an overview of all resources that will be createad. Select "yes" and just sit back 😉
+    It can take upto 20 minutes to set everything up.
     
 4. Your stack is now ready! 🚀 
+5. Configure your local `kubectl` client with the newly created cluster.
+   ```
+   aws eks update-kubeconfig --region REGION --name CLUSTER_NAME --alias terraform
+   ```
+   The values for the region and the name of the cluster can be obtained by looking at the output of the `terraform apply` command.
 
-You can skip directly to the stack registration section now! 😎
+You can skip directly to the next section now! 😎
+
+---
+
+If you want more insight into how each of the stack components are built and would want to create them manually, follow along.
 
 ---
 
