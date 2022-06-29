@@ -117,7 +117,7 @@ You can skip directly to the stack registration section now! 😎
 
 If you want more insight into how each of the stack components are built and would want to create them manually, follow along.
 
-### EKS Setup
+### 🚂 Take the Slower Train: Manual provisioning of resources
 
 First, create an EKS cluster on AWS according to
 [this AWS tutorial](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html).
