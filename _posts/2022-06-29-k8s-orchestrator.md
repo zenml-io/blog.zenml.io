@@ -396,7 +396,14 @@ zenml stack down --force
 
 ### Delete AWS Resources
 Lastly, if you even want to deprovision all of the infrastructure we created,
-simply delete the respective resources in your AWS console.
+simply delete the respective resources in your AWS console if you had created them manually. 
+   
+   For those of you who used the stack recipe, you can simply run the following command and it will take care of removing all resources and dependencies.
+   
+   ```
+   terraform destroy
+   ```
+   If there's any error that pops up related to Kubernetes resources, there's a [cleanup script](https://github.com/zenml-io/mlops-stacks/blob/main/eks-s3-seldon-mlflow/cleanup.sh) in the repository that you can run.
 
 ## Conclusion
 
