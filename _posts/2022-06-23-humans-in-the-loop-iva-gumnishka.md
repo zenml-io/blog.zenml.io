@@ -27,7 +27,7 @@ might have on the back of this podcast or
 publishing on the ZenML blog. Please do drop in to [our Slack community](https://zenml.io/slack-invite/) if you
 have thoughts on this!
 
-In this clip, speaks about where and when data labeling takes place in the
+In this clip, Iva speaks about where and when data labeling takes place in the
 machine learning workflows and lifecycles that she's observed:
 
 <iframe src="https://share.descript.com/embed/2PAvdnpaodd" width="410" height="410" frameborder="0" allowfullscreen></iframe>
