@@ -2,7 +2,7 @@
 layout: post
 author: Alex Strick van Linschoten
 title: "Podcast: Edge Computer Vision with Karthik Kannan"
-description: "This week I spoke with "
+description: "I spoke with Karthik Kannan, cofounder and CTO of Envision, a company that builds on top of the Google Glass and using Augmented Reality features of phones to allow visually impaired people to better sense the environment or objects around them."
 category: podcast
 tags: podcast evergreen bigger-picture edge computer-vision
 publish_date: June 30, 2022
@@ -12,42 +12,26 @@ image:
   path: /assets/posts/karthik-kannan/1561516119854.jpeg
 ---
 
-This week, I'm really happy to be able to continue the conversation we've been
-having with our users and community around the role of data annotation in MLOps.
+This week I spoke with Karthik Kannan, cofounder and CTO of Envision, a company that builds on top of the Google Glass and using Augmented Reality features of phones to allow visually impaired people to better sense the environment or objects around them.
 
-We were lucky to get to talk to [Iva Gumnishka](https://www.linkedin.com/in/ivagumnishka/), the founder of [Humans in the Loop](https://humansintheloop.org/). They are an organization that provides data annotation and collection services. Their teams are primarily made up of those who have been affected by conflict and now are asylum seekers or refugees.
+Their software and devices are pretty popular and as you'll hear in this conversation, they've been on a real journey to get to where they are now.
 
-Iva and her team has a ton of experience working with annotation and has seen
-how different companies build this into their production machine learning
-lifecycles. We're continuing to work on a feature that will allow you to do this
-as part of your MLOps workflow when using ZenML, and I welcome any feedback you
-might have on the back of this podcast or
-[the](https://blog.zenml.io/data-labelling-annotation/)
-[articles](https://blog.zenml.io/open-source-data-annotation-tools/) we've been
-publishing on the ZenML blog. Please do drop in to [our Slack community](https://zenml.io/slack-invite/) if you
-have thoughts on this!
+In particular, I really enjoyed the parts where Karthik explained their development and deployment process in detail. It's not too often that you get a deep dive into the workflows and stacks of an embedded computer vision company and tool and so I think you're going to really enjoy this one.
 
-In this clip, speaks about where and when data labeling takes place in the
-machine learning workflows and lifecycles that she's observed:
+In this clip, Karthik explains how they had to adapt and build their own
+image datasets suited to the specific purpose and use cases of visually
+impaired users.
 
-<iframe src="https://share.descript.com/embed/2PAvdnpaodd" width="410" height="410" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://share.descript.com/embed/fLCj4qrgir5" width="410" height="410" frameborder="0" allowfullscreen></iframe>
 
-Since she and her team have used so many of them, I also asked Iva to give her
-take on the annotation tools that she's excited about. That part of the
-conversation is worth pairing with [the Humans in the Loop
-blog](https://humansintheloop.org/resources/blog/) where you can find many
-in-depth reviews of these tools.
-
-If you're interested in tools, also be sure to check out [our
-`awesome-open-data-annotation`
-repository](https://github.com/zenml-io/awesome-open-data-annotation) where
-we've gathered together the best open-source annotation tools available at the
-moment.
+Pre-trained models and some open datasets were useful, he says,
+but they don't give best-in-class performance if the thing you're building
+doesn't use similar kinds and qualities of data.
 
 As always, full show notes and links are available on
 [our dedicated podcast page](https://podcast.zenml.io/).
 
-<iframe src="https://player.fireside.fm/v2/vA-gqsEV+-0dTuHmO?theme=dark" width="740" height="200" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://player.fireside.fm/v2/vA-gqsEV+edbXLK87?theme=dark" width="740" height="200" frameborder="0" scrolling="no"></iframe>
 
 <br>
 
