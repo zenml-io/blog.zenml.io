@@ -7,9 +7,9 @@ category: podcast
 tags: podcast evergreen bigger-picture edge computer-vision
 publish_date: June 30, 2022
 date: 2022-06-30T00:02:00Z
-thumbnail: /assets/posts/iva-gumnishka/1623738321208-2.jpeg
+thumbnail: /assets/posts/karthik-kannan/1561516119854.jpeg
 image:
-  path: /assets/posts/iva-gumnishka/1623738321208-2.jpeg
+  path: /assets/posts/karthik-kannan/1561516119854.jpeg
 ---
 
 This week, I'm really happy to be able to continue the conversation we've been
