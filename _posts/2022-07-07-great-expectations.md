@@ -45,19 +45,43 @@ Expectations and ZenML a great pair.
 
 ### The Golden Path
 
-TBD: compatible vision about the role of data validation in MLOps, user experience and workflow (golden path - https://greatexpectations.io/blog/ml-ops-great-expectations/)
+ZenML and Great Expectations have compatible visions regarding the role of data
+validation and documentation in MLOps, the user experience and the general
+workflow of continuously validating the data that is circulated through ML
+pipelines. This is elegantly referred to as "the golden path" in a Great
+Expectations blog post entitled _[How does Great Expectations fit into MLOps](https://greatexpectations.io/blog/ml-ops-great-expectations/)_.
 
 ### Reproducible Data Validation
 
-TBD: serializable artifacts and data docs - reproducible pipelines and visibility/explainability, versioning, tracking, lineage
+The reproducible nature of ZenML pipelines achieved through artifact versioning
+and metadata tracking is perfectly aligned with Great Expectations' concept of
+[Data Docs](https://docs.greatexpectations.io/docs/terms/data_docs), a human
+readable view into the overall data quality state of a project. When combined,
+they can provide a complete historical record of the data used in a ML
+project and its quality characteristics at various points in time, making it
+extremely useful for the visibility and explainability of a project.
 
 ### Keep Humans in the Loop
 
-TBD: human-in-the-loop - data docs - pre/post-execution workflows. Not everything can be automated, nor should it. collaboration, common view
+Not everything in MLOps can be automated, nor should it. ZenML features such
+as [Experiment Trackers](https://docs.zenml.io/v/0.10.0/advanced-guide/track-your-experiments),
+[Alerters](https://docs.zenml.io/v/0.9.0/advanced-guide/send-automated-chat-alerts),
+artifact Visualizers and the [post-execution workflow](https://docs.zenml.io/v/0.9.0/developer-guide/post-execution-workflow)
+features are designed with this very principle in mind. They give users an
+easily comprehensible view into the otherwise complex structure of the information
+collected and stored throughout the lifecycle of a ML project.
 
-### Extensibility is Important
+The Great Expectations "tests are docs and docs are tests" principle fits
+perfectly into that story and the rendered Data Docs is a great way of
+facilitating collaboration and interaction between the various roles that are
+part of the ML team.
 
-TBD: Great Expectation is an extensible framework and that was vital not only during the integration implementation but also to ensure a maintainable relationship in the future.
+### Combined Extensibility
+
+Great Expectation is a highly extensible framework. More than just another
+similarity between the ZenML and Great Expectations framework goals, this was
+vital to implementing a clean and elegant integration between the two frameworks
+and guarantees a maintainable relationship in the future.
 
 ## Integration Tactics - How Did We Do It?
 
