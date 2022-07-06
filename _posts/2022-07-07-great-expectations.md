@@ -4,7 +4,7 @@ author: Stefan Nica
 title: "Continuous Data Validation Using ZenML and Great Expectations"
 description: "ZenML combines forces with Great Expectations to add data validation to the list of continuous processes automated with MLOps."
 category: zenml
-tags: zenml monitoring tooling integrations mlops
+tags: zenml monitoring tooling integrations mlops evergreen
 publish_date: July 07, 2022
 date: 2022-07-07T00:02:00Z
 thumbnail: /assets/posts/great-expectations/continuous-data-validation.png
@@ -24,14 +24,14 @@ data-centric nature of ML development.
 _Data Validator_, a new category of libraries and frameworks that
 [the 0.10.0 ZenML release](https://blog.zenml.io/zero-ten-zero-release/)
 adds to the ZenML ecosystem of integrations. _Data Validators_ are MLOps tool
-stack components that facilitate defining high data quality standards and
-practices and applying them throughout the entire lifecycle of a ML project.
+stack components that allow you to define high data quality standards and
+practices and to apply them throughout the entire lifecycle of a ML project.
 
 ## Why Great Expectations?
 
 Our decision was not random nor incidental. We chose Great Expectations to be
 the baseline for our ZenML Data Validator concept not just because it is a
-popular, best-in-class data quality framework (albeit those scored high on
+popular, best-in-class data quality framework (though for those it scored high on
 our criteria list), but also because we share a similar vision about the role of
 data validation in MLOps. On top of that, they are a natural fit from an
 engineering perspective, which made designing and implementing the Great
@@ -87,11 +87,11 @@ and guarantees a maintainable relationship in the future.
 
 <iframe src="https://giphy.com/embed/cn9lRpqz2kERy59R8w" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/enbw-reaction-reactions-meme-cn9lRpqz2kERy59R8w">via GIPHY</a></p>
 
-The ZenML integration leverages a few surprising similarities between how both
+The ZenML integration leverages a few surprising similarities in how both
 Great Expectations and ZenML handle configuration and data to make data
-validation a continuous operation automated and tracked through ML pipelines.
+validation a continuous operation that is automated and tracked through ML pipelines.
 
-### The ZenML Artifact Store is a Great Expectations Store
+### 🤯 The ZenML Artifact Store is a Great Expectations Store
 
 The information managed by Great Expectations such as Expectation Suites,
 Checkpoint Results and Data Docs need to be stored in some form of persistent
@@ -111,7 +111,7 @@ zenml data-validator register great_expectations --flavor=great_expectations
 zenml stack register ge_stack -m default -o default -a default -dv great_expectations --set
 ```
 
-To use this feature with their existing Great Expectations code, developers only
+To use this feature with you existing Great Expectations code, you only
 need to use the Data Context managed by ZenML instead of the default one
 provided by Great Expectations:
 
@@ -229,7 +229,7 @@ def data_validator(
 
 It was relatively easy to serialize/deserialize Expectation Suites
 and Checkpoint Results, given that the Great Expectations library is already
-well equipped to handle these operations for most of its objects. Another
+well equipped to handle these operations for most of its objects. This is another
 testament to how flexible the Great Expectations library really is.
 
 ### ZenML Visualizer for Great Expectations Data Docs
@@ -259,7 +259,7 @@ The builtin steps automatically configure temporary data sources and batch
 requests therefore simplifying the process of configuring Great Expectations
 even further.
 
-## Time to Show You An Example Already!
+## 👀 Time to Show You An Example Already!
 
 <iframe src="https://giphy.com/embed/I24hjk3H0R8Oc" width="417" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/excited-yes-30-rock-I24hjk3H0R8Oc">via GIPHY</a></p>
 
@@ -276,9 +276,9 @@ with similar results.
 A similar, up-to-date version of this example can be accessed in
 [the ZenML GitHub repository](https://github.com/zenml-io/zenml/tree/main/examples/great_expectations_data_validation).
 
-### Set Up ZenML
+### Setup ZenML
 
-You can run the following to install zenml on your machine (e.g. in a Python
+You can run the following to install ZenML on your machine (e.g. in a Python
 virtual environment) as well as the Great Expectations and scikit-learn
 integrations used in the example:
 
@@ -507,7 +507,7 @@ zenml stack set s3_stack
 python run.py
 ```
 
-Irregardless of which stack you are using to run the pipelines, you should see
+Regardless of which stack you are using to run the pipelines, you should see
 the ZenML visualizer kicking in and opening two Data Docs tabs in your browser,
 one pointing to the Expectation Suite generated in the profiling pipeline run,
 the other pointing to the validation results from the data validation pipeline
