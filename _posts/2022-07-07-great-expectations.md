@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Stefan Nica
-title: "ZenML Lives Up to Your Great Expectations"
+title: "ZenML sets up Great Expectations for continuous data validation in your ML pipelines"
 description: "ZenML combines forces with Great Expectations to add data validation to the list of continuous processes automated with MLOps. Discover why data validation is an important part of MLOps and try the new integration with a hands-on tutorial."
 category: zenml
 tags: zenml monitoring tooling integrations mlops evergreen
@@ -45,7 +45,7 @@ detailing _Expectations_, _Validation Results_ and other metadata information.
 wraps the Great Expectations deployment configuration and provides methods to
 manage all supporting components.
 * _Data Sources_ and _Batch Requests_ are standard APIs used to access and
-interacting with data.
+interact with data.
 
 ## Why Great Expectations?
 
