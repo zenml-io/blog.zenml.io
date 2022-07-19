@@ -12,75 +12,91 @@ image:
   path: /assets/posts/release_0_11_0/gaelle-marcel-vrkSVpOwchk-unsplash.jpg
 ---
 
-The 0.10.0 release continues our streak of extending ZenML with support for new orchestrators, this time by adding the Kubernetes Native Orchestrator. Also included are: a Data Validator stack component and Great Expectations implementation and a community-contributed Vault secret manager among a host of other things! ✨
+Our 0.11.0 release contains our new annotation workflow and stack component. We've been blogging [about](https://blog.zenml.io/open-source-data-annotation-tools/) this for a few weeks, and even started maintaining [our own repository](https://github.com/zenml-io/awesome-open-data-annotation) of open-source annotation tools. With ZenML 0.11.0 you can bring data labeling into your MLOps pipelines and workflows as a first-class citizen. We've started our first iteration of this functionality by integrating with [Label Studio](https://labelstud.io/), a leader in the open-source annotation tool space.
 
-![Release GIF](../assets/posts/release_0_10_0/release_GIF.gif)
+This release also includes a ton of updates to our documentation. (Seriously, go check them out! We added tens of thousands of words since the last release.) We continued the work on our data validation story from the previous release: [Deepchecks](https://deepchecks.com/) is the newest data validator we support, and we updated our Evidently and Whylogs integrations to include all the latest and greatest from those tools.
 
-Beyond this, as usual we included a number of smaller bugfixes and documentation changes to cumulatively improve experience of using ZenML as a user. 
-For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.10.0) a glance.
+Beyond this, as usual we included a number of smaller bugfixes and documentation changes to cumulatively improve experience of using ZenML as a user. For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.11.0) a glance.
 
-## 🛳️ Kubernetes Native Orchestrator
+## 🏷 Data Annotation with Label Studio
 
-We've heard you! With this new addition to our increasing list of orchestrators, you can now run your ZenML pipelines natively on your Kubernetes Cluster. 
+We've been hard at work on our new stack component and integration with [Label Studio](https://labelstud.io/), the first of our data annotation tools. 🥳
 
-This orchestrator is a lightweight alternative to other distributed orchestrators like Airflow or Kubeflow that gives our users the ability to run pipelines in any Kubernetes cluster without having to install and manage additional tools or components.
+![Object Detection with ZenML and Label Studio](../assets/posts/release_0_11_0/label-studio-integration.png)
 
-It's amazing but don't take my word for it; try it on your own or wait for the dedicated blog post that we've planned, 
-which, by the way, also features a little surprise to make it easier for you to follow along 😉
+Annotators are a stack component that enables the use of data annotation as part of your ZenML stack and pipelines. You can use the associated CLI command to launch annotation, configure your datasets and get stats on how many labeled tasks you have ready for use.
 
-![Kubernetes Orchestration pods](../assets/posts/release_0_10_0/k8s.png)
+Data annotation/labeling is a core part of MLOps that is frequently left out of the conversation. With this release, ZenML now supports annotation as an integrated and first-class citizen as part of the MLOps lifecycle.
 
-There's a lot to love about this integration.
-* Every step gets executed in its own pod and the logs from all of them are streamed to your terminal!
-* You can schedule pipeline runs as CRON jobs.
-* It automatically spins up a MySQL metadata store for you when you do `zenml stack up`!
+Got feedback or just want to let us know how you feel? [Connect with us](https://zenml.io/slack-invite/) or join us for a [Community Meetup](https://www.eventbrite.de/e/zenml-meet-the-community-tickets-354426688767) 👋 which happens every Wednesday!
 
-We can't wait to hear your thoughts on this 🙂
+## 🔎 More Data Validation with Deepchecks, Evidently & Whylogs
 
-## 🎉 Great Expectations as the new Data Validator
+We continued the work started in the previous release, adding a new integration with [Deepchecks](https://deepchecks.com/). Deepchecks is a feature-rich data validation open-source library to painlessly do data validation. Deepchecks can do a variety of data validation tasks, from data integrity checks that work with a single dataset to data+model evaluation to data drift analyzes. All this can be done with minimal configuration input from the user, or customized with specialized conditions that the validation checks should perform. Check out [our example](https://github.com/zenml-io/zenml/tree/main/examples/deepchecks_data_validation) if you want to see it in action!
 
-Want to run data quality checks as part of a ZenML pipeline? We've got you covered!
-
-We introduce Data Validators and The Great Expectations integration which eliminates the complexity associated with configuring the store backends for Great Expectations by reusing our Artifact Store concept for that purpose and gives ZenML users immediate access to Great Expectations in both local and cloud settings.
-
-![Great Expectation Validation Result](../assets/posts/release_0_10_0/great_expectations_validation_result.png)
-
-In addition, there are two new standard steps:
-
-* a Great Expectations profiler that can be used to automatically generate Expectation Suites from input datasets.
-* a Great Expectations validator that uses an existing Expectation Suite to validate an input dataset.
-
-A ZenML visualizer that is tied to the generated Great Expectations data docs is also included and can be used to visualize the expectation suites and 
-checkpoint results created by pipeline steps 😍
-
-Got feedback or just want to let us know how you feel? [Connect with us](https://zenml.io/slack-invite/) or join us for a [Community Meetup](https://www.eventbrite.de/e/zenml-meet-the-community-tickets-354426688767?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=escb) 👋 which happens every Wednesday!
-
-## 🔐 A Vault Secret Manager
-
-To add to our growing list of secret managers, we now have a Vault integration, courtesy of one of our community members, [Karim Habouch](https://github.com/karimhabush)! We are grateful for their contribution ⭐
-
-## ⌨️ CLI Improvements
-
-A new release means new improvements to the CLI. We made changes to make handling stacks a bit easier 🥰:
-
-- When registering and updating stack components through the CLI, the configuration attribute values can now also be loaded from files (by using the @path/to/file syntax).
+We also updated our integrations with Great Expectations, Evidently and Whylogs to support their latest releases. These tools have added lots of great new features in recent weeks and we now support most of them, all under the new data validator stack component and abstraction.
 
 ## 📖 Documentation & User Guides
 
-As usual, user-facing documentation is really important for us and we made a bunch of fixes and additions towards that end.
+We made a significant overhaul of our documentation since the last release:
+
+- The developer guide section is reworked to be more complete and beginner-friendly
+- We wrote a whole new 'MLOps stack' section, which contains detailed explanations for all MLOps stack components and their various implementations in ZenML
+- A new 'Cloud Guide' section contains complete setup guides for multiple cloud stacks. This will help you get started quickly.
+- We added [a new ZenML cheatsheet](https://storage.googleapis.com/zenml-public-bucket/zenml_cheat_sheet.pdf) that you can use to remind you of important CLI commands.
+
+## ⌨️ CLI Improvements
+
+We fixed a bug that was preventing users who upgraded to 0.10.0 from pulling new examples. This now works without any problem.
 
 ## ➕ Other Updates, Additions and Fixes
 
 The latest release include several smaller features and updates to existing functionality:
 
-* We fixed an error that happened if you ran MLflow deployer twice.
+- We fixed a bug in our Feast integration that prevented registration as a stack component.
+- We updated the structure of all our examples so that they now conform to all of [the 'best practices' guidance](https://docs.zenml.io/v/docs/resources/best-practices) we've made available in our docs.
+- We fixed some module and path resolution errors that were happening for Windows users.
+- We have combined all the MetadataStore contexts to speed up calls to the metadata store. This speeds up pipeline execution.
+- We now prevent providing extra attributes when initializing stack components. This could have led to unexpected behaviors so we now just prevent this behavior.
+- We've built several new Docker images. You can view them all over at [dockerhub](https://hub.docker.com/r/zenmldocker/zenml/tags).
+- The facets magic display now works on Google Colab.
+- Our Azure Secret Schema now works with the secrets manager. An issue with how Azure handles secret names was preventing this, but we encoded the secret names to get around this shortcoming on the Azure platform.
+- @Val3nt-ML added a nested MLflow parameter (on the `@enable_mlflow` decorator) which will allow the creation of nested runs for each step of a ZenML pipeline in MLflow.
+- We enabled the fetching of secrets from within a step.
+- We now allow the fetching of pipelines and steps by name, class or instance.
+- You can now also add optional machine specs to VertexAI orchestrators, thanks to a PR from @felixthebeard.
+- We fixed a bug that was preventing users from importing pipeline requirements via a `requirements.txt` file if the file ended with a newline.
 
-* We fixed some dead links in integrations docs and other guides.
+## Breaking Changes
 
-* We made some fixes to the GCP artifact store implementation.
+The 0.11.0 release remodels the Evidently and whylogs integrations as Data Validator stack components, in an effort to converge all data profiling and validation libraries around the same abstraction. As a consequence, you now need to configure and add a Data Validator stack component to your stack if you wish to use Evidently or whylogs in your pipelines:
 
-* We have replaced the alerter standard steps to slack specific alerter standard steps.
+* for Evidently:
 
+    ```shell
+    zenml data-validator register evidently -f evidently
+    zenml stack update -dv evidently
+    ```
+
+* for whylogs:
+
+    ```shell
+    zenml data-validator register whylogs -f whylogs
+    zenml stack update -dv whylogs
+    ```
+
+In this release, we have also upgraded the Evidently and whylogs libraries to their latest and greatest versions (whylogs 1.0.6 and evidently 0.1.52). These versions introduce non-backwards compatible changes that are also reflected in the ZenML integrations:
+
+* Evidently profiles are now materialized using their original `evidently.model_profile.Profile ` data type and the builtin `EvidentlyProfileStep` step now also returns a `Profile` instance instead of the previous dictionary representation. This may impact your existing pipelines as you may have to update your steps to take in `Profile` artifact instances instead of dictionaries.
+
+* the whylogs `whylogs.DatasetProfile` data type was replaced by `whylogs.core.DatasetProfileView` in the builtin whylogs materializer and steps. This may impact your existing pipelines as you may have to update your steps to return and take in `whylogs.core.DatasetProfileView` artifact instances instead of `whylogs.DatasetProfile` objects.
+
+* the whylogs library has gone through a major transformation that completely removed the session concept. As a result, the `enable_whylogs` step decorator was replaced by an `enable_whylabs` step decorator. You only need to use the step decorator if you wish to log your profiles to the Whylabs platform.
+
+Please refer to the examples provided for Evidently and whylogs to learn more about how to use the new integration versions:
+
+* [Evidently](https://github.com/zenml-io/zenml/tree/main/examples/evidently_drift_detection)
+* [whylogs/Whylabs](https://github.com/zenml-io/zenml/tree/main/examples/whylogs_data_profiling)
 
 ## 🙌 Community Contributions
 
