@@ -14,7 +14,7 @@ image:
 
 Our 0.11.0 release contains our new annotation workflow and stack component. We've been blogging [about](https://blog.zenml.io/open-source-data-annotation-tools/) this for a few weeks, and even started maintaining [our own repository](https://github.com/zenml-io/awesome-open-data-annotation) of open-source annotation tools. With ZenML 0.11.0 you can bring data labeling into your MLOps pipelines and workflows as a first-class citizen. We've started our first iteration of this functionality by integrating with [Label Studio](https://labelstud.io/), a leader in the open-source annotation tool space.
 
-This release also includes a ton of updates to our documentation. (Seriously, go check them out! We added tens of thousands of words since the last release.) We continued the work on our data validation story from the previous release: [Deepchecks](https://deepchecks.com/) is the newest data validator we support, and we updated our Evidently and Whylogs integrations to include all the latest and greatest from those tools.
+This release also includes a ton of updates to our documentation. (Seriously, go check them out! We added tens of thousands of words since the last release.) We continued the work on our data validation story from the previous release: [Deepchecks](https://deepchecks.com/) is the newest data validator we support, and we updated our Evidently and whylogs integrations to include all the latest and greatest from those tools.
 
 Beyond this, as usual we included a number of smaller bugfixes and documentation changes to cumulatively improve experience of using ZenML as a user. For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.11.0) a glance.
 
@@ -30,11 +30,11 @@ Data annotation/labeling is a core part of MLOps that is frequently left out of 
 
 Got feedback or just want to let us know how you feel? [Connect with us](https://zenml.io/slack-invite/) or join us for a [Community Meetup](https://www.eventbrite.de/e/zenml-meet-the-community-tickets-354426688767) 👋 which happens every Wednesday!
 
-## 🔎 More Data Validation with Deepchecks, Evidently & Whylogs
+## 🔎 More Data Validation with Deepchecks, Evidently & whylogs
 
 We continued the work started in the previous release, adding a new integration with [Deepchecks](https://deepchecks.com/). Deepchecks is a feature-rich data validation open-source library to painlessly do data validation. Deepchecks can do a variety of data validation tasks, from data integrity checks that work with a single dataset to data+model evaluation to data drift analyses. All this can be done with minimal configuration input from the user, or customized with specialized conditions that the validation checks should perform. Check out [our example](https://github.com/zenml-io/zenml/tree/main/examples/deepchecks_data_validation) if you want to see it in action!
 
-We also updated our integrations with Great Expectations, Evidently and Whylogs to support their latest releases. These tools have added lots of great new features in recent weeks and we now support most of them, all under the new data validator stack component and abstraction.
+We also updated our integrations with Great Expectations, Evidently and whylogs to support their latest releases. These tools have added lots of great new features in recent weeks and we now support most of them, all under the new data validator stack component and abstraction.
 
 ## 📖 Documentation & User Guides
 
