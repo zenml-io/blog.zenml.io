@@ -51,7 +51,7 @@ We fixed a bug that was preventing users who upgraded to 0.10.0 from pulling new
 
 ## ➕ Other Updates, Additions and Fixes
 
-The latest release include several smaller features and updates to existing functionality:
+The latest release includes several smaller features and updates to existing functionality:
 
 - We fixed a bug in our Feast integration that prevented registration as a stack component.
 - We updated the structure of all our examples so that they now conform to all of [the 'best practices' guidance](https://docs.zenml.io/v/docs/resources/best-practices) we've made available in our docs.
