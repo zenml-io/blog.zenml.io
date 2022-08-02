@@ -52,7 +52,32 @@ This currently works on `KubeflowOrchestrator` and `VertexOrchestrator`, but wil
 The latest release includes several smaller features and updates to existing functionality:
 
 
-## Breaking Changes
+* Fix Links on the examples by @safoinme in https://github.com/zenml-io/zenml/pull/782
+* Fix broken links in source code by @schustmi in https://github.com/zenml-io/zenml/pull/784
+* Invalidating artifact/metadata store if there is a change in one of them by @bcdurak in https://github.com/zenml-io/zenml/pull/719
+* Fixed broken link in README by @htahir1 in https://github.com/zenml-io/zenml/pull/785
+* Embed Cheat Sheet in a separate docs page by @fa9r in https://github.com/zenml-io/zenml/pull/790
+* Add data validation documentation by @stefannica in https://github.com/zenml-io/zenml/pull/789
+* Add local path for mlflow experiment tracker by @schustmi in https://github.com/zenml-io/zenml/pull/786
+* Improve Docker build logs. by @fa9r in https://github.com/zenml-io/zenml/pull/793
+* Allow standard library types in steps  by @stefannica in https://github.com/zenml-io/zenml/pull/799
+* Added small description by @AlexejPenner in https://github.com/zenml-io/zenml/pull/801
+* Replace the restriction to use Repository inside step with a warning by @stefannica in https://github.com/zenml-io/zenml/pull/792
+* Adjust quickstart to data validators by @fa9r in https://github.com/zenml-io/zenml/pull/797
+* Add utility function to deprecate pydantic attributes by @schustmi in https://github.com/zenml-io/zenml/pull/778
+* Fix the mismatch KFP version between Kubeflow and GCP integration by @safoinme in https://github.com/zenml-io/zenml/pull/796
+* Made mlflow more verbose by @htahir1 in https://github.com/zenml-io/zenml/pull/802
+* Fix links by @dnth in https://github.com/zenml-io/zenml/pull/798
+* KServe model deployer integration by @stefannica in https://github.com/zenml-io/zenml/pull/655
+* retrieve pipeline requirement within running step by @safoinme in https://github.com/zenml-io/zenml/pull/805
+* Fix `--decouple_stores` error message by @strickvl in https://github.com/zenml-io/zenml/pull/814
+* Support subscripted generic step output types by @fa9r in https://github.com/zenml-io/zenml/pull/806
+* Allow empty kubeconfig when using local kubeflow orchestrator by @schustmi in https://github.com/zenml-io/zenml/pull/809
+* fix the secret register command in kserve docs page by @safoinme in https://github.com/zenml-io/zenml/pull/815
+* Annotation example (+ stack component update) by @strickvl in https://github.com/zenml-io/zenml/pull/813
+* Per-step resource configuration by @schustmi in https://github.com/zenml-io/zenml/pull/794
+* Scoped secrets by @stefannica in https://github.com/zenml-io/zenml/pull/803
+* Adjust examples and docs to new pipeline and step fetching syntax by @fa9r in https://github.com/zenml-io/zenml/pull/795
 
 
 
