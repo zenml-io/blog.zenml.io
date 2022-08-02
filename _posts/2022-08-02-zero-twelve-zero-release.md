@@ -14,7 +14,13 @@ image:
 
 The 0.12.0 release contains our [KServe](https://github.com/kserve/kserve) integration. KServe opens the door to highly scalable, simple, pluggable production ML serving.
 
-We've also been working on minor bug fixes and improving our [docs page](https://docs.zenml.io/) to improve your experience with ZenML.
+We've been working on minor bug fixes and improving our [docs page](https://docs.zenml.io/) to improve your experience with ZenML.
+
+We also added functionality to specify hardware resources on a step level to control the amount of memory, CPUs and GPUs that each ZenML step has access to. 
+
+We've also added functionality to determines if secrets are shared with other ZenML Secrets Managers using the same backend.
+
+As always, we've also included various bug fixes and lots of improvements to the documentation and our examples.
 
 For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.12.0) a glance.
 
@@ -22,15 +28,12 @@ For a detailed look at what's changed, give [our full release notes](https://git
 The spotlight in this release is the ZenML Kserve integration.
 This integration lets you define pipeline steps to scale up your ML model by serving your ML models on Kubernetes using any of your favourite ML framework like Tensorflow, XGBoost, Scikit-Learn, PyTorch, and ONNX.
 
-
 ![Kserve](../assets/posts/release_0_12_0/kserve.png)
-
-
 
 ## 📌 Specify Resources Per Step
 
 Some steps of your machine learning pipeline might be more resource-intensive and require special hardware to execute.
-In this release you can now specify the resources to allocate for a single step in your pipeline.
+In this release you can now specify the resources (such as the amount of memory, CPU and GPU) to allocate on a step level in your pipeline.
 
 To allocate resources to a specific step in your pipeline, simply specify `resource_configuration` in the `step` decorator:
 
@@ -44,6 +47,7 @@ def training_step(...) -> ...:
 This currently works on `KubeflowOrchestrator` and `VertexOrchestrator`, but will be extended in the upcoming weeks to support the `KubernetesOrchestrator`.
 
 ## 🤫 Scoped Secrets
+Additionally, we've added support for scoped secrets in our AWS, GCP and Vault Secrets Managers. These updated Secrets Managers allow you to configure a scope which determines if secrets are shared with other ZenML Secrets Managers using the same backend.
 
 
 ## ➕ Other Updates, Additions and Fixes
@@ -77,13 +81,6 @@ The latest release includes several smaller features and updates to existing fun
 * Per-step resource configuration by @schustmi in https://github.com/zenml-io/zenml/pull/794
 * Scoped secrets by @stefannica in https://github.com/zenml-io/zenml/pull/803
 * Adjust examples and docs to new pipeline and step fetching syntax by @fa9r in https://github.com/zenml-io/zenml/pull/795
-
-
-
-## 🙌 Community Contributions
-
-We received several new community contributions during this release cycle. Here's everybody who contributed towards this release:
-
 
 
 ## 👩‍💻 Contribute to ZenML!
