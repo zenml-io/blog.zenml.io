@@ -7,9 +7,9 @@ category: zenml
 tags: zenml release-notes
 publish_date: August 02, 2022
 date: 2022-08-02T00:02:00Z
-thumbnail: /assets/posts/release_0_12_0/wengang-zhai-8joHt2OJTKA-unsplash.jpg
+thumbnail: /assets/posts/release_0_12_0/zero-twelve-zero-release.jpg
 image:
-  path: /assets/posts/release_0_12_0/wengang-zhai-8joHt2OJTKA-unsplash.jpg
+  path: /assets/posts/release_0_12_0/zero-twelve-zero-release.jpg
 ---
 
 Our 0.12.0 release contains our new KServe integration.
@@ -18,16 +18,10 @@ Our 0.12.0 release contains our new KServe integration.
 
 
 
-## 🔎 Resource Configurations
-
-
-
-## 📖 Stack Recipe CLI Commands
-
+## 🔎 Specify Resources Per Step
 
 
 ## ⌨️ Scoped Secrets
-
 
 
 ## ➕ Other Updates, Additions and Fixes
@@ -54,4 +48,4 @@ We have a [new home for our roadmap](https://zenml.io/roadmap) where you can vot
 feature or propose new ideas for what the core team should work on. You can vote
 without needing to log in, so please do let us know what you want us to build!
 
-[Photo by <a href="https://unsplash.com/photos/8joHt2OJTKA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Wengang Zhai</a> on <a href="https://unsplash.com/s/photos/balloons?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]
+<!-- [Photo by <a href="https://unsplash.com/photos/8joHt2OJTKA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Wengang Zhai</a> on <a href="https://unsplash.com/s/photos/balloons?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>] -->
