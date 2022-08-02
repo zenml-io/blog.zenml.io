@@ -19,8 +19,8 @@ We've also been working on minor bug fixes and improving our [docs page](https:/
 For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.12.0) a glance.
 
 ## 🌪 KServe Integration
-
-The KServe integration allows you to scale up your ML model by serving your ML models on Kubernetes using any of your favourite ML framework like Tensorflow, XGBoost, Scikit-Learn, PyTorch, and ONNX.
+The spotlight in this release is the ZenML Kserve integration.
+This integration lets you define pipeline steps to scale up your ML model by serving your ML models on Kubernetes using any of your favourite ML framework like Tensorflow, XGBoost, Scikit-Learn, PyTorch, and ONNX.
 
 
 ![Kserve](../assets/posts/release_0_12_0/kserve.png)
@@ -29,6 +29,20 @@ The KServe integration allows you to scale up your ML model by serving your ML m
 
 ## 📌 Specify Resources Per Step
 
+Some steps of your machine learning pipeline might be more resource-intensive and require special hardware to execute.
+
+In this release you can now specify the resources to allocate for a single step in your pipeline.
+
+To allocate resources to a specific step in your pipeline, simply specify `resource_configuration` in the `step` decorator:
+
+```python
+from zenml.steps import step, ResourceConfiguration
+@step(resource_configuration=ResourceConfiguration(cpu_count=8, gpu_count=2))
+def training_step(...) -> ...:
+    # train a model
+```
+
+This currently works on `KubeflowOrchestrator` and `VertexOrchestrator`, but will be extended in the upcoming weeks to support the `KubernetesOrchestrator`
 
 ## 🤫 Scoped Secrets
 
