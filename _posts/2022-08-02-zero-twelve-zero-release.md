@@ -26,9 +26,10 @@ For a detailed look at what's changed, give [our full release notes](https://git
 
 ## 🌪 KServe Integration
 The spotlight in this release is the ZenML Kserve integration.
-This integration lets you define pipeline steps to scale up your ML model by serving your ML models on Kubernetes using any of your favourite ML framework like Tensorflow, XGBoost, Scikit-Learn, PyTorch, and ONNX.
+This integration lets you define pipeline steps to scale up your model by serving your ML models on Kubernetes using any of your favourite ML framework like Tensorflow, XGBoost, Scikit-Learn, PyTorch from within ZenML!
 
 ![Kserve](../assets/posts/release_0_12_0/kserve.png)
+
 
 ## 📌 Specify Resources Per Step
 
@@ -47,6 +48,7 @@ def training_step(...) -> ...:
 This currently works on `KubeflowOrchestrator` and `VertexOrchestrator`, but will be extended in the upcoming weeks to support the `KubernetesOrchestrator`.
 
 ## 🤫 Scoped Secrets
+
 Additionally, we've added support for scoped secrets in our AWS, GCP and Vault Secrets Managers. These updated Secrets Managers allow you to configure a scope which determines if secrets are shared with other ZenML Secrets Managers using the same backend.
 
 
