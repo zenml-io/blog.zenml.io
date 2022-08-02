@@ -16,9 +16,9 @@ The 0.12.0 release contains our [KServe](https://github.com/kserve/kserve) integ
 
 We've been working on minor bug fixes and improving our [docs page](https://docs.zenml.io/) to improve your experience with ZenML.
 
-We also added functionality to specify hardware resources on a step level to control the amount of memory, CPUs and GPUs that each ZenML step has access to. 
+We also added functionality to specify hardware resources on a step level to control the amount of memory, CPUs, and GPUs that each ZenML step has access to. 
 
-We've also added functionality to determines if secrets are shared with other ZenML Secrets Managers using the same backend.
+We've also added functionality to determine if secrets are shared with other ZenML Secrets Managers using the same backend.
 
 As always, we've also included various bug fixes and lots of improvements to the documentation and our examples.
 
@@ -26,7 +26,7 @@ For a detailed look at what's changed, give [our full release notes](https://git
 
 ## 🌪 KServe Integration
 The spotlight in this release is the ZenML Kserve integration.
-This integration lets you define pipeline steps to scale up your model by serving your ML models on Kubernetes using any of your favourite ML framework like Tensorflow, XGBoost, Scikit-Learn, PyTorch from within ZenML!
+This integration lets you define pipeline steps to scale up your model by serving your ML models on Kubernetes using any of your favorite ML frameworks like Tensorflow, XGBoost, Scikit-Learn, PyTorch from within ZenML!
 
 ![Kserve](../assets/posts/release_0_12_0/kserve.png)
 
@@ -34,7 +34,7 @@ This integration lets you define pipeline steps to scale up your model by servin
 ## 📌 Specify Resources Per Step
 
 Some steps of your machine learning pipeline might be more resource-intensive and require special hardware to execute.
-In this release you can now specify the resources (such as the amount of memory, CPU and GPU) to allocate on a step level in your pipeline.
+In this release, you can now specify the resources (such as the amount of memory, CPU, and GPU) to allocate on a step level in your pipeline.
 
 To allocate resources to a specific step in your pipeline, simply specify `resource_configuration` in the `step` decorator:
 
@@ -49,10 +49,10 @@ This currently works on `KubeflowOrchestrator` and `VertexOrchestrator`, but wil
 
 ## 🤫 Scoped Secrets
 
-Additionally, we've added support for scoped secrets in our AWS, GCP and Vault Secrets Managers. These updated Secrets Managers allow you to configure a scope which determines if secrets are shared with other ZenML Secrets Managers using the same backend.
+Additionally, we've added support for scoped secrets in our AWS, GCP, and Vault Secrets Managers. These updated Secrets Managers allow you to configure a scope that determines if secrets are shared with other ZenML Secrets Managers using the same backend.
 
 
-## ➕ Other Updates, Additions and Fixes
+## ➕ Other Updates, Additions, and Fixes
 
 The latest release includes several smaller features and updates to existing functionality:
 
