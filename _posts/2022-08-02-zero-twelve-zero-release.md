@@ -30,7 +30,6 @@ This integration lets you define pipeline steps to scale up your ML model by ser
 ## 📌 Specify Resources Per Step
 
 Some steps of your machine learning pipeline might be more resource-intensive and require special hardware to execute.
-
 In this release you can now specify the resources to allocate for a single step in your pipeline.
 
 To allocate resources to a specific step in your pipeline, simply specify `resource_configuration` in the `step` decorator:
@@ -42,7 +41,7 @@ def training_step(...) -> ...:
     # train a model
 ```
 
-This currently works on `KubeflowOrchestrator` and `VertexOrchestrator`, but will be extended in the upcoming weeks to support the `KubernetesOrchestrator`
+This currently works on `KubeflowOrchestrator` and `VertexOrchestrator`, but will be extended in the upcoming weeks to support the `KubernetesOrchestrator`.
 
 ## 🤫 Scoped Secrets
 
@@ -60,7 +59,7 @@ The latest release includes several smaller features and updates to existing fun
 * Add data validation documentation by @stefannica in https://github.com/zenml-io/zenml/pull/789
 * Add local path for mlflow experiment tracker by @schustmi in https://github.com/zenml-io/zenml/pull/786
 * Improve Docker build logs. by @fa9r in https://github.com/zenml-io/zenml/pull/793
-* Allow standard library types in steps  by @stefannica in https://github.com/zenml-io/zenml/pull/799
+* Allow standard library types in steps by @stefannica in https://github.com/zenml-io/zenml/pull/799
 * Added small description by @AlexejPenner in https://github.com/zenml-io/zenml/pull/801
 * Replace the restriction to use Repository inside step with a warning by @stefannica in https://github.com/zenml-io/zenml/pull/792
 * Adjust quickstart to data validators by @fa9r in https://github.com/zenml-io/zenml/pull/797
