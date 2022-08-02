@@ -26,7 +26,7 @@ For a detailed look at what's changed, give [our full release notes](https://git
 
 ## 🌪 KServe Integration
 The spotlight in this release is the ZenML Kserve integration.
-This integration lets you define pipeline steps to scale up your model by serving your ML models on Kubernetes using any of your favorite ML frameworks like Tensorflow, XGBoost, Scikit-Learn, PyTorch from within ZenML!
+This integration lets you define pipeline steps to scale up your model by serving your ML models on Kubernetes using any of your favorite ML frameworks like TensorFlow, XGBoost, Scikit-Learn, PyTorch from within ZenML!
 
 ![Kserve](../assets/posts/release_0_12_0/kserve.png)
 
