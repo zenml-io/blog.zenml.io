@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Dickson Neoh Tze How
-title: "What's New in v0.12.0: KServe!"
+title: "What's New in v0.12.0: Serverless Inferencing on Kubernetes"
 description: "This release brings KServe integration to ZenML."
 category: zenml
 tags: zenml release-notes
@@ -12,16 +12,25 @@ image:
   path: /assets/posts/release_0_12_0/zero-twelve-zero-release.jpg
 ---
 
-Our 0.12.0 release contains our new KServe integration.
+The 0.12.0 release contains our [KServe](https://github.com/kserve/kserve) integration. KServe opens the door to highly scalable, simple, pluggable production ML serving.
 
-## 🏷 KServe Integration
+We've also been working on minor bug fixes and improving our [docs page](https://docs.zenml.io/) to improve your experience with ZenML.
+
+For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.12.0) a glance.
+
+## 🌪 KServe Integration
+
+The KServe integration allows you to scale up your ML model by serving your ML models on Kubernetes using any of your favourite ML framework like Tensorflow, XGBoost, Scikit-Learn, PyTorch, and ONNX.
+
+
+![Kserve](../assets/posts/release_0_12_0/kserve.png)
 
 
 
-## 🔎 Specify Resources Per Step
+## 📌 Specify Resources Per Step
 
 
-## ⌨️ Scoped Secrets
+## 🤫 Scoped Secrets
 
 
 ## ➕ Other Updates, Additions and Fixes
