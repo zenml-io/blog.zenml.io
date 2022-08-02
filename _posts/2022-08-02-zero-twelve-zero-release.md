@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Dickson Neoh Tze How
-title: "What's New in v0.12.0: Serverless Inferencing on Kubernetes"
+title: "What's New in v0.12.0: Serverless Inferencing on Kubernetes with KServe"
 description: "This release brings KServe integration to ZenML."
 category: zenml
 tags: zenml release-notes
