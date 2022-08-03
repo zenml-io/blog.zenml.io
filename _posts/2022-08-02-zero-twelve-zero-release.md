@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_12_0/zero-twelve-zero-release.jpg
 ---
 
+![img](/assets/posts/release_0_12_0/zero-twelve-zero-release.jpg)
+
 The 0.12.0 release contains our [KServe](https://github.com/kserve/kserve) integration. KServe opens the door to highly scalable, simple, pluggable production ML serving.
 
 We've been working on minor bug fixes and improving our [docs page](https://docs.zenml.io/) to improve your experience with ZenML.
@@ -49,7 +51,15 @@ This currently works on `KubeflowOrchestrator` and `VertexOrchestrator`, but wil
 
 ## 🤫 Scoped Secrets
 
-Additionally, we've added support for scoped secrets in our AWS, GCP, and Vault Secrets Managers. These updated Secrets Managers allow you to configure a scope that determines if secrets are shared with other ZenML Secrets Managers using the same backend.
+The majority of Secrets Managers use a single global scope in the back-end they are connected to.
+This means all secrets that are configured and visible through a Secrets Manager instance are also visible in all other instances. Furthermore, secrets configured directly in the back-end through means other than ZenML are also visible and can be managed in all ZenML Secrets Managers connected to that same back-end. 
+
+This has a number of disadvantages:
+
++ There is only one global shared namespace for secret names. Two secrets with the same name and different values cannot be configured at the same time for different purposes (e.g. different ZenML projects or components).
++ There is no clear separation between secrets managed by ZenML and those that are used for other purposes
+
+In this release, we've added support for scoped secrets in our AWS, GCP, and Vault Secrets Managers. These updated Secrets Managers allow you to configure a scope that determines if secrets are shared with other ZenML Secrets Managers using the same backend.
 
 
 ## ➕ Other Updates, Additions, and Fixes
