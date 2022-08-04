@@ -26,14 +26,14 @@ fi
 
 value=`cat ${foundfile}`
 
-# markdown="${value##*---}"
+markdown=$(echo "${value##*---}")
 
-author=$(echo "${value}" | awk -v FS="(author: | title:)" '{print $2}')
-title=$(echo "${value}" | awk -v FS="(title: | description:)" '{print $2}')
-description=$(echo "${value}" | awk -v FS="(description: \"|\" publish_date:)" '{print $2}')
-date=$(echo "${value}" | awk -v FS="(date: | tags:)" '{print $2}')
+author=$(echo ${value} | awk -v FS="(author: | title:)" '{print $2}')
+title=$(echo ${value} | awk -v FS="(title: | description:)" '{print $2}')
+description=$(echo ${value} | awk -v FS="(description: \"|\" publish_date:)" '{print $2}')
+date=$(echo ${value} | awk -v FS="(date: | tags:)" '{print $2}')
 
-slug=$(echo "$title" | iconv -t ascii//TRANSLIT | sed -r s/[~\^]+//g | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z)
+slug=$(echo $title | iconv -t ascii//TRANSLIT | sed -r s/[~\^]+//g | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z)
 
 PAYLOAD=$(cat <<EOF
 {
@@ -43,12 +43,12 @@ PAYLOAD=$(cat <<EOF
     "description": "$( echo ${description})",
     "seoTitle": "$( echo ${title})",
     "slug": "$( echo ${slug})",
-    "blogContent": "{\"markdown\": \"$( echo ${value})\"}"
+    "blogContent": "{\"markdown\": \"$markdown\"}"
   }
 }
 EOF
 )
 
-echo $PAYLOAD
+echo "$PAYLOAD"
 
 curl -H "Content-Type: application/json" -H "Authorization: Bearer ${STRAPI_TOKEN}" -X POST -d "${PAYLOAD}" ${STRAPI_URL}
