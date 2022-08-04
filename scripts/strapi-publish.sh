@@ -5,10 +5,6 @@ array=(${CHANGED_FILES// / })
 
 arraylength=${#array[@]}
 
-echo $array
-
-echo $arraylength
-
 foundfile="" 
 
 for (( i=0; i<${arraylength}; i++ ));
@@ -45,8 +41,7 @@ PAYLOAD=$(cat <<EOF
     "author": "$( echo ${author})", 
     "title": "$( echo ${title})", 
     "description": "$( echo ${description})",
-    "date": "$( echo ${date})",
-    "seoTitle": "$( echo ${author})",
+    "seoTitle": "$( echo ${title})",
     "slug": "$( echo ${slug})",
     "blogContent": "{\"markdown\": \"$( echo ${markdown})\"}"
   }
