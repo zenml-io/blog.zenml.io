@@ -9,8 +9,11 @@ publish_date: August 04, 2022
 date: 2022-08-04T00:02:00Z
 thumbnail: /assets/posts/kserve-deployment/kserve-pipeline.jpg
 image:
-  path: /assets/posts/kserve-deployment/kserve-pipeline.gif
+  path: /assets/posts/kserve-deployment/kserve-pipeline.jpg
 ---
+
+![kserve](/assets/posts/kserve-deployment/kserve-pipeline.gif)
+
 
 The latest [ZenML 0.12.0 release](https://blog.zenml.io/zero-twelve-zero-release/) extends the model deployment story in ZenML by supporting now KServe additionally to already existing MLFlow and Seldon Core, the new integration will allow users to serve, manage and interact with models within the KServe platform, while it also takes care of preparing PyTorch, TensorFlow, and Scikit-Learn models to the right format that Runtimes servers expect. 
 
