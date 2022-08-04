@@ -12,7 +12,7 @@ image:
   path: /assets/posts/release_0_12_0/zero-twelve-zero-release.jpg
 ---
 
-The latest ZenML 0.12.0 release extends the model deployment story in ZenML by supporting now KServe additionally to already existing MLFlow and Seldon Core, the new integration will allow users to serve, manage and interact with models within the KServe platform, while it also takes care of preparing PyTorch, TensorFlow, and Scikit-Learn models to the right format that Runtimes servers expect. 
+The latest [ZenML 0.12.0 release](https://blog.zenml.io/zero-twelve-zero-release/) extends the model deployment story in ZenML by supporting now KServe additionally to already existing MLFlow and Seldon Core, the new integration will allow users to serve, manage and interact with models within the KServe platform, while it also takes care of preparing PyTorch, TensorFlow, and Scikit-Learn models to the right format that Runtimes servers expect. 
 
 KServe or formally known as (KFServing) is a Kubernetes-based model inference platform built for highly scalable deployment use cases. It provides a standardized inference protocol across ML frameworks while supporting a serverless architecture with autoscaling including Scale to Zero on GPUs. KServe uses a simple and pluggable production serving architecture for production ML serving that includes prediction, pre-/post-processing, monitoring, and explainability. These functionalities and others make KServe one of the most interesting open sources in the MLOps landscape. 
 
@@ -38,7 +38,7 @@ For that you will need the following:
 - Access to a [gcp](https://cloud.google.com/) project space
 - [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine and authenticated
 
-## Setup of GCP Resources
+## Setting up GCP Resources
 
 Before we can deploy our models in KServe we will need to set up all the required resources and permissions on GCP. This is a one-time effort that you will not need to repeat. Feel free to skip and adjust these steps as you see fit.
 
@@ -54,7 +54,7 @@ Create a `New Project`
 
 Give the project a name and click on create, it will take some time to be created. Once that is done you will need to enable billing for the project so that you can set up all required resources.
 
-### GKE Setup
+### Setting Up GKE
 
 We’ll start off by creating a GKE Standard cluster
 
@@ -78,7 +78,7 @@ For the creation of the [ZenML Artifact Store](https://blog.zenml.io/vertex-ai-b
 
 - gsutil URI
 
-### Set up Permissions
+### Setting Up Permissions
 
 With all the resources set up, you will now need to set up a service account with all the right permissions. This service account will need to be able to access all the different resources that we have set up so far.
 
@@ -110,7 +110,7 @@ We can click on the service account then keys and create a new key and select js
 
 ![create a service account key](../assets/posts/kserve-deployment/create-serviceaccount-key.png)
 
-## Setting up KServe and the ZenML Stack
+## Setting Up KServe and ZenML Stack
 
 Now that we have everything done on the GCP side, we will jump to how we can install KServe on the GKE cluster and then set up our MLOps stack with ZenML CLI
 
@@ -191,7 +191,7 @@ kubectl apply -f https://github.com/kserve/kserve/releases/download/v0.9.0/kserv
 kubectl apply -f https://github.com/kserve/kserve/releases/download/v0.9.0/kserve-runtimes.yaml
 ```
 
-### Testing the KServe deployment
+### Testing KServe Deployment
 
 To test that the installation is functional, you can use this sample KServe
 deployment:
@@ -294,7 +294,7 @@ The **artifact store** stores all the artifacts that get passed as inputs and ou
 zenml artifact-store register gcp_artifact_store --flavor=gcp --path=<gsutil-URI>
 ```
 
-### ZenML Secrets manager
+### ZenML Secrets Manager
 
 The **secrets manager i**s used to securely store all your credentials so ZenML can use them to authenticate with other components like your metadata or artifact store.
 
@@ -314,7 +314,7 @@ zenml model-deployer register kserve_gke --flavor=kserve \
   --secret=kserve_secret
 ```
 
-### Let’s Build Our ZenML MLOps Stack
+### Registering the Stack
 
 Our stack components are ready to be configured and set as the active stack.
 
@@ -322,7 +322,7 @@ Our stack components are ready to be configured and set as the active stack.
 zenml stack register local_gcp_kserve_stack -m default -a gcp -o default -d kserve_gke -x local --set
 ```
 
-### Register The model deployer secret
+### Registering Model Deployer Secret
 
 Our current stack is using GCS as our Artifact Store which means our trained models will be stored in the GS bucket, this means we need to give KServe the right permission to be able to retrieve the model artifact. To do that we will create a secret using the service account key we created earlier:
 
@@ -331,7 +331,7 @@ zenml secret register -s kserve_gs kserve_secret \
     --credentials="@~/kserve-demo.json"
 ```
 
-## The example
+## Running the Example
 
 The example uses the [digits dataset](https://keras.io/api/datasets/mnist/) to train a classifier using both [TensorFlow](https://www.tensorflow.org/) and [PyTorch](https://pytorch.org/). You can find the full [example here](https://github.com/zenml-io/zenml/tree/main/examples/kserve_deployment). We have two pipelines one responsible for training and deploying the model and the second one responsible for running prediction on the deployed model.
 
@@ -375,12 +375,11 @@ Deploying any model to KServe Integration requires some parameters such as the m
 
 Because KServe uses TorchServe as the runtime server for deploying PyTorch Model we need to provide a `model_class` path that contains the definition of our neural network architecture and a  `handler` that is responsible for handling the custom pre-post processing logic. You can read more about how to deploy PyTorch models with TorchServe Runtime Server [KServe Pytorch](https://kserve.github.io/website/0.9/modelserving/v1beta1/torchserve/) or in [TorchServe Official documentation](https://pytorch.org/serve/).
 
-The Inference pipeline consists of the following steps:
+The inference pipeline consists of the following steps:
 * pytorch_inference_processor - Load a digits image from URL (must be 28x28) and convert it to a byte array.
 * prediction_service_loader - Load the prediction service into KServeDeploymentService to perform the inference.
 * predictor - Perform inference on the image using the built-in predict function of the prediction service.
 
-## Running the example
 Wow, we’ve made it past all the setting-up steps, and we’re finally ready to run our code. All we have to do is call our Python function from earlier, sit back and wait.
 
 ```bash
@@ -389,7 +388,7 @@ python run_pytorch.py
 
 Once that is done we will see that we have 2 finished running pipelines, with the result of the prediction from the inference pipeline in addition to detailed information about the endpoint of our served model and how we can use it.
 
-## Cleanup
+## Cleaning Up
 
 Cleanup should be fairly straightforward now, in case you bundled all of these resources into one separate project. Simply navigate to the [Cloud Resource Manager](https://console.cloud.google.com/cloud-resource-manager) and delete your project:
 
