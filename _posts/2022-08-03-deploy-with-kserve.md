@@ -7,7 +7,7 @@ category: zenml
 tags: zenml integrations deployment kserve mlops
 publish_date: August 04, 2022
 date: 2022-08-04T00:02:00Z
-thumbnail: /assets/posts/kserve-deployment/kserve-pipeline.gif
+thumbnail: /assets/posts/kserve-deployment/kserve-pipeline.jpg
 image:
   path: /assets/posts/kserve-deployment/kserve-pipeline.gif
 ---
