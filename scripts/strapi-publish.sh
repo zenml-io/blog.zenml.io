@@ -35,6 +35,8 @@ date=$(echo ${value} | awk -v FS="(date: | tags:)" '{print $2}')
 
 slug=$(echo $title | iconv -t ascii//TRANSLIT | sed -r s/[~\^]+//g | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z)
 
+markdown_without_line_break=${markdown//$'\n'/\\n}
+
 PAYLOAD=$(cat <<EOF
 {
   "data": {
@@ -43,7 +45,7 @@ PAYLOAD=$(cat <<EOF
     "description": "$( echo ${description})",
     "seoTitle": "$( echo ${title})",
     "slug": "$( echo ${slug})",
-    "blogContent": "{\"markdown\": \"$markdown\"}"
+    "blogContent": "{\"markdown\": \"$markdown_without_line_break\"}"
   }
 }
 EOF
