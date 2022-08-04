@@ -1,9 +1,9 @@
 #! /bin/bash
 set -e
 
-echo $CHANGED_FILES
-
 arraylength=${#CHANGED_FILES[@]}
+
+echo $arraylength
 
 foundfile="" 
 
