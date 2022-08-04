@@ -23,7 +23,7 @@ This post outlines how to use the KServe integration with ZenML. By the end of t
 2. Setup a production-ready MLOps stack with GCP and ZenML with KServe.
 3. Create continuous machine learning pipelines that train, evaluate, deploy and run inference on a PyTorch model.
 
-The content of this post was also presented during our weekly community meetup. View the recording [here](https://www.youtube.com/watch?v=nZeBhkN6RZU).
+The content of this post was presented during our weekly community meetup. View the recording [here](https://www.youtube.com/watch?v=nZeBhkN6RZU).
 
 [![youtube-thumbnail](https://img.youtube.com/vi/nZeBhkN6RZU/0.jpg)](https://www.youtube.com/watch?v=nZeBhkN6RZU)
 
@@ -411,12 +411,13 @@ Cleanup should be fairly straightforward now, so long as you bundled all of thes
 
 ## Conclusion
 
-In this tutorial, we learned about KServe and how to install it in a Kubernetes cluster, how to set up an MLOps stack with the ZenML KServe Integration, and interact with it using the ZenML CLI.
-We also saw how the KServe integration makes the experience of deploying a PyTorch model into KServe much easier, by handling the packaging and preparing the different resources that are required by TorchServe.
+In this tutorial, we learned about KServe and how we can install it on a Kubernetes cluster. We saw how we can setup an MLOps stack with ZenML that uses the KServe Integration to deploy models in a Kubernetes cluster and interact with it using the ZenML CLI.
 
-We are also working on making the deployment story more customizable by allowing users to write their own functionalities to be executed before and after the deployment. This will be a great feature not only for serving the model but also for custom codes that can be deployed with the serving tools.
+We also saw how the KServe integration makes the experience of deploying a PyTorch model into KServe much easier, as it handles the packaging and preparing of the different resources that are required by TorchServe.
 
+We are working on making the deployment story more customizable by allowing the user to write their own custom logic to be executed before and after the model gets deployed. This will be a great feature for not only serving the model but that will allow for custom code to be deployed alongside the serving tools.
 
+This demo was presented at our community meetup. Check out the recording [here](https://www.youtube.com/watch?v=nZeBhkN6RZU) if you'd like to follow a live walkthrough of the steps listed above.
 
 
 If you have any questions or feedback regarding this tutorial, join our 
