@@ -22,7 +22,7 @@ By the end of this post you'll learn how to:
 2. Setup a production-ready MLOps stack with GCP and ZenML with KServe.
 3. Create continuous machine learning pipelines that train, evaluate, deploy and run inference on a PyTorch model.
 
-[KServe](https://kserve.github.io/) -- formally known as KFServing -- is a Kubernetes-based model inference platform built for highly-scalable deployment use cases. It provides a standardized inference protocol across ML frameworks while supporting a serverless architecture with autoscaling including Scale to Zero on GPUs. KServe uses a simple and pluggable production serving architecture for production ML serving that includes prediction, pre-/post-processing, monitoring, and explainability. These functionalities and others make KServe one of the most interesting open source tools in the MLOps landscape. 
+[KServe](https://kserve.github.io/) (formally KFServing) is a Kubernetes-based model inference platform built for highly-scalable deployment use cases. It provides a standardized inference protocol across ML frameworks while supporting a serverless architecture with autoscaling including Scale to Zero on GPUs. KServe uses a simple and pluggable production serving architecture for production ML serving that includes prediction, pre- and post-processing, monitoring, and explainability. These functionalities and others make KServe one of the most interesting open source tools in the MLOps landscape. 
 
 Now let’s see why would you want to use KServe as your ML serving platform:
 
@@ -60,6 +60,7 @@ Create a `New Project`
 ![Create new project](../assets/posts/kserve-deployment/gcp-create-project.png)
 
 Give the project a name and click on create. The process may take some time. Once that is done, you will need to enable billing for the project so that you can set up all required resources.
+
 ### Setting Up GKE
 
 We’ll start off by creating a GKE Standard cluster
