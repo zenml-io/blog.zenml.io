@@ -1,13 +1,10 @@
 name: Strapi Publish
 
-on:
-  pull_request:
-    types:
-      - closed
+on: push
 
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged == true
+  strapi_publish:
+    if: github.ref == 'refs/heads/chore/strapi-publish-github-action'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
