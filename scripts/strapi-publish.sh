@@ -51,4 +51,4 @@ EOF
 
 echo $PAYLOAD
 
-curl -H "Content-Type: application/json, Authorization: Bearer ${STRAPI_TOKEN}" -X POST -d "${PAYLOAD}" ${STRAPI_URL}
+curl -H "Content-Type: application/json, Authorization: "\Bearer ${STRAPI_TOKEN}\"" -X POST -d "${PAYLOAD}" ${STRAPI_URL}
