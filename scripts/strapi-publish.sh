@@ -1,9 +1,7 @@
 #! /bin/bash
 set -e
 
-slugify () {
-    echo "$1" | iconv -t ascii//TRANSLIT | sed -r s/[~\^]+//g | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z
-}
+echo $CHANGED_FILES
 
 arraylength=${#CHANGED_FILES[@]}
 
@@ -11,6 +9,7 @@ foundfile=""
 
 for (( i=0; i<${arraylength}; i++ ));
 do
+  echo $CHANGED_FILES[$i]
   if [ -z "${foundfile}" ]; then
     filetype="${CHANGED_FILES[$i]##*.}"
     if [[ "$filetype" == "md" ]]; then
