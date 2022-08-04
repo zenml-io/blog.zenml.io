@@ -24,7 +24,7 @@ jobs:
             echo "$file was changed"
           done
       
-      - name: Push to Strapi
+      - name: Publish to Strapi
         env:
           STRAPI_URL: ${{ secrets.STRAPI_URL }}
           STRAPI_TOKEN: ${{ secrets.STRAPI_TOKEN }}
