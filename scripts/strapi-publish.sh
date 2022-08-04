@@ -1,6 +1,8 @@
 #! /bin/bash
 set -e
 
+echo $STRAPI_TOKEN
+
 array=(${CHANGED_FILES// / })
 
 arraylength=${#array[@]}
