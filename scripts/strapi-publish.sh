@@ -1,10 +1,11 @@
 #! /bin/bash
 set -e
 
-array=$CHANGED_FILES
+array=(${CHANGED_FILES// / })
 
 arraylength=${#array[@]}
 
+echo $array
 echo $arraylength
 
 foundfile="" 
@@ -13,10 +14,7 @@ for (( i=0; i<${arraylength}; i++ ));
 do
   if [ -z "${foundfile}" ]; then
     filetype="${array[$i]##*.}"
-    echo $filetype
-    echo ${array[$i]}
     if [[ "$filetype" == "md" ]]; then
-      echo "found"
       foundfile=${array[$i]}
       break
     fi
