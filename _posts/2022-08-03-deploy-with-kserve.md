@@ -17,10 +17,17 @@ image:
 
 The latest [ZenML 0.12.0 release](https://blog.zenml.io/zero-twelve-zero-release/) extends the model deployment story in ZenML by supporting now KServe additionally to already existing MLFlow and Seldon Core, the new integration will allow users to serve, manage and interact with models within the KServe platform, while it also takes care of preparing PyTorch, TensorFlow, and Scikit-Learn models to the right format that Runtimes servers expect. 
 
-By the end of this post you'll learn how to:
+This post outlines how to use the KServe integration with ZenML. By the end of this post you'll learn how to:
+
 1. Install the KServe platform on a Kubernetes cluster.
 2. Setup a production-ready MLOps stack with GCP and ZenML with KServe.
 3. Create continuous machine learning pipelines that train, evaluate, deploy and run inference on a PyTorch model.
+
+The content of this post was also presented during our weekly community meetup. View the recording [here](https://www.youtube.com/watch?v=nZeBhkN6RZU).
+
+[![youtube-thumbnail](https://img.youtube.com/vi/nZeBhkN6RZU/0.jpg)](https://www.youtube.com/watch?v=nZeBhkN6RZU)
+
+## Why KServe?
 
 [KServe](https://kserve.github.io/) (formally KFServing) is a Kubernetes-based model inference platform built for highly-scalable deployment use cases. It provides a standardized inference protocol across ML frameworks while supporting a serverless architecture with autoscaling including Scale to Zero on GPUs. KServe uses a simple and pluggable production serving architecture for production ML serving that includes prediction, pre- and post-processing, monitoring, and explainability. These functionalities and others make KServe one of the most interesting open source tools in the MLOps landscape. 
 
@@ -409,7 +416,8 @@ We also saw how the KServe integration makes the experience of deploying a PyTor
 
 We are also working on making the deployment story more customizable by allowing users to write their own functionalities to be executed before and after the deployment. This will be a great feature not only for serving the model but also custom codes that can be deployed with the serving tools.
 
-This demo was presented on our community hour. Check the recording [here](https://www.youtube.com/watch?v=nZeBhkN6RZU).
+
+
 
 If you have any questions or feedback regarding this tutorial, join our 
 [weekly community hour](https://www.eventbrite.com/e/zenml-meet-the-community-tickets-354426688767).
