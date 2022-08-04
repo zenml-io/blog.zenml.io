@@ -1,22 +1,22 @@
 name: Strapi Publish
 
-on:
-  pull_request:
-    types:
-      - closed
+on: push
 
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged == true
+  strapi_publish:
+    if: github.ref == 'refs/heads/chore/strapi-publish-github-action'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: ${{ github.ref }}
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v24
+        with:
+          since_last_remote_commit: 'true'
 
       - name: List all changed files
         run: |
