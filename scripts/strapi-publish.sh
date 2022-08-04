@@ -9,9 +9,10 @@ foundfile=""
 
 for (( i=0; i<${arraylength}; i++ ));
 do
-  echo $CHANGED_FILES[$i]
   if [ -z "${foundfile}" ]; then
     filetype="${CHANGED_FILES[$i]##*.}"
+    echo $filetype
+    echo ${CHANGED_FILES[$i]}
     if [[ "$filetype" == "md" ]]; then
       foundfile=${CHANGED_FILES[$i]}
       break
