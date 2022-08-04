@@ -24,7 +24,7 @@ jobs:
             echo "$file was changed"
           done
       
-      - name: Posts on discord
+      - name: Push to Strapi
         env:
           STRAPI_URL: ${{ secrets.STRAPI_URL }}
           STRAPI_TOKEN: ${{ secrets.STRAPI_TOKEN }}
