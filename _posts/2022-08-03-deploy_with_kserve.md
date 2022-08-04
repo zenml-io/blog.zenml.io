@@ -42,7 +42,7 @@ This guide expects the following prerequisites:
 - Access to a [GCP](https://cloud.google.com/) project space
 - [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine and authenticated
 
-## Setting up GCP Resources
+## Setting Up GCP Resources
 
 Before we can deploy our models in KServe we will need to set up all the required resources and permissions on GCP. This is a one-time effort that you will not need to repeat. Feel free to skip and adjust these steps as you see fit.
 
