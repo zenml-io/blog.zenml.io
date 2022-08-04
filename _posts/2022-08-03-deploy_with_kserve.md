@@ -376,7 +376,7 @@ pytorch_model_deployer = kserve_model_deployer_step(
 
 Deploying any model using the KServe Integration requires some parameters such as the model name, how many replicas we want to have of the pod, which KServe predictor (and this is very important because the platform has already a large list of famous ML frameworks that you can use to serve your models with minimum effort) and finally the resource if we want to limit our deployment to specific limits on CPU and GPU.
 
-Because KServe uses TorchServe as the runtime server for deploying PyTorch models we need to provide a `model_class` path which contains the definition of our neural network architecture and a `handler` which is responsible for handling the custom pre-post processing logic. You can read more about how to deploy PyTorch models with TorchServe Runtime Server [KServe Pytorch](https://kserve.github.io/website/0.9/modelserving/v1beta1/torchserve/) or in [the TorchServe Official documentation](https://pytorch.org/serve/).
+Because KServe uses TorchServe as the runtime server for deploying PyTorch models we need to provide a `model_class` path which contains the definition of our neural network architecture and a `handler` which is responsible for handling the custom pre and post-processing logic. You can read more about how to deploy PyTorch models with TorchServe Runtime Server [KServe Pytorch](https://kserve.github.io/website/0.9/modelserving/v1beta1/torchserve/) or in [the TorchServe Official documentation](https://pytorch.org/serve/).
 
 The Inference pipeline consists of the following steps:
 * pytorch_inference_processor - Load a digits image from a URL (must be 28x28) and converts it to a byte array.
