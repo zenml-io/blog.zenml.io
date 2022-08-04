@@ -403,7 +403,7 @@ Cleanup should be fairly straightforward now, so long as you bundled all of thes
 In this tutorial, we learned about KServe and how to install it in a Kubernetes cluster, how to set up an MLOps stack with the ZenML KServe Integration and interact with it using the ZenML CLI.
 We also saw how the KServe integration makes the experience of deploying a PyTorch model into KServe much easier, by handling the packaging and preparing of the different resources that are required by TorchServe.
 
-We are also working on making the deployment story more customizable by allowing the user to write their own functionalities to be executed before and after the deployment. This will be a great feature for not only serve the model but also custom codes that can be deployed with the serving tools.
+We are also working on making the deployment story more customizable by allowing users to write their own functionalities to be executed before and after the deployment. This will be a great feature not only for serving the model but also custom codes that can be deployed with the serving tools.
 
 This demo was presented on our community hour. Check the recording [here](https://www.youtube.com/watch?v=nZeBhkN6RZU).
 
