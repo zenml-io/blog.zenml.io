@@ -1,8 +1,6 @@
 #! /bin/bash
 set -e
 
-echo $STRAPI_TOKEN
-
 array=(${CHANGED_FILES// / })
 
 arraylength=${#array[@]}
@@ -53,4 +51,4 @@ EOF
 
 echo $PAYLOAD
 
-curl -H "Content-Type: application/json, Authorization: Bearer ${STRAPI_TOKEN}" -X POST -d "${PAYLOAD}" ${STRAPI_URL}
+curl -H "Content-Type: application/json" -H "Authorization: Bearer ${STRAPI_TOKEN}" -X POST -d "${PAYLOAD}" ${STRAPI_URL}
