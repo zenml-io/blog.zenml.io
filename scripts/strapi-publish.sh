@@ -26,7 +26,7 @@ fi
 
 value=`cat ${foundfile}`
 
-markdown="${value##*---}"
+# markdown="${value##*---}"
 
 author=$(echo "${value}" | awk -v FS="(author: | title:)" '{print $2}')
 title=$(echo "${value}" | awk -v FS="(title: | description:)" '{print $2}')
@@ -43,7 +43,7 @@ PAYLOAD=$(cat <<EOF
     "description": "$( echo ${description})",
     "seoTitle": "$( echo ${title})",
     "slug": "$( echo ${slug})",
-    "blogContent": "{\"markdown\": \"$( echo ${markdown})\"}"
+    "blogContent": "{\"markdown\": \"$( echo ${value})\"}"
   }
 }
 EOF
