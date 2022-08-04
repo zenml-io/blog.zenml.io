@@ -14,6 +14,7 @@ do
     echo $filetype
     echo ${CHANGED_FILES[$i]}
     if [[ "$filetype" == "md" ]]; then
+      echo "found"
       foundfile=${CHANGED_FILES[$i]}
       break
     fi
