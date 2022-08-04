@@ -6,6 +6,7 @@ array=(${CHANGED_FILES// / })
 arraylength=${#array[@]}
 
 echo $array
+
 echo $arraylength
 
 foundfile="" 
