@@ -2,7 +2,7 @@
 layout: post
 author: Safoine El khabich
 title: "Deploy your ML models with KServe and ZenML"
-description: "Let's see how ZenML and the new KServe integration enable data scientist to deploy serverless ml models in just few steps."
+description: "Let's see how ZenML and the new KServe integration enable data scientists to deploy serverless ml models in just a few steps."
 category: zenml
 tags: zenml integrations deployment kserve mlops
 publish_date: August 03, 2022
@@ -26,7 +26,7 @@ Now let’s see why would you want to use KServe as your ML serving platform.
 
 If you see KServe as the right deployment tool for your MLOps stack or you just want to experiment or learn how to deploy models into a Kubernetes cluster without too much configuration, this post is for you.
 
-Following this post till the end will learn how to setup KServe on a Kubernetes cluster, create your production-ready MLOps stack with ZenML and KServe is part of it and finally see how we can create continuous ml pipelines that train, evaluate, deploy and run inference on a PyTorch model.
+Following this post till the end will learn how to set up KServe on a Kubernetes cluster, create your production-ready MLOps stack with ZenML and KServe is part of it and finally see how we can create continuous ml pipelines that train, evaluate, deploy and run inference on a PyTorch model.
 
 ## Requirements
 
@@ -34,9 +34,9 @@ In this example, we will use GCP as our cloud provider of choice and provision a
 
 For that you will need the following: 
 
-- [Python](https://www.python.org/) installed (version 3.7-3.9)
-- Access to a [gcp](https://cloud.google.com/) project space
-- [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine and authenticated
+- [Python](https://www.python.org/) installed (version 3.7-3.9)
+- Access to a [gcp](https://cloud.google.com/) project space
+- [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine and authenticated
 
 ## Setup of GCP Resources
 
@@ -48,7 +48,7 @@ Click on the project select box
 
 ![GCP Projects page](../assets/posts/kserve-deployment/gcp-projects-page.png)
 
-Create a `New Project`
+Create a `New Project`
 
 ![Create new project](../assets/posts/kserve-deployment/gcp-create-project.png)
 
@@ -66,7 +66,7 @@ We give our cluster a name if we want, otherwise we leave everything as it is si
 
 ### Cloud Storage
 
-Search `cloud storage` or use this [link](https://console.cloud.google.com/storage/).
+Search `cloud storage` or use this [link](https://console.cloud.google.com/storage/).
 
 ![Create GS bucket](../assets/posts/kserve-deployment/gcp-create-bucket.png)
 
@@ -74,15 +74,15 @@ Once the bucket is created, you can find the storage URI as follows.
 
 ![GS bucket URI](../assets/posts/kserve-deployment/gcp-bucket-uri.png)
 
-For the creation of the [ZenML Artifact Store](https://blog.zenml.io/vertex-ai-blog/#zenml-artifact-store) you will need the following data:
+For the creation of the [ZenML Artifact Store](https://blog.zenml.io/vertex-ai-blog/#zenml-artifact-store) you will need the following data:
 
 - gsutil URI
 
 ### Set up Permissions
 
-With all the resources set up you will now need to set up a service account with all the right permissions. This service account will need to be able to access all the different resources that we have set up so far.
+With all the resources set up, you will now need to set up a service account with all the right permissions. This service account will need to be able to access all the different resources that we have set up so far.
 
-Start by searching for `IAM` in the search bar or use this link: `https://console.cloud.google.com/iam-admin`. Here you will need to create a new Service Account.
+Start by searching for `IAM` in the search bar or use this link: `https://console.cloud.google.com/iam-admin`. Here you will need to create a new Service Account.
 
 ![Create Service account](../assets/posts/kserve-deployment/gcp-create-serviceaccount.png)
 
@@ -90,15 +90,15 @@ First off you’ll need to name the service account. Make sure to give it a clea
 
 ![Service account details](../assets/posts/kserve-deployment/serviceaccount-details.png)
 
-This service account will need to have the roles of `Storage Admin` 
+This service account will need to have the role of `Storage Admin` 
 
 ![Service account roles](../assets/posts/kserve-deployment/serviceaccount-roles.png)
 
-Finally, you need to make sure your own account will have the right to `run-as` this service account. It probably also makes sense to give yourself the right to manage this service account to perform changes later on.
+Finally, you need to make sure your own account will have the right to `run-as` this service account. It probably also makes sense to give yourself the right to manage this service account to perform changes later on.
 
 ![Service account user access](../assets/posts/kserve-deployment/serviceaccount-user-access.png)
 
-Finally, you can now find your new service account in the `IAM` tab. You’ll need the Principal when creating your ZenML Model Deployer.
+Finally, you can now find your new service account in the `IAM` tab. You’ll need the Principal when creating your ZenML Model Deployer.
 
 ![Select service account](../assets/posts/kserve-deployment/select-serviceaccount.png)
 
@@ -112,13 +112,13 @@ We can click on the service account then keys and create a new key and select js
 
 ## Setting up KServe and the ZenML Stack
 
-Now that we have everything done on the GCP side, we will jump to how we can install KServe on the GKE cluster and then setup our MLOps stack with ZenML CLI
+Now that we have everything done on the GCP side, we will jump to how we can install KServe on the GKE cluster and then set up our MLOps stack with ZenML CLI
 
 ### Installing KServe on GKE
 
 The first thing we need to do is to connect to the GKE cluster, this assumes that we have already gcloud CLI. 
 
-We can get the right command to connect to the cluster in the Kubernetes Engine page.
+We can get the right command to connect to the cluster on the Kubernetes Engine page.
 
 ![GKE connect](../assets/posts/kserve-deployment/connect-gke-cluster.png)
 
@@ -280,7 +280,7 @@ You should see something like this as the prediction response:
 
 ### Installing ZenML Integrations
 
-First Thing we need to do is install the integration we will be using to run this demo.
+Firstly, we need to do is install the integration we will be using to run this demo.
 
 ```bash
 zenml integration install tensorflow pytorch gcp kserve
@@ -288,7 +288,7 @@ zenml integration install tensorflow pytorch gcp kserve
 
 ### ZenML Artifact Store
 
-The **artifact store** stores all the artifacts that get passed as inputs and outputs of your pipeline steps. To register our blob storage container.
+The **artifact store** stores all the artifacts that get passed as inputs and outputs of your pipeline steps. To register our blob storage container.
 
 ```bash
 zenml artifact-store register gcp_artifact_store --flavor=gcp --path=<gsutil-URI>
@@ -296,7 +296,7 @@ zenml artifact-store register gcp_artifact_store --flavor=gcp --path=<gsutil-URI
 
 ### ZenML Secrets manager
 
-The **secrets manager i**s used to securely store all your credentials so ZenML can use them to authenticate with other components like your metadata or artifact store.
+The **secrets manager i**s used to securely store all your credentials so ZenML can use them to authenticate with other components like your metadata or artifact store.
 
 ```bash
 zenml secrets-manager register local --flavor=local
@@ -304,7 +304,7 @@ zenml secrets-manager register local --flavor=local
 
 ### ZenML Model Deployer
 
-The Model Deployer is the stack component responsible for serving, managing and interacting with models. For this demo we are going to register KServe Model Deployer flavor
+The Model Deployer is the stack component responsible for serving, managing, and interacting with models. For this demo, we are going to register KServe Model Deployer flavor
 
 ```bash
 zenml model-deployer register kserve_gke --flavor=kserve \
@@ -333,7 +333,7 @@ zenml secret register -s kserve_gs kserve_secret \
 
 ## The example
 
-The example uses the [digits dataset](https://keras.io/api/datasets/mnist/) to train a classifier using both [TensorFlow](https://www.tensorflow.org/) and [PyTorch](https://pytorch.org/). You can find the full [example here](https://github.com/zenml-io/zenml/tree/main/examples/kserve_deployment). We have two pipelines one responsible for training and deploying the model and the second one responsible for running predection on the deployed model.
+The example uses the [digits dataset](https://keras.io/api/datasets/mnist/) to train a classifier using both [TensorFlow](https://www.tensorflow.org/) and [PyTorch](https://pytorch.org/). You can find the full [example here](https://github.com/zenml-io/zenml/tree/main/examples/kserve_deployment). We have two pipelines one responsible for training and deploying the model and the second one responsible for running prediction on the deployed model.
 
 The PyTorch Training/Deployment pipeline consists of the following steps:
 * importer - Load the MNIST handwritten digits dataset from the TorchVision library
@@ -371,9 +371,9 @@ pytorch_model_deployer = kserve_model_deployer_step(
 )
 ```
 
-Deploying any model to KServe Integration requires some parameters such as the model name, how many replicas we want to have of the pod, which KServe predictor and this is very important because the platform has already a large list of famous ML framework that you can use to serve your models with minimum effort and finally the resource if we want to limit our deployment to specific limits on CPU and GPU. 
+Deploying any model to KServe Integration requires some parameters such as the model name, how many replicas we want to have of the pod, which KServe predictor and this is very important because the platform has already a large list of famous ML frameworks that you can use to serve your models with minimum effort and finally the resource if we want to limit our deployment to specific limits on CPU and GPU. 
 
-Because KServe uses TorchServe as the runtime server for deploying PyTorch Model we need to provide a `model_class` path which contains the definition of our neural network architecture and a  `handler` which is responsible for handling the custom pre-post processing logic. You can read more about how to deploy PyTorch models with TorchServe Runtime Server [KServe Pytorch](https://kserve.github.io/website/0.9/modelserving/v1beta1/torchserve/) or in [TorchServe Official documentation](https://pytorch.org/serve/).
+Because KServe uses TorchServe as the runtime server for deploying PyTorch Model we need to provide a `model_class` path that contains the definition of our neural network architecture and a  `handler` that is responsible for handling the custom pre-post processing logic. You can read more about how to deploy PyTorch models with TorchServe Runtime Server [KServe Pytorch](https://kserve.github.io/website/0.9/modelserving/v1beta1/torchserve/) or in [TorchServe Official documentation](https://pytorch.org/serve/).
 
 The Inference pipeline consists of the following steps:
 * pytorch_inference_processor - Load a digits image from URL (must be 28x28) and convert it to a byte array.
@@ -391,13 +391,13 @@ Once that is done we will see that we have 2 finished running pipelines, with th
 
 ## Cleanup
 
-Cleanup should be fairly straightforward now, in case you bundled all of these resources into one separate project. Simply navigate to the [Cloud Resource Manager](https://console.cloud.google.com/cloud-resource-manager) and delete your project:
+Cleanup should be fairly straightforward now, in case you bundled all of these resources into one separate project. Simply navigate to the [Cloud Resource Manager](https://console.cloud.google.com/cloud-resource-manager) and delete your project:
 
 ![Delete GCP Project](../assets/posts/kserve-deployment/delete-gcp-project.png)
 
 ## Conclusion
 
-In this tutorial, we learned about KServe and how we can install it in a Kubernetes cluster. How we can setup an MLOps stack with ZenML and KServe Integration to deploy our model in a Kubernetes cluster.
+In this tutorial, we learned about KServe and how we can install it in a Kubernetes cluster. How we can set up an MLOps stack with ZenML and KServe Integration to deploy our model in a Kubernetes cluster.
 
 If you have any questions or feedback regarding this tutorial, join our 
 [weekly community hour](https://www.eventbrite.com/e/zenml-meet-the-community-tickets-354426688767).
