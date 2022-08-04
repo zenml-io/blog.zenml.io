@@ -2,7 +2,7 @@
 layout: post
 author: Safoine El khabich
 title: "Deploy your ML models with KServe and ZenML"
-description: "How to use ZenML and the new KServe integration which helps data scientist deploy serverless ML models in just few steps."
+description: "How to use ZenML and KServe to deploy serverless ML models in just a few steps."
 category: zenml
 tags: zenml integrations deployment kserve mlops
 publish_date: August 04, 2022
@@ -48,9 +48,9 @@ In this example, we will use GCP as our cloud provider of choice and provision a
 
 This guide expects the following prerequisites:
 
-- [Python](https://www.python.org/) installed (version 3.7-3.9)
+- [Python](https://www.python.org/) installed (version 3.7-3.9)
 - Access to a [GCP](https://cloud.google.com/) project space
-- [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine and authenticated
+- [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine and authenticated
 
 ## Setting Up GCP Resources
 
@@ -74,7 +74,7 @@ We’ll start off by creating a GKE Standard cluster
 
 ![Create GCP project](../assets/posts/kserve-deployment/gcp-create-project.png)
 
-Optionally, give the cluster a name, otherwise leave everything as it is since this cluster is only for demo purposes.
+Optionally, give the cluster a name, otherwise, leave everything as it is since this cluster is only for demo purposes.
 
 ![Create GKE standard cluster](../assets/posts/kserve-deployment/create-gke-cluster.png)
 
@@ -318,7 +318,7 @@ zenml secrets-manager register local --flavor=local
 
 ### ZenML Model Deployer
 
-The Model Deployer is the stack component responsible for serving, managing and interacting with models. For this demo we are going to register KServe Model Deployer flavor:
+The Model Deployer is the stack component responsible for serving, managing, and interacting with models. For this demo we are going to register KServe Model Deployer flavor:
 
 ```bash
 zenml model-deployer register kserve_gke --flavor=kserve \
@@ -385,9 +385,9 @@ pytorch_model_deployer = kserve_model_deployer_step(
 )
 ```
 
-Deploying any model using the KServe Integration requires some parameters such as the model name, how many replicas we want to have of the pod, which KServe predictor (and this is very important because the platform has already a large list of famous ML frameworks that you can use to serve your models with minimum effort) and finally the resource if we want to limit our deployment to specific limits on CPU and GPU.
+Deploying any model using the KServe integration requires some parameters such as the model name, how many replicas we want to have of the pod, which KServe predictor (and this is very important because the platform has already a large list of famous ML frameworks that you can use to serve your models with minimum effort) and finally the resource if we want to limit our deployment to specific limits on CPU and GPU.
 
-Because KServe uses TorchServe as the runtime server for deploying PyTorch models we need to provide a `model_class` path which contains the definition of our neural network architecture and a `handler` which is responsible for handling the custom pre and post-processing logic. You can read more about how to deploy PyTorch models with TorchServe Runtime Server [KServe Pytorch](https://kserve.github.io/website/0.9/modelserving/v1beta1/torchserve/) or in [the TorchServe Official documentation](https://pytorch.org/serve/).
+Because KServe uses TorchServe as the runtime server for deploying PyTorch models we need to provide a `model_class` path that contains the definition of our neural network architecture and a `handler` that is responsible for handling the custom pre and post-processing logic. You can read more about how to deploy PyTorch models with TorchServe Runtime Server [KServe Pytorch](https://kserve.github.io/website/0.9/modelserving/v1beta1/torchserve/) or in [the TorchServe Official documentation](https://pytorch.org/serve/).
 
 The Inference pipeline consists of the following steps:
 * pytorch_inference_processor - Load a digits image from a URL (must be 28x28) and converts it to a byte array.
@@ -411,10 +411,10 @@ Cleanup should be fairly straightforward now, so long as you bundled all of thes
 
 ## Conclusion
 
-In this tutorial, we learned about KServe and how to install it in a Kubernetes cluster, how to set up an MLOps stack with the ZenML KServe Integration and interact with it using the ZenML CLI.
-We also saw how the KServe integration makes the experience of deploying a PyTorch model into KServe much easier, by handling the packaging and preparing of the different resources that are required by TorchServe.
+In this tutorial, we learned about KServe and how to install it in a Kubernetes cluster, how to set up an MLOps stack with the ZenML KServe Integration, and interact with it using the ZenML CLI.
+We also saw how the KServe integration makes the experience of deploying a PyTorch model into KServe much easier, by handling the packaging and preparing the different resources that are required by TorchServe.
 
-We are also working on making the deployment story more customizable by allowing users to write their own functionalities to be executed before and after the deployment. This will be a great feature not only for serving the model but also custom codes that can be deployed with the serving tools.
+We are also working on making the deployment story more customizable by allowing users to write their own functionalities to be executed before and after the deployment. This will be a great feature not only for serving the model but also for custom codes that can be deployed with the serving tools.
 
 
 
