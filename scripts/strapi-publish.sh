@@ -18,7 +18,7 @@ do
     fi
 
     if [[ "$filetype" == "png" || "$filetype" == "jpg" || "$filetype" == "jpeg" ]]; then
-      images+=(${array[$i]})
+      images+=("/${array[$i]}")
     fi
   fi
 done
@@ -61,8 +61,9 @@ imagearraylength=${#images[@]}
 
 # curl -H "Content-Type: application/json" -H "Authorization: Bearer ${STRAPI_TOKEN}" -X POST -d "${PAYLOAD}" ${STRAPI_URL}
 
+echo $images
 
 for (( i=0; i<${imagearraylength}; i++ ));
 do
-  curl -i -X POST -H "Content-Type: multipart/form-data" -H "Authorization: Bearer ${STRAPI_TOKEN}" -F "files=@"/${file} https://zenml-strapi-production.clients-mvst.co/api/upload
+  curl -i -X POST -H "Content-Type: multipart/form-data" -H "Authorization: Bearer ${STRAPI_TOKEN}" -F "files=@"${file} https://zenml-strapi-production.clients-mvst.co/api/upload
 done
