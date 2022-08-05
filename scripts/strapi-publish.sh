@@ -18,7 +18,7 @@ do
     fi
 
     if [[ "$filetype" == "png" || "$filetype" == "jpg" || "$filetype" == "jpeg" ]]; then
-      images+=("./${array[$i]}")
+      images+=("${GITHUB_WORKSPACE}/${array[$i]}")
     fi
   fi
 done
