@@ -64,5 +64,5 @@ imagearraylength=${#images[@]}
 
 for (( i=0; i<${imagearraylength}; i++ ));
 do
-  curl -i -X POST -H "Content-Type: multipart/form-data" -H "Authorization: Bearer ${STRAPI_TOKEN}" -F "files=@"${file} https://zenml-strapi-production.clients-mvst.co/api/upload
+  curl -i -X POST -H "Content-Type: multipart/form-data" -H "Authorization: Bearer ${STRAPI_TOKEN}" -F "files=@"/${file} https://zenml-strapi-production.clients-mvst.co/api/upload
 done
