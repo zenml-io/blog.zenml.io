@@ -25,41 +25,41 @@ done
 
 imagearraylength=${#images[@]}
 
-# if [ -z "${foundfile}" ]; then
-#   echo "ERROR: No MD File changed"
-#   exit 1
-# fi
+if [ -z "${foundfile}" ]; then
+  echo "ERROR: No MD File changed"
+  exit 1
+fi
 
-# value=`cat ${foundfile}`
+value=`cat ${foundfile}`
 
-# markdown=$(echo "${value##*---}")
+markdown=$(echo "${value##*---}")
 
-# author=$(echo ${value} | awk -v FS="(author: | title:)" '{print $2}')
-# title=$(echo ${value} | awk -v FS="(title: | description:)" '{print $2}')
-# description=$(echo ${value} | awk -v FS="(description: \"|\" publish_date:)" '{print $2}')
-# date=$(echo ${value} | awk -v FS="(date: | tags:)" '{print $2}')
+author=$(echo ${value} | awk -v FS="(author: | title:)" '{print $2}')
+title=$(echo ${value} | awk -v FS="(title: | description:)" '{print $2}')
+description=$(echo ${value} | awk -v FS="(description: \"|\" publish_date:)" '{print $2}')
+date=$(echo ${value} | awk -v FS="(date: | tags:)" '{print $2}')
 
-# slug=$(echo $title | iconv -t ascii//TRANSLIT | sed -r s/[~\^]+//g | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z)
+slug=$(echo $title | iconv -t ascii//TRANSLIT | sed -r s/[~\^]+//g | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z)
 
-# markdown_without_line_break=${markdown//$'\n'/\\\\n}
+markdown_without_line_break=${markdown//$'\n'/\\\\n}
 
-# PAYLOAD=$(cat <<EOF
-# {
-#   "data": {
-#     "author": "$( echo ${author})", 
-#     "title": "$( echo ${title})", 
-#     "description": "$( echo ${description})",
-#     "seoTitle": "$( echo ${title})",
-#     "slug": "$( echo ${slug})",
-#     "blogContent": "{\"markdown\": \"$( echo ${markdown_without_line_break})\"}"
-#   }
-# }
-# EOF
-# )
+PAYLOAD=$(cat <<EOF
+{
+  "data": {
+    "author": "$( echo ${author})", 
+    "title": "$( echo ${title})", 
+    "description": "$( echo ${description})",
+    "seoTitle": "$( echo ${title})",
+    "slug": "$( echo ${slug})",
+    "blogContent": "{\"markdown\": \"$( echo ${markdown_without_line_break})\"}"
+  }
+}
+EOF
+)
 
-# echo "$PAYLOAD"
+echo "$PAYLOAD"
 
-# curl -H "Content-Type: application/json" -H "Authorization: Bearer ${STRAPI_TOKEN}" -X POST -d "${PAYLOAD}" ${STRAPI_URL}
+curl -H "Content-Type: application/json" -H "Authorization: Bearer ${STRAPI_TOKEN}" -X POST -d "${PAYLOAD}" ${STRAPI_URL}
 
 echo $images
 
