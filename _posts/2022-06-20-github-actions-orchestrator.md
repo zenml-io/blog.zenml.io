@@ -316,7 +316,7 @@ Let's start with the secret for our metadata store. For this, we'll use some of 
 Replace the `<PLACEHOLDERS>` in the following command with those concrete values and run it:
 ```bash
 # the `@` prefix in front of the SSL certificate path tells ZenML to load the secret value from a file instead of using the string that was passed as the argument value
-zenml secret register azure_mysql_auth \
+zenml secrets-manager secret register azure_mysql_auth \
     --schema=mysql \
     --user=<MYSQL_USERNAME> \
     --password=<MYSQL_PASSWORD> \
@@ -326,7 +326,7 @@ zenml secret register azure_mysql_auth \
 For the artifact store secret, we're going to need the **storage account name** and **key** that we saved when we [created our storage account earlier](#create-a-storage-account).
 Replace the `<PLACEHOLDERS>` in the following command with those concrete values and run it:
 ```bash
-zenml secret register azure_store_auth \
+zenml secrets-manager secret register azure_store_auth \
     --schema=azure \
     --account_name=<STORAGE_ACCOUNT_NAME> \
     --account_key=<STORAGE_ACCOUNT_KEY>

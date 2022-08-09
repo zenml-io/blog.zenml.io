@@ -396,7 +396,7 @@ mysql metadata store. You generated the SSL certificates when setting up the
 [CloudSQL](#cloudsql) within the GCP UI.
 
 ```shell
-zenml secret register mysql_secret --schema=mysql --user=<DB_USER> --password=<PWD> \
+zenml secrets-manager secret register mysql_secret --schema=mysql --user=<DB_USER> --password=<PWD> \
   --ssl_ca=@</PATH/TO/DOWNLOADED/SERVER-CERT> \
   --ssl_cert=@</PATH/TO/DOWNLOADED/CLIENT-CERT> \
   --ssl_key=@</PATH/TO/DOWNLOADED/CLIENT-KEY>
