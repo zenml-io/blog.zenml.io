@@ -168,11 +168,13 @@ It will take some time for your project to be created. Once it is
 created you will need to enable billing for the project so that you can set
 up all required resources.
 
-You will need the project name and project id in the following steps again.
+You will need the project name and project id in the following steps again. 
 
-* The project name will be referred to as <gcp_project_name>
-* The [project ID](https://support.google.com/googleapi/answer/7014113?hl=en)
-  will be referred to as <gcp_project_id>
+* The project name will be referred to as `<gcp_project_name>`
+* The [project number](https://support.google.com/googleapi/answer/7014113?hl=en)
+  will be referred to as `<gcp_project_id>`
+
+This project number can be found on your project dashboard.
 
 ### CloudSQL
 
