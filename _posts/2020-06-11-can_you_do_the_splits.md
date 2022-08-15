@@ -8,9 +8,9 @@ publish_date: June 11th, 2020
 date: 2020-06-11T10:20:00Z
 category: mlops
 tags: machine-learning data-engineering mlops evergreen
-thumbnail: /assets/posts/splits/0_splits.jpg
+thumbnail: assets/posts/splits/0_splits.jpg
 image:
-  path: /assets/logo_sq.png
+  path: assets/logo_sq.png
   height: 100
   width: 100
 ---
@@ -23,7 +23,7 @@ reason much better if the model has underfit or overfit in training.
 
 <div class="row justify-content-center">
     <div class="col-md-4">
-        <div class="text-center"><img class="" src="/assets/posts/splits/0_splits.jpg" alt="Technical Debt in ML"></div>
+        <div class="text-center"><img class="" src="../assets/posts/splits/0_splits.jpg" alt="Technical Debt in ML"></div>
     </div>
 </div>
 <div class="row justify-content-center">
@@ -45,7 +45,7 @@ consists of
 3 numerical features, 1 categorical feature and 1 timestamp feature. Below this
 is visualized:
 
-![1_whole_dataset](/assets/posts/splits/1_whole_dataset.png)
+![1_whole_dataset](../assets/posts/splits/1_whole_dataset.png)
 
 This type of dataset is common across many use-cases and industries in machine
 learning. A concrete example can be multiple timestreams transmitted from
@@ -74,7 +74,7 @@ The most straightforward transformation we can do is to represent the data per
 categorical class (in our running example, visualize the data per machine). This
 would yield the following result:
 
-![2_grouped](/assets/posts/splits/2_grouped.png)
+![2_grouped](../assets/posts/splits/2_grouped.png)
 
 ## The Horizontal Split
 
@@ -86,7 +86,7 @@ if trained on `class_1`, `class_2` and `class_3` timestreams how would the model
 fair on `class_4` and `class_5` timestreams. Here is a visualization of that
 split:
 
-![3_horizontal](/assets/posts/splits/3_horizontal.png)
+![3_horizontal](../assets/posts/splits/3_horizontal.png)
 
 I call this the `Horizontal` split due to nature of the cut line in the above
 visualization. This split can be easily achieved in most ML libraries by simply
@@ -109,7 +109,7 @@ hypothesis in this case would be:
 `How would a ML model trained on historical data per group generalize to future data for each group?`.
 This question might be answered by the so called `Vertical` split:
 
-![4_vertical](/assets/posts/splits/4_vertical.png)
+![4_vertical](../assets/posts/splits/4_vertical.png)
 
 A successful training with this split would showcase that the model is able to
 pick up patterns across timestreams it has already seen, and make accurate
@@ -132,7 +132,7 @@ model that would generalize under both constraints of the `Horizontal` and the
 `How would a model trained on historical data for SOME groups generalize to future data of these groups AND all data from other groups?`.
 A visualization of this `Hybrid` split would look like this:
 
-![5_hybrid](/assets/posts/splits/5_hybrid.png)
+![5_hybrid](../assets/posts/splits/5_hybrid.png)
 
 Naturally, if model training is successful, this model would surely be more
 robust than the others in a real world setting. It would have displayed evidence
