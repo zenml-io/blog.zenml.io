@@ -8,9 +8,9 @@ publish_date: June 11th, 2020
 date: 2020-06-11T10:20:00Z
 category: mlops
 tags: machine-learning data-engineering mlops evergreen
-thumbnail: assets/posts/splits/0_splits.jpg
+thumbnail: /assets/posts/splits/0_splits.jpg
 image:
-  path: assets/logo_sq.png
+  path: /assets/logo_sq.png
   height: 100
   width: 100
 ---
