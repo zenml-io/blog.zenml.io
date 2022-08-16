@@ -35,13 +35,15 @@ value=`cat ${foundfile}`
 markdown=$(echo "${value##*---}")
 
 author=$(echo ${value} | awk -v FS="(author: | title:)" '{print $2}')
-title=$(echo ${value} | awk -v FS="(title: | description:)" '{print $2}')
-description=$(echo ${value} | awk -v FS="(description: \"|\" publish_date:)" '{print $2}')
+title=$(echo ${value} | awk -v FS="(title: \"|\" description: )" '{print $2}')
+description=$(echo ${value} | awk -v FS="(description: \"|\" category:)" '{print $2}')
 date=$(echo ${value} | awk -v FS="(date: | tags:)" '{print $2}')
 
 slug=$(echo $title | iconv -t ascii//TRANSLIT | sed -r s/[~\^]+//g | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr A-Z a-z)
 
 markdown_without_line_break=${markdown//$'\n'/\\\\n}
+markdown_with_escaped_backslash=${markdown_without_line_break//$'\\'/\\\\}
+markdown_with_escaped_quotes=${markdown_with_escaped_backslash//$'"'/\\\"}
 
 PAYLOAD=$(cat <<EOF
 {
@@ -51,7 +53,7 @@ PAYLOAD=$(cat <<EOF
     "description": "$( echo ${description})",
     "seoTitle": "$( echo ${title})",
     "slug": "$( echo ${slug})",
-    "blogContent": "{\"markdown\": \"$( echo ${markdown_without_line_break})\"}"
+    "blogContent": "{\"markdown\": \"$( echo ${markdown_with_escaped_quotes})\"}"
   }
 }
 EOF
