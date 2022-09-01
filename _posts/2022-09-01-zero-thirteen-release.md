@@ -2,7 +2,7 @@
 layout: post
 author: Dickson Neoh Tze How
 title: "What's New in v0.13.0 and v0.13.1: Spark Integration, Custom Code Deployment and Stack Recipes!"
-description: "This release brings the first iteration of Apache Spark into ZenML."
+description: "This release brings the first iteration of Apache Spark integration into ZenML. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also opens up the possibility of running custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease."
 category: zenml
 tags: zenml release-notes
 publish_date: September 01, 2022
@@ -18,7 +18,7 @@ ZenML version 0.13.0 is chock-full with exciting features.
 As always, we've also included various bug fixes and lots of improvements to the documentation and our examples.
 
 ## ⚡ Spark Integration
-To date, Spark has been the most requested feature on our [Roadmap](https://zenml.io/roadmap).
+To date, [Spark](https://spark.apache.org/) has been the most requested feature on our [Roadmap](https://zenml.io/roadmap).
 
 We heard you! And in this release, we present to you the long-awaited Spark integration!
 
@@ -42,7 +42,7 @@ View the demo recorded during our community meetup on 24th August 2022 👇
 Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment).
 
 
-##  Spin-Up Infrastructure with Stack Recipes
+## 🥘 Infrastructure Spin-Up with Stack Recipes
 
 Spinning up and configuring infrastructure is a difficult part of the MLOps journey 
 and can easily become a barrier to entry. Using our [mlops-stacks](https://github.com/zenml-io/mlops-stacks)
@@ -57,8 +57,8 @@ Check out all the Stack Recipes [here](https://github.com/zenml-io/mlops-stacks)
 ## 💔 Breaking Changes
 
 This release introduces a breaking change to the CLI by adjusting the access to
-the stack component specific resources for 'secrets-managers' and 
-'model-deployers' to be more explicitly linked to the component. Here is how:
+the stack component specific resources for `secret-managers` and 
+`model-deployers` to be more explicitly linked to the component. Here is how:
 
 ```bash
 # `zenml secret register ...` becomes 
