@@ -14,7 +14,22 @@ image:
 
 ![img](/assets/posts/release_0_13_0/zero-thirteen-zero-release.jpg)
 
-ZenML version 0.13.0 is chock-full with exciting features. 
+ZenML version 0.13.0 is chock-full with exciting features including:
+
+* You can now run Spark jobs within ZenML with the long awaited Spark integration.
+* It's now possible to run custom code alongside your model with KServe and Seldon.
+* We introduce a convenient way to spin up infrastructures with Stack Recipes.
+
+![img](/assets/posts/release_0_13_0/zero-thirteen-one-release.jpg)
+
+ZenML 0.13.1 comes with several quality of life improvements:
+
+* Specify the exact order in which your pipelines steps should be
+executed, e.g., via `step_b.after(step_a)`
+* It's now possible to use TensorBoard with PyTorch and other modeling frameworks.
+* You can now configure the Evidently integration to ignore specific columns in 
+your datasets. 
+
 As always, we've also included various bug fixes and lots of improvements to the documentation and our examples.
 
 ## ⚡ Spark Integration
@@ -41,7 +56,7 @@ View the demo recorded during our community meetup on 24th August 2022 👇
 Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment).
 
 
-## 🥘 Infrastructure Spin-Up with Stack Recipes
+## 🥘 Spin Up Infrastructure with Stack Recipes
 
 Spinning up and configuring infrastructure is a difficult part of the MLOps journey 
 and can easily become a barrier to entry. Using our [mlops-stacks](https://github.com/zenml-io/mlops-stacks)
@@ -68,6 +83,8 @@ zenml model-deployer models list
 ```
 
 ## ➕ Other Updates, Additions, and Fixes
+
+### 0.13.0
 
 * Link checker by @dnth in https://github.com/zenml-io/zenml/pull/818
 * Update Readme with latest info from docs page by @dnth in https://github.com/zenml-io/zenml/pull/810
@@ -97,25 +114,7 @@ zenml model-deployer models list
 * Spark Integration by @bcdurak in https://github.com/zenml-io/zenml/pull/837
 * Add zenml stack recipe CLI commands by @wjayesh in https://github.com/zenml-io/zenml/pull/807
 
-
-## 🙌 Community Contributions
-* @aliabbasjaffri made their first contribution in https://github.com/zenml-io/zenml/pull/825
-* @SangamSwadiK made their first contribution in https://github.com/zenml-io/zenml/pull/851
-
-
-![img](/assets/posts/release_0_13_0/zero-thirteen-one-release.jpg)
-
-ZenML 0.13.1 is here and it comes with several quality of life improvements:
-
-* You can now specify the exact order in which your pipelines steps should be
-executed, e.g., via `step_b.after(step_a)`
-* TensorBoard was moved to a separate integration so you can use it with PyTorch
-and other modeling frameworks
-* You can now configure the Evidently integration to ignore specific columns in 
-your datasets. 
-
-
-## ➕ Other Updates, Additions, and Fixes
+### 0.13.1
 
 * Fix flag info on recipes in docs by @wjayesh in https://github.com/zenml-io/zenml/pull/854
 * Fix some materializer issues by @schustmi in https://github.com/zenml-io/zenml/pull/852
@@ -125,7 +124,9 @@ your datasets.
 * Custom code readme and docs by @safoinme in https://github.com/zenml-io/zenml/pull/853
 
 
-
+## 🙌 Community Contributions
+* @aliabbasjaffri made their first contribution in https://github.com/zenml-io/zenml/pull/825
+* @SangamSwadiK made their first contribution in https://github.com/zenml-io/zenml/pull/851
 
 
 ## 👩‍💻 Contribute to ZenML!
