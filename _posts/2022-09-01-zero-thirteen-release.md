@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Dickson Neoh Tze How
-title: "What's New in v0.13.0 and v0.13.1: Spark Integration, Custom Code and Recipes!"
-description: "This release brings Spark integration to ZenML."
+title: "What's New in v0.13.0 and v0.13.1: Spark Integration, Custom Code Deployment and Stack Recipes!"
+description: "This release brings the first iteration of Apache Spark into ZenML."
 category: zenml
 tags: zenml release-notes
 publish_date: September 01, 2022
@@ -17,10 +17,10 @@ image:
 ZenML version 0.13.0 is chock-full with exciting features. 
 As always, we've also included various bug fixes and lots of improvements to the documentation and our examples.
 
-## Spark Integration
+## ⚡ Spark Integration
 To date, Spark has been the most requested feature on our [Roadmap](https://zenml.io/roadmap).
 
-We heard you! And in this release we present to you the long awaited Spark integration!
+We heard you! And in this release, we present to you the long-awaited Spark integration!
 
 With [Spark](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming) this release also brings distributed processing into the ZenML toolkit.
 
@@ -30,7 +30,7 @@ View the demo recorded during our community meetup on 17th August 2022 👇
 
 Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming).
 
-## Custom Code Deployment
+## 🎯 Custom Code Deployment
 
 [Custom Code Deployment](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment) is the
 continuation of the Model Deployment story that we have been working on over the last few releases. Now
@@ -42,7 +42,7 @@ View the demo recorded during our community meetup on 24th August 2022 👇
 Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment).
 
 
-## Infrastructure Spin-Up with Stack Recipes
+## 🥘 Infrastructure Spin-Up with Stack Recipes
 
 Spinning up and configuring infrastructure is a difficult part of the MLOps journey 
 and can easily become a barrier to entry. Using our [mlops-stacks](https://github.com/zenml-io/mlops-stacks)
@@ -54,7 +54,7 @@ View the demo recorded during our community meetup on 31st August 2022 👇
 
 Check out all the Stack Recipes [here](https://github.com/zenml-io/mlops-stacks).
 
-## Breaking Changes
+## 💔 Breaking Changes
 
 This release introduces a breaking change to the CLI by adjusting the access to
 the stack component specific resources for `secret-managers` and 
