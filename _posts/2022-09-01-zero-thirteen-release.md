@@ -42,7 +42,7 @@ View the demo recorded during our community meetup on 24th August 2022 👇
 Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment).
 
 
-## 🥘 Infrastructure Spin-Up with Stack Recipes
+##  Spin-Up Infrastructure with Stack Recipes
 
 Spinning up and configuring infrastructure is a difficult part of the MLOps journey 
 and can easily become a barrier to entry. Using our [mlops-stacks](https://github.com/zenml-io/mlops-stacks)
