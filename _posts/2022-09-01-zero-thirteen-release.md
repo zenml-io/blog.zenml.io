@@ -22,8 +22,7 @@ To date, [Spark](https://spark.apache.org/) has been the most requested feature 
 
 We heard you! And in this release, we present to you the long-awaited Spark integration!
 
-With [Spark](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming) this release also brings distributed processing into the ZenML toolkit.
-
+With Spark, this release brings distributed processing into the ZenML toolkit. You can now run heavy data processing workloads across machines/clusters as part of your MLOps pipeline.
 
 View the demo recorded during our community meetup on 17th August 2022 👇
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ai366Y3UoXY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
