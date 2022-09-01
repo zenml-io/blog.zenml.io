@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Dickson Neoh Tze How
-title: "What's New in v0.13.0 and v0.13.1: Spark Integration!"
+title: "What's New in v0.13.0 and v0.13.1: Spark Integration, Custom Code and Recipes!"
 description: "This release brings Spark integration to ZenML."
 category: zenml
 tags: zenml release-notes
@@ -14,19 +14,33 @@ image:
 
 ![img](/assets/posts/release_0_13_0/zero-thirteen-zero-release.jpg)
 
-
 ZenML version 0.13.0 is chock-full with exciting features. 
 As always, we've also included various bug fixes and lots of improvements to the documentation and our examples.
 
 ## Spark Integration
+To date, Spark has been the most requested feature on our [Roadmap](https://zenml.io/roadmap).
+
+We heard you! And in this release we present to you the long awaited Spark integration!
 
 With [Spark](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming) this release also brings distributed processing into the ZenML toolkit.
+
+
+View the demo recorded during our community meetup on 17th August 2022 👇
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ai366Y3UoXY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming).
 
 ## Custom Code Deployment
 
 [Custom Code Deployment](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment) is the
 continuation of the Model Deployment story that we have been working on over the last few releases. Now
-it is possible to deploy custom code along with your models using Kserve or Seldon.
+it is possible to deploy custom code along with your models using KServe or Seldon.
+
+View the demo recorded during our community meetup on 24th August 2022 👇
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yrvO_fmE520" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment).
+
 
 ## Infrastructure Spin-Up with Stack Recipes
 
@@ -34,6 +48,11 @@ Spinning up and configuring infrastructure is a difficult part of the MLOps jour
 and can easily become a barrier to entry. Using our [mlops-stacks](https://github.com/zenml-io/mlops-stacks)
 repository, it is now possible to spin up perfectly configured infrastructure with
 the corresponding ZenML stack using the ZenML CLI.
+
+View the demo recorded during our community meetup on 31st August 2022 👇
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9U-jPkufmnE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Check out all the Stack Recipes [here](https://github.com/zenml-io/mlops-stacks).
 
 ## Breaking Changes
 
@@ -80,7 +99,7 @@ zenml model-deployer models list
 * Add zenml stack recipe CLI commands by @wjayesh in https://github.com/zenml-io/zenml/pull/807
 
 
-## New Contributor
+## 🙌 Community Contributions
 * @aliabbasjaffri made their first contribution in https://github.com/zenml-io/zenml/pull/825
 
 
@@ -90,7 +109,7 @@ ZenML 0.13.1 is here and it comes with several quality of life improvements:
 
 * You can now specify the exact order in which your pipelines steps should be
 executed, e.g., via `step_b.after(step_a)`
-* TensorBoard was moved to a separate integration so you can use it with Pytorch
+* TensorBoard was moved to a separate integration so you can use it with PyTorch
 and other modeling frameworks
 * You can now configure the Evidently integration to ignore specific columns in 
 your datasets. 
@@ -106,7 +125,7 @@ your datasets.
 * Custom code readme and docs by @safoinme in https://github.com/zenml-io/zenml/pull/853
 
 
-## New Contributor
+## 🙌 Community Contributions
 * @SangamSwadiK made their first contribution in https://github.com/zenml-io/zenml/pull/851
 
 
