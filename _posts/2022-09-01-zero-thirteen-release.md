@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Dickson Neoh Tze How
-title: "What's New in v0.13.0 and v0.13.1: Spark Integration, Custom Code Deployment and Stack Recipes!"
+title: "What's New in v0.13.0 and v0.13.1: Spark Integration, Custom Code Deployment, and Stack Recipes!"
 description: "This release brings the first iteration of Apache Spark integration into ZenML. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also opens up the possibility of running custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease."
 category: zenml
 tags: zenml release-notes
@@ -14,9 +14,9 @@ image:
 
 ![img](/assets/posts/release_0_13_0/zero-thirteen-zero-release.jpg)
 
-ZenML version 0.13.0 is chock-full with exciting features including:
+ZenML version 0.13.0 is chock-full of exciting features including:
 
-* You can now run Spark jobs within ZenML with the long awaited Spark integration.
+* You can now run Spark jobs within ZenML with the long-awaited Spark integration.
 * It's now possible to run custom code alongside your model with KServe and Seldon.
 * We introduce a convenient way to spin up infrastructures with Stack Recipes.
 
@@ -46,8 +46,7 @@ Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/spar
 
 ## 🎯 Custom Code Deployment
 
-[Custom Code Deployment](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment) is the
-continuation of the [Model Deployment](2022-03-02-continuous-deployment.md) story that we have been working on over the last few releases. 
+Custom Code Deployment is the continuation of the [Model Deployment](2022-03-02-continuous-deployment.md) story that we have been working on over the last few releases. 
 Now it is possible to [deploy custom code along with your models using KServe or Seldon](2022-08-03-deploy-with-kserve.md).
 
 View the demo recorded during our community meetup on 24th August 2022 👇
@@ -71,7 +70,7 @@ Check out all the Stack Recipes [here](https://github.com/zenml-io/mlops-stacks)
 ## 💔 Breaking Changes
 
 This release introduces a breaking change to the CLI by adjusting the access to
-the stack component specific resources for `secret-managers` and 
+the stack component-specific resources for `secret-managers` and 
 `model-deployers` to be more explicitly linked to the component. Here is how:
 
 ```bash
@@ -118,7 +117,7 @@ zenml model-deployer models list
 
 * Fix flag info on recipes in docs by @wjayesh in https://github.com/zenml-io/zenml/pull/854
 * Fix some materializer issues by @schustmi in https://github.com/zenml-io/zenml/pull/852
-* Add ignore columns for evidently drift detection by @SangamSwadiK in https://github.com/zenml-io/zenml/pull/851
+* Add ignore columns for evidently draaaaaaaaift detection by @SangamSwadiK in https://github.com/zenml-io/zenml/pull/851
 * TensorBoard Integration by @fa9r in https://github.com/zenml-io/zenml/pull/850
 * Add option to specify task dependencies by @schustmi in https://github.com/zenml-io/zenml/pull/858
 * Custom code readme and docs by @safoinme in https://github.com/zenml-io/zenml/pull/853
