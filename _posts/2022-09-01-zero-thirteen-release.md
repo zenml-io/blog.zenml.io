@@ -32,7 +32,7 @@ Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/spar
 ## 🎯 Custom Code Deployment
 
 [Custom Code Deployment](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment) is the
-continuation of the Model Deployment story that we have been working on over the last few releases. Now
+continuation of the [Model Deployment](https://blog.zenml.io/deploy-with-kserve/) story that we have been working on over the last few releases. Now
 it is possible to deploy custom code along with your models using KServe or Seldon.
 
 View the demo recorded during our community meetup on 24th August 2022 👇
