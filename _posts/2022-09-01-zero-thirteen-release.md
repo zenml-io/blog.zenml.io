@@ -100,6 +100,7 @@ zenml model-deployer models list
 
 ## 🙌 Community Contributions
 * @aliabbasjaffri made their first contribution in https://github.com/zenml-io/zenml/pull/825
+* @SangamSwadiK made their first contribution in https://github.com/zenml-io/zenml/pull/851
 
 
 ![img](/assets/posts/release_0_13_0/zero-thirteen-one-release.jpg)
@@ -124,8 +125,7 @@ your datasets.
 * Custom code readme and docs by @safoinme in https://github.com/zenml-io/zenml/pull/853
 
 
-## 🙌 Community Contributions
-* @SangamSwadiK made their first contribution in https://github.com/zenml-io/zenml/pull/851
+
 
 
 ## 👩‍💻 Contribute to ZenML!
