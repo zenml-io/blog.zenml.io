@@ -57,7 +57,7 @@ Check out all the Stack Recipes [here](https://github.com/zenml-io/mlops-stacks)
 ## 💔 Breaking Changes
 
 This release introduces a breaking change to the CLI by adjusting the access to
-the stack component specific resources for `secret-managers` and 
+the stack component specific resources for 'secrets-managers' and 
 `model-deployers` to be more explicitly linked to the component. Here is how:
 
 ```bash
