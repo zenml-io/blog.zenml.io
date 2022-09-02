@@ -113,7 +113,7 @@ CLI Improvement -
 * Unify CLI concepts (removing `secret`, `feature` and `served-models`) by @strickvl in https://github.com/zenml-io/zenml/pull/833
 * Add zenml stack recipe CLI commands by @wjayesh in https://github.com/zenml-io/zenml/pull/807
 
-Secrets
+Secrets -
 * Add secret scoping to the Azure Key Vault by @stefannica in https://github.com/zenml-io/zenml/pull/830
 * Secrets references on stack component attributes by @schustmi in https://github.com/zenml-io/zenml/pull/817
 
