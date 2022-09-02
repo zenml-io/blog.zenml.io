@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Dickson Neoh Tze How
-title: "What's New in v0.13.0 and v0.13.1: Spark Integration, Custom Code Deployment, and Stack Recipes!"
-description: "This release brings the first iteration of Apache Spark integration into ZenML. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also opens up the possibility of running custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease."
+title: "What's New in v0.13: Spark, Custom Code Deployment, Stack Recipes and More"
+description: "This release blog describes the changes for two releases v0.13.0 (a major release) and v0.13.1 (a minor release). v0.13.0 brings the first iteration of Apache Spark integration into ZenML. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also opens up the possibility of running custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease. v0.13.1 includes several bugfixes and quality of life improvements for ZenML users."
 category: zenml
 tags: zenml release-notes
 publish_date: September 01, 2022
@@ -14,21 +14,25 @@ image:
 
 ![img](/assets/posts/release_0_13_0/zero-thirteen-zero-release.jpg)
 
-ZenML version 0.13.0 is chock-full of exciting features including:
+Version 0.13.0 is chock-full of exciting features:
 
-* You can now run Spark jobs within ZenML with the long-awaited Spark integration.
-* It's now possible to run custom code alongside your model with KServe and Seldon.
-* We introduce a convenient way to spin up infrastructures with Stack Recipes.
+* [Spark Integration](#-spark-integration) - You can now run Spark jobs within ZenML with the long-awaited Spark integration.
+* [Custom Code Deployment](#-custom-code-deployment) - It's now possible to run custom code alongside your model with KServe and Seldon.
+* [Stack Recipes](#-spin-up-infrastructure-with-stack-recipes) - We introduce a convenient way to spin up infrastructures using Stack Recipes and how you can extend them to your needs.
+
+View the full release notes [here](https://github.com/zenml-io/zenml/releases/tag/0.13.0).
 
 ![img](/assets/posts/release_0_13_0/zero-thirteen-one-release.jpg)
 
-ZenML 0.13.1 comes with several quality of life improvements:
+Version 0.13.1 comes with several quality of life improvements:
 
 * Specify the exact order in which your pipelines steps should be
 executed, e.g., via `step_b.after(step_a)`
 * It's now possible to use TensorBoard with PyTorch and other modeling frameworks.
 * You can now configure the Evidently integration to ignore specific columns in 
 your datasets. 
+
+View the full release notes [here](https://github.com/zenml-io/zenml/releases/tag/0.13.1).
 
 As always, we've also included various bug fixes and lots of improvements to the documentation and our examples.
 
@@ -37,29 +41,33 @@ To date, [Spark](https://spark.apache.org/) has been the most requested feature 
 
 We heard you! And in this release, we present to you the long-awaited Spark integration!
 
-With Spark, this release brings distributed processing into the ZenML toolkit. You can now run heavy data processing workloads across machines/clusters as part of your MLOps pipeline.
+With Spark, this release brings distributed processing into the ZenML toolkit. 
+You can now run heavy data processing workloads across machines/clusters as part of your MLOps pipeline and leverage on all the distributed processing goodies that comes with Spark.
 
-View the demo recorded during our community meetup on 17th August 2022 👇
+We showcased how to use it in our community meetup on 17th August 2022 👇
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ai366Y3UoXY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming).
+Run the Spark integration example [here](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming).
 
 ## 🎯 Custom Code Deployment
 
-Custom Code Deployment is the continuation of the [Model Deployment](2022-03-02-continuous-deployment.md) story that we have been working on over the last few releases. 
-Now it is possible to [deploy custom code along with your models using KServe or Seldon](2022-08-03-deploy-with-kserve.md).
+We continue our streak in supporting [model deployment](2022-03-02-continuous-deployment.md) in ZenML by introducing a feature that allows you to deploy custom codes alongside your models on KServe or Seldon.
 
-View the demo recorded during our community meetup on 24th August 2022 👇
+With this, you can now ship the model with the pre-processing and post-processing code to run within the deployment environment.
+
+We showcased how to deploy custom codes with a model during our community meetup on 24th August 2022 👇
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yrvO_fmE520" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment).
 
-
 ## 🥘 Spin Up Infrastructure with Stack Recipes
 
 Spinning up and configuring infrastructure is a difficult part of the MLOps journey 
-and can easily become a barrier to entry. Using our [mlops-stacks](https://github.com/zenml-io/mlops-stacks)
-repository, it is now possible to spin up perfectly-configured infrastructure with
+and can easily become a barrier to entry. 
+
+Worry not, now you don't need to get lost in the infrastructure configuration details. 
+
+Using our [mlops-stacks](https://github.com/zenml-io/mlops-stacks) repository, it is now possible to spin up perfectly-configured infrastructure with
 the corresponding ZenML stack using the ZenML CLI.
 
 View the demo recorded during our community meetup on 31st August 2022 👇
@@ -69,9 +77,10 @@ Check out all the Stack Recipes [here](https://github.com/zenml-io/mlops-stacks)
 
 ## 💔 Breaking Changes
 
-This release introduces a breaking change to the CLI by adjusting the access to
-the stack component-specific resources for `secret-managers` and 
-`model-deployers` to be more explicitly linked to the component. Here is how:
+This release introduces a breaking change to the CLI by adjusting the access to the stack component-specific resources for `secret-managers` and 
+`model-deployers` to be more explicitly linked to the component. 
+
+Here is how:
 
 ```bash
 # `zenml secret register ...` becomes 
