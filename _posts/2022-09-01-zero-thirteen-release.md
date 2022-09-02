@@ -143,7 +143,7 @@ Misc -
 
 * Fix flag info on recipes in docs by @wjayesh in https://github.com/zenml-io/zenml/pull/854
 * Fix some materializer issues by @schustmi in https://github.com/zenml-io/zenml/pull/852
-* Add ignore columns for evidently draaaaaaaaift detection by @SangamSwadiK in https://github.com/zenml-io/zenml/pull/851
+* Add ignore columns for evidently drift detection by @SangamSwadiK in https://github.com/zenml-io/zenml/pull/851
 * TensorBoard Integration by @fa9r in https://github.com/zenml-io/zenml/pull/850
 * Add option to specify task dependencies by @schustmi in https://github.com/zenml-io/zenml/pull/858
 * Custom code readme and docs by @safoinme in https://github.com/zenml-io/zenml/pull/853
