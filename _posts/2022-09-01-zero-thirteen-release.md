@@ -94,33 +94,50 @@ zenml model-deployer models list
 
 ### 0.13.0
 
-* Link checker by @dnth in https://github.com/zenml-io/zenml/pull/818
+Model Deployment -
+* Update kserve installation to 0.9 on kserve deployment example by @safoinme in https://github.com/zenml-io/zenml/pull/823
+* Custom deployment with KServe and Seldon Core by @safoinme in https://github.com/zenml-io/zenml/pull/841
+* Fix served models logs formatting error by @safoinme in https://github.com/zenml-io/zenml/pull/836
+
+Spark Integration -
+* Spark Integration by @bcdurak in https://github.com/zenml-io/zenml/pull/837
+
+Tekton Orchestrator -
+* Add Tekton orchestrator by @schustmi in https://github.com/zenml-io/zenml/pull/844
+
+Materializer - 
+* Pillow Image materializer by @strickvl in https://github.com/zenml-io/zenml/pull/820
+* Implement Recursive Built-In Container Materializer by @fa9r in https://github.com/zenml-io/zenml/pull/812
+
+CLI Improvement - 
+* Unify CLI concepts (removing `secret`, `feature` and `served-models`) by @strickvl in https://github.com/zenml-io/zenml/pull/833
+* Add zenml stack recipe CLI commands by @wjayesh in https://github.com/zenml-io/zenml/pull/807
+
+Secrets
+* Add secret scoping to the Azure Key Vault by @stefannica in https://github.com/zenml-io/zenml/pull/830
+* Secrets references on stack component attributes by @schustmi in https://github.com/zenml-io/zenml/pull/817
+
+README page improvements - 
 * Update Readme with latest info from docs page by @dnth in https://github.com/zenml-io/zenml/pull/810
 * Typo on Readme by @dnth in https://github.com/zenml-io/zenml/pull/821
-* Update kserve installation to 0.9 on kserve deployment example by @safoinme in https://github.com/zenml-io/zenml/pull/823
-* Allow setting caching via the `config.yaml` by @strickvl in https://github.com/zenml-io/zenml/pull/827
-* Handle file-io with context manager by @aliabbasjaffri in https://github.com/zenml-io/zenml/pull/825
-* Add automated link check github actions by @dnth in https://github.com/zenml-io/zenml/pull/828
-* Fix the SQL zenstore to work with MySQL by @stefannica in https://github.com/zenml-io/zenml/pull/829
-* Improve label studio error messages if secrets are missing or of wrong schema by @schustmi in https://github.com/zenml-io/zenml/pull/832
-* Add secret scoping to the Azure Key Vault by @stefannica in https://github.com/zenml-io/zenml/pull/830
-* Unify CLI concepts (removing `secret`, `feature` and `served-models`) by @strickvl in https://github.com/zenml-io/zenml/pull/833
-* Put link checker as part of CI by @dnth in https://github.com/zenml-io/zenml/pull/838
-* Add missing requirement for step operators by @schustmi in https://github.com/zenml-io/zenml/pull/834
-* Fix broken links from link checker results by @dnth in https://github.com/zenml-io/zenml/pull/835
-* Fix served models logs formatting error by @safoinme in https://github.com/zenml-io/zenml/pull/836
-* New Docker build configuration by @schustmi in https://github.com/zenml-io/zenml/pull/811
-* Secrets references on stack component attributes by @schustmi in https://github.com/zenml-io/zenml/pull/817
-* Misc bugfixes by @schustmi in https://github.com/zenml-io/zenml/pull/842
-* Pillow Image materializer by @strickvl in https://github.com/zenml-io/zenml/pull/820
-* Add Tekton orchestrator by @schustmi in https://github.com/zenml-io/zenml/pull/844
 * Put Slack call to action at the top of README page. by @dnth in https://github.com/zenml-io/zenml/pull/846
+
+Link checker and broken links -
+* Add automated link check github actions by @dnth in https://github.com/zenml-io/zenml/pull/828
+* Link checker by @dnth in https://github.com/zenml-io/zenml/pull/818
+* Put link checker as part of CI by @dnth in https://github.com/zenml-io/zenml/pull/838
+* Fix broken links from link checker results by @dnth in https://github.com/zenml-io/zenml/pull/835
+
+Misc -
+* Misc bugfixes by @schustmi in https://github.com/zenml-io/zenml/pull/842
+* Add missing requirement for step operators by @schustmi in https://github.com/zenml-io/zenml/pull/834
 * Change Quickstart to Use Tabular Data by @fa9r in https://github.com/zenml-io/zenml/pull/843
 * Add sleep before docker builds in release GH action by @schustmi in https://github.com/zenml-io/zenml/pull/849
-* Implement Recursive Built-In Container Materializer by @fa9r in https://github.com/zenml-io/zenml/pull/812
-* Custom deployment with KServe and Seldon Core by @safoinme in https://github.com/zenml-io/zenml/pull/841
-* Spark Integration by @bcdurak in https://github.com/zenml-io/zenml/pull/837
-* Add zenml stack recipe CLI commands by @wjayesh in https://github.com/zenml-io/zenml/pull/807
+* New Docker build configuration by @schustmi in https://github.com/zenml-io/zenml/pull/811
+* Improve label studio error messages if secrets are missing or of wrong schema by @schustmi in https://github.com/zenml-io/zenml/pull/832
+* Fix the SQL zenstore to work with MySQL by @stefannica in https://github.com/zenml-io/zenml/pull/829
+* Allow setting caching via the `config.yaml` by @strickvl in https://github.com/zenml-io/zenml/pull/827
+* Handle file-io with context manager by @aliabbasjaffri in https://github.com/zenml-io/zenml/pull/825
 
 ### 0.13.1
 
