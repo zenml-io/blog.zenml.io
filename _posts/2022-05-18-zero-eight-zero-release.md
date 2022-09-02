@@ -126,7 +126,7 @@ now](../assets/posts/release_0_8_0/zenml-cli.png)
   can see as part of the post-execution workflow. (This includes tracking the
   Git SHA, the Docker SHA as well as docstrings.)
 - Model deployer logs can now be streamed through the CLI and not just accessed
-  post-facto. Viewing the logs is as simple as calling `zenml served-models
+  post-facto. Viewing the logs is as simple as calling `zenml model-deployer models
   logs` from the CLI.
 - After popular request, the `-f` or `--force` flag has now been replaced with
   `-y` or `--yes`. Don't worry, though, this won't break your workflows just

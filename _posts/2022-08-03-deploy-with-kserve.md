@@ -341,7 +341,7 @@ zenml stack register local_gcp_kserve_stack -m default -a gcp -o default -d kser
 Our current stack is using GCS as our Artifact Store which means our trained models will be stored in the GS bucket. This means we need to give KServe the right permissions to be able to retrieve the model artifact. To do that we will create a secret using the service account key we created earlier:
 
 ```bash
-zenml secret register -s kserve_gs kserve_secret \
+zenml secrets-manager secret register -s kserve_gs kserve_secret \
     --credentials="@~/kserve-demo.json"
 ```
 
