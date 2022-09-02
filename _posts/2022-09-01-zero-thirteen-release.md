@@ -65,7 +65,7 @@ Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/cust
 Spinning up and configuring infrastructure is a difficult part of the MLOps journey 
 and can easily become a barrier to entry. 
 
-Worry not, now you don't need to get lost in the infrastructure configuration details. 
+Worry not! Now you don't need to get lost in the infrastructure configuration details. 
 
 Using our [mlops-stacks](https://github.com/zenml-io/mlops-stacks) repository, it is now possible to spin up perfectly-configured infrastructure with
 the corresponding ZenML stack using the ZenML CLI.
