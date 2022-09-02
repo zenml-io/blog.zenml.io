@@ -55,7 +55,7 @@ We continue our streak in supporting [model deployment](2022-03-02-continuous-de
 
 With this, you can now ship the model with the pre-processing and post-processing code to run within the deployment environment.
 
-We showcased how to deploy custom codes with a model during our community meetup on 24th August 2022 👇
+We showcased how to deploy custom code with a model during our community meetup on 24th August 2022 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yrvO_fmE520" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Run the example [here](https://github.com/zenml-io/zenml/tree/main/examples/custom_code_deployment).
