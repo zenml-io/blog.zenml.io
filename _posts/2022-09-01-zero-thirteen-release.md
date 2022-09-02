@@ -51,7 +51,7 @@ Run the Spark integration example [here](https://github.com/zenml-io/zenml/tree/
 
 ## 🎯 Custom Code Deployment
 
-We continue our streak in supporting [model deployment](2022-03-02-continuous-deployment.md) in ZenML by introducing a feature that allows you to deploy custom codes alongside your models on KServe or Seldon.
+We continue our streak in supporting [model deployment](2022-03-02-continuous-deployment.md) in ZenML by introducing a feature that allows you to deploy custom code alongside your models on KServe or Seldon.
 
 With this, you can now ship the model with the pre-processing and post-processing code to run within the deployment environment.
 
