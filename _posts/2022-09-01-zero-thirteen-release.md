@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Dickson Neoh Tze How
-title: "This release blog describes the changes for two releases v0.13.0 (major release) and v0.13.1 (minor release). v0.13.0 brings the first iteration of our Apache Spark integration. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also allows you to run custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease. v0.13.1 includes several bugfixes and quality of life improvements for ZenML users."
-
+title: "What's New in v0.13: Spark, Custom Code Deployment, Stack Recipes, and More"
+description: "This release blog describes the changes for two releases v0.13.0 (major release) and v0.13.1 (minor release). v0.13.0 brings the first iteration of our Apache Spark integration. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also allows you to run custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease. v0.13.1 includes several bugfixes and quality of life improvements for ZenML users."
 category: zenml
 tags: zenml release-notes
 publish_date: September 01, 2022
