@@ -1,8 +1,8 @@
 ---
 layout: post
 author: Dickson Neoh Tze How
-title: "What's New in v0.13: Spark, Custom Code Deployment, Stack Recipes and More"
-description: "This release blog describes the changes for two releases v0.13.0 (a major release) and v0.13.1 (a minor release). v0.13.0 brings the first iteration of Apache Spark integration into ZenML. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also opens up the possibility of running custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease. v0.13.1 includes several bugfixes and quality of life improvements for ZenML users."
+title: "What's New in v0.13: Spark, Custom Code Deployment, Stack Recipes, and More"
+description: "This release blog describes the changes for two releases v0.13.0 (major release) and v0.13.1 (minor release). v0.13.0 brings the first iteration of Apache Spark integration into ZenML. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also opens up the possibility of running custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease. v0.13.1 includes several bugfixes and quality of life improvements for ZenML users."
 category: zenml
 tags: zenml release-notes
 publish_date: September 01, 2022
@@ -42,7 +42,7 @@ To date, [Spark](https://spark.apache.org/) has been the most requested feature 
 We heard you! And in this release, we present to you the long-awaited Spark integration!
 
 With Spark, this release brings distributed processing into the ZenML toolkit. 
-You can now run heavy data processing workloads across machines/clusters as part of your MLOps pipeline and leverage on all the distributed processing goodies that comes with Spark.
+You can now run heavy data processing workloads across machines/clusters as part of your MLOps pipeline and leverage on all the distributed processing goodies that come with Spark.
 
 We showcased how to use it in our community meetup on 17th August 2022 👇
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ai366Y3UoXY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
