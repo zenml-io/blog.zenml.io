@@ -56,7 +56,16 @@ A slightly different framing of how machine learning is treated within an organi
 
 The frameworks explained above are useful diagnostic references, but ultimately they are more descriptive than prescriptive: it's hard to know how to move through the levels if you're starting from the beginning. As with many other software engineering best practices, or with DevOps, adoption needn't simply be a boolean state. There are ways to incrementally work on improving how you iterate through the machine learning workflow from experimentation all the way to deployment (and responsively continue to iterate from there).
 
-As [one guide](https://mlops.community/start-manually-then-automate/) to the adoption of MLOps practices states, there may also be some value in starting your process by working on all the steps manually. You'll likely learn a lot in the process about all the implicit assumptions that your process contains, just as taking a few hours to manually label your training data can be of tremendous benefit when it comes to understanding how to best approach training your model.
+As [one guide](https://mlops.community/start-manually-then-automate/) to the
+adoption of MLOps practices states, there may also be some value in starting
+your process by working on all the steps manually. You'll likely learn a lot in
+the process about all the implicit assumptions that your process contains, just
+as taking a few hours to manually label your training data can be of tremendous
+benefit when it comes to understanding how to best approach training your model.
+(For an overview of some of the tools and options available to you as you
+navigate this landscape, checkout [this useful
+post](https://nimblebox.ai/blog/mlops-tools) by Thinesh Sridar over on [the
+NimbleBox blog](https://nimblebox.ai/blog).)
 
 One option to thinking through your process might be to look at [the MLOps Stack Template](https://ml-ops.org/content/state-of-mlops), a chart that encourages you to list the various technical decisions being made. The same author(s) have proposed an alternative version to the well-known '[Business Model Canvas](https://www.amazon.com/Business-Model-Generation-Visionaries-Challengers/dp/0470876417/ref=sr_1_1?sprefix=business%2Bmodel%252Caps%252C244&sr=8-1&keywords=business%2Bmodel&crid=I74Q44GZ7CSH&tag=soumet-20&qid=1646587883)' in the form of an '[MLOps Stack Canvas](https://ml-ops.org/content/mlops-stack-canvas)' which you can use as a framework to think through these incremental improvements.
 
@@ -68,4 +77,10 @@ Even though we didn't start building ZenML with these frameworks and levels in m
 
 Our framework allows you to use the tools which you know and love, connecting them together in a way that covers the whole workflow from experimentation to deployment and onwards with continuous monitoring and training.
 
-If you're interested in learning more about ZenML, how we help you bring all your tools together and grow in MLOps maturity, visit [our Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/) and [test out our showcase examples](https://blog.zenml.io/examples-cli/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
+If you're interested in learning more about ZenML, how we help you bring all
+your tools together and grow in MLOps maturity, visit [our Github
+page](https://github.com/zenml-io/zenml), [read our
+docs](https://docs.zenml.io/) and [test out our showcase
+examples](https://blog.zenml.io/examples-cli/). If you have questions or want to
+talk through your specific use case, feel free to [reach out to us on
+Slack](https://zenml.io/slack-invite/)!
