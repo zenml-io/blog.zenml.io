@@ -3,7 +3,7 @@ layout: post
 author: Stefan Nica
 title: "Keep the lint out of your ML pipelines! Use Deepchecks to build and
 maintain better models with ZenML!"
-description: "Test automation is tedious enough with traditional software engineering, but machine learning complexities can make it even less appealing. Using Deepchecks with ZenML pipelines can get you started in as much as it takes you to read this article."
+description: "Test automation is tedious enough with traditional software engineering, but machine learning complexities can make it even less appealing. Using Deepchecks with ZenML pipelines can get you started as quickly as it takes you to read this article."
 category: zenml
 tags: zenml monitoring tooling integrations mlops evergreen
 publish_date: September 06, 2022
@@ -15,18 +15,17 @@ path: /assets/posts/deepchecks/zenml-deepchecks.gif
 
 Whether you are a data scientist or a machine learning engineer, nothing quite
 beats the feeling of seeing your model perform well on a test set. It's the
-culmination of many coffee infused hours of work, trial-error iterations and
-the occasional curse word. Those endorphins are well earned, albeit short lived.
+culmination of many coffee-infused hours of work, trial-error iterations and
+the occasional curse word. Those endorphins are well-earned, albeit short-lived.
 
 The performance of your model doesn't have to share the same fate as your
-neuropeptide levels as it hits the harsher conditions of real world in production.
-All you need is some good old fashioned test automation to keep your model in
+neuropeptide levels as it hits the harsher conditions of the real world in production.
+All you need is some good old-fashioned test automation to keep your model in
 good shape after it's been deployed.
 
-In this article, I introduce [Deepchecks](https://deepchecks.com/), an open
-source Python library for data and model validation that can be easily
+In this article, I introduce [Deepchecks](https://deepchecks.com/), an open-source Python library for data and model validation that can be easily
 integrated into your ZenML pipelines to implement continuous testing and
-monitoring workflows. The article includes a full end-to-end example that shows
+monitoring of your workflows. The article includes a full end-to-end example that shows
 just how simple it is to combine Deepchecks and ZenML. Going through the
 exercise will give you a glimpse of how to use automated data and model
 validation to not only build better models but also to reduce the operational
@@ -41,7 +40,7 @@ something that people don't enjoy doing as much as they enjoy working on the
 product itself. I happen to share that sentiment and I have yet to meet someone
 who would rather spend time coding tests instead of features.
 
-Having made the transition to ML with a software engineer background, I can also
+Having made the transition to ML with a software engineering background, I can also
 confirm that having to do test automation for machine learning doesn't get easier.
 To put it bluntly, ML models, especially those used in deep learning, are
 statistical black boxes. You can't break a model into smaller units and test
@@ -51,13 +50,13 @@ model's behavior.
 Have I put you off ML test automation yet? I hope not, because that is not my
 intention. In fact, I'm here to tell you that it's not all doom and gloom. These
 pains are well understood in the ML community and some emerging tools are already
-doing a great job address them. [Deepchecks](https://deepchecks.com/) is one of
-them and I will argue in this article that it has perhaps one of the best
+doing a great job to address them. [Deepchecks](https://deepchecks.com/) is one of
+these new tools and I will argue in this article that it has one of the best
 approaches I've seen in this problem space.
 
 ## Why Deepchecks?
 
-Without going into detail, I'll say this about Deepchecks: it makes implementing
+Before going into detail, I'll say this about Deepchecks: it makes implementing
 automated testing for ML seem like less of a chore. Deepchecks is more than what
 you would expect from a traditional testing framework. It comes fully packed
 with up-to-date ML validation best practices and out-of-the-box batteries of
@@ -66,7 +65,7 @@ allows you to start incorporating automated testing early into your workflow and
 gradually build up your test suites as you go.
 
 The part that I find incredibly useful is that Deepchecks test results are
-presented in a human readable format accompanied by carefully crafted
+presented in a format that is readable and comprehensible by humans, accompanied by carefully crafted
 interpretations that makes it easy even for the uninitiated to understand what
 went wrong and how to fix it. This is showcased in the hands-on part of this
 article.
@@ -77,10 +76,10 @@ The other thing that I like about Deepchecks, and this will also appeal to you
 if you have some experience with traditional DevOps, is that it takes a
 methodical approach to ML testing. I've seen too many tools trying to blindly
 apply traditional software development practices to the ML domain and completely
-ignoring the fact that ML is fundamentally different. Deepchecks is on the
-complete opposite end of the spectrum. It takes a step back and looks at the
+ignore the fact that ML is fundamentally different. Deepchecks is on the
+completely opposite end of the spectrum. It takes a step back and looks at the
 problem from a fresh perspective. Rather than trying to fit a square peg into a
-round hole, it is re-defining both the peg and the hole to fit the real problem.
+round hole, it redefines both the peg and the hole to fit the real problem.
 
 But don't take my word for it, go check out some of the amazing [Deepchecks blog posts](https://deepchecks.com/blog/)
 to get a glimpse into the thought process that goes into the project.
@@ -88,11 +87,10 @@ to get a glimpse into the thought process that goes into the project.
 ## The Deepchecks ZenML Integration
 
 The process of integrating a new tool with ZenML can usually be described as
-fitting it into one of the existing ZenML concepts and abstractions. I have to
-admit that Deepchecks was a bit of a special case in that regard. Its design
+fitting it into one of the existing ZenML concepts and abstractions. Deepchecks was a bit of a special case in that regard. Its design
 is so innovative that we decided to change the way we think about ML validation
 in ZenML to accommodate it instead. This is now reflected in the Deepchecks
-Data Validator abstraction and the builtin data and model validation pipeline
+Data Validator abstraction and the built-in data and model validation pipeline
 steps shipped with ZenML.
 
 ### The Deepchecks Data Validator
@@ -104,7 +102,7 @@ and validation. I briefly mentioned the Data Validator in my previous article
 on [integrating Great Expectations with ZenML](https://blog.zenml.io/great-expectations/).
 
 ZenML now also features a Deepchecks Data Validator that needs to be added as
-a component to your ZenML stack in order to use Deepchecks in your pipelines,
+a component to your ZenML stack to use Deepchecks in your pipelines,
 e.g.:
 
 ```bash
@@ -114,20 +112,19 @@ zenml stack update --data_validator deepchecks
 ```
 
 The Data Validator is also an abstraction that ZenML is gradually expanding into
-something that will become a standard interface for all ML validation related
-operations that can be used in ML pipelines. The importance of abstractions and
-interfaces is something that is greatly valued at ZenML, because they are what
+something that will become a standard interface for all operations related to ML validation that can be used in ML pipelines. The importance of abstractions and
+interfaces is something that is greatly valued at ZenML because they are what
 allows us to build a common language for portable and reproducible pipelines on
 top of a wide range of different tools used in the ML lifecycle.
 
 With the Deepchecks integration, the Data Validator abstraction was redefined
 to incorporate the patterns reflected in the Deepchecks API. While this isn't
-final and not yet directly accessible to the ZenML users, it is a very
+final and not yet directly accessible to ZenML users, it is an
 important step in the evolution of the Data Validator abstraction.
 
 ### Standard Deepchecks Data and Model Validation Pipeline Steps
 
-In accordance to our continued strategy of making it as easy as possible to use
+In accordance with our continued strategy of making it as easy as possible to use
 new tools in ZenML, the library now also includes builtin pipeline steps that
 can be plugged into any ZenML pipeline to perform data and model validation
 with Deepchecks, wherever this is applicable:
@@ -210,7 +207,7 @@ Deepchecks validations at various points during a model training pipeline:
 * data drift checks comparing the train and validation dataset slices
 * model validation checks on the model and the training dataset
 * model performance comparison checks that compare how the model performs on
-the training vs. the validation dataset
+the training vs the validation dataset
 
 A similar, up-to-date version of this example can be accessed in
 [the ZenML GitHub repository](https://github.com/zenml-io/zenml/tree/main/examples/deepchecks_data_validation).
@@ -425,7 +422,7 @@ performance model on the training dataset compared to the validation datasets.
 ![Model Drift Check Failure](../assets/posts/deepchecks/model_drift_failure.png)
 
 Some of these failures can be silenced by tweaking the test parameters to be less
-sensitive. The data integrity test can be configured to ignore highly correlated
+sensitive. The data integrity test can be configured to ignore highly-correlated
 features and the model drift test can be configured with a higher threshold for
 the performance difference, as shown here:
 
@@ -473,7 +470,7 @@ Deepchecks tests still need to be tweaked to fit your specific use case.
 
 ## Wrap-Up
 
-The pipeline featured in this article is just a timid exemplification of what
+The pipeline featured in this article is just a basic example of what
 Deepchecks can do for continuous ML validation, but hopefully it is a good
 starting point for anyone willing to explore the possibilities. Whether you are
 just starting with ZenML or you are already a seasoned user, adding Deepchecks
