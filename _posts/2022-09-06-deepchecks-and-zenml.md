@@ -10,7 +10,7 @@ publish_date: September 06, 2022
 date: 2022-09-06T00:02:00Z
 thumbnail: /assets/posts/deepchecks/zenml-deepchecks.gif
 image:
-path: /assets/posts/deepchecks/zenml-deepchecks.gif
+  path: /assets/posts/deepchecks/zenml-deepchecks.gif
 ---
 
 Whether you are a data scientist or a machine learning engineer, nothing quite
@@ -84,6 +84,16 @@ round hole, it redefines both the peg and the hole to fit the real problem.
 But don't take my word for it, go check out some of the amazing [Deepchecks blog posts](https://deepchecks.com/blog/)
 to get a glimpse into the thought process that goes into the project.
 
+If I had to pick something that could be improved about Deepchecks, it would be
+the fact that it is currently not easy to configure tests in a declarative
+manner. Every check has a list of conditions the parameters of which can be
+tweaked to customize the test, but the check doesn't provide a way to specify
+these condition parameters as a dictionary or something similar. Instead, you
+have to call each condition method separately and pass them as keyword
+arguments. This is not a big deal if you are using Deepchecks on its own, but
+in the context of running pipelines the separation of configuration from 
+execution is key to reusability, provenance and lineage.
+
 ## The Deepchecks ZenML Integration
 
 The process of integrating a new tool with ZenML can usually be described as
@@ -144,7 +154,7 @@ action before they can impact the performance of your model.
 
 * the _model validation check step_: runs Deepchecks model performance tests
 using a single dataset and a mandatory model as input. You would typically use
-this step after training a model to detect if its performance drops below a set
+this step after retraining a model to detect if its performance drops below a set
 of pre-defined metrics (e.g. confusion matrix, ROC, model inference time). The
 step can also be used to benchmark an existing model against a new dataset.
 
