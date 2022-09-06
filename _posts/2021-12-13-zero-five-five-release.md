@@ -54,7 +54,7 @@ pipeline_instance = TrainingPipeline(
     datasource=PandasDatasource(),
     splitter=SklearnSplitter(),
     analyzer=PandasAnalyzer(),
-    preprocesser=SklearnStandardScaler(),
+    preprocessor=SklearnStandardScaler(),
     trainer=TensorflowBinaryClassifier(),
     evaluator=SklearnEvaluator()
 ).with_config('pipeline_config.yaml')
