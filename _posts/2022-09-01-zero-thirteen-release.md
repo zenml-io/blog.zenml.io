@@ -2,7 +2,7 @@
 layout: post
 author: Dickson Neoh Tze How
 title: "What's New in v0.13: Spark, Custom Code Deployment, Stack Recipes, and More"
-description: "This release blog describes the changes for two releases v0.13.0 (major release) and v0.13.1 (minor release). v0.13.0 brings the first iteration of our Apache Spark integration. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also allows you to run custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease. v0.13.1 includes several bugfixes and quality of life improvements for ZenML users."
+description: "This release blog describes the changes for three releases v0.13.0 (major release), v0.13.1 and v0.13.2 (minor releases). v0.13.0 brings the first iteration of our Apache Spark integration. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also allows you to run custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease. v0.13.1 and v0.13.2 includes several bugfixes and quality of life improvements for ZenML users."
 category: zenml
 tags: zenml release-notes
 publish_date: September 01, 2022
@@ -33,6 +33,17 @@ executed, e.g., via `step_b.after(step_a)`
 your datasets. 
 
 View the full release notes [here](https://github.com/zenml-io/zenml/releases/tag/0.13.1).
+
+![img](/assets/posts/release_0_13_0/zero-thirteen-two-release.jpg)
+
+Version 0.13.2 comes with a new local Docker orchestrator and many other improvements and fixes:
+
+* You can now run your pipelines locally in isolated Docker containers per step.
+* [@gabrielmbmb](https://github.com/gabrielmbmb) updated our MLflow experiment tracker to work with Databricks deployments.
+* Documentation updates for cloud deployments and multi-tenancy Kubeflow support.
+
+View the full release notes [here](https://github.com/zenml-io/zenml/releases/tag/0.13.2).
+
 
 As always, we've also included various bug fixes and lots of improvements to the documentation and our examples.
 
@@ -95,63 +106,81 @@ zenml model-deployer models list
 ### 0.13.0
 
 Model Deployment -
-* Update kserve installation to 0.9 on kserve deployment example by @safoinme in https://github.com/zenml-io/zenml/pull/823
-* Custom deployment with KServe and Seldon Core by @safoinme in https://github.com/zenml-io/zenml/pull/841
-* Fix served models logs formatting error by @safoinme in https://github.com/zenml-io/zenml/pull/836
+* Update kserve installation to 0.9 on kserve deployment example by [@safoinme](https://github.com/safoinme) in [#823](https://github.com/zenml-io/zenml/pull/823).
+* Custom deployment with KServe and Seldon Core by [@safoinme](https://github.com/safoinme) in [#841](https://github.com/zenml-io/zenml/pull/841).
+* Fix served models logs formatting error by [@safoinme](https://github.com/safoinme) in [#836](https://github.com/zenml-io/zenml/pull/836).
 
 Spark Integration -
-* Spark Integration by @bcdurak in https://github.com/zenml-io/zenml/pull/837
+* Spark Integration by [@bcdurak](https://github.com/bcdurak) in [#837](https://github.com/zenml-io/zenml/pull/837).
 
 Tekton Orchestrator -
-* Add Tekton orchestrator by @schustmi in https://github.com/zenml-io/zenml/pull/844
+* Add Tekton orchestrator by [@schustmi](https://github.com/schustmi) in [#844](https://github.com/zenml-io/zenml/pull/844).
 
 Materializer - 
-* Pillow Image materializer by @strickvl in https://github.com/zenml-io/zenml/pull/820
-* Implement Recursive Built-In Container Materializer by @fa9r in https://github.com/zenml-io/zenml/pull/812
+* Pillow Image materializer by [@strickvl](https://github.com/strickvl) in [#820](https://github.com/zenml-io/zenml/pull/820).
+* Implement Recursive Built-In Container Materializer by [@fa9r](https://github.com/fa9r) in [#812](https://github.com/zenml-io/zenml/pull/812).
 
 CLI Improvement - 
-* Unify CLI concepts (removing `secret`, `feature` and `served-models`) by @strickvl in https://github.com/zenml-io/zenml/pull/833
-* Add zenml stack recipe CLI commands by @wjayesh in https://github.com/zenml-io/zenml/pull/807
+* Unify CLI concepts (removing `secret`, `feature` and `served-models`) by [@strickvl](https://github.com/strickvl) in [#833](https://github.com/zenml-io/zenml/pull/833).
+* Add zenml stack recipe CLI commands by [@wjayesh](https://github.com/wjayesh) in [#807](https://github.com/zenml-io/zenml/pull/807).
 
 Secrets -
-* Add secret scoping to the Azure Key Vault by @stefannica in https://github.com/zenml-io/zenml/pull/830
-* Secrets references on stack component attributes by @schustmi in https://github.com/zenml-io/zenml/pull/817
+* Add secret scoping to the Azure Key Vault by [@stefannica](https://github.com/stefannica) in [#830](https://github.com/zenml-io/zenml/pull/830).
+* Secrets references on stack component attributes by [@schustmi](https://github.com/schustmi) in [#817](https://github.com/zenml-io/zenml/pull/817).
 
 README page improvements - 
-* Update Readme with latest info from docs page by @dnth in https://github.com/zenml-io/zenml/pull/810
-* Typo on Readme by @dnth in https://github.com/zenml-io/zenml/pull/821
-* Put Slack call to action at the top of README page. by @dnth in https://github.com/zenml-io/zenml/pull/846
+* Update Readme with latest info from docs page by [@dnth](https://github.com/dnth) in [#810](https://github.com/zenml-io/zenml/pull/810).
+* Typo on Readme by [@dnth](https://github.com/dnth) in [#821](https://github.com/zenml-io/zenml/pull/821).
+* Put Slack call to action at the top of README page. by [@dnth](https://github.com/dnth) in [#846](https://github.com/zenml-io/zenml/pull/846).
 
 Link checker and broken links -
-* Add automated link check github actions by @dnth in https://github.com/zenml-io/zenml/pull/828
-* Link checker by @dnth in https://github.com/zenml-io/zenml/pull/818
-* Put link checker as part of CI by @dnth in https://github.com/zenml-io/zenml/pull/838
-* Fix broken links from link checker results by @dnth in https://github.com/zenml-io/zenml/pull/835
+* Add automated link check github actions by [@dnth](https://github.com/dnth) in [#828](https://github.com/zenml-io/zenml/pull/828).
+* Link checker by [@dnth](https://github.com/dnth) in [#818](https://github.com/zenml-io/zenml/pull/818).
+* Put link checker as part of CI by [@dnth](https://github.com/dnth) in [#838](https://github.com/zenml-io/zenml/pull/838).
+* Fix broken links from link checker results by [@dnth](https://github.com/dnth) in [#835](https://github.com/zenml-io/zenml/pull/835).
 
 Misc -
-* Misc bugfixes by @schustmi in https://github.com/zenml-io/zenml/pull/842
-* Add missing requirement for step operators by @schustmi in https://github.com/zenml-io/zenml/pull/834
-* Change Quickstart to Use Tabular Data by @fa9r in https://github.com/zenml-io/zenml/pull/843
-* Add sleep before docker builds in release GH action by @schustmi in https://github.com/zenml-io/zenml/pull/849
-* New Docker build configuration by @schustmi in https://github.com/zenml-io/zenml/pull/811
-* Improve label studio error messages if secrets are missing or of wrong schema by @schustmi in https://github.com/zenml-io/zenml/pull/832
-* Fix the SQL zenstore to work with MySQL by @stefannica in https://github.com/zenml-io/zenml/pull/829
-* Allow setting caching via the `config.yaml` by @strickvl in https://github.com/zenml-io/zenml/pull/827
-* Handle file-io with context manager by @aliabbasjaffri in https://github.com/zenml-io/zenml/pull/825
+* Misc bugfixes by [@schustmi](https://github.com/schustmi) in [#842](https://github.com/zenml-io/zenml/pull/842).
+* Add missing requirement for step operators by [@schustmi](https://github.com/schustmi) in [#834](https://github.com/zenml-io/zenml/pull/834).
+* Change Quickstart to Use Tabular Data by [@fa9r](https://github.com/fa9r) in [#843](https://github.com/zenml-io/zenml/pull/843).
+* Add sleep before docker builds in release GH action by [@schustmi](https://github.com/schustmi) in [#849](https://github.com/zenml-io/zenml/pull/849).
+* New Docker build configuration by [@schustmi](https://github.com/schustmi) in [#811](https://github.com/zenml-io/zenml/pull/811).
+* Improve label studio error messages if secrets are missing or of wrong schema by [@schustmi](https://github.com/schustmi) in [#811](https://github.com/zenml-io/zenml/pull/832).
+* Fix the SQL zenstore to work with MySQL by [@stefannica](https://github.com/stefannica) in [#829](https://github.com/zenml-io/zenml/pull/829).
+* Allow setting caching via the `config.yaml` by [@strickvl](https://github.com/strickvl) in [#827](https://github.com/zenml-io/zenml/pull/827).
+* Handle file-io with context manager by [@aliabbasjaffri](https://github.com/aliabbasjaffri) in [#825](https://github.com/zenml-io/zenml/pull/825).
 
 ### 0.13.1
 
-* Fix flag info on recipes in docs by @wjayesh in https://github.com/zenml-io/zenml/pull/854
-* Fix some materializer issues by @schustmi in https://github.com/zenml-io/zenml/pull/852
-* Add ignore columns for evidently drift detection by @SangamSwadiK in https://github.com/zenml-io/zenml/pull/851
-* TensorBoard Integration by @fa9r in https://github.com/zenml-io/zenml/pull/850
-* Add option to specify task dependencies by @schustmi in https://github.com/zenml-io/zenml/pull/858
-* Custom code readme and docs by @safoinme in https://github.com/zenml-io/zenml/pull/853
+* Fix flag info on recipes in docs by [@wjayesh](https://github.com/wjayesh) in [#854](https://github.com/zenml-io/zenml/pull/854).
+* Fix some materializer issues by [@schustmi](https://github.com/schustmi) in [#852](https://github.com/zenml-io/zenml/pull/852).
+* Add ignore columns for evidently drift detection by [@SangamSwadiK](https://github.com/SangamSwadiK) in [#851](https://github.com/zenml-io/zenml/pull/851).
+* TensorBoard Integration by [@fa9r](https://github.com/fa9r) in [#850](https://github.com/zenml-io/zenml/pull/850).
+* Add option to specify task dependencies by [@schustmi](https://github.com/schustmi) in [#858](https://github.com/zenml-io/zenml/pull/858).
+* Custom code readme and docs by [@safoinme](https://github.com/safoinme) in [#853](https://github.com/zenml-io/zenml/pull/853).
+
+
+### 0.13.2
+
+* Update GitHub Actions by [@fa9r](https://github.com/fa9r) in [#864](https://github.com/zenml-io/zenml/pull/864).
+* Raise zenml exception when cyclic graph is detected by [@schustmi](https://github.com/schustmi) in [#866](https://github.com/zenml-io/zenml/pull/866).
+* Add source to segment identify call by [@htahir1](https://github.com/htahir1) in [#868](https://github.com/zenml-io/zenml/pull/868).
+* Use default local paths/URIs for the local artifact and metadata stores by [@stefannica](https://github.com/stefannica) in [#873](https://github.com/zenml-io/zenml/pull/873).
+* Implement local docker orchestrator by [@schustmi](https://github.com/schustmi) in [#862](https://github.com/zenml-io/zenml/pull/862).
+* Update cheat sheet with latest CLI commands from 0.13.0 by [@dnth](https://github.com/dnth) in [#867](https://github.com/zenml-io/zenml/pull/867).
+* Add a note about importing proper DockerConfiguration module by [@jsuchome](https://github.com/jsuchome) in [#877](https://github.com/zenml-io/zenml/pull/877).
+* Bugfix/misc by [@schustmi](https://github.com/schustmi) in [#878](https://github.com/zenml-io/zenml/pull/878).
+* Fixed bug in tfx by [@htahir1](https://github.com/htahir1) in [#883](https://github.com/zenml-io/zenml/pull/883).
+* Mlflow Databricks connection by [@gabrielmbmb](https://github.com/gabrielmbmb) in [#882](https://github.com/zenml-io/zenml/pull/882).
+* Refactor cloud guide to stack deployment guide by [@wjayesh](https://github.com/wjayesh) in [#861](https://github.com/zenml-io/zenml/pull/861).
+* Add cookie consent by [@strickvl](https://github.com/strickvl) in [#871](https://github.com/zenml-io/zenml/pull/871).
+* Stack recipe CLI improvements by [@wjayesh](https://github.com/wjayesh) in [872](https://github.com/zenml-io/zenml/pull/872).
+* Kubeflow workaround added by [@htahir1](https://github.com/htahir1) in [#886](https://github.com/zenml-io/zenml/pull/886).
 
 
 ## 🙌 Community Contributions
-* @aliabbasjaffri made their first contribution in https://github.com/zenml-io/zenml/pull/825
-* @SangamSwadiK made their first contribution in https://github.com/zenml-io/zenml/pull/851
+* [@aliabbasjaffri](https://github.com/aliabbasjaffri) made their first contribution in [#825](https://github.com/zenml-io/zenml/pull/825).
+* [@SangamSwadiK](https://github.com/SangamSwadiK) made their first contribution in [#851](https://github.com/zenml-io/zenml/pull/851).
 
 
 ## 👩‍💻 Contribute to ZenML!
