@@ -2,17 +2,19 @@
 layout: post
 author: Dickson Neoh Tze How
 title: "What's New in v0.13: Spark, Custom Code Deployment, Stack Recipes, and More"
-description: "This release blog describes the changes for three releases v0.13.0 (major release), v0.13.1 and v0.13.2 (minor releases). v0.13.0 brings the first iteration of our Apache Spark integration. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also allows you to run custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease. v0.13.1 and v0.13.2 includes several bugfixes and quality of life improvements for ZenML users."
+description: "This release blog describes the changes for three releases v0.13.0 (major release), v0.13.1 and v0.13.2 (minor releases). v0.13.0 brings the first iteration of our Apache Spark integration. v0.13.1 and v0.13.2 includes several bugfixes and quality of life improvements for ZenML users."
 category: zenml
 tags: zenml release-notes
-publish_date: September 01, 2022
-date: 2022-09-01T00:02:00Z
-thumbnail: /assets/posts/release_0_13_0/zero-thirteen-zero-release.jpg
+publish_date: September 21, 2022
+date: 2022-09-21T00:02:00Z
+thumbnail: /assets/posts/release_0_13_0/combined_zero_thirteen.gif
 image:
-  path: /assets/posts/release_0_13_0/zero-thirteen-zero-release.jpg
+  path: /assets/posts/release_0_13_0/combined_zero_thirteen.jpg
 ---
 
-![img](/assets/posts/release_0_13_0/zero-thirteen-zero-release.jpg)
+![img](/assets/posts/release_0_13_0/combined_zero_thirteen.jpg)
+
+This release blog describes the changes for three releases v0.13.0 (major release), v0.13.1 and v0.13.2 (minor releases). v0.13.0 brings the first iteration of our Apache Spark integration. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also allows you to run custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease. v0.13.1 and v0.13.2 includes several bugfixes and quality of life improvements for ZenML users.
 
 Version 0.13.0 is chock-full of exciting features:
 
@@ -21,8 +23,6 @@ Version 0.13.0 is chock-full of exciting features:
 * [Stack Recipes](#-spin-up-infrastructure-with-stack-recipes) - We introduce a convenient way to spin up infrastructures using Stack Recipes and how you can extend them to your needs.
 
 View the full release notes [here](https://github.com/zenml-io/zenml/releases/tag/0.13.0).
-
-![img](/assets/posts/release_0_13_0/zero-thirteen-one-release.jpg)
 
 Version 0.13.1 comes with several quality of life improvements:
 
@@ -33,8 +33,6 @@ executed, e.g., via `step_b.after(step_a)`
 your datasets. 
 
 View the full release notes [here](https://github.com/zenml-io/zenml/releases/tag/0.13.1).
-
-![img](/assets/posts/release_0_13_0/zero-thirteen-two-release.jpg)
 
 Version 0.13.2 comes with a new local Docker orchestrator and many other improvements and fixes:
 
