@@ -36,7 +36,7 @@ View the full release notes [here](https://github.com/zenml-io/zenml/releases/ta
 
 Version 0.13.2 comes with a new local Docker orchestrator and many other improvements and fixes:
 
-* You can now run your pipelines locally in isolated Docker containers per step.
+* You can now run your pipelines locally in isolated Docker containers per step. This is useful to test whether the dockerization process will work in remote orchestrators like Kubeflow.
 * [@gabrielmbmb](https://github.com/gabrielmbmb) updated our MLflow experiment tracker to work with Databricks deployments.
 * Documentation updates for cloud deployments and multi-tenancy Kubeflow support.
 
