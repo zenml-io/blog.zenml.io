@@ -33,6 +33,8 @@ For more information on the competition, please visit [zenml.io/competition](htt
 
 We have some great prizes ranging from a first prize of $750 USD down to two $100 USD prizes for beginners just starting out in the world of MLOps. You'll also get feedback and support from the ZenML team during the weeks of the competition, so it's a great opportunity to learn about the full stack of machine learning.
 
+Aside from the cash prizes, joining in the competition is a great way to contribute to open-source software, to build your machine learning portfolio, and to learn MLOps best practices. You'll build a pipeline that solves a problem of your choosing, and go from zero to production ML in just a few days!
+
 To take part, sign up [at the competition page](https://zenml.io/competition) and we will send you full details as we get closer to the competition. Participation can be as structured (or not!) as you wish: advanced users can implement their project however they'd like, while beginners in the field of MLOps or first-time ZenML users will have a semi-guided structure within which we suggest you iteratively build your submission.
 
 We recommend you form a small team (max 5 people) to tackle whatever challenge you decide to work on. If you don't have anyone to team up with, feel free to post requests for teams on the #competition channel on the ZenML slack as there are likely to be others in the same situation!
