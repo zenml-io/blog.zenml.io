@@ -5,19 +5,19 @@ title: "ZenML 0.20.0: Our biggest release yet"
 description: "The 0.20.0 release is a seminar release in the history of the ZenML project. After 10 months of continuous feedback and iteration, we bring you a whole new architecture and redesign of ZenML - and a new dashboard to boot."
 category: zenml
 tags: zenml release-notes
-publish_date: September 21, 2022
-date: 2022-09-21T00:02:00Z
-thumbnail: /assets/posts/zenml_revamped/combined_zero_thirteen.gif
+publish_date: October 5th, 2022
+date: 2022-10-05T00:02:00Z
+thumbnail: /assets/posts/zenml_revamped/pr_changes.png
 image:
-  path: /assets/posts/zenml_revamped/combined_zero_thirteen.jpg
+  path: /assets/posts/zenml_revamped/pr_changes.png
 ---
 
-![img](/assets/posts/zenml_revamped/combined_zero_thirteen.jpg)
+![img](/assets/posts/zenml_revamped/pr_changes.png)
 
 
 # ZenML 0.20.0: Our Biggest Release Yet
 
-ZenML 0.20.0 is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally thousands of lines of code changes. 
+[ZenML 0.20.0]() is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879). 
 
 So what has changed? The short answer is, a lot. The new release brings a complete [architectural shift]() from previous versions of ZenML. It also features a new way of [configuring pipelines and stacks](). Perhaps most excitingly, it brings with it a brand-new look for ZenML, which now comes bundled with a [React-based, open-source dashboard](https://github.com/zenml-io/zenml-dashboard), which can be launched directly from the CLI! 
 
