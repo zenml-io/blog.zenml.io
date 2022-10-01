@@ -7,12 +7,12 @@ category: zenml
 tags: zenml release-notes
 publish_date: October 5th, 2022
 date: 2022-10-05T00:02:00Z
-thumbnail: /assets/posts/zenml_revamped/pr_changes.png
+thumbnail: /assets/posts/zenml_revamped/architecture_diagram.png
 image:
-  path: /assets/posts/zenml_revamped/pr_changes.png
+  path: /assets/posts/zenml_revamped/architecture_diagram.png
 ---
 
-![img](/assets/posts/zenml_revamped/pr_changes.png)
+![PR Changes](/assets/posts/zenml_revamped/pr_changes.png)
 
 
 # ZenML 0.20.0: Our Biggest Release Yet
@@ -27,6 +27,8 @@ For now, let's dive right into the changes, and share why we are so excited abou
 
 ## 🤖 ZenML is now a server-based application (Goodbye, Metadata Store)
 
+![Architectue Diagram](/assets/posts/zenml_revamped/architecture_diagram.png)
+
 ZenML can now run as a server that can be accessed via REST API and comes with a visual user interface (called the ZenML Dashboard). This server can be deployed in arbitrary environments (local, on-prem, via Docker, on AWS / GCP / Azure / ...) and supports user management, project scoping, and more.
 
 Metadata Store stack component has been deprecated and is no longer required to create a stack. The role of the Metadata Store is now taken over by the ZenServer . All metadata is now stored, tracked, and managed by ZenML itself. To further improve reproducibility, pipelines themselves are now tracked in ZenML (rather than the metadata store) and exposed as first-level citizens. Each pipeline clearly defines what steps are used in the pipeline and in what order the steps are executed. By default, pipeline runs are now scoped by pipeline.
@@ -34,6 +36,8 @@ Metadata Store stack component has been deprecated and is no longer required to 
 Address removing MLMD in the future with Mac M1
 
 ## 🎠 ZenML Dashboard: A beautiful, new look
+
+![Dashboard Screenshot](/assets/posts/zenml_revamped/pipelines_dashboard.png)
 
 The new ZenML Dashboard build files are now bundled as part of all future releases, and can be launched directly from within python. The source code lives in the ZenML Dashboard repository 
 
@@ -95,6 +99,13 @@ Some settings can be configured on pipelines and steps, some only on one of the 
 ## 👨‍🍳 Flavors: Seperating configuration from implementation
 
 Stack components can now be registered without having the required integrations installed. As part of this change, we split all existing stack component definitions into three classes: An implementation class that defines the logic of the stack component, a config class that defines the attributes and performs input validations, and a flavor class that links implementation and config classes together. See component flavor models #895 for more details.
+
+```
+zenml <STACK_COMPONENT> flavor describe
+```
+
+![Flavor Describe Usage](/assets/posts/zenml_revamped/flavor_describe.png)
+
 
 ## 🔥 Breaking changes
 
