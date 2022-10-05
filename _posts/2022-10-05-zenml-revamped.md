@@ -14,10 +14,6 @@ image:
 
 ![PR Changes](/assets/posts/zenml_revamped/pr_changes.png)
 
-# ZenML 0.20.0: Our Biggest Release Yet
-
-General things: Talk at a high level, motivate why changes were neccessary, and speak to both a new audience and the older audience already using ZenML.
-
 [ZenML 0.20.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879). 
 
 So what has changed? The new release brings a complete [architectural shift](https://docs.zenml.io/getting-started/core-concepts) from previous versions of ZenML. It features a new way of [sharing and configuring pipelines and stacks](https://docs.zenml.io/advanced-guide/pipelines/settings). Perhaps most excitingly, it brings with it a brand-new look for ZenML, which now comes bundled with a [React-based, open-source dashboard](https://github.com/zenml-io/zenml-dashboard), which can be launched (and [deployed](https://docs.zenml.io/getting-started/deploying-zenml)) directly from the CLI!
@@ -26,9 +22,9 @@ For current ZenML users, do not worry! Even though, this is going to be a big br
 
 For now, let's dive right into the changes, and share why we are so excited about the new direction ZenML is going.
 
-## 🤖 ZenML is now a server-based application (Goodbye, Metadata Store)
+## 🤖 ZenML is now a server-based application (RIP Metadata Store 🪦)
 
-![Architectue Diagram](/assets/posts/zenml_revamped/architecture_diagram.png)
+![Architecture Diagram](/assets/posts/zenml_revamped/architecture_diagram.png)
 
 ZenML can now run as a server that can be accessed via REST API and comes with a visual user interface (called the ZenML Dashboard). This server can be deployed in arbitrary environments (local, on-prem, via Docker, on AWS / GCP / Azure / ...) and supports user management, project scoping, and more.
 
@@ -39,9 +35,7 @@ The architecture changes for the remote case are shown in the diagram below:
 ![ZenML remote metadata before 0.20.0](/assets/posts/zenml_revamped/remote-metadata-pre-0.20.png)
 ![ZenML remote metadata after 0.20.0](/assets/posts/zenml_revamped/remote-metadata-post-0.20.png)
 
-
-
--> Talk about why this was neccessary: Because the metadata store connection was clunky and users found it a big bottleneck. By replacing the metadata store database with a FAstAPI application, things are faster, more secure, and easier to use. Address removing MLMD in the future with Mac M1.
+-> Talk about why this was necessary: Because the metadata store connection was clunky and users found it a big bottleneck. By replacing the metadata store database with a FastAPI application, things are faster, more secure, and easier to use. Address removing MLMD in the future with Mac M1.
 
 -> Talk about deployment options with `zenml deploy` and link to deployment guide https://docs.zenml.io/getting-started/deploying-zenml
 
@@ -76,7 +70,7 @@ Some of the configuration options were quite hidden, difficult to access and not
 - `BaseStepConfig` is not renamed to `Params`
 - `DockerConfiguration` is not `DockerSettings`
 
-## 👨‍🍳 Flavors: Seperating configuration from implementation
+## 👨‍🍳 Flavors: Separating configuration from implementation
 
 Doc reference: https://zenml-io.gitbook.io/post-zenserver/QBNJR4RKcc9F3eLCSJJ6/advanced-guide/pipelines/settings
 
