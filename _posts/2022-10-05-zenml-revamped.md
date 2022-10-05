@@ -46,51 +46,64 @@ Getting started with the new server is painless: `zenml up` will handle spinning
 
 ## 🎠 ZenML Dashboard: A beautiful, new look
 
+Changes on the backend are one thing, but we also added a whole new feature and experience to how you work with ZenML and with your team.
+
 ![Dashboard Screenshot](/assets/posts/zenml_revamped/pipelines_dashboard.png)
 
-The new ZenML Dashboard build files are now bundled as part of all future releases, and can be launched directly from within python. The source code lives in the [ZenML Dashboard repository](https://github.com/zenml-io/zenml-dashboard)
+Our new dashboard gives you a way to view your pipelines, pipeline runs, stacks and stack components all from within ZenML. We even added a way for you to view the DAG of your steps from within the dashboard:
 
-Talk about why its important to have visual feel
+![DAG visualizer screenshot](/assets/posts/zenml_revamped/dag-visualizer-screenshot.png)
+
+The new ZenML Dashboard build files are now bundled as part of all future releases and can be launched directly from within Python. The source code lives in the [ZenML Dashboard repository](https://github.com/zenml-io/zenml-dashboard) which we are also releasing open-source as usual.
 
 ## 🥰 Sharing is caring
 
-Combining above two points together we can talk about remote vs local stacks and shared vs non-shared stacks. The diagrams here should be used: https://zenml-io.gitbook.io/post-zenserver/QBNJR4RKcc9F3eLCSJJ6/starter-guide/collaborate
+One of the benefits of centralising through the ZenML Server means that not only can you view your own stacks, but if they are shared then you can now see and use the stacks and stack components of your team. This keeps the barrier for collaboration low and raises the reproducibility of your work as a team.
 
-- Stacks and Stack Components can be shared through the Zen Server now - to share, either set it as shared during creation time `zenml stack register mystack ... --share`  or afterwards through `zenml stack share mystack`
-- Stacks and Stack components can now be addressed by name, id or the first few letters of the id in the cli - for a stack `default` with id `179ebd25-4c5b-480f-a47c-d4f04e0b6185`  you can now do `zenml stack describe default` or `zenml stack describe 179` or `zenml stack describe 179ebd25-4c5b-480f-a47c-d4f04e0b6185`
+You can share your stacks and stack components at creation team  (`zenml stack register mystack ... --share`) or afterwards using `zenml stack share mystack`. In this way, a common setup might look something like this:
+
+![Diagram showing shared cloud stacks](/assets/posts/zenml_revamped/stacks_shared.png)
+
+The moment the stack is shared, other users who connect to the server will be able to see the stack and use it as well!
 
 ## 🎊 Centralizing configuration
 
-- Alongside the architectural shift, Pipeline configuration has been completely rethought. ZenML pipelines and steps could previously be configured in many different ways:
-    - On the `@pipeline` and `@step` decorators
-    - In the `__init__` method of the pipeline and step class
-    - Using `@enable_xxx` decorators
-    - Using specialized methods like `pipeline.with_config(...)` or `step.with_return_materializer(...)`
+Alongside the architectural shift, Pipeline configuration has been completely rethought. ZenML pipelines and steps could previously be configured in many different ways:
 
-Some of the configuration options were quite hidden, difficult to access and not tracked in any way by the ZenML metadata store. The new changes introduced are:
+- On the `@pipeline` and `@step` decorators
+- In the `__init__` method of the pipeline and step class
+- Using `@enable_xxx` decorators
+- Using specialized methods like `pipeline.with_config(...)` or `step.with_return_materializer(...)`
 
-- Pipelines and steps now allow all configurations on their decorators as well as the `.configure(...)` method. This includes configurations for stack components that are not infrastructure-related which was previously done using the `@enable_xxx` decorators)
-- The same configurations can also be defined in a yaml file
-- The users can think of configuring stacks and pipeline in terms of `Params` and `Settings`
-- `BaseStepConfig` is not renamed to `Params`
-- `DockerConfiguration` is not `DockerSettings`
+Some of the configuration options were quite hidden, difficult to access and not tracked in any way by the ZenML metadata store. The new changes introduced mean that pipelines and steps now allow all configurations on their decorators as well as the `.configure(...)` method. This includes configurations for stack components that are not infrastructure-related which was previously done using the `@enable_xxx` decorators. The same configurations can also be defined in a `.yaml` file.
+
+In general, you can think of configuring stacks and pipeline in terms of `Params` and `Settings`.
 
 ## 👨‍🍳 Flavors: Separating configuration from implementation
 
-Doc reference: https://zenml-io.gitbook.io/post-zenserver/QBNJR4RKcc9F3eLCSJJ6/advanced-guide/pipelines/settings
+Stack components can now be registered without having the required integrations installed. As part of this change, we split all existing stack component definitions into three classes: 
 
-Stack components can now be registered without having the required integrations installed. As part of this change, we split all existing stack component definitions into three classes: An implementation class that defines the logic of the stack component, a config class that defines the attributes and performs input validations, and a flavor class that links implementation and config classes together. See component flavor models #895 for more details.
+- an implementation class that defines the logic of the stack component
+- a config class that defines the attributes and performs input validations, 
+- and a flavor class that links implementation and config classes together.
 
-```
+You can describe a stack component with the following command:
+
+```shell
 zenml <STACK_COMPONENT> flavor describe
 ```
 
+This gives the following output:
+
 ![Flavor Describe Usage](/assets/posts/zenml_revamped/flavor_describe.png)
 
+You can see how it's now clear which properties are required and what types are expected for each flavor you choose for stack component registrations.
 
-## 🔥 Conclusion 
+## 🔥 Onwards and Upwards!
 
-While the above addresses most of the major use-cases, there are many smaller things -> Link to migration guide.
+The key changes highlighted above addresses most of the major use-cases, but there are many other additions, changes and tweaks in ZenML 0.20.0. To learn about all the updates, [visit our migration guide](https://docs.zenml.io/guidelines/migration-zero-twenty) which lists the changes as well as offers you a clear path to migrating your existing work to the new version.
+
+
 
 CTA is to try out the new Quickstart and join Slack or raise a GitHub issue if
 there are bugs.
