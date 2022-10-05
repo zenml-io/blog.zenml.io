@@ -14,7 +14,6 @@ image:
 
 ![PR Changes](/assets/posts/zenml_revamped/pr_changes.png)
 
-
 # ZenML 0.20.0: Our Biggest Release Yet
 
 General things: Talk at a high level, motivate why changes were neccessary, and speak to both a new audience and the older audience already using ZenML.
@@ -94,4 +93,5 @@ zenml <STACK_COMPONENT> flavor describe
 
 While the above addresses most of the major use-cases, there are many smaller things -> Link to migration guide.
 
-CTA is to try out the new Quickstart and join Slack or raise a GitHub issue if there are bugs.
+CTA is to try out the new Quickstart and join Slack or raise a GitHub issue if
+there are bugs.
