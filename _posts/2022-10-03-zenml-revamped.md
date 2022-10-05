@@ -17,6 +17,8 @@ image:
 
 # ZenML 0.20.0: Our Biggest Release Yet
 
+General things: Talk at a high level, motivate why changes were neccessary, and speak to both a new audience and the older audience already using ZenML.
+
 [ZenML 0.20.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879). 
 
 So what has changed? The new release brings a complete [architectural shift](https://docs.zenml.io/getting-started/core-concepts) from previous versions of ZenML. It features a new way of [sharing and configuring pipelines and stacks](https://docs.zenml.io/advanced-guide/pipelines/settings). Perhaps most excitingly, it brings with it a brand-new look for ZenML, which now comes bundled with a [React-based, open-source dashboard](https://github.com/zenml-io/zenml-dashboard), which can be launched (and [deployed](https://docs.zenml.io/getting-started/deploying-zenml)) directly from the CLI!
@@ -39,15 +41,22 @@ The architecture changes for the remote case are shown in the diagram below:
 ![ZenML remote metadata after 0.20.0](/assets/posts/zenml_revamped/remote-metadata-post-0.20.png)
 
 
-Address removing MLMD in the future with Mac M1
+
+-> Talk about why this was neccessary: Because the metadata store connection was clunky and users found it a big bottleneck. By replacing the metadata store database with a FAstAPI application, things are faster, more secure, and easier to use. Address removing MLMD in the future with Mac M1.
+
+-> Talk about deployment options with `zenml deploy` and link to deployment guide https://docs.zenml.io/getting-started/deploying-zenml
 
 ## 🎠 ZenML Dashboard: A beautiful, new look
 
 ![Dashboard Screenshot](/assets/posts/zenml_revamped/pipelines_dashboard.png)
 
-The new ZenML Dashboard build files are now bundled as part of all future releases, and can be launched directly from within python. The source code lives in the ZenML Dashboard repository 
+The new ZenML Dashboard build files are now bundled as part of all future releases, and can be launched directly from within python. The source code lives in the [ZenML Dashboard repository](https://github.com/zenml-io/zenml-dashboard)
+
+Talk about why its important to have visual feel
 
 ## 🥰 Sharing is caring
+
+Combining above two points together we can talk about remote vs local stacks and shared vs non-shared stacks. The diagrams here should be used: https://zenml-io.gitbook.io/post-zenserver/QBNJR4RKcc9F3eLCSJJ6/starter-guide/collaborate
 
 - Stacks and Stack Components can be shared through the Zen Server now - to share, either set it as shared during creation time `zenml stack register mystack ... --share`  or afterwards through `zenml stack share mystack`
 - Stacks and Stack components can now be addressed by name, id or the first few letters of the id in the cli - for a stack `default` with id `179ebd25-4c5b-480f-a47c-d4f04e0b6185`  you can now do `zenml stack describe default` or `zenml stack describe 179` or `zenml stack describe 179ebd25-4c5b-480f-a47c-d4f04e0b6185`
@@ -67,41 +76,10 @@ Some of the configuration options were quite hidden, difficult to access and not
 - The users can think of configuring stacks and pipeline in terms of `Params` and `Settings`
 - `BaseStepConfig` is not renamed to `Params`
 - `DockerConfiguration` is not `DockerSettings`
-- 
-@step/pipeline(…): Configures the class -> will be set for all instances
-
-step_instance/pipeline_instance.configure(…): Configures the instance -> will be set for all runs using the instance
-
-pipeline.run(…): allows configuration in code or using a yaml file. Configurations in code overwrite settings in the file
-
-Generate a template for a config file: pipeline_instance.write_run_configuration_template(path=<PATH>)
-
-
-Merging settings on class/instance/run:
-when a settings object is configured, ZenML merges the values with previously configured keys: <Example>
-
-```python
-from zenml.config import ResourceSettings
-
-@step(settings={"resources": ResourceSettings(cpu_count=2, memory="1GB")})
-def my_step() -> None:
-  ...
-
-step_instance = my_step()
-step_instance.configure(settings={"resources": ResourceSettings(gpu_count=1, memory="2GB")})
-step_instance.configuration.settings["resources"] # cpu_count: 2, gpu_count=1, memory=2BG
-```
-
-Settings:
-- General settings that can be used on all ZenML pipelines: DockerSettings and ResourceSettings
-- Stack component specific settings: these can be used to supply runtime configurations to certain stack components (key= <COMPONENT_TYPE>.<COMPONENT_FLAVOR>). Settings for components not in the active stack will be ignored
-
-Some settings can be configured on pipelines and steps, some only on one of the two. Pipeline level settings will be automatically applied to all steps, but if the same setting is configured on a step as well that takes precedence. Merging similar to the example above
-
-
-
 
 ## 👨‍🍳 Flavors: Seperating configuration from implementation
+
+Doc reference: https://zenml-io.gitbook.io/post-zenserver/QBNJR4RKcc9F3eLCSJJ6/advanced-guide/pipelines/settings
 
 Stack components can now be registered without having the required integrations installed. As part of this change, we split all existing stack component definitions into three classes: An implementation class that defines the logic of the stack component, a config class that defines the attributes and performs input validations, and a flavor class that links implementation and config classes together. See component flavor models #895 for more details.
 
@@ -110,3 +88,10 @@ zenml <STACK_COMPONENT> flavor describe
 ```
 
 ![Flavor Describe Usage](/assets/posts/zenml_revamped/flavor_describe.png)
+
+
+## 🔥 Conclusion 
+
+While the above addresses most of the major use-cases, there are many smaller things -> Link to migration guide.
+
+CTA is to try out the new Quickstart and join Slack or raise a GitHub issue if there are bugs.
