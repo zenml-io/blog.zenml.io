@@ -17,11 +17,11 @@ image:
 
 # ZenML 0.20.0: Our Biggest Release Yet
 
-[ZenML 0.20.0]() is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879). 
+[ZenML 0.20.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879). 
 
-So what has changed? The short answer is, a lot. The new release brings a complete [architectural shift]() from previous versions of ZenML. It also features a new way of [configuring pipelines and stacks](). Perhaps most excitingly, it brings with it a brand-new look for ZenML, which now comes bundled with a [React-based, open-source dashboard](https://github.com/zenml-io/zenml-dashboard), which can be launched directly from the CLI! 
+So what has changed? The new release brings a complete [architectural shift](https://docs.zenml.io/getting-started/core-concepts) from previous versions of ZenML. It features a new way of [sharing and configuring pipelines and stacks](https://docs.zenml.io/advanced-guide/pipelines/settings). Perhaps most excitingly, it brings with it a brand-new look for ZenML, which now comes bundled with a [React-based, open-source dashboard](https://github.com/zenml-io/zenml-dashboard), which can be launched (and [deployed](https://docs.zenml.io/getting-started/deploying-zenml)) directly from the CLI!
 
-For current ZenML users, do not worry! Even though, this is going to be a big breaking change, we have extensively documented a [migration guide](TBD). If there are any questions regarding the new changes, please let us know over on the [Slack community](https://zenml.io/slack-invite). 
+For current ZenML users, do not worry! Even though, this is going to be a big breaking change, we have extensively documented a [migration guide](https://docs.zenml.io/guidelines/migration-zero-twenty). If there are any questions regarding the new changes, please let us know over on the [Slack community](https://zenml.io/slack-invite).
 
 For now, let's dive right into the changes, and share why we are so excited about the new direction ZenML is going.
 
@@ -47,7 +47,6 @@ The new ZenML Dashboard build files are now bundled as part of all future releas
 - Stacks and Stack components can now be addressed by name, id or the first few letters of the id in the cli - for a stack `default` with id `179ebd25-4c5b-480f-a47c-d4f04e0b6185`  you can now do `zenml stack describe default` or `zenml stack describe 179` or `zenml stack describe 179ebd25-4c5b-480f-a47c-d4f04e0b6185`
 
 ## 🎊 Centralizing configuration
-
 
 - Alongside the architectural shift, Pipeline configuration has been completely rethought. ZenML pipelines and steps could previously be configured in many different ways:
     - On the `@pipeline` and `@step` decorators
@@ -105,12 +104,3 @@ zenml <STACK_COMPONENT> flavor describe
 ```
 
 ![Flavor Describe Usage](/assets/posts/zenml_revamped/flavor_describe.png)
-
-
-## 🔥 Breaking changes
-
-- Configuration changes (deperecating enable_mlflow)
-- Once a pipeline has been executed, it is represented by a `PipelineSpec` that uniques identifies it. Therefore, users are no longer able to edit a pipeline once it has been run once. There are now three options to get around this:
-    - Pipeline runs can be created without being associated with a pipeline explicitly: We call these `unlisted` runs
-    - Pipelines can be deleted and created again
-    - Pipelines can be given unique names each time they are run to uniquely identify them
