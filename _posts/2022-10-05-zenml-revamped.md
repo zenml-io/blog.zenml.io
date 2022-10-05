@@ -1,43 +1,48 @@
 ---
 layout: post
 author: Hamza Tahir
-title: "ZenML 0.20.0: Our biggest release yet"
-description: "The 0.20.0 release is a seminar release in the history of the ZenML project. After 10 months of continuous feedback and iteration, we bring you a whole new architecture and redesign of ZenML - and a new dashboard to boot."
+title: "ZenML 0.20.0: Our Biggest Release Yet!"
+description: "The 0.20.0 release is a seminal release in the history of ZenML. Following ten months of continuous feedback and iteration, we bring you a whole new architecture and redesign of ZenML - and a new dashboard to boot! Collaboration among teams has also been taken to a new level in the new version."
 category: zenml
 tags: zenml release-notes
 publish_date: October 5th, 2022
 date: 2022-10-05T00:02:00Z
-thumbnail: /assets/posts/zenml_revamped/architecture_diagram.png
+thumbnail: /assets/posts/zenml_revamped/Release_0.20.0.gif
 image:
-  path: /assets/posts/zenml_revamped/architecture_diagram.png
+  path: /assets/posts/zenml_revamped/Release_0.20.0.jpg
 ---
 
 ![PR Changes](/assets/posts/zenml_revamped/pr_changes.png)
 
-[ZenML 0.20.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879). 
+[ZenML 0.20.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879).
+
+![Release 0.20.0](/assets/posts/zenml_revamped/Release_0.20.0.gif)
 
 So what has changed? The new release brings a complete [architectural shift](https://docs.zenml.io/getting-started/core-concepts) from previous versions of ZenML. It features a new way of [sharing and configuring pipelines and stacks](https://docs.zenml.io/advanced-guide/pipelines/settings). Perhaps most excitingly, it brings with it a brand-new look for ZenML, which now comes bundled with a [React-based, open-source dashboard](https://github.com/zenml-io/zenml-dashboard), which can be launched (and [deployed](https://docs.zenml.io/getting-started/deploying-zenml)) directly from the CLI!
 
-For current ZenML users, do not worry! Even though, this is going to be a big breaking change, we have extensively documented a [migration guide](https://docs.zenml.io/guidelines/migration-zero-twenty). If there are any questions regarding the new changes, please let us know over on the [Slack community](https://zenml.io/slack-invite).
+If you're already using ZenML, don't worry! Even though this is going to be a big breaking change, we have written an extensive [migration guide](https://docs.zenml.io/guidelines/migration-zero-twenty). As always, if you have any issues or questions regarding the new changes, please let us know over on the [Slack community](https://zenml.io/slack-invite).
 
-For now, let's dive right into the changes, and share why we are so excited about the new direction ZenML is going.
+For now, let's dive right into the changes and share why we are so excited about the new direction ZenML is going.
 
 ## 🤖 ZenML is now a server-based application (RIP Metadata Store 🪦)
 
 ![Architecture Diagram](/assets/posts/zenml_revamped/architecture_diagram.png)
 
-ZenML can now run as a server that can be accessed via REST API and comes with a visual user interface (called the ZenML Dashboard). This server can be deployed in arbitrary environments (local, on-prem, via Docker, on AWS / GCP / Azure / ...) and supports user management, project scoping, and more.
+ZenML can now run as a server that can be accessed via REST API and comes with a dashboard. This server can be deployed in arbitrary environments (local, on-prem, via Docker, on AWS / GCP / Azure / ...) and supports user management, project scoping, and more.
 
-Metadata Store stack component has been deprecated and is no longer required to create a stack. The role of the Metadata Store is now taken over by the ZenServer. All metadata is now stored, tracked, and managed by ZenML itself. To further improve reproducibility, pipelines themselves are now tracked in ZenML (rather than the metadata store) and exposed as first-level citizens. Each pipeline clearly defines what steps are used in the pipeline and in what order the steps are executed. By default, pipeline runs are now scoped by pipeline.
+The Metadata Store stack component has been deprecated and is no longer required to create a stack. The role of the Metadata Store is now taken over by the ZenServer. All metadata is now stored, tracked, and managed by ZenML itself. To further improve reproducibility, pipelines themselves are now tracked in ZenML (rather than the metadata store) and exposed as first-class citizens. Each pipeline clearly defines what steps are used in the pipeline and in what order the steps are executed. By default, pipeline runs are now scoped by pipeline.
 
-The architecture changes for the remote case are shown in the diagram below:
+The architecture changes for the remote use-case are shown in the diagram below. This was the status quo before:
 
 ![ZenML remote metadata before 0.20.0](/assets/posts/zenml_revamped/remote-metadata-pre-0.20.png)
+
+And now, with our 0.20.0 release, you can see how things look:
+
 ![ZenML remote metadata after 0.20.0](/assets/posts/zenml_revamped/remote-metadata-post-0.20.png)
 
--> Talk about why this was necessary: Because the metadata store connection was clunky and users found it a big bottleneck. By replacing the metadata store database with a FastAPI application, things are faster, more secure, and easier to use. Address removing MLMD in the future with Mac M1.
+Extensive community feedback and our own experience over time had revealed that the metadata store connection was proving a bottleneck. By replacing the metadata store database with a FastAPI application, performance is faster, more secure, and easier to use. It will also reduce the likelihood of breaking changes of this scale going forward. 
 
--> Talk about deployment options with `zenml deploy` and link to deployment guide https://docs.zenml.io/getting-started/deploying-zenml
+Getting started with the new server is painless: `zenml up` will handle spinning up a server locally. When you're ready to take things to the next level, `zenml deploy` will take care of deploying a ZenML server in the cloud. For more details on how to use a cloud ZenML server to help you collaborate with a team, please [check out our extensive deployment documentation](https://docs.zenml.io/getting-started/deploying-zenml).
 
 ## 🎠 ZenML Dashboard: A beautiful, new look
 
