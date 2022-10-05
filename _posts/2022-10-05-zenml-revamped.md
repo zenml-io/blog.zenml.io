@@ -105,4 +105,7 @@ The key changes highlighted above addresses most of the major use-cases, but the
 
 We're really excited to have this latest version out in the world and for you to try it out! The best place to start is [our Quickstart example](https://github.com/zenml-io/zenml/tree/main/examples/quickstart). Instructions for how to get going are listed in the README.
 
-If you find any bugs or something doesn't work the way you expect, please [let us know in Slack](https://zenml.io/slack-invite) or also feel free to [open up a Github issue](https://github.com/zenml-io/zenml/issues/new/choose) if you prefer. We welcome your feedback and we thank you for your support!
+If you find any bugs or something doesn't work the way you expect, please [let
+us know in Slack](https://zenml.io/slack-invite) or also feel free to [open up a
+Github issue](https://github.com/zenml-io/zenml/issues/new/choose) if you
+prefer. We welcome your feedback and we thank you for your support!
