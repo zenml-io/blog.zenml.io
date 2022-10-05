@@ -58,7 +58,7 @@ The new ZenML Dashboard build files are now bundled as part of all future releas
 
 ## 🥰 Sharing is caring
 
-One of the benefits of centralising through the ZenML Server means that not only can you view your own stacks, but if they are shared then you can now see and use the stacks and stack components of your team. This keeps the barrier for collaboration low and raises the reproducibility of your work as a team.
+One of the benefits of centralizing through the ZenML Server means that not only can you view your own stacks, but if they are shared then you can now see and use the stacks and stack components of your team. This keeps the barrier for collaboration low and raises the reproducibility of your work as a team.
 
 You can share your stacks and stack components at creation team  (`zenml stack register mystack ... --share`) or afterwards using `zenml stack share mystack`. In this way, a common setup might look something like this:
 
@@ -103,7 +103,6 @@ You can see how it's now clear which properties are required and what types are 
 
 The key changes highlighted above addresses most of the major use-cases, but there are many other additions, changes and tweaks in ZenML 0.20.0. To learn about all the updates, [visit our migration guide](https://docs.zenml.io/guidelines/migration-zero-twenty) which lists the changes as well as offers you a clear path to migrating your existing work to the new version.
 
+We're really excited to have this latest version out in the world and for you to try it out! The best place to start is [our Quickstart example](https://github.com/zenml-io/zenml/tree/main/examples/quickstart). Instructions for how to get going are listed in the README.
 
-
-CTA is to try out the new Quickstart and join Slack or raise a GitHub issue if
-there are bugs.
+If you find any bugs or something doesn't work the way you expect, please [let us know in Slack](https://zenml.io/slack-invite) or also feel free to [open up a Github issue](https://github.com/zenml-io/zenml/issues/new/choose) if you prefer. We welcome your feedback and we thank you for your support!
