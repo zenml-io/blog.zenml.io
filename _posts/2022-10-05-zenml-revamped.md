@@ -14,7 +14,7 @@ image:
 
 ![PR Changes](/assets/posts/zenml_revamped/pr_changes.png)
 
-[ZenML 0.20.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879).
+[ZenML 0.20.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [tens of thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879).
 
 ![Release 0.20.0](/assets/posts/zenml_revamped/Release_0.20.0.gif)
 
@@ -40,7 +40,7 @@ And now, with our 0.20.0 release, you can see how things look:
 
 ![ZenML remote metadata after 0.20.0](/assets/posts/zenml_revamped/remote-metadata-post-0.20.png)
 
-Extensive community feedback and our own experience over time had revealed that the metadata store connection was proving a bottleneck. By replacing the metadata store database with a FastAPI application, performance is faster, more secure, and easier to use. It will also reduce the likelihood of breaking changes of this scale going forward. 
+Extensive community feedback and our own experience over time had revealed that the metadata store connection was proving a bottleneck. By replacing the metadata store database with a FastAPI application, performance is more secure and easier to use. It will also reduce the likelihood of breaking changes of this scale going forward. 
 
 Getting started with the new server is painless: `zenml up` will handle spinning up a server locally. When you're ready to take things to the next level, `zenml deploy` will take care of deploying a ZenML server in the cloud. For more details on how to use a cloud ZenML server to help you collaborate with a team, please [check out our extensive deployment documentation](https://docs.zenml.io/getting-started/deploying-zenml).
 
