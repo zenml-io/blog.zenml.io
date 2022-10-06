@@ -110,6 +110,9 @@ The key changes highlighted above addresses most of the major use-cases, but the
 
 We're really excited to have this latest version out in the world and for you to try it out! The best place to start is [our Quickstart example](https://github.com/zenml-io/zenml/tree/main/examples/quickstart). Instructions for how to get going are listed in the README.
 
+We also showcased a demo on our Special Launch Day Event on 5th October 2022 👇
+<iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/dxnOcqe_lfA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 If you find any bugs or something doesn't work the way you expect, please [let
 us know in Slack](https://zenml.io/slack-invite) or also feel free to [open up a
 Github issue](https://github.com/zenml-io/zenml/issues/new/choose) if you
