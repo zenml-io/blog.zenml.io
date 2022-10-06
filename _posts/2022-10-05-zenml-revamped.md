@@ -75,9 +75,14 @@ Alongside the architectural shift, Pipeline configuration has been completely re
 - Using `@enable_xxx` decorators
 - Using specialized methods like `pipeline.with_config(...)` or `step.with_return_materializer(...)`
 
-Some of the configuration options were quite hidden, difficult to access and not tracked in any way by the ZenML metadata store. The new changes introduced mean that pipelines and steps now allow all configurations on their decorators as well as the `.configure(...)` method. This includes configurations for stack components that are not infrastructure-related which was previously done using the `@enable_xxx` decorators. The same configurations can also be defined in a `.yaml` file.
+Some of the configuration options were quite hidden, difficult to access and not tracked in any way by the ZenML metadata store.
 
-In general, you can think of configuring stacks and pipeline in terms of `Params` and `Settings`.
+With ZenML 0.20.0, we introduce the `BaseSettings` class, a broad class that serves as a central object to represent all runtime configuration of a pipeline run.
+
+Pipelines and steps now allow all configurations on their decorators as well as the `.configure(...)` method. This includes configurations for stack components that are not infrastructure-related which was previously done using
+the `@enable_xxx` decorators). The same configurations can also be defined in a YAML file. 
+
+Read more about this paradigm in the [new docs section about settings](https://docs.zenml.io/advanced-guide/pipelines/settings.md).
 
 ## 👨‍🍳 Flavors: Separating configuration from implementation
 
