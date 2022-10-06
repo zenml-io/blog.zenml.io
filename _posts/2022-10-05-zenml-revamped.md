@@ -24,6 +24,10 @@ If you're already using ZenML, don't worry! Even though this is going to be a bi
 
 For now, let's dive right into the changes and share why we are so excited about the new direction ZenML is going.
 
+For those who prefer video, we also showcased a demo on our Special Launch Day Event on 5th October 2022 👇
+
+<iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/dxnOcqe_lfA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## 🤖 ZenML is now a server-based application (RIP Metadata Store 🪦)
 
 ![Architecture Diagram](/assets/posts/zenml_revamped/architecture_diagram.png)
@@ -82,7 +86,7 @@ With ZenML 0.20.0, we introduce the `BaseSettings` class, a broad class that ser
 Pipelines and steps now allow all configurations on their decorators as well as the `.configure(...)` method. This includes configurations for stack components that are not infrastructure-related which was previously done using
 the `@enable_xxx` decorators). The same configurations can also be defined in a YAML file. 
 
-Read more about this paradigm in the [new docs section about settings](https://docs.zenml.io/advanced-guide/pipelines/settings.md).
+Read more about this paradigm in the [new docs section about settings](https://docs.zenml.io/advanced-guide/pipelines/settings).
 
 ## 👨‍🍳 Flavors: Separating configuration from implementation
 
