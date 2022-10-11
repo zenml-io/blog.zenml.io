@@ -1,4 +1,4 @@
-{% assign sorted = (site.posts | sort: 'date') | reverse %} {% assign posts =
+{% assign sorted = (paginator.posts | sort: 'date') | reverse %} {% assign posts =
 sorted | where_exp:"post","post.url != page.url" %}
 <section id="latest" class="bg-light">
   <div class="container py-5">

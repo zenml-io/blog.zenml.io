@@ -1,5 +1,5 @@
 <section id="blogposts" class="pb-5">
-  {% assign sorted = (site.posts | sort: 'date') | reverse %} {% for post in
+  {% assign sorted = (paginator.posts | sort: 'date') | reverse %} {% for post in
   sorted %} {% assign uneven = forloop.index0 }} | modulo: 2%} {% capture bg %}
   {% if uneven == 1 %} bg-white {% elsif uneven != 1%} bg-light {% endif %} {%
   endcapture %} {% capture crosspost %} {% if post.crosspost %} - Crossposted on
