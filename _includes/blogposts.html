@@ -1,6 +1,6 @@
 <section id="blogposts" class="pb-5">
-  {% assign sorted = (site.posts | sort: 'date') | reverse %} {% for post in
-  sorted %} {% assign uneven = forloop.index0 }} | modulo: 2%} {% capture bg %}
+  {% for post in paginator.posts %} 
+  {% assign uneven = forloop.index0 }} | modulo: 2%} {% capture bg %}
   {% if uneven == 1 %} bg-white {% elsif uneven != 1%} bg-light {% endif %} {%
   endcapture %} {% capture crosspost %} {% if post.crosspost %} - Crossposted on
   <a href="{{ post.crosspost.url }}">{{ post.crosspost.name }}</a>
@@ -34,4 +34,59 @@
     </div>
   </div>
   {% endfor %}
+  {% if paginator.total_pages > 1 %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            {% if paginator.previous_page %}
+            <li class="page-item">
+              <a class="page-link" href="{{ paginator.previous_page_path }}"
+                >Previous</a
+              >
+            </li>
+            {% endif %}
+            {% if paginator.page == 1 %}
+              <li class="page-item active">
+                <a class="page-link" href="#">{{ paginator.page }}</a>
+              </li>
+              {% for page in (2..paginator.total_pages) %}
+                <li class="page-item">
+                  <a class="page-link" href="/page/{{ page }}/index.html">{{ page }}</a>
+                </li>
+              {% endfor %}
+
+            {% else %}
+              {% for page in (1..paginator.total_pages) %}
+              {% if paginator.page == page and page == 1 %}
+                <li class="page-item active">
+                  <a class="page-link" href="#">{{ page }}</a>
+                </li>
+              {% elsif paginator.page == page and page != 1 %}
+              <li class="page-item active">
+                <a class="page-link" href="#">{{ page }}</a>
+              </li>
+              {% elsif paginator.page != page and page == 1 %}
+                <li class="page-item">
+                  <a class="page-link" href="{{ site.url }}">1</a>
+                </li>
+              {% elsif paginator.page != page and page != 1 %}
+                <li class="page-item">
+                  <a class="page-link" href="{{ paginator.page_path | replace: paginator.page, page }}">{{ page }}</a>
+                </li>
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            {% if paginator.next_page %}
+            <li class="page-item">
+              <a class="page-link" href="{{ paginator.next_page_path }}">Next</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  {% endif %}
 </section>
