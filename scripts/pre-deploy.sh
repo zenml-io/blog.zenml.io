@@ -1,6 +1,8 @@
 #! /bin/bash
 set -e
 
+
+sudo apt-get install ruby2.6.8
 gem i bundler && bundle install
 
 echo "Generating tags.."
