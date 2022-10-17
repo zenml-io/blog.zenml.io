@@ -4,7 +4,7 @@ on: nothing
 
 jobs:
   strapi_publish:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/test'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
