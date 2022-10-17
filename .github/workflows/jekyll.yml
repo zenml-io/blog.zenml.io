@@ -28,10 +28,16 @@ jobs:
       run: |
         gem i bundler && bundle install
 
-    - name: Build pages
-      run: |
-         bundle exec jekyll build
-
-    - uses: actions/upload-pages-artifact
-
-    - uses: actions/deploy-pages
+    - name: Bundler Cache
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    - name: Build & Deploy to GitHub Pages
+      uses: joshlarsen/jekyll4-deploy-gh-pages@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
+        GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
