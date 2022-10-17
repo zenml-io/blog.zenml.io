@@ -10,15 +10,15 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "publish"
-  publish:
-    name: Build and publishes the website to GitHub Pages
+  build:
+    name: Builds the website for GitHub Pages
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-ruby@v1
       with:
-        ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
+        ruby-version: '2.6.8' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
         
     - name: Install dependencies
       run: |
@@ -28,16 +28,35 @@ jobs:
       run: |
         gem i bundler && bundle install
 
-    - name: Bundler Cache
-      uses: actions/cache@v1
+    - name: Build pages
+      run: |
+         bundle exec jekyll build -d blog
+
+    - uses: actions/upload-pages-artifact@v1
       with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-    - name: Build & Deploy to GitHub Pages
-      uses: joshlarsen/jekyll4-deploy-gh-pages@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
-        GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
+        name: github-pages
+        path: blog
+
+
+    # Deploy job
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+    name: Publishes the website to GitHub Pages
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
