@@ -24,8 +24,8 @@ phone: ""
 author: ZenML GmbH
 future: true 
 repository: zenml-io/blog.zenml.io
-url: https://blog.zenml.io
-baseurl: "https://zenml-io.github.io/zenmlblog.github.io"
+url: https://zenml-io.github.io
+baseurl: "/zenmlblog.github.io"
 
 links:
   documentation: "https://docs.zenml.io"
