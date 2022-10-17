@@ -23,7 +23,7 @@ nav_logo: assets/logo_sq.png
 phone: ""
 author: ZenML GmbH
 future: true 
-
+repository: zenml-io/blog.zenml.io
 url: https://blog.zenml.io
 baseurl: ""
 
