@@ -3,9 +3,9 @@ layout: all-posts
 ---
 
 <section id="blogposts" class="pb-5">
-  {% assign sorted = (site.posts | sort: 'date') | reverse %} {% for post in
+  {% assign sorted = site.posts %} {% for post in
   sorted %} {% if post.tags contains "tech-startup" %} {% assign uneven =
-  forloop.index0 }} | modulo: 2%} {% capture bg %} {% if uneven == 1 %} bg-white
+  forloop.index0 | modulo: 2%} {% capture bg %} {% if uneven == 1 %} bg-white
   {% elsif uneven != 1%} bg-light {% endif %} {% endcapture %} {% capture
   crosspost %} {% if post.crosspost %} - Crossposted on
   <a href="{{ post.crosspost.url }}">{{ post.crosspost.name }}</a>
