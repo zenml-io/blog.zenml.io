@@ -120,12 +120,12 @@ does not have an equivalent movement to figure out the right order of
 abstraction to have a similar effect.
 
 To showcase a more concrete example of my more abstract thoughts above, I’ll use
-[ZenML](https://github.com/maiot-io/zenml), an open-source MLOps framework to
+[ZenML](https://github.com/zenml-io/zenml), an open-source MLOps framework to
 create iterative, reproducible pipelines.
 
 > _Disclaimer: I am one of the core maintainers of ZenML._
 
-[ZenML](https://github.com/maiot-io/zenml) is an exercise in finding the right
+[ZenML](https://github.com/zenml-io/zenml) is an exercise in finding the right
 layer of abstraction for ML. Here, we treat pipelines as first-class citizens.
 This means that data scientists are exposed to pipelines directly in the
 framework, but not in the same manner as the data pipelines from the ETL space
@@ -159,7 +159,7 @@ ZenML is trying to get to the following scenario:
 |                              _Figure 3: ZenML unifies the ML process._                               |
 
 <br>
-Of course, [ZenML](https://github.com/maiot-io/zenml) is not the only mechanism to achieve the above — Many companies build their own home-grown abstraction frameworks to solve their specific needs. Often-times these are built on top of some of the other tools I have mentioned above. Regardless of how to get there, the goal should be clear: Get the data scientists **as close to production as possible** with as little friction as possible, incentivizing them to increase their ownership of the models after deployment.
+Of course, [ZenML](https://github.com/zenml-io/zenml) is not the only mechanism to achieve the above — Many companies build their own home-grown abstraction frameworks to solve their specific needs. Often-times these are built on top of some of the other tools I have mentioned above. Regardless of how to get there, the goal should be clear: Get the data scientists **as close to production as possible** with as little friction as possible, incentivizing them to increase their ownership of the models after deployment.
 
 This is a win-win-win for every persona involved, and ultimately a big win for
 any organization that aims to make it to the top 1% using ML as a core driver
@@ -168,8 +168,8 @@ for their business growth.
 # Plug
 
 If you like the thoughts here, we’d love to hear your feedback on ZenML. It is
-[open-source](https://github.com/maiot-io/zenml) and we are looking for early
-adopters and [contributors](https://github.com/maiot-io/zenml)! And if you find
+[open-source](https://github.com/zenml-io/zenml) and we are looking for early
+adopters and [contributors](https://github.com/zenml-io/zenml)! And if you find
 it is the right order of abstraction for you/your data scientists, then let us
 know as well via [our Slack](http://zenml.io/slack-invite) — looking forward to
 hearing from you!
