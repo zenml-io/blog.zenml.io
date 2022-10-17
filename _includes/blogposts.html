@@ -42,7 +42,7 @@
           <ul class="pagination justify-content-center">
             {% if paginator.previous_page %}
             <li class="page-item">
-              <a class="page-link" href="{{ site.url }}/{{ paginator.previous_page_path }}"
+              <a class="page-link" href="{{ site.url }}{{ paginator.previous_page_path }}"
                 >Previous</a
               >
             </li>
@@ -81,7 +81,7 @@
 
             {% if paginator.next_page %}
             <li class="page-item">
-              <a class="page-link" href="{{ site.url }}/{{ paginator.next_page_path }}">Next</a>
+              <a class="page-link" href="{{ site.url }}{{ paginator.next_page_path }}">Next</a>
             </li>
             {% endif %}
           </ul>
