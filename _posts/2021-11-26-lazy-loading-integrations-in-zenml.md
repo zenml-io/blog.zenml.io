@@ -34,7 +34,7 @@ different set of tools/frameworks to bring forth a solution. Naturally, it is
 impossible to claim that there is only"**one"** set of tools/frameworks that can
 solve it all.
 
-![](../assets/posts/lazy-loading-integrations/sam_frustrated.jpg)
+![]({{ site.url }}/assets/posts/lazy-loading-integrations/sam_frustrated.jpg)
 
 We think about this all the time at **ZenML** and it is why we aim to create an
 environment where our users already have access to some of the widely used tools
@@ -43,7 +43,7 @@ of high-level abstractions, we want to minimize the friction as much as possible
 between these moving parts of an ML workflow. At the core of this solution, we
 have our **Integrations**.
 
-![](../assets/posts/lazy-loading-integrations/sam_zen_mode.jpg)
+![]({{ site.url }}/assets/posts/lazy-loading-integrations/sam_zen_mode.jpg)
 
 ## What do Integrations bring to the table?
 

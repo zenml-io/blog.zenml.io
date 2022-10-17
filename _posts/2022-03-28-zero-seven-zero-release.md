@@ -67,7 +67,7 @@ level which profile to default to using. For ease of transition, any legacy ZenM
 repositories (projects) will automatically be migrated to a new isolated
 profile so you can maintain the separation you are used to:
 
-![Migration of Legacy Profiles](../assets/posts/release_0_7_0/legacy-migration.png)
+![Migration of Legacy Profiles]({{ site.url }}/assets/posts/release_0_7_0/legacy-migration.png)
 
 ## 🔑 Secret Management
 

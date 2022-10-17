@@ -27,7 +27,7 @@ Given that data often is imported or transformed in the course of these steps,
 it would be good to find a way to minimize wasted work. Luckily, we can use
 caching to save the day.
 
-![Caching in machine learning workflows via the distracted boyfriend meme](../assets/posts/caching-ml-pipelines/caching-trio.png)
+![Caching in machine learning workflows via the distracted boyfriend meme]({{ site.url }}/assets/posts/caching-ml-pipelines/caching-trio.png)
 
 If we organize the steps of our model training smartly, we can ensure that the
 data outputs and inputs along the way are cached. A good way to think about
@@ -89,7 +89,7 @@ run_1 = mnist_pipeline(
 run_1.run()
 ```
 
-| ![First run of our pipeline](../assets/posts/caching-ml-pipelines/run1.png) |
+| ![First run of our pipeline]({{ site.url }}/assets/posts/caching-ml-pipelines/run1.png) |
 | :-------------------------------------------------------------------------: |
 |      _Here's what the pipeline lineage tracking visualizer looks like_      |
 
@@ -109,7 +109,7 @@ run_2 = mnist_pipeline(
 run_2.run()
 ```
 
-| ![The second run](../assets/posts/caching-ml-pipelines/run2.png)  |
+| ![The second run]({{ site.url }}/assets/posts/caching-ml-pipelines/run2.png)  |
 | :---------------------------------------------------------------: |
 | _Here's what the pipeline lineage tracking visualizer looks like_ |
 

@@ -28,7 +28,7 @@ lock-in. As you build your processes and services around the provider specific
 APIs and you become more and more dependent on the specific provider with
 significant costs associated with a potential switch.
 
-![Lock-In](../assets/posts/vertex/lockin.jpg)
+![Lock-In]({{ site.url }}/assets/posts/vertex/lockin.jpg)
 
 But fret not, ZenML is the perfect abstraction layer that will make it as easy
 as pie to quickly switch your pipeline orchestration from local to Vertex AI to
@@ -154,15 +154,15 @@ our resources encapsulated into one overarching entity.
 
 Click on the project select box
 
-![Create Project 1](../assets/posts/vertex/GCP_project0.png)
+![Create Project 1]({{ site.url }}/assets/posts/vertex/GCP_project0.png)
 
 Create a `New Project`
 
-![Create Project 2](../assets/posts/vertex/GCP_project1.png)
+![Create Project 2]({{ site.url }}/assets/posts/vertex/GCP_project1.png)
 
 and name your project
 
-![Create Project 3](../assets/posts/vertex/GCP_project2.png)
+![Create Project 3]({{ site.url }}/assets/posts/vertex/GCP_project2.png)
 
 It will take some time for your project to be created. Once it is
 created you will need to enable billing for the project so that you can set
@@ -183,29 +183,29 @@ pipeline runs.
 
 Search `cloud sql` or use this [link](https://console.cloud.google.com/sql/).
 
-![Create SQL 1](../assets/posts/vertex/GCP_SQL0.png)
+![Create SQL 1]({{ site.url }}/assets/posts/vertex/GCP_SQL0.png)
 
 Choose MySQL
 
-![Create SQL 2](../assets/posts/vertex/GCP_SQL1.png)
+![Create SQL 2]({{ site.url }}/assets/posts/vertex/GCP_SQL1.png)
 
 Name the instance, give it a root password and configure it and allow public
 connections
 
-![Create SQL 3](../assets/posts/vertex/GCP_SQL2.png)
+![Create SQL 3]({{ site.url }}/assets/posts/vertex/GCP_SQL2.png)
 
 Make sure to only allow SSL connections and create and download
 client certificates
 
-![Create SQL 5](../assets/posts/vertex/GCP_SQL4.png)
+![Create SQL 5]({{ site.url }}/assets/posts/vertex/GCP_SQL4.png)
 
 Add a new user account for ZenML to use
 
-![Create SQL 6](../assets/posts/vertex/GCP_SQL5.png)
+![Create SQL 6]({{ site.url }}/assets/posts/vertex/GCP_SQL5.png)
 
 In the Overview page you can find the public IP address
 
-![Create SQL 7](../assets/posts/vertex/GCP_SQL6.png)
+![Create SQL 7]({{ site.url }}/assets/posts/vertex/GCP_SQL6.png)
 
 For the creation of the [ZenML Metadata Store](#zenml-metadata-store) you
 will need the following data:
@@ -220,11 +220,11 @@ will need the following data:
 Search `cloud storage` or use this
 [link](https://console.cloud.google.com/storage/).
 
-![Create Storage 1](../assets/posts/vertex/GCP_Storage0.png)
+![Create Storage 1]({{ site.url }}/assets/posts/vertex/GCP_Storage0.png)
 
 Once the bucket is created, you can find the storage URI as follows.
 
-![Create Storage 2](../assets/posts/vertex/GCP_Storage1.png)
+![Create Storage 2]({{ site.url }}/assets/posts/vertex/GCP_Storage1.png)
 
 For the creation of the [ZenML Artifact Store](#zenml-artifact-store) you
 will need the following data:
@@ -236,12 +236,12 @@ will need the following data:
 Search `container registry` or use this 
 [link](https://console.cloud.google.com/marketplace/product/google/containerregistry.googleapis.com).
 
-![Enable Container Registry 0](../assets/posts/vertex/GCP_GCR0.png)
+![Enable Container Registry 0]({{ site.url }}/assets/posts/vertex/GCP_GCR0.png)
 
 You can find your container registry host (`<registry_host>`) under settings of
 your projects' container registry
 
-![Enable Container Registry 1](../assets/posts/vertex/GCP_GCR1.png)
+![Enable Container Registry 1]({{ site.url }}/assets/posts/vertex/GCP_GCR1.png)
 
 For the creation of the [ZenML Container Registry](#zenml-container-registry) you
 will need the following data:
@@ -255,7 +255,7 @@ being configurable for each different project that you might want to run.
 * Search `secret manager` or use this 
 [link](https://console.cloud.google.com/marketplace/product/google/secretmanager.googleapis.com)
 
-![Enable Secret_Manager 1](../assets/posts/vertex/GCP_SM0.png)
+![Enable Secret_Manager 1]({{ site.url }}/assets/posts/vertex/GCP_SM0.png)
 
 You won't need to do anything else here. The Secret Manager will be uniquely
 identifiable by the `<gcp_project_id>` .
@@ -265,7 +265,7 @@ identifiable by the `<gcp_project_id>` .
 Search `vertex ai` or use this 
 [link](https://console.cloud.google.com/vertex-ai).
 
-![Enable Vertex AI 1](../assets/posts/vertex/GCP_Vertex0.png)
+![Enable Vertex AI 1]({{ site.url }}/assets/posts/vertex/GCP_Vertex0.png)
 
 Make sure you choose the appropriate region for your location. You will need
 to remember this location for the [ZenML Orchestrator](#zenml-orchestrator).
@@ -280,30 +280,30 @@ Start by searching for `IAM` in the search bar or use this link:
 `https://console.cloud.google.com/iam-admin`. Here you will need to create a
 new Service Account.
 
-![Enable Service Account 1](../assets/posts/vertex/GCP_Service0.png)
+![Enable Service Account 1]({{ site.url }}/assets/posts/vertex/GCP_Service0.png)
 
 First off you'll need to name the service account. Make sure to give it a
 clear name and description.
 
-![Enable Service Account 2](../assets/posts/vertex/GCP_Service1.png)
+![Enable Service Account 2]({{ site.url }}/assets/posts/vertex/GCP_Service1.png)
 
 This service account will need to have the roles of:
 `Vertex AI Custom Code Service Agent`, `Vertex AI Service Agent`, `Container Registry Service Agent` and
 `Secret Manager Admin` (for some reason the `Secret Manager Secret Accessor`
 role is not enough here).
 
-![Enable Service Account 3](../assets/posts/vertex/GCP_Service2.png)
+![Enable Service Account 3]({{ site.url }}/assets/posts/vertex/GCP_Service2.png)
 
 Finally, you need to make sure your own account will have the right to `run-as`
 this service account. It probably also makes sense to give yourself the right to
 manage this service account to perform changes later on.
 
-![Enable Service Account 4](../assets/posts/vertex/GCP_Service3.png)
+![Enable Service Account 4]({{ site.url }}/assets/posts/vertex/GCP_Service3.png)
 
 Finally, you can now find your new service account in the `IAM` tab. You'll need
 the Principal when creating your [ZenML Orchestrator](#zenml-orchestrator).
 
-![Enable Service Account 4](../assets/posts/vertex/GCP_Service4.png)
+![Enable Service Account 4]({{ site.url }}/assets/posts/vertex/GCP_Service4.png)
 
 ## Setting up the ZenML Stack
 
@@ -425,7 +425,7 @@ pipeline in the correct order. You will see a printout in your terminal
 that will take you into the Vertex AI UI where you'll be able to observe live, 
 as your pipeline get executed. It should look a little bit like this:
 
-![Running Pipeline](../assets/posts/vertex/vertex_ai_ui.png)
+![Running Pipeline]({{ site.url }}/assets/posts/vertex/vertex_ai_ui.png)
 
 ## Cleanup 
 
@@ -434,7 +434,7 @@ resources into one separate project. Simply navigate to the
 [Cloud Resource Manager](https://console.cloud.google.com/cloud-resource-manager)
 and delete your project:
 
-![Running Pipeline](../assets/posts/vertex/GCP_Delete0.png)
+![Running Pipeline]({{ site.url }}/assets/posts/vertex/GCP_Delete0.png)
 
 
 ## Conclusion

@@ -20,7 +20,7 @@ These frameworks are commonly referred to when thinking through how an organizat
 
 [Microsoft's model](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/mlops/mlops-maturity-model) is the most fine-grained in terms of how it distinguishes progress through the levels. It outlines five separate levels (starting at zero) that can be used to understand the extent of MLOps adoption and maturity in an organization.
 
-![Microsoft's MLOps Maturity Framework](../assets/posts/mlops-maturity-models/microsoft-framework.png)
+![Microsoft's MLOps Maturity Framework]({{ site.url }}/assets/posts/mlops-maturity-models/microsoft-framework.png)
 
 Google's level 0 corresponds to that of Microsoft, where everything is manual and there is no automation anywhere. Not only are processes script-driven and manual, but the teams involved in working no the various parts of developing or deploying a model are siloed from each other. After models are 'deployed', there is no way of checking how that model is doing or using some kind of feedback loop to catch errors or to roll back if needed.
 
@@ -40,11 +40,11 @@ To Google, MLOps is therefore about how agile you can be when you’re going thr
 
 Unfortunately, the leap from the fully manual level to level 1 ("ML Pipeline Automation") is a pretty sizeable one. This makes the Google framework harder to use as a diagnostic tool, since in many ways you either are doing MLOps or you aren't; there isn't much in the way of transitional steps between the two.
 
-![Google's Level One](../assets/posts/mlops-maturity-models/google-level-one.png)
+![Google's Level One]({{ site.url }}/assets/posts/mlops-maturity-models/google-level-one.png)
 
 Level 1 focuses on the automation of the whole machine learning workflow and work cycle for a single pipeline. At this level, everything is completely automated, including the provision for retraining the entire pipeline when needed, full validation across data, code and models and so on.
 
-![Google's Level Two](../assets/posts/mlops-maturity-models/google-level-two.png)
+![Google's Level Two]({{ site.url }}/assets/posts/mlops-maturity-models/google-level-two.png)
 
 Level 2 takes this one step further, abstracting another level higher and includes automation for many pipelines. It's quite similar to level one, just with the ability to handle many models being trained, deployed and handled at the same time.
 

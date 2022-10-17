@@ -24,7 +24,7 @@ In the latest release we added the concept of visualizations as a first-class ci
 
 We use the built-in FacetStatisticsVisualizer using the [Facets Overview](https://pypi.org/project/facets-overview/) integration. [Facets](https://pair-code.github.io/facets/) is an awesome project that helps users visualize large amounts of data in a coherent way.
 
-| ![Here's what the statistics visualizer looks like](../assets/posts/release_0_5_3/stats.gif) |
+| ![Here's what the statistics visualizer looks like]({{ site.url }}/assets/posts/release_0_5_3/stats.gif) |
 |:--:|
 | *Here's what the statistics visualizer looks like* |
 

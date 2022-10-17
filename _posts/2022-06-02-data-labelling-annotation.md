@@ -32,7 +32,7 @@ Perhaps most importantly, the wide availability of some pretty great starting po
 
 ## When and where to do your labeling
 
-![When and where to label your data](../assets/posts/labeling/labeling-when.png)
+![When and where to label your data]({{ site.url }}/assets/posts/labeling/labeling-when.png)
 
 Labeling isn't a static practice but rather something you probably will want to be doing throughout. There are some places where it makes a lot of sense to plan to do some labeling:
 

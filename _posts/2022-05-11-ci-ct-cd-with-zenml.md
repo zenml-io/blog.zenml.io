@@ -36,7 +36,7 @@ Based on all this we can identify CI/CD for ML systems as consisting of the foll
 - **CD**: Automate delivering and packaging of custom systems and deploy them when certain criterion in production is fulfilled.
 - **CT**: new process and practices which deals with automating training of ML models.
 
-![CI/CD for ML Systems](../assets/posts/ci-ct-cd-with-zenml/ci-cd-for-ml-systems.gif)
+![CI/CD for ML Systems]({{ site.url }}/assets/posts/ci-ct-cd-with-zenml/ci-cd-for-ml-systems.gif)
 
 # How ZenML enables CI/CT/CD
 
@@ -56,7 +56,7 @@ Model Deployers integrate with external tools, services or platforms responsible
 
 [MLFlow](https://mlflow.org/docs/latest/models.html#deploy-mlflow-models) and [Seldon Core](https://github.com/SeldonIO/seldon-core) are two examples of Model Deployers already provided by ZenML as an integration, with other Model Deployers to follow. All users have to do is run pipelines with the appropriate and easy-to-use configuration, and models get deployed instantly.
 
-![Seldon Model Deployer](../assets/posts/ci-ct-cd-with-zenml/seldon-model-deployer.gif)
+![Seldon Model Deployer]({{ site.url }}/assets/posts/ci-ct-cd-with-zenml/seldon-model-deployer.gif)
 
 To achieve this end, model deployers play three major roles as stack components:
 
@@ -161,13 +161,13 @@ To achieve this end, model deployers play three major roles as stack components:
     
     And with the ZenML CLI we can interact with list of served models, start, stop or delete deployments that the active model deployer is responsible for.
         
-    ![Use the ZenML CLI to interact with your served models](../assets/posts/ci-ct-cd-with-zenml/served-models-cli.png)
+    ![Use the ZenML CLI to interact with your served models]({{ site.url }}/assets/posts/ci-ct-cd-with-zenml/served-models-cli.png)
     
 ## How we built a CT/CD customer satisfaction ML system with ZenML
 
 The e-commerce sector is rapidly evolving as internet accessibility increases in different parts of the world. As a result, the demand for online shopping has grown. Businesses want to know how satisfied their customers are with their products and services to make better decisions. Machine learning plays a significant role in various aspects of business like sales prediction, customer segmentation, product recommendation, customer satisfaction and so on. In this example, we have built a model that can predict customer satisfaction based on data provided by customers. We use ZenML's MLflow integration to [track the model's performance](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking) and [to deploy the model](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment) for online prediction. Finally, we deploy and interact with a web application that consumes a deployed model with [Streamlit](https://streamlit.io/).
 
-![Steps in the ZenML continuous deployment pipeline ](/assets/posts/customer-satisfaction/trainingandif.png)
+![Steps in the ZenML continuous deployment pipeline ]({{ site.url }}/assets/posts/customer-satisfaction/trainingandif.png)
 <p align="center">
   See the full project code <a href="https://github.com/zenml-io/zenfiles/tree/main/customer-satisfaction">in our ZenFiles</a>
 </p>
@@ -229,7 +229,7 @@ service.predict(...)  # Predict on incoming data from the application
 ```
 This project comes with a live demo built with [Streamlit](https://streamlit.io/) which you can find [here](https://share.streamlit.io/ayush714/customer-satisfaction/main).
 
-![DemoApp](/assets/posts/customer-satisfaction/screenshotofweb.png)
+![DemoApp]({{ site.url }}/assets/posts/customer-satisfaction/screenshotofweb.png)
 
 The app on the live demo simulates what happens when predicting the customer satisfaction score for a given customer. You can input the features of the product listed below and get the customer satisfaction score.
 

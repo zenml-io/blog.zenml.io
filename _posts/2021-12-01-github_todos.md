@@ -21,7 +21,7 @@ reading through some code existing code you notice that there's a nicer way to
 write it, or maybe a potential edge case isn't handled. But where to go from
 here? Write a todo comment and let your future self handle it of course!
 
-![Problems for future me](../assets/posts/github_todos/todo_meme.jpg)
+![Problems for future me]({{ site.url }}/assets/posts/github_todos/todo_meme.jpg)
 
 While this might not be the optimal solution, I still regularly use todo
 comments if the fix is too complicated to implement right away as I find it can
@@ -40,7 +40,7 @@ integrations in the Jira marketplace but couldn't find an existing solution with
 similar features, so we decided to implement a GitHub Action that helps us track
 todos automatically.
 
-![TODO](../assets/posts/github_todos/github_action.png)
+![TODO]({{ site.url }}/assets/posts/github_todos/github_action.png)
 
 ## GitHub Actions to the rescue
 

@@ -51,89 +51,89 @@ If you don't have an Azure account yet, go to [https://azure.microsoft.com/en-gb
 [Resource groups](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups) are a concept in Azure that allows us to bundle different resources that share a similar lifecycle. We'll create a new resource group for this tutorial so we'll be able to differentiate them from other resources in our account and easily delete them at the end.
 
 Go to [the Azure portal](https://portal.azure.com/#home), click the hamburger button in the top left to open up the portal menu. Then, hover over the `Resource groups` section until a popup appears and click on the `+ Create` button:
-![Resource group step 1](../assets/posts/github-actions-orchestrator/resource_group_0.png)
+![Resource group step 1]({{ site.url }}/assets/posts/github-actions-orchestrator/resource_group_0.png)
 Select a region and enter a name for your resource group before clicking on `Review + create`:
-![Resource group step 2](../assets/posts/github-actions-orchestrator/resource_group_1.png)
+![Resource group step 2]({{ site.url }}/assets/posts/github-actions-orchestrator/resource_group_1.png)
 Verify that all the information is correct and click on `Create`:
-![Resource group step 3](../assets/posts/github-actions-orchestrator/resource_group_2.png)
+![Resource group step 3]({{ site.url }}/assets/posts/github-actions-orchestrator/resource_group_2.png)
 
 ### Create a storage account
 
 An [Azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) is a grouping of Azure data storage objects which also provides a namespace and authentication options to access them. We'll need a storage account to hold the blob storage container we'll create in the next step.
 
 Open up the portal menu again, but this time hover over the `Storage accounts` section and click on the `+ Create` button in the popup once it appears: 
-![Storage account step 1](../assets/posts/github-actions-orchestrator/storage_account_0.png)
+![Storage account step 1]({{ site.url }}/assets/posts/github-actions-orchestrator/storage_account_0.png)
 
 Select your previously created **resource group**, a **region** and a **globally unique name** and then click on `Review + create`:
 
-![Storage account step 2](../assets/posts/github-actions-orchestrator/storage_account_1.png)
+![Storage account step 2]({{ site.url }}/assets/posts/github-actions-orchestrator/storage_account_1.png)
 
 Make sure that all the values are correct and click on `Create`:
 
-![Storage account step 3](../assets/posts/github-actions-orchestrator/storage_account_2.png)
+![Storage account step 3]({{ site.url }}/assets/posts/github-actions-orchestrator/storage_account_2.png)
 
 Wait until the deployment is finished and click on `Go to resource` to open up your newly created storage account:
 
-![Storage account step 4](../assets/posts/github-actions-orchestrator/storage_account_3.png)
+![Storage account step 4]({{ site.url }}/assets/posts/github-actions-orchestrator/storage_account_3.png)
 
 In the left menu, select `Access keys`:
 
-![Storage account step 5](../assets/posts/github-actions-orchestrator/storage_account_4.png)
+![Storage account step 5]({{ site.url }}/assets/posts/github-actions-orchestrator/storage_account_4.png)
 
 Click on `Show keys`, and once the keys are visible, note down the **storage account name** and the value of the **Key** field of either key1 or key2.
 We're going to use them for the `<STORAGE_ACCOUNT_NAME>` and `<STORAGE_ACCOUNT_KEY>` placeholders later.
 
-![Storage account step 6](../assets/posts/github-actions-orchestrator/storage_account_5.png)
+![Storage account step 6]({{ site.url }}/assets/posts/github-actions-orchestrator/storage_account_5.png)
 
 ### Create an Azure Blob Storage Container
 
 Next, we're going to create an [Azure Blob Storage Container](https://docs.microsoft.com/en-us/azure/storage/blobs/). It will be used by ZenML to store the output artifacts of all our pipeline steps.
 To do so, select `Containers` in the Data storage section of the storage account:
 
-![Blob storage container step 1](../assets/posts/github-actions-orchestrator/container_0.png)
+![Blob storage container step 1]({{ site.url }}/assets/posts/github-actions-orchestrator/container_0.png)
 
 Then click the `+ Container` button on the top to create a new container:
 
-![Blob storage container step 2](../assets/posts/github-actions-orchestrator/container_1.png)
+![Blob storage container step 2]({{ site.url }}/assets/posts/github-actions-orchestrator/container_1.png)
 
 Choose a name for the container and note it down. We're going to use it later for the `<BLOB_STORAGE_CONTAINER_NAME>` placeholder. Then create the container by clicking the `Create` button.
 
-![Blob storage container step 3](../assets/posts/github-actions-orchestrator/container_2.png)
+![Blob storage container step 3]({{ site.url }}/assets/posts/github-actions-orchestrator/container_2.png)
 ### Set up a MySQL database
 
 Now let's set up a managed MySQL database. This will act as ZenML's metadata store and store metadata regarding our pipeline runs which will enable features like caching and establish a consistent lineage between our pipeline steps.
 
 Open up the portal menu and click on `+ Create a resource`:
 
-![MySQL database step 1](../assets/posts/github-actions-orchestrator/mysql_0.png)
+![MySQL database step 1]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_0.png)
 
 Search for `Azure Database for MySQL` and once found click on `Create`:
 
-![MySQL database step 2](../assets/posts/github-actions-orchestrator/mysql_1.png)
+![MySQL database step 2]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_1.png)
 
 Make sure you select `Flexible server` and then continue by clicking the `Create` button:
 
-![MySQL database step 3](../assets/posts/github-actions-orchestrator/mysql_2.png)
+![MySQL database step 3]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_2.png)
 
 Select a **resource group** and **region** and fill in values for the **server name** as well as **admin username** and **password**. Note down the username and password you chose as we're going to need them later for the `<MYSQL_USERNAME>` and `<MYSQL_PASSWORD>` placeholders. Then click on `Next: Networking`:
 
-![MySQL database step 4](../assets/posts/github-actions-orchestrator/mysql_3.png)
+![MySQL database step 4]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_3.png)
 
 Now click on `Add 0.0.0.0 - 255.255.255.255` to allow access from all public IPs. This is necessary so the machines running our GitHub Actions can access this database. It will still require username, password as well as a SSL certificate to authenticate.
 
-![MySQL database step 5](../assets/posts/github-actions-orchestrator/mysql_4.png)
+![MySQL database step 5]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_4.png)
 
 In the opened up popup, click on `Continue`:
 
-![MySQL database step 6](../assets/posts/github-actions-orchestrator/mysql_5.png)
+![MySQL database step 6]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_5.png)
 
 Now click on `Review + create`:
 
-![MySQL database step 7](../assets/posts/github-actions-orchestrator/mysql_6.png)
+![MySQL database step 7]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_6.png)
 
 Verify the configuration and click the `Create` button:
 
-![MySQL database step 8](../assets/posts/github-actions-orchestrator/mysql_7.png)
+![MySQL database step 8]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_7.png)
 
 Now we'll have to wait until the deployment is finished (this might take ~15 minutes).
 
@@ -141,19 +141,19 @@ Now we'll have to wait until the deployment is finished (this might take ~15 min
 
 Once the deployment is finished, click on `Go to resource`:
 
-![MySQL database step 9](../assets/posts/github-actions-orchestrator/mysql_8.png)
+![MySQL database step 9]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_8.png)
 
 On the overview page of your MySQL server resource, note down the server name in the top right. We'll use it later for the `<MYSQL_SERVER_NAME>` placeholder.
 
-![MySQL database step 10](../assets/posts/github-actions-orchestrator/mysql_9.png)
+![MySQL database step 10]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_9.png)
 
 Then click on `Networking` in the left menu:
 
-![MySQL database step 11](../assets/posts/github-actions-orchestrator/mysql_10.png)
+![MySQL database step 11]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_10.png)
 
 To finish up the Azure setup, click on `Download SSL Certificate` on the top. Make sure to note down the path to the certificate file which we'll use for the `<PATH_TO_SSL_CERTIFICATE>` placeholder in a later step.
 
-![MySQL database step 12](../assets/posts/github-actions-orchestrator/mysql_11.png)
+![MySQL database step 12]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_11.png)
 
 
 ## GitHub Setup
@@ -163,25 +163,25 @@ Next up, we'll need to create a [GitHub Personal Access Token](https://docs.gith
 
 1. Go to [https://github.com](https://github.com), click on your profile image in the top right corner and select `Settings`:
 
-    ![PAT step 1](../assets/posts/github-actions-orchestrator/pat_0.png)
+    ![PAT step 1]({{ site.url }}/assets/posts/github-actions-orchestrator/pat_0.png)
 
 2. Scroll to the bottom and click on `Developer Settings` on the left side:
 
-    ![PAT step 2](../assets/posts/github-actions-orchestrator/pat_1.png)
+    ![PAT step 2]({{ site.url }}/assets/posts/github-actions-orchestrator/pat_1.png)
 
 3. Select `Personal access tokens` and click on `Generate new token`:
 
-    ![PAT step 3](../assets/posts/github-actions-orchestrator/pat_2.png)
+    ![PAT step 3]({{ site.url }}/assets/posts/github-actions-orchestrator/pat_2.png)
 
-    ![PAT step 4](../assets/posts/github-actions-orchestrator/pat_3.png)
+    ![PAT step 4]({{ site.url }}/assets/posts/github-actions-orchestrator/pat_3.png)
 
 4. Give your token a descriptive name for future reference and select the `repo` and `write:packages` scopes:
 
-    ![PAT step 5](../assets/posts/github-actions-orchestrator/pat_4.png)
+    ![PAT step 5]({{ site.url }}/assets/posts/github-actions-orchestrator/pat_4.png)
 
 5. Scroll to the bottom and click on `Generate token`. This will bring you to a page that allows you to copy your newly generated token:
 
-    ![PAT step 6](../assets/posts/github-actions-orchestrator/pat_5.png)
+    ![PAT step 6]({{ site.url }}/assets/posts/github-actions-orchestrator/pat_5.png)
 
 Now that we've got our token, let's store it in an environment variable for future steps. We'll also store our GitHub username that this token was created for. Replace the `<PLACEHOLDERS>` in the following command and run it:
 ```bash
@@ -216,11 +216,11 @@ Let's get going:
 1. Go to [https://github.com/zenml-io/github-actions-orchestrator-tutorial](https://github.com/zenml-io/github-actions-orchestrator-tutorial)
 2. Click on `Fork` in the top right:
 
-    ![Fork step 1](../assets/posts/github-actions-orchestrator/fork_0.png)
+    ![Fork step 1]({{ site.url }}/assets/posts/github-actions-orchestrator/fork_0.png)
 
 3. Click on `Create fork`:
 
-    ![Fork step 2](../assets/posts/github-actions-orchestrator/fork_1.png)
+    ![Fork step 2]({{ site.url }}/assets/posts/github-actions-orchestrator/fork_1.png)
 
 4. Clone the repository to your local machine:
     ```bash
@@ -348,15 +348,15 @@ our GitHub Actions are allowed to pull the Docker image that ZenML just pushed.
 1. Wait until the python script has finished running so the Docker image is pushed to GitHub.
 2. Head to `https://github.com/users/<GITHUB_USERNAME>/packages/container/package/zenml-github-actions` (replace `<GITHUB_USERNAME>` with your GitHub username) and select `Package settings` on the right side:
     
-    ![Package permissions step 1](../assets/posts/github-actions-orchestrator/package_permissions_0.png)
+    ![Package permissions step 1]({{ site.url }}/assets/posts/github-actions-orchestrator/package_permissions_0.png)
 
 3. In the `Manage Actions access` section, click on `Add Repository`:
     
-    ![Package permissions step 2](../assets/posts/github-actions-orchestrator/package_permissions_1.png)
+    ![Package permissions step 2]({{ site.url }}/assets/posts/github-actions-orchestrator/package_permissions_1.png)
 
 4. Search for your forked repository `github-actions-orchestrator-tutorial` and give it read permissions. Your package settings should then look like this:
 
-    ![Package permissions step 3](../assets/posts/github-actions-orchestrator/package_permissions_2.png)
+    ![Package permissions step 3]({{ site.url }}/assets/posts/github-actions-orchestrator/package_permissions_2.png)
 
 Done! Now all that's left to do is commit and push the workflow file:
 ```bash
@@ -367,9 +367,9 @@ git push
 
 If we now check out the GitHub Actions for our repository here `https://github.com/<GITHUB_USERNAME>/github-actions-orchestrator-tutorial/actions` we should see our pipeline running! 🎉
 
-![Running pipeline](../assets/posts/github-actions-orchestrator/success_0.png)
+![Running pipeline]({{ site.url }}/assets/posts/github-actions-orchestrator/success_0.png)
 
-![Finished pipeline](../assets/posts/github-actions-orchestrator/success_1.png)
+![Finished pipeline]({{ site.url }}/assets/posts/github-actions-orchestrator/success_1.png)
 
 ## Automate the committing and pushing
 
@@ -384,15 +384,15 @@ After this update, calling `python run.py` should automatically build and push a
 
 Once we're done experimenting, let's delete all the resources we created on Azure so we don't waste any compute/money. As we've bundled it all in one resource group, this step is very easy. Go [the Azure portal](https://portal.azure.com/#home) and select your resource group in the list of resources:
 
-![Cleanup step 1](../assets/posts/github-actions-orchestrator/cleanup_0.png)
+![Cleanup step 1]({{ site.url }}/assets/posts/github-actions-orchestrator/cleanup_0.png)
 
 Next click on `Delete resource group` on the top:
 
-![Cleanup step 2](../assets/posts/github-actions-orchestrator/cleanup_1.png)
+![Cleanup step 2]({{ site.url }}/assets/posts/github-actions-orchestrator/cleanup_1.png)
 
 In the popup on the right side, type the resource group name and click `Delete`:
 
-![Cleanup step 3](../assets/posts/github-actions-orchestrator/cleanup_2.png)
+![Cleanup step 3]({{ site.url }}/assets/posts/github-actions-orchestrator/cleanup_2.png)
 
 This will take a few minutes, but after it's finished all the resources we created should be gone.
 

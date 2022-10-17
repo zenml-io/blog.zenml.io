@@ -18,7 +18,7 @@ The items that follow are what I consider to be low-hanging fruit for any CLI th
 
 ## 1. All the Emojis!
 
-![Some of the emojis available to you in `rich`](../assets/posts/richify-your-cli/emoji-sampler.png)
+![Some of the emojis available to you in `rich`]({{ site.url }}/assets/posts/richify-your-cli/emoji-sampler.png)
 
 Let's cover the important one first 😉: `rich` offers full support for emojis in your CLI interfaces. I'm being slightly flippant here, but only slightly. You may be familiar with emojis as used in chat apps such as the winking face above, but there are hundreds of other, potentially more useful, emojis that you might want to use.
 
@@ -28,7 +28,7 @@ You can view a list of all the supported emojis by running `python -m rich.emoji
 
 ## 2. Markdown parsing
 
-![Paging through markdown info about an example](../assets/posts/richify-your-cli/info-cli.gif)
+![Paging through markdown info about an example]({{ site.url }}/assets/posts/richify-your-cli/info-cli.gif)
 
 Our CLI allows users to view information about [the examples we provide](https://blog.zenml.io/examples-cli/) to showcase how ZenML works (and how it can be used). Each example already contains a markdown `README.md` file with information about the implementation, installation instructions and so on.
 
@@ -38,7 +38,7 @@ Now, with `rich`, we have a way to parse the raw markdown markup and display it 
 
 ## 3. Beautiful, Informative Tracebacks
 
-![A rich traceback](../assets/posts/richify-your-cli/rich-traceback.png)
+![A rich traceback]({{ site.url }}/assets/posts/richify-your-cli/rich-traceback.png)
 
 Errors are often where the rubber meets the road in software projects. When you're developing you want those error messages to be informative, clear and not some kind of runic message you have to decode.
 
@@ -53,7 +53,7 @@ install(show_locals=True)
 
 ## 4. `print()` gets a makeover
 
-![A rich printout](../assets/posts/richify-your-cli/rich-print.png)
+![A rich printout]({{ site.url }}/assets/posts/richify-your-cli/rich-print.png)
 
 Just like tracebacks in `rich` are better than the Python defaults, you also have [a better `print`](https://rich.readthedocs.io/en/stable/introduction.html#quick-start). Standard data structures like dicts and lists are converted to strings, syntax highlighting is added and they are clearly presented. (Python already has a tool for this in the standard library — `pprint` — though it doesn't have the colors.)
 
@@ -61,7 +61,7 @@ We don't actually use any `print` statements in our CLI tool, but through `rich`
 
 ## 5. Inspect your objects
 
-![Using rich's inspect](../assets/posts/richify-your-cli/rich-inspect.png)
+![Using rich's inspect]({{ site.url }}/assets/posts/richify-your-cli/rich-inspect.png)
 
 I have been using [`inspect`](https://rich.readthedocs.io/en/stable/introduction.html#rich-inspect) from `rich` ever since I first saw it used. Like most things in this post, it is a convenience function that offers a better default to standard Python ways of inspecting an object. See the above illustration of what the output looks like. If you pass in `methods=True` you'll see what methods can be called on that object. If you pass in `docs=True` you can read the docstrings for that object.
 
@@ -69,7 +69,7 @@ Like `print`, we don't currently use this anywhere in the outputs of our CLI too
 
 ## 6. Status Spinners
 
-![A gif showing the new spinner for `init`](../assets/posts/richify-your-cli/status-spinner.gif)
+![A gif showing the new spinner for `init`]({{ site.url }}/assets/posts/richify-your-cli/status-spinner.gif)
 
 When someone tells you that they upgraded their CLI tool, spinners are what you expect. Who doesn't love a good spinner!? We added only one (when you call `zenml init`) but probably will use more as our tool grows.
 
@@ -82,7 +82,7 @@ with console.status("Doing really important work…"):
 
 ## 7. Progress Bars
 
-![A gif showing the zenml integration install process](../assets/posts/richify-your-cli/progress-bar.gif)
+![A gif showing the zenml integration install process]({{ site.url }}/assets/posts/richify-your-cli/progress-bar.gif)
 
 The next step up from a spinner is [a progress bar](https://rich.readthedocs.io/en/stable/progress.html). You get these with `rich` and they're easy to set up:
 
@@ -98,7 +98,7 @@ Not only do these progress bars offer a visual indication of your progress, `ric
 
 ## 8. Tables
 
-![Our new rich tables](../assets/posts/richify-your-cli/rich-tables.jpg)
+![Our new rich tables]({{ site.url }}/assets/posts/richify-your-cli/rich-tables.jpg)
 
 We use all sorts of [tables](https://rich.readthedocs.io/en/stable/tables.html) in our CLI. We display the integrations you have installed, the stacks you have set up, the examples available for download and so on.
 

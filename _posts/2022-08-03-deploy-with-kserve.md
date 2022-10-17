@@ -12,7 +12,7 @@ image:
   path: /assets/posts/kserve-deployment/kserve-pipeline.jpg
 ---
 
-![kserve](/assets/posts/kserve-deployment/kserve-pipeline.gif)
+![kserve]({{ site.url }}/assets/posts/kserve-deployment/kserve-pipeline.gif)
 
 
 The latest [ZenML 0.12.0 release](https://blog.zenml.io/zero-twelve-zero-release/) extends the model deployment story in ZenML by supporting now KServe additionally to already existing MLFlow and Seldon Core, the new integration will allow users to serve, manage and interact with models within the KServe platform, while it also takes care of preparing PyTorch, TensorFlow, and Scikit-Learn models to the right format that Runtimes servers expect. 
@@ -60,11 +60,11 @@ To start we will create a new GCP project for the express purpose of having all 
 
 Click on the project select box
 
-![GCP Projects page](../assets/posts/kserve-deployment/gcp-projects-page.png)
+![GCP Projects page]({{ site.url }}/assets/posts/kserve-deployment/gcp-projects-page.png)
 
 Create a `New Project`
 
-![Create new project](../assets/posts/kserve-deployment/gcp-create-project.png)
+![Create new project]({{ site.url }}/assets/posts/kserve-deployment/gcp-create-project.png)
 
 Give the project a name and click on create. The process may take some time. Once that is done, you will need to enable billing for the project so that you can set up all required resources.
 
@@ -72,21 +72,21 @@ Give the project a name and click on create. The process may take some time. Onc
 
 We’ll start off by creating a GKE Standard cluster
 
-![Create GCP project](../assets/posts/kserve-deployment/gcp-create-project.png)
+![Create GCP project]({{ site.url }}/assets/posts/kserve-deployment/gcp-create-project.png)
 
 Optionally, give the cluster a name, otherwise, leave everything as it is since this cluster is only for demo purposes.
 
-![Create GKE standard cluster](../assets/posts/kserve-deployment/create-gke-cluster.png)
+![Create GKE standard cluster]({{ site.url }}/assets/posts/kserve-deployment/create-gke-cluster.png)
 
 ### Cloud Storage
 
 Search `cloud storage` or use this [link](https://console.cloud.google.com/storage/).
 
-![Create GS bucket](../assets/posts/kserve-deployment/gcp-create-bucket.png)
+![Create GS bucket]({{ site.url }}/assets/posts/kserve-deployment/gcp-create-bucket.png)
 
 Once the bucket is created, you can find the storage URI as follows:
 
-![GS bucket URI](../assets/posts/kserve-deployment/gcp-bucket-uri.png)
+![GS bucket URI]({{ site.url }}/assets/posts/kserve-deployment/gcp-bucket-uri.png)
 
 For the creation of the [ZenML Artifact Store](https://blog.zenml.io/vertex-ai-blog/#zenml-artifact-store) you will need the following data:
 
@@ -98,31 +98,31 @@ With all the resources set up, you will now need to set up a service account wit
 
 Start by searching for `IAM` in the search bar or use this link: `https://console.cloud.google.com/iam-admin`. Here you will need to create a new Service Account.
 
-![Create Service account](../assets/posts/kserve-deployment/gcp-create-serviceaccount.png)
+![Create Service account]({{ site.url }}/assets/posts/kserve-deployment/gcp-create-serviceaccount.png)
 
 First off you’ll need to name the service account. Make sure to give it a clear name and description.
 
-![Service account details](../assets/posts/kserve-deployment/serviceaccount-details.png)
+![Service account details]({{ site.url }}/assets/posts/kserve-deployment/serviceaccount-details.png)
 
 This service account will need to have the role of `Storage Admin`.
 
-![Service account roles](../assets/posts/kserve-deployment/serviceaccount-roles.png)
+![Service account roles]({{ site.url }}/assets/posts/kserve-deployment/serviceaccount-roles.png)
 
 Finally, you need to make sure your own account will have the right to `run-as` this service account. It probably also makes sense to give yourself the right to manage this service account to perform changes later on.
 
-![Service account user access](../assets/posts/kserve-deployment/serviceaccount-user-access.png)
+![Service account user access]({{ site.url }}/assets/posts/kserve-deployment/serviceaccount-user-access.png)
 
 Finally, you can now find your new service account in the `IAM` tab. You’ll need the Principal when creating your ZenML Model Deployer.
 
-![Select service account](../assets/posts/kserve-deployment/select-serviceaccount.png)
+![Select service account]({{ site.url }}/assets/posts/kserve-deployment/select-serviceaccount.png)
 
 We will have to download the service account key; we are going to use this key to grant KServe access to the (ZenML) artifact store.
 
-![Service account keys](../assets/posts/kserve-deployment/serviceaccount-keys.png)
+![Service account keys]({{ site.url }}/assets/posts/kserve-deployment/serviceaccount-keys.png)
 
 We can click on the service account then keys and create a new key and select JSON format.
 
-![create a service account key](../assets/posts/kserve-deployment/create-serviceaccount-key.png)
+![create a service account key]({{ site.url }}/assets/posts/kserve-deployment/create-serviceaccount-key.png)
 
 ## Setting Up KServe and ZenML Stack
 
@@ -134,11 +134,11 @@ The first thing we need to do is to connect to the GKE cluster. (As mentioned ab
 
 We can get the right command to connect to the cluster on the Kubernetes Engine page.
 
-![GKE connect](../assets/posts/kserve-deployment/connect-gke-cluster.png)
+![GKE connect]({{ site.url }}/assets/posts/kserve-deployment/connect-gke-cluster.png)
 
 Now we can copy the command and run it from our terminal
 
-![GKE connection command](../assets/posts/kserve-deployment/gke-connect-command.png)
+![GKE connection command]({{ site.url }}/assets/posts/kserve-deployment/gke-connect-command.png)
 
 1. Install Istio:
 
@@ -407,7 +407,7 @@ Once that is done we will see that we have two finished running pipelines, with 
 
 Cleanup should be fairly straightforward now, so long as you bundled all of these resources into one separate project. Simply navigate to the [Cloud Resource Manager](https://console.cloud.google.com/cloud-resource-manager) and delete your project:
 
-![Delete GCP Project](../assets/posts/kserve-deployment/delete-gcp-project.png)
+![Delete GCP Project]({{ site.url }}/assets/posts/kserve-deployment/delete-gcp-project.png)
 
 ## Conclusion
 

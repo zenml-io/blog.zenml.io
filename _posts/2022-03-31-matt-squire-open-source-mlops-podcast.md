@@ -24,7 +24,7 @@ In this clip, Matt talks through the components that would make up his ideal MLO
 
 Matt has also recently been writing a series of blog posts about ZenML over at the Fuzzy Labs Blog:
 
-![Fuzzy Lab blog posts](../assets/posts/matt-squire/blogposts.png)
+![Fuzzy Lab blog posts]({{ site.url }}/assets/posts/matt-squire/blogposts.png)
 
 Only the [first](https://www.fuzzylabs.ai/blog-post/the-road-to-zen-part-1-getting-started-pipelines) [two](https://www.fuzzylabs.ai/blog-post/the-road-to-zen-running-experiments) parts are out, but they cover the basics of running ZenML pipelines as well as experiment tracking with MLflow. Towards the end of the first one, Matt lays out the case for why a tool like ZenML is important in a machine learning workflow:
 

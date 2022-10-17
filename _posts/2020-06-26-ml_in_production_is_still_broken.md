@@ -39,15 +39,15 @@ This is, in large, due to technical debt. However, it won’t solve the source o
 On the path from first explorations to production systems projects accumulate technical debt. Let's take a look at an exemplary progression. Each step of your maturing project incentivizes you to solve a different problem.
 
 1. You start out explorative in jupyter notebooks, and eventually end up with a first well-performing model.
-   ![](/assets/posts/ml-is-broken/1.svg)
+   ![]({{ site.url }}/assets/posts/ml-is-broken/1.svg)
 2. That model needs to be deployed, right? To preserve speed and keep complexity low you wrap it in a Flask-based API container, pass on the API endpoint, done.
-   ![](/assets/posts/ml-is-broken/2.svg)
+   ![]({{ site.url }}/assets/posts/ml-is-broken/2.svg)
 3. But wait, actually your data will change over time. You’re not just doing a one-of batch inference, so your deployment needs to be connected to the newly incoming data. New data might change in its structure, so you’re also adding monitoring for input and output distributions.
-   ![](/assets/posts/ml-is-broken/3.svg)
+   ![]({{ site.url }}/assets/posts/ml-is-broken/3.svg)
 4. The team, on top of that, will also start to refactor its codebase, because your needs have by far outgrown what you can do in Jupyter Notebooks.
-   ![](/assets/posts/ml-is-broken/4.svg)
+   ![]({{ site.url }}/assets/posts/ml-is-broken/4.svg)
 5. By now you’re also facing the challenge to orchestrate all that preprocessing and training across resources. That beefy VM you were running your code on simply doesn’t cut it anymore.
-   ![](/assets/posts/ml-is-broken/5.svg)
+   ![]({{ site.url }}/assets/posts/ml-is-broken/5.svg)
 
 As you progress you’re further dividing your codebase in more granular functions - splitting and preprocessing is separated, eval becomes semi-automated, your ETLs become standardized, and metadata plays a decisive role for your architecture.
 
@@ -61,7 +61,7 @@ The picture is not as bleak as it was a few years ago. There are solutions poppi
 
 The industry is quickly converging on agreed upon components that are integral to a production ML system. A state-of-the-art high level architectural diagram for a production ML system can be pictured now clearly below:
 
-![](/assets/posts/ml-is-broken/ideal.svg)
+![]({{ site.url }}/assets/posts/ml-is-broken/ideal.svg)
 
 To avoid train-serve drift, ML companies increasingly centralize their data in feature stores. Next to classical database systems (MySQL, Postgres, DynamoDB) and key-value stores ([HiveDB](https://github.com/hivedb)) there are also a number of proprietary systems are entering the market with powerful feature level automations. The people behind [Uber's Michaelangelo](https://eng.uber.com/michelangelo-machine-learning-platform/) now raised $20 million for [Tecton](https://techcrunch.com/2020/04/28/tecton-ai-emerges-from-stealth-with-20m-series-a-to-build-operational-machine-learning-platform/), and [Logical Clocks](https://www.logicalclocks.com/feature-store-lp) is doubling down on their feature store.
 

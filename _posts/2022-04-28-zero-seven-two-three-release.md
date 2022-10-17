@@ -60,7 +60,7 @@ integrations were contributions from the growing ZenML community and we could no
 fashion, [Richard Socher](https://de.wikipedia.org/wiki/Richard_Socher) gave a shoutout to all three companies in his [latest interview with Future by 
 a16z](https://future.a16z.com/a-decade-of-deep-learning-ai-startup/).
 
-![Richard Socher](../assets/posts/release_0_7_2_and_3/richard_socher_shoutout.png)
+![Richard Socher]({{ site.url }}/assets/posts/release_0_7_2_and_3/richard_socher_shoutout.png)
 
 [HuggingFace](https://huggingface.co) models are now supported to be passed through ZenML pipelines 
 [see full example](https://github.com/zenml-io/zenml/tree/main/examples/huggingface). 

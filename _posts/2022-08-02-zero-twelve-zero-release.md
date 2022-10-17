@@ -12,7 +12,7 @@ image:
   path: /assets/posts/release_0_12_0/zero-twelve-zero-release.jpg
 ---
 
-![img](/assets/posts/release_0_12_0/zero-twelve-zero-release.jpg)
+![img]({{ site.url }}/assets/posts/release_0_12_0/zero-twelve-zero-release.jpg)
 
 The 0.12.0 release contains our [KServe](https://github.com/kserve/kserve) integration. KServe opens the door to highly scalable, simple, pluggable production ML serving.
 
@@ -30,7 +30,7 @@ For a detailed look at what's changed, give [our full release notes](https://git
 The spotlight in this release is the ZenML Kserve integration.
 This integration lets you define pipeline steps to scale up your model by serving your ML models on Kubernetes using any of your favorite ML frameworks like TensorFlow, XGBoost, Scikit-Learn, PyTorch from within ZenML!
 
-![KServe](../assets/posts/release_0_12_0/kserve.png)
+![KServe]({{ site.url }}/assets/posts/release_0_12_0/kserve.png)
 
 
 ## 📌 Specify Resources Per Step

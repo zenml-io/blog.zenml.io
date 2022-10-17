@@ -35,7 +35,7 @@ This episode is an introduction to ZenML and its founders, Hamza and myself. We
 talk about our passion, our journey of how we met, what we initially wanted to
 build and how we ended up starting ZenML in the MLOps space.
 
-| ![Adam and Hamza](../assets/posts/podcast-launch/hamza-adam.png) |
+| ![Adam and Hamza]({{ site.url }}/assets/posts/podcast-launch/hamza-adam.png) |
 |:--:|
 | *Adam & Hamza* |
 

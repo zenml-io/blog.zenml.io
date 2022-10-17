@@ -69,14 +69,14 @@ One yaml file defines a workflow that checks out the code, perform linting, unit
 uploading coverage to [codecov](https://codecov.io/) on a matrix of operating systems and Python versions. Here is one such sample 
 of what the workflow used to look like.
 
-![Our original Github Actions](../assets/posts/github-actions/oldActionSample.png)
+![Our original Github Actions]({{ site.url }}/assets/posts/github-actions/oldActionSample.png)
 
 One of the largest problems we ran into was the different dependencies each step needed and the 
 consequential nightmare of unexpected upgrades or downgrades of some low-level packages. This would then lead to some 
 confusing error messages and some very long debugging sessions, at the end of which our reaction was something like 
 this:
 
-![](../assets/posts/github-actions/turboFacepalm.png)
+![]({{ site.url }}/assets/posts/github-actions/turboFacepalm.png)
 
 As you might imagine, the team was growing frustrated with the long testing times and the sporadic errors and a solution
 needed to be found. Here are five changes we implemented to upgrade our CI pipeline.
@@ -88,7 +88,7 @@ with the newest versions of packages that we are integrating with and test regar
 machine. On average the [Poetry](https://python-poetry.org/) installation would take between 10-15 minutes for each cell on the OS-Python Version
 matrix. 
 
-![Time taken by poetry install](../assets/posts/github-actions/dependencies.png)
+![Time taken by poetry install]({{ site.url }}/assets/posts/github-actions/dependencies.png)
 
 Using caching we are able to make this step nearly instantaneous, assuming a cached venv is available. See the *yaml* excerpt
 below to see how caching is done within a Github Actions workflow.
@@ -330,7 +330,7 @@ You may have noticed that there is also a reaction that can be specified `reacti
 than anything. But isn't it the tiny things like this that can take your code from being functional to next level of
 delightful?
 
-![Comment on PR with a rocket-emoji reaction](../assets/posts/github-actions/Rocket.png)
+![Comment on PR with a rocket-emoji reaction]({{ site.url }}/assets/posts/github-actions/Rocket.png)
 
 {% include note.html content="Using 'issue-comment' as a trigger seems to currently be only supported if the workflow with
 this type of trigger has ended up on the default branch of the repo already. As such this feature is not fully tested on
@@ -377,7 +377,7 @@ As of early March 2022 this is the new CI pipeline that we use here at [ZenML](h
 feedback from my colleagues -- fellow engineers -- has been very positive overall. I am sure there will be tweaks, changes and refactorings in the future, but for
 now, this feels Zen. 
 
-![Time taken by poetry install](../assets/posts/github-actions/newGhActions.gif)
+![Time taken by poetry install]({{ site.url }}/assets/posts/github-actions/newGhActions.gif)
 
 Check it out yourself [here](https://github.com/zenml-io/zenml/blob/develop/.github/workflows/ci.yml) and feel free to 
 drop in on [Slack](https://zenml.io/slack-invite/) and let us know if this helped you or if you have tips on how we can 

@@ -35,7 +35,7 @@ which might prove problematic.
 
 ## The Ownership Dilemma
 
-![ML In Production is confusing](../assets/posts/ml-pipelines/confusing-pipelines.png)
+![ML In Production is confusing]({{ site.url }}/assets/posts/ml-pipelines/confusing-pipelines.png)
 
 One question that organizations developing machine learning need to answer is
 **who owns ML pipelines in production**? Is it the data scientist who creates
@@ -132,7 +132,7 @@ level concepts like Metadata Stores , Artifact Stores, and Orchestrators that
 have common interfaces. A ML team can then swap out individual components of
 their pipelines backends and it will ‘just work’.
 
-![Look closer: This isn’t the Hidden Technical Debt Diagram ;-)](../assets/posts/ml-pipelines/zenml-is-the-glue.jpeg){:class="img-responsive"}
+![Look closer: This isn’t the Hidden Technical Debt Diagram ;-)]({{ site.url }}/assets/posts/ml-pipelines/zenml-is-the-glue.jpeg){:class="img-responsive"}
 
 So, if you even want to use [MLFlow](https://mlflow.org/) to track your
 experiments, run the pipeline on [Airflow](https://airflow.apache.org/), and
@@ -170,7 +170,7 @@ the results as they are produced. You can query pipelines in a local Jupyter
 notebook, and materialize it with different pre-made visualizations like
 statistics visualizations and schema anomalies.
 
-![After running pipelines, one can fetch them and see results easily, no matter if run locally or not](../assets/posts/ml-pipelines/zenml-pipeline-post-workflow.png){:class="img-responsive"}
+![After running pipelines, one can fetch them and see results easily, no matter if run locally or not]({{ site.url }}/assets/posts/ml-pipelines/zenml-pipeline-post-workflow.png){:class="img-responsive"}
 
 This is a different approach to pipeline development, and is more representative
 of how a data scientist would like to work in the earlier phases of a project →

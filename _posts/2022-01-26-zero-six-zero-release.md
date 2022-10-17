@@ -43,7 +43,7 @@ ZenML takes care of all aspects related to Whylogs session initialization,
 profile serialization, versioning and persistence and even uploading generated
 profiles to [Whylabs](https://whylabs.ai/).
 
-![Example of the visualizations you can make from Whylogs profiles](../assets/posts/release_0_6_0/whylogs-visualizer.png)
+![Example of the visualizations you can make from Whylogs profiles]({{ site.url }}/assets/posts/release_0_6_0/whylogs-visualizer.png)
 
 With our `WhylogsVisualizer`, as described in
 [the associated example notes](https://github.com/zenml-io/zenml/tree/main/examples/whylogs),

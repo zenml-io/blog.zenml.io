@@ -72,8 +72,8 @@ production. The inference pipeline loads up the latest model from storage, runs
 it on a batch of recently collected data and saves the prediction results in an
 external database or object storage where the application can access them.
 
-![Continuous Training Pipeline](../assets/posts/continuous-deployment/continuous-training.gif)
-![Batch Offline Inference Pipeline](../assets/posts/continuous-deployment/batch-inference.gif)
+![Continuous Training Pipeline]({{ site.url }}/assets/posts/continuous-deployment/continuous-training.gif)
+![Batch Offline Inference Pipeline]({{ site.url }}/assets/posts/continuous-deployment/batch-inference.gif)
 
 However, if your user-facing application relies on real-time predictions made
 on live data and low latency is critical to ensuring a good user experience,
@@ -117,7 +117,7 @@ complications of provisioning and updating model prediction servers with the
 latest available models are seamlessly integrated in the familiar pipeline
 workflow and abstracted away from the user.
 
-![Continuous Deployment Pipeline](../assets/posts/continuous-deployment/continuous-deployment.gif)
+![Continuous Deployment Pipeline]({{ site.url }}/assets/posts/continuous-deployment/continuous-deployment.gif)
 
 The [MLflow Deployment Service example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment)
 showcases the first of several concrete ZenML prediction service integrations to

@@ -22,7 +22,7 @@ Our MLOps Competition runs from October 10 to November 11, 2022. Full details wi
 
 We're also really excited to be able to announce our judging panel for the competition, a stellar cast of ML and MLOps heroes!
 
-![Image showing our judging panel](/assets/posts/competition-launch/Judges.png)
+![Image showing our judging panel]({{ site.url }}/assets/posts/competition-launch/Judges.png)
 
 - [Charles Frye](https://twitter.com/charles_irl), core instructor at the amazing [Full Stack Deep Learning](https://fullstackdeeplearning.com) course
 - [Anthony Goldbloom](https://www.linkedin.com/in/anthonygoldbloom), co-founder and former CEO of [Kaggle](https://www.kaggle.com)

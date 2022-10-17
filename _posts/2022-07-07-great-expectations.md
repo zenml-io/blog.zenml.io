@@ -533,8 +533,8 @@ one pointing to the Expectation Suite generated in the profiling pipeline run,
 the other pointing to the validation results from the data validation pipeline
 run. 
 
-![Data Docs Expectation Suite](../assets/posts/great-expectations/data-docs-expectation-suite.png)
-![Data Docs Validation Results](../assets/posts/great-expectations/data-docs-validation-results.png)
+![Data Docs Expectation Suite]({{ site.url }}/assets/posts/great-expectations/data-docs-expectation-suite.png)
+![Data Docs Validation Results]({{ site.url }}/assets/posts/great-expectations/data-docs-validation-results.png)
 
 ### What Happened Here?
 

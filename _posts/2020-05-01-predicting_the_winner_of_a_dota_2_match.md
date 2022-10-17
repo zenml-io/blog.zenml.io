@@ -43,7 +43,7 @@ The game has a significantly large player base. As I am writing this blog post, 
 players in the game. Additionally, with the emergence of e-sports in the last decade, it has also become
 one of the leading titles in the industry with tournaments for 30+ million dollars.
 
-![the_international_2019](/assets/posts/predicting_winner_dota/dota_scene.jpeg)
+![the_international_2019]({{ site.url }}/assets/posts/predicting_winner_dota/dota_scene.jpeg)
 
 Last year's _The International_, the main event organized by Valve every year, had a prize pool of $34.3 million
 and reached almost [2 million online viewers](https://escharts.com/tournaments/dota2/international-2019)

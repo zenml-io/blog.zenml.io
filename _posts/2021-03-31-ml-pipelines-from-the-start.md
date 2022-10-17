@@ -23,7 +23,7 @@ Going one layer further into how ML propagates through an organization reveals
 the problem in more depth. The graphic below shows an admittedly simplified
 representation of a typical setup for machine learning:
 
-| ![Why it’s hard to reproduce ML models](../assets/posts/pipelines-from-start/1-pipeline-hard-reproduce.png) |
+| ![Why it’s hard to reproduce ML models]({{ site.url }}/assets/posts/pipelines-from-start/1-pipeline-hard-reproduce.png) |
 | :---------------------------------------------------------------------------------------------------------: |
 |                              _Figure 1: Why it’s hard to reproduce ML models_                               |
 
@@ -134,7 +134,7 @@ al.). Pipelines are treated as experiments — meaning they can be compared and
 analyzed directly. Only when it is time to flip over to productionalization, can
 they be converted to classical data pipelines.
 
-| ![ZenML abstract pipelines with familiar language to increase ownership of model deployments](../assets/posts/pipelines-from-start/2-right-abstraction-level.png) |
+| ![ZenML abstract pipelines with familiar language to increase ownership of model deployments]({{ site.url }}/assets/posts/pipelines-from-start/2-right-abstraction-level.png) |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |                              _Figure 2: ZenML abstract pipelines with familiar language to increase ownership of model deployments._                              |
 
@@ -154,7 +154,7 @@ The data scientist can therefore scale-out with different processing backends
 (like Dataflow/Spark) when they are dealing with larger datasets. All in all,
 ZenML is trying to get to the following scenario:
 
-| ![Figure 3: ZenML unifies the ML process.](../assets/posts/pipelines-from-start/3-zenml-unifies.png) |
+| ![Figure 3: ZenML unifies the ML process.]({{ site.url }}/assets/posts/pipelines-from-start/3-zenml-unifies.png) |
 | :--------------------------------------------------------------------------------------------------: |
 |                              _Figure 3: ZenML unifies the ML process._                               |
 

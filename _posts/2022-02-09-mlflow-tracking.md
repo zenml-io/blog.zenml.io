@@ -102,7 +102,7 @@ pipeline runs in the (local) web interface and is probably going to be a
 friendlier way of interacting with and reasoning about your machine learning
 experiments.
 
-![Tracking machine learning training runs with MLFlow](../assets/posts/mlflow-tracking/mlflow-screenshot.png)
+![Tracking machine learning training runs with MLFlow]({{ site.url }}/assets/posts/mlflow-tracking/mlflow-screenshot.png)
 
 You could have used MLflow Tracking in the past, too, but with our latest
 integration updates ZenML handles some of the boilerplate complicated setup that

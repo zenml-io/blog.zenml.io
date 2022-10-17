@@ -36,7 +36,7 @@ detection, [MLFlow](https://mlflow.org/) for tracking our runs and
 [Kubeflow Pipelines](https://www.kubeflow.org/) for the orchestration of
 scheduled repeating pipeline runs.
 
-![](../assets/posts/three-pointer-prediction/evidently+mlflow+discord+kubeflow.png)
+![]({{ site.url }}/assets/posts/three-pointer-prediction/evidently+mlflow+discord+kubeflow.png)
 
 As we have some hardcore NBA fans on the team, the idea of creating a prediction
 bot for NBA matches came up. This idea caught on quickly and our minds started
@@ -89,13 +89,13 @@ to perform the necessary data exploration.
 3. We need to let Evidently do what it does best: analyze data ->
    `Drift Detector Step`
 
-![](../assets/posts/three-pointer-prediction/DriftDetectionPipeline.png "Planned drift detection pipeline")
+![]({{ site.url }}/assets/posts/three-pointer-prediction/DriftDetectionPipeline.png "Planned drift detection pipeline")
 
 With these steps implemented and easily connected within a ZenML pipeline, all
 that is left to do is to run the pipeline and look at the beautiful
 visualization that Evidently offers:
 
-![](../assets/posts/three-pointer-prediction/currys_drift.png "Distribution of three pointers before and after the legendary GSWvsOKC")
+![]({{ site.url }}/assets/posts/three-pointer-prediction/currys_drift.png "Distribution of three pointers before and after the legendary GSWvsOKC")
 
 As you can see here, we were quickly able to go from data and initial question
 to a full-blown pipeline and an answer to our question. It appears that the data
@@ -109,7 +109,7 @@ With the data exploration behind us, let's advance onto the continuous
 pipelines. Within our brainstorming session we came up with a diagram very
 similar to the one below, albeit a bit less organized.
 
-![](../assets/posts/three-pointer-prediction/Training_and_Inference_Pipeline.png "Diagram showing the planned Architecture")
+![]({{ site.url }}/assets/posts/three-pointer-prediction/Training_and_Inference_Pipeline.png "Diagram showing the planned Architecture")
 
 Let us unpack this diagram together. The objective of this ZenHack was for us to
 periodically receive predictions for upcoming NBA matches in our discord
@@ -119,7 +119,7 @@ and a **prediction pipeline**.
 
 ### Training pipeline
 
-![](../assets/posts/three-pointer-prediction/Training_pipeline.png "Diagram showing the planned Architecture")
+![]({{ site.url }}/assets/posts/three-pointer-prediction/Training_pipeline.png "Diagram showing the planned Architecture")
 
 The training pipeline needs to take in historical data for a given timeframe and
 spit out a trained model at the other end. Here is a short description for all
@@ -142,7 +142,7 @@ On the other branch:
 
 ### Prediction Pipeline
 
-![](../assets/posts/three-pointer-prediction/Prediction_pipeline.png "Diagram showing the planned Architecture")
+![]({{ site.url }}/assets/posts/three-pointer-prediction/Prediction_pipeline.png "Diagram showing the planned Architecture")
 
 The prediction pipeline on the other hand needs a schedule for upcoming matches
 as the input and should post our prediction to our Discord chat. To achieve this
@@ -222,7 +222,7 @@ Within our ZenHack we used Kubeflow as the orchestration backend for our
 scheduled training. After some configuration steps (see screenshot below)
 Kubeflow Pipelines runs locally.
 
-![](../assets/posts/three-pointer-prediction/kubeflowstack.png "Excerpt from Jupyter notebook demonstrating
+![]({{ site.url }}/assets/posts/three-pointer-prediction/kubeflowstack.png "Excerpt from Jupyter notebook demonstrating
 how to start with Kubeflow Pipelines")
 
 The Python script that is called in the last line of the screenshot instantiates
@@ -255,7 +255,7 @@ Discord.
 
 Here is the very first prediction posted at 10:39 CET on 30.01.2022:
 
-!["Prediction posted to discord"](../assets/posts/three-pointer-prediction/Prediction.png)
+!["Prediction posted to discord"]({{ site.url }}/assets/posts/three-pointer-prediction/Prediction.png)
 
 And somehow our very first prediction came true. Approximately four and a half
 hours later Orlando Magic concluded their

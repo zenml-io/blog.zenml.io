@@ -12,7 +12,7 @@ image:
   path: /assets/posts/zenml_revamped/Release_0.20.0.jpg
 ---
 
-![Release 0.20.0](/assets/posts/zenml_revamped/Release_0.20.0.jpg)
+![Release 0.20.0]({{ site.url }}/assets/posts/zenml_revamped/Release_0.20.0.jpg)
 
 [ZenML 0.20.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [tens of thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879).
 
@@ -30,7 +30,7 @@ For those who prefer video, we also showcased a demo on our Special Launch Day E
 
 ## 🤖 ZenML is now a server-based application (RIP Metadata Store 🪦)
 
-![Architecture Diagram](/assets/posts/zenml_revamped/architecture_diagram.png)
+![Architecture Diagram]({{ site.url }}/assets/posts/zenml_revamped/architecture_diagram.png)
 
 ZenML can now run as a server that can be accessed via REST API and comes with a dashboard. This server can be deployed in arbitrary environments (local, on-prem, via Docker, on AWS / GCP / Azure / ...) and supports user management, project scoping, and more.
 
@@ -38,11 +38,11 @@ The Metadata Store stack component has been deprecated and is no longer required
 
 The architecture changes for the remote use-case are shown in the diagram below. This was the status quo before:
 
-![ZenML remote metadata before 0.20.0](/assets/posts/zenml_revamped/remote-metadata-pre-0.20.png)
+![ZenML remote metadata before 0.20.0]({{ site.url }}/assets/posts/zenml_revamped/remote-metadata-pre-0.20.png)
 
 And now, with our 0.20.0 release, you can see how things look:
 
-![ZenML remote metadata after 0.20.0](/assets/posts/zenml_revamped/remote-metadata-post-0.20.png)
+![ZenML remote metadata after 0.20.0]({{ site.url }}/assets/posts/zenml_revamped/remote-metadata-post-0.20.png)
 
 Extensive community feedback and our own experience over time had revealed that the metadata store connection was proving a bottleneck. By replacing the metadata store database with a FastAPI application, performance is more secure and easier to use. It will also reduce the likelihood of breaking changes of this scale going forward. 
 
@@ -52,11 +52,11 @@ Getting started with the new server is painless: `zenml up` will handle spinning
 
 Changes on the backend are one thing, but we also added a whole new feature and experience to how you work with ZenML and with your team.
 
-![Dashboard Screenshot](/assets/posts/zenml_revamped/pipelines_dashboard.png)
+![Dashboard Screenshot]({{ site.url }}/assets/posts/zenml_revamped/pipelines_dashboard.png)
 
 Our new dashboard gives you a way to view your pipelines, pipeline runs, stacks and stack components all from within ZenML. We even added a way for you to view the DAG of your steps from within the dashboard:
 
-![DAG visualizer screenshot](/assets/posts/zenml_revamped/dag-visualizer-screenshot.png)
+![DAG visualizer screenshot]({{ site.url }}/assets/posts/zenml_revamped/dag-visualizer-screenshot.png)
 
 The new ZenML Dashboard build files are now bundled as part of all future releases and can be launched directly from within Python. The source code lives in the [ZenML Dashboard repository](https://github.com/zenml-io/zenml-dashboard) which we are also releasing open-source as usual.
 
@@ -66,7 +66,7 @@ One of the benefits of centralizing through the ZenML Server means that not only
 
 You can share your stacks and stack components at creation team  (`zenml stack register mystack ... --share`) or afterwards using `zenml stack share mystack`. In this way, a common setup might look something like this:
 
-![Diagram showing shared cloud stacks](/assets/posts/zenml_revamped/stacks_shared.png)
+![Diagram showing shared cloud stacks]({{ site.url }}/assets/posts/zenml_revamped/stacks_shared.png)
 
 The moment the stack is shared, other users who connect to the server will be able to see the stack and use it as well!
 
@@ -104,7 +104,7 @@ zenml <STACK_COMPONENT> flavor describe
 
 This gives the following output:
 
-![Flavor Describe Usage](/assets/posts/zenml_revamped/flavor_describe.png)
+![Flavor Describe Usage]({{ site.url }}/assets/posts/zenml_revamped/flavor_describe.png)
 
 You can see how it's now clear which properties are required and what types are expected for each flavor you choose for stack component registrations.
 

@@ -32,7 +32,7 @@ Evidently as 'Dashboards'.
 
 ## 1. Drift is inevitable
 
-![](../assets/posts/zenml-loves-evidently/car-drift.gif)
+![]({{ site.url }}/assets/posts/zenml-loves-evidently/car-drift.gif)
 
 If you're working on any kind of machine learning problem that has an ongoing
 training loop that takes in new data, you'll want to guard against drift.
@@ -66,7 +66,7 @@ any machine learning pipeline.
 
 ## 3. Great documentation and visual explanations
 
-![](../assets/posts/zenml-loves-evidently/evidently-blog.png)
+![]({{ site.url }}/assets/posts/zenml-loves-evidently/evidently-blog.png)
 
 Before we started using the tool, we heard about Evidently's amazing
 [documentation](https://docs.evidentlyai.com/) and visual explanations found in
@@ -142,7 +142,7 @@ EvidentlyVisualizer().visualize(evidently_outputs)
 
 And you get an informative set of charts to explore relating to your dataset(s):
 
-![](../assets/posts/zenml-loves-evidently/drift_visualization.png)
+![]({{ site.url }}/assets/posts/zenml-loves-evidently/drift_visualization.png)
 
 If you're running this in Jupyter notebooks it'll display the visualizations
 in-line, and outside it we'll generate a temporary file showing the charts and

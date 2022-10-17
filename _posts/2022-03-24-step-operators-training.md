@@ -22,7 +22,7 @@ _[Subscribe to the ZenML YouTube Channel](https://www.youtube.com/channel/UCi79n
 
 The step operator defers the execution of individual steps in a pipeline to specialized runtime environments that are optimized for Machine Learning workloads. This is helpful when there is a requirement for specialized cloud backends ✨ for different steps. One example could be using powerful GPU instances for training jobs or distributed compute for ingestion streams. 
 
-![ZenML step operators allow training in the cloud](../assets/posts/step-operators-training/zen_in_clouds.gif)
+![ZenML step operators allow training in the cloud]({{ site.url }}/assets/posts/step-operators-training/zen_in_clouds.gif)
 
 # I’m confused 🤔. How is it different from an orchestrator?
 

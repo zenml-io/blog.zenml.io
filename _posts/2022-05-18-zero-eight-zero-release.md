@@ -97,7 +97,7 @@ considerably when interacting with your stacks!
   Doesn't it look beautiful now?
 
 ![Screenshot of how our CLI looks
-now](../assets/posts/release_0_8_0/zenml-cli.png)
+now]({{ site.url }}/assets/posts/release_0_8_0/zenml-cli.png)
 
 ## 🚀 New Integrations
 
@@ -156,7 +156,7 @@ Join our [Slack](https://zenml.io/slack-invite/) to let us know if you have an
 idea for a feature or something you'd like to contribute to the framework.
 
 ![Screenshot of the new hub for our
-roadmap](../assets/posts/release_0_8_0/roadmap.png)
+roadmap]({{ site.url }}/assets/posts/release_0_8_0/roadmap.png)
 
 We're super excited to be able to share [the new home for our
 roadmap](https://zenml.io/roadmap) where you can vote on your favorite upcoming
