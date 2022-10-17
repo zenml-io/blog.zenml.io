@@ -30,7 +30,7 @@ jobs:
 
     - name: Build pages
       run: |
-         bundle exec jekyll build -d blog
+         bundle exec jekyll build -V -t -d blog
 
     - uses: actions/upload-pages-artifact@v1
       with:
