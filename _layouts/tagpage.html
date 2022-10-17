@@ -21,7 +21,7 @@ layout: default-tag
     {% assign tags = site.tags | sort %} {% for tag in tags %}
     <span class="site-tag">
       <a
-        href="/tag/{{ tag | first | slugify }}/"
+        href="{{ site.url }}/tag/{{ tag | first | slugify }}/"
         style="font-size: {{ tag | last | size  |  times: 8 | plus: 70  }}%"
       >
         <code class="highligher-rouge"

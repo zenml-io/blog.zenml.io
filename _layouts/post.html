@@ -18,7 +18,7 @@
           >
             {% assign all_tags = page.tags | sort %} {% for tag in all_tags %}
             {% capture tag_name %}{{ tag }}{% endcapture %}
-            <a href="/tag/{{ tag_name }}"
+            <a href="{{ site.url }}/tag/{{ tag_name }}"
               ><code class="highligher-rouge"
                 ><nobr
                   ><button
