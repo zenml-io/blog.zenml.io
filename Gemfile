@@ -9,7 +9,7 @@ ruby RUBY_VERSION
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "3.7.2"
+# gem "jekyll", "3.7.2"
 gem 'jekyll-seo-tag'
 # gem 'bigdecimal'
 gem "jekyll-compress-images"
