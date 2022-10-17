@@ -5,7 +5,7 @@ name: Publish
 on:
   push:
     branches:
-      - nothing
+      - main
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -17,18 +17,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6.8' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
+        
     - name: Install dependencies
       run: |
         sudo apt install git curl autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
-        
-    - name: Install Ruby
-      run: |
-        curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
-        echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-        echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-        source ~/.bashrc
-        rbenv install 2.6.8
-        rbenv global 2.6.8
         
     - name: Bundle install
       run: |
@@ -37,3 +32,7 @@ jobs:
     - name: Build pages
       run: |
          bundle exec jekyll build
+
+    - uses: actions/upload-pages-artifact
+
+    - uses: actions/deploy-pages
