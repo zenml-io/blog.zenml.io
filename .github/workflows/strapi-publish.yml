@@ -1,6 +1,6 @@
 name: Strapi Publish
 
-on: push
+on: nothing
 
 jobs:
   strapi_publish:
