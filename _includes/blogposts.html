@@ -9,26 +9,26 @@
     <div class="container">
       <div class="row py-3 px-lg-5">
         <div class="col-3 p-3 align-self-center d-none d-md-block">
-          <a href="{{ post.url }}">
+          <a href="{{ site.url }}/{{ post.url }}">
             {% if post.thumbnail %}
-            <img src="{{ post.thumbnail }}" class="img-fluid" />
+            <img src="{{ site.url }}/{{ post.thumbnail }}" class="img-fluid" />
             {% else %}
             <img src="{{ site.url }}/assets/thumbnail.svg" class="img-fluid" />
             {% endif %}
           </a>
         </div>
         <div class="col-9">
-          <a href="{{ post.url }}"
+          <a href="{{ site.url }}/{{ post.url }}"
             ><h3 class="pb-0 mb-0 font-weight-lighter">{{ post.title }}</h3></a
           >
-          <a href="{{ post.url }}" class="text-muted"
+          <a href="{{ site.url }}/{{ post.url }}" class="text-muted"
             ><p class="mono text-sm">
               {{ post.publish_date }} - {{ post.author }} {{ crosspost }} - {%
               include read_time.html content=post.content %} read
             </p></a
           >
           <hr />
-          <a href="{{ post.url }}" class="anthrazit">{{ post.description }}</a>
+          <a href="{{ site.url }}/{{ post.url }}" class="anthrazit">{{ post.description }}</a>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
           <ul class="pagination justify-content-center">
             {% if paginator.previous_page %}
             <li class="page-item">
-              <a class="page-link" href="{{ paginator.previous_page_path }}"
+              <a class="page-link" href="{{ site.url }}/{{ paginator.previous_page_path }}"
                 >Previous</a
               >
             </li>
@@ -53,7 +53,7 @@
               </li>
               {% for page in (2..paginator.total_pages) %}
                 <li class="page-item">
-                  <a class="page-link" href="/page/{{ page }}/index.html">{{ page }}</a>
+                  <a class="page-link" href="{{ site.url }}/page/{{ page }}/index.html">{{ page }}</a>
                 </li>
               {% endfor %}
 
@@ -73,7 +73,7 @@
                 </li>
               {% elsif paginator.page != page and page != 1 %}
                 <li class="page-item">
-                  <a class="page-link" href="{{ paginator.page_path | replace: paginator.page, page }}">{{ page }}</a>
+                  <a class="page-link" href="{{ site.url }}/{{ paginator.page_path | replace: paginator.page, page }}">{{ page }}</a>
                 </li>
               {% endif %}
               {% endfor %}
@@ -81,7 +81,7 @@
 
             {% if paginator.next_page %}
             <li class="page-item">
-              <a class="page-link" href="{{ paginator.next_page_path }}">Next</a>
+              <a class="page-link" href="{{ site.url }}/{{ paginator.next_page_path }}">Next</a>
             </li>
             {% endif %}
           </ul>
