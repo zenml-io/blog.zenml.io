@@ -23,16 +23,16 @@ layout: all-posts
           </a>
         </div>
         <div class="col-9">
-          <a href="{{ post.url }}"
+          <a href="{{ site.url }}/{{ post.url }}"
             ><h3 class="pb-0 mb-0 font-weight-lighter">{{ post.title }}</h3></a
           >
-          <a href="{{ post.url }}" class="text-muted"
+          <a href="{{ site.url }}/{{ post.url }}" class="text-muted"
             ><p class="mono text-sm">
               {{ post.publish_date }} - {{ post.author }} {{ crosspost }}
             </p></a
           >
           <hr />
-          <a href="{{ post.url }}" class="anthrazit">{{ post.description }}</a>
+          <a href="{{ site.url }}/{{ post.url }}" class="anthrazit">{{ post.description }}</a>
         </div>
       </div>
     </div>

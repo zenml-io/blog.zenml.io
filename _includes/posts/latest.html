@@ -12,7 +12,7 @@ sorted | where_exp:"post","post.url != page.url" %}
       {% endif %} {% endcapture %}
       <div class="col-md-4 border-right p-3 align-self-stretch">
         <div>
-          <a href="{{ post.url }}">
+          <a href="{{ site.url }}/{{ post.url }}">
             {% if post.thumbnail %}
             <img src="{{ post.thumbnail }}" class="img-fluid" />
             {% else %}
@@ -24,14 +24,14 @@ sorted | where_exp:"post","post.url != page.url" %}
           </a>
         </div>
         <div>
-          <a href="{{ post.url }}" class="text-muted pt-5 pb-0 mb-0"
+          <a href="{{ site.url }}/{{ post.url }}" class="text-muted pt-5 pb-0 mb-0"
             ><p class="mono text-sm pb-0 mb-0">
               {{ post.publish_date }} - {{ post.author }} {{ crosspost }}
             </p></a
           >
         </div>
         <div>
-          <a href="{{ post.url }}"><h4>{{ post.title }}</h4></a>
+          <a href="{{ site.url }}/{{ post.url }}"><h4>{{ post.title }}</h4></a>
         </div>
       </div>
       {% endfor %}
