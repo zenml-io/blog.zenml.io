@@ -12,7 +12,7 @@ sorted | where_exp:"post","post.url != page.url" %}
       {% endif %} {% endcapture %}
       <div class="col-md-4 border-right p-3 align-self-stretch">
         <div>
-          <a href="{{ site.url }}/{{ site.url }}/{{ post.url }}">
+          <a href="{{ site.url }}/{{ post.url }}">
             {% if post.thumbnail %}
             <img src="{{ site.url }}/{{ post.thumbnail }}" class="img-fluid" />
             {% else %}
