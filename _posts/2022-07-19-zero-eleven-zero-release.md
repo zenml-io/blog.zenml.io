@@ -54,7 +54,7 @@ We fixed a bug that was preventing users who upgraded to 0.10.0 from pulling new
 The latest release includes several smaller features and updates to existing functionality:
 
 - We fixed a bug in our Feast integration that prevented registration as a stack component.
-- We updated the structure of all our examples so that they now conform to all of [the 'best practices' guidance](https://docs.zenml.io/v/docs/resources/best-practices) we've made available in our docs.
+- We updated the structure of all our examples so that they now conform to all of [the 'best practices' guidance](https://docs.zenml.io/v/0.11.0/resources/best-practices) we've made available in our docs.
 - We fixed some module and path resolution errors that were happening for Windows users.
 - We have combined all the MetadataStore contexts to speed up calls to the metadata store. This speeds up pipeline execution.
 - We now prevent providing extra attributes when initializing stack components. This could have led to unexpected behaviors so we now just prevent this behavior.
