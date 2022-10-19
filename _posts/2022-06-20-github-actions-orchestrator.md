@@ -23,7 +23,7 @@ Most technical decisions come with various kinds of tradeoffs, and it's worth ta
 Let's start with the downsides:
 
 - You don't have as much flexibility as with a tool like Kubeflow in terms of specifying exactly what kinds of hardware are used to run your steps.
-- The orchestrator itself runs on the hardware that GitHub Actions provides (generously and [for free](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/)). This isn't the fastest or or most performant infrastructure setup, and it generally is much slower than even your local CPU machine. There are also memory and storage constraints to [the machines they provide](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources) as GitHub Actions runners.
+- The orchestrator itself runs on the hardware that GitHub Actions provides (generously and [for free](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/)). This isn't the fastest or most performant infrastructure setup, and it generally is much slower than even your local CPU machine. There are also memory and storage constraints to [the machines they provide](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources) as GitHub Actions runners.
 - GitHub offers no guarantees about when your actions will be executed; at peak times you might be waiting a while before the hardware is allocated and provisioned to run. If you are planning on running ZenML pipelines on a schedule (every ten minutes, for example) then this might not work as expected.
 
 So what's the point, then? These are indeed some serious downsides. Firstly and foremostly, there's the cost: running your pipelines on GitHub Actions is **free**. If you're interested in running your pipelines in the cloud on serverless infrastructure, there's probably no easier way to get started than to try out this orchestrator.
@@ -241,14 +241,14 @@ pip install zenml
 zenml integration install github azure sklearn
 ```
 
-We're also going to initialize a [ZenML repository](https://docs.zenml.io/developer-guide/repo-and-config#the-zenml-repository) to indicate which directories and files ZenML should include
+We're also going to initialize a [ZenML repository](https://docs.zenml.io/v/0.10.0/developer-guide/repo-and-config#the-zenml-repository) to indicate which directories and files ZenML should include
 when building Docker images:
 ```bash
 zenml init
 ```
 ### Registering the stack
 
-A [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors) consists of many components which all play a role in making your ML pipeline run in a smooth and reproducible manner. Let's register all the components that we're going to need for this tutorial!
+A [ZenML stack](https://docs.zenml.io/v/0.10.0/advanced-guide/stacks-components-flavors) consists of many components which all play a role in making your ML pipeline run in a smooth and reproducible manner. Let's register all the components that we're going to need for this tutorial!
 
 * The **orchestrator** is responsible for running all the steps in your machine learning pipeline. In this tutorial we'll use the new GitHub Actions orchestrator which, as the name already indicates, uses GitHub Actions workflows to orchestrate your ZenML pipeline. Registering the orchestrator is as simple as running the following command:
     ```bash
@@ -271,7 +271,7 @@ A [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors) 
         --repository=github-actions-orchestrator-tutorial
     ```
 
-* **Metadata stores** keep track of all the metadata associated with pipeline runs. They enable [ZenML's caching functionality](https://docs.zenml.io/developer-guide/caching) and allow us to query the parameters and inputs/outputs of steps of past pipeline runs. We'll register the MySQL database we created before with the following command (after replacing `<MYSQL_SERVER_NAME>` with the value we [noted down](#set-up-a-mysql-database)):
+* **Metadata stores** keep track of all the metadata associated with pipeline runs. They enable [ZenML's caching functionality](https://docs.zenml.io/v/0.10.0/developer-guide/caching) and allow us to query the parameters and inputs/outputs of steps of past pipeline runs. We'll register the MySQL database we created before with the following command (after replacing `<MYSQL_SERVER_NAME>` with the value we [noted down](#set-up-a-mysql-database)):
     ```bash
     zenml metadata-store register azure_metadata_store \
         --flavor=mysql \
@@ -292,7 +292,7 @@ A [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors) 
 These are all the components that we're going to use for this tutorial, but ZenML offers additional components like:
 * **Step operators** to run individual steps of your pipeline in specialized environments.
 * **Model deployers** to deploy your trained machine learning model in production.
-* And many more. Check out [our docs](https://docs.zenml.io/advanced-guide/stacks-components-flavors#stacks) for a full list of available components.
+* And many more. Check out [our docs](https://docs.zenml.io/v/0.10.0/advanced-guide/stacks-components-flavors#stacks) for a full list of available components.
 
 With all components registered, we can now create and activate our ZenML stack. This makes sure ZenML knows which components to use when we're going to run our pipeline later.
 ```bash
