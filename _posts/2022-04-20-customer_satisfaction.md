@@ -132,7 +132,7 @@ If you want to run this Streamlit app in your local system, you can run the foll
 streamlit run streamlit_app.py
 ```
 
-![Steps in the ZenML continuous deployment pipeline ](/assets/posts/customer-satisfaction/trainingandif.png)
+![Steps in the ZenML continuous deployment pipeline ]({{ site.url }}/assets/posts/customer-satisfaction/trainingandif.png)
 
 ## Results
 
@@ -147,13 +147,13 @@ I framed our problem as a regression problem and used the "LightGBM" model as ou
 
 The following figure shows how important each feature is in the model that contributes to the target variable or predicting customer satisfaction rate.
 
-![FeatureImportance](/assets/posts/customer-satisfaction/feature_importance_gain.png)
+![FeatureImportance]({{ site.url }}/assets/posts/customer-satisfaction/feature_importance_gain.png)
 
 ## 🕹 Demo App
 
 We also made a live demo of this project using [Streamlit](https://streamlit.io/) which you can find [here](https://share.streamlit.io/ayush714/customer-satisfaction/main). It takes some input features for the product and predicts the customer satisfaction rate using our trained models.
 
-![DemoApp](/assets/posts/customer-satisfaction/screenshotofweb.png)
+![DemoApp]({{ site.url }}/assets/posts/customer-satisfaction/screenshotofweb.png)
 
 This app simulates what happens when predicting the customer satisfaction score for a given customer. You can input the features of the product listed below and get the customer satisfaction score.
 

@@ -163,7 +163,7 @@ I defined three such columns which I was interested in seeing sliced metrics acr
 
 ### The full config YAML
 
-There are some things that I have intentionally skipped in the config for the sake of brevity. For reference, you can find the pipeline configuration ready to download [here](/assets/posts/train_30_mil_few_lines_yaml/citibike.yaml). I tried to annotate it with comments for clearer explanation. For further clarity, there is also always the [docs](https://docs.zenml.io/docs/developer_guide/pipelines_yaml) to refer to. Most notably, the `default` key is perhaps important to look at as it defines the pre-processing steps that we took to normalize the data.
+There are some things that I have intentionally skipped in the config for the sake of brevity. For reference, you can find the pipeline configuration ready to download [here]({{ site.url }}/assets/posts/train_30_mil_few_lines_yaml/citibike.yaml). I tried to annotate it with comments for clearer explanation. For further clarity, there is also always the [docs](https://docs.zenml.io/docs/developer_guide/pipelines_yaml) to refer to. Most notably, the `default` key is perhaps important to look at as it defines the pre-processing steps that we took to normalize the data.
 
 ## **Run the pipeline**
 
@@ -215,14 +215,14 @@ This opens up a pre-configured Jupyter notebook where I can view [Tensorboard](h
 
 Tensorboard will show tensorboard things: The model graph, the train and eval loss etc. Here's how mine looks like:
 
-![tensorboardlogs](/assets/posts/train_30_mil_few_lines_yaml/tensorboard_log.png)
+![tensorboardlogs]({{ site.url }}/assets/posts/train_30_mil_few_lines_yaml/tensorboard_log.png)
 
 That is pretty cool - Maybe we overtrained it at the 180,000th step as it took a jump in the loss, but the `mae` seems to keep decreasing. We're close to 9.6 `mae` overall, which isn't bad at all for this baseline model.
 
 How about a deeper dive into the metrics? That's where TFMA comes into play.
 TFMA will show the metrics defined in the YAML and add the ability to slice the metric across the columns defined in the `evaluator` key. E.g. Lets slice it across `birth_year` to see how well it did for each year.
 
-![tfma_logs](/assets/posts/train_30_mil_few_lines_yaml/tfma_1.png)
+![tfma_logs]({{ site.url }}/assets/posts/train_30_mil_few_lines_yaml/tfma_1.png)
 
 _Note: If you want to replicate this step just add `birth_year` in the generated notebook code where its specified._
 

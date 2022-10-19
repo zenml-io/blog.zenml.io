@@ -20,7 +20,7 @@ Behind the scenes we gave our integration testing suite a massive upgrade, fixed
 
 ## ☁️ Run Your Steps on Sagemaker and AzureML
 
-![Running your steps on cloud hardware provided by Sagemaker and AzureML](../assets/posts/release_0_6_3/zen-in-the-clouds.gif)
+![Running your steps on cloud hardware provided by Sagemaker and AzureML]({{ site.url }}/assets/posts/release_0_6_3/zen-in-the-clouds.gif)
 
 As your pipelines become more mature and complex, you might want to use specialized hardware for certain steps of your pipeline. A clear example is wanting to run your training step on GPU machines that get spun up automagically without you having to worry too much about that deployment. Amazon's [Sagemaker](https://aws.amazon.com/sagemaker) and Microsoft's [AzureML](https://ml.azure.com/) both offer custom hardware on which you can run your steps.
 
@@ -38,7 +38,7 @@ We'll be publishing more about this use case in the coming days, so stay tuned f
 
 ## 📊 visualize Your Model History with Tensorboard
 
-![Visualizing model history with Tensorboard](../assets/posts/release_0_6_3/tensorboard.png)
+![Visualizing model history with Tensorboard]({{ site.url }}/assets/posts/release_0_6_3/tensorboard.png)
 
 [Tensorboard](https://www.tensorflow.org/tensorboard/) is a way to visualize your machine learning models and training outputs. In this release we added a custom visualization for Kubeflow which allows you to see the entire history of a model logged by a step.
 

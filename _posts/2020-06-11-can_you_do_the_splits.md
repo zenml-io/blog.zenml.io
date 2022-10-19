@@ -45,7 +45,7 @@ consists of
 3 numerical features, 1 categorical feature, and 1 timestamp feature. Below this
 is visualized:
 
-![1_whole_dataset](../assets/posts/splits/1_whole_dataset.png)
+![1_whole_dataset]({{ site.url }}/assets/posts/splits/1_whole_dataset.png)
 
 This type of dataset is common across many use-cases and industries in machine
 learning. A concrete example can be multiple timestreams transmitted from
@@ -74,7 +74,11 @@ The most straightforward transformation we can do is to represent the data per
 categorical class (in our running example, visualize the data per machine). This
 would yield the following result:
 
+<<<<<<< HEAD
 ![2_grouped](../assets/posts/splits/2_grouped.png)
+=======
+![2_grouped]({{ site.url }}/assets/posts/splits/2_grouped.png)
+>>>>>>> main
 
 ## The Horizontal Split
 
@@ -86,7 +90,11 @@ if trained on `class_1`, `class_2` and `class_3` timestreams how would the model
 fair on `class_4` and `class_5` timestreams. Here is a visualization of that
 split:
 
+<<<<<<< HEAD
 ![3_horizontal](../assets/posts/splits/3_horizontal.png)
+=======
+![3_horizontal]({{ site.url }}/assets/posts/splits/3_horizontal.png)
+>>>>>>> main
 
 I call this the `Horizontal` split due to the nature of the cut line in the above
 visualization. This split can be easily achieved in most ML libraries by simply
@@ -109,7 +117,11 @@ hypothesis, in this case, would be:
 `How would a ML model trained on historical data per group generalize to future data for each group?`.
 This question might be answered by the so-called `Vertical` split:
 
+<<<<<<< HEAD
 ![4_vertical](../assets/posts/splits/4_vertical.png)
+=======
+![4_vertical]({{ site.url }}/assets/posts/splits/4_vertical.png)
+>>>>>>> main
 
 A successful training with this split would showcase that the model can
 pick up patterns across timestreams it has already seen, and make accurate
@@ -132,7 +144,11 @@ model that would generalize under both constraints of the `Horizontal` and the
 `How would a model trained on historical data for SOME groups generalize to future data of these groups AND all data from other groups?`.
 A visualization of this `Hybrid` split would look like this:
 
+<<<<<<< HEAD
 ![5_hybrid](../assets/posts/splits/5_hybrid.png)
+=======
+![5_hybrid]({{ site.url }}/assets/posts/splits/5_hybrid.png)
+>>>>>>> main
 
 Naturally, if model training is successful, this model would surely be more
 robust than the others in a real-world setting. It would have displayed evidence

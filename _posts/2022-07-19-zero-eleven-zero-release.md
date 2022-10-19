@@ -22,7 +22,7 @@ Beyond this, as usual we included a number of smaller bugfixes and documentation
 
 We've been hard at work on our new stack component and integration with [Label Studio](https://labelstud.io/), the first of our data annotation tools. 🥳
 
-![Object Detection with ZenML and Label Studio](../assets/posts/release_0_11_0/label-studio-integration.png)
+![Object Detection with ZenML and Label Studio]({{ site.url }}/assets/posts/release_0_11_0/label-studio-integration.png)
 
 Annotators are a stack component that enables the use of data annotation as part of your ZenML stack and pipelines. You can use the associated CLI command to launch annotation, configure your datasets and get stats on how many labeled tasks you have ready for use.
 

@@ -20,7 +20,7 @@ These frameworks are commonly referred to when thinking through how an organizat
 
 [Microsoft's model](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/mlops/mlops-maturity-model) is the most fine-grained in terms of how it distinguishes progress through the levels. It outlines five separate levels (starting at zero) that can be used to understand the extent of MLOps adoption and maturity in an organization.
 
-![Microsoft's MLOps Maturity Framework](../assets/posts/mlops-maturity-models/microsoft-framework.png)
+![Microsoft's MLOps Maturity Framework]({{ site.url }}/assets/posts/mlops-maturity-models/microsoft-framework.png)
 
 Google's level 0 corresponds to that of Microsoft, where everything is manual and there is no automation anywhere. Not only are processes script-driven and manual, but the teams involved in working no the various parts of developing or deploying a model are siloed from each other. After models are 'deployed', there is no way of checking how that model is doing or using some kind of feedback loop to catch errors or to roll back if needed.
 
@@ -40,11 +40,11 @@ To Google, MLOps is therefore about how agile you can be when you’re going thr
 
 Unfortunately, the leap from the fully manual level to level 1 ("ML Pipeline Automation") is a pretty sizeable one. This makes the Google framework harder to use as a diagnostic tool, since in many ways you either are doing MLOps or you aren't; there isn't much in the way of transitional steps between the two.
 
-![Google's Level One](../assets/posts/mlops-maturity-models/google-level-one.png)
+![Google's Level One]({{ site.url }}/assets/posts/mlops-maturity-models/google-level-one.png)
 
 Level 1 focuses on the automation of the whole machine learning workflow and work cycle for a single pipeline. At this level, everything is completely automated, including the provision for retraining the entire pipeline when needed, full validation across data, code and models and so on.
 
-![Google's Level Two](../assets/posts/mlops-maturity-models/google-level-two.png)
+![Google's Level Two]({{ site.url }}/assets/posts/mlops-maturity-models/google-level-two.png)
 
 Level 2 takes this one step further, abstracting another level higher and includes automation for many pipelines. It's quite similar to level one, just with the ability to handle many models being trained, deployed and handled at the same time.
 
@@ -56,7 +56,16 @@ A slightly different framing of how machine learning is treated within an organi
 
 The frameworks explained above are useful diagnostic references, but ultimately they are more descriptive than prescriptive: it's hard to know how to move through the levels if you're starting from the beginning. As with many other software engineering best practices, or with DevOps, adoption needn't simply be a boolean state. There are ways to incrementally work on improving how you iterate through the machine learning workflow from experimentation all the way to deployment (and responsively continue to iterate from there).
 
-As [one guide](https://mlops.community/start-manually-then-automate/) to the adoption of MLOps practices states, there may also be some value in starting your process by working on all the steps manually. You'll likely learn a lot in the process about all the implicit assumptions that your process contains, just as taking a few hours to manually label your training data can be of tremendous benefit when it comes to understanding how to best approach training your model.
+As [one guide](https://mlops.community/start-manually-then-automate/) to the
+adoption of MLOps practices states, there may also be some value in starting
+your process by working on all the steps manually. You'll likely learn a lot in
+the process about all the implicit assumptions that your process contains, just
+as taking a few hours to manually label your training data can be of tremendous
+benefit when it comes to understanding how to best approach training your model.
+(For an overview of some of the tools and options available to you as you
+navigate this landscape, checkout [this useful
+post](https://nimblebox.ai/blog/mlops-tools) by Thinesh Sridar over on [the
+NimbleBox blog](https://nimblebox.ai/blog).)
 
 One option to thinking through your process might be to look at [the MLOps Stack Template](https://ml-ops.org/content/state-of-mlops), a chart that encourages you to list the various technical decisions being made. The same author(s) have proposed an alternative version to the well-known '[Business Model Canvas](https://www.amazon.com/Business-Model-Generation-Visionaries-Challengers/dp/0470876417/ref=sr_1_1?sprefix=business%2Bmodel%252Caps%252C244&sr=8-1&keywords=business%2Bmodel&crid=I74Q44GZ7CSH&tag=soumet-20&qid=1646587883)' in the form of an '[MLOps Stack Canvas](https://ml-ops.org/content/mlops-stack-canvas)' which you can use as a framework to think through these incremental improvements.
 
@@ -68,4 +77,10 @@ Even though we didn't start building ZenML with these frameworks and levels in m
 
 Our framework allows you to use the tools which you know and love, connecting them together in a way that covers the whole workflow from experimentation to deployment and onwards with continuous monitoring and training.
 
-If you're interested in learning more about ZenML, how we help you bring all your tools together and grow in MLOps maturity, visit [our Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/) and [test out our showcase examples](https://blog.zenml.io/examples-cli/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
+If you're interested in learning more about ZenML, how we help you bring all
+your tools together and grow in MLOps maturity, visit [our Github
+page](https://github.com/zenml-io/zenml), [read our
+docs](https://docs.zenml.io/) and [test out our showcase
+examples](https://blog.zenml.io/examples-cli/). If you have questions or want to
+talk through your specific use case, feel free to [reach out to us on
+Slack](https://zenml.io/slack-invite/)!

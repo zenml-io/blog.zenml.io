@@ -26,7 +26,7 @@ We are super excited about our integration of Kubeflow Pipelines into ZenML. Wit
 spin up your very own local deployment of Kubeflow Pipelines. With Kubeflow Pipelines running on your machine or even 
 in the cloud, you change where to run your code with just a few commands. 
 
-![Kubeflow pipeline](../assets/posts/release_0_5_5/kubeflow.png)
+![Kubeflow pipeline]({{ site.url }}/assets/posts/release_0_5_5/kubeflow.png)
 
 ## CLI Support for Integrations
 
@@ -54,7 +54,7 @@ pipeline_instance = TrainingPipeline(
     datasource=PandasDatasource(),
     splitter=SklearnSplitter(),
     analyzer=PandasAnalyzer(),
-    preprocesser=SklearnStandardScaler(),
+    preprocessor=SklearnStandardScaler(),
     trainer=TensorflowBinaryClassifier(),
     evaluator=SklearnEvaluator()
 ).with_config('pipeline_config.yaml')

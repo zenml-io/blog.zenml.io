@@ -78,7 +78,7 @@ The structure of the bot is an ETL pipeline—though a very simple one—where
 multiple data sources fan-in to a single collector and these collected data then
 fan-out again to multiple destinations.
 
-![KPI Collector Flow Chart](/assets/posts/aggregating-kpis/flowchart.png)
+![KPI Collector Flow Chart]({{ site.url }}/assets/posts/aggregating-kpis/flowchart.png)
 
 By structuring our code in an extensible fashion, it becomes easy to extend the
 sources or destinations:
@@ -146,7 +146,7 @@ supporting basic markup for rich formatting). To coincide with our bi-weekly
 sprint reviews and just to kick off the week, Monday's run posts a message
 looking like this:
 
-![Weekly Discord message](/assets/posts/aggregating-kpis/discord-hook.png)
+![Weekly Discord message]({{ site.url }}/assets/posts/aggregating-kpis/discord-hook.png)
 
 This includes looking back to the historic data in Notion from 14 days ago and
 comparing how the metrics have shrunk or (hopefully!) grown compared to the last

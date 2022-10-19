@@ -114,7 +114,7 @@ We can see we have several steps that make up this pipeline, so let's break it d
 
 - `train`: We initialize the agent, the game environment, and the TensorBoard writer. Then, we train the agent until the game is over.
 
-![Steps in the ZenML pipeline used to train the agent](/assets/posts/pipeline_steps.PNG)
+![Steps in the ZenML pipeline used to train the agent]({{ site.url }}/assets/posts/pipeline_steps.PNG)
 
 Now that you're familiar with the individual steps of the pipeline, let's take a look about how we run it with the `run_pipeline` function. We import every step from the steps folder. We can see that the pipeline is a function that takes various functions as arguments.
 

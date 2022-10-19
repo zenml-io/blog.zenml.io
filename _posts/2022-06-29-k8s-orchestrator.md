@@ -58,7 +58,7 @@ the Kubernetes-native components will run.
 The following figure shows an overview of the MLOps stack we will build
 throughout this tutorial:
 
-![Kubernetes AWS Stack Overview](../assets/posts/k8s-orchestrator/zenml_kubernetes_aws_stack_overview.png)
+![Kubernetes AWS Stack Overview]({{ site.url }}/assets/posts/k8s-orchestrator/zenml_kubernetes_aws_stack_overview.png)
 
 ## Setting Up AWS Resources
 
@@ -343,7 +343,7 @@ database within the EKS cluster and forward the respective ports.
 If everything went well, you should see logs messages similar to the following
 in your terminal:
 
-![zenml stack up output](../assets/posts/k8s-orchestrator/zenml_stack_up_output.png)
+![zenml stack up output]({{ site.url }}/assets/posts/k8s-orchestrator/zenml_stack_up_output.png)
 
 In particular, look for the last line that says
 `The Kubernetes metadata store is functional.`
@@ -365,17 +365,17 @@ EKS cluster.
 If all went well, you should now see the logs of all Kubernetes pods in your
 terminal, similar to what is shown below.
 
-![python run.py output](../assets/posts/k8s-orchestrator/python_run_output.png)
+![python run.py output]({{ site.url }}/assets/posts/k8s-orchestrator/python_run_output.png)
 
 Additionally, a window should have opened in your local browser where you can
 see a training-serving skew analysis in Facets like the following:
 
-![Facets Analysis](../assets/posts/k8s-orchestrator/facets_analysis_output.png)
+![Facets Analysis]({{ site.url }}/assets/posts/k8s-orchestrator/facets_analysis_output.png)
 
 When running `kubectl get pods -n zenml`, you should now also be able to see
 that a pod was created in your cluster for each pipeline step:
 
-![kubectl get_pods() output](../assets/posts/k8s-orchestrator/kubectl_get_pods_output.png)
+![kubectl get_pods() output]({{ site.url }}/assets/posts/k8s-orchestrator/kubectl_get_pods_output.png)
 
 ## Cleanup
 

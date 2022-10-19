@@ -18,7 +18,7 @@ There is a disconnect between machine learning being done in Jupyter notebooks
 on local machines and actually being served to end-users to provide some actual
 value.
 
-![MLOps](/assets/posts/dl_is_broken_01.png) Source: Hidden Technical Debt in
+![MLOps]({{ site.url }}/assets/posts/dl_is_broken_01.png) Source: Hidden Technical Debt in
 Machine Learning Systems (Sculley et al.)
 
 The oft-quoted Hidden Technical Debt paper, whose diagram can be seen here, has

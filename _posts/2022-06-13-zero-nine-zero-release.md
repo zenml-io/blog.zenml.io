@@ -20,7 +20,7 @@ Beyond this, as usual we included a number of smaller bugfixes and documentation
 
 Who says you need complicated infrastructure setup to run your pipeline? Just use GitHub Actions. With [this new addition](https://github.com/zenml-io/zenml/pull/685) to ZenML's ever-growing list of built-in orchestrators, you can run your pipelines using GitHub Actions to manage the dependencies between steps.
 
-![Running your pipelines using GitHub Actions as orchestrator](../assets/posts/release_0_9_0/github_actions_ui.png)
+![Running your pipelines using GitHub Actions as orchestrator]({{ site.url }}/assets/posts/release_0_9_0/github_actions_ui.png)
 
 You wouldn't want your secrets floating around openly in your code commits, so we made sure to integrate with [the way GitHub stores secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) as encrypted environment variables.
 
@@ -36,7 +36,7 @@ The most exciting thing about this new orchestrator is that it came as a direct 
 
 [Our community-focused ZenHack day](https://youtu.be/8qb5IABTZ-s) included a number of features that were implemented alongside one another. Among those was a [ChatOps](https://www.atlassian.com/blog/software-teams/what-is-chatops-adoption-guide)-inspired Alerter component, with Slack as its first inbuilt implementation.
 
-![Slack alerter user workflow](../assets/posts/release_0_9_0/slack-alerter.png)
+![Slack alerter user workflow]({{ site.url }}/assets/posts/release_0_9_0/slack-alerter.png)
 
 You can now define interfaces where you can interact with and make decisions around how your steps get executed through Slack commands. Because seriously, who'd rather do this in the terminal when you can get a friendly Slack ping instead?
 
@@ -48,7 +48,7 @@ Barely a release passes without some user-facing CLI improvements, and this one 
 
 - If you want to register a stack component but aren't sure exactly which attributes to register for your particular component, we [added an interactive CLI flow](https://github.com/zenml-io/zenml/pull/695) that guides you through everything you need to include.
 
-![An interactive way to add stack components in ZenML](../assets/posts/release_0_9_0/interactive.png)
+![An interactive way to add stack components in ZenML]({{ site.url }}/assets/posts/release_0_9_0/interactive.png)
 
 - We previously added the ability to update a pre-existing stack in place, but sometimes you want to duplicate a stack and make a slight modification to one you already configured. In this release we've given you that option with the easy `zenml stack copy` command.
 

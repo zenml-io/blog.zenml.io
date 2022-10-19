@@ -154,7 +154,7 @@ before a commit is allowed to be made. I'll be honest and admit that sometimes
 you get this fun workflow, where you fix one [`mypy`](http://mypy-lang.org/)
 error only to find many other errors get spawned as a consequence of the fix:
 
-![GIF showing one fixed error leading to a series of other errors needing fixing](../assets/posts/mypy-typing/xd-programming.gif)
+![GIF showing one fixed error leading to a series of other errors needing fixing]({{ site.url }}/assets/posts/mypy-typing/xd-programming.gif)
 
 For the most part, however, I haven't found the mypy-enforced discipline around
 type hints to be much of a burden. One thing we don't currently do is type-hint

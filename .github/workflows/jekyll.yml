@@ -1,0 +1,62 @@
+# This is a basic workflow that publishes the website
+name: Publish
+
+# Controls when the action will run.
+on:
+  push:
+    branches:
+      - main
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "publish"
+  build:
+    name: Builds the website for GitHub Pages
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
+        
+    - name: Install dependencies
+      run: |
+        sudo apt install git curl autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
+        
+    - name: Bundle install
+      run: |
+        gem i bundler && bundle install
+
+    - name: Build pages
+      run: |
+         bundle exec jekyll build -V -t -d blog
+
+    - uses: actions/upload-pages-artifact@v1
+      with:
+        name: github-pages
+        path: blog
+
+
+    # Deploy job
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+    name: Publishes the website to GitHub Pages
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

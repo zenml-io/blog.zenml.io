@@ -125,7 +125,7 @@ costly.
 
 ## The Zen of MLOps Frameworks
 
-![MLOps Zen](../assets/posts/zenml-framework/mlops-zen.png)
+![MLOps Zen]({{ site.url }}/assets/posts/zenml-framework/mlops-zen.png)
 
 The machine learning ecosystem is still in a state of rapid evolution and you probably don't want to be locked into a rigid platform if you want to stay ahead of the curve. Revolutionary machine learning tools and techniques are continuously
 emerging and evolving, and the need for a flexible and easily extensible MLOps
@@ -211,7 +211,7 @@ At ZenML, we follow the [S.O.L.I.D.](https://en.wikipedia.org/wiki/SOLID)
 and [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) design principles to maintain a loose coupling between core and external
 components and ensure that the framework is easy to extend and customize.
 
-![MLOps Extensible Stacks](../assets/posts/zenml-framework/zenml-stacks.png)
+![MLOps Extensible Stacks]({{ site.url }}/assets/posts/zenml-framework/zenml-stacks.png)
 
 All ZenML Stack components have well-defined and well-documented interfaces.
 This makes it possible to [extend ZenML to add new Stack component implementations](https://docs.zenml.io/extending-zenml/stacks-components-flavors)

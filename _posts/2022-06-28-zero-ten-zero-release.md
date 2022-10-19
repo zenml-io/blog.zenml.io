@@ -14,7 +14,7 @@ image:
 
 The 0.10.0 release continues our streak of extending ZenML with support for new orchestrators, this time by adding the Kubernetes Native Orchestrator. Also included are: a Data Validator stack component and Great Expectations implementation and a community-contributed Vault secret manager among a host of other things! ✨
 
-![Release GIF](../assets/posts/release_0_10_0/release_GIF.gif)
+![Release GIF]({{ site.url }}/assets/posts/release_0_10_0/release_GIF.gif)
 
 Beyond this, as usual we included a number of smaller bugfixes and documentation changes to cumulatively improve experience of using ZenML as a user. 
 For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.10.0) a glance.
@@ -28,7 +28,7 @@ This orchestrator is a lightweight alternative to other distributed orchestrator
 It's amazing but don't take my word for it; try it on your own or wait for the dedicated blog post that we've planned, 
 which, by the way, also features a little surprise to make it easier for you to follow along 😉
 
-![Kubernetes Orchestration pods](../assets/posts/release_0_10_0/k8s.png)
+![Kubernetes Orchestration pods]({{ site.url }}/assets/posts/release_0_10_0/k8s.png)
 
 There's a lot to love about this integration.
 * Every step gets executed in its own pod and the logs from all of them are streamed to your terminal!
@@ -43,7 +43,7 @@ Want to run data quality checks as part of a ZenML pipeline? We've got you cover
 
 We introduce Data Validators and The Great Expectations integration which eliminates the complexity associated with configuring the store backends for Great Expectations by reusing our Artifact Store concept for that purpose and gives ZenML users immediate access to Great Expectations in both local and cloud settings.
 
-![Great Expectation Validation Result](../assets/posts/release_0_10_0/great_expectations_validation_result.png)
+![Great Expectation Validation Result]({{ site.url }}/assets/posts/release_0_10_0/great_expectations_validation_result.png)
 
 In addition, there are two new standard steps:
 

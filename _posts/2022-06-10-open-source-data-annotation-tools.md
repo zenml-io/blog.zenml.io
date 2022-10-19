@@ -20,7 +20,7 @@ The tradeoffs for both are often similar to the broader tools around choosing op
 
 With all this in mind, I gathered together a list of all the open-source data labeling tools available currently. You can check out our [`awesome-open-data-annotation` repository here](https://github.com/zenml-io/awesome-open-data-annotation). 
 
-![Our new open-source data annotation repository](../assets/posts/labeling/awesome_data_annotation_small.gif)
+![Our new open-source data annotation repository]({{ site.url }}/assets/posts/labeling/awesome_data_annotation_small.gif)
 
 The core selection criteria were as follows:
 

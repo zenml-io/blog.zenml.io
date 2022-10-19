@@ -20,7 +20,7 @@ Smaller changes that you'll notice include updates to our cloud integrations and
 
 ## ♻️ Continuous Deployment with MLflow
 
-![A Continuous Deployment workflow. Achievement unlocked!](../assets/posts/release_0_6_2/ZenML0-6-2.gif)
+![A Continuous Deployment workflow. Achievement unlocked!]({{ site.url }}/assets/posts/release_0_6_2/ZenML0-6-2.gif)
 
 The biggest new feature in the 0.6.2 release is our integration with the parts of MLflow that allow you to serve your models. We [previously added MLflow Tracking](https://blog.zenml.io/zero-five-seven-release/), but now hook into the standard format for packaging machine learning models so that you can deploy them for real-time serving using a range of deployment tools. With the new integration you can locally deploy your models [using a local deployment server](https://mlflow.org/docs/latest/models.html#deploy-mlflow-models).
 
@@ -34,7 +34,7 @@ We're really excited about the production use cases that this feature enables. T
 
 ## Improving our CLI with `rich`
 
-![Our CLI tables look much nicer with 'rich'](../assets/posts/release_0_6_2/rich-tables.jpeg)
+![Our CLI tables look much nicer with 'rich']({{ site.url }}/assets/posts/release_0_6_2/rich-tables.jpeg)
 
 If you've been using the ZenML CLI utility for a while, you'll know that it was functional but maybe not always *delightful*. We've [taken a bit of time](https://github.com/zenml-io/zenml/pull/392) to make it more pleasant to use from the user perspective. We used 'rich' to add a visual uplift to most user-facing parts of the `zenml` terminal interface. 
 

@@ -1,6 +1,6 @@
 <section id="blogposts" class="pb-5">
-  {% assign sorted = (site.posts | sort: 'date') | reverse %} {% for post in
-  sorted %} {% assign uneven = forloop.index0 }} | modulo: 2%} {% capture bg %}
+  {% for post in paginator.posts %} 
+  {% assign uneven = forloop.index0 }} | modulo: 2%} {% capture bg %}
   {% if uneven == 1 %} bg-white {% elsif uneven != 1%} bg-light {% endif %} {%
   endcapture %} {% capture crosspost %} {% if post.crosspost %} - Crossposted on
   <a href="{{ post.crosspost.url }}">{{ post.crosspost.name }}</a>
@@ -9,29 +9,84 @@
     <div class="container">
       <div class="row py-3 px-lg-5">
         <div class="col-3 p-3 align-self-center d-none d-md-block">
-          <a href="{{ post.url }}">
+          <a href="{{ site.url }}{{ post.url }}">
             {% if post.thumbnail %}
-            <img src="{{ post.thumbnail }}" class="img-fluid" />
+            <img src="{{ site.url }}{{ post.thumbnail }}" class="img-fluid" />
             {% else %}
             <img src="{{ site.url }}/assets/thumbnail.svg" class="img-fluid" />
             {% endif %}
           </a>
         </div>
         <div class="col-9">
-          <a href="{{ post.url }}"
+          <a href="{{ site.url }}{{ post.url }}"
             ><h3 class="pb-0 mb-0 font-weight-lighter">{{ post.title }}</h3></a
           >
-          <a href="{{ post.url }}" class="text-muted"
+          <a href="{{ site.url }}{{ post.url }}" class="text-muted"
             ><p class="mono text-sm">
               {{ post.publish_date }} - {{ post.author }} {{ crosspost }} - {%
               include read_time.html content=post.content %} read
             </p></a
           >
           <hr />
-          <a href="{{ post.url }}" class="anthrazit">{{ post.description }}</a>
+          <a href="{{ site.url }}{{ post.url }}" class="anthrazit">{{ post.description }}</a>
         </div>
       </div>
     </div>
   </div>
   {% endfor %}
+  {% if paginator.total_pages > 1 %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            {% if paginator.previous_page %}
+            <li class="page-item">
+              <a class="page-link" href="{{ site.url }}{{ paginator.previous_page_path }}"
+                >Previous</a
+              >
+            </li>
+            {% endif %}
+            {% if paginator.page == 1 %}
+              <li class="page-item active">
+                <a class="page-link" href="#">{{ paginator.page }}</a>
+              </li>
+              {% for page in (2..paginator.total_pages) %}
+                <li class="page-item">
+                  <a class="page-link" href="{{ site.url }}/page/{{ page }}/index.html">{{ page }}</a>
+                </li>
+              {% endfor %}
+
+            {% else %}
+              {% for page in (1..paginator.total_pages) %}
+              {% if paginator.page == page and page == 1 %}
+                <li class="page-item active">
+                  <a class="page-link" href="#">{{ page }}</a>
+                </li>
+              {% elsif paginator.page == page and page != 1 %}
+              <li class="page-item active">
+                <a class="page-link" href="#">{{ page }}</a>
+              </li>
+              {% elsif paginator.page != page and page == 1 %}
+                <li class="page-item">
+                  <a class="page-link" href="{{ site.url }}">1</a>
+                </li>
+              {% elsif paginator.page != page and page != 1 %}
+                <li class="page-item">
+                  <a class="page-link" href="{{ site.url }}/{{ paginator.page_path | replace: paginator.page, page }}">{{ page }}</a>
+                </li>
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            {% if paginator.next_page %}
+            <li class="page-item">
+              <a class="page-link" href="{{ site.url }}{{ paginator.next_page_path }}">Next</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  {% endif %}
 </section>

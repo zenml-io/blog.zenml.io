@@ -29,7 +29,7 @@ uncommon for pipelines to be made up of many steps, and those steps can interact
 and intersect with one another in often complex patterns. We've built a way for
 you to inspect what's going on with your ZenML pipeline:
 
-| ![Here's what the pipeline lineage tracking visualizer looks like](../assets/posts/release_0_5_4/zenml_lineage.gif) |
+| ![Here's what the pipeline lineage tracking visualizer looks like]({{ site.url }}/assets/posts/release_0_5_4/zenml_lineage.gif) |
 |:--:|
 | *Here's what the pipeline lineage tracking visualizer looks like* |
 

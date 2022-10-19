@@ -38,7 +38,7 @@ I will be using ZenML's [Kubeflow](https://github.com/zenml-io/zenml/tree/main/e
 
 Our training pipeline `run_kubeflow_pipeline.py` consists of the following steps:
 
-![PipelineStepExplanation](/assets/posts/customer-churn/pipelinestepsexplanation.png)
+![PipelineStepExplanation]({{ site.url }}/assets/posts/customer-churn/pipelinestepsexplanation.png)
 
 - `ingest_data`: Ingest the data from the source and create a DataFrame.
 - `encode_cat_cols`: Encode categorical columns.
@@ -117,7 +117,7 @@ If you want to run the pipeline on other cloud providers like GCP or Azure, you 
 
 The following diagram showcases our Kubeflow stack on AWS:
 
-![CloudKubeflowStack](/assets/posts/customer-churn/aws_kubeflow_stack.png)
+![CloudKubeflowStack]({{ site.url }}/assets/posts/customer-churn/aws_kubeflow_stack.png)
 
 Now, I will configure the Kubeflow Pipelines stack on AWS and run the pipeline on AWS; the following are the steps for doing so:
 
@@ -161,7 +161,7 @@ To see the UI, you can go to [the localhost URL](http://localhost:8080/#/runs).
 If everything is working, you should see the model deployed and running as
 below:
 
-![SuccessfulPipelineRun](/assets/posts/customer-churn/runsuccesskubeflow.png)
+![SuccessfulPipelineRun]({{ site.url }}/assets/posts/customer-churn/runsuccesskubeflow.png)
 
 ### Connecting Kubeflow Pipelines with Streamlit
 
@@ -202,7 +202,7 @@ check out the [ZenML
 example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).
 The following diagram shows the flow of the whole pipeline:
 
-![seldondeployment](/assets/posts/customer-churn/seldoncondeploy.gif)
+![seldondeployment]({{ site.url }}/assets/posts/customer-churn/seldoncondeploy.gif)
 
 Let's set up our full AWS stack to run the pipeline using Seldon Core.
 
@@ -281,7 +281,7 @@ kubectl --namespace kubeflow port-forward svc/ml-pipeline-ui 8080:80
 ```
 
 To see the UI, you can go to the [localhost:8080](http://localhost:8080/#/runs). If everything is working, you should see the model deployed and running as below:
-![SuccessfulPipelineRunContinuous](/assets/posts/customer-churn/continous_deployment_pipeline.png)
+![SuccessfulPipelineRunContinuous]({{ site.url }}/assets/posts/customer-churn/continous_deployment_pipeline.png)
 
 If you want to run the pipeline with the `--predict` flag, you can run the following command to run the pipeline:
 
@@ -290,7 +290,7 @@ python run_seldon_deployment_pipeline.py --secret seldon-init-container-secret -
 ```
 
 This will run the inference pipeline that will serve the model for inference. You can check the model is serving by going to the [localhost:8080](http://localhost:8080/#/runs) and see the model is serving as below in your inference pipeline run:
-![SuccessfulPipelineRunInference](/assets/posts/customer-churn/inferencepipelinerun.png)
+![SuccessfulPipelineRunInference]({{ site.url }}/assets/posts/customer-churn/inferencepipelinerun.png)
 
 ### Connecting Seldon Core Pipelines with Streamlit
 
