@@ -116,7 +116,7 @@ Join our [Slack](https://zenml.io/slack-invite/) to let us know what you think
 we should build next!
 
 Keep your eyes open for future releases and make sure to
-[vote](https://github.com/zenml-io/zenml/discussions/categories/roadmap) on your
+vote on your
 favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets
 implemented as soon as possible.
 
