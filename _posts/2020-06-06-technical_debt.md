@@ -239,7 +239,7 @@ implementation. Which brings me to my next point...
 
 Separating configuration from actual code implementation is definitely a pain.
 Yet, this is another one of those 'pays off in the long run' sort of things.
-[We've written about it before](/declarative_configs_for_mlops) but to
+[We've written about it before](./2020-05-17-declarative_configs_for_mlops.md) but to
 summarize: Separating your configuration allows you to automate repetitive
 tasks, increases predictability of results, and ensures reproducibility.
 Ideally, configuration should be treated as code, versioned, and maintained.

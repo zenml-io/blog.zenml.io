@@ -29,7 +29,7 @@ Version 0.13.1 comes with several quality of life improvements:
 * Specify the exact order in which your pipelines steps should be
 executed, e.g., via `step_b.after(step_a)`
 * It's now possible to use TensorBoard with PyTorch and other modeling frameworks.
-* You can now configure the [Evidently integration](https://docs.zenml.io/mlops-stacks/data-validators/evidently) to ignore specific columns in 
+* You can now configure the [Evidently integration](https://docs.zenml.io/v/0.13.0/mlops-stacks/data-validators/evidently) to ignore specific columns in 
 your datasets. 
 
 View the full release notes [here](https://github.com/zenml-io/zenml/releases/tag/0.13.1).

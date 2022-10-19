@@ -189,7 +189,7 @@ These abstractions must be easy to understand and use. Above all they must be
 evocative of the set of concepts that ML and practitioners deal with on a daily
 basis_
 
-ZenML uses [an expressive range of machine learning concepts](https://docs.zenml.io/core-concepts) that are continuously distilled and evolved from the classes of
+ZenML uses [an expressive range of machine learning concepts](https://docs.zenml.io/getting-started/core-concepts) that are continuously distilled and evolved from the classes of
 problems tackled by the ML tooling ecosystem.
 
 At the same time, the ZenML team acknowledges that AI/ML teams are an amalgam of

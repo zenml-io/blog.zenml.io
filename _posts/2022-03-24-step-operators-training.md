@@ -37,7 +37,7 @@ separate environment equipped with a GPU (like a trainer step).
 
 # How do I use it?
 
-A step operator is a stack component, and is therefore part of a [ZenML stack](https://docs.zenml.io/core-concepts#stack).
+A step operator is a stack component, and is therefore part of a [ZenML stack](https://docs.zenml.io/getting-started/core-concepts#stack).
 
 An operator can be registered as part of the stack as follows:
 

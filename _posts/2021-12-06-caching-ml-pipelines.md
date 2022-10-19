@@ -60,7 +60,7 @@ I hope some of the benefits of caching are clear to you now.
 
 ZenML takes care of caching the artifacts that either come in or are output from
 the steps of your machine learning pipeline. ZenML builds on
-[the concept of a Metadata Store](https://docs.zenml.io/core-concepts) and
+[the concept of a Metadata Store](https://docs.zenml.io/v/0.13.2/mlops-stacks/metadata-stores) and
 currently we use [`MLMetadataStore`](https://www.tensorflow.org/tfx/guide/mlmd)
 to power this functionality. This foundational practice of building pipelines
 made up of steps - with some kind of way to track the metadata around these
@@ -70,7 +70,7 @@ These things are often made clearer with an actual example, so let's jump into
 the
 [MNIST dataset](https://github.com/tensorflow/datasets/blob/master/tensorflow_datasets/image_classification/mnist.py).
 (Follow the steps in our
-[examples directory](https://github.com/zenml-io/zenml/tree/main/examples/caching)
+[examples directory](https://github.com/zenml-io/zenml/tree/main/examples/)
 to get this running on your local machine.)
 
 On the first run, we can visualize the steps of the pipeline as having all

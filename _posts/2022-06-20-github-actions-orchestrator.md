@@ -203,7 +203,7 @@ echo "$GITHUB_AUTHENTICATION_TOKEN" | docker login ghcr.io -u "$GITHUB_USERNAME"
 Time to fork and clone an [example repository](https://github.com/zenml-io/github-actions-orchestrator-tutorial) which contains a very simple ZenML pipeline that trains 
 a SKLearn SVC classifier on the [digits dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_digits_last_image.html).
 
-If you're new to ZenML, let's quickly go over some [basic concepts](https://docs.zenml.io/core-concepts#basics-steps-and-pipelines) that help you understand what the code in this repository is doing:
+If you're new to ZenML, let's quickly go over some [basic concepts](https://docs.zenml.io/getting-started/core-concepts#basics-steps-and-pipelines) that help you understand what the code in this repository is doing:
 * A **pipeline** in ZenML allows you to group a series of steps in whatever order makes sense for your particular use case. The [example pipeline](https://github.com/zenml-io/github-actions-orchestrator-tutorial/blob/main/pipelines/training_pipeline/training_pipeline.py) consists of three steps which import data, train a model and evaluate the model.
 * A **step** is very similar to a Python function and contains arbitrary business logic. The three steps in our example do the following:
     - The [data loader step](https://github.com/zenml-io/github-actions-orchestrator-tutorial/blob/main/steps/data_loader_step/data_loader_step.py) loads the digits dataset and splits it into train and test set.
