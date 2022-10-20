@@ -15,3 +15,4 @@ jobs:
         use-quiet-mode: 'yes'
         use-verbose-mode: 'no'
         config-file: .github/workflows/markdown_check_config.json
+        folder-path: './_posts'
