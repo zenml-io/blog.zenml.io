@@ -8,6 +8,10 @@
       },
       {
         "pattern": "^http://localhost"
+      },
+      {
+        "aliveStatusCodes": [429, 999, 403, 503]
       }
+      
     ]
   }
