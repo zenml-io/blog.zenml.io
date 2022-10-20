@@ -30,7 +30,7 @@ in the cloud, you change where to run your code with just a few commands.
 
 ## CLI Support for Integrations
 
-With release 0.5.5 we made [our integrations](https://docs.zenml.io/features/integrations) into the first class citizens they should be. You can now easily
+With release 0.5.5 we made [our integrations](https://zenml.io/integrations) into the first class citizens they should be. You can now easily
 list all integrations and see which integrations are active (by having all their requirements installed).
 
 ```
