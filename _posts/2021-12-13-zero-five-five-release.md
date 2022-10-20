@@ -64,7 +64,7 @@ pipeline_instance.run()
 
 Using a powerful set of standardized steps like this, it becomes easier than ever to hit the ground running when setting
 up a new pipeline. Check out how get started with our Standard Interfaces in our 
-[docs](https://docs.zenml.io/guides/high-level-api)
+[docs](https://docs.zenml.io/v/0.5.6-1/guides/front-page)
 
 ## Contribute to ZenML!
 

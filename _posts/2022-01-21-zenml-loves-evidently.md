@@ -129,7 +129,7 @@ drift_detector = EvidentlyProfileStep(
 
 There is a little bit more to the example, but this piece suffices to show the
 creation of the `EvidentlyProfileStep`. (For the full example, please visit
-[our examples page](https://github.com/zenml-io/zenml/tree/develop/examples/drift_detection)).
+[our examples page](https://github.com/zenml-io/zenml/tree/develop/examples/evidently_drift_detection)).
 Once your pipeline has run, visualizing the output is as simple as passing the
 Evidently output into our ZenML `EvidentlyVisualizer` step:
 

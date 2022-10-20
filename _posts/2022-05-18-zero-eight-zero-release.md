@@ -63,11 +63,11 @@ considerably when interacting with your stacks!
   directly.
 - When deleting stacks with `stack delete...`, we'll be sure to confirm with you
   before we go ahead and delete the stack now.
-- You can [export the stack](https://docs.zenml.io/collaborate/stack-export) to
+- You can [export the stack](https://docs.zenml.io/v/0.8.0/collaborate/stack-export) to
   a shareable YAML file with `zenml stack export` and import from a compatible
   YAML file with `zenml stack import`. For the full collaborative experience
   you'll want to [use the
-  ZenServer](https://docs.zenml.io/collaborate/zenml-server), but this will
+  ZenServer](https://docs.zenml.io/v/0.8.0/collaborate/zenml-server), but this will
   still be a useful feature for some of you!
 
 ## 👭 Collaboration
@@ -75,10 +75,10 @@ considerably when interacting with your stacks!
 * The ZenServer now enables shared projects along with the foundations of a
   shared and collaborative user experience. We added some functionality to
   [manage
-  users](https://docs.zenml.io/collaborate/zenml-server#zenserver-user-management)
+  users](https://docs.zenml.io/v/0.8.0/collaborate/zenml-server#zenserver-user-management)
   interacting with your shared ZenServer.
 - All of the new collaboration features have been fully documented
-  [here](https://docs.zenml.io/collaborate/collaborate).
+  [here](https://docs.zenml.io/v/0.8.0/collaborate/collaborate).
 
 ## 🖥 CLI Improvements
 

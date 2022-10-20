@@ -23,7 +23,7 @@ notes](https://github.com/zenml-io/zenml/releases/tag/0.5.7) a glance.
 
 ![Tracking machine learning training runs with MLFlow]({{ site.url }}/assets/posts/release_0_5_7/mlflow-screenshot.png)
 
-We've [written an example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow) that showcases the integration that you can check out by using the `zenml example pull mlflow` CLI command. The `README` file offers full instructions for how to set this up manually, but if you just want to try out the UI and let ZenML handle the local setup for you, just type `zenml example run mlflow`.
+We've [written an example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking) that showcases the integration that you can check out by using the `zenml example pull mlflow` CLI command. The `README` file offers full instructions for how to set this up manually, but if you just want to try out the UI and let ZenML handle the local setup for you, just type `zenml example run mlflow`.
 
 Watch this space for more MLFlow goodness coming your way!
 
