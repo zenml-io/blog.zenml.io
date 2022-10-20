@@ -48,7 +48,7 @@ As the codebase and functionality of ZenML grows, we always want to make sure [o
 
 - Ensure *quickstart* example code is identical across everywhere it is referenced.
 - Added core concepts back into the [main glossary](https://docs.zenml.io/reference/glossary) (sorted alphabetically and made concise).
-- Added [cloud-specific guide](https://docs.zenml.io/features/cloud-pipelines/guide-aws-gcp-azure) for deploying pipelines.
+- Added [cloud-specific guide](https://docs.zenml.io/v/0.6.1/features/cloud-pipelines/guide-aws-gcp-azure) for deploying pipelines.
 - Inside the codebase itself, removed some parameters specified in docstrings that no longer existed in code.
 - Various spelling and typo corrections.
 

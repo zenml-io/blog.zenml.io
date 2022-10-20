@@ -20,7 +20,7 @@ Smaller changes that you'll notice include much-awaited updates and fixes, inclu
 
 You can now use [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/) and [AWS' S3](https://aws.amazon.com/s3?tag=soumet-20) as your [artifact store](https://docs.zenml.io/getting-started/core-concepts) for ZenML pipelines. We implemented all the relevant `fileio` methods to enable this. If you prefer to use Amazon's AWS or Microsoft's Azure, we hope these new integrations will be the start of more options for you when using ZenML.
 
-To learn more, check out [the new documentation page](https://docs.zenml.io/features/cloud-pipelines/guide-aws-gcp-azure) we just included to guide you in deploying your pipelines to AWS, GCP and/or Azure.
+To learn more, check out [the new documentation page](https://docs.zenml.io/v/0.6.1/features/cloud-pipelines/guide-aws-gcp-azure) we just included to guide you in deploying your pipelines to AWS, GCP and/or Azure.
 
 ## 🛠 Stack and Integration Improvements
 
