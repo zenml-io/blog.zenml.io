@@ -37,8 +37,8 @@ Sound interesting? Alright, let's begin.
 
 ## **Building the Pipeline**
 
-When dealing with a dataset this large, its difficult to do some Pandas magic in a Jupyter notebook to wrangle with our data - I won't subject my poor ThinkPad to that punishment. That's why we created [ZenML](https://zenml.io/signup/) to deal with this problem ([amongst others](/deep_learning_in_production_is_broken/)).
-For this post, I will assume you have the `cengine` CLI [installed](https://docs.zenml.io/docs/installation) and ready to go.
+When dealing with a dataset this large, its difficult to do some Pandas magic in a Jupyter notebook to wrangle with our data - I won't subject my poor ThinkPad to that punishment. That's why we created [ZenML](https://zenml.io/signup/) to deal with this problem ([amongst others](./2020-03-01-deep_learning_in_production_is_broken.md)).
+For this post, I will assume you have the `cengine` CLI [installed](https://docs.zenml.io/getting-started/installation) and ready to go.
 
 As a summary, the `cengine` CLI will create, register and execute training pipelines,
 which will be managed by us on our cloud platform. One can create the pipeline declaratively by
