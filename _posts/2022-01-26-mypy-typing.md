@@ -134,7 +134,7 @@ all three:
   [the Pylance extension](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance))
   and provides visual cues as you write your code
 - as part of our CI/CD pipeline: the script mentioned above
-  [is called](https://github.com/zenml-io/zenml/blob/main/.github/workflows/main.yml)
+  [is called](https://github.com/zenml-io/zenml/blob/main/.github/workflows/ci.yml)
   whenever new code is pushed to a branch as a PR, and whenever that code is
   merged into our [`develop`](https://github.com/zenml-io/zenml/tree/develop) or
   [`main`](https://github.com/zenml-io/zenml) branches.

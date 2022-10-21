@@ -111,7 +111,7 @@ There are two steps to continue:
 - Set up the necessary cloud resources on the provider of your choice
 - Configure ZenML with a new stack to be able to communicate with these resources
 
-I will now run the same pipeline in Kubeflow Pipelines deployed to an AWS EKS cluster. Before running this, you need some additional setup or prerequisites to run the pipeline on AWS: you can refer to our [documentation](https://docs.zenml.io/features/guide-aws-gcp-azure#pre-requisites), which will help you get set up to run the pipeline on AWS.
+I will now run the same pipeline in Kubeflow Pipelines deployed to an AWS EKS cluster. Before running this, you need some additional setup or prerequisites to run the pipeline on AWS: you can refer to our [documentation](https://docs.zenml.io/v/0.7.3/features/guide-aws-gcp-azure#pre-requisites), which will help you get set up to run the pipeline on AWS.
 
 If you want to run the pipeline on other cloud providers like GCP or Azure, you can follow [this guide](https://github.com/zenml-io/zenml/tree/main/examples/vertex_ai_orchestration) for more information on those cloud providers. We will be using AWS for this project, but feel free to use any cloud provider.
 
