@@ -99,63 +99,6 @@ Then click the `+ Container` button on the top to create a new container:
 Choose a name for the container and note it down. We're going to use it later for the `<BLOB_STORAGE_CONTAINER_NAME>` placeholder. Then create the container by clicking the `Create` button.
 
 ![Blob storage container step 3]({{ site.url }}/assets/posts/github-actions-orchestrator/container_2.png)
-### Set up a MySQL database
-
-Now let's set up a managed MySQL database. This will act as ZenML's metadata store and store metadata regarding our pipeline runs which will enable features like caching and establish a consistent lineage between our pipeline steps.
-
-Open up the portal menu and click on `+ Create a resource`:
-
-![MySQL database step 1]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_0.png)
-
-Search for `Azure Database for MySQL` and once found click on `Create`:
-
-![MySQL database step 2]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_1.png)
-
-Make sure you select `Flexible server` and then continue by clicking the `Create` button:
-
-![MySQL database step 3]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_2.png)
-
-Select a **resource group** and **region** and fill in values for the **server name** as well as **admin username** and **password**. Note down the username and password you chose as we're going to need them later for the `<MYSQL_USERNAME>` and `<MYSQL_PASSWORD>` placeholders. Then click on `Next: Networking`:
-
-![MySQL database step 4]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_3.png)
-
-Now click on `Add 0.0.0.0 - 255.255.255.255` to allow access from all public IPs. This is necessary so the machines running our GitHub Actions can access this database. It will still require username, password as well as a SSL certificate to authenticate.
-
-![MySQL database step 5]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_4.png)
-
-In the opened up popup, click on `Continue`:
-
-![MySQL database step 6]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_5.png)
-
-Now click on `Review + create`:
-
-![MySQL database step 7]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_6.png)
-
-Verify the configuration and click the `Create` button:
-
-![MySQL database step 8]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_7.png)
-
-Now we'll have to wait until the deployment is finished (this might take ~15 minutes).
-
-**Note**: If the deployment fails for some reason, delete the resource and restart from the beginning of [this section](#set-up-a-mysql-database).
-
-Once the deployment is finished, click on `Go to resource`:
-
-![MySQL database step 9]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_8.png)
-
-On the overview page of your MySQL server resource, note down the server name in the top right. We'll use it later for the `<MYSQL_SERVER_NAME>` placeholder.
-
-![MySQL database step 10]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_9.png)
-
-Then click on `Networking` in the left menu:
-
-![MySQL database step 11]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_10.png)
-
-To finish up the Azure setup, click on `Download SSL Certificate` on the top. Make sure to note down the path to the certificate file which we'll use for the `<PATH_TO_SSL_CERTIFICATE>` placeholder in a later step.
-
-![MySQL database step 12]({{ site.url }}/assets/posts/github-actions-orchestrator/mysql_11.png)
-
-
 ## GitHub Setup
 ### Create a GitHub Personal Access Token
 
@@ -203,7 +146,7 @@ echo "$GITHUB_AUTHENTICATION_TOKEN" | docker login ghcr.io -u "$GITHUB_USERNAME"
 Time to fork and clone an [example repository](https://github.com/zenml-io/github-actions-orchestrator-tutorial) which contains a very simple ZenML pipeline that trains 
 a SKLearn SVC classifier on the [digits dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_digits_last_image.html).
 
-If you're new to ZenML, let's quickly go over some [basic concepts](https://docs.zenml.io/core-concepts#basics-steps-and-pipelines) that help you understand what the code in this repository is doing:
+If you're new to ZenML, let's quickly go over some [basic concepts](https://docs.zenml.io/getting-started/core-concepts#pipelines-and-steps) that help you understand what the code in this repository is doing:
 * A **pipeline** in ZenML allows you to group a series of steps in whatever order makes sense for your particular use case. The [example pipeline](https://github.com/zenml-io/github-actions-orchestrator-tutorial/blob/main/pipelines/training_pipeline/training_pipeline.py) consists of three steps which import data, train a model and evaluate the model.
 * A **step** is very similar to a Python function and contains arbitrary business logic. The three steps in our example do the following:
     - The [data loader step](https://github.com/zenml-io/github-actions-orchestrator-tutorial/blob/main/steps/data_loader_step/data_loader_step.py) loads the digits dataset and splits it into train and test set.
@@ -238,17 +181,31 @@ Now that we're done setting up and configuring all our infrastructure and extern
 Let's install ZenML and all the additional packages that we're going to need to run our pipeline:
 ```bash
 pip install zenml
-zenml integration install github azure sklearn
+zenml integration install -y github azure sklearn
 ```
 
-We're also going to initialize a [ZenML repository](https://docs.zenml.io/developer-guide/repo-and-config#the-zenml-repository) to indicate which directories and files ZenML should include
+We're also going to initialize a [ZenML repository](https://docs.zenml.io/reference/glossary#repository) to indicate which directories and files ZenML should include
 when building Docker images:
 ```bash
 zenml init
 ```
+
+### Deploying ZenML
+
+To use ZenML with remote orchestrators like the GitHub Actions orchestrator, you need to deploy ZenML.
+Follow [this guide](https://docs.zenml.io/getting-started/deploying-zenml#deploying-zenml-in-the-cloud-remote-deployment-of-the-http-server-and-database) to
+do so.
+
+Once the deployment is finished, let's connect to it by running the following command and logging in with
+the username and passord you set during the deployment phase:
+
+```bash
+zenml connect --url=<DEPLOYMENT_URL>
+```
+
 ### Registering the stack
 
-A [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors) consists of many components which all play a role in making your ML pipeline run in a smooth and reproducible manner. Let's register all the components that we're going to need for this tutorial!
+A [ZenML stack](https://docs.zenml.io/getting-started/core-concepts#stacks-and-stack-components) consists of many components which all play a role in making your ML pipeline run in a smooth and reproducible manner. Let's register all the components that we're going to need for this tutorial!
 
 * The **orchestrator** is responsible for running all the steps in your machine learning pipeline. In this tutorial we'll use the new GitHub Actions orchestrator which, as the name already indicates, uses GitHub Actions workflows to orchestrate your ZenML pipeline. Registering the orchestrator is as simple as running the following command:
     ```bash
@@ -263,21 +220,12 @@ A [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors) 
         --uri=ghcr.io/"$GITHUB_USERNAME"
     ```
 
-* The **secrets manager** is used to securely store all your credentials so ZenML can use them to authenticate with other components like your metadata or artifact store. We're going to use a secrets manager implementation that stores these credentials as [encrypted GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets):
+* The **secrets manager** is used to securely store all your credentials so ZenML can use them to authenticate with other components like your artifact store. We're going to use a secrets manager implementation that stores these credentials as [encrypted GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets):
     ```bash
     zenml secrets-manager register github_secrets_manager \
         --flavor=github \
         --owner="$GITHUB_USERNAME" \
         --repository=github-actions-orchestrator-tutorial
-    ```
-
-* **Metadata stores** keep track of all the metadata associated with pipeline runs. They enable [ZenML's caching functionality](https://docs.zenml.io/developer-guide/caching) and allow us to query the parameters and inputs/outputs of steps of past pipeline runs. We'll register the MySQL database we created before with the following command (after replacing `<MYSQL_SERVER_NAME>` with the value we [noted down](#set-up-a-mysql-database)):
-    ```bash
-    zenml metadata-store register azure_metadata_store \
-        --flavor=mysql \
-        --secret=azure_mysql_auth \
-        --database=zenml \
-        --host=<MYSQL_SERVER_NAME>
     ```
 
 * The **artifact store** stores all the artifacts that get passed as inputs and outputs of your pipeline steps. To register our blob storage container, replace the `<BLOB_STORAGE_CONTAINER_PATH>` placeholder in the following command with the path we saved when [creating the blob storage container](#create-an-azure-blob-storage-container) and run it:
@@ -292,7 +240,7 @@ A [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors) 
 These are all the components that we're going to use for this tutorial, but ZenML offers additional components like:
 * **Step operators** to run individual steps of your pipeline in specialized environments.
 * **Model deployers** to deploy your trained machine learning model in production.
-* And many more. Check out [our docs](https://docs.zenml.io/advanced-guide/stacks-components-flavors#stacks) for a full list of available components.
+* And many more. Check out [our docs](https://docs.zenml.io/component-gallery/categories) for a full list of available components.
 
 With all components registered, we can now create and activate our ZenML stack. This makes sure ZenML knows which components to use when we're going to run our pipeline later.
 ```bash
@@ -300,30 +248,14 @@ zenml stack register github_actions_stack \
     -o github_orchestrator \
     -x github_secrets_manager \
     -c github_container_registry \
-    -m azure_metadata_store \
     -a azure_artifact_store \
     --set
 ```
 
 ### Registering the secrets
 
-Once the stack is active, we can register the secrets that ZenML needs to authenticate with some of our stack components.
-
-Let's start with the secret for our metadata store. For this, we'll use some of the information we've saved when [setting up the MySQL database](#set-up-a-mysql-database) earlier. More specifically, we're going to the need:
-- the username and password to authenticate with the MySQL database
-- the path to the SSL certificate that we downloaded (make sure to use an absolute path with your user home directory expanded, e.g. `/home/username/certificate.crt.pem` instead of `~/certificate.crt.pem`)
-
-Replace the `<PLACEHOLDERS>` in the following command with those concrete values and run it:
-```bash
-# the `@` prefix in front of the SSL certificate path tells ZenML to load the secret value from a file instead of using the string that was passed as the argument value
-zenml secrets-manager secret register azure_mysql_auth \
-    --schema=mysql \
-    --user=<MYSQL_USERNAME> \
-    --password=<MYSQL_PASSWORD> \
-    --ssl_ca=@<PATH_TO_SSL_CERTIFICATE>
-```
-
-For the artifact store secret, we're going to need the **storage account name** and **key** that we saved when we [created our storage account earlier](#create-a-storage-account).
+Once the stack is active, we can register the secret that ZenML needs to authenticate with our artifact store:
+We're going to need the **storage account name** and **key** that we saved when we [created our storage account earlier](#create-a-storage-account).
 Replace the `<PLACEHOLDERS>` in the following command with those concrete values and run it:
 ```bash
 zenml secrets-manager secret register azure_store_auth \
