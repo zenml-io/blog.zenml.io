@@ -254,8 +254,8 @@ zenml stack register github_actions_stack \
 
 ### Registering the secrets
 
-Once the stack is active, we can register the secret that ZenML needs to authenticate with our artifact store:
-We're going to need the **storage account name** and **key** that we saved when we [created our storage account earlier](#create-a-storage-account).
+Once the stack is active, we can register the secret that ZenML needs to authenticate with our artifact store.
+We're going to need the **storage account name** and **key** that we saved when we [created our storage account earlier](#create-a-storage-account):
 Replace the `<PLACEHOLDERS>` in the following command with those concrete values and run it:
 ```bash
 zenml secrets-manager secret register azure_store_auth \
