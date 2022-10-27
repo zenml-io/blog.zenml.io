@@ -197,7 +197,7 @@ Follow [this guide](https://docs.zenml.io/getting-started/deploying-zenml#deploy
 do so.
 
 Once the deployment is finished, let's connect to it by running the following command and logging in with
-the username and passord you set during the deployment phase:
+the username and password you set during the deployment phase:
 
 ```bash
 zenml connect --url=<DEPLOYMENT_URL>
