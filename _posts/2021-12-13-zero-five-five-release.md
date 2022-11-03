@@ -30,7 +30,7 @@ in the cloud, you change where to run your code with just a few commands.
 
 ## CLI Support for Integrations
 
-With release 0.5.5 we made [our integrations](https://docs.zenml.io/features/integrations) into the first class citizens they should be. You can now easily
+With release 0.5.5 we made [our integrations](https://zenml.io/integrations) into the first class citizens they should be. You can now easily
 list all integrations and see which integrations are active (by having all their requirements installed).
 
 ```
@@ -64,12 +64,12 @@ pipeline_instance.run()
 
 Using a powerful set of standardized steps like this, it becomes easier than ever to hit the ground running when setting
 up a new pipeline. Check out how get started with our Standard Interfaces in our 
-[docs](https://docs.zenml.io/guides/high-level-api)
+[docs](https://docs.zenml.io/v/0.5.6-1/guides/front-page)
 
 ## Contribute to ZenML!
 
 Join our [Slack](https://zenml.io/slack-invite/) to let us know what you think we should build next!
 
-Keep your eyes open for future releases and make sure to [vote](https://github.com/zenml-io/zenml/discussions/categories/roadmap) on your favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets implemented as soon as possible.
+Keep your eyes open for future releases and make sure to vote on your favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets implemented as soon as possible.
 
 [Image credit: Photo by [Stefan Nyffenegger](https://pixabay.com/images/id-2826093/) on [pixabay](https://pixabay.com/)]

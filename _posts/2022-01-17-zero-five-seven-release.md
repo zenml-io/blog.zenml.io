@@ -23,7 +23,7 @@ notes](https://github.com/zenml-io/zenml/releases/tag/0.5.7) a glance.
 
 ![Tracking machine learning training runs with MLFlow]({{ site.url }}/assets/posts/release_0_5_7/mlflow-screenshot.png)
 
-We've [written an example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow) that showcases the integration that you can check out by using the `zenml example pull mlflow` CLI command. The `README` file offers full instructions for how to set this up manually, but if you just want to try out the UI and let ZenML handle the local setup for you, just type `zenml example run mlflow`.
+We've [written an example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking) that showcases the integration that you can check out by using the `zenml example pull mlflow` CLI command. The `README` file offers full instructions for how to set this up manually, but if you just want to try out the UI and let ZenML handle the local setup for you, just type `zenml example run mlflow`.
 
 Watch this space for more MLFlow goodness coming your way!
 
@@ -70,6 +70,6 @@ As with MLFlow, we've [written an example](https://github.com/zenml-io/zenml/tre
 
 Join our [Slack](https://zenml.io/slack-invite/) to let us know what you think we should build next!
 
-Keep your eyes open for future releases and make sure to [vote](https://github.com/zenml-io/zenml/discussions/categories/roadmap) on your favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets implemented as soon as possible.
+Keep your eyes open for future releases and make sure to vote on your favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets implemented as soon as possible.
 
 [Image credit: Photo by <a href="https://unsplash.com/@yoksel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Yoksel 🌿 Zok</a> on <a href="https://unsplash.com/s/photos/balloons?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]

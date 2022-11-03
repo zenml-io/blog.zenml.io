@@ -26,13 +26,13 @@ I show how I used a ZenML pipeline to build a customer churn model and present t
 
 - 'Deployment using Kubeflow Pipelines': I will be using [Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/) to build and run our ZenML pipelines on the cloud and deploy them in a production environment. Kubeflow is one of ZenML's integrations so one can easily use Kubeflow Pipelines within ZenML. This makes it easy to connect other tools/frameworks to Kubeflow, and ZenML allows you easily switch between local and cloud environments. You can learn more about ZenML [here](https://docs.zenml.io/).
 
-- 'Continuous Deployment using Seldon Core': I will be using [Seldon Core](https://docs.seldon.io/projects/seldon-core/en/latest/index.html), a production-grade open-source model serving platform, to build our continuous deployment pipeline that trains a model and then serves it with Seldon Core. Seldon Core is a ZenML integration so we can easily use other tools/features within the ZenML ecosystem. One such feature is how easy it is to build a Continuous Deployment pipeline which refers to the paradigm where newly-trained models are automatically deployed to a prediction service/server when a criterion in production is fulfilled (e.g. if a trained model has a high accuracy, or overall performs better than the previous one, then deploy it in production.) ZenML allows you to build a continuous deployment pipeline by connecting it with Seldon Core without too much effort; you can learn more about continuous deployment [here](https://docs.zenml.io/features/continuous-training-and-deployment).
+- 'Continuous Deployment using Seldon Core': I will be using [Seldon Core](https://docs.seldon.io/projects/seldon-core/en/latest/index.html), a production-grade open-source model serving platform, to build our continuous deployment pipeline that trains a model and then serves it with Seldon Core. Seldon Core is a ZenML integration so we can easily use other tools/features within the ZenML ecosystem. One such feature is how easy it is to build a Continuous Deployment pipeline which refers to the paradigm where newly-trained models are automatically deployed to a prediction service/server when a criterion in production is fulfilled (e.g. if a trained model has a high accuracy, or overall performs better than the previous one, then deploy it in production.) ZenML allows you to build a continuous deployment pipeline by connecting it with Seldon Core without too much effort; you can learn more about continuous deployment [here](https://zenml.io/features/ct-cd).
 
 ## Deployment using Kubeflow Pipelines
 
 To build a real-world workflow for predicting whether a customer will churn or not, you will probably develop your pipelines on your local machine initially, allowing for quick iteration and debugging. However, at a certain point, when you are finished with its design, you might want to transition to a more production-ready setting and deploy the pipeline to a more robust environment. This painless transition from development to production stack is where ZenML shines.
 
-I will be using ZenML's [Kubeflow](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow) integration to deploy pipelines to production using Kubeflow Pipelines on the cloud. I will show you how to deploy your pipeline using Kubeflow Pipelines transitioning from local to cloud stack. ZenML supports Airflow and Kubeflow as third-party orchestrators for your ML pipeline code.
+I will be using ZenML's [Kubeflow](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow_pipelines_orchestration) integration to deploy pipelines to production using Kubeflow Pipelines on the cloud. I will show you how to deploy your pipeline using Kubeflow Pipelines transitioning from local to cloud stack. ZenML supports Airflow and Kubeflow as third-party orchestrators for your ML pipeline code.
 
 ### Run the pipeline regularly
 
@@ -111,9 +111,9 @@ There are two steps to continue:
 - Set up the necessary cloud resources on the provider of your choice
 - Configure ZenML with a new stack to be able to communicate with these resources
 
-I will now run the same pipeline in Kubeflow Pipelines deployed to an AWS EKS cluster. Before running this, you need some additional setup or prerequisites to run the pipeline on AWS: you can refer to our [documentation](https://docs.zenml.io/features/guide-aws-gcp-azure#pre-requisites), which will help you get set up to run the pipeline on AWS.
+I will now run the same pipeline in Kubeflow Pipelines deployed to an AWS EKS cluster. Before running this, you need some additional setup or prerequisites to run the pipeline on AWS: you can refer to our [documentation](https://docs.zenml.io/v/0.7.3/features/guide-aws-gcp-azure#pre-requisites), which will help you get set up to run the pipeline on AWS.
 
-If you want to run the pipeline on other cloud providers like GCP or Azure, you can follow [this guide](https://docs.zenml.io/features/guide-aws-gcp-azure) for more information on those cloud providers. We will be using AWS for this project, but feel free to use any cloud provider.
+If you want to run the pipeline on other cloud providers like GCP or Azure, you can follow [this guide](https://github.com/zenml-io/zenml/tree/main/examples/vertex_ai_orchestration) for more information on those cloud providers. We will be using AWS for this project, but feel free to use any cloud provider.
 
 The following diagram showcases our Kubeflow stack on AWS:
 

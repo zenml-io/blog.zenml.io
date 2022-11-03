@@ -134,7 +134,7 @@ And you'll probably get the following printout:
       'local' stack (ACTIVE) 
 ```
 
-This is your [ZenML stack](https://docs.zenml.io/advanced-guide/stacks-components-flavors)
+This is your [ZenML stack](https://docs.zenml.io/v/0.9.0/advanced-guide/stacks-components-flavors)
 that describes the different components that work hand-in-hand to run and track 
 your pipeline including its artifacts and metadata. This is what we'll now need 
 to replace with a GCP stack later on.
@@ -313,7 +313,7 @@ With everything on the GCP side done, we can now jump into the ZenML side.
 
 **Metadata stores** keep track of all the metadata associated with pipeline 
 runs. They enable 
-[ZenML's caching functionality](https://docs.zenml.io/developer-guide/caching) 
+[ZenML's caching functionality](https://docs.zenml.io/v/0.9.0/developer-guide/caching) 
 and allow us to query the parameters and inputs/outputs of steps of past 
 pipeline runs. We'll register the MySQL database we created before with the 
 following command:

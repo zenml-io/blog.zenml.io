@@ -135,7 +135,8 @@ the original higher dimensional space.
 After running a successful TFX pipeline, you can easily use the output of the
 Transform component to extract the transformed data for visualization. In the
 accompanying colab, this is exactly what is shown:
-[!Iris Dataset PCA](assets/posts/distributed_pca_01.png)
+
+![Iris Dataset PCA](../assets/posts/distributed_pca_01.png)
 
 As you can see, the separation between the three classes is clearly visible in
 the reduced dimension space.

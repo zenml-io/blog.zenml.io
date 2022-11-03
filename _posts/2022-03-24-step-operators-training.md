@@ -37,7 +37,7 @@ separate environment equipped with a GPU (like a trainer step).
 
 # How do I use it?
 
-A step operator is a stack component, and is therefore part of a [ZenML stack](https://docs.zenml.io/core-concepts#stack).
+A step operator is a stack component, and is therefore part of a [ZenML stack](https://docs.zenml.io/getting-started/core-concepts#stack).
 
 An operator can be registered as part of the stack as follows:
 
@@ -128,7 +128,7 @@ zenml stack register sagemaker_stack \
 zenml stack set sagemaker_stack
 ```
 
-And now you have the stack up and running! Note that similar steps can be undertaken with Vertex AI and Azure ML. See the [docs](https://docs.zenml.io/features/step-operators) for more information.
+And now you have the stack up and running! Note that similar steps can be undertaken with Vertex AI and Azure ML. See the [docs](https://docs.zenml.io/v/0.20.4/component-gallery/step-operators) for more information.
 
 ## Create a pipeline with the step operator decorator
 

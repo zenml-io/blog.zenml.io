@@ -197,7 +197,7 @@ By using different variations of the aforementioned config file, I have created 
 embedding dimensions, respectively 16 and 3.
 
 In total, it took roughly 50 minutes to completely execute the first pipeline, whereas the second pipeline took only 21.
-The drastic difference between the execution time of both runs is due to [caching](<(https://docs.zenml.io/docs/developer_guide/caching)>).
+The drastic difference between the execution time of both runs is due to [caching](https://docs.zenml.io/v/0.6.0/features/caching).
 Whilst working on a project on ZenML, you can choose to save the outputs of your intermediate steps within your
 pipeline. Because once you execute a similar pipeline, this might come in handy.
 

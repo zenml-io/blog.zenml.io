@@ -46,7 +46,7 @@ profiles to [Whylabs](https://whylabs.ai/).
 ![Example of the visualizations you can make from Whylogs profiles]({{ site.url }}/assets/posts/release_0_6_0/whylogs-visualizer.png)
 
 With our `WhylogsVisualizer`, as described in
-[the associated example notes](https://github.com/zenml-io/zenml/tree/main/examples/whylogs),
+[the associated example notes](https://github.com/zenml-io/zenml/tree/main/examples/whylogs_data_profiling),
 you can visualize Whylogs profiles generated as part of a pipeline.
 
 ## ⛩ New Core Architecture
@@ -116,7 +116,7 @@ Join our [Slack](https://zenml.io/slack-invite/) to let us know what you think
 we should build next!
 
 Keep your eyes open for future releases and make sure to
-[vote](https://github.com/zenml-io/zenml/discussions/categories/roadmap) on your
+vote on your
 favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets
 implemented as soon as possible.
 

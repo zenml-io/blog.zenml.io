@@ -37,8 +37,8 @@ Sound interesting? Alright, let's begin.
 
 ## **Building the Pipeline**
 
-When dealing with a dataset this large, its difficult to do some Pandas magic in a Jupyter notebook to wrangle with our data - I won't subject my poor ThinkPad to that punishment. That's why we created [ZenML](https://zenml.io/signup/) to deal with this problem ([amongst others](/deep_learning_in_production_is_broken/)).
-For this post, I will assume you have the `cengine` CLI [installed](https://docs.zenml.io/docs/installation) and ready to go.
+When dealing with a dataset this large, its difficult to do some Pandas magic in a Jupyter notebook to wrangle with our data - I won't subject my poor ThinkPad to that punishment. That's why we created [ZenML](https://zenml.io/signup/) to deal with this problem ([amongst others](./2020-03-01-deep_learning_in_production_is_broken.md)).
+For this post, I will assume you have the `cengine` CLI [installed](https://docs.zenml.io/getting-started/installation) and ready to go.
 
 As a summary, the `cengine` CLI will create, register and execute training pipelines,
 which will be managed by us on our cloud platform. One can create the pipeline declaratively by
@@ -230,7 +230,7 @@ A deeper dive reveals that the model actually guessed the year of people born in
 
 ## Wrap up
 
-Now that we have the baseline model, its very simple to iterate on different sorts of models very quickly. The cool thing is that ZenML has stored all [intermediate states of the pipeline](https://docs.zenml.io/docs/developer_guide/caching) (i.e. the preprocessed data) in an efficient and compressed binary format. Subsequent pipeline runs will **warmstart** the pipeline straight to the training part, given that everything else stays the same. This caching mechanism is actually quite powerful at this stage and can save up to 80% on time and cost. But I would leave that for a separate post, where we can take the same pipeline and iterate on quickly to arrive at a more accurate model! So stay tuned for that.
+Now that we have the baseline model, its very simple to iterate on different sorts of models very quickly. The cool thing is that ZenML has stored all [intermediate states of the pipeline](https://docs.zenml.io/v/0.6.0/features/caching) (i.e. the preprocessed data) in an efficient and compressed binary format. Subsequent pipeline runs will **warmstart** the pipeline straight to the training part, given that everything else stays the same. This caching mechanism is actually quite powerful at this stage and can save up to 80% on time and cost. But I would leave that for a separate post, where we can take the same pipeline and iterate on quickly to arrive at a more accurate model! So stay tuned for that.
 
 If you liked this post, please make sure to follow us on [Twitter](https://twitter.com/zenml_io), [LinkedIn](https://www.linkedin.com/company/zenml/) or just chat with us on our [Discord](https://discord.gg/HPBUKru) server.
 

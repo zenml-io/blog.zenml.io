@@ -29,7 +29,7 @@ Our AWS integration also allows you to use AWS Secrets Manager as a backend to
 handle all your secret persistence needs.
 
 Finally, in addition to the new AzureML and Sagemaker Step Operators that
-[version 0.6.3](zero-six-three-release) brought, this release also
+[version 0.6.3](./2022-03-14-zero-six-three-release.md) brought, this release also
 adds the ability to run individual steps on GCP's Vertex AI.
 
 Beyond this, some smaller bugfixes and documentation changes combine to make
@@ -111,7 +111,7 @@ zenml step-operator register vertex \
  class definition of Vertex Step Operator in the [API docs](https://apidocs.zenml.io/0.7.0/api_docs/integrations/#zenml.integrations.vertex.step_operators.vertex_step_operator).
 
 Another change addresses the fact that while in most cases
-[materializers](https://docs.zenml.io/guides/functional-api/materialize-artifacts)
+[materializers](https://docs.zenml.io/v/0.7.0/guides/functional-api/materialize-artifacts)
 should be used to control how artifacts are consumed and output from steps in a
 pipeline, there is sometimes a need to have a completely non-materialized
 artifact in a step. ZenML now provides this option of
@@ -130,8 +130,7 @@ Join our [Slack](https://zenml.io/slack-invite/) to let us know what you think
 we should build next!
 
 Keep your eyes open for future releases and make sure to
-[vote](https://github.com/zenml-io/zenml/discussions/categories/roadmap) on
-your favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure
+vote on your favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure
 it gets implemented as soon as possible.
 
 [Photo by <a href="https://unsplash.com/@ninjason?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jason Leung</a> on <a href="https://unsplash.com/s/photos/balloon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>] 

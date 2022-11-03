@@ -153,7 +153,7 @@ containerization, cloud, cloud-native and serverless computing.
 The [recent 0.8.0 ZenML release](https://blog.zenml.io/zero-eight-zero-release/)
 marks a major change in perspective that the
 ZenML team has undertaken for the past couple of months. We shifted our focus
-away from merely orchestrating a growing [list of available integrations](https://docs.zenml.io/advanced-guide/integrations)
+away from merely orchestrating a growing [list of available integrations](https://zenml.io/integrations)
 and towards making ZenML a vastly extensible MLOps framework that addresses all
 the shortcomings of MLOps platforms. In the second part of this article, I
 define some important principles that all mature MLOps frameworks should abide
@@ -189,7 +189,7 @@ These abstractions must be easy to understand and use. Above all they must be
 evocative of the set of concepts that ML and practitioners deal with on a daily
 basis_
 
-ZenML uses [an expressive range of machine learning concepts](https://docs.zenml.io/core-concepts) that are continuously distilled and evolved from the classes of
+ZenML uses [an expressive range of machine learning concepts](https://docs.zenml.io/getting-started/core-concepts) that are continuously distilled and evolved from the classes of
 problems tackled by the ML tooling ecosystem.
 
 At the same time, the ZenML team acknowledges that AI/ML teams are an amalgam of
@@ -199,7 +199,7 @@ foundation of a common machine learning software development language that all
 personas involved in the machine learning project lifecycle can learn, understand
 and relate to, from Data Scientists and ML Engineers to Operations and Site
 Reliability Engineers. More than an MLOps framework, ZenML is also
-[a collaboration framework](https://docs.zenml.io/collaborate/collaborate).
+[a collaboration framework](https://docs.zenml.io/starter-guide/collaborate).
 
 ### Highly Customizable through Extensible Design
 
@@ -214,19 +214,19 @@ components and ensure that the framework is easy to extend and customize.
 ![MLOps Extensible Stacks]({{ site.url }}/assets/posts/zenml-framework/zenml-stacks.png)
 
 All ZenML Stack components have well-defined and well-documented interfaces.
-This makes it possible to [extend ZenML to add new Stack component implementations](https://docs.zenml.io/extending-zenml/stacks-components-flavors)
+This makes it possible to [extend ZenML to add new Stack component implementations](https://docs.zenml.io/advanced-guide/stacks)
 without having to modify the core code and without invalidating any of the
 interoperability guarantees that ZenML provides. The following are some
 examples of the extensibility options supported by ZenML:
 
-* you can [add a new Artifact Store flavor](https://docs.zenml.io/extending-zenml/artifact-store)
+* you can [add a new Artifact Store flavor](https://docs.zenml.io/component-gallery/artifact-stores/custom)
 by defining a few basic IO operations and seamlessly transition your existing
 code to use the storage backend of your choice
 * if you need to use a custom pipeline orchestration tool that is not already
 included in ZenML's list of integrations, you can
-[write your own Orchestrator plugin](https://docs.zenml.io/extending-zenml/orchestrator)
+[write your own Orchestrator plugin](https://docs.zenml.io/component-gallery/orchestrators/custom)
 * to serve models using the model deployment tool of your choosing,
-the [Model Deployer interface can be extended](https://docs.zenml.io/extending-zenml/model-deployer)
+the [Model Deployer interface can be extended](https://docs.zenml.io/component-gallery/model-deployers/custom)
 to accommodate any library or platform that serves that function
 
 The extensibility of ZenML gives ML practitioners the freedom of DIY with all

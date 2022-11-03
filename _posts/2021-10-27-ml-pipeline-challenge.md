@@ -207,7 +207,7 @@ simple idea. We’re now building
 made [a major release](https://github.com/zenml-io/zenml/releases) with a
 complete refactor of the codebase. So, if any of the above appealed to you, it
 would be lovely if you gave ZenML a spin with an
-[end-to-end example of deploying a pipeline in production](https://docs.zenml.io/guides/functional-api).
+[end-to-end example of deploying a pipeline in production](https://docs.zenml.io/v/0.5.7/guides/functional-api).
 Feedback and contributions are welcome!
 
 _My sincerest thanks to Alex Strick and Adam Probst for helping edit this

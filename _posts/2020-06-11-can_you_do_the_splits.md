@@ -23,7 +23,7 @@ reason much better if the model has underfit or overfit in training.
 
 <div class="row justify-content-center">
     <div class="col-md-4">
-        <div class="text-center"><img class="" src="/assets/posts/splits/0_splits.jpg" alt="Technical Debt in ML"></div>
+        <div class="text-center"><img class="" src="../assets/posts/splits/0_splits.jpg" alt="Technical Debt in ML"></div>
     </div>
 </div>
 <div class="row justify-content-center">
@@ -36,13 +36,13 @@ from the actual data, rather than the structure of the data which the hitherto m
 This post attempts to break down some of the more `unconventional` ways to split data in ML development, and the 
 reasoning behind them.
 
-# Lets start with a dataset
+# Let's start with a dataset
 
 In order to illustrate the split mechanisms, it helps to start with a sample
-dataset to do the splits on. To make things easy, lets use a simple
-multi-variate, timeseries dataset represented in tabular format. This data
+dataset to do the splits on. To make things easy, let's use a simple
+multi-variate, time-series dataset represented in tabular format. This data
 consists of  
-3 numerical features, 1 categorical feature and 1 timestamp feature. Below this
+3 numerical features, 1 categorical feature, and 1 timestamp feature. Below this
 is visualized:
 
 ![1_whole_dataset]({{ site.url }}/assets/posts/splits/1_whole_dataset.png)
@@ -51,12 +51,12 @@ This type of dataset is common across many use-cases and industries in machine
 learning. A concrete example can be multiple timestreams transmitted from
 different machines with multiple sensors on a factory floor. The categorical
 variable would then be the ID of the machine, the numerical features would be
-what the sensors are recording (e.g. pressure, temperature etc.), and the
+what the sensors are recording (e.g. pressure, temperature, etc.), and the
 timestamp would be when the data was transmitted and recorded in the database.
 
 # Doing the splits
 
-Imagine you receive this dataset as a csv file from your data engineering
+Imagine you receive this dataset as a CSV file from your data engineering
 department and are tasked with writing a classification or a regression model.
 The label in such a case could be any of the features or an additional column.
 Regardless, the first thing to do would be to try to split up the data into sets
@@ -74,7 +74,11 @@ The most straightforward transformation we can do is to represent the data per
 categorical class (in our running example, visualize the data per machine). This
 would yield the following result:
 
+<<<<<<< HEAD
+![2_grouped](../assets/posts/splits/2_grouped.png)
+=======
 ![2_grouped]({{ site.url }}/assets/posts/splits/2_grouped.png)
+>>>>>>> main
 
 ## The Horizontal Split
 
@@ -86,18 +90,22 @@ if trained on `class_1`, `class_2` and `class_3` timestreams how would the model
 fair on `class_4` and `class_5` timestreams. Here is a visualization of that
 split:
 
+<<<<<<< HEAD
+![3_horizontal](../assets/posts/splits/3_horizontal.png)
+=======
 ![3_horizontal]({{ site.url }}/assets/posts/splits/3_horizontal.png)
+>>>>>>> main
 
-I call this the `Horizontal` split due to nature of the cut line in the above
+I call this the `Horizontal` split due to the nature of the cut line in the above
 visualization. This split can be easily achieved in most ML libraries by simply
 grouping by the categorical feature and partitioning along it. A successful
 training with this split would show evidence that the model has picked up
 signals that generalize across previously unseen groups. However, it would not
-showcase that it is able to predict future behavior of one group.
+showcase that it can predict the future behavior of one group.
 
-Its important to note that the the split decision did `NOT` account for time as
+It's important to note that the split decision did `NOT` account for time as
 a basis of the split itself. One can assume however that you would also sort by
-time per timestream to maintain that relationship in your data. Which brings us
+time per timestream to maintain that relationship in your data. This brings us
 to the next split..
 
 ## The Vertical Split
@@ -105,13 +113,17 @@ to the next split..
 But what if you want to split across time itself? For most time-series modeling,
 a common way to split the data is `past` and `future`. That is, to take in the
 training set historical data relative to the data in the eval set. The
-hypothesis in this case would be:
+hypothesis, in this case, would be:
 `How would a ML model trained on historical data per group generalize to future data for each group?`.
-This question might be answered by the so called `Vertical` split:
+This question might be answered by the so-called `Vertical` split:
 
+<<<<<<< HEAD
+![4_vertical](../assets/posts/splits/4_vertical.png)
+=======
 ![4_vertical]({{ site.url }}/assets/posts/splits/4_vertical.png)
+>>>>>>> main
 
-A successful training with this split would showcase that the model is able to
+A successful training with this split would showcase that the model can
 pick up patterns across timestreams it has already seen, and make accurate
 predictions of behavior in the future. However, this itself would not show that
 this model will generalize well to other timestreams from different groups.
@@ -128,24 +140,28 @@ system to build an index across each group to make this split.
 
 An inquisitive ML researcher might at this point wonder if they could produce a
 model that would generalize under both constraints of the `Horizontal` and the
-`Vertical` split. The hypothesis in that case would be:
+`Vertical` split. The hypothesis, in that case, would be:
 `How would a model trained on historical data for SOME groups generalize to future data of these groups AND all data from other groups?`.
 A visualization of this `Hybrid` split would look like this:
 
+<<<<<<< HEAD
+![5_hybrid](../assets/posts/splits/5_hybrid.png)
+=======
 ![5_hybrid]({{ site.url }}/assets/posts/splits/5_hybrid.png)
+>>>>>>> main
 
 Naturally, if model training is successful, this model would surely be more
-robust than the others in a real world setting. It would have displayed evidence
-to not only learning patterns of some of the groups it has already seen, but
+robust than the others in a real-world setting. It would have displayed evidence
+of not only the learning patterns of some of the groups it has already seen but
 also evidence of the fact that it has picked up signals that generalize across
 groups. This might be useful if we are to add more similar machines to the
 factory in the future.
 
 ## Multi-dimensional splits
 
-The notion of the horizontal and vertical splits can be generalized to many
-dimensions. For example, one might want to do group by two categorical features
-rather than one to even further isolate sub-groups in the data, and sort them
+The notion of horizontal and vertical splits can be generalized to many
+dimensions. For example, one might want to group by two categorical features
+rather than one to even further isolate sub-groups in the data and sort them
 per sub-group. There might also be complex logic in the middle to filter groups
 that have a lower number of samples, and other business-level logic pertaining
 to the domain.
@@ -162,10 +178,10 @@ downstream.
 
 One easy way to do the `Horizontal`, `Vertical` and the `Hybrid` split by
 writing just a
-[few lines of YAML is via ZenML](https://docs.zenml.io/docs/developer_guide/pipelines_config_yaml#main-key-split).
+[few lines of YAML is via ZenML](https://docs.zenml.io/developer-guide/steps-and-pipelines/runtime-configuration#configuring-with-yaml-config-files).
 ZenML is a [MLOps framework](https://zenml.io) developed while we deployed
 models to production, for datasets with similar characteristics as the example
-above. If you are interested in the content above, and would like to try ZenML,
+above. If you are interested in the content above and would like to try ZenML,
 please feel free to reach out to me at [hamza@zenml.io](mailto:hamza@zenml.io).
 Head over to [our docs](https://docs.zenml.io) to understand more how it works
 in more detail.

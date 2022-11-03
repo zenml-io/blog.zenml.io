@@ -146,7 +146,7 @@ You'll probably have noticed that some of the steps in this pipeline require cus
 
 ### A custom materializer to pass data between the steps
 
-The precise way that data passes between the steps is dictated by materializers. The data that flows through steps are stored as artifacts and artifacts are stored in artifact stores. The logic that governs the reading and writing of data to and from the artifact stores lives in the materializers. You can learn more about custom materializers in the [Materializer](https://docs.zenml.io/guides/index/custom-materializer) docs.
+The precise way that data passes between the steps is dictated by materializers. The data that flows through steps are stored as artifacts and artifacts are stored in artifact stores. The logic that governs the reading and writing of data to and from the artifact stores lives in the materializers. You can learn more about custom materializers in the [Materializer](https://docs.zenml.io/v/0.6.3/guides/index/custom-materializer) docs.
 
 ```python
 DEFAULT_FILENAME = "PyEnvironment"

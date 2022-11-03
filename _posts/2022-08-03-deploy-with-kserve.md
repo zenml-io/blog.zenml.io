@@ -29,7 +29,7 @@ The content of this post was presented during our weekly community meetup. View 
 
 ## Why KServe?
 
-[KServe](https://kserve.github.io/) (formally KFServing) is a Kubernetes-based model inference platform built for highly-scalable deployment use cases. It provides a standardized inference protocol across ML frameworks while supporting a serverless architecture with autoscaling including Scale to Zero on GPUs. KServe uses a simple and pluggable production serving architecture for production ML serving that includes prediction, pre- and post-processing, monitoring, and explainability. These functionalities and others make KServe one of the most interesting open source tools in the MLOps landscape. 
+[KServe](https://github.com/kserve/kserve) (formally KFServing) is a Kubernetes-based model inference platform built for highly-scalable deployment use cases. It provides a standardized inference protocol across ML frameworks while supporting a serverless architecture with autoscaling including Scale to Zero on GPUs. KServe uses a simple and pluggable production serving architecture for production ML serving that includes prediction, pre- and post-processing, monitoring, and explainability. These functionalities and others make KServe one of the most interesting open source tools in the MLOps landscape. 
 
 Now let’s see why would you want to use KServe as your ML serving platform:
 

@@ -30,7 +30,7 @@ As part of this new feature, we added a new concept of a 'service'. The service 
 
 The MLflow deployment integration means you can implement a workflow — for example — where you train a model, make some decision based on the results (perhaps you evaluate the best model) and immediately see the model updated in production as a prediction service.
 
-We're really excited about the production use cases that this feature enables. To learn more, check out [the new documentation page](https://docs.zenml.io/features/continous-training-and-deployment) we just included to guide you in understanding continuous training and continuous deployment. The [`mlflow_deployment` example](https://github.com/zenml-io/zenml/tree/main/examples) is also a great way to understand how to use this new feature. ([Use the CLI](https://blog.zenml.io/examples-cli/) to explore and interact with the examples.)
+We're really excited about the production use cases that this feature enables. To learn more, check out [the new documentation page](https://zenml.io/features/ct-cd) we just included to guide you in understanding continuous training and continuous deployment. The [`mlflow_deployment` example](https://github.com/zenml-io/zenml/tree/main/examples) is also a great way to understand how to use this new feature. ([Use the CLI](https://blog.zenml.io/examples-cli/) to explore and interact with the examples.)
 
 ## Improving our CLI with `rich`
 
@@ -48,7 +48,7 @@ As the codebase and functionality of ZenML grows, we always want to make sure [o
 
 - Ensure *quickstart* example code is identical across everywhere it is referenced.
 - Added core concepts back into the [main glossary](https://docs.zenml.io/reference/glossary) (sorted alphabetically and made concise).
-- Added [cloud-specific guide](https://docs.zenml.io/features/cloud-pipelines/guide-aws-gcp-azure) for deploying pipelines.
+- Added [cloud-specific guide](https://docs.zenml.io/v/0.6.1/features/cloud-pipelines/guide-aws-gcp-azure) for deploying pipelines.
 - Inside the codebase itself, removed some parameters specified in docstrings that no longer existed in code.
 - Various spelling and typo corrections.
 
@@ -70,6 +70,6 @@ We received [a contribution](https://github.com/zenml-io/zenml/pull/422) from [R
 
 Join our [Slack](https://zenml.io/slack-invite/) to let us know what you think we should build next!
 
-Keep your eyes open for future releases and make sure to [vote](https://github.com/zenml-io/zenml/discussions/categories/roadmap) on your favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets implemented as soon as possible.
+Keep your eyes open for future releases and make sure to vote on your favorite feature of our [roadmap](https://zenml.io/roadmap) to make sure it gets implemented as soon as possible.
 
 [Photo by <a href="https://unsplash.com/@artbyhybrid?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Hybrid</a> on <a href="https://unsplash.com/s/photos/balloons?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]

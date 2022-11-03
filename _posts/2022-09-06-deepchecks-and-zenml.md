@@ -105,7 +105,7 @@ steps shipped with ZenML.
 
 ### The Deepchecks Data Validator
 
-The [Data Validator](https://docs.zenml.io/mlops-stacks/data-validators) is
+The [Data Validator](https://docs.zenml.io/v/0.13.2/mlops-stacks/data-validators) is
 a type of ZenML stack component that was recently introduced to commonly
 represent the category of tools and processes used in model and data profiling
 and validation. I briefly mentioned the Data Validator in my previous article
@@ -203,7 +203,7 @@ The step will run all available Deepchecks data integrity tests on the input
 dataset and save the results in the Artifact Store, where they can be recalled
 and visualized with the ZenML visualizer. Of course, the steps are fully
 customizable in terms of the tests that are run, their parameters and the
-conditions that can be configured. This is fully covered in [the ZenML docs](https://docs.zenml.io/mlops-stacks/data-validators/deepchecks).
+conditions that can be configured. This is fully covered in [the ZenML docs](https://docs.zenml.io/v/0.13.2/mlops-stacks/data-validators/deepchecks).
 
 ## Ready to Try It Out?
 

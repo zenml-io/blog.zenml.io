@@ -22,7 +22,7 @@ The items that follow are what I consider to be low-hanging fruit for any CLI th
 
 Let's cover the important one first 😉: `rich` offers full support for emojis in your CLI interfaces. I'm being slightly flippant here, but only slightly. You may be familiar with emojis as used in chat apps such as the winking face above, but there are hundreds of other, potentially more useful, emojis that you might want to use.
 
-For the ZenML CLI, we went with a ✅ tick emoji to indicate that [an integration](https://docs.zenml.io/features/integrations) was installed when listing the available and supported integrations. We also chose a 👉 pointing hand emoji to indicate which component or stack was currently activated among the various configurations that we allow you to construct. Nothing too fancy in either case, but I think they're more useful and communicative as a user than the other options (like an asterisk, for example). (You'll see examples of how we used them below.)
+For the ZenML CLI, we went with a ✅ tick emoji to indicate that [an integration](https://zenml.io/integrations) was installed when listing the available and supported integrations. We also chose a 👉 pointing hand emoji to indicate which component or stack was currently activated among the various configurations that we allow you to construct. Nothing too fancy in either case, but I think they're more useful and communicative as a user than the other options (like an asterisk, for example). (You'll see examples of how we used them below.)
 
 You can view a list of all the supported emojis by running `python -m rich.emoji` (after `pip` installing `rich`).
 
