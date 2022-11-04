@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Felix Altenberger
-title: "How to Turn PyTorch Code with W&B Tracking into ML Pipelines"
+title: "How I Transformed Vanilla PyTorch Codes into Production Ready ML Pipeline - In a jiffy"
 description: "Rewrite PyTorch code as a ZenML pipeline and add experiment tracking with TensorBoard, Weights & Biases, and MLflow."
 category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb mlflow tensorboard
