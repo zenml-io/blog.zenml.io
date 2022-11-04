@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Felix Altenberger
-title: "How I Transformed Vanilla PyTorch Codes into Production Ready ML Pipeline - Without losing my soul"
+title: "How I Transformed Vanilla PyTorch Codes into Production Ready ML Pipeline - Without Losing My Soul"
 description: "Rewrite PyTorch code as a ZenML pipeline and add experiment tracking with TensorBoard, Weights & Biases, and MLflow."
 category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb mlflow tensorboard
@@ -47,7 +47,7 @@ For those who prefer video, we showcased this during a community meetup on Octob
 First, let's install all the necessary packages with:
 
 ```shell
-pip install "zenml[server]" torchvision
+pip install "zenml[server]==0.21.0" torchvision
 ```
 
 To start working on your project, initialize a ZenML repository within your current directory with:
@@ -64,8 +64,126 @@ Wondering if you can use other tools? We have more integrations [here](https://z
 
 
 ## ✅ Converting PyTorch Code to ZenML
+Now that we are done with the installation and setup, let's get the codes from the PyTorch [quickstart tutorial](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html) and transform it into ZenML's code structure.
 
-From https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html
+The following codes are taken from the PyTorch quickstart page.
+
+```python
+import torch
+from torch import nn
+from torch.utils.data import DataLoader
+from torchvision import datasets
+from torchvision.transforms import ToTensor
+
+# Download training data from open datasets.
+training_data = datasets.FashionMNIST(
+    root="data",
+    train=True,
+    download=True,
+    transform=ToTensor(),
+)
+
+# Download test data from open datasets.
+test_data = datasets.FashionMNIST(
+    root="data",
+    train=False,
+    download=True,
+    transform=ToTensor(),
+)
+
+batch_size = 64
+
+# Create data loaders.
+train_dataloader = DataLoader(training_data, batch_size=batch_size)
+test_dataloader = DataLoader(test_data, batch_size=batch_size)
+
+for X, y in test_dataloader:
+    print(f"Shape of X [N, C, H, W]: {X.shape}")
+    print(f"Shape of y: {y.shape} {y.dtype}")
+    break
+
+# Get cpu or gpu device for training.
+device = "cuda" if torch.cuda.is_available() else "cpu"
+print(f"Using {device} device")
+
+# Define model
+class NeuralNetwork(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.flatten = nn.Flatten()
+        self.linear_relu_stack = nn.Sequential(
+            nn.Linear(28*28, 512),
+            nn.ReLU(),
+            nn.Linear(512, 512),
+            nn.ReLU(),
+            nn.Linear(512, 10)
+        )
+
+    def forward(self, x):
+        x = self.flatten(x)
+        logits = self.linear_relu_stack(x)
+        return logits
+
+model = NeuralNetwork().to(device)
+print(model)
+
+loss_fn = nn.CrossEntropyLoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
+
+
+def train(dataloader, model, loss_fn, optimizer):
+    size = len(dataloader.dataset)
+    model.train()
+    for batch, (X, y) in enumerate(dataloader):
+        X, y = X.to(device), y.to(device)
+
+        # Compute prediction error
+        pred = model(X)
+        loss = loss_fn(pred, y)
+
+        # Backpropagation
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        if batch % 100 == 0:
+            loss, current = loss.item(), batch * len(X)
+            print(f"loss: {loss:>7f}  [{current:>5d}/{size:>5d}]")
+
+def test(dataloader, model, loss_fn):
+    size = len(dataloader.dataset)
+    num_batches = len(dataloader)
+    model.eval()
+    test_loss, correct = 0, 0
+    with torch.no_grad():
+        for X, y in dataloader:
+            X, y = X.to(device), y.to(device)
+            pred = model(X)
+            test_loss += loss_fn(pred, y).item()
+            correct += (pred.argmax(1) == y).type(torch.float).sum().item()
+    test_loss /= num_batches
+    correct /= size
+    print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
+
+
+epochs = 5
+for t in range(epochs):
+    print(f"Epoch {t+1}\n-------------------------------")
+    train(train_dataloader, model, loss_fn, optimizer)
+    test(test_dataloader, model, loss_fn)
+print("Done!")
+
+```
+
+
+Before we dive in deeper, it's important to know the concept of *pipeline* and *step*.
+In ZenML, a pipeline consists of a series of steps, organized in any order that makes sense for your use case.
+For example, the following is a simple pipeline that consist of three steps (import data, define model and train & test model) that runs one after another:
+
+![pipeline_steps](/assets/posts/pytorch_wandb/pipeline_step.gif)
+
+
+
 
 ```python
 from zenml.pipelines import pipeline
