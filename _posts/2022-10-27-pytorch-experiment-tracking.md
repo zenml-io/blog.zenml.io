@@ -14,26 +14,31 @@ path: /assets/posts/pytorch_wandb/pytorch_wandb.png
 
 ![poster](/assets/posts/pytorch_wandb/pytorch_wandb.png)
 
-# Motivation
-Anyone can train a deep learning (DL) model these days. 
-It's 2022 and libraries like PyTorch and Tensorflow have lowered the entry barrier so much, you can even train a model for free even without a good computer.
-Needless to say, there are tons of notebooks and tutorials out there that walk you through step-by-step.
+# 🔥 Motivation
+It's 2022, anyone can train a machine learning (ML) model these days. 
+Libraries like [PyTorch](https://pytorch.org/), [Tensorflow](https://www.tensorflow.org/), and [Scikit-learn](https://scikit-learn.org/stable/index.html) have lowered the entry barrier so much, you can get started in minutes.
 
-While there are values in tutorials and notebooks, especially in the exploration stage, they are often not a good fit for production use cases. 
-The folks from Neptune wrote a good [post](https://neptune.ai/blog/should-you-use-jupyter-notebooks-in-production) on the pros and cons of using notebooks in production ML.
+Needless to say, there are tons of notebooks and tutorials out there that walk you through step-by-step.
+While there are values in tutorials and notebooks, especially in the exploration stage, they are often not sufficient for production use cases.
+The folks from Neptune wrote a good [post](https://neptune.ai/blog/should-you-use-jupyter-notebooks-in-production) on the pros and cons of using notebooks in production machine learning (ML). I will leave the judgment to you depending on your use cases.
 
 ![poster](/assets/posts/pytorch_wandb/meme.jpg)
 
-In this post, I will show you how you can turn vanilla PyTorch codes into a production-ready ML pipeline that can be run on any cloud infrastructure. On top of that, I will also show how you can integrate your favorite MLOps tools like the Weights & Biases experiment tracker into the pipeline while incorporating the best practices of MLOps. 
+The majority of codes you'd find in [quickstarts](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html) and tutorials are optimized for learning and exploring.
+The question is how do you transform these codes so that they can be used for production ML? Or is that even possible?
+
+With ZenML, yes it is 🚀.
+
+In this post, I will show you how to turn vanilla PyTorch codes into a production-ready ML pipeline that can be run on any cloud infrastructure while incorporating the best practices of MLOps.
 
 In short, you'll learn how to -
 
 + Turn a vanilla PyTorch code into ZenML pipelines.
-+ Visualize the pipeline run an interactive dashboard.
++ Visualize the pipeline on an interactive dashboard.
 + Use the Weights & Biases experiment tracker to track results and share them.
 + Switch to other experiment trackers with little code changes.
 
-For those who prefer video, this example was also showcased during a community meetup on October 26, 2022. Otherwise, let's dive in!
+For those who prefer video, we showcased this during a community meetup on October 26, 2022. Otherwise, let's dive in!
 
 <iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/YLKueXpAT8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
