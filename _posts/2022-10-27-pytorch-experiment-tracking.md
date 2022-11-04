@@ -14,7 +14,7 @@ path: /assets/posts/pytorch_wandb/pytorch_wandb.png
 
 ![poster](/assets/posts/pytorch_wandb/pytorch_wandb.png)
 
-# 🔥 Motivation
+## 🔥 Motivation
 It's 2022, anyone can train a machine learning (ML) model these days. 
 Libraries like [PyTorch](https://pytorch.org/), [Tensorflow](https://www.tensorflow.org/), and [Scikit-learn](https://scikit-learn.org/stable/index.html) have lowered the entry barrier so much, you can get started in minutes.
 
@@ -43,13 +43,25 @@ For those who prefer video, we showcased this during a community meetup on Octob
 <iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/YLKueXpAT8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## Installation
+## ☕️ Installation
+First, let's install all the necessary packages with:
 
 ```shell
 pip install "zenml[server]" torchvision
+```
+
+To start working on your project, initialize a ZenML repository within your current directory with:
+```shell
 zenml init
+```
+This creates a `.zen` hidden folder in your current directory that stores the ZenML configs and management tools.
+
+ZenML comes with various integrations, let's install the ones we will be using in this post:
+```shell
 zenml integration install pytorch wandb tensorboard mlflow -y
 ```
+More integrations [here](https://zenml.io/integrations).
+
 
 ## Converting PyTorch Code to ZenML
 
