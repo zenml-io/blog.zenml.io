@@ -63,10 +63,13 @@ zenml integration install pytorch wandb tensorboard mlflow -y
 Wondering if you can use other tools? We have more integrations [here](https://zenml.io/integrations).
 
 
-## ✅ Converting PyTorch Code to ZenML
-Now that we are done with the installation and setup, let's get the codes from the PyTorch [quickstart tutorial](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html) and transform it into ZenML's code structure.
+## ✅ Vanilla PyTorch Code
+If you're a PyTorch user, you may be familiar with the "hello world" example on the quickstart page.
 
-The following codes are taken from the PyTorch quickstart page.
+The code does 3 key things in the following order:
+1. Load the dataset.
+2. Define a model.
+3. Train and test the model.
 
 ```python
 import torch
@@ -176,6 +179,9 @@ print("Done!")
 ```
 
 
+## 🥳 PyTorch Code in ZenML
+We will now structure the code with ZenML.
+
 Before we dive in deeper, it's important to know the concept of *pipeline* and *step*.
 In ZenML, a pipeline consists of a series of steps, organized in any order that makes sense for your use case.
 For example, the following is a simple pipeline that consist of three steps (import data, define model and train & test model) that runs one after another:
@@ -183,7 +189,7 @@ For example, the following is a simple pipeline that consist of three steps (imp
 ![pipeline_steps](/assets/posts/pytorch_wandb/pipeline_step.gif)
 
 
-
+First, let's define the pipeline. You can do this by putting a `@pipeline` decorator.
 
 ```python
 from zenml.pipelines import pipeline
@@ -200,6 +206,9 @@ def pytorch_experiment_tracking_pipeline(
     model = model_definition()
     train_test(model, train_dataloader, test_dataloader)
 ```
+
+Next, let's define the steps in the pipeline. You can do that by using a `@step` decorator.
+We will define the three steps that we will use in the pipeline.
 
 ```python
 from torch.utils.data import DataLoader
@@ -356,6 +365,8 @@ def train_test(
 
     return model, test_acc
 ```
+
+Finally, we can now run the pipline.
 
 ```python
 pytorch_experiment_tracking_pipeline(
