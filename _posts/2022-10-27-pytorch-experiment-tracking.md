@@ -7,10 +7,21 @@ category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb mlflow tensorboard
 publish_date: October 27, 2022
 date: 2022-10-27T00:02:00Z
-thumbnail: /assets/posts/k8s-orchestrator/zenml_kubernetes_orchestrator_teaser.png
+thumbnail: /assets/posts/pytorch_wandb/pytorch_wandb.gif
 image:
-path: /assets/posts/k8s-orchestrator/zenml_kubernetes_orchestrator_teaser.png
+path: /assets/posts/pytorch_wandb/pytorch_wandb.png
 ---
+
+![poster](/assets/posts/pytorch_wandb/pytorch_wandb.png)
+
+# Motivation
+
+
+
+For those who prefer video, we also showcased this demo on our community meetup on October 26, 2022. Otherwise, let's dive in!
+
+<iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/YLKueXpAT8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Installation
 
