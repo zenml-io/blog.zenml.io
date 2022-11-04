@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Felix Altenberger
-title: "How I Transformed Vanilla PyTorch Codes into Production Ready ML Pipeline - Without Losing My Soul"
+title: "Transforming Vanilla PyTorch Codes into Production Ready ML Pipeline - Without Losing My Soul"
 description: "Rewrite PyTorch code as a ZenML pipeline and add experiment tracking with TensorBoard, Weights & Biases, and MLflow."
 category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb mlflow tensorboard
@@ -18,20 +18,20 @@ path: /assets/posts/pytorch_wandb/pytorch_wandb.png
 It's 2022, anyone can train a machine learning (ML) model these days. 
 Libraries like [PyTorch](https://pytorch.org/), [Tensorflow](https://www.tensorflow.org/), and [Scikit-learn](https://scikit-learn.org/stable/index.html) have lowered the entry barrier so much, you can get started in minutes.
 
-Needless to say, there are tons of notebooks and tutorials out there that walk you through step-by-step.
-While there are values in tutorials and notebooks, especially in the exploration stage, they are often not sufficient for production use cases.
-The folks from Neptune wrote a good [post](https://neptune.ai/blog/should-you-use-jupyter-notebooks-in-production) on the pros and cons of using notebooks in production machine learning (ML). I will leave the judgment to you depending on your use cases.
+Needless to say, there are tons of tutorial notebooks out there that will walk you through step-by-step.
+While there are values in tutorial notebooks, especially in the exploration stage, they are often insufficient for production use cases.
+The folks from Neptune wrote a good [post](https://neptune.ai/blog/should-you-use-jupyter-notebooks-in-production) on the pros and cons of using notebooks vs Python scripts in production machine learning (ML). I will leave the judgment to you depending on your use cases.
 
 ![poster](/assets/posts/pytorch_wandb/meme.jpg)
 
-But the majority of codes you'd find in [quickstarts](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html) and tutorials are optimized for learning and exploring.
+But the majority of codes you'd find in [quickstarts](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html) and tutorials are written for learning and exploring.
 The question is how do you transform these codes so that they can be used for production ML? Or is that even possible?
 
 With ZenML, yes it is 🚀.
 
 In this post, I will show you how to turn vanilla PyTorch codes into a production-ready ML pipeline that can be run on any cloud infrastructure while incorporating the best practices of MLOps.
 
-In short, you'll learn how to -
+By the end of the post, you'll learn how to -
 
 + Transform a vanilla PyTorch code into ZenML pipelines.
 + Visualize the pipeline on an interactive dashboard.
@@ -736,7 +736,15 @@ mlflow ui --backend-store-uri="<TRACKING_URI>" --port=4497
 ```
 
 ## 💡 Conclusion
-In this post you've learned how to convert vanilly PyTorch codes that exists in tutorials into something ready for production.
-What if you're not using PyTorch? The good news is that the steps are not very different whether you're converting from PyTorch or Tensorflow or Scikit-learn. As long as you can structure the codes into steps and pipelines, it should work.
+In this post you've learned how to - 
+
++ Transform a vanilla PyTorch code into ZenML pipelines.
++ Visualize the pipeline on an interactive dashboard.
++ Use the Weights & Biases experiment tracker to track results and share them.
++ Switch to other experiment trackers such as Tensorboard and MLflow with little code changes.
+
+You've seen how convert vanilla PyTorch codes into production ready pipelines. But, not everyone is using PyTorch. The good news is that the steps are not very different whether you're converting from PyTorch or Tensorflow or Scikit-learn. As long as you structure the codes into steps and pipelines, it should work. My hope is that this post laid down the key ideas and concepts on how to do it.
 
 Where to go next? If you're starting out with ZenML we recommend checking our of [quickstart](https://github.com/zenml-io/zenml/tree/main/examples/quickstart) here to learn more.
+
+Questions? Join our Slack channel.
