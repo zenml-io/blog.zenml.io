@@ -22,6 +22,8 @@ Needless to say, there are tons of notebooks and tutorials out there that walk y
 While there are values in tutorials and notebooks, especially in the exploration stage, they are often not a good fit for production use cases. 
 The folks from Neptune wrote a good [post](https://neptune.ai/blog/should-you-use-jupyter-notebooks-in-production) on the pros and cons of using notebooks in production ML.
 
+![poster](/assets/posts/pytorch_wandb/meme.jpg)
+
 In this post, I will show you how you can turn vanilla PyTorch codes into a production-ready ML pipeline that can be run on any cloud infrastructure. On top of that, I will also show how you can integrate your favorite MLOps tools like the Weights & Biases experiment tracker into the pipeline while incorporating the best practices of MLOps. 
 
 In short, you'll learn how to -
