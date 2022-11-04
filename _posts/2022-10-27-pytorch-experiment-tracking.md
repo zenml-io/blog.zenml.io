@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Felix Altenberger
-title: "How I Transformed Vanilla PyTorch Codes into Production Ready ML Pipeline - In a jiffy"
+title: "How I Transformed Vanilla PyTorch Codes into Production Ready ML Pipeline - Without losing my soul"
 description: "Rewrite PyTorch code as a ZenML pipeline and add experiment tracking with TensorBoard, Weights & Biases, and MLflow."
 category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb mlflow tensorboard
@@ -24,7 +24,7 @@ The folks from Neptune wrote a good [post](https://neptune.ai/blog/should-you-us
 
 ![poster](/assets/posts/pytorch_wandb/meme.jpg)
 
-The majority of codes you'd find in [quickstarts](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html) and tutorials are optimized for learning and exploring.
+But the majority of codes you'd find in [quickstarts](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html) and tutorials are optimized for learning and exploring.
 The question is how do you transform these codes so that they can be used for production ML? Or is that even possible?
 
 With ZenML, yes it is 🚀.
@@ -33,7 +33,7 @@ In this post, I will show you how to turn vanilla PyTorch codes into a productio
 
 In short, you'll learn how to -
 
-+ Turn a vanilla PyTorch code into ZenML pipelines.
++ Transform a vanilla PyTorch code into ZenML pipelines.
 + Visualize the pipeline on an interactive dashboard.
 + Use the Weights & Biases experiment tracker to track results and share them.
 + Switch to other experiment trackers such as Tensorboard and MLflow with little code changes.
@@ -60,7 +60,7 @@ ZenML comes with various integrations, let's install the ones we will be using i
 ```shell
 zenml integration install pytorch wandb tensorboard mlflow -y
 ```
-More integrations [here](https://zenml.io/integrations).
+Wondering if you can use other tools? We have more integrations [here](https://zenml.io/integrations).
 
 
 ## ✅ Converting PyTorch Code to ZenML
