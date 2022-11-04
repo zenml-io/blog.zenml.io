@@ -36,7 +36,7 @@ In short, you'll learn how to -
 + Turn a vanilla PyTorch code into ZenML pipelines.
 + Visualize the pipeline on an interactive dashboard.
 + Use the Weights & Biases experiment tracker to track results and share them.
-+ Switch to other experiment trackers with little code changes.
++ Switch to other experiment trackers such as Tensorboard and MLflow with little code changes.
 
 For those who prefer video, we showcased this during a community meetup on October 26, 2022. Otherwise, let's dive in!
 
@@ -63,7 +63,7 @@ zenml integration install pytorch wandb tensorboard mlflow -y
 More integrations [here](https://zenml.io/integrations).
 
 
-## Converting PyTorch Code to ZenML
+## ✅ Converting PyTorch Code to ZenML
 
 From https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html
 
@@ -247,7 +247,127 @@ pytorch_experiment_tracking_pipeline(
 ).run(unlisted=True)
 ```
 
-## Exprtiment Tracking with TensorBoard
+And that's it! 
+You've just successfully converted vanilla PyTorch codes into a form that can be used in production ML.
+
+How easy was that? It's basically just reorganizing the codes into a series of steps and a pipeline.
+
+Now let's look into how we can add the W&B experiment tracker into our pipeline.
+
+## ⚖ Experiment Tracking with W&B
+
+```shell
+zenml experiment-tracker register wandb_tracker --flavor=wandb --api_key=<WANDB_SECRET> --entity=<WANDB_ENTITY> --project_name=<WANDB_PROJECT>
+zenml stack register wandb_stack -a default -o default -e wandb_tracker --set
+```
+
+```python
+import torch
+from torch import nn
+from torch.utils.data import DataLoader
+from zenml.steps import Output, step, StepContext
+import wandb
+
+
+def train(dataloader, model, loss_fn, optimizer, device, tensorboard_writer, global_step):
+    """Train a model for one epoch."""
+    size = len(dataloader.dataset)
+    model.train()
+    correct, accuracy = 0, 0
+    for batch, (X, y) in enumerate(dataloader):
+        X, y = X.to(device), y.to(device)
+
+        # Compute prediction error
+        pred = model(X)
+        loss = loss_fn(pred, y)
+        correct += (pred.argmax(1) == y).type(torch.float).sum().item()
+
+        # Backpropagation
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        if batch % 100 == 0:
+            step_in_epoch = (batch + 1) * len(X)
+            current_step = global_step + step_in_epoch
+            loss = loss.item()
+            accuracy = 100 * correct / step_in_epoch
+
+            # W&B tracking
+            wandb.log(
+                {
+                    "Train Loss": loss, 
+                    "Train Accuracy": accuracy
+                }, 
+                step=global_step
+            )
+    return accuracy
+
+
+def test(dataloader, model, loss_fn, device, tensorboard_writer, global_step):
+    """Test a model on the validation / test dataset."""
+    size = len(dataloader.dataset)
+    num_batches = len(dataloader)
+    model.eval()
+    test_loss, correct = 0, 0
+    with torch.no_grad():
+        for X, y in dataloader:
+            X, y = X.to(device), y.to(device)
+            pred = model(X)
+            test_loss += loss_fn(pred, y).item()
+            correct += (pred.argmax(1) == y).type(torch.float).sum().item()
+    test_loss /= num_batches
+    test_accuracy = 100 * correct / size
+
+    # W&B tracking
+    wandb.log(
+        {"Test Loss": test_loss, "Test Accuracy": test_accuracy}, 
+        step=global_step
+    )
+    return test_accuracy
+
+@step(enable_cache=False, experiment_tracker="wandb_tracker")
+def train_test(
+    model: nn.Module,
+    train_dataloader: DataLoader, 
+    test_dataloader: DataLoader, 
+    context: StepContext,
+) -> Output(trained_model=nn.Module, test_acc=float):
+    """Train and simultaneously evaluate a torch model on given dataloaders."""
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    tensorboard_writer = None
+    lr = 1e-3
+    epochs = 5
+
+    # W&B tracking
+    wandb.log({"epochs": epochs, "lr": lr})
+    wandb.watch(model)
+
+    model = model.to(device)
+    loss_fn = nn.CrossEntropyLoss()
+    optimizer = torch.optim.SGD(model.parameters(), lr=lr)
+    test_acc = 0
+    for t in range(epochs):
+        print(f"Epoch {t+1}\n-------------------------------")
+        global_step = t * len(train_dataloader)
+        train_acc = train(train_dataloader, model, loss_fn, optimizer, device, tensorboard_writer, global_step)
+        test_acc = test(test_dataloader, model, loss_fn, device, tensorboard_writer, global_step)
+    print("Done!")
+
+    return model, test_acc
+```
+
+```python
+pytorch_experiment_tracking_pipeline(
+    load_training_data=load_data(),
+    model_definition=load_model(),
+    train_test=train_test(),
+).run(unlisted=True)
+```
+
+
+
+## 🎬 Switching to Tensorboard Experiment Tracker
 
 ```python
 import os
@@ -365,118 +485,7 @@ visualize_tensorboard(
 )
 ```
 
-## Experiment Tracking with W&B
-
-```shell
-zenml experiment-tracker register wandb_tracker --flavor=wandb --api_key=<WANDB_SECRET> --entity=<WANDB_ENTITY> --project_name=<WANDB_PROJECT>
-zenml stack register wandb_stack -a default -o default -e wandb_tracker --set
-```
-
-```python
-import torch
-from torch import nn
-from torch.utils.data import DataLoader
-from zenml.steps import Output, step, StepContext
-import wandb
-
-
-def train(dataloader, model, loss_fn, optimizer, device, tensorboard_writer, global_step):
-    """Train a model for one epoch."""
-    size = len(dataloader.dataset)
-    model.train()
-    correct, accuracy = 0, 0
-    for batch, (X, y) in enumerate(dataloader):
-        X, y = X.to(device), y.to(device)
-
-        # Compute prediction error
-        pred = model(X)
-        loss = loss_fn(pred, y)
-        correct += (pred.argmax(1) == y).type(torch.float).sum().item()
-
-        # Backpropagation
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-
-        if batch % 100 == 0:
-            step_in_epoch = (batch + 1) * len(X)
-            current_step = global_step + step_in_epoch
-            loss = loss.item()
-            accuracy = 100 * correct / step_in_epoch
-
-            # W&B tracking
-            wandb.log(
-                {
-                    "Train Loss": loss, 
-                    "Train Accuracy": accuracy
-                }, 
-                step=global_step
-            )
-    return accuracy
-
-
-def test(dataloader, model, loss_fn, device, tensorboard_writer, global_step):
-    """Test a model on the validation / test dataset."""
-    size = len(dataloader.dataset)
-    num_batches = len(dataloader)
-    model.eval()
-    test_loss, correct = 0, 0
-    with torch.no_grad():
-        for X, y in dataloader:
-            X, y = X.to(device), y.to(device)
-            pred = model(X)
-            test_loss += loss_fn(pred, y).item()
-            correct += (pred.argmax(1) == y).type(torch.float).sum().item()
-    test_loss /= num_batches
-    test_accuracy = 100 * correct / size
-
-    # W&B tracking
-    wandb.log(
-        {"Test Loss": test_loss, "Test Accuracy": test_accuracy}, 
-        step=global_step
-    )
-    return test_accuracy
-
-@step(enable_cache=False, experiment_tracker="wandb_tracker")
-def train_test(
-    model: nn.Module,
-    train_dataloader: DataLoader, 
-    test_dataloader: DataLoader, 
-    context: StepContext,
-) -> Output(trained_model=nn.Module, test_acc=float):
-    """Train and simultaneously evaluate a torch model on given dataloaders."""
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    tensorboard_writer = None
-    lr = 1e-3
-    epochs = 5
-
-    # W&B tracking
-    wandb.log({"epochs": epochs, "lr": lr})
-    wandb.watch(model)
-
-    model = model.to(device)
-    loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(model.parameters(), lr=lr)
-    test_acc = 0
-    for t in range(epochs):
-        print(f"Epoch {t+1}\n-------------------------------")
-        global_step = t * len(train_dataloader)
-        train_acc = train(train_dataloader, model, loss_fn, optimizer, device, tensorboard_writer, global_step)
-        test_acc = test(test_dataloader, model, loss_fn, device, tensorboard_writer, global_step)
-    print("Done!")
-
-    return model, test_acc
-```
-
-```python
-pytorch_experiment_tracking_pipeline(
-    load_training_data=load_data(),
-    model_definition=load_model(),
-    train_test=train_test(),
-).run(unlisted=True)
-```
-
-## Experiment Tracking with MLflow
+## 🌼 Switching to MLflow Experiment Tracker
 
 ```shell
 zenml experiment-tracker register mlflow_tracker --flavor=mlflow
@@ -596,3 +605,9 @@ print(get_tracking_uri())
 ```shell
 mlflow ui --backend-store-uri="<TRACKING_URI>" --port=4497
 ```
+
+## 💡 Conclusion
+In this post you've learned how to convert vanilly PyTorch codes that exists in tutorials into something ready for production.
+What if you're not using PyTorch? The good news is that the steps are not very different whether you're converting from PyTorch or Tensorflow or Scikit-learn. As long as you can structure the codes into steps and pipelines, it should work.
+
+Where to go next? If you're starting out with ZenML we recommend checking our of [quickstart](https://github.com/zenml-io/zenml/tree/main/examples/quickstart) here to learn more.
