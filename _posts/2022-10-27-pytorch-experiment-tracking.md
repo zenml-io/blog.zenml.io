@@ -15,10 +15,23 @@ path: /assets/posts/pytorch_wandb/pytorch_wandb.png
 ![poster](/assets/posts/pytorch_wandb/pytorch_wandb.png)
 
 # Motivation
+Anyone can train a deep learning (DL) model these days. 
+It's 2022 and libraries like PyTorch and Tensorflow have lowered the entry barrier so much, you can even train a model for free even without a good computer.
+Needless to say, there are tons of notebooks and tutorials out there that walk you through step-by-step.
 
+While there are values in tutorials and notebooks, especially in the exploration stage, they are often not a good fit for production use cases. 
+The folks from Neptune wrote a good [post](https://neptune.ai/blog/should-you-use-jupyter-notebooks-in-production) on the pros and cons of using notebooks in production ML.
 
+In this post, I will show you how you can turn vanilla PyTorch codes into a production-ready ML pipeline that can be run on any cloud infrastructure. On top of that, I will also show how you can integrate your favorite MLOps tools like the Weights & Biases experiment tracker into the pipeline while incorporating the best practices of MLOps. 
 
-For those who prefer video, we also showcased this demo on our community meetup on October 26, 2022. Otherwise, let's dive in!
+In short, you'll learn how to -
+
++ Turn a vanilla PyTorch code into ZenML pipelines.
++ Visualize the pipeline run an interactive dashboard.
++ Use the Weights & Biases experiment tracker to track results and share them.
++ Switch to other experiment trackers with little code changes.
+
+For those who prefer video, this example was also showcased during a community meetup on October 26, 2022. Otherwise, let's dive in!
 
 <iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/YLKueXpAT8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
