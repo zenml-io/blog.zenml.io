@@ -47,8 +47,20 @@ For those who prefer video, we showcased this during a community meetup on Octob
 First, let's install all the necessary packages with:
 
 ```shell
-pip install "zenml[server]==0.21.0" torchvision
+pip install "zenml[server]==0.21.1" torchvision==0.14.0
 ```
+We highly recommend that you install ZenML in a virtual environment of your choice.
+Read more [in our docs](https://docs.zenml.io/getting-started/installation).
+
+Also note that if you're running this on an M1 Mac, we have a special guide [here](https://docs.zenml.io/getting-started/installation/m1-mac-installation) to set it up.
+
+
+To verify if the installation was successful you type:
+```shell
+zenml version
+```
+in your terminal. If you dont' encounter any error messages, we're now ready to start hacking!
+
 
 To start working on your project, initialize a ZenML repository within your current directory with:
 ```shell
@@ -384,6 +396,19 @@ How easy was that? It's basically just reorganizing the codes into a series of s
 Now let's look into how we can add the W&B experiment tracker into our pipeline.
 
 ## ⚖ Experiment Tracking with W&B
+In ZenML we introduce a concept of Stack and Stack Component.
+
+A Stack is the configuration of the underlying infrastructure and choices around how your pipeline will be run.
+In any Stack, there must be at least two basic Stack Components - and orchestrator and an artifact store.
+
+These components are set up by default when you initialize the project.
+In this section, we'd like to have a third Stack Component - Experiment Trackers, which let you track your ML experiment by logging various information about your models, dataset, metrics, etc.
+
+View the list of types of Stack Componenets [here](https://docs.zenml.io/component-gallery/categories).
+
+In this section I will show you how to add the Weights and Biases experiment tracker into your stack.
+
+First, we must register the experiment tracker 
 
 ```shell
 zenml experiment-tracker register wandb_tracker --flavor=wandb --api_key=<WANDB_SECRET> --entity=<WANDB_ENTITY> --project_name=<WANDB_PROJECT>
