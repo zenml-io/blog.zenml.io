@@ -147,7 +147,6 @@ print(model)
 loss_fn = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
 
-
 def train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
     model.train()
@@ -203,38 +202,45 @@ For example, the following is a simple pipeline that consist of three steps (imp
 ![pipeline_steps](/assets/posts/pytorch_wandb/pipeline_step.gif)
 
 
-First, let's define the pipeline. You can do this by putting a `@pipeline` decorator.
+First, let's import all the modules we would need from `torch` and `zenml`
+```python
+import torch
+from torch import nn
+from torch.utils.data import DataLoader
+from torchvision import datasets
+from torchvision.transforms import ToTensor
+
+from zenml.pipelines import pipeline
+from zenml.steps import step, Output
+```
+
+
+Next, let's define the pipeline. You can do this by putting a `@pipeline` decorator.
 
 ```python
-from zenml.pipelines import pipeline
-
-
-@pipeline(enable_cache=False)
+@pipeline
 def pytorch_experiment_tracking_pipeline(
-    load_training_data,
-    model_definition,
+    load_data,
+    load_model,
     train_test,
 ):
-    """Train, evaluate, and deploy a model."""
-    train_dataloader, test_dataloader = load_training_data()
-    model = model_definition()
+    """A pipeline to load data, train and evaluate a model."""
+    train_dataloader, test_dataloader = load_data()
+    model = load_model()
     train_test(model, train_dataloader, test_dataloader)
 ```
 
 Next, let's define the steps in the pipeline. You can do that by using a `@step` decorator.
 We will define the three steps that we will use in the pipeline.
 
-```python
-from torch.utils.data import DataLoader
-from torchvision import datasets
-from torchvision.transforms import ToTensor
-from zenml.steps import step, Output
+The first `step` is to load the data.
 
+```python
 @step
 def load_data() -> Output(
     train_dataloader=DataLoader, test_dataloader=DataLoader
 ):
-    """Load the Fashion MNIST dataset as tuple of torch Datasets."""
+    """A step to load the Fashion MNIST dataset as tuple of torch Datasets."""
     batch_size = 64
 
     # Download training data from open datasets.
@@ -260,11 +266,8 @@ def load_data() -> Output(
     return train_dataloader, test_dataloader
 ```
 
+The second `step` is to load the model.
 ```python
-from torch import nn
-from zenml.steps import step
-
-
 class NeuralNetwork(nn.Module):
     def __init__(self):
         super(NeuralNetwork, self).__init__()
@@ -282,34 +285,30 @@ class NeuralNetwork(nn.Module):
         logits = self.linear_relu_stack(x)
         return logits
 
-
 @step
 def load_model() -> nn.Module:
-    """Define a PyTorch classification model."""
+    """A step to define a PyTorch classification model."""
     model = NeuralNetwork()
     print(model)
     return model
 ```
 
+The third `step` is to train and test the model.
 ```python
-import torch
-from torch import nn
-from torch.utils.data import DataLoader
-from zenml.steps import Output, step, StepContext
+# Get cpu or gpu device for training.
+device = "cuda" if torch.cuda.is_available() else "cpu"
+print(f"Using {device} device")
 
-
-def train(dataloader, model, loss_fn, optimizer, device, global_step):
-    """Train a model for one epoch."""
+def train(dataloader, model, loss_fn, optimizer):
+    """A function to train a model for one epoch."""
     size = len(dataloader.dataset)
     model.train()
-    correct, accuracy = 0, 0
     for batch, (X, y) in enumerate(dataloader):
         X, y = X.to(device), y.to(device)
 
         # Compute prediction error
         pred = model(X)
         loss = loss_fn(pred, y)
-        correct += (pred.argmax(1) == y).type(torch.float).sum().item()
 
         # Backpropagation
         optimizer.zero_grad()
@@ -317,20 +316,11 @@ def train(dataloader, model, loss_fn, optimizer, device, global_step):
         optimizer.step()
 
         if batch % 100 == 0:
-            step_in_epoch = (batch + 1) * len(X)
-            current_step = global_step + step_in_epoch
-            loss = loss.item()
-            accuracy = 100 * correct / step_in_epoch
+            loss, current = loss.item(), batch * len(X)
+            print(f"loss: {loss:>7f}  [{current:>5d}/{size:>5d}]")
 
-            # Naive tracking
-            print(f"Loss: {loss:>7f}")
-            print(f"Accuracy: {accuracy:>0.1f}%")
-
-    return accuracy
-
-
-def test(dataloader, model, loss_fn, device, global_step):
-    """Test a model on the validation / test dataset."""
+def test(dataloader, model, loss_fn):
+    """A function to test a model on the validation / test dataset."""
     size = len(dataloader.dataset)
     num_batches = len(dataloader)
     model.eval()
@@ -342,24 +332,19 @@ def test(dataloader, model, loss_fn, device, global_step):
             test_loss += loss_fn(pred, y).item()
             correct += (pred.argmax(1) == y).type(torch.float).sum().item()
     test_loss /= num_batches
-    test_accuracy = 100 * correct / size
-
-    # Naive tracking
-    print(f"Test Loss: {test_loss:>8f}")
-    print(f"Test Accuracy: {(test_accuracy):>0.1f}%")
+    correct /= size
+    test_accuracy = 100*correct
+    print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
     return test_accuracy
-
 
 @step
 def train_test(
     model: nn.Module,
     train_dataloader: DataLoader, 
-    test_dataloader: DataLoader, 
-    context: StepContext,
+    test_dataloader: DataLoader
 ) -> Output(trained_model=nn.Module, test_acc=float):
-    """Train and simultaneously evaluate a torch model on given dataloaders."""
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    """A step to train and evaluate a torch model on given dataloaders."""
     lr = 1e-3
     epochs = 5
 
@@ -369,13 +354,9 @@ def train_test(
     test_acc = 0
     for t in range(epochs):
         print(f"Epoch {t+1}\n-------------------------------")
-        global_step = t * len(train_dataloader)
-        train_acc = train(train_dataloader, model, loss_fn, optimizer, device, global_step)
-        test_acc = test(test_dataloader, model, loss_fn, device, global_step)
+        train(train_dataloader, model, loss_fn, optimizer)
+        test_acc = test(test_dataloader, model, loss_fn)
     print("Done!")
-
-    # Naive tracking
-    print("Final test accuracy: ", test_acc)
 
     return model, test_acc
 ```
@@ -384,10 +365,10 @@ Finally, we can now run the pipeline.
 
 ```python
 pytorch_experiment_tracking_pipeline(
-    load_training_data=load_data(),
-    model_definition=load_model(),
+    load_data=load_data(),
+    load_model=load_model(),
     train_test=train_test(),
-).run(unlisted=True)
+).run()
 ```
 
 And that's it! 
