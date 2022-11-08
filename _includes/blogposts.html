@@ -73,7 +73,7 @@
                 </li>
               {% elsif paginator.page != page and page != 1 %}
                 <li class="page-item">
-                  <a class="page-link" href="{{ site.url }}/{{ paginator.page_path | replace: paginator.page, page }}">{{ page }}</a>
+                  <a class="page-link" href="{{ site.url }}{{ paginator.page_path | replace: paginator.page, page }}">{{ page }}</a>
                 </li>
               {% endif %}
               {% endfor %}
