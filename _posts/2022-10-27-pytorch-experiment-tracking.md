@@ -202,7 +202,7 @@ For example, the following is a simple pipeline that consist of three steps (imp
 ![pipeline_steps](/assets/posts/pytorch_wandb/pipeline_step.gif)
 
 
-First, let's import all the modules we would need from `torch` and `zenml`
+First, let's import all the modules we would need from `torch`, `torchvision` and `zenml`
 ```python
 import torch
 from torch import nn
@@ -214,8 +214,7 @@ from zenml.pipelines import pipeline
 from zenml.steps import step, Output
 ```
 
-
-Next, let's define the pipeline. You can do this by putting a `@pipeline` decorator.
+Next, let's define the `pipeline`. You can do this by putting a `@pipeline` decorator.
 
 ```python
 @pipeline
@@ -224,7 +223,7 @@ def pytorch_experiment_tracking_pipeline(
     load_model,
     train_test,
 ):
-    """A pipeline to load data, train and evaluate a model."""
+    """A `pipeline` to load data, load model, and train/evaluate the model."""
     train_dataloader, test_dataloader = load_data()
     model = load_model()
     train_test(model, train_dataloader, test_dataloader)
@@ -240,7 +239,7 @@ The first `step` is to load the data.
 def load_data() -> Output(
     train_dataloader=DataLoader, test_dataloader=DataLoader
 ):
-    """A step to load the Fashion MNIST dataset as tuple of torch Datasets."""
+    """A `step` to load the Fashion MNIST dataset as tuple of torch Datasets."""
     batch_size = 64
 
     # Download training data from open datasets.
@@ -287,7 +286,7 @@ class NeuralNetwork(nn.Module):
 
 @step
 def load_model() -> nn.Module:
-    """A step to define a PyTorch classification model."""
+    """A `step` to define a PyTorch classification model."""
     model = NeuralNetwork()
     print(model)
     return model
@@ -344,7 +343,7 @@ def train_test(
     train_dataloader: DataLoader, 
     test_dataloader: DataLoader
 ) -> Output(trained_model=nn.Module, test_acc=float):
-    """A step to train and evaluate a torch model on given dataloaders."""
+    """A `step` to train and evaluate a torch model on given dataloaders."""
     lr = 1e-3
     epochs = 5
 
@@ -373,7 +372,7 @@ pytorch_experiment_tracking_pipeline(
 
 And that's it! 
 You've just successfully converted vanilla PyTorch codes into a form that can be used in production ML!
-How easy was that? It's basically just reorganizing the codes into a series of steps and a pipeline.
+How easy was that? It's basically just reorganizing the codes into a series of `steps` and a `pipeline`.
 
 ## 📊 ZenML Dashboard
 
