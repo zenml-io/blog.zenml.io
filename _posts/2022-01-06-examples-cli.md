@@ -55,7 +55,9 @@ ZenML pipelines:
 
 You don't even need to clone our repository to get the goodness of examples! Use
 the series of commands that begin with `zenml example` to download and even run
-examples.
+examples. (UPDATE: As of November 2022 we have lots more examples covering the
+integrations that have been written in the intervening period since this blog
+was written.)
 
 Get the full list of examples available:
 
