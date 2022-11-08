@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Felix Altenberger
-title: "Transforming Vanilla PyTorch Codes into Production Ready ML Pipeline - Without Losing My Soul"
+title: "Transforming Vanilla PyTorch Codes into Production Ready ML Pipeline - Without Selling Your Soul"
 description: "Rewrite PyTorch code as a ZenML pipeline and add experiment tracking with TensorBoard, Weights & Biases, and MLflow."
 category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb mlflow tensorboard
@@ -392,25 +392,32 @@ pytorch_experiment_tracking_pipeline(
 
 And that's it! 
 You've just successfully converted vanilla PyTorch codes into a form that can be used in production ML!
-
 How easy was that? It's basically just reorganizing the codes into a series of steps and a pipeline.
 
-ZenML comes with a handy dashboard that let's you visualize the pipeline you just run.
-To use it, run
+## 📊 ZenML Dashboard
+
+ZenML comes with a handy dashboard that lets you visualize the pipeline you just run.
+To launch the dashboard, type:
 ```shell
 zenml up
 ```
-in your terminal. It should launch the dashboard in the browser at `http://127.0.0.1:8237)` like the following
+in your terminal.
+This spins up a local ZenServer and launches the dashboard in the browser at `http://127.0.0.1:8237)`.
 
 ![login](/assets/posts/pytorch_wandb/dashboard.gif)
 
 Key in `default` as the username and leave the password empty, then click "Log in".
+In the dashboard, you'll see all details about your Steps, Pipelines, Runs, Stacks and Stack Components.
+There's also a neat visualization on the pipeline which lets you visually inspect your workflow.
 
+This section shows you can use the ZenML server and dashboard locally to inspect runs.
+But this is rarely the case in production where you'll need to collaborate and manage the workflow in a team.
+For that you'll need to deploy ZenML in the cloud.
+Read more about deploying ZenML on a cloud [here](https://docs.zenml.io/getting-started/deploying-zenml).
 
+Up to this point, I've shown you how to transform vanilla PyTorch codes from the quickstart into ZenML pipeline and utilize the dashboard to manage and visualize the pipeline.
 
-
-
-Now let's look into how we can add the W&B experiment tracker into our pipeline.
+In the next section, I will show how you can add in more components (we call them Stack Components in ZenML) into your pipeline.
 
 ## ⚖ Experiment Tracking with W&B
 In ZenML we introduce a concept of Stack and Stack Component.
@@ -421,9 +428,9 @@ In any Stack, there must be at least two basic Stack Components - and orchestrat
 These components are set up by default when you initialize the project.
 In this section, we'd like to have a third Stack Component - Experiment Trackers, which let you track your ML experiment by logging various information about your models, dataset, metrics, etc.
 
-View the list of types of Stack Componenets [here](https://docs.zenml.io/component-gallery/categories).
+View the list of types of Stack Components [here](https://docs.zenml.io/component-gallery/categories).
 
-In this section I will show you how to add the Weights and Biases experiment tracker into your stack.
+In this section I will show you how to add the Weights and Biases (W&B) experiment tracker into your stack.
 
 First, we must register the experiment tracker 
 
@@ -431,6 +438,8 @@ First, we must register the experiment tracker
 zenml experiment-tracker register wandb_tracker --flavor=wandb --api_key=<WANDB_SECRET> --entity=<WANDB_ENTITY> --project_name=<WANDB_PROJECT>
 zenml stack register wandb_stack -a default -o default -e wandb_tracker --set
 ```
+
+We will continue to build on the code we used in the previous section.
 
 ```python
 import torch
