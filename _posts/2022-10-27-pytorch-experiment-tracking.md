@@ -22,10 +22,12 @@ Needless to say, there are tons of tutorial notebooks out there that will walk y
 While there are values in tutorial notebooks, especially in the exploration stage, they are often insufficient for production use cases.
 The folks from Neptune wrote a good [post](https://neptune.ai/blog/should-you-use-jupyter-notebooks-in-production) on the pros and cons of using notebooks vs Python scripts in production machine learning (ML). I will leave the judgment to you depending on your use cases.
 
-![poster](/assets/posts/pytorch_wandb/meme.jpg)
+
 
 But the majority of codes you'd find in [quickstarts](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html) and tutorials are written for learning and exploring.
 The question is how do you transform these codes so that they can be used for production ML? Or is that even possible?
+
+![poster](/assets/posts/pytorch_wandb/meme.jpg)
 
 With ZenML, yes it is 🚀.
 
@@ -378,7 +380,7 @@ def train_test(
     return model, test_acc
 ```
 
-Finally, we can now run the pipline.
+Finally, we can now run the pipeline.
 
 ```python
 pytorch_experiment_tracking_pipeline(
@@ -389,9 +391,24 @@ pytorch_experiment_tracking_pipeline(
 ```
 
 And that's it! 
-You've just successfully converted vanilla PyTorch codes into a form that can be used in production ML.
+You've just successfully converted vanilla PyTorch codes into a form that can be used in production ML!
 
 How easy was that? It's basically just reorganizing the codes into a series of steps and a pipeline.
+
+ZenML comes with a handy dashboard that let's you visualize the pipeline you just run.
+To use it, run
+```shell
+zenml up
+```
+in your terminal. It should launch the dashboard in the browser at `http://127.0.0.1:8237)` like the following
+
+![login](/assets/posts/pytorch_wandb/dashboard.gif)
+
+Key in `default` as the username and leave the password empty, then click "Log in".
+
+
+
+
 
 Now let's look into how we can add the W&B experiment tracker into our pipeline.
 
