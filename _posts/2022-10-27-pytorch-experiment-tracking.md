@@ -284,12 +284,11 @@ def load_data() -> Output(
     return train_dataloader, test_dataloader
 ```
 
-One of the best practices we keep when defining a `step` is type annotation.
+One of the best practices we keep when defining a `step` is [type annotation](https://blog.logrocket.com/understanding-type-annotation-python/).
 In simple terms, this means we define the data type for all the inputs and outputs of a `step`.
 This is a requirement when defining a `step`.
 
-In the `load_data` step above, the outputs of the `step` are the train and test dataloaders of the `DataLoader` type in PyTorch.
-
+For the `load_data` step above, the outputs of the `step` are the train and test dataloaders of the `DataLoader` type in PyTorch.
 All you have to do is append `Output(train_dataloader=DataLoader, test_dataloader=DataLoader)` to the function name.
 
 Now, let's use the same method and define our next `step` to load the model.
@@ -391,8 +390,7 @@ def train_test(
 
 We are now done with defining all the `steps` that takes place in a `pipeline`!
 
-What's left now is to run it by:
-
+What's left now is to run the `pipeline` by:
 
 ```python
 pytorch_experiment_tracking_pipeline(
@@ -403,16 +401,14 @@ pytorch_experiment_tracking_pipeline(
 ```
 
 And that's it! 
-How easy was that? It's basically just reorganizing the PyTorch codes into a series of `steps` and a `pipeline`.
-
+How easy was that? We were only reorganizing the PyTorch codes into a series of `steps` and a `pipeline` with ZenML.
 If you put all the codes above in a `.py` script, it should run just like the vanilla PyTorch code in the quickstart.
 
 So why does this matter?
 
-You've just successfully converted vanilla PyTorch codes into a form that can be run on your local machine and additionally any cloud infrastructure. Structuring your code into steps and pipelines also ensures they are modular and easily maintainable. Not to mention that the code that you'd use in development is largely similar to the code in production saving a huge refactoring cost when codes transition from development to production.
+First, you've just transformed vanilla PyTorch codes into a form that can be run on your local machine and any cloud infrastructure in production. Second, structuring your code into steps and pipelines and makes the code modular and easily maintainable. Third, using ZenML pipelines earlier on also means that the code you use in development will be similar to the code in production. This saves a huge refactoring cost when transitioning from development to production. 
 
-These are among the many benefits of structuring your code with [ZenML pipelines from the get-go](https://blog.zenml.io/ml-pipelines-from-the-start/). 
-
+You can read about more about other benefits of structuring your code with ZenML pipelines from the get-go [here](https://blog.zenml.io/ml-pipelines-from-the-start/). 
 Learn more about other ZenML features [here](https://zenml.io/features) which will save you a lot of time and resources in productionalizing ML models.
 
 ## 📊 ZenML Dashboard
@@ -639,18 +635,19 @@ Here's mine
 
 ![dashboard](../assets/posts/pytorch_wandb/wandb_dashboard.png)
 
-In our example above, we did not log a lot of experiment information. But you can log anything from the experiment with `wandb.log`. 
+In our example above, we did not log a lot of experiment information for simplicity. 
+But you can always log other metrics from any steps in the pipeline with `wandb.log`. 
 
 ## 💡 Conclusion
 In this post you've learned how to - 
 
 + Transform a vanilla PyTorch code into ZenML pipelines.
-+ Visualize the pipeline on an interactive dashboard.
++ Visualize and inspect the steps and pipeline on an interactive dashboard.
 + Configure a Secrets Manager to securely store API keys.
-+ Use the Weights & Biases Experiment Tracker to log results and share them.
++ Configure the Weights & Biases Experiment Tracker to log results and share them.
 
-You've seen how convert vanilla PyTorch codes into production ready pipelines. But, not everyone is using PyTorch. The good news is that the steps are not very different whether you're converting from PyTorch or Tensorflow or Scikit-learn. As long as you structure the codes into steps and pipelines, it should work. My hope is that this post laid down the key ideas and concepts on how to do it.
+With this new superpower, you can turn any PyTorch code into ZenML steps and pipelines. The same also applies to other frameworks like Tensorflow, Scikit-learn, etc.
 
-Where to go next? If you're starting out with ZenML we recommend checking our of [quickstart](https://github.com/zenml-io/zenml/tree/main/examples/quickstart) here to learn more.
+Where to go next? If you're starting out with ZenML we recommend checking our of [quickstart](https://github.com/zenml-io/zenml/tree/main/examples/quickstart) to learn more.
 
-Questions? Join our Slack channel.
+Got questions? [Join our Slack channel](https://zenml.io/slack-invite) get a quick response from us!
