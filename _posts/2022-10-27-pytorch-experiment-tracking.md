@@ -2,7 +2,7 @@
 layout: post
 author: Felix Altenberger
 title: "Transforming Vanilla PyTorch Codes into Production Ready ML Pipeline - Without Selling Your Soul"
-description: "Rewrite PyTorch code as a ZenML pipeline and add experiment tracking with TensorBoard, Weights & Biases, and MLflow."
+description: "Rewrite PyTorch code as a ZenML pipeline and add experiment tracking and secrets manager component."
 category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb mlflow tensorboard
 publish_date: October 27, 2022
@@ -19,12 +19,11 @@ It's 2022, anyone can train a machine learning (ML) model these days.
 Libraries like [PyTorch](https://pytorch.org/), [Tensorflow](https://www.tensorflow.org/), and [Scikit-learn](https://scikit-learn.org/stable/index.html) have lowered the entry barrier so much, you can get started in minutes.
 
 Needless to say, there are tons of quickstart notebooks out there that will walk you through step-by-step.
-While there are values in quickstarts, especially in the early stages, the codes you see in quickstarts often look very different in production.
+While there are values in quickstarts, especially in the early stages, the codes you see in quickstarts often look very different and unusable in production.
 
 Or, is it?
 
 Is there a way we could transform quickstart codes so that they are usable for production ML? 
-
 Is that even possible?!
 
 With ZenML, yes it is 🚀.
@@ -43,13 +42,14 @@ By the end of the post, you'll learn how to -
 + Configure a Secrets Manager to securely store API keys.
 + Use the Weights & Biases Experiment Tracker to log results and share them.
 
-For those who prefer video, we showcased this during a community meetup on October 26, 2022. Otherwise, let's dive in!
+For those who prefer video, I showcased this during a community meetup on October 26, 2022. Otherwise, let's dive in!
 
 <iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/YLKueXpAT8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## ☕️ Installation
-We highly recommend that you install ZenML in a virtual environment of your choice.
+Let's begin by installing all the packages we'll need.
+I'd highly recommend that you install ZenML in a virtual environment of your choice.
 Read more [in our docs](https://docs.zenml.io/getting-started/installation).
 
 Also note that if you're running this on an M1 Mac, we have a special guide [here](https://docs.zenml.io/getting-started/installation/m1-mac-installation) to set it up.
@@ -84,7 +84,8 @@ zenml integration install pytorch wandb tensorboard mlflow -y
 ```
 
 Wondering if you can use other tools instead? 
-We have more integrations [here](https://zenml.io/integrations).
+Check out more integrations [here](https://zenml.io/integrations).
+Or you can even [write you own](https://docs.zenml.io/misc/integrating)!
 
 
 ## ✅ Vanilla PyTorch Code
