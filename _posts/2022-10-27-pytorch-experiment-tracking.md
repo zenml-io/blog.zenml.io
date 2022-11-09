@@ -54,7 +54,7 @@ Read more [in our docs](https://docs.zenml.io/getting-started/installation).
 
 Also note that if you're running this on an M1 Mac, we have a special guide [here](https://docs.zenml.io/getting-started/installation/m1-mac-installation) to set it up.
 
-Now in your virtual environment, let's install all the necessary packages with:
+Now in your virtual environment, let's install all the necessary packages:
 
 ```shell
 pip install "zenml[server]==0.21.1" torchvision==0.14.0
@@ -88,7 +88,7 @@ We have more integrations [here](https://zenml.io/integrations).
 
 
 ## ✅ Vanilla PyTorch Code
-Now that we're done with the setups, lets take a look at the "hello world" of PyTorch on the [quickstart page](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html).
+Now that we're done with the setups, let's take a look at the "hello world" of PyTorch on the [quickstart page](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html).
 
 The codes look like the following.
 
@@ -208,11 +208,11 @@ Before we start, I'd like to first tell you about the concept of *pipeline* and 
 
 In ZenML, a `pipeline` consists of a series of steps, organized in any order that makes sense for your use case.
 
-The following illustration is a simple `pipeline` that consist of three `steps` running one after another.
+The following illustration is a simple `pipeline` that consists of three `steps` running one after another.
 
 ![pipeline_steps](/assets/posts/pytorch_wandb/pipeline_step.gif)
 
-Above is the exact `pipeline` and `steps` that we will construct from the vanilla PyTorch code.
+The figure above is the exact `pipeline` and `steps` that we will construct from the vanilla PyTorch code.
 
 Let's start coding the transformation.
 
@@ -245,7 +245,7 @@ def pytorch_experiment_tracking_pipeline(
     model = load_model()
     train_test(model, train_dataloader, test_dataloader)
 ```
-The pipeline we just wrote takes in three `steps` as the input namely - `load_data`, `load_model` and `train_test`. Each `step` runs sequentially one after another. 
+The pipeline we just wrote takes three `steps` as the input namely - `load_data`, `load_model`, and `train_test`. Each `step` runs sequentially one after another. 
 
 Next, let's define what the `steps` actually do. 
 
@@ -258,7 +258,7 @@ Let's start with the first `step` to load the data.
 def load_data() -> Output(
     train_dataloader=DataLoader, test_dataloader=DataLoader
 ):
-    """A `step` to load the Fashion MNIST dataset as tuple of torch Datasets."""
+    """A `step` to load the Fashion MNIST dataset as a tuple of torch Datasets."""
     batch_size = 64
 
     # Download training data from open datasets.
@@ -388,7 +388,7 @@ def train_test(
     return model, test_acc
 ```
 
-We are now done with defining all the `steps` that takes place in a `pipeline`!
+We are now done with defining all the `steps` that take place in a `pipeline`!
 
 What's left now is to run the `pipeline` by:
 
@@ -406,9 +406,9 @@ If you put all the codes above in a `.py` script, it should run just like the va
 
 So why does this matter?
 
-First, you've just transformed vanilla PyTorch codes into a form that can be run on your local machine and any cloud infrastructure in production. Second, structuring your code into steps and pipelines and makes the code modular and easily maintainable. Third, using ZenML pipelines earlier on also means that the code you use in development will be similar to the code in production. This saves a huge refactoring cost when transitioning from development to production. 
+First, you've just transformed vanilla PyTorch codes into a form that can be run on your local machine and any cloud infrastructure in production. Second, structuring your code into steps and pipelines makes the code modular and easily maintainable. Third, using ZenML pipelines earlier also means that the code you use in development will be similar to the code in production. This saves a huge refactoring cost when transitioning from development to production. 
 
-You can read about more about other benefits of structuring your code with ZenML pipelines from the get-go [here](https://blog.zenml.io/ml-pipelines-from-the-start/). 
+You can read more about other benefits of structuring your code with ZenML pipelines from the get-go [here](https://blog.zenml.io/ml-pipelines-from-the-start/). 
 Learn more about other ZenML features [here](https://zenml.io/features) which will save you a lot of time and resources in productionalizing ML models.
 
 ## 📊 ZenML Dashboard
@@ -425,10 +425,10 @@ This spins up a local [ZenML Server](https://docs.zenml.io/getting-started/core-
 
 ![login](/assets/posts/pytorch_wandb/dashboard.gif)
 
-In the dashboard, you'll see all details about your Steps, Pipelines, Runs, Stacks and Stack Components.
+In the dashboard, you'll see all details about your Steps, Pipelines, Runs, Stacks, and Stack Components.
 There's also a neat visualization on the pipeline which lets you visually inspect your workflow.
 
-The ZenML dashboard let's you visually inspect if the pipeline and steps are in order especially if your steps are complicated and many.
+The ZenML dashboard lets you visually inspect if the pipeline and steps are in order especially if your steps are complicated and many.
 
 So far we've only seen the details about the steps and pipelines in the dashboard. What about the experiment details like training accuracy, loss, etc? 
 
@@ -437,9 +437,9 @@ In ZenML experiment details are logged using [Experiment Trackers](https://docs.
 In the next section, I will show how you can add Experiment Trackers into your workflow so you can monitor and share your experiment results.
 
 ## ⚖ Tracking Experiments and Keeping Secrets
-First we must set up the W&B details like the entity name, project name and API key. If you haven't done so, head to the W&B official [site](https://wandb.ai/home) to create an account and a project. It's free.
+First, we must set up the W&B details like the entity name, project name, and API key. If you haven't done so, head to the W&B official [site](https://wandb.ai/home) to create an account and a project. It's free.
 
-Now with those details from W&B, let's put them in our code and start running them shall we?
+Now with those details from W&B, let's put them in our code and start running them, shall we?
 
 Of course not.
 
@@ -464,7 +464,7 @@ zenml stack update default -x local
 zenml secrets-manager secret register wandb_secret --api_key=YOUR_W&B_API_KEY
 ```
 
-The commands above registers a secret manager on your local machine, adds them into your stack and registers the W&B API as a secret. 
+The commands above register a secret manager on your local machine, add them to your stack and registers the W&B API key as a secret. 
 
 Next, we will set up the experiment tracker by running:
 
@@ -532,11 +532,11 @@ Running with active project: 'default' (global)
 ┗━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
 ```
 
-With that we are done configuring the Secrets Manager and Experiment Tracker securely. 
+With that, we are done configuring the Secrets Manager and Experiment Tracker securely. 
 
-Let's build on the code we used in the previous section. All we have to do is add few more lines where we want W&B to log the information.
+Let's build on the code we used in the previous section. All we have to do is add a few more lines where we want W&B to log the information.
 
-The first change is in the imports which includes the `wandb` package now:
+The first change is in the imports which include the `wandb` package now:
 
 ```python
 import torch
@@ -630,7 +630,7 @@ def train_test(
     return model, test_acc
 ```
 
-The rest of the code remains the same. If you run the code the experiment metrics now should appear in your wandb project.
+The rest of the code remains the same. If you run the code the experiment metrics now should appear in your W&B dashboard.
 Here's mine
 
 ![dashboard](../assets/posts/pytorch_wandb/wandb_dashboard.png)
@@ -639,7 +639,7 @@ In our example above, we did not log a lot of experiment information for simplic
 But you can always log other metrics from any steps in the pipeline with `wandb.log`. 
 
 ## 💡 Conclusion
-In this post you've learned how to - 
+In this post, you've learned how to - 
 
 + Transform a vanilla PyTorch code into ZenML pipelines.
 + Visualize and inspect the steps and pipeline on an interactive dashboard.
@@ -648,6 +648,6 @@ In this post you've learned how to -
 
 With this new superpower, you can turn any PyTorch code into ZenML steps and pipelines. The same also applies to other frameworks like Tensorflow, Scikit-learn, etc.
 
-Where to go next? If you're starting out with ZenML we recommend checking our of [quickstart](https://github.com/zenml-io/zenml/tree/main/examples/quickstart) to learn more.
+Where to go next? If you're starting with ZenML we recommend checking out the [quickstart](https://github.com/zenml-io/zenml/tree/main/examples/quickstart) to learn more.
 
-Got questions? [Join our Slack channel](https://zenml.io/slack-invite) get a quick response from us!
+Got questions? [Join our Slack channel](https://zenml.io/slack-invite) and get a quick response from us!
