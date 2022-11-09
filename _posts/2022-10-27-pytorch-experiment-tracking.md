@@ -425,44 +425,120 @@ To open the dashboard, type in your terminal:
 zenml up
 ```
 
-This spins up a local [ZenML Server](https://docs.zenml.io/getting-started/core-concepts#zenml-server-and-dashboard) and launches the dashboard in the browser at `http://127.0.0.1:8237)`.
+This spins up a local [ZenML Server](https://docs.zenml.io/getting-started/core-concepts#zenml-server-and-dashboard) and launches the dashboard in the browser at `http://127.0.0.1:8237)`. Key in `default` as the username and leave the password empty, then click "Log in".
 
 ![login](/assets/posts/pytorch_wandb/dashboard.gif)
 
-Key in `default` as the username and leave the password empty, then click "Log in".
 In the dashboard, you'll see all details about your Steps, Pipelines, Runs, Stacks and Stack Components.
 There's also a neat visualization on the pipeline which lets you visually inspect your workflow.
 
-This section shows you can use the ZenML server and dashboard locally to inspect runs.
-But this is rarely the case in production where you'll need to collaborate and manage the workflow in a team.
-For that you'll need to deploy ZenML in the cloud.
-Read more about deploying ZenML on a cloud [here](https://docs.zenml.io/getting-started/deploying-zenml).
+The ZenML dashboard let's you visually inspect if the pipeline and steps are in order especially if your steps are complicated and many.
 
-Up to this point, I've shown you how to transform vanilla PyTorch codes from the quickstart into ZenML pipeline and utilize the dashboard to manage and visualize the pipeline.
+So far we've only seen the details about the steps and pipelines in the dashboard. What about the experiment details like training accuracy, loss, etc? 
 
-In the next section, I will show how you can add in more components (we call them Stack Components in ZenML) into your pipeline.
+In ZenML experiment details are logged using [Experiment Trackers](https://docs.zenml.io/component-gallery/experiment-trackers) - a component in ZenML.
 
-## ⚖ Experiment Tracking with W&B
-In ZenML we introduce a concept of Stack and Stack Component.
+In the next section, I will show how you can add Experiment Trackers into your workflow so you can monitor and share your experiment results.
 
-A Stack is the configuration of the underlying infrastructure and choices around how your pipeline will be run.
-In any Stack, there must be at least two basic Stack Components - and orchestrator and an artifact store.
+## ⚖ Tracking Experiments and Keeping Secrets
+First we must set up the W&B details like the entity name, project name and API key. If you haven't done so, head to the W&B official [site](https://wandb.ai/home) to create an account and a project. It's free.
 
-These components are set up by default when you initialize the project.
-In this section, we'd like to have a third Stack Component - Experiment Trackers, which let you track your ML experiment by logging various information about your models, dataset, metrics, etc.
+Now with those details from W&B, let's put them in our code and start running them shall we?
 
-View the list of types of Stack Components [here](https://docs.zenml.io/component-gallery/categories).
+Of course not.
 
-In this section I will show you how to add the Weights and Biases (W&B) experiment tracker into your stack.
+Sharing access credentials in your codes or files is a quick way to set your butt on fire.
+I wouldn't recommend it.
 
-First, we must register the experiment tracker 
+![butt-on-fire](../assets/posts/pytorch_wandb/soccer-butt.gif)
+
+ZenML handles access credentials with a component known as [Secret Managers](https://docs.zenml.io/component-gallery/secrets-managers).
+Secrets Managers provide a secure way of storing and retrieving confidential information that is needed to run your ML pipelines.
+
+Now let's configure our W&B credentials into the Secret Manager by running several commands in your terminal.
 
 ```shell
-zenml experiment-tracker register wandb_tracker --flavor=wandb --api_key=<WANDB_SECRET> --entity=<WANDB_ENTITY> --project_name=<WANDB_PROJECT>
-zenml stack register wandb_stack -a default -o default -e wandb_tracker --set
+# Register secret manager
+zenml secrets-manager register local --flavor=local
+
+# Updating active stack with the secret manager
+zenml stack update default -x local
+
+# Registering the API key in the secret manager
+zenml secrets-manager secret register wandb_secret --api_key=YOUR_W&B_API_KEY
 ```
 
-We will continue to build on the code we used in the previous section.
+The commands above registers a secret manager on your local machine, adds them into your stack and registers the W&B API as a secret. 
+
+Next, we will set up the experiment tracker by running:
+
+```shell
+# Register experiment tracker
+zenml experiment-tracker register wandb_tracker --flavor=wandb --api_key="{{wandb_secret.api_key}}" --entity="dnth" --project_name="zenml-pytorch-wandb"
+
+# Create a new MLOps stack with W&B experiment tracker in it
+zenml stack register wandb_stack -a default -o default -e wandb_tracker -x local
+
+# Set the wandb_stack as the active stack
+zenml stack set wandb_stack
+```
+
+Remember to replace the entity and project_name argument with your own.
+
+To view the configurations of the experiment tracker, run:
+
+```shell
+zenml experiment-tracker describe
+```
+
+which outputs:
+
+```shell
+Using the default local database.
+Running with active project: 'default' (global)
+Running with active stack: 'wandb_stack' (global)
+Experiment_Tracker 'wandb_tracker' of flavor 'wandb' with id '47d74df8-b7bf-4e31-904d-cf8d7716d1a5' is owned by user 'default' and is 'private'.
+  'wandb_tracker' EXPERIMENT_TRACKER Component   
+             Configuration (ACTIVE)              
+┏━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ COMPONENT_PROPERTY │ VALUE                    ┃
+┠────────────────────┼──────────────────────────┨
+┃ API_KEY            │ {{wandb_secret.api_key}} ┃
+┠────────────────────┼──────────────────────────┨
+┃ ENTITY             │ dnth                     ┃
+┠────────────────────┼──────────────────────────┨
+┃ PROJECT_NAME       │ zenml-pytorch-wandb      ┃
+┗━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+```
+
+To get an overview of your current stack, run:
+
+```shell
+zenml stack describe
+```
+
+which outputs:
+
+```shell
+Using the default local database.
+Running with active project: 'default' (global)
+          Stack Configuration          
+┏━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┓
+┃ COMPONENT_TYPE     │ COMPONENT_NAME ┃
+┠────────────────────┼────────────────┨
+┃ ORCHESTRATOR       │ default        ┃
+┠────────────────────┼────────────────┨
+┃ SECRETS_MANAGER    │ local          ┃
+┠────────────────────┼────────────────┨
+┃ EXPERIMENT_TRACKER │ wandb_tracker  ┃
+┠────────────────────┼────────────────┨
+┃ ARTIFACT_STORE     │ default        ┃
+┗━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
+```
+
+With that we are done configuring the Secrets Manager and Experiment Tracker securely. 
+
+Let's build on the code we used in the previous section.
 
 ```python
 import torch
