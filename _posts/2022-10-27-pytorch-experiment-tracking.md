@@ -18,27 +18,30 @@ path: /assets/posts/pytorch_wandb/pytorch_wandb.png
 It's 2022, anyone can train a machine learning (ML) model these days. 
 Libraries like [PyTorch](https://pytorch.org/), [Tensorflow](https://www.tensorflow.org/), and [Scikit-learn](https://scikit-learn.org/stable/index.html) have lowered the entry barrier so much, you can get started in minutes.
 
-Needless to say, there are tons of tutorial notebooks out there that will walk you through step-by-step.
-While there are values in tutorial notebooks, especially in the exploration stage, they are often insufficient for production use cases.
-The folks from Neptune wrote a good [post](https://neptune.ai/blog/should-you-use-jupyter-notebooks-in-production) on the pros and cons of using notebooks vs Python scripts in production machine learning (ML). I will leave the judgment to you depending on your use cases.
+Needless to say, there are tons of quickstart notebooks out there that will walk you through step-by-step.
+While there are values in quickstarts, especially in the early stages, the codes you see in quickstarts often look very different in production.
 
+Or, is it?
 
+Is there a way we could transform quickstart codes so that they are usable for production ML? 
 
-But the majority of codes you'd find in [quickstarts](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html) and tutorials are written for learning and exploring.
-The question is how do you transform these codes so that they can be used for production ML? Or is that even possible?
-
-![poster](/assets/posts/pytorch_wandb/meme.jpg)
+Is that even possible?!
 
 With ZenML, yes it is 🚀.
 
+![poster](/assets/posts/pytorch_wandb/meme.jpg)
+
+
 In this post, I will show you how to turn vanilla PyTorch codes into a production-ready ML pipeline that can be run on any cloud infrastructure while incorporating the best practices of MLOps.
+
+Next, I'll also show how you can use ZenML with experiment trackers like [Weights & Biases](https://wandb.ai/) (W&B) and swap it out for other trackers such as [MLflow](https://mlflow.org/) or [Tensorboard](https://www.tensorflow.org/tensorboard) with little code changes.
 
 By the end of the post, you'll learn how to -
 
 + Transform a vanilla PyTorch code into ZenML pipelines.
 + Visualize the pipeline on an interactive dashboard.
-+ Use the Weights & Biases experiment tracker to track results and share them.
-+ Switch to other experiment trackers such as Tensorboard and MLflow with little code changes.
++ Use the W&B experiment tracker to track results and share them.
++ Switch to other experiment trackers like Tensorboard and MLflow.
 
 For those who prefer video, we showcased this during a community meetup on October 26, 2022. Otherwise, let's dive in!
 
