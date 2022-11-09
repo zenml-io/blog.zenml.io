@@ -4,7 +4,7 @@ author: Felix Altenberger
 title: "Transforming Vanilla PyTorch Codes into Production Ready ML Pipeline - Without Selling Your Soul"
 description: "Rewrite PyTorch code as a ZenML pipeline and add experiment tracking and secrets manager component."
 category: zenml
-tags: zenml integrations mlops tooling pipelines pytorch wandb mlflow tensorboard
+tags: zenml integrations mlops tooling pipelines pytorch wandb
 publish_date: October 27, 2022
 date: 2022-10-27T00:02:00Z
 thumbnail: /assets/posts/pytorch_wandb/pytorch_wandb.gif
@@ -32,17 +32,17 @@ With ZenML, yes it is 🚀.
 
 
 In this post, I will show you how to turn vanilla PyTorch codes into a production-ready ML pipeline that can be run on any cloud infrastructure while incorporating the best practices of MLOps.
-
-Next, I'll also show how you can use ZenML with experiment trackers like [Weights & Biases](https://wandb.ai/) (W&B) and swap it out for other trackers such as [MLflow](https://mlflow.org/) or [Tensorboard](https://www.tensorflow.org/tensorboard) with little code changes.
+Next, I'll also show how you can easily incorporate experiment trackers like [Weights & Biases](https://wandb.ai/) (W&B).
 
 By the end of the post, you'll learn how to -
 
 + Transform a vanilla PyTorch code into ZenML pipelines.
 + Visualize the pipeline on an interactive dashboard.
 + Configure a Secrets Manager to securely store API keys.
-+ Use the Weights & Biases Experiment Tracker to log results and share them.
++ Use the W&B Experiment Tracker to log results and share them.
 
-For those who prefer video, I showcased this during a community meetup on October 26, 2022. Otherwise, let's dive in!
+For those who prefer video, I showcased this during a community session on October 26, 2022. 
+Otherwise, let's dive in!
 
 <iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/YLKueXpAT8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
