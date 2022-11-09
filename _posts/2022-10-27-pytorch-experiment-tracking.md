@@ -418,12 +418,14 @@ Learn more about other ZenML features [here](https://zenml.io/features) which wi
 ## 📊 ZenML Dashboard
 
 ZenML comes with a handy dashboard that lets you visualize the pipeline you just run.
-To launch the dashboard, type:
+
+To open the dashboard, type in your terminal:
+
 ```shell
 zenml up
 ```
-in your terminal.
-This spins up a local ZenServer and launches the dashboard in the browser at `http://127.0.0.1:8237)`.
+
+This spins up a local [ZenML Server](https://docs.zenml.io/getting-started/core-concepts#zenml-server-and-dashboard) and launches the dashboard in the browser at `http://127.0.0.1:8237)`.
 
 ![login](/assets/posts/pytorch_wandb/dashboard.gif)
 
