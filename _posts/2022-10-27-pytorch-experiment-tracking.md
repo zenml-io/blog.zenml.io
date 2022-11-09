@@ -634,7 +634,12 @@ def train_test(
     return model, test_acc
 ```
 
-The rest of the code remains the same.
+The rest of the code remains the same. If you run the code the experiment metrics now should appear in your wandb project.
+Here's mine
+
+![dashboard](../assets/posts/pytorch_wandb/wandb_dashboard.png)
+
+In our example above, we did not log a lot of experiment information. But you can log anything from the experiment with `wandb.log`. 
 
 ## 💡 Conclusion
 In this post you've learned how to - 
