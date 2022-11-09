@@ -49,44 +49,48 @@ For those who prefer video, we showcased this during a community meetup on Octob
 
 
 ## ☕️ Installation
-First, let's install all the necessary packages with:
-
-```shell
-pip install "zenml[server]==0.21.1" torchvision==0.14.0
-```
 We highly recommend that you install ZenML in a virtual environment of your choice.
 Read more [in our docs](https://docs.zenml.io/getting-started/installation).
 
 Also note that if you're running this on an M1 Mac, we have a special guide [here](https://docs.zenml.io/getting-started/installation/m1-mac-installation) to set it up.
 
+Now in your virtual environment, let's install all the necessary packages with:
 
-To verify if the installation was successful you type:
+```shell
+pip install "zenml[server]==0.21.1" torchvision==0.14.0
+```
+
+To verify if the installation was successful type:
+
 ```shell
 zenml version
 ```
-in your terminal. If you dont' encounter any error messages, we're now ready to start hacking!
+
+in your terminal. If you don't encounter any error messages, we're now ready to start hacking!
 
 
-To start working on your project, initialize a ZenML repository within your current directory with:
+To start working on your project, let's initialize a ZenML repository within your current directory with:
+
 ```shell
 zenml init
 ```
+
 This creates a `.zen` hidden folder in your current directory that stores the ZenML configs and management tools.
 
 ZenML comes with various integrations, let's install the ones we will be using in this post:
+
 ```shell
 zenml integration install pytorch wandb tensorboard mlflow -y
 ```
-Wondering if you can use other tools? We have more integrations [here](https://zenml.io/integrations).
+
+Wondering if you can use other tools instead? 
+We have more integrations [here](https://zenml.io/integrations).
 
 
 ## ✅ Vanilla PyTorch Code
-If you're a PyTorch user, you may be familiar with the "hello world" example on the quickstart page.
+Now that we're done with the setups, lets take a look at the "hello world" of PyTorch on the [quickstart page](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html).
 
-The code does 3 key things in the following order:
-1. Load the dataset.
-2. Define a model.
-3. Train and test the model.
+The codes look like the following.
 
 ```python
 import torch
@@ -194,18 +198,26 @@ print("Done!")
 
 ```
 
+You can put all the codes into a `.py` file, and it should run without a problem.
 
-## 🥳 PyTorch Code in ZenML
-We will now structure the code with ZenML.
+Now let's see how we can transform the codes into a ZenML pipeline.
 
-Before we dive in deeper, it's important to know the concept of *pipeline* and *step*.
-In ZenML, a pipeline consists of a series of steps, organized in any order that makes sense for your use case.
-For example, the following is a simple pipeline that consist of three steps (import data, define model and train & test model) that runs one after another:
+
+## 🥳 Transforming PyTorch Codes into a ZenML Pipeline.
+Before we start, I'd like to first tell you about the concept of *pipeline* and *step* in ZenML. This concept will come in handy later when we code.
+
+In ZenML, a `pipeline` consists of a series of steps, organized in any order that makes sense for your use case.
+
+The following illustration is a simple `pipeline` that consist of three `steps` running one after another.
 
 ![pipeline_steps](/assets/posts/pytorch_wandb/pipeline_step.gif)
 
+Above is the exact `pipeline` and `steps` that we will construct from the vanilla PyTorch code.
 
-First, let's import all the modules we would need from `torch`, `torchvision` and `zenml`
+Let's start coding the transformation.
+
+First, we import all the modules we would need from `torch`, `torchvision` and `zenml`.
+
 ```python
 import torch
 from torch import nn
@@ -217,7 +229,9 @@ from zenml.pipelines import pipeline
 from zenml.steps import step, Output
 ```
 
-Next, let's define the `pipeline`. You can do this by putting a `@pipeline` decorator.
+Next, let's define the `pipeline`.
+
+You can do this by putting a `@pipeline` decorator above the function definition.
 
 ```python
 @pipeline
@@ -231,11 +245,13 @@ def pytorch_experiment_tracking_pipeline(
     model = load_model()
     train_test(model, train_dataloader, test_dataloader)
 ```
+The pipeline we just wrote takes in three `steps` as the input namely - `load_data`, `load_model` and `train_test`. Each `step` runs sequentially one after another. 
 
-Next, let's define the steps in the pipeline. You can do that by using a `@step` decorator.
-We will define the three steps that we will use in the pipeline.
+Next, let's define what the `steps` actually do. 
 
-The first `step` is to load the data.
+We can define a `step` in the same way we define a `pipeline`, except we put a `@step` decorator now.
+
+Let's start with the first `step` to load the data.
 
 ```python
 @step
@@ -268,7 +284,16 @@ def load_data() -> Output(
     return train_dataloader, test_dataloader
 ```
 
-The second `step` is to load the model.
+One of the best practices we keep when defining a `step` is type annotation.
+In simple terms, this means we define the data type for all the inputs and outputs of a `step`.
+This is a requirement when defining a `step`.
+
+In the `load_data` step above, the outputs of the `step` are the train and test dataloaders of the `DataLoader` type in PyTorch.
+
+All you have to do is append `Output(train_dataloader=DataLoader, test_dataloader=DataLoader)` to the function name.
+
+Now, let's use the same method and define our next `step` to load the model.
+
 ```python
 class NeuralNetwork(nn.Module):
     def __init__(self):
@@ -289,13 +314,14 @@ class NeuralNetwork(nn.Module):
 
 @step
 def load_model() -> nn.Module:
-    """A `step` to define a PyTorch classification model."""
+    """A `step` to define a PyTorch model."""
     model = NeuralNetwork()
     print(model)
     return model
 ```
 
-The third `step` is to train and test the model.
+And the last `step`, to train and evaluate the model.
+
 ```python
 # Get cpu or gpu device for training.
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -363,7 +389,10 @@ def train_test(
     return model, test_acc
 ```
 
-Finally, we can now run the pipeline.
+We are now done with defining all the `steps` that takes place in a `pipeline`!
+
+What's left now is to run it by:
+
 
 ```python
 pytorch_experiment_tracking_pipeline(
@@ -374,8 +403,17 @@ pytorch_experiment_tracking_pipeline(
 ```
 
 And that's it! 
-You've just successfully converted vanilla PyTorch codes into a form that can be used in production ML!
-How easy was that? It's basically just reorganizing the codes into a series of `steps` and a `pipeline`.
+How easy was that? It's basically just reorganizing the PyTorch codes into a series of `steps` and a `pipeline`.
+
+If you put all the codes above in a `.py` script, it should run just like the vanilla PyTorch code in the quickstart.
+
+So why does this matter?
+
+You've just successfully converted vanilla PyTorch codes into a form that can be run on your local machine and additionally any cloud infrastructure. Structuring your code into steps and pipelines also ensures they are modular and easily maintainable. Not to mention that the code that you'd use in development is largely similar to the code in production saving a huge refactoring cost when codes transition from development to production.
+
+These are among the many benefits of structuring your code with [ZenML pipelines from the get-go](https://blog.zenml.io/ml-pipelines-from-the-start/). 
+
+Learn more about other ZenML features [here](https://zenml.io/features) which will save you a lot of time and resources in productionalizing ML models.
 
 ## 📊 ZenML Dashboard
 
