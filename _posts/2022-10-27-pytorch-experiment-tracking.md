@@ -7,12 +7,12 @@ category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb
 publish_date: October 27, 2022
 date: 2022-10-27T00:02:00Z
-thumbnail: /assets/posts/pytorch_wandb/pytorch_wandb.gif
+thumbnail: /assets/posts/pytorch_wandb/thumbnail.gif
 image:
-path: /assets/posts/pytorch_wandb/pytorch_wandb.png
+path: /assets/posts/pytorch_wandb/thumbnail.gif
 ---
 
-![poster](/assets/posts/pytorch_wandb/pytorch_wandb.png)
+![poster](/assets/posts/pytorch_wandb/thumbnail.gif)
 
 ## 🔥 Motivation
 It's 2022, anyone can train a machine learning (ML) model these days. 
