@@ -176,11 +176,24 @@ Let's get going:
 
 Now that we're done setting up and configuring all our infrastructure and external dependencies, it's time to install ZenML and configure a ZenML stack that connects all these elements together.
 
+## Remote ZenML Server
+
+For Advanced use cases where we have a remote orchestrator such as Vertex AI
+or to share stacks and pipeline informations with team we need to have a seperated non local remote ZenML Server that it can be accessible from your
+machine as well as all stack components that may need access to the server.
+[Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
+
+In order to acheive this there are two different ways to get access to a remote ZenML Server.
+
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml)/
+2. Sign up for [ZenML Cloud](https://zenml.io/cloud-signup) and get access to a hosted
+   version of the ZenML Server with no setup required.
+
 ### Installation
 
 Let's install ZenML and all the additional packages that we're going to need to run our pipeline:
 ```bash
-pip install zenml
+pip install zenml["server"]
 zenml integration install -y github azure sklearn
 ```
 
@@ -190,11 +203,7 @@ when building Docker images:
 zenml init
 ```
 
-### Deploying ZenML
-
-To use ZenML with remote orchestrators like the GitHub Actions orchestrator, you need to deploy ZenML.
-Follow [this guide](https://docs.zenml.io/getting-started/deploying-zenml#deploying-zenml-in-the-cloud-remote-deployment-of-the-http-server-and-database) to
-do so.
+### Connect to ZenML Server
 
 Once the deployment is finished, let's connect to it by running the following command and logging in with
 the username and password you set during the deployment phase:
