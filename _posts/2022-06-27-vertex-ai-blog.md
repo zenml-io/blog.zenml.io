@@ -43,6 +43,22 @@ This tutorial assumes that you have:
 * Access to a [gcp](https://cloud.google.com/) project space
 * [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine
   and authenticated
+* [Remote ZenML Server](https://docs.zenml.io/getting-started/deploying-zenml#deploying-zenml-in-the-cloud-remote-deployment-of-the-http-server-and-database) A Remote Deployment of the ZenML HTTP server and Database
+
+## Remote ZenML Server
+
+For Advanced use cases where we have a remote orchestrator such as Vertex AI
+or to share stacks and pipeline informations with team we need to have a seperated non local remote ZenML Server that it can be accessible from your
+machine as well as all stack components that may need access to the server.
+[Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
+
+In order to acheive this ZenML provides three different ways to deploy and
+use a remote ZenML Server.
+
+1. Deploy The Server using a [Docker Image](https://docs.zenml.io/getting-started/deploying-zenml/docker)
+2. Deploy The Server in k8s settings using a [Helm chart](https://docs.zenml.io/getting-started/deploying-zenml/helm)
+3. Sign up for [ZenML Cloud Alpha Version](https://zenml.io/cloud-signup) and use the hosted
+   version of the ZenML Server with no setup required.
 
 ## Starting locally
 
@@ -51,8 +67,9 @@ on our own machine then we will run the pipeline with Vertex AI. To do so we fir
 and `gcp` integrations, and we also initialize a ZenML repo.
 
 ```shell
-pip install zenml
+pip install zenml["server"]
 zenml integration install sklearn gcp
+zenml connect --url https://zenml.server... # if you have a remote server
 zenml init
 ```
 
