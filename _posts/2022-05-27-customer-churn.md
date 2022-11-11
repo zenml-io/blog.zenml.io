@@ -61,9 +61,6 @@ Previously I ran our pipeline in default stack settings; now, I will transition 
 With all the installation and initialization out of the way, all that's left to do is configure our ZenML stack. For this example, the stack we create consists of the following four parts:
 
 - The **local artifact store** stores step outputs on your hard disk.
-
-- The **local metadata store** stores metadata like the pipeline name and step parameters inside a local SQLite database.
-
 - The Docker images created to run your pipeline are stored in a local
   Docker **container registry**.
 - The **Kubeflow orchestrator** is responsible for running your ZenML pipeline in Kubeflow Pipelines. An orchestrator manages the running of each step of the pipeline, administering the actual pipeline runs.
@@ -106,18 +103,66 @@ Now I will transition our pipeline to a more production-ready setting and deploy
 
 <iframe src="https://giphy.com/embed/OKWmASuqUiIKl6ohO6" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/OKWmASuqUiIKl6ohO6">via GIPHY</a></p>
 
-There are two steps to continue:
+There are three steps to continue:
 
-- Set up the necessary cloud resources on the provider of your choice
-- Configure ZenML with a new stack to be able to communicate with these resources
+1. Set up the necessary cloud resources on the provider of your choice
+2. Deploy a Remote ZenML Server
+3. Configure ZenML with a new stack to be able to communicate with these resources
 
-I will now run the same pipeline in Kubeflow Pipelines deployed to an AWS EKS cluster. Before running this, you need some additional setup or prerequisites to run the pipeline on AWS: you can refer to our [documentation](https://docs.zenml.io/v/0.7.3/features/guide-aws-gcp-azure#pre-requisites), which will help you get set up to run the pipeline on AWS.
+I will now run the same pipeline in Kubeflow Pipelines deployed to an AWS EKS cluster. Before running this, you need some additional setup or prerequisites to run the pipeline on AWS
 
-If you want to run the pipeline on other cloud providers like GCP or Azure, you can follow [this guide](https://github.com/zenml-io/zenml/tree/main/examples/vertex_ai_orchestration) for more information on those cloud providers. We will be using AWS for this project, but feel free to use any cloud provider.
+#### Setup Infrastructure with ZenML Stack recipes:
 
-The following diagram showcases our Kubeflow stack on AWS:
+With [ZenML Stack Recipes](https://docs.zenml.io/advanced-guide/practical-mlops/stack-recipes), you can now provision all the infrastructure you need to run your ZenML pipelines with just a few simple commands.
 
-![CloudKubeflowStack]({{ site.url }}/assets/posts/customer-churn/aws_kubeflow_stack.png)
+The flow to get started for this example can be the following:
+
+1. Pull this recipe to your local system.
+
+    ```shell
+    zenml stack recipe pull aws-minimal
+    ```
+2. 🎨 Customize your deployment by editing the default values in the `locals.tf` file.
+
+3. 🔐 Add your secret information like keys and passwords into the `values.tfvars.json` file which is not committed and only exists locally.
+
+5. 🚀 Deploy the recipe with this simple command.
+
+    ```
+    zenml stack recipe deploy aws-minimal
+    ```
+
+    > **Note**
+    > If you want to allow ZenML to automatically import the created resources as a ZenML stack, pass the `--import` flag to the command above. By default, the imported stack will have the same name as the stack recipe and you can provide your own with the `--stack-name` option.
+    
+
+6. You'll notice that a ZenML stack configuration file gets created after the previous command executes 🤯! This YAML file can be imported as a ZenML stack manually by running the following command.
+
+    ```
+    zenml stack import <stack-name> <path-to-the-created-stack-config-yaml>
+    ```
+
+> **Note**
+>
+>  You need to have your AWS credentials saved locally under ~/.aws/credentials
+
+You can now skip directly to the [part of this guide where you define ZenML secrets](https://docs.zenml.io/advanced-guide/practical-mlops/secrets-management) for Seldon! 
+
+#### Remote ZenML Server
+
+For Advanced use cases where we have a remote orchestrator such as Vertex AI
+or to share stacks and pipeline informations with team we need to have a seperated non local remote ZenML Server that it can be accessible from your
+machine as well as all stack components that may need access to the server.
+[Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
+
+In order to acheive this there are two different ways to get access to a remote ZenML Server.
+
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml)/
+2. Sign up for [ZenML Cloud](https://zenml.io/cloud-signup) and get access to a hosted
+   version of the ZenML Server with no setup required.
+
+
+#### Configure ZenML with a new stack
 
 Now, I will configure the Kubeflow Pipelines stack on AWS and run the pipeline on AWS; the following are the steps for doing so:
 
@@ -132,11 +177,10 @@ zenml integration install aws
 ```bash
 zenml container-registry register cloud_registry --flavor=default --uri=$PATH_TO_YOUR_CONTAINER_REGISTRY
 zenml orchestrator register cloud_orchestrator --flavor=kubeflow --custom_docker_base_image_name=YOUR_IMAGE
-zenml metadata-store register kubeflow_metadata_store --flavor=kubeflow
 zenml artifact-store register cloud_artifact_store --flavor=s3 --path=$PATH_TO_YOUR_BUCKET
 
 # Register the cloud stack
-zenml stack register cloud_kubeflow_stack -m kubeflow_metadata_store -a cloud_artifact_store -o cloud_orchestrator -c cloud_registry
+zenml stack register cloud_kubeflow_stack -a cloud_artifact_store -o cloud_orchestrator -c cloud_registry
 ```
 
 3. Activate the newly-created stack
@@ -244,8 +288,7 @@ zenml container-registry register ecr_registry --flavor=default --uri={ECR_REGIS
 # Register orchestrator (Kubeflow on AWS)
 zenml orchestrator register eks_orchestrator --flavor=kubeflow --kubernetes_context={KUBE_CONTEXT} --synchronous=True
 
-# Register metadata store and artifact store
-zenml metadata-store register kubeflow_metadata_store --flavor=kubeflow
+# Register artifact store
 zenml artifact-store register s3_store --flavor=s3 --path={S3_BUCKET_NAME}
 
 # Register the Seldon Core model deployer (Seldon on AWS)
@@ -255,7 +298,7 @@ zenml model-deployer register eks_seldon --flavor=seldon --kubernetes_context={K
 zenml secrets-manager register aws_secret_manager --flavor=aws
 
 # Register the aws_kubeflow_stack
-zenml stack register aws_kubeflow_stack -m kubeflow_metadata_store -a s3_store -o eks_orchestrator -c ecr_registry -d eks_seldon -x aws_secret_manager
+zenml stack register aws_kubeflow_stack -a s3_store -o eks_orchestrator -c ecr_registry -d eks_seldon -x aws_secret_manager
 ```
 
 3. Activate the newly-created stack
