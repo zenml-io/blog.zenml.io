@@ -18,9 +18,6 @@ We have heard you and have just released a brand new Kubernetes-native
 orchestrator for you, which executes each pipeline step in a separate pod,
 streams the logs of all pods to your terminal, and even supports CRON job
 scheduling.
-Moreover, we have even added a new Kubernetes metadata store that you can
-use with the orchestrator to save your ML metadata in a fresh MySQL database
-automatically deployed within your Kubernetes cluster.
 
 Now, why would we want to orchestrate ML workflows natively in Kubernetes in
 the first place when ZenML already integrates with 
@@ -48,8 +45,7 @@ then later want to switch to a Kubeflow setup, it will be as easy as changing
 the orchestrator in your ZenML stack with a single line of code, so you are not
 locked into anything!
 
-So, let's get into it and use the new Kubernetes-native orchestrator and
-metadata store to easily run ML workflows in a distributed and scalable cloud 
+So, let's get into it and use the new Kubernetes-native orchestrator to easily run ML workflows in a distributed and scalable cloud 
 setting on AWS.
 To do so, we will provision various resources on AWS: an S3 bucket for artifact
 storage, an ECR container registry, as well as an Amazon EKS cluster, on which 
@@ -271,7 +267,7 @@ zenml integration install sklearn facets kubernetes aws s3 -y
 ```
 
 ### Registering a ZenML Stack
-To bring the Kubernetes orchestrator, metadata store, and all the AWS
+To bring the Kubernetes orchestrator, and all the AWS
 infrastructure together, we will register them together in a ZenML stack.
 
 First, initialize ZenML in the same folder where you created the `run.py` file:
@@ -279,7 +275,7 @@ First, initialize ZenML in the same folder where you created the `run.py` file:
 zenml init
 ```
 
-Next, register the Kubernetes orchestrator and metadata store, using the
+Next, register the Kubernetes orchestrator, using the
 `<KUBE_CONTEXT>` you used above:
 
 ```bash
@@ -288,13 +284,6 @@ zenml orchestrator register k8s_orchestrator
     --kubernetes_context=<KUBE_CONTEXT>
     --kubernetes_namespace=zenml
     --synchronous=True
-```
-```bash
-zenml metadata-store register k8s_store 
-    --flavor=kubernetes
-    --kubernetes_context==<KUBE_CONTEXT>
-    --kubernetes_namespace=zenml
-    --deployment_name=mysql
 ```
 
 Similarly, use the `<ECR_REGISTRY_NAME>` and `<REMOTE_ARTIFACT_STORE_PATH>` you
@@ -317,8 +306,7 @@ Now we can bring everything together in a ZenML stack:
 
 ```bash
 zenml stack register k8s_stack 
-    -m k8s_store 
-    -a s3_store 
+    -a s3_store
     -o k8s_orchestrator 
     -c ecr_registry
 ```
@@ -337,16 +325,10 @@ them all up at once with a single command:
 zenml stack up
 ```
 
-In our case, this will provision the metadata store by deploying the MySQL
-database within the EKS cluster and forward the respective ports.
-
 If everything went well, you should see logs messages similar to the following
 in your terminal:
 
 ![zenml stack up output]({{ site.url }}/assets/posts/k8s-orchestrator/zenml_stack_up_output.png)
-
-In particular, look for the last line that says
-`The Kubernetes metadata store is functional.`
 
 ### Running the Example
 
@@ -385,13 +367,6 @@ following command:
 
 ```bash
 kubectl delete pods -n zenml -l pipeline=kubernetes_example_pipeline
-```
-
-### Delete ZenML Metadata Store
-If you also want to delete the MySQL metadata store, run:
-
-```bash
-zenml stack down --force
 ```
 
 ### Delete AWS Resources
