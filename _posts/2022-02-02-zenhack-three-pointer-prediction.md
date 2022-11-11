@@ -168,21 +168,24 @@ The [MLFlow Tracking](https://mlflow.org/docs/latest/tracking.html) component is
 an API and UI for logging parameters, code versions, metrics, and output files
 when running your machine learning code and for later visualizing the results.
 
-We are currently actively working on deeply integrating with MLflow and making
+<del>We are currently actively working on deeply integrating with MLflow and making
 it as easy as possible to utilize MLFlow within your ZenML pipelines. For this
 ZenHack we used MLflow tracking for its visualization. Keep your eyes peeled,
 though; we have some more MLFlow-related features coming up in our next
-releases.
+releases.</del>
+(UPDATE: As of November 2022 we have a full-fledged MLFlow integration part of 
+the ZenML Expirement Tracking stack component. You can read more about it
+[here](https://docs.zenml.io/component-gallery/experiment-trackers/mlflow))
+
 
 Within our ZenHack only two lines of code were really necessary to liftoff with
 MLFlow.
 
-1. Enable MLFlow for our pipeline
+1. Enable MLFlow for a step
 
 ```python
-@enable_mlflow
-@pipeline
-def pipeline_entrypoint(....):
+@step(experiment_tracker=experiment_tracker.name)
+def tf_trainer(....):
     ...
 ```
 
