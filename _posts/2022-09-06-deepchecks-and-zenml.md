@@ -229,8 +229,10 @@ virtual environment) as well as the Deepchecks and scikit-learn
 integrations used in the example:
 
 ```bash
-pip install zenml
+pip install zenml["server"]
 zenml integration install deepchecks sklearn -y
+zenml init
+zenml up
 ```
 
 ZenML automatically sets up a `default` stack that leverages the compute and
@@ -270,17 +272,6 @@ from zenml.steps import Output, step
 
 from deepchecks.tabular.datasets.classification import iris
 
-# import the Deepchecks data and model validation step utilities
-from zenml.integrations.deepchecks.steps import (
-    DeepchecksDataIntegrityCheckStepConfig,
-    deepchecks_data_integrity_check_step,
-    DeepchecksDataDriftCheckStepConfig,
-    deepchecks_data_drift_check_step,
-    DeepchecksModelValidationCheckStepConfig,
-    deepchecks_model_validation_check_step,
-    DeepchecksModelDriftCheckStepConfig,
-    deepchecks_model_drift_check_step,
-)
 
 LABEL_COL = "target"
 
@@ -338,7 +329,9 @@ model_drift_detector = deepchecks_model_drift_check_step(
 
 # define the pipeline by connecting the steps together into a DAG
 
-@pipeline(enable_cache=False, required_integrations=[DEEPCHECKS, SKLEARN])
+docker_settings = DockerSettings(required_integrations=[DEEPCHECKS, SKLEARN])
+
+@pipeline(enable_cache=False, settings={"docker": docker_settings})
 def data_validation_pipeline(
     data_loader,
     trainer,
