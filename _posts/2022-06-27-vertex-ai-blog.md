@@ -52,12 +52,10 @@ or to share stacks and pipeline informations with team we need to have a seperat
 machine as well as all stack components that may need access to the server.
 [Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
 
-In order to acheive this ZenML provides three different ways to deploy and
-use a remote ZenML Server.
+In order to acheive this there are two different ways to get access to a remote ZenML Server.
 
-1. Deploy The Server using a [Docker Image](https://docs.zenml.io/getting-started/deploying-zenml/docker)
-2. Deploy The Server in k8s settings using a [Helm chart](https://docs.zenml.io/getting-started/deploying-zenml/helm)
-3. Sign up for [ZenML Cloud Alpha Version](https://zenml.io/cloud-signup) and use the hosted
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml)/
+2. Sign up for [ZenML Cloud](https://zenml.io/cloud-signup) and get access to a hosted
    version of the ZenML Server with no setup required.
 
 ## Starting locally
