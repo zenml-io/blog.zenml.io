@@ -43,6 +43,22 @@ This tutorial assumes that you have:
 * Access to a [gcp](https://cloud.google.com/) project space
 * [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine
   and authenticated
+* [Remote ZenML Server](https://docs.zenml.io/getting-started/deploying-zenml#deploying-zenml-in-the-cloud-remote-deployment-of-the-http-server-and-database) A Remote Deployment of the ZenML HTTP server and Database
+
+## Remote ZenML Server
+
+For Advanced use cases where we have a remote orchestrator such as Vertex AI
+or to share stacks and pipeline informations with team we need to have a seperated non local remote ZenML Server that it can be accessible from your
+machine as well as all stack components that may need access to the server.
+[Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
+
+In order to acheive this ZenML provides three different ways to deploy and
+use a remote ZenML Server.
+
+1. Deploy The Server using a [Docker Image](https://docs.zenml.io/getting-started/deploying-zenml/docker)
+2. Deploy The Server in k8s settings using a [Helm chart](https://docs.zenml.io/getting-started/deploying-zenml/helm)
+3. Sign up for [ZenML Cloud Alpha Version](https://zenml.io/cloud-signup) and use the hosted
+   version of the ZenML Server with no setup required.
 
 ## Starting locally
 
@@ -51,8 +67,13 @@ on our own machine then we will run the pipeline with Vertex AI. To do so we fir
 and `gcp` integrations, and we also initialize a ZenML repo.
 
 ```shell
-pip install zenml
+pip install "zenml[server]"
+
 zenml integration install sklearn gcp
+
+zenml connect --url http://zenml-server... # if you have a remote server
+
+# initialize a local ZenML Repository
 zenml init
 ```
 
@@ -127,8 +148,6 @@ And you'll probably get the following printout:
 ┠────────────────┼────────────────┨
 ┃ ARTIFACT_STORE │ default        ┃
 ┠────────────────┼────────────────┨
-┃ METADATA_STORE │ default        ┃
-┠────────────────┼────────────────┨
 ┃ ORCHESTRATOR   │ default        ┃
 ┗━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
       'local' stack (ACTIVE) 
@@ -144,8 +163,7 @@ to replace with a GCP stack later on.
 Before we can orchestrate our pipeline using Vertex AI we will need to set up 
 all the required resources and permissions on GCP. This is a one time effort
 that you will not need to repeat. Feel free to skip and adjust these steps 
-as you see fit. In total, we will create a gcp project, with a MySQL database on
-[CloudSQL](#cloudsql), a storage container using 
+as you see fit. In total, we will create a gcp project, a storage container using 
 [Cloud storage](#cloud-storage), a [container registry](#container-registry),
 a [secret manager](#secret-manager) and [vertex ai](#vertex-ai) enabled.
 
@@ -175,45 +193,6 @@ You will need the project name and project id in the following steps again.
   will be referred to as `<gcp_project_id>`
 
 This project number can be found on your project dashboard.
-
-### CloudSQL
-
-We'll start off by creating a MySQL Database to store the metadata of our
-pipeline runs.
-
-Search `cloud sql` or use this [link](https://console.cloud.google.com/sql/).
-
-![Create SQL 1]({{ site.url }}/assets/posts/vertex/GCP_SQL0.png)
-
-Choose MySQL
-
-![Create SQL 2]({{ site.url }}/assets/posts/vertex/GCP_SQL1.png)
-
-Name the instance, give it a root password and configure it and allow public
-connections
-
-![Create SQL 3]({{ site.url }}/assets/posts/vertex/GCP_SQL2.png)
-
-Make sure to only allow SSL connections and create and download
-client certificates
-
-![Create SQL 5]({{ site.url }}/assets/posts/vertex/GCP_SQL4.png)
-
-Add a new user account for ZenML to use
-
-![Create SQL 6]({{ site.url }}/assets/posts/vertex/GCP_SQL5.png)
-
-In the Overview page you can find the public IP address
-
-![Create SQL 7]({{ site.url }}/assets/posts/vertex/GCP_SQL6.png)
-
-For the creation of the [ZenML Metadata Store](#zenml-metadata-store) you
-will need the following data:
-
-* Public IP
-* Username
-* Password
-* The three SSL certificates (server-ca.pem, client-key.pem, client-cert.pem)
 
 ### Cloud Storage
 
@@ -309,26 +288,6 @@ the Principal when creating your [ZenML Orchestrator](#zenml-orchestrator).
 
 With everything on the GCP side done, we can now jump into the ZenML side.
 
-### ZenML metadata-store
-
-**Metadata stores** keep track of all the metadata associated with pipeline 
-runs. They enable 
-[ZenML's caching functionality](https://docs.zenml.io/v/0.9.0/developer-guide/caching) 
-and allow us to query the parameters and inputs/outputs of steps of past 
-pipeline runs. We'll register the MySQL database we created before with the 
-following command:
-
-```shell
-
-zenml metadata-store register gcp_metadata_store --flavor=mysql --host=<DB_HOST_IP> --port=<DB_PORT> --database=<DB_NAME> --secret=mysql_secret
-```
-
-The `DB_HOST_IP` is the public IP Address of your Database `xx.xx.xxx.xxx`.
-The `DB_PORT` is `3306` by default - set this in case this default does not
-apply to your database instance. The `DB_NAME` is the name of the database that
-you have created in [GCP](#cloudsql) as the metadata store. The `mysql_secret`
-will be created once the secrets manager is created and the stack is active.
-
 ### ZenML artifact-store
 
 The **artifact store** stores all the artifacts that get passed as inputs and 
@@ -357,9 +316,8 @@ Refer to the [gcp container registry](#container-registry)
 ### ZenML secret-manager
 
 The **secrets manager** is used to securely store all your credentials so ZenML
-can use them to authenticate with other components like your metadata or 
-artifact store. At a later step we will use it to store the mysql_secret that
-is used for our metadata store.
+can use them to authenticate with other components like your 
+artifact store.
 
 ```shell
 zenml secrets-manager register gcp_secrets_manager --flavor=gcp_secrets_manager --project_id=<PROJECT_ID>
@@ -388,20 +346,7 @@ zenml orchestrator register vertex_orch --flavor=vertex --project=<PROJECT_ID> -
 Our stack components are ready to be configured and set as the active stack.
 
 ```shell
-zenml stack register gcp_vertex_stack -m gcp_metadata_store -a gcp_artifact_store -o vertex_orch -c gcp_registry -x gcp_secrets_manager --set
-```
-
-### Configure the `mysql_secret`
-
-With the stack up and running, we can now supply the credentials for the
-mysql metadata store. You generated the SSL certificates when setting up the
-[CloudSQL](#cloudsql) within the GCP UI.
-
-```shell
-zenml secrets-manager secret register mysql_secret --schema=mysql --user=<DB_USER> --password=<PWD> \
-  --ssl_ca=@</PATH/TO/DOWNLOADED/SERVER-CERT> \
-  --ssl_cert=@</PATH/TO/DOWNLOADED/CLIENT-CERT> \
-  --ssl_key=@</PATH/TO/DOWNLOADED/CLIENT-KEY>
+zenml stack register gcp_vertex_stack -a gcp_artifact_store -o vertex_orch -c gcp_registry -x gcp_secrets_manager --set
 ```
 
 ## Running
