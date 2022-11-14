@@ -48,11 +48,11 @@ This tutorial assumes that you have:
 ## Remote ZenML Server
 
 For Advanced use cases where we have a remote orchestrator such as Vertex AI
-or to share stacks and pipeline informations with team we need to have a seperated non local remote ZenML Server that it can be accessible from your
-machine as well as all stack components that may need access to the server.
+or to share stacks and pipelines with the team, we need to have a separate, remote ZenML Server. It should be accessible from your
+machine as well as all stack components that may need access to information or configurations from the server.
 [Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
 
-In order to acheive this there are two different ways to get access to a remote ZenML Server.
+In order to achieve this there are two different ways to get access to a remote ZenML Server.
 
 1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml)/
 2. Sign up for [ZenML Cloud](https://zenml.io/cloud-signup) and get access to a hosted
