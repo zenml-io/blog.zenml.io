@@ -73,9 +73,10 @@ In order to follow this tutorial, you need to have the following software
 installed on your local machine:
 
 * [Python](https://www.python.org/) (version 3.7-3.9)
-* [Docker](https://www.docker.com/)
+* [Docker](https://www.docker.com/) installed on your machine
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
-* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed on your machine and authenticated
+* [Remote ZenML Server](https://docs.zenml.io/getting-started/deploying-zenml#deploying-zenml-in-the-cloud-remote-deployment-of-the-http-server-and-database) A Remote Deployment of the ZenML HTTP server and Database
 
 ### 🚅 Take the Express Train: Terraform-based provisioning of resources
 
@@ -162,6 +163,19 @@ aws ecr get-login-password --region <AWS_REGION> | docker login
     <ECR_REGISTRY_NAME>
 ```
 
+### Remote ZenML Server
+
+For Advanced use cases where we have a remote orchestrator such as Vertex AI
+or to share stacks and pipeline informations with team we need to have a seperated non local remote ZenML Server that it can be accessible from your
+machine as well as all stack components that may need access to the server.
+[Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
+
+In order to acheive this there are two different ways to get access to a remote ZenML Server.
+
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml)/
+2. Sign up for [ZenML Cloud](https://zenml.io/cloud-signup) and get access to a hosted
+   version of the ZenML Server with no setup required.
+
 ## Run an example with ZenML
 Let's now see the Kubernetes-native orchestration in action with a simple
 example using [ZenML](https://github.com/zenml-io/zenml/).
@@ -175,7 +189,7 @@ import numpy as np
 import pandas as pd
 from sklearn.base import ClassifierMixin
 from sklearn.svm import SVC
-
+from zenml.integrations.constants import FACETS, SKLEARN
 from zenml.integrations.facets.visualizers.facet_statistics_visualizer import (
     FacetStatisticsVisualizer,
 )
@@ -183,6 +197,7 @@ from zenml.integrations.sklearn.helpers.digits import get_digits
 from zenml.pipelines import pipeline
 from zenml.repository import Repository
 from zenml.steps import Output, step
+from zenml.config import DockerSettings
 
 
 @step
@@ -229,10 +244,9 @@ def skew_comparison(
     )
 
 
-@pipeline(
-    enable_cache=False,
-    required_integrations=["sklearn", "facets"],
-)
+docker_settings = DockerSettings(required_integrations=[SKLEARN, FACETS])
+
+@pipeline(enable_cache=False, settings={"docker": docker_settings})
 def kubernetes_example_pipeline(importer, trainer, evaluator, skew_comparison):
     """data loading -> train -> test with skew comparison in parallel."""
     X_train, X_test, y_train, y_test = importer()
@@ -271,7 +285,10 @@ To bring the Kubernetes orchestrator, and all the AWS
 infrastructure together, we will register them together in a ZenML stack.
 
 First, initialize ZenML in the same folder where you created the `run.py` file:
+
 ```shell
+zenml connect --url http://zenml-server... # if you have a remote server
+
 zenml init
 ```
 
