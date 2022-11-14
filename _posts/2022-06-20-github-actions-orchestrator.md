@@ -39,6 +39,7 @@ This tutorial assumes that you have:
 * [Git](https://git-scm.com/) installed
 * a [GitHub](https://github.com/) account
 * [Docker](https://www.docker.com/) installed and running
+* [Remote ZenML Server](https://docs.zenml.io/getting-started/deploying-zenml#deploying-zenml-in-the-cloud-remote-deployment-of-the-http-server-and-database) A Remote Deployment of the ZenML HTTP server and Database
 
 ## Azure Setup
 
@@ -193,7 +194,7 @@ In order to acheive this there are two different ways to get access to a remote 
 
 Let's install ZenML and all the additional packages that we're going to need to run our pipeline:
 ```bash
-pip install zenml["server"]
+pip install zenml
 zenml integration install -y github azure sklearn
 ```
 
