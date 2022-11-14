@@ -272,6 +272,17 @@ from zenml.steps import Output, step
 
 from deepchecks.tabular.datasets.classification import iris
 
+# import the Deepchecks data and model validation step utilities
+from zenml.integrations.deepchecks.steps import (
+    DeepchecksDataIntegrityCheckStepConfig,
+    deepchecks_data_integrity_check_step,
+    DeepchecksDataDriftCheckStepConfig,
+    deepchecks_data_drift_check_step,
+    DeepchecksModelValidationCheckStepConfig,
+    deepchecks_model_validation_check_step,
+    DeepchecksModelDriftCheckStepConfig,
+    deepchecks_model_drift_check_step,
+)
 
 LABEL_COL = "target"
 
