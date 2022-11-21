@@ -442,7 +442,7 @@ Now with those details, let's put them in our code and start running them, shall
 Of course not.
 
 Sharing access credentials in your codes or files is a quick way to set your butt on fire.
-we wouldn't recommend it.
+We wouldn't recommend it.
 
 ![fire](../assets/posts/pytorch_wandb/fire.gif)
 
