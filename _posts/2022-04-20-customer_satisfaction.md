@@ -55,6 +55,7 @@ pip install -r requirements.txt
 If you are running the `run_deployment.py` script, you will also need to install some integrations using ZenML:
 
 ```bash
+zenml init
 zenml integration install mlflow -y
 ```
 
