@@ -1,6 +1,6 @@
 ---
 layout: post
-author: Felix Altenberger
+author: Felix Altenberger and Dickson Neoh
 title: "Transforming Vanilla PyTorch Codes into Production Ready ML Pipeline - Without Selling Your Soul"
 description: "Rewrite PyTorch code as a ZenML pipeline and add experiment tracking and secrets manager component."
 category: zenml
