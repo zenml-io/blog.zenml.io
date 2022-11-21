@@ -650,7 +650,7 @@ In summary, you've learned how to -
 + Use the [Weights & Biases](https://wandb.ai/) (W&B) Experiment Tracker to log results and share them.
 
 With this new superpower, you can turn any PyTorch codes into ZenML steps and pipelines and accelerate your journey to production ML.
-Using the same steps you can also transform codes from other frameworks like Tensorflow, Scikit-learn, etc.
+Using the same steps you can also transform codes from other frameworks like Tensorflow/Keras. Check out this [example](https://github.com/zenml-io/zenml/tree/849d323139f3f4e3a8a2ca84a97fe225f9dfe7ce/examples/wandb_tracking).
 
 ![success](../assets/posts/pytorch_wandb/success.gif)
 
