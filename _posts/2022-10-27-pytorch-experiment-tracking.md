@@ -7,12 +7,12 @@ category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb
 publish_date: October 27, 2022
 date: 2022-10-27T00:02:00Z
-thumbnail: /assets/posts/pytorch_wandb/thumbnail.gif
+thumbnail: ../assets/posts/pytorch_wandb/thumbnail.gif
 image:
-path: /assets/posts/pytorch_wandb/thumbnail.gif
+path: ../assets/posts/pytorch_wandb/thumbnail.gif
 ---
 
-![poster](/assets/posts/pytorch_wandb/thumbnail.gif)
+![poster](../assets/posts/pytorch_wandb/thumbnail.gif)
 
 ## 🔥 Motivation
 It's 2022, anyone can train a machine learning (ML) model these days. 
@@ -211,7 +211,7 @@ In ZenML, a `pipeline` consists of a series of steps, organized in any order tha
 
 The following illustration is a simple `pipeline` that consists of three `steps` running one after another.
 
-![pipeline_steps](/assets/posts/pytorch_wandb/pipeline_step.gif)
+![pipeline_steps](../assets/posts/pytorch_wandb/pipeline_step.gif)
 
 The figure above is the exact `pipeline` and `steps` that we will construct from the vanilla PyTorch code.
 Let's start the transformation.
@@ -421,7 +421,7 @@ zenml up
 
 This spins up a local [ZenML Server](https://docs.zenml.io/getting-started/core-concepts#zenml-server-and-dashboard) and launches the dashboard in the browser at `http://127.0.0.1:8237)`. Key in `default` as the username and leave the password empty, then click "Log in".
 
-![login](/assets/posts/pytorch_wandb/dashboard.gif)
+![login](../assets/posts/pytorch_wandb/dashboard.gif)
 
 In the dashboard, you'll see all details about your *Steps*, *Pipelines*, *Runs*, *Stacks*, and *Stack Components*.
 There's also a neat visualization on the pipeline which lets you visually inspect your workflow.
