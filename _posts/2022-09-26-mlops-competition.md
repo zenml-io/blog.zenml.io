@@ -7,9 +7,9 @@ category: zenml
 tags: zenml competition mlops
 publish_date: September 26, 2022
 date: 2022-09-26T00:02:00Z
-thumbnail: /assets/posts/competition-launch/Final.png
+thumbnail: /assets/posts/competition-launch/Month_of_MLOps.png
 image:
-  path: /assets/posts/competition-launch/Final.png
+  path: /assets/posts/competition-launch/Month_of_MLOps.png
 ---
 
 We're launching a competition!
