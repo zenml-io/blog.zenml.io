@@ -444,7 +444,9 @@ Of course not.
 Sharing access credentials in your codes or files is a quick way to set your butt on fire.
 I wouldn't recommend it.
 
-<iframe src="https://giphy.com/embed/xT5LMpPoihn5AsoNB6" width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/season-13-the-simpsons-13x20-xT5LMpPoihn5AsoNB6">via GIPHY</a></p>
+![fire](../assets/posts/pytorch_wandb/fire.gif)
+
+[via GIPHY](https://giphy.com/gifs/season-13-the-simpsons-13x20-xT5LMpPoihn5AsoNB6)
 
 ZenML handles secret information like access credentials with a component known as [Secret Managers](https://docs.zenml.io/component-gallery/secrets-managers).
 Secrets Managers provide a secure way of storing and retrieving confidential information that is needed to run your ML pipelines.
@@ -652,6 +654,6 @@ Using the same steps you can also transform codes from other frameworks like Ten
 
 ![success](../assets/posts/pytorch_wandb/success.gif)
 
-Where to go next? If you're starting with ZenML we recommend checking out the [quickstart](https://github.com/zenml-io/zenml/tree/main/examples/quickstart) to learn more.
+Where to go next? If you're starting with ZenML we recommend checking out the [quickstart](https://github.com/zenml-io/zenml/tree/main/examples/quickstart) to learn more. Or if you're new to MLOps, check out our [ZenBytes](https://github.com/zenml-io/zenbytes) repository where we walk you through short practical lessons using ZenML.
 
 Got questions? [Join our Slack channel](https://zenml.io/slack-invite) and get a quick response from us!
