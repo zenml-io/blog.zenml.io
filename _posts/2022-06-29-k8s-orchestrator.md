@@ -18,9 +18,6 @@ We have heard you and have just released a brand new Kubernetes-native
 orchestrator for you, which executes each pipeline step in a separate pod,
 streams the logs of all pods to your terminal, and even supports CRON job
 scheduling.
-Moreover, we have even added a new Kubernetes metadata store that you can
-use with the orchestrator to save your ML metadata in a fresh MySQL database
-automatically deployed within your Kubernetes cluster.
 
 Now, why would we want to orchestrate ML workflows natively in Kubernetes in
 the first place when ZenML already integrates with 
@@ -48,8 +45,7 @@ then later want to switch to a Kubeflow setup, it will be as easy as changing
 the orchestrator in your ZenML stack with a single line of code, so you are not
 locked into anything!
 
-So, let's get into it and use the new Kubernetes-native orchestrator and
-metadata store to easily run ML workflows in a distributed and scalable cloud 
+So, let's get into it and use the new Kubernetes-native orchestrator to easily run ML workflows in a distributed and scalable cloud 
 setting on AWS.
 To do so, we will provision various resources on AWS: an S3 bucket for artifact
 storage, an ECR container registry, as well as an Amazon EKS cluster, on which 
@@ -77,9 +73,10 @@ In order to follow this tutorial, you need to have the following software
 installed on your local machine:
 
 * [Python](https://www.python.org/) (version 3.7-3.9)
-* [Docker](https://www.docker.com/)
+* [Docker](https://www.docker.com/) installed on your machine
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
-* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed on your machine and authenticated
+* [Remote ZenML Server](https://docs.zenml.io/getting-started/deploying-zenml#deploying-zenml-in-the-cloud-remote-deployment-of-the-http-server-and-database) A Remote Deployment of the ZenML HTTP server and Database
 
 ### 🚅 Take the Express Train: Terraform-based provisioning of resources
 
@@ -166,6 +163,19 @@ aws ecr get-login-password --region <AWS_REGION> | docker login
     <ECR_REGISTRY_NAME>
 ```
 
+### Remote ZenML Server
+
+For Advanced use cases where we have a remote orchestrator such as Vertex AI
+or to share stacks and pipeline informations with team we need to have a seperated non local remote ZenML Server that it can be accessible from your
+machine as well as all stack components that may need access to the server.
+[Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
+
+In order to acheive this there are two different ways to get access to a remote ZenML Server.
+
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml)/
+2. Sign up for [ZenML Cloud](https://zenml.io/cloud-signup) and get access to a hosted
+   version of the ZenML Server with no setup required.
+
 ## Run an example with ZenML
 Let's now see the Kubernetes-native orchestration in action with a simple
 example using [ZenML](https://github.com/zenml-io/zenml/).
@@ -179,7 +189,7 @@ import numpy as np
 import pandas as pd
 from sklearn.base import ClassifierMixin
 from sklearn.svm import SVC
-
+from zenml.integrations.constants import FACETS, SKLEARN
 from zenml.integrations.facets.visualizers.facet_statistics_visualizer import (
     FacetStatisticsVisualizer,
 )
@@ -187,6 +197,7 @@ from zenml.integrations.sklearn.helpers.digits import get_digits
 from zenml.pipelines import pipeline
 from zenml.repository import Repository
 from zenml.steps import Output, step
+from zenml.config import DockerSettings
 
 
 @step
@@ -233,10 +244,9 @@ def skew_comparison(
     )
 
 
-@pipeline(
-    enable_cache=False,
-    required_integrations=["sklearn", "facets"],
-)
+docker_settings = DockerSettings(required_integrations=[SKLEARN, FACETS])
+
+@pipeline(enable_cache=False, settings={"docker": docker_settings})
 def kubernetes_example_pipeline(importer, trainer, evaluator, skew_comparison):
     """data loading -> train -> test with skew comparison in parallel."""
     X_train, X_test, y_train, y_test = importer()
@@ -271,15 +281,18 @@ zenml integration install sklearn facets kubernetes aws s3 -y
 ```
 
 ### Registering a ZenML Stack
-To bring the Kubernetes orchestrator, metadata store, and all the AWS
+To bring the Kubernetes orchestrator, and all the AWS
 infrastructure together, we will register them together in a ZenML stack.
 
 First, initialize ZenML in the same folder where you created the `run.py` file:
+
 ```shell
+zenml connect --url http://zenml-server... # if you have a remote server
+
 zenml init
 ```
 
-Next, register the Kubernetes orchestrator and metadata store, using the
+Next, register the Kubernetes orchestrator, using the
 `<KUBE_CONTEXT>` you used above:
 
 ```bash
@@ -288,13 +301,6 @@ zenml orchestrator register k8s_orchestrator
     --kubernetes_context=<KUBE_CONTEXT>
     --kubernetes_namespace=zenml
     --synchronous=True
-```
-```bash
-zenml metadata-store register k8s_store 
-    --flavor=kubernetes
-    --kubernetes_context==<KUBE_CONTEXT>
-    --kubernetes_namespace=zenml
-    --deployment_name=mysql
 ```
 
 Similarly, use the `<ECR_REGISTRY_NAME>` and `<REMOTE_ARTIFACT_STORE_PATH>` you
@@ -317,8 +323,7 @@ Now we can bring everything together in a ZenML stack:
 
 ```bash
 zenml stack register k8s_stack 
-    -m k8s_store 
-    -a s3_store 
+    -a s3_store
     -o k8s_orchestrator 
     -c ecr_registry
 ```
@@ -337,16 +342,10 @@ them all up at once with a single command:
 zenml stack up
 ```
 
-In our case, this will provision the metadata store by deploying the MySQL
-database within the EKS cluster and forward the respective ports.
-
 If everything went well, you should see logs messages similar to the following
 in your terminal:
 
 ![zenml stack up output]({{ site.url }}/assets/posts/k8s-orchestrator/zenml_stack_up_output.png)
-
-In particular, look for the last line that says
-`The Kubernetes metadata store is functional.`
 
 ### Running the Example
 
@@ -385,13 +384,6 @@ following command:
 
 ```bash
 kubectl delete pods -n zenml -l pipeline=kubernetes_example_pipeline
-```
-
-### Delete ZenML Metadata Store
-If you also want to delete the MySQL metadata store, run:
-
-```bash
-zenml stack down --force
 ```
 
 ### Delete AWS Resources
