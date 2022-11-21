@@ -28,7 +28,7 @@ The core selection criteria were as follows:
 - The tool needs to be actively maintained. (Someone's hobby project from 5 years ago probably isn't going to be of much use in a production environment in 2022.)
 - The tool should be functional and fit for purpose.
 
-The repository showcases 48 tools with different specialisms, from text to images to cross-domain options. I was pleasantly surprised to find so many. Moreover, the selection include some that have been around for a few years and also others that are much newer. This shows that the space is still seen as one where it makes sense to invest in engineering robust solutions.  As one example of this, we were excited to see companies like [Recognai](https://www.recogn.ai/en/) push forward in their development of the textual annotation tool [Rubrix](https://www.rubrix.ml/).
+The repository showcases 48 tools with different specialisms, from text to images to cross-domain options. I was pleasantly surprised to find so many. Moreover, the selection include some that have been around for a few years and also others that are much newer. This shows that the space is still seen as one where it makes sense to invest in engineering robust solutions.  As one example of this, we were excited to see companies like [Recognai](https://www.argilla.io/) push forward in their development of the textual annotation tool [Rubrix](https://www.rubrix.ml/).
 
 We welcome contributions [to this repository](https://github.com/zenml-io/awesome-open-data-annotation). From suggestions for tools that we've missed to categories of annotation that we weren't aware of, please feel free to [send us your Pull Requests](https://github.com/zenml-io/awesome-open-data-annotation)!
 
