@@ -444,7 +444,7 @@ Of course not.
 Sharing access credentials in your codes or files is a quick way to set your butt on fire.
 I wouldn't recommend it.
 
-![butt-on-fire](../assets/posts/pytorch_wandb/soccer-butt.gif)
+<iframe src="https://giphy.com/embed/xT5LMpPoihn5AsoNB6" width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/season-13-the-simpsons-13x20-xT5LMpPoihn5AsoNB6">via GIPHY</a></p>
 
 ZenML handles secret information like access credentials with a component known as [Secret Managers](https://docs.zenml.io/component-gallery/secrets-managers).
 Secrets Managers provide a secure way of storing and retrieving confidential information that is needed to run your ML pipelines.
