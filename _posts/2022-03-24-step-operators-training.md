@@ -47,7 +47,7 @@ zenml step-operator register OPERATOR_NAME \
     ...
 ```
 
-And then a step can be decorated with the `custom_stop_operator` parameter to run it with that operator backend:
+And then a step can be decorated with the `custom_step_operator` parameter to run it with that operator backend:
 
 ```python
 from zenml.client import Client
