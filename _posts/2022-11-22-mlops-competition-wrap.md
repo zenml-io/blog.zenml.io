@@ -12,13 +12,13 @@ image:
   path: /assets/posts/competition-launch/Month_of_MLOps.png
 ---
 
-We're launching a competition!
+You did it! Thank you so much to all who submitted entries for the competition. We've been having so much fun going through the demos and repos that we received. The work now falls on us and our external panel of judges to go through the submissions in detail, select the best ones to receive prizes and offer feedback on the material we received.
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/stuv785ItmM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Our MLOps Competition runs from October 10 to November 11, 2022. Full details will be shared with registered competitors via email, but for now you can learn some more about how the competition will be run in the video above and in the text that follows.
 
-## Announcing our external judging panel!
+## 💥Competition Recap
 
 We're also really excited to be able to announce our judging panel for the competition, a stellar cast of ML and MLOps heroes!
 
@@ -40,3 +40,36 @@ To take part, sign up [at the competition page](https://zenml.io/competition) an
 We recommend you form a small team (max 5 people) to tackle whatever challenge you decide to work on. If you don't have anyone to team up with, feel free to post requests for teams on the #competition channel on the ZenML slack as there are likely to be others in the same situation!
 
 We're really excited to dive into the competition in a couple of weeks and we look forward to seeing all the creative and ingenious ideas you come up with!
+
+## Announcing our winners!
+
+After an intense month of competition, we've announced the Month of MLOps competition winners in our closing ceremony!
+Check out the recording of the closing ceremony and be inspired by the presentation by the winners and comments from judges Charles Frye and Goku Mohandas.
+
+https://www.youtube.com/watch?v=acLrHtjiN9A&ab_channel=ZenML
+
+:sports_medal: 1st Prize - Fuzzy Labs (Dobble on the Edge)
+GitHub repo: https://github.com/fuzzylabs/dobble-jetson-zenml-competition
+:sports_medal: 2nd Prize - Two (Detecting Fraudulent Financial Transactions with ZenML)
+GitHub repo: https://github.com/two-inc/zenml-competition
+:sports_medal: 3rd Prize - Shivalika Singh (ChequeEasy: Banking with Transformers)
+GitHub repo: https://github.com/shivalikasingh95/cheque-easy
+:sports_medal: Most Promising Entry - Marina Wyss (Are You A Cat?)
+GitHub repo: https://github.com/MarinaWyss/are-you-a-cat
+:sports_medal: Most Promising Entry - Andrew Hinh (Admirer)
+GitHub repo: https://github.com/andrewhinh/admirer
+
+From the ZenML team - Congratulations to all winners! We hope your experience with ZenML will inspire more people to start building and sharing with the MLOps community worldwide.
+
+## 🥡 Takeaways
+
+While the entire competition was a huge learning experience for everyone involved, there were
+particular takeaways that our judges articulated well as they went through the submissions:
+
+- The standard of submissions was generally high
+- People used ZenML in many different contexts
+- The biggest factor of not being able to submit a project was **transitioning to the cloud**.
+
+## ➡️ What's next
+
+The Month of MLOps was one of the most enjoyable moments in the history of ZenML - and
