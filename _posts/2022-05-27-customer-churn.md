@@ -50,7 +50,7 @@ Our training pipeline `run_kubeflow_pipeline.py` consists of the following steps
 If you want to run the pipeline with `default` stack settings (i.e. you can run the whole pipeline as traditional ZenML pipelines), you can run the following command to run it:
 
 ```bash
-zenml stack set default
+zenml init
 python run_kubeflow_pipeline.py
 ```
 
@@ -70,7 +70,6 @@ With all the installation and initialization out of the way, all that's left to 
 zenml container-registry register local_registry --flavor=default --uri=localhost:5000
 zenml orchestrator register kubeflow_orchestrator --flavor=kubeflow
 zenml stack register local_kubeflow_stack \
-    -m default \
     -a default \
     -o kubeflow_orchestrator \
     -c local_registry
@@ -150,14 +149,15 @@ You can now skip directly to the [part of this guide where you define ZenML secr
 
 #### Remote ZenML Server
 
-For Advanced use cases where we have a remote orchestrator such as Vertex AI
-or to share stacks and pipeline informations with team we need to have a seperated non local remote ZenML Server that it can be accessible from your
-machine as well as all stack components that may need access to the server.
-[Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
+In advanced use cases, for example when you have a remote orchestrator (such as Vertex AI) or when you want to
+collaborate with a team, you need to set up a non-local remote ZenML server. This server acts as a central 
+component that communicates with all other stack components.
 
-In order to acheive this there are two different ways to get access to a remote ZenML Server.
+More information about the use cases [here](https://docs.zenml.io/getting-started/deploying-zenml).
 
-1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml)/
+To achieve this there are two different ways to get access to a remote ZenML Server.
+
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml/).
 2. Sign up for [ZenML Cloud](https://zenml.io/cloud-signup) and get access to a hosted
    version of the ZenML Server with no setup required.
 
