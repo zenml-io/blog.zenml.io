@@ -7,16 +7,16 @@ category: zenml
 tags: zenml competition mlops
 publish_date: September 26, 2022
 date: 2022-09-26T00:02:00Z
-thumbnail: /assets/posts/competition-launch/Month_of_MLOps.png
+thumbnail: /assets/posts/competition-wrapup/Final.png
 image:
-  path: /assets/posts/competition-launch/Month_of_MLOps.png
+  path: /assets/posts/competition-wrapup/Final.png
 ---
 
 We're launching a competition!
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/stuv785ItmM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Our MLOps Competition runs from October 10 to November 11, 2022. Full details will be shared with registered competitors via email, but for now you can learn some more about how the competition will be run in the video above and in the text that follows.
+Our MLOps Competition ran from October 10 to November 11, 2022. Full details will be shared with registered competitors via email, but for now you can learn some more about how the competition will be run in the video above and in the text that follows.
 
 ## Announcing our external judging panel!
 
@@ -40,3 +40,5 @@ To take part, sign up [at the competition page](https://zenml.io/competition) an
 We recommend you form a small team (max 5 people) to tackle whatever challenge you decide to work on. If you don't have anyone to team up with, feel free to post requests for teams on the #competition channel on the ZenML slack as there are likely to be others in the same situation!
 
 We're really excited to dive into the competition in a couple of weeks and we look forward to seeing all the creative and ingenious ideas you come up with!
+
+![Image showing final]({{ site.url }}/assets/posts/competition-wrapup/Poster.png)
