@@ -7,16 +7,18 @@ category: zenml
 tags: zenml competition mlops
 publish_date: November 22, 2022
 date: 2022-11-22T00:02:00Z
-thumbnail: /assets/posts/competition-launch/Month_of_MLOps.png
+thumbnail: /assets/posts/competition-recap/Final.png
 image:
-  path: /assets/posts/competition-launch/Month_of_MLOps.png
+  path: /assets/posts/competition-recap/Final.png
 ---
 
 The inaugural ZenML [Month of MLOps](https://zenml.io/competition) ran from rom October 10 to November 11, 2022. ending recently with a [closing ceremony streamed live](https://www.youtube.com/watch?v=acLrHtjiN9A). The goal of the competition was to make the most creative and innovative showcase of a production-grade ZenML MLOps pipeline. Aside from the cash prizes, joining in the competition was a great way to contribute to open-source software, build a machine learning portfolio, and to learn MLOps best practices.
 
+![Image showing final day]({{ site.url }}/assets/posts/competition-recap/Final.png)
+
 We were more than excited to welcome some of most well-renowned experts of the MLOps world to judge over proceedings:
 
-![Image showing our judging panel]({{ site.url }}/assets/posts/competition-launch/Judges.png)
+![Image showing our judging panel]({{ site.url }}/assets/posts/competition-recap/Judges.png)
 
 - [Charles Frye](https://twitter.com/charles_irl), core instructor at the amazing [Full Stack Deep Learning](https://fullstackdeeplearning.com) course
 - [Anthony Goldbloom](https://www.linkedin.com/in/anthonygoldbloom), co-founder and former CEO of [Kaggle](https://www.kaggle.com)
