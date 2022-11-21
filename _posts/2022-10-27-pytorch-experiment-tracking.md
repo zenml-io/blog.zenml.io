@@ -2,7 +2,7 @@
 layout: post
 author: Felix Altenberger and Dickson Neoh
 title: "Transforming Vanilla PyTorch Codes into Production Ready ML Pipeline - Without Selling Your Soul"
-description: "Rewrite PyTorch code as a ZenML pipeline and add experiment tracking and secrets manager component."
+description: "Transform quickstart PyTorch code as a ZenML pipeline and add experiment tracking and secrets manager component."
 category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb
 publish_date: October 27, 2022
