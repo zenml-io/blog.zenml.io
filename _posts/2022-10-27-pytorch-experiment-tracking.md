@@ -7,9 +7,9 @@ category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb
 publish_date: October 27, 2022
 date: 2022-10-27T00:02:00Z
-thumbnail: ../assets/posts/pytorch_wandb/thumbnail.gif
+thumbnail: /assets/posts/pytorch_wandb/thumbnail.gif
 image:
-path: ../assets/posts/pytorch_wandb/thumbnail.gif
+path: /assets/posts/pytorch_wandb/thumbnail.gif
 ---
 
 ![poster](../assets/posts/pytorch_wandb/thumbnail.gif)
@@ -28,7 +28,7 @@ Is that even possible?!
 
 With ZenML, yes it is 🚀.
 
-![poster](/assets/posts/pytorch_wandb/meme.jpg)
+![poster](../assets/posts/pytorch_wandb/meme.jpg)
 
 
 In this post, we will show you how to turn vanilla PyTorch codes into a production-ready ML pipeline that can be run on any cloud infrastructure while incorporating the best practices of MLOps.
