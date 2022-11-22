@@ -2,7 +2,7 @@
 layout: post
 author: Dickson Neoh
 title: "ZenML 0.22.0: BentoML Integration and A Revamped Airflow Orchestrator!"
-description: "This release comes with a new BentoML integration as well as a reworked Airflow orchestrator. Additionally, it greatly improves the server performance as well as other small fixes and updates to our docs!"
+description: "This release comes with a new BentoML integration and a reworked Airflow orchestrator. We've also improved the server related performance issues and other small fixes!"
 category: zenml
 tags: zenml release-notes
 publish_date: November 22nd, 2022
@@ -14,7 +14,7 @@ image:
 
 ![Release 0.22.0](../assets/posts/release_0_22_0/Release_0.22.0.jpg)
 
-It's been a while since we last release a new feature.
+It's been a while since we last released a new feature.
 We've been busy in the past month on the [Month of MLOps competition](./2022-09-26-mlops-competition.md) and fixing various bugs after our [major 0.20.0 release](./2022-10-05-zenml-revamped.md).
 
 This time around, we are back to shipping new features to you!
@@ -28,7 +28,7 @@ The BentoML integration has been on our radar for some time now and we finally t
 
 The new [BentoML integration](https://zenml.io/integrations/bentoml) includes a BentoML model deployer component that allows you to deploy your models from any of the major machine learning frameworks on your local machine and in the cloud.
 
-We will be showcasing the BentoML integration in our next community hour (23rd Nov 2022, 5:30PM CET). 
+We will showcase the BentoML integration in our next community hour (23rd Nov 2022, 5:30PM CET). 
 Curious to learn more? Join us [here](https://zenml.io/meet).
 
 In the meantime, check out the BentoML [example]((https://github.com/zenml-io/zenml/tree/main/examples/bentoml_deployment)) on our repo.
@@ -36,7 +36,7 @@ In the meantime, check out the BentoML [example]((https://github.com/zenml-io/ze
 ## 🚀 Airflow in the Clouds
 
 The previous Airflow orchestrator was limited to running locally and had many additional unpleasant constraints.
-It's a pain to work with. So, we've completely rewritten, the Airflow orchestrator. Now, it works both locally and with remote Airflow deployments!
+It's a pain to work with. So, we've completely rewritten the Airflow orchestrator. Now, it works both locally and with remote Airflow deployments!
 
 Watch a demo video below to see the revamped Airflow orchestrator in action.
 <iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/v-tEm4O61Y8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -49,23 +49,22 @@ And also, check out the example of the brand-new Airflow orchestrator [here](htt
 The revamped Airflow orchestrator comes with a breaking change. 
 The Airflow orchestrator now requires a newer version of Airflow and Docker installed to work.
 
-You can simply run `zenml integration install airflow` to update your installations to the right versions.
+You can simply run `zenml integration install airflow` to update your installations to the correct versions.
 
 ## ☔ Notable Bug Fixes and Improvements
 
-The ZenML Label Studio integration can now be used with non-local (i.e. deployed) instances. For more information see the [Label Studio documentation](https://docs.zenml.io/component-gallery/annotators/label-studio).
-The Label Studio [example](https://github.com/zenml-io/zenml/tree/main/examples/label_studio_annotation) shows how you can set it up on major cloud infrastructure like Azure, GCP and AWS.
+You can now use the ZenML Label Studio integration with non-local (i.e. deployed) instances. For more information, see the [Label Studio documentation](https://docs.zenml.io/component-gallery/annotators/label-studio).
+The Label Studio [example](https://github.com/zenml-io/zenml/tree/main/examples/label_studio_annotation) walks through how you can set it up on cloud infrastructures like Azure, GCP and AWS.
 
-The Spark [example](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming) is fixed and now works again end-to-end.
+We fixed the Spark [example](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming) and it now works again end-to-end.
 
-We also include a fix that speeds up the data sync from the MLMD database to the ZenML server. 
+We also included a fix that speeds up the data sync from the MLMD database to the ZenML server. 
 
-As usual, we included a list of various improvements which you can view [here](https://github.com/zenml-io/zenml/releases/edit/0.22.0).
-
+As usual, we also made various minor improvements which you can view [here](https://github.com/zenml-io/zenml/releases/edit/0.22.0).
 
 ## 🤗 New Contributors
 
-We are super grateful to have the following new contributors in this release!
+We are grateful to have the following new contributors in this release!
 
 * [@sheikhomar](https://github.com/sheikhomar) made their first contribution in [#1045](https://github.com/zenml-io/zenml/pull/1045)
 * [@chiragjn](https://github.com/chiragjn) made their first contribution in [#1057](https://github.com/zenml-io/zenml/pull/1057)
