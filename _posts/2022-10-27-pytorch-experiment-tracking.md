@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Felix Altenberger and Dickson Neoh
-title: "Transforming Vanilla PyTorch Codes into Production Ready ML Pipeline - Without Selling Your Soul"
+title: "Transforming Vanilla PyTorch Code into Production Ready ML Pipeline - Without Selling Your Soul"
 description: "Transform quickstart PyTorch code as a ZenML pipeline and add experiment tracking and secrets manager component."
 category: zenml
 tags: zenml integrations mlops tooling pipelines pytorch wandb
@@ -12,6 +12,8 @@ image:
 path: /assets/posts/pytorch_wandb/thumbnail.gif
 ---
 
+Last updated: November 22, 2022.
+
 ![poster](../assets/posts/pytorch_wandb/thumbnail.gif)
 
 ## 🔥 Motivation
@@ -19,11 +21,11 @@ It's 2022, anyone can train a machine learning (ML) model these days.
 Libraries like [PyTorch](https://pytorch.org/), [Tensorflow](https://www.tensorflow.org/), and [Scikit-learn](https://scikit-learn.org/stable/index.html) have lowered the entry barrier so much, you can get started in minutes.
 
 Needless to say, there are tons of quickstart notebooks out there that will walk you through step-by-step.
-While there are values in quickstarts, especially in the early stages, the codes you see in quickstarts often look very different and "unusable in production", some people might say.
+While there are values in quickstarts, especially in the early stages, the code you see in quickstarts often look very different and "unusable in production", some people might say.
 
 Or, is it?
 
-Is there a way we could transform quickstart codes so that they are usable for production ML? 
+Is there a way we could transform quickstart code so that they are usable for production ML? 
 Is that even possible?!
 
 With ZenML, yes it is 🚀.
@@ -31,7 +33,7 @@ With ZenML, yes it is 🚀.
 ![poster](../assets/posts/pytorch_wandb/meme.jpg)
 
 
-In this post, we will show you how to turn vanilla PyTorch codes into a production-ready ML pipeline that can be run on any cloud infrastructure while incorporating the best practices of MLOps.
+In this post, we will show you how to turn vanilla PyTorch code into a production-ready ML pipeline that can be run on any cloud infrastructure while incorporating the best practices of MLOps.
 Next, we'll also show how you can easily manage access credentials and include components like experiment trackers into your pipeline.
 
 By the end of the post, you'll learn how to -
@@ -91,7 +93,7 @@ You can even [write you own](https://docs.zenml.io/misc/integrating)!
 ## ✅ Vanilla PyTorch Code
 Now that we're done with the setups, let's take a look at the *"hello world"* of PyTorch on the [quickstart page](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html).
 
-The codes look like the following.
+The code look like the following.
 
 ```python
 import torch
@@ -199,12 +201,12 @@ print("Done!")
 
 ```
 
-You can put all the codes into a `.py` file, and it should run without a problem.
+You can put all the code into a `.py` file, and it should run without a problem.
 
-Now let's see how we can transform the codes into a ZenML pipeline.
+Now let's see how we can transform the code into a ZenML pipeline.
 
 
-## 🥳 Transforming PyTorch Codes into a ZenML Pipeline.
+## 🥳 Transforming PyTorch code into a ZenML Pipeline.
 Before we start, we'd like to first tell you about the concept of *pipeline* and *step* in ZenML. This concept will come in handy later when we code.
 
 In ZenML, a `pipeline` consists of a series of steps, organized in any order that makes sense for your use case.
@@ -400,12 +402,12 @@ pytorch_experiment_tracking_pipeline(
 ```
 
 And that's it! 
-How easy was that? We were only reorganizing the PyTorch codes into a series of `steps` and a `pipeline` with ZenML.
-If you put all the codes above in a `.py` script, it should run just like the vanilla PyTorch code in the quickstart.
+How easy was that? We were only reorganizing the PyTorch code into a series of `steps` and a `pipeline` with ZenML.
+If you put all the code above in a `.py` script, it should run just like the vanilla PyTorch code in the quickstart.
 
 So why does this matter?
 
-First, you've just transformed vanilla PyTorch codes into a form that can be run on your local machine and any cloud infrastructure in production. Second, structuring your code into steps and pipelines makes the code modular and easily maintainable. Third, using ZenML pipelines earlier on in your project also means that the code you use in development will look similar to the code in production. This saves a huge refactoring cost when transitioning from development to production. 
+First, you've just transformed vanilla PyTorch code into a form that can be run on your local machine and any cloud infrastructure in production. Second, structuring your code into steps and pipelines makes the code modular and easily maintainable. Third, using ZenML pipelines earlier on in your project also means that the code you use in development will look similar to the code in production. This saves a huge refactoring cost when transitioning from development to production. 
 
 You can read more about other benefits of structuring your code with ZenML pipelines from the get-go [here](https://blog.zenml.io/ml-pipelines-from-the-start/). 
 Learn more about other ZenML features [here](https://zenml.io/features) which will save you a lot of time and resources in productionalizing ML models.
@@ -441,7 +443,7 @@ Now with those details, let's put them in our code and start running them, shall
 
 Of course not.
 
-Sharing access credentials in your codes or files is a quick way to set your butt on fire.
+Sharing access credentials in your code or files is a quick way to set your butt on fire.
 We wouldn't recommend it.
 
 ![fire](../assets/posts/pytorch_wandb/fire.gif)
@@ -649,8 +651,8 @@ In summary, you've learned how to -
 + Configure a Secrets Manager to securely store and retrieve API keys.
 + Use the [Weights & Biases](https://wandb.ai/) (W&B) Experiment Tracker to log results and share them.
 
-With this new superpower, you can turn any PyTorch codes into ZenML steps and pipelines and accelerate your journey to production ML.
-Using the same steps you can also transform codes from other frameworks like Tensorflow/Keras. Check out this [example](https://github.com/zenml-io/zenml/tree/849d323139f3f4e3a8a2ca84a97fe225f9dfe7ce/examples/wandb_tracking).
+With this new superpower, you can turn any PyTorch code into ZenML steps and pipelines and accelerate your journey to production ML.
+Using the same steps you can also transform the code from other frameworks like Tensorflow/Keras. Check out this [example](https://github.com/zenml-io/zenml/tree/849d323139f3f4e3a8a2ca84a97fe225f9dfe7ce/examples/wandb_tracking).
 
 ![success](../assets/posts/pytorch_wandb/success.gif)
 
