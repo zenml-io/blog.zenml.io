@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Dickson Neoh
-title: "ZenML 0.22.0: BentoML Integration and a Revamped Airflow Orchestrator!"
+title: "ZenML 0.22.0: BentoML Integration and A Revamped Airflow Orchestrator!"
 description: "This release comes with a new BentoML integration as well as a reworked Airflow orchestrator. Additionally, it greatly improves the server performance as well as other small fixes and updates to our docs!"
 category: zenml
 tags: zenml release-notes
@@ -14,7 +14,7 @@ image:
 
 ![Release 0.22.0](../assets/posts/release_0_22_0/Release_0.22.0.jpg)
 
-[ZenML 0.22.0](https://github.com/zenml-io/zenml/releases/tag/0.22.0) is out and brings a new BentoML integration and a revamped Airflow Orchestrator.
+[ZenML 0.22.0](https://github.com/zenml-io/zenml/releases/tag/0.22.0) is out and brings a new [BentoML](https://www.bentoml.com/) integration and a revamped Airflow Orchestrator.
 
 For now, let's dive right into the changes.
 
@@ -23,6 +23,9 @@ For now, let's dive right into the changes.
 The new [BentoML integration](https://zenml.io/integrations/bentoml) includes a BentoML model deployer component that allows you to deploy your models from any of the major machine learning frameworks on your local machine.
 
 See example [here](https://github.com/zenml-io/zenml/tree/main/examples/bentoml_deployment).
+
+We showcased this in our community meetup demo on 23rd November 2022.
+
 
 ## 🚀 Airflow in the Clouds
 
@@ -35,26 +38,27 @@ See what changed [in this video](https://www.youtube.com/watch?v=v-tEm4O61Y8) an
 Further improvements to the synchronization that transfers pipeline run information from the MLMD database to the ZenML Server.
 
 The ZenML Label Studio integration can now be used with non-local (i.e. deployed) instances. For more information see [the Label Studio docs](https://docs.zenml.io/component-gallery/annotators/label-studio).
-- The Spark example is fixed and now works again end-to-end.
+
+The Spark example is fixed and now works again end-to-end.
 
 ## 💔 Breaking Changes
 
-The following changes introduces with this release mey require some manual
+The following changes introduce with this release may require some manual
 intervention to update your current installations:
 
-* the Airflow orchestrator now requires a newer version of Airflow (run `zenml integration install airflow` to upgrade) and Docker installed
+The Airflow orchestrator now requires a newer version of Airflow (run `zenml integration install airflow` to upgrade) and Docker installed
 to work.
 
-Other changes [here](https://github.com/zenml-io/zenml/releases/edit/0.22.0).
+View other changes [here](https://github.com/zenml-io/zenml/releases/edit/0.22.0).
 
 ## 🤗 New Contributors
+
+We appreciate the following new contributors to the ZenML repo!
 
 * [@sheikhomar](https://github.com/sheikhomar) made their first contribution in [#1045](https://github.com/zenml-io/zenml/pull/1045)
 * [@chiragjn](https://github.com/chiragjn) made their first contribution in [#1057](https://github.com/zenml-io/zenml/pull/1057)
 
 ## 🔥 Onwards and Upwards!
-
-We're really excited to have this latest version out in the world and for you to try it out! The best place to start is [our Quickstart example](https://github.com/zenml-io/zenml/tree/main/examples/quickstart). Instructions for how to get going are listed in the README.
 
 If you find any bugs or something doesn't work the way you expect, please [let
 us know in Slack](https://zenml.io/slack-invite) or also feel free to [open up a
