@@ -1,20 +1,20 @@
 ---
 layout: post
 author: Dickson Neoh
-title: "ZenML 0.20.2: BentoML Integration and a Revamped Airflow Orchestrator!"
+title: "ZenML 0.22.0: BentoML Integration and a Revamped Airflow Orchestrator!"
 description: "This release comes with a new BentoML integration as well as a reworked Airflow orchestrator. Additionally, it greatly improves the server performance as well as other small fixes and updates to our docs!"
 category: zenml
 tags: zenml release-notes
 publish_date: November 22nd, 2022
 date: 2022-11-05T00:02:00Z
-thumbnail: /assets/posts/zenml_revamped/Release_0.22.0.gif
+thumbnail: /assets/posts/release_0_22_0/Release_0.22.0.gif
 image:
-  path: /assets/posts/zenml_revamped/Release_0.22.0.jpg
+  path: /assets/posts/release_0_22_0/Release_0.22.0.jpg
 ---
 
-![Release 0.20.0]({{ site.url }}/assets/posts/zenml_revamped/Release_0.20.0.jpg)
+![Release 0.22.0](../assets/posts/release_0_22_0/Release_0.22.0.jpg)
 
-[ZenML 0.20.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [tens of thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879).
+[ZenML 0.22.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [tens of thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879).
 
 ![PR Changes]({{ site.url }}/assets/posts/zenml_revamped/pr_changes.png)
 
