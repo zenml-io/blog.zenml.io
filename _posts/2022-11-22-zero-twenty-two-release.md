@@ -16,9 +16,7 @@ image:
 
 [ZenML 0.22.0](https://github.com/zenml-io/zenml/releases/tag/0.22.0) is out and brings a new BentoML integration and a revamped Airflow Orchestrator.
 
-
 For now, let's dive right into the changes.
-
 
 ## 🤖 BentoML Integration
 
@@ -34,8 +32,9 @@ See what changed [in this video](https://www.youtube.com/watch?v=v-tEm4O61Y8) an
 
 ## ☔ Notable Bugfixes
 
-- Further improvements to the synchronization that transfers pipeline run information from the MLMD database to the ZenML Server.
-- The ZenML Label Studio integration can now be used with non-local (i.e. deployed) instances. For more information see [the Label Studiodocs](https://docs.zenml.io/component-gallery/annotators/label-studio).
+Further improvements to the synchronization that transfers pipeline run information from the MLMD database to the ZenML Server.
+
+The ZenML Label Studio integration can now be used with non-local (i.e. deployed) instances. For more information see [the Label Studio docs](https://docs.zenml.io/component-gallery/annotators/label-studio).
 - The Spark example is fixed and now works again end-to-end.
 
 ## 💔 Breaking Changes
