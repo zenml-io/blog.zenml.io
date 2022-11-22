@@ -2,7 +2,7 @@
 layout: post
 author: Dickson Neoh
 title: "ZenML 0.22.0: BentoML Integration and A Revamped Airflow Orchestrator!"
-description: "This release comes with a new BentoML integration and a reworked Airflow orchestrator. We've also improved the server related performance issues and other small fixes!"
+description: "This release comes with a new BentoML integration and a reworked Airflow orchestrator. We also fixed server related performance issues and other minor improvements!"
 category: zenml
 tags: zenml release-notes
 publish_date: November 22nd, 2022
@@ -15,7 +15,7 @@ image:
 ![Release 0.22.0](../assets/posts/release_0_22_0/Release_0.22.0.jpg)
 
 It's been a while since we last released a new feature.
-We've been busy in the past month on the [Month of MLOps competition](./2022-09-26-mlops-competition.md) and fixing various bugs after our [major 0.20.0 release](./2022-10-05-zenml-revamped.md).
+That's because we've been busy in the past month with the [Month of MLOps competition](./2022-09-26-mlops-competition.md) and fixing various technical debts after our [major 0.20.0 release](./2022-10-05-zenml-revamped.md).
 
 This time around, we are back to shipping new features to you!
 
@@ -23,19 +23,20 @@ In [ZenML 0.22.0](https://github.com/zenml-io/zenml/releases/tag/0.22.0) we pres
 
 Let's dive right into the changes.
 
-## 🤖 BentoML Integration
+## 🍱 BentoML Integration
+
 The BentoML integration has been on our radar for some time now and we finally took the time to flesh it out with the help of our contributors [Tim Cvetko](https://github.com/timothy102) and [Aaron Pham](https://github.com/aarnphm).
 
-The new [BentoML integration](https://zenml.io/integrations/bentoml) includes a BentoML model deployer component that allows you to deploy your models from any of the major machine learning frameworks on your local machine and in the cloud.
+The new [BentoML integration](https://zenml.io/integrations/bentoml) includes a BentoML model deployer component that lets you deploy models using major machine learning frameworks (e.g. PyTorch, Tensorflow, HuggingFace, [etc](https://www.bentoml.com/)) on your local machine and in the cloud.
 
 We will showcase the BentoML integration in our next community hour (23rd Nov 2022, 5:30PM CET). 
-Curious to learn more? Join us [here](https://zenml.io/meet).
+Want to see it in action? Join us [here](https://zenml.io/meet).
 
-In the meantime, check out the BentoML [example]((https://github.com/zenml-io/zenml/tree/main/examples/bentoml_deployment)) on our repo.
+In the meantime, check out the [BentoML example]((https://github.com/zenml-io/zenml/tree/main/examples/bentoml_deployment)) on our repo.
 
 ## 🚀 Airflow in the Clouds
 
-The previous Airflow orchestrator was limited to running locally and had many additional unpleasant constraints.
+The previous Airflow orchestrator was limited to local runs and we had many additional unpleasant constraints.
 It's a pain to work with. So, we've completely rewritten the Airflow orchestrator. Now, it works both locally and with remote Airflow deployments!
 
 Watch a demo video below to see the revamped Airflow orchestrator in action.
@@ -51,7 +52,7 @@ The Airflow orchestrator now requires a newer version of Airflow and Docker inst
 
 You can simply run `zenml integration install airflow` to update your installations to the correct versions.
 
-## ☔ Notable Bug Fixes and Improvements
+## 🪲 Notable Bug Fixes and Improvements
 
 You can now use the ZenML Label Studio integration with non-local (i.e. deployed) instances. For more information, see the [Label Studio documentation](https://docs.zenml.io/component-gallery/annotators/label-studio).
 The Label Studio [example](https://github.com/zenml-io/zenml/tree/main/examples/label_studio_annotation) walks through how you can set it up on cloud infrastructures like Azure, GCP and AWS.
