@@ -24,6 +24,8 @@ For now, let's dive right into the changes.
 
 ## 🎠 Airflow in the Clouds
 
+## ☔ Notable Bugfixes
+
 ## 🔥 Onwards and Upwards!
 
 We're really excited to have this latest version out in the world and for you to try it out! The best place to start is [our Quickstart example](https://github.com/zenml-io/zenml/tree/main/examples/quickstart). Instructions for how to get going are listed in the README.
