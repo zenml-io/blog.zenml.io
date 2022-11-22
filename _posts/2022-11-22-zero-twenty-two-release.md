@@ -14,9 +14,14 @@ image:
 
 ![Release 0.22.0](../assets/posts/release_0_22_0/Release_0.22.0.jpg)
 
-[ZenML 0.22.0](https://github.com/zenml-io/zenml/releases/tag/0.22.0) is out and brings a new [BentoML](https://www.bentoml.com/) integration and a revamped Airflow Orchestrator.
+It's been a while since we last release a new feature.
+We've been busy in the past month on the [Month of MLOps competition](./2022-09-26-mlops-competition.md) and fixing various bugs after our [major 0.20.0 release](./2022-10-05-zenml-revamped.md).
 
-For now, let's dive right into the changes.
+This time around, we are back to shipping new features to you!
+
+In [ZenML 0.22.0](https://github.com/zenml-io/zenml/releases/tag/0.22.0) we present to you a brand new [BentoML](https://www.bentoml.com/) integration and a revamped Airflow Orchestrator!
+
+Let's dive right into the changes.
 
 ## 🤖 BentoML Integration
 
@@ -31,7 +36,10 @@ We showcased this in our community meetup demo on 23rd November 2022.
 
 The previous Airflow orchestrator was limited to running locally and had many additional unpleasant constraints that made it hard to work with. This release includes a completely rewritten, new version of the Airflow orchestrator that now relies on Docker images to run your pipelines and works both locally and with remote Airflow deployments.
 
-See what changed [in this video](https://www.youtube.com/watch?v=v-tEm4O61Y8) and check out the brand-new example [here](https://github.com/zenml-io/zenml/tree/main/examples/airflow_orchestration).
+Check out the brand-new example [here](https://github.com/zenml-io/zenml/tree/main/examples/airflow_orchestration).
+
+Watch a demo video below to see the revamped Airflow orchestrator in action.
+<iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/v-tEm4O61Y8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## ☔ Notable Bugfixes
 
