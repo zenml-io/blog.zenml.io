@@ -20,11 +20,38 @@ image:
 For now, let's dive right into the changes.
 
 
-## 🤖 BentoML + ZenML = 🚀
+## 🤖 BentoML Integration
 
-## 🎠 Airflow in the Clouds
+The new [BentoML integration](https://zenml.io/integrations/bentoml) includes a BentoML model deployer component that allows you to deploy your models from any of the major machine learning frameworks on your local machine.
+
+See example [here](https://github.com/zenml-io/zenml/tree/main/examples/bentoml_deployment).
+
+## 🚀 Airflow in the Clouds
+
+The previous Airflow orchestrator was limited to running locally and had many additional unpleasant constraints that made it hard to work with. This release includes a completely rewritten, new version of the Airflow orchestrator that now relies on Docker images to run your pipelines and works both locally and with remote Airflow deployments.
+
+See what changed [in this video](https://www.youtube.com/watch?v=v-tEm4O61Y8) and check out the brand-new example [here](https://github.com/zenml-io/zenml/tree/main/examples/airflow_orchestration).
 
 ## ☔ Notable Bugfixes
+
+- Further improvements to the synchronization that transfers pipeline run information from the MLMD database to the ZenML Server.
+- The ZenML Label Studio integration can now be used with non-local (i.e. deployed) instances. For more information see [the Label Studiodocs](https://docs.zenml.io/component-gallery/annotators/label-studio).
+- The Spark example is fixed and now works again end-to-end.
+
+## 💔 Breaking Changes
+
+The following changes introduces with this release mey require some manual
+intervention to update your current installations:
+
+* the Airflow orchestrator now requires a newer version of Airflow (run `zenml integration install airflow` to upgrade) and Docker installed
+to work.
+
+Other changes [here](https://github.com/zenml-io/zenml/releases/edit/0.22.0).
+
+## 🤗 New Contributors
+
+* [@sheikhomar](https://github.com/sheikhomar) made their first contribution in [#1045](https://github.com/zenml-io/zenml/pull/1045)
+* [@chiragjn](https://github.com/chiragjn) made their first contribution in [#1057](https://github.com/zenml-io/zenml/pull/1057)
 
 ## 🔥 Onwards and Upwards!
 
