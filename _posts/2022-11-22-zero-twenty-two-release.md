@@ -25,7 +25,8 @@ Let's dive right into the changes.
 
 ## 🍱 BentoML Integration
 
-The BentoML integration has been on our radar for some time now and we finally took the time to flesh it out with the help of our contributors [Tim Cvetko](https://github.com/timothy102) and [Aaron Pham](https://github.com/aarnphm).
+The BentoML integration has been on our radar for some time now and we finally took the time to flesh it out with the help from our community contributor [Tim Cvetko](https://github.com/timothy102), and from the BentoML team [Aaron Pham](https://github.com/aarnphm), [Bozhao Yu](https://github.com/yubozhao), [Sean Sheng](https://github.com/ssheng) and [Jiang, Bo](https://github.com/bojiang).
+
 
 The new [BentoML integration](https://zenml.io/integrations/bentoml) includes a BentoML model deployer component that lets you deploy models using major machine learning frameworks (e.g. PyTorch, Tensorflow, HuggingFace, [etc](https://www.bentoml.com/)) on your local machine and in the cloud.
 
@@ -63,12 +64,21 @@ We also included a fix that speeds up the data sync from the MLMD database to th
 
 As usual, we also made various minor improvements which you can view [here](https://github.com/zenml-io/zenml/releases/edit/0.22.0).
 
-## 🤗 New Contributors
+## 🤗 New Contributors and Acknowledgement
 
-We are grateful to have the following new contributors in this release!
+We are grateful to have the following new contributors in this release:
 
 * [@sheikhomar](https://github.com/sheikhomar) made their first contribution in [#1045](https://github.com/zenml-io/zenml/pull/1045)
 * [@chiragjn](https://github.com/chiragjn) made their first contribution in [#1057](https://github.com/zenml-io/zenml/pull/1057)
+
+We would like to also acknowledge the BentoML team for supporting us by reviewing the [PR](https://github.com/zenml-io/zenml/pull/1044) and BentoML API usage, especially:
+
+* [@aarnphm](https://github.com/aarnphm)
+* [@yubozhao](https://github.com/yubozhao) 
+* [@ssheng](https://github.com/ssheng) 
+* [@bojiang](https://github.com/bojiang)
+
+Also, not forgetting our community contributor [@Timothy102](https://github.com/timothy102) for initiating the integration effort.
 
 Thank you for helping us make ZenML better and sharing it with the community.
 
