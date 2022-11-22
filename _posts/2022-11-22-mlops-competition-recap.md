@@ -12,7 +12,7 @@ image:
   path: /assets/posts/competition-recap/Final.png
 ---
 
-The inaugural ZenML [Month of MLOps](https://zenml.io/competition) ran from rom October 10 to November 11, 2022. ending recently with a [closing ceremony streamed live](https://www.youtube.com/watch?v=acLrHtjiN9A). The goal of the competition was to make the most creative and innovative showcase of a production-grade ZenML MLOps pipeline. Aside from the cash prizes, joining in the competition was a great way to contribute to open-source software, build a machine learning portfolio, and to learn MLOps best practices.
+The inaugural ZenML [Month of MLOps](https://zenml.io/competition) ran from October 10 to November 11, 2022. ending recently with a [closing ceremony streamed live](https://www.youtube.com/watch?v=acLrHtjiN9A). The goal of the competition was to make the most creative and innovative showcase of a production-grade ZenML MLOps pipeline. Aside from the cash prizes, joining the competition was a great way to contribute to open-source software, build a machine learning portfolio, and learn MLOps best practices.
 
 ![Image showing final day]({{ site.url }}/assets/posts/competition-recap/Final.png)
 
