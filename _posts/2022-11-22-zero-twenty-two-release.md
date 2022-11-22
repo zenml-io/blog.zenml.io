@@ -2,7 +2,7 @@
 layout: post
 author: Dickson Neoh
 title: "ZenML 0.22.0: BentoML Integration and A Revamped Airflow Orchestrator!"
-description: "This release comes with a new BentoML integration and a reworked Airflow orchestrator. We also fixed server related performance issues and other minor improvements!"
+description: "This release comes with a new BentoML integration and a reworked Airflow orchestrator. We also fixed server-related performance issues and other minor improvements!"
 category: zenml
 tags: zenml release-notes
 publish_date: November 22nd, 2022
@@ -39,7 +39,7 @@ In the meantime, check out the [BentoML example]((https://github.com/zenml-io/ze
 The previous Airflow orchestrator was limited to local runs and we had many additional unpleasant constraints.
 It's a pain to work with. So, we've completely rewritten the Airflow orchestrator. Now, it works both locally and with remote Airflow deployments!
 
-Watch a demo video below to see the revamped Airflow orchestrator in action.
+Watch the demo video below to see the revamped Airflow orchestrator in action.
 <iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/v-tEm4O61Y8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 And also, check out the example of the brand-new Airflow orchestrator [here](https://github.com/zenml-io/zenml/tree/main/examples/airflow_orchestration).
@@ -55,7 +55,7 @@ You can simply run `zenml integration install airflow` to update your installati
 ## 🪲 Notable Bug Fixes and Improvements
 
 You can now use the ZenML Label Studio integration with non-local (i.e. deployed) instances. For more information, see the [Label Studio documentation](https://docs.zenml.io/component-gallery/annotators/label-studio).
-The Label Studio [example](https://github.com/zenml-io/zenml/tree/main/examples/label_studio_annotation) walks through how you can set it up on cloud infrastructures like Azure, GCP and AWS.
+The Label Studio [example](https://github.com/zenml-io/zenml/tree/main/examples/label_studio_annotation) walks through how you can set it up on cloud infrastructures like Azure, GCP, and AWS.
 
 We fixed the Spark [example](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming) and it now works again end-to-end.
 
@@ -76,5 +76,5 @@ Thank you for helping us make ZenML better and sharing it with the community.
 
 If you find any bugs or something doesn't work the way you expect, please [let
 us know in Slack](https://zenml.io/slack-invite) or also feel free to [open up a
-Github issue](https://github.com/zenml-io/zenml/issues/new/choose) if you
+GitHub issue](https://github.com/zenml-io/zenml/issues/new/choose) if you
 prefer. We welcome your feedback and we thank you for your support!
