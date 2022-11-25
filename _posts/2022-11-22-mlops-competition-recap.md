@@ -38,8 +38,10 @@ Here is a summary of the winner's submission:
 
 ### 🏅 1st Prize - Fuzzy Labs (Dobble on the Edge)
 
-**GitHub repo:** https://github.com/fuzzylabs/dobble-jetson-zenml-competition
-**Demo:** https://www.youtube.com/watch?v=gCAzpyE0Zr8
+**GitHub repo:** [https://github.com/fuzzylabs/dobble-jetson-zenml-competition](https://github.com/fuzzylabs/dobble-jetson-zenml-competition)
+
+**Demo:** [https://www.youtube.com/watch?v=gCAzpyE0Zr8](https://www.youtube.com/watch?v=gCAzpyE0Zr8)
+
 **Summary (in their own words):** At Fuzzy Labs we’re trying to become Dobble world champions. So, we came up with a plan to train an ML model to recognize the common symbol between two cards. You might be asking yourself: what on earth is Dobble? It’s essentially a more sophisticated version of snap. It’s a card game where each card has 8 symbols and the first to find the common symbol and shout about it wins. To make this even more of a challenge, and as we’re wanting to win, we decided to run the detection on the edge (it’s a concealable device then). To do all of this, we’ve used ZenML to create two pipelines, a data pipeline and a training pipeline, along with a stack recipe to provision cloud resources. The project presents a proof-of-concept, where there is scope to go into further depth at each stage. For example, while we’re able to do offline monitoring, this could be expanded through the integration of real-time monitoring - a difficult challenge on the edge, where unreliable networks are common.
 
 <div class="embed-responsive embed-responsive-16by9 mb-5">
@@ -56,8 +58,10 @@ The Fuzzy Labs team efforts were unanimously praised by the judges, and they wer
 
 ### 🏅 2nd Prize - Two (Detecting Fraudulent Financial Transactions with ZenML)
 
-**GitHub repo:** https://github.com/two-inc/zenml-competition
-**Demo:** https://two-inc-zenml-competition-app-staging-banb63.streamlit.app/
+**GitHub repo:** [https://github.com/two-inc/zenml-competition](https://github.com/two-inc/zenml-competition)
+
+**Demo:** [https://two-inc-zenml-competition-app-staging-banb63.streamlit.app/](https://two-inc-zenml-competition-app-staging-banb63.streamlit.app/)
+
 **Summary (in their own words):** The aim of this project is to develop a production-ready ML application for fraud detection using the ZenML MLOps framework. To train our fraud detection model, we make use of the "Synthetic data from a financial payment system" Dataset available on Kaggle.
 
 <div class="embed-responsive embed-responsive-16by9 mb-5">
@@ -68,8 +72,10 @@ Team Two was fittingly in the second position, with a very neatly implemented fi
 
 ### 🏅 3rd Prize - Shivalika Singh (ChequeEasy: Banking with Transformers)
 
-**GitHub repo:** https://github.com/shivalikasingh95/cheque-easy
-**Demo:** https://huggingface.co/spaces/shivi/ChequeEasy
+**GitHub repo:** [https://github.com/shivalikasingh95/cheque-easy](https://github.com/shivalikasingh95/cheque-easy)
+
+**Demo:** [https://huggingface.co/spaces/shivi/ChequeEasy](https://huggingface.co/spaces/shivi/ChequeEasy)
+
 **Summary (in their own words):** ChequeEasy is a project that aims to simplify the process of approval of cheques. Leveraging AI to extract relevant data from cheques and make the whole process quicker and easier for both bank officials and bank customers.
 
 <div class="embed-responsive embed-responsive-16by9 mb-5">
@@ -80,8 +86,10 @@ Shivalika's submission was particularly impressive as it was her first experienc
 
 ### 🏅 Most Promising Entry - Marina Wyss (Are You A Cat?)
 
-**GitHub repo:** https://github.com/MarinaWyss/are-you-a-cat
-**Demo:** https://marinawyss-are-you-a-cat-appstreamlit-app-ccycwd.streamlit.app/
+**GitHub repo:** [https://github.com/MarinaWyss/are-you-a-cat](https://github.com/MarinaWyss/are-you-a-cat)
+
+**Demo:** [https://marinawyss-are-you-a-cat-appstreamlit-app-ccycwd.streamlit.app/](https://marinawyss-are-you-a-cat-appstreamlit-app-ccycwd.streamlit.app/)
+
 **Summary (in their own words):** Sometimes it is hard to know if you are a cat or not. The goal of this project is to use deep learning to help with that. It is a simple pipeline that trains a Tensorflow 2DCNN, evaluates the model performance and logs the experiment to MLflow, and deploys the model if the performance is satisfactory. Inference is done using Streamlit.
 
 <div class="embed-responsive embed-responsive-16by9 mb-5">
@@ -92,8 +100,10 @@ Marina's tongue-in-cheek personality carried over well with this fun project, wh
 
 ### 🏅 Most Promising Entry - Andrew Hinh and Aleks Hiidenhovi (Admirer)
 
-**GitHub repo:** https://github.com/andrewhinh/admirer
-**Demo:** https://admirer.loca.lt/
+**GitHub repo:** [https://github.com/andrewhinh/admirer](https://github.com/andrewhinh/admirer)
+
+**Demo:** [https://admirer.loca.lt/](https://admirer.loca.lt/)
+
 **Summary (in their own words):** A full-stack ML-powered website that utilizes users’ webcam feeds to answer open-ended questions requiring outside knowledge. The website and repository together serve as an open-source demonstration and implementation of a visual question-answering model in a full-stack machine learning product. The visual question-answering pipeline is inspired by a paper from Microsoft; in short, we prompt GPT-3 with a generated image caption and object tag list, the question-answer pair, and context examples that demonstrate the task at hand in a few-shot learning method. 
 
 <div class="embed-responsive embed-responsive-16by9 mb-5">
