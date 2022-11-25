@@ -32,7 +32,9 @@ In total, the competition had **272** entrants from across the globe, with **5**
 After an intense month of competition, we announced the Month of MLOps competition winners in our closing ceremony!
 Check out the recording of the closing ceremony and be inspired by the presentation by the winners and comments from judges Charles Frye and Goku Mohandas.
 
+<div class="embed-responsive embed-responsive-16by9 mb-5">
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/acLrHtjiN9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 Here is a summary of the winner's submission:
 
@@ -52,7 +54,9 @@ The winner of the competition was an absolutely stellar submission by the [Fuzzy
 team, who really went all out on this one. They not only created a [series of blog posts](https://www.fuzzylabs.ai/blog-post/zenmls-month-of-mlops-data-science-edition) about their experience building out the pipeline, but also recorded funny, insightful 
 videos about the process. Case in point:
 
+<div class="embed-responsive embed-responsive-16by9 mb-5">
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/j9TAVpM5NRQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 The Fuzzy Labs team efforts were unanimously praised by the judges, and they were magnanimous in victory, donating the same amount of their winnings to a charity in the UK. Awesome work, Fuzzy Labs!
 
