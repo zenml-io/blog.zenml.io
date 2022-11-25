@@ -36,7 +36,7 @@ Check out the recording of the closing ceremony and be inspired by the presentat
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/acLrHtjiN9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Here is a summary of the winner's submission:
+Here is a summary of the winners' submission:
 
 ### 🏅 1st Prize - Fuzzy Labs (Dobble on the Edge)
 
@@ -125,7 +125,7 @@ particular takeaways that our judges articulated well as they went through the s
 
 - The standard of submissions was generally high - most were end-to-end MLOps applications that included monitoring, deployment, and data validation. The judges commented that some of the projects included components that even Fortune 100 companies don't have implemented.
 - People used ZenML in many different contexts, with no one team having the same exact stacks, showing the versatility of the framework.
-- Many projects used libraries that did not have an official integration yet - something that serves as input for the ZenML [roadmap](https://zenml.io/roadmap)
+- Many projects used libraries that did not have an official integration yet - something that serves as input for the ZenML [roadmap](https://zenml.io/roadmap).
 - The biggest factor in not being able to submit a project was **transitioning to the cloud**.
 
 ## ➡️ What's next
