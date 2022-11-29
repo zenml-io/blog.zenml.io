@@ -12,7 +12,7 @@ image:
   path: /assets/posts/release_0_22_0/Release_0.22.0.jpg
 ---
 
-**Last updated:** Nov 22nd, 2022.
+**Last updated:** November 22, 2022.
 
 ![Release 0.22.0](../assets/posts/release_0_22_0/Release_0.22.0.jpg)
 

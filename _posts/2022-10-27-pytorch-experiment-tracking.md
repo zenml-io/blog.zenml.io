@@ -12,7 +12,7 @@ image:
 path: /assets/posts/pytorch_wandb/thumbnail.gif
 ---
 
-Last updated: November 22, 2022.
+**Last updated:** November 22, 2022.
 
 ![poster](../assets/posts/pytorch_wandb/thumbnail.gif)
 
