@@ -12,6 +12,8 @@ image:
   path: /assets/posts/karthik-kannan/1561516119854.jpeg
 ---
 
+**Last updated:** June 30, 2022.
+
 This week I spoke with Karthik Kannan, cofounder and CTO of Envision, a company that builds on top of the Google Glass and using Augmented Reality features of phones to allow visually impaired people to better sense the environment or objects around them.
 
 Their software and devices are pretty popular and as you'll hear in this conversation, they've been on a real journey to get to where they are now.
