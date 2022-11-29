@@ -17,6 +17,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** February 16, 2022.
+
 This week, we spoke with Danny Leybzon, currently working with
 [WhyLabs](https://whylabs.ai/) to help data scientists monitor their models in
 production and prevent model performance from degrading. He previously worked as
