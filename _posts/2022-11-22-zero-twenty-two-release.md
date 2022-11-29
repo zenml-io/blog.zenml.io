@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_22_0/Release_0.22.0.jpg
 ---
 
+**Last updated:** Nov 22nd, 2022.
+
 ![Release 0.22.0](../assets/posts/release_0_22_0/Release_0.22.0.jpg)
 
 It's been a while since we last released a new feature.
