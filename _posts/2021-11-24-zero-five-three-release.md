@@ -14,6 +14,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 3, 2022.
+
 ZenML 0.5.3 adds support for statistics visualizations, greatly improved speed for CLI commands as well as lots of small improvements to the pipeline and step interface.
 
 For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.5.3) a glance. This blog post will cover some of the big-picture changes.
