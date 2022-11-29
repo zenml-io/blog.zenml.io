@@ -12,6 +12,8 @@ image:
   path: /assets/posts/ben-wilson/Wilson_Ben_S20NA.jpg
 ---
 
+**Last updated:** June 10, 2022.
+
 We took a few weeks break to reach out to some new guests and so I think we can go so far as declaring this next series of episodes as season 2 of Pipeline Conversations.
 
 Today, I'm extremely excited to present this conversation I had with [Ben Wilson](https://www.linkedin.com/in/benjamin-wilson-arch/) who works over at Databricks and who has also just released a new book called '[Machine Learning Engineering in Action](https://www.manning.com/books/machine-learning-engineering-in-action)'. It's a jam-backed guide to all the lessons that Ben has learned over his years working to help companies get models out into the world and run them in production.

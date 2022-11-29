@@ -13,6 +13,8 @@ image:
   path: /assets/posts/release_0_7_2_and_3/balloons.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 We missed the last release blog, so we're making it up with a longer one today.
 ZenML 0.7.2 and 0.7.3 are both a doozy in terms of new and exciting features, 
 from exciting new integrations to better stack management. Read on to learn more!

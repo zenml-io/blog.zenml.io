@@ -20,6 +20,8 @@ image:
   path: /assets/posts/zenml-framework/zenml-framework.gif
 ---
 
+**Last updated:** November 3, 2022.
+
 The paths that machine learning projects take on their way to production are
 long and perilous. Too many projects fail to reach their full potential and
 end up in drift limbo, or they accrue technical debt and complexity to the

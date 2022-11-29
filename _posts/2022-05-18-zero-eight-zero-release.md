@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_8_0/audrey-martin-FJpHcqMud_Y-unsplash.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 ZenML 0.8.0 -- and a number of changes around the edges including our messaging
 and website -- is all about extensibility. We've been working hard to make it
 clear and comprehensible how you can add custom components to the core
