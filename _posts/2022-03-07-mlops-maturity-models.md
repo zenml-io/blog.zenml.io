@@ -12,6 +12,8 @@ image:
   path: /assets/posts/mlops-maturity-models/maturitymodels-tbx.png
 ---
 
+**Last updated:** October 17, 2022.
+
 In January 2020, both [Microsoft](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/mlops/mlops-maturity-model) and [Google](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning) released what they referred to as 'maturity' models for MLOps. These outlined a series of levels that described the full spectrum of practices among organizations training and deploying machine learning models. A little later that same year, Google released an '[AI Adoption Framework](https://services.google.com/fh/files/misc/ai_adoption_framework_whitepaper.pdf)' that tackled similar ground from a different angle. They offered their take on how to go from worst practices to best practices in terms of MLOps.
 
 These frameworks are commonly referred to when thinking through how an organization is approaching machine learning workflows, so it's worth being aware of what these models propose as well as whether there are other options for assessing your own practices.
