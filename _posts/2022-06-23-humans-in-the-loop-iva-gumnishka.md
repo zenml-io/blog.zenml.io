@@ -12,6 +12,8 @@ image:
   path: /assets/posts/iva-gumnishka/1623738321208-2.jpeg
 ---
 
+**Last updated:** June 30, 2022.
+
 This week, I'm really happy to be able to continue the conversation we've been
 having with our users and community around the role of data annotation in MLOps.
 

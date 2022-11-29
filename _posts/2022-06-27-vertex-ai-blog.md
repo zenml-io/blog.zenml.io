@@ -13,6 +13,8 @@ image:
 path: /assets/posts/vertex/VertexLogo.png
 ---
 
+**Last updated:** November 14, 2022.
+
 A serverless architecture allows you to run code without having to directly
 manage infrastructure. This helps the developer focus on the code without
 worrying about managing infrastructure or costs racking up for continuously

@@ -12,6 +12,8 @@ image:
   path: /assets/posts/labeling/os-cover.jpg
 ---
 
+**Last updated:** November 21, 2022.
+
 [Last week's blog](https://blog.zenml.io/data-labelling-annotation/) on the places where data annotation plays a role in the MLOps lifecycle saw us receive lots of conversations and feedback from readers. It is clear that annotation must have a role in the story we tell about MLOps if a data-centric approach is known to bring value. Here at ZenML we're really enthusiastic about how we can support the integration of these behaviors and practices as part of the wider machine learning lifecycle, so we cooked up something to support all of you who are interested in trying out some of these tools. But more on that a bit later!
 
 We've been reviewing the space of annotation and labeling, and how it intersects with the lifecycle practices of machine learning in production. If MLOps is a booming space, then it seems data annotation is equally so, with new tools being released all the time. The big distinction seems to be that most of the innovation in annotation seems to happen behind closed doors; the open-source space is currently much less of a competitive arena. Indeed, this is probably the big choice you'll have to make if you get to choose which annotation tool to use: integrate with a close-source platform that does a lot or choose a more flexible open-source option with fewer features.
