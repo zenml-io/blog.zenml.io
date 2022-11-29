@@ -13,6 +13,8 @@ image:
   path: /assets/posts/aggregating-kpis/kpi.jpg
 ---
 
+**Last updated:** October 17, 2022.
+
 As somebody who has attempted to work a variety of jobs that all start with
 "data..." I have had the importance of having data to guide your decision-making
 process in business (or just life in general!) drilled into me. At the same

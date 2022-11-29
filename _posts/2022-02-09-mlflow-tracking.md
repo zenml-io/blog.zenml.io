@@ -19,6 +19,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 8, 2022.
+
 Most professional or so-called 'citizen' data scientists will be familiar with
 the scenario that sees you spending a day trying out a dozen different model
 training configurations in which you experiment with various hyper parameters or
