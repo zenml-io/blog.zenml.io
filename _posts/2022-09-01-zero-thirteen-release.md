@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_13_0/combined_zero_thirteen.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 ![img]({{ site.url }}/assets/posts/release_0_13_0/combined_zero_thirteen.jpg)
 
 This release blog describes the changes for three releases v0.13.0 (major release), v0.13.1 and v0.13.2 (minor releases). v0.13.0 brings the first iteration of our Apache Spark integration. This integration opens up the possibility of running large-scale workloads on single-node machines or clusters. Additionally, this release also allows you to run custom code along with your models using KServe or Seldon. Lastly, we introduce the Stack Recipe as a convenient way to spin up perfectly configured infrastructure with ease. v0.13.1 and v0.13.2 includes several bugfixes and quality of life improvements for ZenML users.

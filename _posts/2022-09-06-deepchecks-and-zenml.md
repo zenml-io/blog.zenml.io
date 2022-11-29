@@ -13,6 +13,8 @@ image:
   path: /assets/posts/deepchecks/zenml-deepchecks.gif
 ---
 
+**Last updated:** November 14, 2022.
+
 Whether you are a data scientist or a machine learning engineer, nothing quite
 beats the feeling of seeing your model perform well on a test set. It's the
 culmination of many coffee-infused hours of work, trial-error iterations and
