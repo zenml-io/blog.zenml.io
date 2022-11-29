@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_5_7/yoksel-zok-H9Un6az4rno-unsplash.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 ZenML 0.5.7 is out now and we bring you not one but two brand new integrations to cover common use cases. ZenML now supports [MLFlow for tracking](https://www.mlflow.org/docs/latest/tracking.html) pipelines as experiments and [Evidently](https://github.com/evidentlyai/evidently) for detecting drift in your ML pipelines in production!
 
 There are a bunch of other smaller changes, including preventing Kubeflow Pipelines from timing out during the local installation process and a bunch of improvements to the feedback that the ZenML CLI tool gives you. For a detailed look at what's changed, give [our full release

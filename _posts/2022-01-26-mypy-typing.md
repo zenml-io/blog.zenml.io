@@ -17,6 +17,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 3, 2022.
+
 This one gets a bit technical, but stick with me. Imagine you come across the
 following code in some codebase:
 

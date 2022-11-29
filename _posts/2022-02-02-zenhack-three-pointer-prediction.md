@@ -17,6 +17,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 14, 2022.
+
 # The Gameplan
 
 Before diving headfirst into this challenge lets start off with some background

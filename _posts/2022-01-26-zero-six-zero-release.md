@@ -17,6 +17,8 @@ image:
   path: /assets/posts/release_0_6_0/rusty-watson-4Kf97smL2eY-unsplash.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 ZenML 0.6.0 is out now. We've made some big changes under the hood, but our
 biggest public-facing addition is our new integration to support all your data
 logging needs: [`whylogs`](https://github.com/whylabs/whylogs). Our core
