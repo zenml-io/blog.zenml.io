@@ -66,7 +66,7 @@ We also included a fix that speeds up the data sync from the MLMD database to th
 
 As usual, we also made various minor improvements which you can view [here](https://github.com/zenml-io/zenml/releases/edit/0.22.0).
 
-## 🤗 New Contributors and Acknowledgement
+## 🤗 New Contributors and Acknowledgment
 
 We are grateful to have the following new contributors in this release:
 
