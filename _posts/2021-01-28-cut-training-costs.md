@@ -16,6 +16,8 @@ image:
   width: 1000
 ---
 
+**Last updated:** February 16, 2022.
+
 Every organization at any scale understands that leveraging the public cloud is
 a trade-off between convenience and cost. While cloud providers like Google,
 Amazon and Microsoft have immensely reduced the barrier of entry for machine

@@ -12,6 +12,8 @@ image:
 path: /assets/posts/k8s-orchestrator/zenml_kubernetes_orchestrator_teaser.png
 ---
 
+**Last updated:** November 21, 2022.
+
 Orchestrating ML workflows natively in Kubernetes has been one of the most
 requested features at ZenML.
 We have heard you and have just released a brand new Kubernetes-native

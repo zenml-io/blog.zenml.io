@@ -14,6 +14,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** October 17, 2022.
+
 Today, Machine Learning powers the top 1% of the most valuable organizations in
 the world (FB, ALPH, AMZ, N etc). However, 99% of enterprises struggle to
 productionalize ML, even with the possession of hyper-specific datasets and

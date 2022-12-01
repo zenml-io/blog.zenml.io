@@ -16,6 +16,8 @@ image:
   width: 628
 ---
 
+**Last updated:** February 16, 2022.
+
 As this is the end of the year, it's a great chance to remind yourself: how did we get here?
 
 Let me begin with a flashback to 2019. As a company, we're focused on optimizing remaining useful live of industrial assets through clever use of Machine Learning for predictive analysis, root-cause analysis and other forms of reasoning. We managed to secure a few big projects and very promising POCs, and across the board we were able to show good results. One of our projects even got government funding, providing a nice runway going forward.

@@ -12,6 +12,8 @@ image:
   path: /assets/posts/kush-varshney/kush.png
 ---
 
+**Last updated:** April 14, 2022.
+
 I enthusiastically read [Kush Varshney](http://krvarshney.github.io/)'s book when it was released for free to the world several months back. [*Trustworthy Machine Learning*](http://www.trustworthymachinelearning.com/) offers a concise and clear overview of many of the ways that machine learning can go wrong, and so I was especially keen to get Kush on to talk more about his work and research.
 
 I also got a stronger sense and appreciation for how good MLOps practices and workflows offered a clear path to ensuring that your machine learning models and behaviors could become more trustworthy. Kush has done a lot of interesting work, particularly with the [AI Fairness 360](https://ai-fairness-360.org/) and [AI Explainability 360](https://ai-explainability-360.org/) toolkits that I'm sure listeners of this podcast would find worth checking out.

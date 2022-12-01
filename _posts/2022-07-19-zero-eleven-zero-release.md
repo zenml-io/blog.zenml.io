@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_11_0/gaelle-marcel-vrkSVpOwchk-unsplash.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 Our 0.11.0 release contains our new annotation workflow and stack component. We've been blogging [about](https://blog.zenml.io/open-source-data-annotation-tools/) this for a few weeks, and even started maintaining [our own repository](https://github.com/zenml-io/awesome-open-data-annotation) of open-source annotation tools. With ZenML 0.11.0 you can bring data labeling into your MLOps pipelines and workflows as a first-class citizen. We've started our first iteration of this functionality by integrating with [Label Studio](https://labelstud.io/), a leader in the open-source annotation tool space.
 
 This release also includes a ton of updates to our documentation. (Seriously, go check them out! We added tens of thousands of words since the last release.) We continued the work on our data validation story from the previous release: [Deepchecks](https://deepchecks.com/) is the newest data validator we support, and we updated our Evidently and whylogs integrations to include all the latest and greatest from those tools.

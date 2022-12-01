@@ -12,6 +12,8 @@ image:
   path: /assets/posts/emeli-dral/1583238086348.jpeg
 ---
 
+**Last updated:** July 7, 2022.
+
 I'll be having some conversations with the people behind the tools that ZenML
 offers as integrations. We [spoke with Ben
 Wilson](https://podcast.zenml.io/ml-engineering-ben-wilson) a few weeks back,

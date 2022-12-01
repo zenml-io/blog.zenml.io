@@ -12,6 +12,8 @@ image:
   path: /assets/posts/kserve-deployment/kserve-pipeline.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 ![kserve]({{ site.url }}/assets/posts/kserve-deployment/kserve-pipeline.gif)
 
 

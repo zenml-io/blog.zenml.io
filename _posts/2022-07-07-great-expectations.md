@@ -12,6 +12,8 @@ image:
 path: /assets/posts/great-expectations/continuous-data-validation.png
 ---
 
+**Last updated:** October 17, 2022.
+
 ZenML is constantly extending its coverage to cover more and more areas of what
 is slowly but surely becoming the standard set of best practices and tooling
 that a mature MLOps framework has to provide, as detailed

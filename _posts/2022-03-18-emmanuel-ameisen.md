@@ -12,6 +12,8 @@ image:
   path: /assets/posts/emmanuel-ameisen/portrait.jpg
 ---
 
+**Last updated:** March 18, 2022.
+
 This week I spoke with [Emmanuel Ameisen](https://www.linkedin.com/in/ameisen/),
 a data scientist and ML engineer currently based at Stripe. Emmanuel also wrote
 an excellent O'Reilly book called

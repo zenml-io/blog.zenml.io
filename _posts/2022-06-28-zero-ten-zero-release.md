@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_10_0/release-zero-ten-balloon.jpg
 ---
 
+**Last updated:** October 17, 2022.
+
 The 0.10.0 release continues our streak of extending ZenML with support for new orchestrators, this time by adding the Kubernetes Native Orchestrator. Also included are: a Data Validator stack component and Great Expectations implementation and a community-contributed Vault secret manager among a host of other things! ✨
 
 ![Release GIF]({{ site.url }}/assets/posts/release_0_10_0/release_GIF.gif)

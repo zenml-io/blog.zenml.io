@@ -18,6 +18,8 @@ image:
   width: 100
 ---
 
+**Last updated:** November 3, 2022.
+
 Principal Component Analysis (PCA) is a dimensionality reduction technique,
 useful in many different machine learning scenarios. In essence, PCA reduces the
 dimension of input vectors in a way that retains the maximal variance in your

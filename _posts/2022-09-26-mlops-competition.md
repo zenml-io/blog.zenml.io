@@ -12,6 +12,8 @@ image:
   path: /assets/posts/competition-launch/Month_of_MLOps.png
 ---
 
+**Last updated:** October 17, 2022.
+
 We're launching a competition!
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/stuv785ItmM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

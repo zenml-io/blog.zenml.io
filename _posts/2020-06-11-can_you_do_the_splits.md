@@ -15,6 +15,8 @@ image:
   width: 100
 ---
 
+**Last updated:** November 21, 2022.
+
 One attempt to ensure that ML models generalize in unknown settings is splitting
 data. This can be done in many ways, from 3-way (train, test, eval) splits to
 k-splits with cross-validation. The underlying reasoning is that by training a

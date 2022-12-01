@@ -15,6 +15,8 @@ image:
   width: 628
 ---
 
+**Last updated:** February 8, 2022.
+
 The last two decades have yielded us some great understandings about Software Development. A big part of that is due to the emergence of DevOps and it’s wide adoption throughout the industry.
 
 Leading software companies follow identical patterns: Fast iterations in software development followed by Continuous Integration, Continuous Delivery, Continuous Deployment. Every artifact is tested on its ability to provide value, always has a state of readiness and is deployed through automation.

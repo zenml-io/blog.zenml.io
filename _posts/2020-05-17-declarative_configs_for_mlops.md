@@ -15,6 +15,8 @@ image:
   width: 100
 ---
 
+**Last updated:** February 8, 2022.
+
 No way around it: I am what you call an "Ops guy". In my career I admin'ed more servers than I've written code. Over twelve years in the industry have left their permanent mark on me. For the last two of those I'm exposed to a new beast - Machine Learning. My hustle is bringing Ops-Knowledge to ML. These are my thoughts on that.
 
 ## Deploying software into production

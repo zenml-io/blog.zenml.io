@@ -12,6 +12,8 @@ image:
   path: /assets/posts/step-operators-training/clouds.jpg
 ---
 
+**Last updated:** November 21, 2022.
+
 _If you are of a more visual disposition, please check out this blog's [accompanying video tutorial](https://www.youtube.com/watch?v=rMf10sjJjZM)._
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rMf10sjJjZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

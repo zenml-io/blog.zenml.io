@@ -15,6 +15,8 @@ image:
   width: 100
 ---
 
+**Last updated:** November 3, 2022.
+
 Over the last few years at [zenml](https:/zenml.io), we have regularly dealt with datasets that contain millions of data points. Today, I want to write about how we use our machine learning platform, [ZenML](https://zenml.io), to build production-ready distributed training pipelines. These pipelines are capable of dealing with millions of datapoints in a matter of hours. If you also want to build large-scale deep learning pipelines, sign up for [ZenML for free here](https://zenml.io/signup/) and follow along.
 
 ## **Datasource**

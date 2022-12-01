@@ -12,6 +12,8 @@ image:
   path: /assets/posts/ci-ct-cd-with-zenml/ci-cd-zenml.png
 ---
 
+**Last updated:** November 3, 2022.
+
 As MLOps start getting more attention and organizations start growing their own understanding of the MLOps maturity model, the terms Continuous Integration, Continuous Training and Continuous Deployment (CI/CT/CD) become more relevant since MLOps is all about applying DevOps principles to ML systems. (Read more about MLOps maturity models [on the blog](https://blog.zenml.io/mlops-maturity-models/).)
 
 In this blogpost I will show what the terms CI, CT and CD mean in the context of machine learning pipelines, explore how MLOps differs from DevOps, and see how ZenML makes machine learning assets first-class citizens of CI/CD systems. I'll use ZenML's model deployers to illustrate this.

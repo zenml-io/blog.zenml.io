@@ -14,6 +14,8 @@ image:
   width: 100
 ---
 
+**Last updated:** November 21, 2022.
+
 The churn rate measures the number of customers who stop paying for a company's services or products over a specific period. An elevated churn rate indicates customer dissatisfaction with a company product or service, or better offers from the competition or a lack of customer loyalty.
 
 Customer churn rate is one of the critical metrics for measuring a company's customer retention; improving customer retention is a continuous process, and understanding churn rate is the first step to better customer retention. Other than that, customer churn helps identify how good or bad the product/service is, which helps determine possible areas for improvement.

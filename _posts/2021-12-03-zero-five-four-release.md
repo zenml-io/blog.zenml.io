@@ -14,6 +14,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 3, 2022.
+
 ZenML 0.5.4 adds visualizations for your native ZenML pipelines as well as
 several bugfixes and updates to our documentation (`init` docstrings galore!).
 We removed a dependency we no longer needed, which will make your `pip`

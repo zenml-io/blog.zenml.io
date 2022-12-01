@@ -16,6 +16,8 @@ image:
   width: 100
 ---
 
+**Last updated:** November 3, 2022.
+
 In the last decade, machine learning applications have proven their capabilities and potential in various
 applications. Especially in the past few years, they have gained rapid prominence in the gaming industry and now
 there are countless projects creating an endless array of models interacting with different games.

@@ -16,6 +16,8 @@ image:
   width: 100
 ---
 
+**Last updated:** November 3, 2022.
+
 Just a few days ago, I was able to share my thoughts on the state of Machine Learning in production, and why it's (still) broken, on the MLOps World 2020. Read on for a writeup of my presentation, or checkout the recording of the talk on Youtube.
 
 <div class="embed-responsive embed-responsive-16by9 mb-5">

@@ -18,6 +18,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** February 16, 2022.
+
 Our guest this week was
 [Mohan Mahadevan](https://uk.linkedin.com/in/mohan-mahadevan-4999464), a senior
 VP at [Onfido](https://onfido.com/), a machine-learning powered identity

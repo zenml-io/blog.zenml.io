@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_6_1/ankush-minda-4Xy08NbMBLM-unsplash.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 ZenML 0.6.1 is out and it's all about Cloud storage ☁️! We have improved your ability to work with AWS services and added a brand-new Azure integration! Run your pipelines on AWS and Azure now and let us know how it went [on our Slack](https://zenml.io/slack-invite/).
 
 Smaller changes that you'll notice include much-awaited updates and fixes, including the first iterations of scheduling pipelines and tracking more reproducibility-relevant data in the metadata store. For a detailed look at what's changed, give [our full release notes](https://github.com/zenml-io/zenml/releases/tag/0.6.1) a glance.

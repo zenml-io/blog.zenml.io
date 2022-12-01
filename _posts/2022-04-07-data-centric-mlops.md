@@ -12,6 +12,8 @@ image:
   path: /assets/posts/data-centric-mlops/data-centric.png
 ---
 
+**Last updated:** April 7, 2022.
+
 You start your day with `jupyter lab`, and look at the latest state of affairs from yesterday. The notebook springs up on port 8888 and you see your matplotlib graph from yesterday, annoyingly stuck at 80% accuracy. After a few hours of hard work, you finally find a hyperparameter that works. You set it, go through the cells, and suddenly you're at 95% accuracy. You re-check it over and over, and after making sure you did everything right, you export your model into a file and hand over the code and model to engineering, a smile on your face, and with the assurance that **you** did your job well. Now you can sit back and see the bottom line growing. Right?
 
 Wrong. Your engineer glares back at you and asks for your `requirements.txt` file. He cannot reproduce your results — there is an error on their machine. They ask what data you trained on, which operating system you developed on, and just generally about following "MLOps" principles. You go back and try to answer these questions but now you're in a painful debugging loop.

@@ -14,6 +14,8 @@ image:
   width: 100
 ---
 
+**Last updated:** November 21, 2022.
+
 Customer satisfaction is a measure of how satisfied a customer is with a product or service of a company. It is a subjective measure of the quality of a product or service. It is measured by the customer and is usually used to evaluate the quality of a product or service. In this article, I show how I used a ZenML pipeline to create a model that uses historical customer data to predict the review score for the next order or purchase. I also deployed a [Streamlit application](https://share.streamlit.io/ayush714/customer-satisfaction/main) to showcase the final end product.
 
 I will be using the [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). This dataset has information on 100,000 orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allow viewing charges from various dimensions: from order status, price, payment, freight performance to customer location, product attributes and finally, reviews written by customers. The objective here is to predict the customer satisfaction score for a given order based on features like order status, price, payment, etc.

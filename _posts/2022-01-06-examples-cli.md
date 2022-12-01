@@ -17,6 +17,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 8, 2022.
+
 As ZenML continues to grow, we'll be
 [adding more features and integrations](https://github.com/zenml-io/zenml/releases).
 Alongside whatever new things get added to the codebase, we work hard to make

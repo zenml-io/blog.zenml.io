@@ -18,6 +18,8 @@ image:
   path: /assets/posts/continuous-deployment/continuous.gif
 ---
 
+**Last updated:** November 14, 2022.
+
 There is something particularly memorable about that moment of achievement
 that comes after automating the training of a machine learning model, when
 everything in the universe just seems to come into alignment. Your training
