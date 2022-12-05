@@ -7,9 +7,9 @@ category: zenml
 tags: zenml release-notes
 publish_date: December 05th, 2022
 date: 2022-12-05T00:02:00Z
-thumbnail: /assets/posts/release_0_23_0/Release_0.22.0.gif
+thumbnail: /assets/posts/release_0_23_0/Release_0.23.0.gif
 image:
-  path: /assets/posts/release_0_23_0/Release_0.22.0.jpg
+  path: /assets/posts/release_0_23_0/Release_0.23.0.jpg
 ---
 
 **Last updated:** December 05, 2022.
@@ -18,14 +18,53 @@ image:
 
 Let's dive right into the changes.
 
-## 🍱 Neptune.ai Integration
+## 🪐 neptune.ai Integration
+The biggest new we have for you this release is the new [neptune.ai](https://neptune.ai/) integration!
 
+This integration includes an experiment tracker component that allows you to track your machine learning experiments
+using neptune.ai.
 
 ## 🚀 Performance Optimization
 
+This release brings about a huge boost in performance! What used to take minutes now takes seconds to complete.
+We did this by significantly reducing the amount of server calls.
+The huge performance boost is obvious in the now blazing fast CLI and [ZenML Dashboard](https://github.com/zenml-io/zenml-dashboard).
+
+
 ## 🙌 So long, PyArrow
 
+We've removed PyArrow as a dependency of the `zenml` Python package.
+
+As a consequence of that, our `NumPy` and `Pandas` materializer no
+longer read and write their artifacts using PyArrow but instead use
+native formats instead. 
+
+If you still want to use `PyArrow` to serialize
+your `NumPy` arrays and `Pandas` dataframes, you'll need to install it manually with 
+
+```bash
+pip install pyarrow
+```
+
+This results in a slimmer and lighter version of `zenml`.
+In our upcoming releases, we aim to remove more unnecessary dependencies to slim down the `zenml` package even further.
+
+
 ## 💔 Breaking Changes
+
+The following changes introduces with this release mey require some manual
+intervention to update your current installations:
+
+- If your code calls some methods of our `Client` class, it might need to be
+updated to the new model classes introduced by the performance optimization changes
+explained above
+- The CLI command to remove an attribute from a stack component now takes no more dashes
+in front of the attribute names:
+`zenml stack-component remove-attribute <COMPONENT_NAME> <ATTRIBUTE_NAME>`
+- If you're using a custom stack component and have overridden the `cleanup_step_run` method,
+you'll need to update the method signature to include a `step_failed` parameter.
+
+For minor changes view the release note [here](https://github.com/zenml-io/zenml/releases/tag/0.23.0).
 
 ## 🤗 New Contributors and Acknowledgment
 
