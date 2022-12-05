@@ -16,7 +16,7 @@ image:
 
 ![Release 0.23.0](../assets/posts/neptune_released/Release_0.23.0.jpg)
 
-ZenML 0.23.0 was released this week, and comes bundled with a brand new `neptune` 
+ZenML 0.23.0 was released this week and comes bundled with a brand new `neptune` 
 experiment tracker flavor. [Neptune](https://neptune.ai/product/experiment-tracking) is a
 popular platform that you would normally use in the iterative ML experimentation
 phase to track and visualize experiment results. Neptune can also
