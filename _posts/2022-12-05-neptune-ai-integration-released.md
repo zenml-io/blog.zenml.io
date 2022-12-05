@@ -28,7 +28,7 @@ A big shout-out to [@AleksanderWWW](https://github.com/AleksanderWWW), from the 
 who spearheaded the [Neptune integration](https://zenml.io/integrations/neptune)
 with [#1082](https://github.com/zenml-io/zenml/pull/1082).
 
-## :couple_with_heart_man_man: How Neptune fits with ZenML
+## 🧲 How Neptune fits with ZenML
 
 One of the coolest things about Neptune is how focused it is on what it does well:
 Being a kick-ass experiment tracker and model registry. Given ZenML does not have a
@@ -38,36 +38,35 @@ the experiment tracking part this time around, with the ZenML
 abstraction.
 
 Experiment trackers in ZenML let you track your ML experiments by logging extended information about your models,
-datasets, metrics and other parameters and allowing you to browse them, visualize them and compare them between runs.
+datasets, metrics, and other parameters. Plus, it also lets you browse , visualize and compare between runs.
 In the ZenML world, every pipeline run is considered an experiment, and ZenML facilitates the storage of experiment
 results through the Experiment Tracker stack component. This establishes a clear link between pipeline runs and experiments.
 
-## 🤾 Challenge and Solution
+## 🤾 The Challenge
 
-The toughest challenge with the entire story was to try to maintain the state of the Neptune
-run across the lifetime of a pipeline (i.e across steps). Aleksander and the Neptune team solved this with the
+The toughest challenge with the integration was to maintain the state of the Neptune
+run across the lifetime of a pipeline (i.e. across steps). Aleksander and the Neptune team solved this with the
 [RunProvider](https://github.com/zenml-io/zenml/blob/main/src/zenml/integrations/neptune/experiment_trackers/run_state.py#L33)
 class that is a singleton object storing and persisting the Neptune run state across
 the pipeline.
 
-## 🪐 Using the Neptune Experiment Tracker
+## 🪐 Using the Neptune experiment tracker
 
-With the new Neptune integration, one can easily create a Neptune experiment tracker component and use it in any step in
+With this integration, you can easily create a Neptune experiment tracker component and use it in any step in
 a pipeline.
 
 A concrete example with a pipeline can be viewed in the [example](https://github.com/zenml-io/zenml/tree/main/examples/neptune_tracking)
-on GitHub. Here is a brief summary:
+on GitHub. The following is a summary to you get started.
 
-### 🥞 Create a stack with the Neptune experiment tracker component
+### 🥞 Create a stack with the Neptune experiment tracker
 
-Ceate a new `StackComponent`,  and  subsequently a new `Stack` with the type `neptune`. The Neptune tracker stack component has the following options:
+First, let's create a stack with a Neptune experiment tracker as a stack component. 
 
+You'll need to specify two optional arguments:
 * `api_token`: [API key token](https://docs.neptune.ai/setup/setting_api_token) of your Neptune account. If left blank, Neptune will
 attempt to retrieve it from your environment variables.
 * `project`: The name of the project where you're sending the new run, in the form "workspace-name/project-name".
 If the project is not specified, Neptune will attempt to retrieve it from your environment variables.
-
-Note that project_name and entity are optional in the below command:
 
 ```shell
 zenml experiment-tracker register neptune_experiment_tracker --flavor=neptune \ 
@@ -82,7 +81,7 @@ zenml stack register neptune_stack \
 
 ### 🏃 Run a pipeline with the experiment tracker enabled
 
-Create a step that uses the experiment tracker component:
+Next, define a step that uses the experiment tracker component:
 
 ```python
 from neptune.new.integrations.tensorflow_keras import NeptuneCallback
@@ -138,18 +137,17 @@ def tf_trainer(
 
 You can see that using `get_neptune_run` in the Neptune integration ensures that the user does not
 need to take care of creating and managing the lifecycle of the Neptune run. Instead, ZenML takes care
-of the lifecycle of the experiment and the user need only use the normal Neptune functions as shown with
+of the lifecycle of the experiment and the user needs only use the normal Neptune functions as shown with
 the `NeptuneCallback`.
 
-### 📈 Visualizing experiment results in Neptune
+### 📈 Visualize experiment results in Neptune
 
-Once the experiment is completed, we can view the results in Neptune. In the Neptune UI, we can see the experiment's metrics, such as training and validation accuracy, as well as any other custom metrics that we have defined in the ML pipeline.
+Once the experiment is completed, we can view the results in Neptune. In the Neptune UI, we can see the experiment metrics, such as training and validation accuracy, and other custom metrics that we have defined in the ML pipeline.
 
 The results should be available at the URL: https://app.neptune.ai/{ACCOUNT_USERNAME}/{PROJECT_NAME}
 
 Each pipeline run will be logged as a separate experiment run in Neptune. You can see the results of the pipeline run in the Neptune UI.
-
-For example, here's a screenshot of the Neptune UI showing the experiment run and other details.
+For example, here's a screenshot of the Neptune UI showing the experiment run and other relevant details.
 
 ![Chart Results](../assets/posts/neptune_released/neptune_runs.png)
 
