@@ -60,7 +60,7 @@ on GitHub. Here is a brief summary:
 
 ### 🥞 Create a stack with the Neptune experiment tracker component
 
-Ceate a new `StackComponent`,  and  subsequently a new `Stack` with the type `neptune`. The Neptune tracker stack component has the following options:
+First, let's create a stack with a Neptune experiment tracker as a stack component. You'll need to specify two optional arguments:
 
 * `api_token`: [API key token](https://docs.neptune.ai/setup/setting_api_token) of your Neptune account. If left blank, Neptune will
 attempt to retrieve it from your environment variables.
