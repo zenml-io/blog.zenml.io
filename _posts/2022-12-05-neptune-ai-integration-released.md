@@ -58,7 +58,7 @@ a pipeline.
 A concrete example with a pipeline can be viewed in the [example](https://github.com/zenml-io/zenml/tree/main/examples/neptune_tracking)
 on GitHub. Here is a brief summary:
 
-### 🥞 Create the stack with the Neptune experiment tracker component
+### 🥞 Create a stack with the Neptune experiment tracker component
 
 Ceate a new `StackComponent`,  and  subsequently a new `Stack` with the type `neptune`. The Neptune tracker stack component has the following options:
 
