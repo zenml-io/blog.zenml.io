@@ -44,7 +44,7 @@ results through Experiment Tracker stack components. This establishes a clear li
 
 ## 🤾 Challenge and Solution
 
-The tougest challengewith the entire story was to try to maintain the state of the Neptune
+The toughest challenge with the entire story was to try to maintain the state of the Neptune
 run across the lifetime of a pipeline (i.e across steps). Aleksander and the Neptune team solved this with the
 [RunProvider](https://github.com/zenml-io/zenml/blob/main/src/zenml/integrations/neptune/experiment_trackers/run_state.py#L33)
 class that is a singleton object storing and persisting the Neptune run state across
