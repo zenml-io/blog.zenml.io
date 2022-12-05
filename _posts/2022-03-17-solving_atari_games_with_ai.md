@@ -69,7 +69,7 @@ The `training_pipeline.py` script is the main file that runs the training pipeli
 - `get_information_meta` which restores the model from a given checkpoint
 - `train` which trains the dqn agent.
 
-![Pipeline Steps](..\assets\posts\updatedreinforcementlearning.gif)
+![Pipeline Steps](../assets/posts/updatedreinforcementlearning.gif)
 
 Every step is connected with each other in a way such that output from one step is given as input to another step. The following is the code for the training pipeline:
 
