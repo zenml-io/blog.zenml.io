@@ -12,6 +12,8 @@ image:
   path: /assets/posts/step-operators-training/clouds.jpg
 ---
 
+**Last updated:** November 21, 2022.
+
 _If you are of a more visual disposition, please check out this blog's [accompanying video tutorial](https://www.youtube.com/watch?v=rMf10sjJjZM)._
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rMf10sjJjZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -47,10 +49,13 @@ zenml step-operator register OPERATOR_NAME \
     ...
 ```
 
-And then a step can be decorated with the `custom_stop_operator` parameter to run it with that operator backend:
+And then a step can be decorated with the `custom_step_operator` parameter to run it with that operator backend:
 
 ```python
-@step(custom_step_operator=OPERATOR_NAME)
+from zenml.client import Client
+
+step_operator = Client().active_stack.step_operator
+@step(step_operator=step_operator.name)
 def trainer(...) -> ...:
     """Train a model"""
     # This step will run in environment specified by operator
@@ -118,7 +123,6 @@ The command to register the stack component would look like the following. More 
 ```bash
 # register the sagemaker stack
 zenml stack register sagemaker_stack \
-    -m local_metadata_store \
     -o local_orchestrator \
     -c ecr_registry \
     -a s3-store \
@@ -135,7 +139,10 @@ And now you have the stack up and running! Note that similar steps can be undert
 Once the above is out of the way, any step of any pipeline we create can be decorated with the following decorator:
 
 ```python
-@step(custom_step_operator="sagemaker")
+from zenml.client import Client
+
+step_operator = Client().active_stack.step_operator
+@step(step_operator=step_operator.name)
 def trainer(...) -> ...:
     """Train a model"""
     # This step will run as a custom job in Sagemaker

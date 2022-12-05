@@ -15,6 +15,8 @@ image:
   width: 100
 ---
 
+**Last updated:** November 3, 2022.
+
 Okay, lets make it clear at the start: This post is NOT intended for people who
 are doing one-off, silo-ed projects like participating in Kaggle competitions,
 or doing hobby projects on jupyter notebooks to learn the trade. The value of

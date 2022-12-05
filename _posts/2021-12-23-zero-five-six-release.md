@@ -14,6 +14,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 3, 2022.
+
 This release fixes some known bugs from previous releases and especially [0.5.5](2021-12-13-zero-five-five-release.md). Therefore, upgrading to 0.5.6 is a **breaking change**. You must do the following in order to proceed with this version:
 
 ```

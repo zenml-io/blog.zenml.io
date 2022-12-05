@@ -12,6 +12,8 @@ image:
   path: /assets/posts/zenml_revamped/Release_0.20.0.jpg
 ---
 
+**Last updated:** October 17, 2022.
+
 ![Release 0.20.0]({{ site.url }}/assets/posts/zenml_revamped/Release_0.20.0.jpg)
 
 [ZenML 0.20.0](https://github.com/zenml-io/zenml/releases/tag/0.20.0) is out, and marks the biggest release in the history of ZenML. The release follows ten months of the community's feedback, a couple months of development effort, and literally [tens of thousands of lines of code changes](https://github.com/zenml-io/zenml/pull/879).

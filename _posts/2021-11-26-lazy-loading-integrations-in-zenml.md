@@ -13,6 +13,8 @@ image:
   path: /assets/posts/lazy-loading-integrations/sam_zen_mode.jpg
 ---
 
+**Last updated:** October 17, 2022.
+
 When working on a project in Python, it is very likely that you will run into an
 issue where even the simplest of imports can lead to a chain of imports, which
 in turn can cost you a few seconds of run time before you even start to use what

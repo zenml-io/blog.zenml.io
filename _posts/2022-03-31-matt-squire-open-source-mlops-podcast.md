@@ -12,6 +12,8 @@ image:
   path: /assets/posts/matt-squire/matt-squire-profile.jpeg
 ---
 
+**Last updated:** October 17, 2022.
+
 This week I spoke with [Matt Squire](https://www.linkedin.com/in/matt-squire-a19896125/), the CTO and co-founder of [Fuzzy Labs](https://www.fuzzylabs.ai/), where they help partner organizations think through how best to productionize their machine learning workflows.
 
 Matt and FuzzyLabs are also behind the '[Awesome Open Source MLOps](https://github.com/fuzzylabs/awesome-open-mlops)' GitHub repo where you can find all the options for an open-source MLOps stack of your dreams.

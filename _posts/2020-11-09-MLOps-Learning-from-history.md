@@ -16,6 +16,8 @@ image:
   width: 628
 ---
 
+**Last updated:** December 2, 2021.
+
 TL;DR: Running successful ML teams and projects requires cross-functional collaboration within the executing team.
 
 That sentence alone does not help anyone. It feels unsubstantiated, and someone playing bullshit bingo might luck out just on that one sentence - and yet, it’s true. Why? Because it’s taking the main driver behind the DevOps revolution in software development and applies it to Machine Learning.

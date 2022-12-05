@@ -17,6 +17,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 8, 2022.
+
 As ZenML continues to grow, we'll be
 [adding more features and integrations](https://github.com/zenml-io/zenml/releases).
 Alongside whatever new things get added to the codebase, we work hard to make
@@ -55,7 +57,9 @@ ZenML pipelines:
 
 You don't even need to clone our repository to get the goodness of examples! Use
 the series of commands that begin with `zenml example` to download and even run
-examples.
+examples. (UPDATE: As of November 2022 we have lots more examples covering the
+integrations that have been written in the intervening period since this blog
+was written.)
 
 Get the full list of examples available:
 

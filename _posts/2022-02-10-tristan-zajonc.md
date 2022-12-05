@@ -15,6 +15,8 @@ image:
   path: /assets/posts/tristan-zajonc/tristan.jpeg
 ---
 
+**Last updated:** February 16, 2022.
+
 This week I spoke with
 [Tristan Zajonc](https://www.linkedin.com/in/tristanzajonc/), the CEO and
 cofounder of [Continual](https://continual.ai), a company that provides an AI

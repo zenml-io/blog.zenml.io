@@ -15,6 +15,8 @@ image:
   width: 100
 ---
 
+**Last updated:** November 21, 2022.
+
 One attempt to ensure that ML models generalize in unknown settings is splitting
 data. This can be done in many ways, from 3-way (train, test, eval) splits to
 k-splits with cross-validation. The underlying reasoning is that by training a
@@ -178,7 +180,7 @@ downstream.
 
 One easy way to do the `Horizontal`, `Vertical` and the `Hybrid` split by
 writing just a
-[few lines of YAML is via ZenML](https://docs.zenml.io/developer-guide/steps-and-pipelines/runtime-configuration#configuring-with-yaml-config-files).
+[few lines of YAML is via ZenML](https://docs.zenml.io/advanced-guide/pipelines/settings#method-3-configuring-with-yaml).
 ZenML is a [MLOps framework](https://zenml.io) developed while we deployed
 models to production, for datasets with similar characteristics as the example
 above. If you are interested in the content above and would like to try ZenML,

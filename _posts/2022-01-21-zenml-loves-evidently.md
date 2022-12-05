@@ -18,6 +18,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 3, 2022.
+
 ZenML recently added an integration with [Evidently](https://evidentlyai.com/),
 an open-source tool that allows you to monitor your data for drift (among other
 things). This post showcases the integration along with some of the other parts

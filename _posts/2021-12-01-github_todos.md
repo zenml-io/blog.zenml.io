@@ -15,6 +15,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** October 17, 2022.
+
 If you're a software developer, you're probably familiar with the following
 scenario: You're working on a new feature or trying to fix a bug, and while
 reading through some code existing code you notice that there's a nicer way to

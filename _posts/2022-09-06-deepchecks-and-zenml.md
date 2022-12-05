@@ -13,6 +13,8 @@ image:
   path: /assets/posts/deepchecks/zenml-deepchecks.gif
 ---
 
+**Last updated:** November 14, 2022.
+
 Whether you are a data scientist or a machine learning engineer, nothing quite
 beats the feeling of seeing your model perform well on a test set. It's the
 culmination of many coffee-infused hours of work, trial-error iterations and
@@ -229,8 +231,10 @@ virtual environment) as well as the Deepchecks and scikit-learn
 integrations used in the example:
 
 ```bash
-pip install zenml
+pip install zenml["server"]
 zenml integration install deepchecks sklearn -y
+zenml init
+zenml up
 ```
 
 ZenML automatically sets up a `default` stack that leverages the compute and
@@ -338,7 +342,9 @@ model_drift_detector = deepchecks_model_drift_check_step(
 
 # define the pipeline by connecting the steps together into a DAG
 
-@pipeline(enable_cache=False, required_integrations=[DEEPCHECKS, SKLEARN])
+docker_settings = DockerSettings(required_integrations=[DEEPCHECKS, SKLEARN])
+
+@pipeline(enable_cache=False, settings={"docker": docker_settings})
 def data_validation_pipeline(
     data_loader,
     trainer,

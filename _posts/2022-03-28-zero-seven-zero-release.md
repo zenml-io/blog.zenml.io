@@ -16,6 +16,8 @@ image:
   path: /assets/posts/release_0_7_0/balloons.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 With ZenML 0.7.0, a lot has been revamped under the hood about how things are
 stored. Importantly what this means is that ZenML now has system-wide profiles
 that let you register stacks to share across several of your projects! If you

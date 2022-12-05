@@ -19,6 +19,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 8, 2022.
+
 Most professional or so-called 'citizen' data scientists will be familiar with
 the scenario that sees you spending a day trying out a dozen different model
 training configurations in which you experiment with various hyper parameters or
@@ -127,67 +129,63 @@ The best place to see MLflow Tracking and ZenML being used together in a simple
 use case is
 [our example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking)
 that showcases the integration. It builds on the quickstart example, but shows
-how you can add in MLflow to handle the tracking. In order to enable MLflow to
-track artifacts inside a particular step, all you need is to decorate the step
-with `@enable_mlflow` and then to specify what you want logged within the step.
-Here you can see how this is employed in a model training step that uses the
-`autolog` feature I mentioned above:
+how you can add in MLflow to handle the tracking. Adding MLflow tracking to a
+step is as simple as enabling the experiment tracker for a step. Now you're free to log
+anything from within the step to mlflow. Here you can see how this is employed
+in a model training step that uses the `autolog` feature I mentioned above:
 
 ```python
-# Define the step and enable mlflow - order of decorators is important here
-@enable_mlflow
-@step
+@step(experiment_tracker="<NAME_OF_EXPERIMENT_TRACKER>")
 def tf_trainer(
-    config: TrainerConfig,
+   x_train: np.ndarray,
+   y_train: np.ndarray,
+) -> tf.keras.Model:
+   """Train a neural net from scratch to recognize MNIST digits return our
+   model or the learner"""
+   
+   # compile model
+
+   mlflow.tensorflow.autolog()
+   
+   # train model
+   
+   return model
+```
+
+You can also log parameters, metrics and artifacts into nested runs, which will be children of the pipeline run. To do so, enable it in the settings like this:
+
+```python
+from zenml.integrations.mlflow.flavors.mlflow_experiment_tracker_flavor import MLFlowExperimentTrackerSettings
+
+@step(
+    experiment_tracker="<NAME_OF_EXPERIMENT_TRACKER>",
+    settings={
+        "experiment_tracker.mlflow": MLFlowExperimentTrackerSettings(
+            nested=True
+        )
+    }
+)
+def tf_trainer(
     x_train: np.ndarray,
     y_train: np.ndarray,
 ) -> tf.keras.Model:
     """Train a neural net from scratch to recognize MNIST digits return our
     model or the learner"""
-    model = tf.keras.Sequential(
-        [
-            tf.keras.layers.Flatten(input_shape=(28, 28)),
-            tf.keras.layers.Dense(10),
-        ]
-    )
-
-    model.compile(
-        optimizer=tf.keras.optimizers.Adam(config.lr),
-        loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-        metrics=["accuracy"],
-    )
+    
+    # compile model
 
     mlflow.tensorflow.autolog()
-    model.fit(
-        x_train,
-        y_train,
-        epochs=config.epochs,
-    )
-
-    # write model
+    
+    # train model
+    
     return model
 ```
-
-If, for any reason, you need to access the global environment parameters used by
-ZenML to automatically configure MLflow (which define where and how experiments
-and runs are displayed and stored in the MLflow Tracking UI/system), we've got
-you covered. These global parameters can be easily accessed through the
-`Environment` singleton object:
-
-```python
-zenml.integrations.mlflow.mlflow_environment import MLFLOW_ENVIRONMENT_NAME
-mlflow_env = Environment()[MLFLOW_ENVIRONMENT_NAME]
-```
-
-Check out [the API docs](https://apidocs.zenml.io/0.6.1/api_docs/environment/)
-to learn more about the `Environment` object and watch this space for a blog
-post where we explain more about why we chose to add this recently.
 
 # Over to you now!
 
 If you're inspired by this illustration of how you can make your machine
 learning workflow that little bit more reproducible and robust, check out
 [the full example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking)
-that illustrates the integration. If you use it in your own code base, please do
+that illustrates the integration. If you use it in your own codebase, please do
 let us know — [say hi on Slack](https://zenml.io/slack-invite/)! — and as always
 if you have any questions, we're here for you.

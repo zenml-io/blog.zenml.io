@@ -15,6 +15,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** October 17, 2022.
+
 This first episode of [Pipeline Conversations](https://podcast.zenml.io/) is the kick-off for a series of
 talks in the broader Machine Learning Start-Up Space. Our goal is not to promote
 any product or company but to discuss and also educate the community on

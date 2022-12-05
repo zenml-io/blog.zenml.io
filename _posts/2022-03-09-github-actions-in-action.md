@@ -14,6 +14,8 @@ image:
   path: /assets/posts/github-actions/gh_actions.png
 ---
 
+**Last updated:** October 17, 2022.
+
 # 📍 What's the point of Github Actions?
 
 Software projects are complex beasts with a multitude of moving pieces that can affect each other in surprising ways. 

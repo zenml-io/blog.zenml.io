@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_7_1/ian-dooley-DuBNA1QMpPA-unsplash.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 ![Seldon Core Logo]({{ site.url }}/assets/posts/release_0_7_1/release-0-7-1.gif)
 
 The release introduces the [Seldon Core](https://github.com/SeldonIO/seldon-core) ZenML integration, featuring the *Seldon Core Model Deployer* and a *Seldon Core standard model deployer step*. The [*Model Deployer*](https://docs.zenml.io/getting-started/core-concepts#model-deployer) is a new type of stack component that enables you to develop continuous model deployment pipelines that train models and continuously deploy them to an external model serving tool, service, or platform. You can read more on deploying models to production with Seldon Core in our [Continuous Training and Deployment documentation section](https://zenml.io/features/ct-cd) and our [Seldon Core deployment example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).

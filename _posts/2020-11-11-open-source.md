@@ -15,6 +15,8 @@ image:
   width: 628
 ---
 
+**Last updated:** December 2, 2021.
+
 For the last months, we’ve been hard at work bringing ZenML to market as a commercial product. Our vision was and remains the commoditization of reproducible Machine Learning. Every pipeline for every model should forever be reproducible and have a deployable model at its end. All the invaluable lessons we’ve learned in this time, from customers, users, friends, and strangers, are now culminating in the next step towards our goal: We will make ZenML available under an Open Source License.
 
 The upcoming days will be dedicated to providing an extensible, open, and smartly abstracted version of the codebase we’ve been using so far to power our commercial product.

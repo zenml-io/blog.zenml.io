@@ -16,6 +16,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** February 16, 2022.
+
 What does the machine learning production stack of the future look like? Should
 we expect a thousand and one unique configurations, or will there be one
 deployment tool to rule them all? Our latest podcast guest,

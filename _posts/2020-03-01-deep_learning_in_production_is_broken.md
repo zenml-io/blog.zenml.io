@@ -13,6 +13,8 @@ image:
   path: /assets/posts/dl_is_broken_01.png
 ---
 
+**Last updated:** October 17, 2022.
+
 Around 87% of machine learning projects do not survive to make it to production.
 There is a disconnect between machine learning being done in Jupyter notebooks
 on local machines and actually being served to end-users to provide some actual

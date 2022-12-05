@@ -13,6 +13,8 @@ image:
   path: /assets/posts/johnny-greco/johnny-greco.png
 ---
 
+**Last updated:** March 3, 2022.
+
 This week I spoke with [Johnny Greco](https://johnnygreco.space), a data scientist working at Radiology Partners. Johnny transitioned into his current work from a career as an academic — working in astronomy — where also worked in the open-source space to build a really interesting synthetic image data project.
 
 We get into that project in our conversation but we also discuss his experience of crossing over into industry, the skills that have served him in his new job, and his experience of working in a world where the stakes around models in production are much higher.

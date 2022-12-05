@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_6_2/hybrid-uGP_6CAD-14-unsplash.jpg
 ---
 
+**Last updated:** November 3, 2022.
+
 ZenML 0.6.2 brings you the ability to serve models using MLflow deployments as well as an updated CLI interface! For a real continuous deployment cycle, we know that ZenML pipelines should be able to handle everything — from pre-processing to training to serving to monitoring and then potentially re-training and re-serving. The interfaces we created in this release are the foundation on which all of this will build.
 
 We also improved how you interact with ZenML through the CLI. Everything looks so much smarter and readable now with the popular `rich` library integrated into our dependencies.

@@ -12,6 +12,8 @@ image:
   path: /assets/posts/labeling/cover.jpg
 ---
 
+**Last updated:** October 17, 2022.
+
 "Spend more time with your data." As a data scientist or ML practitioner, you'll probably have heard this advice more times than you can count. Familiarity with the data breeds understanding of the problem domain which in turn leads to better models and solutions. But how do you do this in practice? The very fact that we need to be reminded of this suggests at least some lack of clarity.
 
 One way to become intimately familiar with your data is to get involved in labeling the data. This approach has recently gained popularity following the emergence of the [data-centric AI movement](https://datacentricai.org/). In this blog, I will explain the benefits of being more closely involved in annotation and labeling of your data. I will also talk through the moments in your overall workflows where you're likely to think about doing annotation and how it benefits you in each case.

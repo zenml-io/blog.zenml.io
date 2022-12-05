@@ -14,6 +14,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 3, 2022.
+
 This article discusses the benefits of giving data scientists ownership of their
 workflows in a production environment. We also discuss ZenML, an open-source
 framework that is built specifically to facilitate this ownership.

@@ -16,6 +16,8 @@ image:
   # width: 1000
 ---
 
+**Last updated:** November 3, 2022.
+
 Data is the lifeblood that feeds machine learning models. The process of
 developing those models requires data in different forms. During the early
 lifecycle stages of any particular model, particularly when experimenting with

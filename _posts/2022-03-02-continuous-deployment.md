@@ -18,6 +18,8 @@ image:
   path: /assets/posts/continuous-deployment/continuous.gif
 ---
 
+**Last updated:** November 14, 2022.
+
 There is something particularly memorable about that moment of achievement
 that comes after automating the training of a machine learning model, when
 everything in the universe just seems to come into alignment. Your training
@@ -285,11 +287,14 @@ The ideas described here are just the overview of a much broader strategy
 concerning continuous deployment that we want ZenML to support in the future.
 Keep watching this space for updates on the ZenML project and upcoming features.
 
-The next logical step, one that is already on our roadmap, is to expand the
+<del>The next logical step, one that is already on our roadmap, is to expand the
 Service concept vertically to include an integration with one of the popular
 model serving platforms that are usually present in a production setting. This
 will be one of either [Seldon Core](https://www.seldon.io/tech/products/core/)
-or [KServe](https://kserve.github.io/website).
+or [KServe](https://kserve.github.io/website).</del>
+(Update: As of November 2022, we have already implemented Three more Model 
+Deployment Integrations: [Seldon Core](https://docs.zenml.io/component-gallery/model-deployers/seldon),
+[KServe](https://docs.zenml.io/component-gallery/model-deployers/kserve) and [BentoML](https://docs.zenml.io/component-gallery/model-deployers/bentoml))
 
 Developing the Service abstraction horizontally is also a priority, albeit more
 of a long-term goal. For the model serving case, the Service concept should

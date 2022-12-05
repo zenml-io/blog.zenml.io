@@ -12,6 +12,8 @@ image:
   path: /assets/posts/release_0_12_0/zero-twelve-zero-release.jpg
 ---
 
+**Last updated:** October 17, 2022.
+
 ![img]({{ site.url }}/assets/posts/release_0_12_0/zero-twelve-zero-release.jpg)
 
 The 0.12.0 release contains our [KServe](https://github.com/kserve/kserve) integration. KServe opens the door to highly scalable, simple, pluggable production ML serving.
