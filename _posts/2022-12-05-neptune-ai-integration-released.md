@@ -32,7 +32,7 @@ with [#1082](https://github.com/zenml-io/zenml/pull/1082).
 
 One of the coolest things about Neptune is how focused it is on what it does well:
 Being a kick-ass experiment tracker and model registry. Given ZenML does not have a
-model registry abstracton ([yet](https://zenml.io/roadmap)), we decided to focus on
+model registry abstraction ([yet](https://zenml.io/roadmap)), we decided to focus on
 the experiment tracking part this time around, with the ZenML
 [experiment tracker](https://docs.zenml.io/component-gallery/experiment-trackers)
 abstraction.
