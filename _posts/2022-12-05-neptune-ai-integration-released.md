@@ -133,7 +133,7 @@ def tf_trainer(
     return model
 ```
 
-**Note**: The above code is only for illustration purpsoes. Full code can be seen
+**Note**: The above code is only for illustration purposes. View the full code
 [here](https://github.com/zenml-io/zenml/tree/main/examples/neptune_tracking)
 
 You can see that using `get_neptune_run` in the Neptune integration ensures that the user does not
