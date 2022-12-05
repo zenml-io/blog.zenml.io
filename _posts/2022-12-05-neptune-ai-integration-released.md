@@ -149,7 +149,7 @@ The results should be available at the URL: https://app.neptune.ai/{ACCOUNT_USER
 
 Each pipeline run will be logged as a separate experiment run in Neptune. You can see the results of the pipeline run in the Neptune UI.
 
-For example, here are the runs 'raw:
+For example, here's a screenshot of the Neptune UI showing the experiment run and other details.
 
 ![Chart Results](../assets/posts/neptune_released/neptune_runs.png)
 
