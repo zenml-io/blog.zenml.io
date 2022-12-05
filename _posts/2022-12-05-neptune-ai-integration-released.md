@@ -42,7 +42,7 @@ datasets, metrics and other parameters and allowing you to browse them, visualiz
 In the ZenML world, every pipeline run is considered an experiment, and ZenML facilitates the storage of experiment
 results through Experiment Tracker stack components. This establishes a clear link between pipeline runs and experiments.
 
-## 🤾 Challenges faced while integration
+## 🤾 Challenge and Solution
 
 The tougest challengewith the entire story was to try to maintain the state of the Neptune
 run across the lifetime of a pipeline (i.e across steps). Aleksander and the Neptune team solved this with the
