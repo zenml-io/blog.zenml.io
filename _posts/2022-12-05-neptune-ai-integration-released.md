@@ -50,7 +50,7 @@ run across the lifetime of a pipeline (i.e across steps). Aleksander and the Nep
 class that is a singleton object storing and persisting the Neptune run state across
 the pipeline.
 
-## 🪐 Using Neptune as an Experiment Tracker
+## 🪐 Using the Neptune Experiment Tracker
 
 With the new Neptune integration, one can easily create a Neptune experiment tracker component and use it in any step in
 a pipeline.
