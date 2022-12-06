@@ -7,14 +7,14 @@ category: zenml
 tags: zenml-project month-of-mlops
 publish_date: December 17th, 2022
 date: 2022-12-17T00:02:00Z
-thumbnail: /assets/posts/neptune_released/Release_0.23.0.gif
+thumbnail: /assets/posts/two-inc-fraudulent-financial/thumbnail.gif
 image:
-  path: /assets/posts/neptune_released/Release_0.23.0.jpg
+  path: /assets/posts/two-inc-fraudulent-financial/cover_image.jpg
 ---
 
 **Last updated:** December 17, 2022.
 
-![Release 0.23.0](../assets/posts/neptune_released/Release_0.23.0.jpg)
+![cover](../assets/posts/two-inc-fraudulent-financial/cover_image.jpg)
 
 At [Two](https://www.two.inc/), we’re keenly aware that the ability to develop, deploy, 
 and maintain sophisticated machine learning solutions is critical for the success of our business. 
@@ -23,6 +23,12 @@ That’s why we make it a priority to keep our finger on the pulse of ongoing de
 A great example of this is the impressive framework developed by the ZenML team. 
 So, as part of our efforts to get properly acquainted with their software and its capabilities, 
 we decided to enter their [Month of MLOps competition](https://blog.zenml.io/mlops-competition-recap/).
+
+Here's a video summary of our submission.
+
+<div class="embed-responsive embed-responsive-16by9 mb-5">
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/E9FsXqHaSwM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 For our submission, we decided to implement a fraud detection model using ZenML to utilise the framework 
 for a problem similar to the ones our Data Science team works on.
@@ -110,7 +116,6 @@ In particular, we extended the Training pipeline to include five additional step
 ![cont_deploy_pipeline](../assets/posts/two-inc-fraudulent-financial/cont_deploy_pipeline_two.png)
 
 
-
 ### 📰 New Data Importer
 This step imports an as-yet unseen slice of our dataset within the context of our submission. In a production setting, this step would import the newest set of data available in our Data Warehouse.
 
@@ -135,9 +140,16 @@ With this pipeline architecture, it is trivial to update our model at the API en
 ## 💭 Conclusions
 As a team, we had a great time putting together this solution for the competition and we were delighted that we ended up placing second with our entry!
 
-At Two, we’re very excited about the capabilities, abstractions, and flexibility ZenML provides, and we’re looking forward to taking the learnings we’ve garnered during the competition and funnelling them into the development of our internal ML solutions.
+At Two, we’re very excited about the capabilities, abstractions, and flexibility ZenML provides, and we’re looking forward to taking the learnings we’ve garnered during the competition and funneling them into the development of our internal ML solutions.
 
 ## 📚 Learn More
+Below are some of the resources to learn more about the project: 
 
-* GitHub Repository 
-* Month of MLOps Closing Ceremony Presentation
+* [GitHub Repository](https://github.com/two-inc/zenml-competition)
+* [ZenML Project](https://zenml.io/blog/two-inc-fraudulent-financial)
+* [Month of MLOps Closing Ceremony Presentation](https://youtu.be/acLrHtjiN9A?t=1502)
+
+
+
+
+
