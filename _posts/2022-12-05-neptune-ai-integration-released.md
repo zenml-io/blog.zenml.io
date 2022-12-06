@@ -169,7 +169,9 @@ us know in Slack](https://zenml.io/slack-invite) or also feel free to [open up a
 GitHub issue](https://github.com/zenml-io/zenml/issues/new/choose) if you
 prefer. We welcome your feedback and we thank you for your support!
 
-## 👁️ For those who read this before 7th December 2020...
+## 👁️ For those who read this before 7th December 2022...
 
 We are hosting a live community demo of the Neptune ZenML integration
-Wednesday 5:30PM CET! [Register here](https://zenml.io/meet) to check it out!
+Wednesday 5:30PM CET! 
+
+[Register here](https://zenml.io/meet) to check it out!

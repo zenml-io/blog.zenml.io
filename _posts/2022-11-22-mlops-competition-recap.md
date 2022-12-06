@@ -102,7 +102,7 @@ Shivalika's submission was particularly impressive as it was her first experienc
   <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2Uqm0KgOC_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Marina's tongue-in-cheek personality carried over well with this fun project, which showcased a simple object detection pipeline, with data validation, re-training, and deployment baked in. She detailed her journey in a [blog post](https://marinawyss.github.io/are-you-a-cat/), which was well received by the judges and bagged the most promising entry!
+Marina's tongue-in-cheek personality carried over well with this fun project, which showcased a simple object classification pipeline, with data validation, re-training, and deployment baked in. She detailed her journey in a [blog post](https://marinawyss.github.io/are-you-a-cat/), which was well received by the judges and bagged the most promising entry!
 
 ### 🏅 Most Promising Entry - Andrew Hinh and Aleks Hiidenhovi (Admirer)
 
