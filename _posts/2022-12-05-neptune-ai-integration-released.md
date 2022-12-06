@@ -37,10 +37,7 @@ the experiment tracking part this time around, with the ZenML
 [experiment tracker](https://docs.zenml.io/component-gallery/experiment-trackers)
 abstraction.
 
-Experiment trackers in ZenML let you track your ML experiments by logging extended information about your models,
-datasets, metrics, and other parameters. Plus, it also lets you browse , visualize and compare between runs.
-In the ZenML world, every pipeline run is considered an experiment, and ZenML facilitates the storage of experiment
-results through the Experiment Tracker stack component. This establishes a clear link between pipeline runs and experiments.
+ZenML's experiment trackers let you track your ML experiments by logging information about your models, datasets, metrics, and other parameters. You can also browse, visualize, and compare between runs. Every pipeline run is considered an experiment in ZenML, and the Experiment Tracker component facilitates the storage of experiment results, establishing a clear link between pipeline runs and experiments.
 
 ## 🤾 The Challenge
 
