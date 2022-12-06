@@ -5,14 +5,14 @@ title: "Detecting Fraudulent Financial Transactions with ZenML"
 description: "A winning entry - 2nd prize winner at Month of MLOps 2022 competition."
 category: zenml
 tags: zenml-project month-of-mlops
-publish_date: December 17th, 2022
-date: 2022-12-17T00:02:00Z
+publish_date: December 16th, 2022
+date: 2022-12-16T00:02:00Z
 thumbnail: /assets/posts/two-inc-fraudulent-financial/thumbnail.gif
 image:
   path: /assets/posts/two-inc-fraudulent-financial/cover_image.jpg
 ---
 
-**Last updated:** December 17, 2022.
+**Last updated:** December 16, 2022.
 
 ![cover](../assets/posts/two-inc-fraudulent-financial/cover_image.jpg)
 
