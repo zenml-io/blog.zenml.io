@@ -16,26 +16,42 @@ image:
 
 ![Release 0.23.0](../assets/posts/neptune_released/Release_0.23.0.jpg)
 
+At [Two](https://www.two.inc/), we’re keenly aware that the ability to develop, deploy, 
+and maintain sophisticated machine learning solutions is critical for the success of our business. 
+That’s why we make it a priority to keep our finger on the pulse of ongoing developments in the MLOps space.
 
-At Two, we’re keenly aware that the ability to develop, deploy, and maintain sophisticated machine learning solutions is critical for the success of our business. That’s why we make it a priority to keep our finger on the pulse of ongoing developments in the MLOps space.
-A great example of this is the impressive framework developed by the ZenML team. So, as part of our efforts to get properly acquainted with their software and its capabilities, we decided to enter their Month of ML Ops competition.
-For our submission, we decided to implement a fraud detection model using ZenML to utilise the framework for a problem similar to the ones our Data Science team works on.
-In particular, we used the Synthetic data from a financial payment system dataset, made available by Kaggle, to develop our model. In line with the requirements of the competition, we began developing an end-to-end ML solution using ZenML, which was tasked with the following responsibilities:
-Importing the dataset
-Cleaning the data and engineering informative features
-Detecting data drift of new data
-Training a model to detect fraud on a transactional level
-Evaluating the performance of the model
-Deploying the model to a REST API endpoint
-Providing an interface for users to interact with the model
-To address these requirements we built a Training pipeline which we used for experimentation, and a Continuous Deployment pipeline. The Continuous Deployment pipeline extended the capabilities of the Training Pipeline to identify data drift in new data, train a model on all available data, and evaluate the performance of this model prior to deploying it to an API endpoint.
+A great example of this is the impressive framework developed by the ZenML team. 
+So, as part of our efforts to get properly acquainted with their software and its capabilities, 
+we decided to enter their [Month of MLOps competition](https://blog.zenml.io/mlops-competition-recap/).
+
+For our submission, we decided to implement a fraud detection model using ZenML to utilise the framework 
+for a problem similar to the ones our Data Science team works on.
+
+In particular, we used the [Synthetic data from a financial payment system](https://www.kaggle.com/datasets/ealaxi/banksim1) dataset, 
+made available by Kaggle, to develop our model. In line with the requirements of the competition, 
+we began developing an end-to-end ML solution using ZenML, which was tasked with the following responsibilities:
+
+* Importing the dataset
+* Cleaning the data and engineering informative features
+* Detecting data drift of new data
+* Training a model to detect fraud on a transactional level
+* Evaluating the performance of the model
+* Deploying the model to a REST API endpoint
+* Providing an interface for users to interact with the model
+
+To address these requirements we built a Training pipeline which we used for experimentation, and a Continuous Deployment pipeline. 
+The Continuous Deployment pipeline extended the capabilities of the Training Pipeline to identify data drift in new data, 
+train a model on all available data, and evaluate the performance of this model prior to deploying it to an API endpoint.
+
 To enable these pipelines, we made use of the following ZenML stack:
-Artifact Storage: Google Cloud Storage
-Container Registry: Google Cloud Container Registry
-Data Validator: EvidentlyAI
-Experiment Tracker: MLFlow
-Orchestrator: Google Kuberenetes Engine
-Model Deployer: Seldon
+
+* Artifact Storage: [Google Cloud Storage](https://cloud.google.com/storage)
+* Container Registry: [Google Cloud Container Registry](https://cloud.google.com/container-registry)
+* Data Validator: [EvidentlyAI](https://www.evidentlyai.com/)
+* Experiment Tracker: [MLflow](https://mlflow.org/)
+* Orchestrator: [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine)
+* Model Deployer: [Seldon](https://www.seldon.io/)
+
 We had a lot of fun implementing this solution using ZenML, and encourage readers to give the framework a try for themselves!
 
 
