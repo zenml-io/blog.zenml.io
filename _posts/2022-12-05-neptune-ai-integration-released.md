@@ -12,7 +12,7 @@ image:
   path: /assets/posts/neptune_released/Release_0.23.0.jpg
 ---
 
-**Last updated:** December 05, 2022.
+**Last updated:** December 08, 2022.
 
 ![Release 0.23.0](../assets/posts/neptune_released/Release_0.23.0.jpg)
 
@@ -27,6 +27,13 @@ oriented workflow.
 A big shout-out to [@AleksanderWWW](https://github.com/AleksanderWWW), from the Neptune team
 who spearheaded the [Neptune integration](https://zenml.io/integrations/neptune)
 with [#1082](https://github.com/zenml-io/zenml/pull/1082).
+
+We showcased this integration in our weekly community meetup.
+
+<div class="embed-responsive embed-responsive-16by9 mb-5">
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/biKXt-aoqvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 
 ## 🧲 How Neptune fits with ZenML
 
@@ -165,10 +172,3 @@ If you find any bugs or something doesn't work the way you expect in the Neptune
 us know in Slack](https://zenml.io/slack-invite) or also feel free to [open up a
 GitHub issue](https://github.com/zenml-io/zenml/issues/new/choose) if you
 prefer. We welcome your feedback and we thank you for your support!
-
-## 👁️ For those who read this before 7th December 2022...
-
-We are hosting a live community demo of the Neptune ZenML integration
-Wednesday 5:30PM CET! 
-
-[Register here](https://zenml.io/meet) to check it out!
