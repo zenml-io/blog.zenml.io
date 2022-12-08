@@ -168,6 +168,9 @@ We hope this blog gave an insight into how the Neptune and ZenML team developed 
 together. It's easy for you to create your own experiment tracker integration as well. Just follow
 the guide [here](https://docs.zenml.io/component-gallery/experiment-trackers/custom).
 
+We'd like to also thank the team behind Neptune especially Patrycja Jenkner and Aleksander Wojnarowicz
+who helped with the integration. Also, check out Neptune's blog post on the integration [here](https://neptune.ai/resources/track-visualize-pipelines-zenml-integration).
+
 If you find any bugs or something doesn't work the way you expect in the Neptune integration, please [let
 us know in Slack](https://zenml.io/slack-invite) or also feel free to [open up a
 GitHub issue](https://github.com/zenml-io/zenml/issues/new/choose) if you
