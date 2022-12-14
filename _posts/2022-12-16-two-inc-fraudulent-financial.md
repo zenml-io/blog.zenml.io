@@ -4,7 +4,7 @@ author: Simon Helmig at Two.inc (Guest post)
 title: "Detecting Fraudulent Financial Transactions with ZenML"
 description: "A winning entry - 2nd prize winner at Month of MLOps 2022 competition."
 category: zenml
-tags: zenml-project month-of-mlops
+tags: zenml competition evergreen
 publish_date: December 16th, 2022
 date: 2022-12-16T00:02:00Z
 thumbnail: /assets/posts/two-inc-fraudulent-financial/thumbnail.gif
