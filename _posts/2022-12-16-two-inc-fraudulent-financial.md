@@ -143,7 +143,7 @@ As a team, we had a great time putting together this solution for the competitio
 At Two, we’re very excited about the capabilities, abstractions, and flexibility ZenML provides, and we’re looking forward to taking the learnings we’ve garnered during the competition and funneling them into the development of our internal ML solutions.
 
 ## 📚 Learn More
-Below are some of the resources to learn more about the project: 
+Below are some resources to learn more about the project and the competition:
 
 * [GitHub Repository](https://github.com/two-inc/zenml-competition)
 * [ZenML Project](https://zenml.io/blog/two-inc-fraudulent-financial)
