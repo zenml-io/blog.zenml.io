@@ -1,16 +1,18 @@
 ---
 layout: post
 author: Safoine El khabich
-title: "Local to Cloud Deployment with ZenML and BentoML"
+title: "How to train and deploy a machine learning model on AWS Sagemaker with ZenML and BentoML"
 description: "Learn how to use ZenML pipelines and BentoML to easily deploy machine learning models, be it on local or cloud environments. We will show you how to train a model using ZenML, package it with BentoML, and deploy it to a local machine or cloud provider. By the end of this post, you will have a better understanding of how to streamline the deployment of your machine learning models using ZenML and BentoML."
 category: zenml
 tags: evergreen zenml bentoml tooling integrations deployment
-publish_date: December 12th, 2022
-date: 2022-12-12T00:02:00Z
-thumbnail: /assets/posts/neptune_released/Release_0.23.0.gif
+publish_date: December 14th, 2022
+date: 2022-12-14T00:02:00Z
+thumbnail: /assets/posts/bentoml-deployment/zenml-bentoml.png
 image:
-  path: /assets/posts/neptune_released/Release_0.23.0.jpg
+  path: /assets/posts/bentoml-deployment/zenml-bentoml.png
 ---
+
+**Last updated:** December 14, 2022.
 
 It can be hard to deploy a machine learning model. There are several factors 
 that need to be considered, such as how the model will be integrated into 
