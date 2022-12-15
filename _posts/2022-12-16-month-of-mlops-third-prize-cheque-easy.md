@@ -19,8 +19,8 @@ image:
 
 We all know ZenML has been creating a lot of buzz in the MLOps space, offering all the necessary components you'd require to setup production ready MLOps pipelines. So naturally, when I saw they're hosting a [Month of MLOps competition](https://zenml.notion.site/ZenML-s-Month-of-MLOps-Competition-Announcement-3c59f628447c48f1944035de85ff1a5f/), I couldn't resist the temptation to participate and use it as a medium to learn all about ZenML.
 
-For the competition, I decided to take up a real world business problem - building the MLOps solution to support a ML driven cheque processing system and defined that as my problem statement. Of course, a ML cheque processing system could have several different components but since I wanted to participate as an individual in this competition, I decided to restrict the scope of the system to the extraction of important entities from a cheque such as -- payee name, amount in words, amount in figures, bank name, cheque date, etc
-I thought of leveraging a new transformer model called (Donut - **Do**cument **Un**derstanding **T**ransformer)[https://arxiv.org/abs/2111.15664] for the extraction of the data instead of relying on traditional slow, expensive and slightly outdated OCR based techniques.
+For the competition, I decided to take up a real world business problem - building the MLOps solution to support a ML driven cheque processing system and defined that as my problem statement. Of course, a ML driven cheque processing system could have several different components but since I wanted to participate as an individual in this competition, I decided to restrict the scope of the system to the extraction of important entities from a cheque such as -- payee name, amount in words, amount in figures, bank name, cheque date, etc
+I thought of leveraging a new transformer model called (Donut - **Do**cument **Un**derstanding **T**ransformer)[https://arxiv.org/abs/2111.15664] for the extraction of the data instead of relying on traditional (slow and expensive) OCR based techniques.
 I thought building the MLOps pipelines for such a solution would be a good test of ZenML's capabilities for solving real-world problems.
 
 In case, you want to know more about the business problem or ML algorithm choice aspects of the solution, please refer to my [blog](https://medium.com/@shivalikasingh95/chequeeasy-banking-with-transformers-f49fb05960d3) on Medium for a more detailed explanation.
@@ -44,11 +44,11 @@ Based on the requirements of the competition and the usecase I had chosen, I def
 
 Based on the features I wanted for the solution, it was clear that I needed pipelines for labelling, data processing, model training as well as model inference.
 
-One great thing about using ZenML to setup pipelines is that it makes everything easily reproducible. Each pipeline is made up a sequence of steps and the outputs corresponding to each step are saved to the ZenML artifact store making it easy to track what went as input for any step of a pipeline.
+One great thing about using ZenML to setup pipelines is that it makes everything easily reproducible. Each pipeline is made up a sequence of steps and the outputs corresponding to each step are saved in the artifact store corresponding to your ZenML stack - making it very easy to track things.
 
 With ZenML it was also very easy to pick and choose different components to setup stacks (infrastructure) for running the created pipelines. You could even create different stacks to run different kinds of pipelines depending on your use case. I used the stacks described below to build the necessary pipelines for my solution.
 
-Stack for Labelling & Data Processing pipelines included the following components:
+Stack for Annotation & Data Processing pipelines included the following components:
 
 * Orchestrator: Local Orchestrator
 * Artifact Storage: Azure Blob storage
