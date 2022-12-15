@@ -4,7 +4,7 @@ author: Hamza Tahir
 title: "Tracking experiments in your MLOps pipelines with ZenML and Neptune"
 description: "ZenML 0.23.0 comes with a brand-new experiment tracker flavor - Neptune.ai! We dive deeper in this blog post."
 category: zenml
-tags: zenml release-notes
+tags: zenml evergreen integrations tooling neptune
 publish_date: December 05th, 2022
 date: 2022-12-05T00:02:00Z
 thumbnail: /assets/posts/neptune_released/Release_0.23.0.gif
