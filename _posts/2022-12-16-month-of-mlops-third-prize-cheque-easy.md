@@ -7,14 +7,14 @@ category: zenml
 tags: zenml-project month-of-mlops
 publish_date: December 16th, 2022
 date: 2022-12-16T00:02:00Z
-thumbnail: /path_to_thumbnail.gif
+thumbnail: /assets/posts/mlops-comp-2022-cheque-easy/thumbnail.gif
 image:
-  path: /path_to_cover_image.jpg
+  path: /assets/posts/mlops-comp-2022-cheque-easy/cover_image.jpg
 ---
 
 **Last updated:** December 16, 2022.
 
-![cover](<add_cover_image.jpg>)
+![cover](<../assets/posts/mlops-comp-2022-cheque-easy/cover_image.jpg>)
 
 
 We all know ZenML has been creating a lot of buzz in the MLOps space, offering all the necessary components you'd require to setup production ready MLOps pipelines. So naturally, when I saw they're hosting a [Month of MLOps competition](https://zenml.notion.site/ZenML-s-Month-of-MLOps-Competition-Announcement-3c59f628447c48f1944035de85ff1a5f/), I couldn't resist the temptation to participate and use it as a medium to learn all about ZenML.
@@ -67,7 +67,7 @@ Stack for Training & Inference pipelines included the following components:
 ## Annotation Pipelines
 While I did use a [Kaggle dataset](https://www.kaggle.com/datasets/medali1992/cheque-images) to fine tune my model. I also wanted to keep my solution as close to the real-world setting as possible. In my experience, companies have to spend a good amount of time on annotation when solving complex problems involving use of unstructured data. So I thought it would be useful if the solution could include support for annotating new data to train the model. This component consisted of 2 small pipelines:
 
-1. Cheque Labelling Pipeline:
+1. *Cheque Labelling Pipeline:*
 
 This pipeline was used to do the labelling setup in `Label Studio` which was the `annotator` component offered via ZenML that I used as part of the solution. It included the following steps:
 
@@ -82,18 +82,18 @@ This step is used to attach a storage to the labelling dataset created as part o
 **Note**: Post running this pipeline, you could run the `zenml annotator dataset annotate <dataset_name>` to start up Label Studio and proceed with data annotation.
 
 
-2. Process Labelled Data Pipeline: 
+2. *Process Labelled Data Pipeline:* 
 
-This was a simple post processing pipeline and included the following steps:
+This was a simple post processing pipeline to convert the labelling output into a cleaner format and included the following steps:
 
 ### Get Dataset: 
-Fetch details such as labelling project created in Label Studio using the `Cheque Labelling Pipeline`
+Fetch details of the labelling dataset created in Label Studio using the `Cheque Labelling Pipeline`
 
 ### Get Labelled Data: 
-This step would the annotation output (in JSON format) produced by Label Studio corresponding to the given dataset details fetched using previous step.
+This step would take the annotation output (in JSON format) produced by Label Studio corresponding to the given dataset details fetched using previous step.
 
 ### Convert annotations:
-Label Studio generates annotations by default in its own unique JSON format. However, I needed all the annotation files to follow one common format similar to the one that is included in the Kaggle dataset used for fine-tuning the model. The purpose of the step was to take the json output produced post annotation and convert it into the expected CSV file format which can be consumed as an input by the data processing pipeline.
+Label Studio generates annotations by default in its own unique JSON format. However, I needed all the annotation files to follow one common format similar to the one that is included in the Kaggle dataset used for fine-tuning the model. The purpose of this step was to take the json output produced post annotation and convert it into the expected CSV file format which can be consumed as an input by the data processing pipeline.
 
 
 
@@ -114,11 +114,10 @@ This step was used to combine and load the train, test and val splits of the dat
 
 
 
-### 🚄 Training Pipeline with Continuous Deployment
+### Training Pipeline with Continuous Deployment
 
-The Training pipeline defines the end-to-end process of training our model to predict the required cheque details. I leveraged MLFlow for both experiment tracking as well as model deployment as part of this pipeline.
-This pipeline also includes support for continuous deployment. Once model training is complete, the model can be evaluated again and 
-Its role is to train a model on a fresh set of data and deploy it to a REST API endpoint, provided that particular acceptance criteria are met regarding the quality of the newly trained model.
+The Training pipeline defines the end-to-end process of training the Donut model to predict the required cheque details. I leveraged MLFlow for both experiment tracking as well as model deployment as part of this pipeline.
+This pipeline also includes support for continuous deployment. Once model training is complete, the model can be evaluated on a test dataset and can then be deployed to a REST API endpoint, provided that the accuracy of the new model meets a certain threshold.
 
 The Training pipeline can be summarized as follows:
 
@@ -134,7 +133,7 @@ Hugging Face's transformers library was being used to fine-tune the model. To se
 This step is used fine tune [Donut](https://huggingface.co/docs/transformers/model_doc/donut) on the training data. Pytorch-lightning is also used along with Hugging Face transformers and datasets libraries for the fine-tuning of the model.
 MLflow was used for experiment tracking as part of this step. It was used to log observed metrics during training as well as logging of the trained model at the end of the step.
 Since, MLFlow doesn't support Hugging Face transformer models by default, I had to write a [custom implementation](https://github.com/shivalikasingh95/cheque-easy/blob/main/steps/cheque_parser/train_donut/mlflow_pyfunc.py) using MLFlow's `pyfunc` module to support MLflow logging of the trained model. 
-This step also supports pushing of the trained model to the Hugging Face Hub.
+Additionally, this step also supports pushing of the trained model to the Hugging Face Hub.
 
 ### Evaluator
 As part of this step, the model’s performance is tested on a test dataset using a custom method which utilizes n-TED(Normalized Tree Edit Distance) based accuracy and F1 accuracy score written by the original authors of the Donut paper. Again, results of this steps are tracked using MLFlow.
@@ -162,10 +161,10 @@ This step was used to load the MLFlow model prediction service.
 
 
 ### Predict
-Finally, the input image will be encoded as a base64 string and fed as input to the MLFlow model prediction service which will return the json output generated by the model containing extracted cheque details.
+Finally, the input image will be encoded as a base64 string and fed as input to the MLFlow model prediction service.  This will return the json output generated by the model containing the extracted cheque details.
 
 
-Thanks to ZenML, I was easily able to build reproducible and maintainable pipelines with including support for annotation, experiment tracking, model deployment, pipeline orchestration, etc.
+Thanks to ZenML, I was easily able to build reproducible and maintainable pipelines with including support for annotation, experiment tracking, model deployment, pipeline orchestration, secret management, artfifact storage, etc.
 
 
 ## Gradio Demo
@@ -182,8 +181,7 @@ On the MLOps side of the solution, I would like to explore ZenML's DeepChecks in
 ## 💭 Conclusions
 As an individual, I had so much fun participating in this competition. It turned out to be a great opportunity to show case my work to top most MLOps industry experts, build my own small open source project, learn from the ZenML community as well as contribute back to ZenML. It's hard to get so much out of just one competition and it was only possible because of how well the ZenML team organized it.
 
-I'd definitely recommend everyone to give ZenML a try for setting up their MLOps pipelines as well as engaging with the ZenML community.
-They're extremely helpful, patient and very receptive to feedback. 😄
+I'd definitely recommend everyone to give ZenML a try for setting up their MLOps pipelines as well as engaging with the ZenML community. They're extremely helpful, patient and very receptive to feedback. 😄
 
 
 ## 📚 Learn More
