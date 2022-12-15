@@ -87,7 +87,7 @@ This step is used to attach a storage to the labelling dataset created as part o
 This was a simple post processing pipeline to convert the labelling output into a cleaner format and included the following steps:
 
 ### Get Dataset: 
-Fetch details of the labelling dataset created in Label Studio using the `Cheque Labelling Pipeline`
+Fetch details of the labelling dataset created in Label Studio using the `Cheque Labelling Pipeline`.
 
 ### Get Labelled Data: 
 This step would take the annotation output (in JSON format) produced by Label Studio corresponding to the given dataset details fetched using previous step.
