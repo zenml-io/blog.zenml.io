@@ -122,7 +122,7 @@ Its role is to train a model on a fresh set of data and deploy it to a REST API 
 
 The Training pipeline can be summarized as follows:
 
-![training_pipeline](../mlops-2022-third-prize-cheque-easy/training_pipeline_cheque_easy.png.png)
+![training_pipeline](../assets/posts/mlops-comp-2022-cheque-easy/training_pipeline_cheque_easy.png)
 
 
 ### Load config, model, processor
@@ -151,7 +151,7 @@ Once the deployment trigger has been activated, this step takes the trained mode
 ## Inference Pipeline
 This pipeline consists of 3 simple steps as summarized below:
 
-![inference_pipeline](../assets/posts/mlops-2022-third-prize-cheque-easy/inference_pipeline_cheque_easy.png)
+![inference_pipeline](../assets/posts/mlops-comp-2022-cheque-easy/inference_pipeline_cheque_easy.png)
 
 ### Load data
 Import the data (i.e. cheque image) that will be fed as input to model for getting prediction.
