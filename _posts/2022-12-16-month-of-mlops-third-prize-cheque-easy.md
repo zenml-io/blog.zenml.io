@@ -65,7 +65,7 @@ Stack for Training & Inference pipelines included the following components:
 
 
 ## Annotation Pipelines
-While I did use a [Kaggle dataset](https://www.kaggle.com/datasets/medali1992/cheque-images) to fine tune my model. I also wanted to keep my solution as close to the real-world setting as possible. In my experience, companies have to spend a good amount of time on annotation when solving complex problems involving use of unstructured data. So I thought it would be useful if the solution could include support for annotating new data to train the model. This component consisted of 2 small pipelines:
+While I did use a [Kaggle dataset](https://www.kaggle.com/datasets/medali1992/cheque-images) to fine tune my model, I also wanted to keep my solution as close to the real-world setting as possible. In my experience, companies have to spend a good amount of time on annotation when solving complex problems involving use of unstructured data. So I thought it would be useful if the solution could include support for annotating new data to train the model. This component consisted of 2 small pipelines:
 
 1. *Cheque Labelling Pipeline:*
 
@@ -125,12 +125,12 @@ The Training pipeline can be summarized as follows:
 
 
 ### Load config, model, processor
-Hugging Face's transformers library was being used to fine-tune the model. To setup the Donut model using `transformers` we needed to load the configuration required to instantiate the model, the processor associated with the model along with the actual pretrained model. 
+Hugging Face's [transformers library](https://huggingface.co/docs/transformers/index) was used to fine-tune the model. To setup the Donut model using `transformers` we needed to load the configuration required to instantiate the model, the processor associated with the model along with the actual pretrained model. 
 
 
 ### Train Donut
 
-This step is used fine tune [Donut](https://huggingface.co/docs/transformers/model_doc/donut) on the training data. Pytorch-lightning is also used along with Hugging Face transformers and datasets libraries for the fine-tuning of the model.
+This step is used fine tune [Donut](https://huggingface.co/docs/transformers/model_doc/donut) on the training data. [Pytorch Lightning](https://www.pytorchlightning.ai/) is also used along with Hugging Face transformers and datasets libraries for the fine-tuning of the model.
 MLflow was used for experiment tracking as part of this step. It was used to log observed metrics during training as well as logging of the trained model at the end of the step.
 Since, MLFlow doesn't support Hugging Face transformer models by default, I had to write a [custom implementation](https://github.com/shivalikasingh95/cheque-easy/blob/main/steps/cheque_parser/train_donut/mlflow_pyfunc.py) using MLFlow's `pyfunc` module to support MLflow logging of the trained model. 
 Additionally, this step also supports pushing of the trained model to the Hugging Face Hub.
@@ -176,10 +176,10 @@ There's definitely a lot of scope in terms of improving the performance of the D
 Since this competition was more about MLOps, I built a basic working model that would suffice for solving the use case and spent more effort on the MLOps side of the solution.
 Going forward, I would definitely like to focus on the modeling aspects of this solution. I would even like to test out Donut's multi-lingual capabilities to process cheque images written in languages other than English.
 
-On the MLOps side of the solution, I would like to explore ZenML's DeepChecks integration for data and model validation to further enhance my solution.
+On the MLOps side of the solution, I would like to explore [ZenML's DeepChecks integration](https://blog.zenml.io/deepchecks-and-zenml/) for data and model validation to further enhance my solution.
 
 ## 💭 Conclusions
-As an individual, I had so much fun participating in this competition. It turned out to be a great opportunity to show case my work to top most MLOps industry experts, build my own small open source project, learn from the ZenML community as well as contribute back to ZenML. It's hard to get so much out of just one competition and it was only possible because of how well the ZenML team organized it.
+As an individual, I had so much fun participating in this competition. It turned out to be a great opportunity to showcase my work to the topmost MLOps industry experts, build my own small open-source project, learn from the ZenML community as well as contribute back to ZenML. It's hard to get so much out of just one competition and it was only possible because of how well the ZenML team organized it.
 
 I'd definitely recommend everyone to give ZenML a try for setting up their MLOps pipelines as well as engaging with the ZenML community. They're extremely helpful, patient and very receptive to feedback. 😄
 
