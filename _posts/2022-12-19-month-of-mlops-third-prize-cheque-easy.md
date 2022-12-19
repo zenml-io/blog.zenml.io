@@ -14,9 +14,6 @@ image:
 
 **Last updated:** December 19, 2022.
 
-![cover](<../assets/posts/mlops-comp-2022-cheque-easy/cover_image.jpg>)
-
-
 We all know ZenML has been creating a lot of buzz in the MLOps space, offering all the necessary components you'd require to setup production ready MLOps pipelines. So naturally, when I saw they're hosting a [Month of MLOps competition](https://zenml.notion.site/ZenML-s-Month-of-MLOps-Competition-Announcement-3c59f628447c48f1944035de85ff1a5f/), I couldn't resist the temptation to participate and use it as a medium to learn all about ZenML.
 
 For the competition, I decided to take up a real world business problem - building the MLOps solution to support a ML driven cheque processing system and defined that as my problem statement. Of course, a ML driven cheque processing system could have several different components but since I wanted to participate as an individual in this competition, I decided to restrict the scope of the system to the extraction of important entities from a cheque such as -- payee name, amount in words, amount in figures, bank name, cheque date, etc
