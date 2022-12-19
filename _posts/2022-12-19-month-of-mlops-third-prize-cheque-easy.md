@@ -2,17 +2,17 @@
 layout: post
 author: Shivalika Singh (Guest post)
 title: "ChequeEasy: Banking with Transformers"
-description: "A winning entry - 3rd prize winner at Month of MLOps 2022 competition."
+description: "A winning entry - 3rd prize winner at Month of MLOps 2022 competition. Extraction of metadata from cheques using Transformers and ZenML."
 category: zenml
 tags: zenml-project month-of-mlops
-publish_date: December 16th, 2022
-date: 2022-12-16T00:02:00Z
-thumbnail: /assets/posts/mlops-comp-2022-cheque-easy/thumbnail.gif
+publish_date: December 19th, 2022
+date: 2022-12-19T00:02:00Z
+thumbnail: /assets/posts/mlops-2022-third-prize-cheque-easy/cover-shivalika.jpg
 image:
-  path: /assets/posts/mlops-comp-2022-cheque-easy/cover_image.jpg
+  path: /assets/posts/mlops-2022-third-prize-cheque-easy/cover-shivalika.jpg
 ---
 
-**Last updated:** December 16, 2022.
+**Last updated:** December 19, 2022.
 
 ![cover](<../assets/posts/mlops-comp-2022-cheque-easy/cover_image.jpg>)
 
@@ -121,7 +121,7 @@ This pipeline also includes support for continuous deployment. Once model traini
 
 The Training pipeline can be summarized as follows:
 
-![training_pipeline](../assets/posts/mlops-comp-2022-cheque-easy/training_pipeline_cheque_easy.png)
+![training_pipeline](../assets/posts/mlops-2022-third-prize-cheque-easy/training_pipeline_cheque_easy.png)
 
 
 ### Load config, model, processor
@@ -150,7 +150,7 @@ Once the deployment trigger has been activated, this step takes the trained mode
 ## Inference Pipeline
 This pipeline consists of 3 simple steps as summarized below:
 
-![inference_pipeline](../assets/posts/mlops-comp-2022-cheque-easy/inference_pipeline_cheque_easy.png)
+![inference_pipeline](../assets/posts/mlops-2022-third-prize-cheque-easy/inference_pipeline_cheque_easy.png)
 
 ### Load data
 Import the data (i.e. cheque image) that will be fed as input to model for getting prediction.
@@ -190,4 +190,5 @@ Below are some of the resources to learn more about the project:
 * [GitHub Repository](https://github.com/shivalikasingh95/cheque-easy)
 * [Project Demo](https://huggingface.co/spaces/shivi/ChequeEasy)
 * [Medium Blog](https://medium.com/@shivalikasingh95/chequeeasy-banking-with-transformers-f49fb05960d3)
-* [Month of MLOps Closing Ceremony Presentation](https://www.youtube.com/watch?v=acLrHtjiN9A&t=1502s)
+* [Month of MLOps Closing Ceremony
+  Presentation](https://www.youtube.com/watch?v=acLrHtjiN9A&t=1502s)
