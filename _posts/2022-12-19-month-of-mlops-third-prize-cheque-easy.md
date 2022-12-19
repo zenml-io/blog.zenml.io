@@ -124,6 +124,7 @@ The Training pipeline can be summarized as follows:
 ### Load config, model, processor
 Hugging Face's [transformers library](https://huggingface.co/docs/transformers/index) was used to fine-tune the model. To setup the Donut model using `transformers` we needed to load the configuration required to instantiate the model, the processor associated with the model along with the actual pretrained model.
 To enable the writing and retrieval of the config and processor associated with Donut model from the artifact store, I had to implement custom [`materializers`](https://github.com/shivalikasingh95/cheque-easy/tree/main/materializers). 
+
 In ZenML pipelines, a materializer dictates how a given artifact can be written to and retrieved from the artifact store and also contains all serialization and deserialization logic. ZenML already supports most of the commonly used objects in ML pipelines with its inbuilt [materializers](https://docs.zenml.io/v/0.10.0/developer-guide/materializer) but in case you want to use some custom data types between the steps of your pipelines then ZenML also allows you to write your own [customized](https://docs.zenml.io/advanced-guide/pipelines/materializers) implementation.
 
 
@@ -177,6 +178,8 @@ Since this competition was more about MLOps, I built a basic working model that 
 Going forward, I would definitely like to focus on the modeling aspects of this solution. I would even like to test out Donut's multi-lingual capabilities to process cheque images written in languages other than English.
 
 On the MLOps side of the solution, I would like to explore [ZenML's DeepChecks integration](https://blog.zenml.io/deepchecks-and-zenml/) for data and model validation to further enhance my solution.
+I would also like to migrate all my pipelines from a local setup to a cloud based setup and try out ZenML's [Kubeflow](https://docs.zenml.io/component-gallery/orchestrators/kubeflow) or [Kubernetes](https://docs.zenml.io/component-gallery/orchestrators/kubernetes) orchestrators. 
+
 
 ## 💭 Conclusions
 As an individual, I had so much fun participating in this competition. It turned out to be a great opportunity to showcase my work to the topmost MLOps industry experts, build my own small open-source project, learn from the ZenML community as well as contribute back to ZenML. It's hard to get so much out of just one competition and it was only possible because of how well the ZenML team organized it.
