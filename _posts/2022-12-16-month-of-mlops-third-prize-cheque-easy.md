@@ -5,23 +5,23 @@ title: "ChequeEasy: Banking with Transformers"
 description: "A winning entry - 3rd prize winner at Month of MLOps 2022 competition."
 category: zenml
 tags: zenml-project month-of-mlops
-publish_date: December 16th, 2022
-date: 2022-12-16T00:02:00Z
+publish_date: December 20th, 2022
+date: 2022-12-19T00:02:00Z
 thumbnail: /assets/posts/mlops-comp-2022-cheque-easy/thumbnail.gif
 image:
-  path: /assets/posts/mlops-comp-2022-cheque-easy/cover_image.jpg
+  path: /assets/posts/mlops-2022-cheque-easy/cover-shivalika.jpg
 ---
 
-**Last updated:** December 16, 2022.
+**Last updated:** December 19, 2022.
 
-![cover](<../assets/posts/mlops-comp-2022-cheque-easy/cover_image.jpg>)
+![cover](<../assets/posts/mlops-2022-cheque-easy/cover-shivalika.jpg>)
 
 
 We all know ZenML has been creating a lot of buzz in the MLOps space, offering all the necessary components you'd require to setup production ready MLOps pipelines. So naturally, when I saw they're hosting a [Month of MLOps competition](https://zenml.notion.site/ZenML-s-Month-of-MLOps-Competition-Announcement-3c59f628447c48f1944035de85ff1a5f/), I couldn't resist the temptation to participate and use it as a medium to learn all about ZenML.
 
 For the competition, I decided to take up a real world business problem - building the MLOps solution to support a ML driven cheque processing system and defined that as my problem statement. Of course, a ML driven cheque processing system could have several different components but since I wanted to participate as an individual in this competition, I decided to restrict the scope of the system to the extraction of important entities from a cheque such as -- payee name, amount in words, amount in figures, bank name, cheque date, etc
-I thought of leveraging a new transformer model called (Donut - **Do**cument **Un**derstanding **T**ransformer)[https://arxiv.org/abs/2111.15664] for the extraction of the data instead of relying on traditional (slow and expensive) OCR based techniques.
-I thought building the MLOps pipelines for such a solution would be a good test of ZenML's capabilities for solving real-world problems.
+I thought of leveraging a new transformer model called [Donut - **Do**cument **Un**derstanding **T**ransformer](https://arxiv.org/abs/2111.15664) for the extraction of the data instead of relying on traditional (slow and expensive) OCR based techniques.
+I thought, building the MLOps pipelines for such a solution would be a good test of ZenML's capabilities for solving real-world problems.
 
 In case, you want to know more about the business problem or ML algorithm choice aspects of the solution, please refer to my [blog](https://medium.com/@shivalikasingh95/chequeeasy-banking-with-transformers-f49fb05960d3) on Medium for a more detailed explanation.
 
@@ -33,7 +33,7 @@ You can also check out a video summary of my submission.
 
 Based on the requirements of the competition and the usecase I had chosen, I defined the scope of my solution to include the following features:
 
-* Support for labelling data which can be used to train the model
+* Support for labeling data which can be used to train the model
 * Combine the images and GT to prepare a dataset for model training
 * Training a model to extract relevant data from a cheque image
 * Evaluating the performance of the trained model
@@ -42,7 +42,7 @@ Based on the requirements of the competition and the usecase I had chosen, I def
 * Creating a demo app for the model 
 
 
-Based on the features I wanted for the solution, it was clear that I needed pipelines for labelling, data processing, model training as well as model inference.
+Based on the features I wanted for the solution, it was clear that I needed pipelines for labeling, data processing, model training as well as model inference.
 
 One great thing about using ZenML to setup pipelines is that it makes everything easily reproducible. Each pipeline is made up a sequence of steps and the outputs corresponding to each step are saved in the artifact store corresponding to your ZenML stack - making it very easy to track things.
 
@@ -67,56 +67,56 @@ Stack for Training & Inference pipelines included the following components:
 ## Annotation Pipelines
 While I did use a [Kaggle dataset](https://www.kaggle.com/datasets/medali1992/cheque-images) to fine tune my model, I also wanted to keep my solution as close to the real-world setting as possible. In my experience, companies have to spend a good amount of time on annotation when solving complex problems involving use of unstructured data. So I thought it would be useful if the solution could include support for annotating new data to train the model. This component consisted of 2 small pipelines:
 
-1. *Cheque Labelling Pipeline:*
+### Cheque Labeling Pipeline:*
 
-This pipeline was used to do the labelling setup in `Label Studio` which was the `annotator` component offered via ZenML that I used as part of the solution. It included the following steps:
+This pipeline was used to do the labeling setup in `Label Studio` which was the `annotator` component offered via ZenML that I used as part of the solution. It included the following steps:
 
-### Create Dataset: 
-This step was used to create a labelling project (or dataset) inside Label Studio with the desired `dataset_name` and OCR task labelling config.
-At the time of developing this solution, OCR labelling task was not supported directly via ZenML for Label Studio but through the competition I got the chance to add this as a small [contribution](https://github.com/zenml-io/zenml/pull/1062) to ZenML source code.
+#### Create Dataset: 
+This step was used to create a labeling project (or dataset) inside Label Studio with the desired `dataset_name` and OCR task labeling config.
+At the time of developing this solution, OCR labeling task was not supported directly via ZenML for Label Studio but through the competition I got the chance to add this as a small [contribution](https://github.com/zenml-io/zenml/pull/1062) to ZenML source code.
 
-### Sync or Create Storage: 
-This step is used to attach a storage to the labelling dataset created as part of the previous step within Label Studio. In this case, I attached an Azure Blob Storage container which had all the data (cheque images) I wanted to use for annotation.
+#### Sync or Create Storage: 
+This step is used to attach a storage to the labeling dataset created as part of the previous step within Label Studio. In this case, I attached an Azure Blob Storage container which had all the data (cheque images) I wanted to use for annotation.
 
 
 **Note**: Post running this pipeline, you could run the `zenml annotator dataset annotate <dataset_name>` to start up Label Studio and proceed with data annotation.
 
 
-2. *Process Labelled Data Pipeline:* 
+### Process Labeled Data Pipeline: 
 
-This was a simple post processing pipeline to convert the labelling output into a cleaner format and included the following steps:
+This was a simple post processing pipeline to convert the labeling output into a cleaner format and included the following steps:
 
-### Get Dataset: 
-Fetch details of the labelling dataset created in Label Studio using the `Cheque Labelling Pipeline`.
+#### Get Dataset: 
+This step is used to fetch details of the labeling dataset created in Label Studio using the `Cheque Labeling Pipeline`.
 
-### Get Labelled Data: 
-This step would take the annotation output (in JSON format) produced by Label Studio corresponding to the given dataset details fetched using previous step.
+#### Get Labeled Data: 
+This step would take the annotation output (in JSON format) produced by Label Studio corresponding to the given `dataset` fetched using previous step.
 
-### Convert annotations:
-Label Studio generates annotations by default in its own unique JSON format. However, I needed all the annotation files to follow one common format similar to the one that is included in the Kaggle dataset used for fine-tuning the model. The purpose of this step was to take the json output produced post annotation and convert it into the expected CSV file format which can be consumed as an input by the data processing pipeline.
+#### Convert annotations:
+Label Studio generates annotations by default in its own unique JSON format. However, I needed all the annotation files to follow one common format similar to the one that is included in the Kaggle dataset used for fine-tuning the model. The purpose of this step was to take the JSON output produced post annotation and convert it into the expected CSV file format which can be consumed as an input by the data processing pipeline.
 
 
 
 ## Data Processing Pipeline
-The purpose of this pipeline was to take the raw image data and corresponding labelling files and prepare a Hugging Face compatible dataset. The steps have been summarized below.
+The purpose of this pipeline was to take the raw image data and corresponding labeling file and prepare a Hugging Face compatible dataset. The steps have been summarized below.
 
 ### Import and clean data
 This step was used to import the annotation CSV file and do some data cleaning.
 
 ### Split Data
-This step was used prepare the train, test and validation splits for the data.
+The purpose of this step was to prepare the train, test and validation splits for the data.
 
 ### Create Metadata
-This step was used to prepare the metadata json files corresponding to train, validation and test splits of our data which would be required to prepare a [Hugging Face](https://huggingface.co/docs/datasets/index) compatible dataset.
+This step was used to prepare the metadata JSON files corresponding to train, validation and test splits of our data which would be required to prepare a [Hugging Face](https://huggingface.co/docs/datasets/index) compatible dataset.
 
 ### Store Data
-This step was used to combine and load the train, test and val splits of the data as a common dataset and push to the [Hugging Face Hub](https://huggingface.co/datasets/shivi/cheques_sample_data). 
+This step was used to combine and load the train, test and validation splits of the data as a common dataset and push to the [Hugging Face Hub](https://huggingface.co/datasets/shivi/cheques_sample_data). 
 
 
 
 ### Training Pipeline with Continuous Deployment
 
-The Training pipeline defines the end-to-end process of training the Donut model to predict the required cheque details. I leveraged MLFlow for both experiment tracking as well as model deployment as part of this pipeline.
+The Training pipeline defines the end-to-end process of training the Donut model to predict the required cheque details. I leveraged ZenML's MLFlow integration for both experiment tracking as well as model deployment as part of this pipeline.
 This pipeline also includes support for continuous deployment. Once model training is complete, the model can be evaluated on a test dataset and can then be deployed to a REST API endpoint, provided that the accuracy of the new model meets a certain threshold.
 
 The Training pipeline can be summarized as follows:
