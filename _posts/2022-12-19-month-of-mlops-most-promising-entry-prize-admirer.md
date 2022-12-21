@@ -1,6 +1,6 @@
 ---
 layout: post
-author: "The Transformees: Andrew Hinh and Aleks Hiidenhovi(Guest post)"
+author: "The Transformees: Andrew Hinh and Aleks Hiidenhovi (Guest post)"
 title: "Admirer: Open-Ended VQA Requiring Outside Knowledge"
 description: "A winning entry - 'Most Promising Entry' prize winner at Month of MLOps 2022 competition."
 category: zenml
