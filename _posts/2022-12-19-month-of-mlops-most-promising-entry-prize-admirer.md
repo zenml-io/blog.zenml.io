@@ -53,7 +53,7 @@ The second is creating data, training, and testing pipelines with both Makefiles
 
 
 ## 💭 Conclusion
-Having recently built a MVP of the project for the Full Stack Deep Learning course, we were excited to build out the data management and training pipelines for this competition. We were not disappointed: we got a chance to get our hands dirty building out the pipelines, showcase our work to numerous experts in the field and receive their feedback, and win the "Most Promising Entry" award! We'd like to thank the ZenML team for organizing this competition and the judges for their invaluable feedback.
+Having recently built a MVP of the project for the [Full Stack Deep Learning course](https://fullstackdeeplearning.com/), we were excited to build out the data management and training pipelines for this competition. We were not disappointed: we got a chance to get our hands dirty building out the pipelines, showcase our work to numerous experts in the field and receive their feedback, and win the "Most Promising Entry" award! We'd like to thank the ZenML team for organizing this competition and the judges for their invaluable feedback.
 
 ## 📚 Learn More
 Below are some of the resources to learn more about the project:
