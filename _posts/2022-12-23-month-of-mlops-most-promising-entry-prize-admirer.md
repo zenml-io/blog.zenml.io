@@ -5,14 +5,14 @@ title: "Admirer: Open-Ended VQA Requiring Outside Knowledge"
 description: "A winning entry - 'Most Promising Entry' prize winner at Month of MLOps 2022 competition."
 category: zenml
 tags: zenml-project month-of-mlops
-publish_date: December 19th, 2022
-date: 2022-12-19T00:02:00Z
+publish_date: December 23rd, 2022
+date: 2022-12-23T00:02:00Z
 thumbnail: /assets/posts/mlops-2022-most-promising-entry-prize-admirer/demo.png
 image:
   path: /assets/posts/mlops-2022-most-promising-entry-prize-admirer/demo.png
 ---
 
-**Last updated:** December 19, 2022.
+**Last updated:** December 23, 2022.
 
 For the ZenML Month of MLOps Competition, we created [Admirer](https://admirer.loca.lt/), a full-stack ML-powered website that utilizes users’ webcam feeds to answer open-ended questions requiring outside knowledge. Andrew built the MVP of the website as a [top-25 final project](https://bit.ly/3h8CqlX) for the [FSDL 2022 course](https://bit.ly/3NYNf6v), writing only the deployment code. We continued the project for the [ZenML Month of MLOps Competition](https://bit.ly/3EmoCxv) and won the `Most Promising Entry` prize in the [closing ceremony](https://bit.ly/3VCZqsl). During the competition, we wrote the data management, model development, testing, and continuous deployment scripts.
 
