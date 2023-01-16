@@ -5,7 +5,7 @@ title: Will they stay or will they go? Building a Customer Loyalty Predictor
 description: "We built an end-to-end production-grade pipeline using ZenML for a customer churn model that can predict whether a customer will remain engaged with the company or not."
 publish_date: May 27, 2022
 date: 2022-05-27T10:20:00Z
-tags: machine-learning mlops evergreen applied-zenml pipelines zenfile
+tags: machine-learning mlops evergreen applied-zenml pipelines zenml-project
 category: zenml
 thumbnail: /assets/posts/customer-churn/poster.jpg
 image:
