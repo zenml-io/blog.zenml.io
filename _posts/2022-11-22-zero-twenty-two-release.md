@@ -27,7 +27,7 @@ Let's dive right into the changes.
 
 ## 🍱 BentoML Integration
 
-The BentoML integration has been on our radar for some time now and we finally took the time to flesh it out with the help from our community contributor [Tim Cvetko](https://github.com/timothy102), and from the BentoML team [Aaron Pham](https://github.com/aarnphm), [Bozhao Yu](https://github.com/yubozhao), [Sean Sheng](https://github.com/ssheng) and [Jiang, Bo](https://github.com/bojiang).
+The BentoML integration has been on our radar for some time now and we finally took the time to flesh it out with the help from our community contributor [Timothy Cvetko](https://github.com/timothy102), and from the BentoML team [Aaron Pham](https://github.com/aarnphm), [Bozhao Yu](https://github.com/yubozhao), [Sean Sheng](https://github.com/ssheng) and [Jiang, Bo](https://github.com/bojiang).
 
 
 The new [BentoML integration](https://zenml.io/integrations/bentoml) includes a BentoML model deployer component that lets you deploy models using major machine learning frameworks (e.g. PyTorch, Tensorflow, HuggingFace, [etc](https://www.bentoml.com/)) on your local machine and in the cloud.

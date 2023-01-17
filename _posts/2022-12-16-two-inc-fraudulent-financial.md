@@ -30,7 +30,7 @@ Here's a video summary of our submission.
   <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/E9FsXqHaSwM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-For our submission, we decided to implement a fraud detection model using ZenML to utilise the framework 
+For our submission, we decided to implement a fraud detection model using ZenML to utilize the framework 
 for a problem similar to the ones our Data Science team works on.
 
 In particular, we used the [Synthetic data from a financial payment system](https://www.kaggle.com/datasets/ealaxi/banksim1) dataset, 
