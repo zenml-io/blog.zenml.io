@@ -219,7 +219,7 @@ different runs.
 is a platform for building and deploying portable, scalable machine learning
 workflows based on Docker containers.
 
-Check out our [docs](https://github.com/zenml-io/zenfiles) to find out how to
+Check out our [docs](https://docs.zenml.io/component-gallery/orchestrators/kubeflow) to find out how to
 quickly go from standard pipeline orchestration to using Kubeflow Pipelines for
 your own applications.
 
@@ -294,7 +294,7 @@ and would like to just sum it all up with these conclusions:
 ### What you should take away from this
 
 1. If you too want a Discord bot that predicts NBA games for you, checkout the
-   code [here](https://github.com/zenml-io/zenfiles/tree/main). Feel free to
+   code [here](https://github.com/zenml-io/zenml-projects/tree/main/nba-pipeline). Feel free to
    improve the underlying models or steps and open a pull request! We are eager
    for your feedback, so if you run into any issues or if you like what you see,
    come join us on [Slack](https://zenml.io/slack-invite/) and let us know!

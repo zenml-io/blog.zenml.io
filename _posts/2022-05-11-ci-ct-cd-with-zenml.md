@@ -171,7 +171,7 @@ The e-commerce sector is rapidly evolving as internet accessibility increases in
 
 ![Steps in the ZenML continuous deployment pipeline ]({{ site.url }}/assets/posts/customer-satisfaction/trainingandif.png)
 <p align="center">
-  See the full project code <a href="https://github.com/zenml-io/zenfiles/tree/main/customer-satisfaction">in our ZenFiles</a>
+  See the full project code <a href="https://github.com/zenml-io/zenml-projects/tree/main/customer-satisfaction">in our ZenML Projects repo</a>
 </p>
 
 ### How does it work?
@@ -216,7 +216,7 @@ deployment.run()
 
 In the deployment pipeline, ZenML's [MLflow tracking integration](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking) is used for logging the hyperparameter values and the trained model itself and the model evaluation metrics — as MLflow experiment tracking Artifacts — into the local MLflow backend. This pipeline also launches a local MLflow deployment server to serve the latest MLflow model if its accuracy is above a configured threshold.
 
-The MLflow deployment server runs locally as a daemon process that will continue to run in the background after the example execution is complete. When a new pipeline is run which produces a model that passes the accuracy threshold validation, the pipeline automatically updates the currently running MLflow deployment server to serve the new model instead of the old one. While this ZenFile trains and deploys a model locally, other ZenML integrations such as the [Seldon](https://github.com/zenml-io/zenml/tree/main/examples/) deployer can also be used similarly to deploy the model in a more production setting (such as on a Kubernetes cluster).
+The MLflow deployment server runs locally as a daemon process that will continue to run in the background after the example execution is complete. When a new pipeline is run which produces a model that passes the accuracy threshold validation, the pipeline automatically updates the currently running MLflow deployment server to serve the new model instead of the old one. While this ZenML Project trains and deploys a model locally, other ZenML integrations such as the [Seldon](https://github.com/zenml-io/zenml/tree/main/examples/) deployer can also be used similarly to deploy the model in a more production setting (such as on a Kubernetes cluster).
 
 To round it off, we deploy a [Streamlit](https://streamlit.io/) application that consumes the latest model service asynchronously from the pipeline logic. This can be done easily with ZenML within the StreamLit code:
 
@@ -241,4 +241,5 @@ ML pipelines add extra challenges to the DevOps CI/CD paradigms because they tak
 
 Start your MLOps journey today with `zenml go` and explore how we're working to solve real-world machine learning problems as [an open-source framework](https://github.com/zenml-io/zenml).
 
-[Join our Slack](https://zenml.io/slack-invite/) and show us your projects and tell us more about your experiences with ZenML!
+[Join our Slack](https://zenml.io/slack-invite/) and show us your projects and
+tell us more about your experiences with ZenML!
