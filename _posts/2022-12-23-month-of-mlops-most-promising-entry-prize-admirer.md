@@ -14,7 +14,7 @@ image:
 
 **Last updated:** December 23, 2022.
 
-For the ZenML Month of MLOps Competition, we created [Admirer](https://admirer.loca.lt/), a full-stack ML-powered website that utilizes users’ webcam feeds to answer open-ended questions requiring outside knowledge. Andrew built the MVP of the website as a [top-25 final project](https://bit.ly/3h8CqlX) for the [FSDL 2022 course](https://bit.ly/3NYNf6v), writing only the deployment code. We continued the project for the [ZenML Month of MLOps Competition](https://bit.ly/3EmoCxv) and won the `Most Promising Entry` prize in the [closing ceremony](https://bit.ly/3VCZqsl). During the competition, we wrote the data management, model development, testing, and continuous deployment scripts.
+For the ZenML Month of MLOps Competition, we created [Admirer](http://captafied.ngrok.io/), a full-stack ML-powered website that utilizes users’ webcam feeds to answer open-ended questions requiring outside knowledge. Andrew built the MVP of the website as a [top-25 final project](https://bit.ly/3h8CqlX) for the [FSDL 2022 course](https://bit.ly/3NYNf6v), writing only the deployment code. We continued the project for the [ZenML Month of MLOps Competition](https://bit.ly/3EmoCxv) and won the `Most Promising Entry` prize in the [closing ceremony](https://bit.ly/3VCZqsl). During the competition, we wrote the data management, model development, testing, and continuous deployment scripts.
 
 Here is a video summary of our submission.
 
@@ -58,5 +58,5 @@ Having recently built a MVP of the project for the [Full Stack Deep Learning cou
 ## 📚 Learn More
 Below are some of the resources to learn more about the project:
 * [GitHub Repository](https://github.com/andrewhinh/admirer)
-* [Project Demo](https://admirer.loca.lt/)
+* [Project Demo](http://captafied.ngrok.io/)
 * [Month of MLOps Closing Ceremony Presentation](https://bit.ly/3tsDi7V)
