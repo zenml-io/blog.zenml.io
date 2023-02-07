@@ -69,10 +69,15 @@ Project Templates are designed to help you get started quickly when working on a
 
 For those who are new to ZenML, project templates can serve as a valuable learning tool. They provide a starting point to understand the framework and its concepts, as well as best practices for ML projects. Whether you're looking to build simple pipelines or dive deep into a more complex project, the templates are a great way to quickly get up and running with ZenML and gain confidence in your work.
 
-## CTA for more templates
+## Share Your Knowledge, Help Others: Submit Your ML Project Templates
 
 While the current project templates provide a solid foundation for starting a new machine learning project, we know that there is a diverse range of ML use cases and requirements. That's why we're always looking for contributions from our community. If you have experience with a specific ML domain or use case and have developed a project template that you'd like to share, we'd love to hear from you! Your contribution can help others get started on their own projects and benefit from your expertise. By submitting your own project templates, you can also help shape the future of ZenML and make it more accessible and relevant to a wider range of ML practitioners. So if you're looking to give back and share your knowledge, consider contributing to the ZenML Project Templates.
 
 🔥 If you are interested in sharing all or parts of your project with us in the form of a ZenML project template, please [join our Slack](https://zenml.io/slack-invite) and leave us a message!
 
-If you have any questions or feedback regarding ZenML Project Templates, we encourage you to join our [weekly community hour](https://www.eventbrite.com/e/zenml-meet-the-community-tickets-354426688767). If you want to know more about ZenML or see more examples, check out our [docs](https://docs.zenml.io) and [examples](https://github.com/zenml-io/zenml/tree/main/examples).
+If you have any questions or feedback regarding ZenML Project Templates, we
+encourage you to join our [weekly community
+hour](https://www.eventbrite.com/e/zenml-meet-the-community-tickets-354426688767).
+If you want to know more about ZenML or see more examples, check out our
+[docs](https://docs.zenml.io) and
+[examples](https://github.com/zenml-io/zenml/tree/main/examples).
