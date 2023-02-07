@@ -24,7 +24,7 @@ Our documentation includes [a page listing best practices](https://docs.zenml.io
 
 At a very high level, you can use the ZenML CLI to generate the starter structure for an ML project. Using the starter template, the CLI will use your responses to generate the relevant modules and code.
 
-To get started, you can pass in the `--template` flag when initialising a ZenML repository:
+To get started, you can pass in the `--template` flag when initializing a ZenML repository:
 
 ```shell
 zenml init --template
