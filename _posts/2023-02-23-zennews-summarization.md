@@ -118,7 +118,7 @@ As an output, you should see:
 This will change your active ZenML stack to the default stack and run the 
 pipeline locally. This also means that the pipeline will download and utilize 
 the model locally.
-Would you like to continue? [y/N]: Y
+Would you like to continue? [y/N]: y
 
  ----- BUILDING AND RUNNING THE PIPELINE ----- 
 
