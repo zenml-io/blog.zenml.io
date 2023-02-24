@@ -148,7 +148,7 @@ see your pipeline!
 ╚═════════════════════════════════════════════════════════════════════════════╝
 
 [top_stories] Vuhledar, in eastern Ukraine, was once a prosperous mining town. 
-But now it's a wasteland -  one of many on Ukraine's 1,300 kilometre front line. 
+But now it's a wasteland -  one of many on Ukraine's 1,300 kilometer front line. 
 Some of the fiercest fighting of recent months has been here. The town sits on 
 high ground in the heavily contested Donbas region. Link                       
 
