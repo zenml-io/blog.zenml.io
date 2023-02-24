@@ -70,7 +70,7 @@ check out our [docs](https://docs.zenml.io/getting-started/introduction).
 
 ## How does it work?
 
-The **ZenNews** project is designed as a 
+The **ZenNews** project is published as a 
 [PyPI package](https://pypi.org/project/zennews/)
 that you can install through `pip`:
 
