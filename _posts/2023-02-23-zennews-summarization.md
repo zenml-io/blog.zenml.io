@@ -49,7 +49,7 @@ the process of building robust applications.
 2. **_ZenML is an extensible framework._** We realize that ML projects often 
 require custom-tailored solutions that deviate from off-the-shelf offerings. 
 This is why we employed base abstractions that empower users to craft their 
-solutions without needlessly reinventing the wheel. Take, for instance, [the 
+solutions without needlessly reinventing the wheel. Take a look, for instance, at [the 
 custom materializer](https://github.com/zenml-io/zenml-projects/blob/main/zen-news-summarization/src/zennews/materializers/article_materializer.py) 
 and [the custom stack component](https://github.com/zenml-io/zenml-projects/blob/main/zen-news-summarization/src/zennews/alerter/discord_alerter.py) 
 showcased in this project to see how effortlessly one can implement custom 
