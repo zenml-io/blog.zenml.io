@@ -93,7 +93,7 @@ serves as the primary interface for interacting with the pipeline and its steps.
 zennews --help 
 ```
 
-# How do I use it?
+## How do I use it?
 
 Once you have installed the `zennews` package, you can immediately test it 
 locally. By running the following command, you will retrieve the top five 
