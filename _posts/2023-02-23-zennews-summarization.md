@@ -4,7 +4,7 @@ author: "Baris Can Durak"
 title: "ZenNews: Generate summarized news on a schedule"
 description: "ZenNews is a tool powered by ZenML that can automate the summarization of news sources and save you time and effort while providing you with the information you need."
 category: zenml
-tags: tooling zenml summarization news
+tags: tooling zenml summarization news evergreen zenml-project nlp
 publish_date: February 24, 2023
 date: 2023-02-24T00:02:00Z
 thumbnail: /assets/posts/zennews/zennews.jpeg
