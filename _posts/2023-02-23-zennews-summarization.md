@@ -27,7 +27,7 @@ us identify what's worth further investigation.
 
 ## What we built: ZenNews
 
-This is where **ZenNews** come into play. It offers a tool that uses 
+This is where **ZenNews** comes into play. It offers a tool that uses 
 [ZenML](https://zenml.io/home) to automate the summarization process and save 
 users time and effort while providing them with the information they need. 
 This can be particularly valuable for busy professionals or anyone who wants 
