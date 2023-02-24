@@ -25,7 +25,7 @@ keep up with the news without being overwhelmed. They can also help us separate
 the signal from the noise, highlighting the most important details and helping 
 us identify what's worth further investigation. 
 
-## What did we build: ZenNews
+## What we built: ZenNews
 
 This is where **ZenNews** come into play. It offers a tool that uses 
 [ZenML](https://zenml.io/home) to automate the summarization process and save 
