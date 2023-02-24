@@ -5,8 +5,8 @@ title: "ZenNews: Generate summarized news on a schedule"
 description: "A tool powered by ZenML that can automate the summarization of news sources and save users time and effort while providing them with the information they need.."
 category: zenml
 tags: tooling zenml summarization news
-publish_date: February 23, 2023
-date: 2023-02-23T00:02:00Z
+publish_date: February 24, 2023
+date: 2023-02-24T00:02:00Z
 thumbnail: /assets/posts/zennews/zennews.jpeg
 image:
   path: /assets/posts/zennews/zennews.jpeg
