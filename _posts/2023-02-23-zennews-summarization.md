@@ -190,5 +190,5 @@ zennews bbc --schedule daily
 ```
 
 If you would like to see how you can set up such a stack, you can visit [the
-GitHub page](https://github.com/zenml-io/zenml-projects/tree/main/zen-news-summarization).
+GitHub page](https://github.com/zenml-io/zenml-projects/tree/main/zen-news-summarization) which contains a much more substantial technical summary around implementation and how you can reproduce it on your local setup/system.
 
