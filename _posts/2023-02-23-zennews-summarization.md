@@ -189,6 +189,6 @@ stack which features an orchestrator that supports scheduling.
 zennews bbc --schedule daily
 ```
 
-If you would like to see, how you can set up such a stack, you can visit [the
+If you would like to see how you can set up such a stack, you can visit [the
 GitHub page](https://github.com/zenml-io/zenml-projects/tree/main/zen-news-summarization).
 
