@@ -52,7 +52,7 @@ We used the [FAISS](https://faiss.ai) Vector Store. FAISS (Facebook AI Similarit
 
 The documents downloaded in earlier steps are split up into small 1000-character chunks, then combined together with embeddings and fed into the vector store. This special combination is what allows us to query a large corpus of text.
 
-The Slack bot itself wasn't too hard to put together. Our pattern of use was simple and well-defined. The only unusual part was using the vector store that had been generated in our pipeline as the basis for incoming Slack messages. We deployed our bot inside a container along with a way to query ZenML for the vector store on initialisation. It's now up and running courtesy of Google Cloud Run.
+The Slack bot itself wasn't too hard to put together. Our pattern of use was simple and well-defined. The only unusual part was using the vector store that had been generated in our pipeline as the basis for incoming Slack messages. We deployed our bot inside a container along with a way to query ZenML for the vector store on initialization. It's now up and running courtesy of Google Cloud Run.
 
 ## What we learned
 

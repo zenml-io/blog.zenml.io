@@ -64,7 +64,7 @@ When looked at from this perspective, it is more intuitive to understand that th
 
 ### Latency problems: 
 
-If latency is not accounted for whilst developing ML models, it can have a huge impact on a business. You could lose [half your traffic](https://www.thinkwithgoogle.com/consumer-insights/consumer-trends/mobile-site-load-time-statistics/) with a slow load-up of your application. This means that when employing models in production, one needs to be cognisant of latency requirements in production.
+If latency is not accounted for whilst developing ML models, it can have a huge impact on a business. You could lose [half your traffic](https://www.thinkwithgoogle.com/consumer-insights/consumer-trends/mobile-site-load-time-statistics/) with a slow load-up of your application. This means that when employing models in production, one needs to be cognizant of latency requirements in production.
 
 ### Maintaining fairness and avoiding bias
 
