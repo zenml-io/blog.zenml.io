@@ -54,7 +54,7 @@ In the first part of the project, we built a ZenML pipeline to handle data inges
 - Vector Store Construction: Once the data was ingested, we applied the necessary preprocessing and transformed it into a suitable format for querying. We then used the large language models to create a vector store, which would enable us to search and retrieve relevant information efficiently.
 - Saving to ZenML Artifact Store: The final piece was to save the resulting vector store in the ZenML artifact store. This allowed us to have a versioned and easily accessible storage system for our indexed data.
 
-![The steps run in our ZenML pipeline](/assets/slackbot/slackbot_pipeline_project.png)
+![The steps run in our ZenML pipeline](/assets/posts/slackbot/slackbot_pipeline_project.png)
 
 We thought about the kinds of data sources we'd want to be queried when users entered their queries. We take a lot of pride and effort to maintain our documentation so that was an obvious one to include. We considered adding [the `README` files of our `examples`](https://github.com/zenml-io/zenml/tree/main/examples) since that's often a starting point for our users, and we thought [our release notes](https://github.com/zenml-io/zenml/blob/main/RELEASE_NOTES.md) would also be useful to be part of the context.
 
