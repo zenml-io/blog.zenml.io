@@ -42,7 +42,7 @@ In particular, we wanted to experience how users of ZenML might go about using o
 
 Starting out, we wanted to get a feel for the two well-known options for developing on top of large language models — that is, LangChain and Llama Index — by trying out some of their core functionality. In particular, loading a series of documents, doing some kind of querying of those documents and packaging this all up into some kind of frontend user experience seemed like good places to start.
 
-**DIAGRAM HERE? : show the ML pipeline that indexes the data from github + slack and then CI/CD for the bot that gets picked up**
+![The big-picture workflow](/assets/posts/slackbot/big-picture-workflow.png)
 
 We approached the problem by dividing it into two main parts, each addressing a specific aspect of the project. The first part focused on creating the ZenML pipeline, while the second part concentrated on the larger workflow that would automate the bot updates.
 
