@@ -46,7 +46,7 @@ Starting out, we wanted to get a feel for the two well-known options for develop
 
 We approached the problem by dividing it into two main parts, each addressing a specific aspect of the project. The first part focused on creating the ZenML pipeline, while the second part concentrated on the larger workflow that would automate the bot updates.
 
-### Part 1: ZenML Pipeline
+### Part 1: Creating the Index with a ZenML Pipeline
 
 In the first part of the project, we built a ZenML pipeline to handle data ingestion, construct the vector store, and save the resulting data in the ZenML artifact store. The pipeline consisted of the following big-picture actions:
 
