@@ -66,7 +66,7 @@ We used the [FAISS](https://faiss.ai) Vector Store. FAISS (Facebook AI Similarit
 
 The documents downloaded in earlier steps are split up into small 1000-character chunks, then combined together with embeddings and fed into the vector store. This special combination is what allows us to query a large corpus of text.
 
-### Part 2: Automated Workflow for Bot Updates
+### Part 2: Deploying the ZenML Bot with an automated workflow
 
 The second part of the project focused on setting up a continuous integration and continuous deployment (CI/CD) workflow to ensure that the bot would be updated automatically whenever a new release was made. This process involved the following steps:
 
