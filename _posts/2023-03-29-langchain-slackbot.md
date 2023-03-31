@@ -20,7 +20,7 @@ In recent times, Large Language Models (LLMs) have taken the spotlight in the wo
 
 The ZenML Slack bot is [live](https://zenml.io/slack)! 🥳
 
-We couldn't ignore the growing enthusiasm surrounding LLMs, so we decided to explore how these emerging technologies could seamlessly fit into ZenML's MLOps workflows and standards. Our solution? We created and deployed a Slack bot to provide community support. Feel free to `@zenml-bot` in our `#general` Slack channel to receive assistance with your ZenML-related queries.
+We couldn't ignore the growing enthusiasm surrounding LLMs, so we decided to explore how these emerging technologies could seamlessly fit into ZenML's MLOps workflows and standards. Our solution? We created and [deployed a Slack bot](https://zenml.io/slack) to provide community support. Feel free to `@zenml-bot` in our `#general` Slack channel to receive assistance with your ZenML-related queries.
 
 ![The ZenML Slack bot in action (screenshot)](/assets/posts/slackbot/slackbot_support_redacted.png)
 
@@ -94,11 +94,13 @@ We deal with a decent volume of support requests in Slack, from the ultra-specif
 
 We benefited from many of ZenML's core features during this project:
 
-- caching allowed us to run our pipelines without needing to wait excessively to repeatedly query the same (mostly-unchanging) documents or data sources
-- switching between local stacks and deployed cloud infrastructure was simple, as always!
-- using ZenML's post-execution workflow we were able to query the artifact store and get the de-serialised FAISS vector store. This we then used within our deployed slack bot app.
-- collaboration through the dashboard: colleagues were able to inspect the progress of our pipelines as well as see where the underlying data was stored through the ZenML dashboard.
+- [caching](https://docs.zenml.io/starter-guide/pipelines/parameters-and-caching) allowed us to run our pipelines without needing to wait excessively to repeatedly query the same (mostly-unchanging) documents or data sources
+- automatic data versioning for free! (ZenML handles all of this for you out of
+  the box))
+- [switching between local stacks](https://docs.zenml.io/advanced-guide/practical-mlops/switching-orchestration) and deployed cloud infrastructure was simple, as always!
+- using ZenML's post-execution workflow we were able to [query the artifact store](https://docs.zenml.io/starter-guide/pipelines/fetching-pipelines) and get the de-serialised FAISS vector store. This we then used within our deployed slack bot app.
+- [collaboration through the dashboard](https://docs.zenml.io/starter-guide/pipelines/dashboard): colleagues were able to inspect the progress of our pipelines as well as see where the underlying data was stored through the ZenML dashboard.
 
 ## Where to go from here?
 
-If you'd like to see our Slack bot in action, feel free to [join us in Slack](https://zenml.io/slack) and get help on your problems even when the core team are asleep! Just mention `@zenml-bot` and you'll be on your way! The code behind the project is all available [in our open-source Projects repository](https://zenml.io/projects), as usual, and we'd invite you to check out how this all works under the hood.
+If you'd like to see our Slack bot in action, feel free to [join us in Slack](https://zenml.io/slack) and get help on your problems even when the core team are asleep! Just mention `@zenml-bot` and you'll be on your way! The code behind the project is all available [in our open-source Projects repository](https://github.com/zenml-io/zenml-projects), as usual, and we'd invite you to check out how this all works under the hood.
