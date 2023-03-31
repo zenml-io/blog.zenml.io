@@ -22,7 +22,7 @@ The ZenML Slack bot is [live](https://zenml.io/slack)! 🥳
 
 We couldn't ignore the growing enthusiasm surrounding LLMs, so we decided to explore how these emerging technologies could seamlessly fit into ZenML's MLOps workflows and standards. Our solution? We created and deployed a Slack bot to provide community support. Feel free to `@zenml-bot` in our `#general` Slack channel to receive assistance with your ZenML-related queries.
 
-**USER SCREENSHOT**
+![The ZenML Slack bot in action (screenshot)](/assets/posts/slackbot/slackbot_support_redacted.png)
 
 First, some context. Large language models (LLMs) have become a cornerstone of natural language processing, offering unparalleled capabilities for knowledge generation and reasoning. The past few weeks have seen a number of high profile releases of models and interfaces. However, despite their immense potential, incorporating custom, private data into these models [remains a challenge](https://docs.google.com/presentation/d/1VXQkR65ieROCmJP_ga09gGt8wkTGtTAdvaDRxMB67GI/edit#slide=id.p). This is where tools like [LangChain](https://github.com/hwchase17/langchain) and [LlamaIndex](https://github.com/jerryjliu/llama_index) (formerly 'GPT Index') come into play, offering innovative solutions for data ingestion and indexing, enabling developers to augment LLMs with their unique datasets.
 
