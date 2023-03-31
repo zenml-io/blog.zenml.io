@@ -74,6 +74,8 @@ The second part of the project focused on setting up a continuous integration an
 - Running the ZenML Pipeline: As part of the workflow, the ZenML pipeline would be executed, updating the vector store with the latest data and ensuring that the bot would be able to retrieve the most relevant information for user queries.
 - Deploying the Updated Bot: Once the pipeline had successfully run and the updated vector store was saved in the ZenML artifact store, the new version of the bot was automatically deployed to Slack. This ensured that users would always interact with the most current version of the bot, providing the best possible user experience.
 
+![Our automated workflow for updating the Slack bot](/assets/posts/slackbot/slack-automated-redeployment.png)
+
 The Slack bot itself wasn't too hard to put together. Our pattern of use was simple and well-defined. The only unusual part was using the vector store that had been generated in our pipeline as the basis for incoming Slack messages. We deployed our bot inside a container along with a way to query ZenML for the vector store on initialization. It's now up and running courtesy of Google Cloud Run.
 
 In summary, our project combined the power of ZenML with the capabilities of `langchain` and `llama_index` to create an automated system that not only indexed data from our documentation but also updated the bot continuously. This approach allowed us to harness the potential of large language models in a production setting while also getting hands-on experience with the emerging field of LLMOps or Big Model Ops.
