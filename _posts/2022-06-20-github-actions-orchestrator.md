@@ -12,7 +12,9 @@ image:
   path: /assets/posts/github-actions-orchestrator/roman-synkevych-wX2L8L-fGeA-unsplash.jpg
 ---
 
-**Last updated:** November 14, 2022.
+**Last updated:** April 3, 2023.
+
+*Note: This example does not work for any ZenML versions > 0.36.1.*
 
 We're really proud of our Kubeflow integration. It gives you a ton of power and flexibility and is a production-ready tool. But we also know that for many of you it's one step too many. Setting up a Kubernetes cluster is probably nobody's ideal way to spend their time, and it certainly requires some time investment to maintain.
 
