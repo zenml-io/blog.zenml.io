@@ -72,8 +72,6 @@ With the hub, extending ZenML has never been easier. Contributing a plugin is a 
 
 We believe that the ZenML Hub will help democratize MLOps by making it easier for everyone to contribute and consume code. By removing the barriers to entry for new contributors, we hope to accelerate innovation in the field and ultimately lead to more impactful solutions. The ultimate goal is to come to a series of standardized, reusable, components that will help all of us who are putting models in production.
 
-## Use Cases
-
 <figure>
   <img src="/assets/posts/hub/hub_list_plugins.png" alt="Plugins allow you to reuse code across projects">
   <figcaption style="text-align:center;font-size:14px;color:#666;">Plugins allow you to reuse code across projects</figcaption>
