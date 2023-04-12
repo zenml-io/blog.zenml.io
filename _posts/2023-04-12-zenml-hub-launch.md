@@ -20,7 +20,11 @@ Today, we are excited to announce the launch of the ZenML Hub, a major game-chan
 
 The goal of ZenML is to [standardize MLOps workflows](https://blog.zenml.io/zenml-mlops-framework/) across a rich and diverse ML tooling ecosystem. To achieve this, we have built key abstractions of components that allow users to integrate together a variety of tooling and infrastructure backends, without having to change their business layer logic. This allows MLOps practitioners to standardize processes, prevent vendor lock-in, and ensure reliability across their workflows:
 
-![ZenML Hub](/assets/posts/hub/hub.png)
+
+<figure>
+  <img src="/assets/posts/hub/hub.png" alt="ZenML: Standardizing and integrating MLOps components agnostic of tooling and infrastructure" style="width:100%;max-width:300px;">
+  <figcaption style="text-align:center;font-size:14px;color:#666;">ZenML: Standardizing and integrating MLOps components agnostic of tooling and infrastructure</figcaption>
+</figure>
 
 Some examples of using these components in practice are:
 
@@ -34,7 +38,11 @@ Some examples of using these components in practice are:
 
 Before today, these ZenML components were packaged within the core ZenML package and exposed via the `zenml integration` command line. While useful, this made it harder to modify and contribute more of these components for users and our community. With the launch of the ZenML Hub, we're making big strides toward making these components more widely accessible and easier to use than ever. In the Hub, ZenML stack component flavors, steps, materializers, and other pieces of useful code are packaged in `plugins`. These `plugins` are accessible [via a central registry that is available directly from the ZenML dashboard](https://docs.zenml.io/starter-guide/collaborate/zenml-hub).  Each plugin contains descriptions, tags, and helpful information on how to use it.
 
-![ZenML Hub](/assets/posts/hub/hub1.png)
+<figure>
+  <img src="/assets/posts/hub/hub_search_plugins.gif" alt="ZenML plugins are searchable from within the dashboard" style="width:100%;max-width:300px;">
+  <figcaption style="text-align:center;font-size:14px;color:#666;">ZenML plugins are searchable from within the dashboard</figcaption>
+</figure>
+
 
 To use a plugin, one simply needs to install it as follows:
 
@@ -54,7 +62,11 @@ from zenml.hub.langchain_qa_example import qa_pipeline
 
 ## 🌪️ Creating reproducible, standardized, and testable code for your team
 
-![ZenML Hub](/assets/posts/hub/hub1.png)
+<figure>
+  <img src="/assets/posts/hub/hub_submit_plugin.gif" alt="Easily create a plugin through the ZenML dashboard" style="width:100%;max-width:300px;">
+  <figcaption style="text-align:center;font-size:14px;color:#666;">Easily create a plugin through the ZenML dashboard</figcaption>
+</figure>
+
 
 With the hub, extending ZenML has never been easier. Contributing a plugin is a breeze: simply create and submit a public Github repository (like [this](https://github.com/zenml-io/zenml-hub-plugin-template)). After processing, your plugin is installable for all ZenML users, including your company and the community at large. This will foster a community-driven approach to building machine learning workflows. As more users contribute to the Hub, the community will benefit from a growing repository of high-quality, reusable components that can be used to build more complex workflows. This in turn enables users to create more impactful and efficient models while also providing the opportunity to collaborate with other community members.
 
@@ -70,7 +82,10 @@ Imagine a process where one user in your organization creates a standard wrapper
 
 As part of this launch, we are excited to introduce several new plugins that have already been added to the ZenML Hub. These plugins include standard steps and pipelines that can be easily and freely used for standard use cases with ZenML. We look forward to seeing how these new plugins will streamline the ML workflow and help everyone build better models faster.
 
-![ZenML Hub](/assets/posts/hub/hub2.png)
+<figure>
+  <img src="/assets/posts/hub/hub_plugin_details.png" alt="Plugins allow you to reuse code across projects" style="width:100%;max-width:300px;">
+  <figcaption style="text-align:center;font-size:14px;color:#666;">Plugins allow you to reuse code across projects</figcaption>
+</figure>
 
 Perhaps one of the most intuitive examples to get started with is the `langchain_qa_example` plugin. The plugin features a simple pipeline and steps that allow users to fetch data from a variety of sources (via [Langchain](https://github.com/hwchase17/langchain) and [LlamaIndex](https://github.com/jerryjliu/llama_index) data loading steps), create an index, and answer a query across the corpus using a GPT-3.5 (and beyond) LLM powered by OpenAI. To reproduce it locally, simply do:
 
@@ -87,11 +102,11 @@ pipeline = build_zenml_docs_qa_pipeline(question="What is ZenML?", load_all_path
 
 (When you first run this pipeline, it will run a series of steps that will scrape the [ZenML docs](https://docs.zenml.io), and build an index. Subsequent runs will be faster and re-use the index because of ZenML’s internal cache.)
 
-And there you go: You can now recreate a simple question-answering MLOps pipeline using cutting-edge LLMs and the latest libraries, which you can now go on to deploy on custom infrastructure. Of course, if you did want to use the individual steps or pipelines directly, feel free to check out the corresponding project and source code [here](https://github.com/zenml-io/zenml-projects/tree/hub-example/hub-example).
+And there you go: You can now recreate a simple question-answering MLOps pipeline using cutting-edge LLMs and the latest libraries, which you can now go on to deploy on custom infrastructure. Of course, if you did want to use the individual steps or pipelines directly, feel free to check out the corresponding project and source code [here]( https://github.com/zenml-io/zenml-projects/tree/main/langchain-qa-hub).
 
 ## 📡 What next?
 
-In the future, we plan to add more plugins, such as steps like an ONNX converter and step operators like Sagemaker, Spark, EMR, etc. We're also working on workflows to easily pull and fork public plugins, automated testing, and a playground to test steps.
+In the future, we plan to add more plugins, with steps like an ONNX converter and step operators like Sagemaker, Spark, EMR, etc. We're also working on workflows to easily pull and fork public plugins, automated testing, and a playground to test steps.
 
 For now ([release 0.38.0 onwards](https://github.com/zenml-io/zenml/releases)),
 the ZenML Hub is officially supported within the main ZenML package. Get started
