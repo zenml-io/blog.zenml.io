@@ -81,20 +81,20 @@ We believe that the ZenML Hub will help democratize MLOps by making it easier fo
 
 <!-- The ZenML Hub is inspired by similar projects such as the [HuggingFace Hub](https://huggingface.co/docs/hub/index),  [Kubeflow Components,](https://github.com/kubeflow/pipelines/tree/master/components) [LlamaIndex Hub,](https://llamahub.ai/) [Langchain Hub, and](https://github.com/hwchase17/langchain-hub) [TFX Add-ons](https://github.com/tensorflow/tfx-addons/tree/main/tfx_addons). The ZenML Hub shares synergies with a lot of these services, and delivers similar value.  -->
 
-One of the key use cases for the ZenML Hub is sharing reproducible code across different projects within an organization. If an organization has multiple machine learning projects being developed simultaneously, it can create a set of commonly-used steps that can be shared across all projects. These steps can include data loading, preprocessing, feature engineering, model training, and evaluation. By using the ZenML Hub, these components can be easily shared and reused across projects, saving time and effort.
+One of the key use cases for the ZenML Hub is sharing reproducible code across different projects within an organization. Take for example a company that is implementing multiple machine learning pipelines for various use-cases. These steps may include data loading, preprocessing, feature engineering, model training, and evaluation. The ZenML Hub will enable the creation of commonly-used steps that will then be shared across all projects, saving time and effort.
 
 Imagine a process where one user in your organization creates a standard wrapper to run a preprocessing job on Spark, a training job on Sagemaker, and a deployment job on AzureML. With the ZenML Hub, these components are discoverable, fully documented, and tested. The work is only done once, and the plugins can be updated, versioned, and maintained separately from the actual machine learning code.
 
 ## 🤖 Example: QA Bot with LangChain, LLamaIndex and OpenAI
 
-As part of this launch, we are excited to introduce several new plugins that have already been added to the ZenML Hub. These plugins include standard steps and pipelines that can be easily and freely used for standard use cases with ZenML. We look forward to seeing how these new plugins will streamline the ML workflow and help everyone build better models faster.
+As part of this launch, we are excited to introduce several new plugins that are added to the ZenML Hub. These plugins include standard steps and pipelines that can be easily and freely used for standard use cases with ZenML. We look forward to seeing how these new plugins will streamline the ML workflow and help everyone build better models faster.
 
 <figure>
   <img src="/assets/posts/hub/hub_plugin_details.png" alt="Gather all details into one central interface">
   <figcaption style="text-align:center;font-size:14px;color:#666;">Gather all details into one central interface</figcaption>
 </figure>
 
-Perhaps one of the most intuitive examples to get started with is the `langchain_qa_example` plugin. The plugin features a simple pipeline and steps that allow users to fetch data from a variety of sources (via [Langchain](https://github.com/hwchase17/langchain) and [LlamaIndex](https://github.com/jerryjliu/llama_index) data loading steps), create an index, and answer a query across the corpus using a GPT-3.5 (and beyond) LLM powered by OpenAI. To reproduce it locally, simply do:
+One of the most intuitive examples to get started with is the `langchain_qa_example` plugin. The plugin features a simple pipeline and steps that allow users to fetch data from a variety of sources (via [Langchain](https://github.com/hwchase17/langchain) and [LlamaIndex](https://github.com/jerryjliu/llama_index) data loading steps), create an index, and answer a query across the corpus using a GPT-3.5 (and beyond) LLM powered by OpenAI. To reproduce it locally, simply run:
 
 ```bash
 zenml hub install langchain_qa_example
@@ -121,5 +121,8 @@ with using your [first
 plugin](https://docs.zenml.io/starter-guide/collaborate/zenml-hub) and [start
 contributing](https://github.com/zenml-io/zenml-hub-plugin-template) today. Your
 contributions will help build a better future for machine learning and benefit
-the entire community. Thank you for your continued support, and stay tuned for
+the entire community. 
+
+As always, drop by the community [Slack](https://zenml.io) to give feedback, or ask
+any questions. Thank you for your continued support, and stay tuned for
 more exciting updates from the ZenML team!
