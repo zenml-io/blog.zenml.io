@@ -96,7 +96,7 @@ One of the most intuitive examples to get started with is the `langchain_qa_exam
 
 ```bash
 zenml hub install langchain_qa_example
-export OPENAI_KEY=<YOUR_KEY> # get it from https://platform.openai.com/account/api-keys
+export OPENAI_API_KEY=<YOUR_KEY> # get it from https://platform.openai.com/account/api-keys
 ```
 
 ```bash
