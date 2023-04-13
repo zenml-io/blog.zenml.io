@@ -124,3 +124,7 @@ the entire community.
 As always, drop by the community [Slack](https://zenml.io) to give feedback, or ask
 any questions. Thank you for your continued support, and stay tuned for
 more exciting updates from the ZenML team!
+
+## We're hiring! 👀
+
+ZenML is currently hiring for a number of positions. Check out [our careers page](https://zenml.io/careers) for more details!
