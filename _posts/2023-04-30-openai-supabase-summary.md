@@ -33,16 +33,12 @@ The you-tldr.com website updates the Supabase analytics table with the latest vi
 | ---------------------------------------------------------------------------------------------------- | ----------------------------- |
 | $75,000 Grants Now Available 10,000 Grants - Startups - Existing - Self Employed FREE MONEY NOT LOAN | 2023-04-19 16:39:23.157915+00 |
 | $90 3v3 Challenge: Domi, Size, Hummi vs Crazy, Ammo, Boycah | C&C Generals Zero Hour                 | 2023-04-30 00:29:03.918995+00 |
-| $9000 Table Build                                                                                    | 2023-04-30 02:00:03.849846+00 |
-| ''FBI Is Here! What Have You Done?" - The Story Of An American Missionary Who Converted To Islam     | 2023-04-22 14:54:03.371958+00 |
-| ''Gaslighting'' una forma silenciosa de manipulación.                                                | 2023-04-23 22:39:55.731069+00 |
-| '10% Happier': Mark Epstein | ABC News                                                               | 2023-04-26 14:06:19.7239+00   |
+| $9000 Table Build                                                                                    |
 | 'A Bad Case of Stripes' read by Sean Astin                                                           | 2023-03-29 08:43:27.115494+00 |
 | 'A Bicycle of the Mind' - Steve Jobs on the Computer                                                 | 2023-04-11 13:47:25.8898+00   |
 | 'A Day in the Life' at My Off Grid Property! | Fish Pond, Forest Maintenance, Winching, Sawmill Shed | 2023-04-29 20:34:57.28206+00  |
 | 'A Tale of Two Beasts' read by Sarah Silverman                                                       | 2023-03-23 13:50:36.405557+00 |
 | 'Brave Irene' read by Al Gore                                                                        | 2023-03-29 02:40:08.482399+00 |
-| 'Brexiteer' Complaining About The Reality Of Brexit?                                                 | 2023-04-14 10:18:38.21876+00  |
 | 'Brilliant' and 'disgusting': New Trump ad pokes fun at DeSantis' alleged eating habit               | 2023-04-18 01:45:52.157644+00 |
 | 'Censorship we can get behind': Elon Musk tears down tweet celebrating 'paedophile pride day'        | 2023-04-30 00:34:06.551438+00 |
 | 'Clark the Shark' read by Chris Pine                                                                 | 2023-03-27 02:49:25.704303+00 |
