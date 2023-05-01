@@ -197,3 +197,5 @@ In essence, the power of this project comes from its ability to provide a snapsh
 ## 🎯 Conclusion
 
 This case study demonstrates the power of combining ZenML with GPT-4 to analyze and version data from a Supabase database. By using ZenML to manage data versioning and GPT-4 for analysis, we can overcome the limitations of LLMs and gain valuable insights from our data. If you're interested in leveraging the latest technology for your own projects, consider using [ZenML](https://github.com/zenml-io/zenml) in conjunction with [Supabase](https://supabase.com/) and [OpenAI](https://openai.com/product/gpt-4) to unlock the full potential of your data.
+
+The full code base for the project can be found [on GitHub](https://github.com/zenml-io/zenml-projects/tree/main/supabase-openai-summary). Leave a star if you use it, it supports our open-source work!
