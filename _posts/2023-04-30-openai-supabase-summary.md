@@ -13,37 +13,20 @@ image:
 ---
 
 **Last updated:** April 30, 2023
-# Using ZenML with GPT-4 to Analyze and Version Data from Supabase: A Case Study with you-tldr.com
 
-In this blog post, we'll explore how ZenML can be used in conjunction with OpenAI's GPT-4 to analyze and version data from a Supabase database. We'll use the you-tldr.com website as an example, showcasing how the site populates an analytics table in Supabase and how ZenML asynchronously picks up the latest video data for analysis.
+In this blog post, we'll explore how ZenML can be used in conjunction with OpenAI's GPT-4 to analyze and version data from a Supabase database. We'll use the [you-tldr.com](https://you-tldr.com/) website as an example, showcasing how the site populates an analytics table in Supabase and how ZenML asynchronously picks up the latest video data for analysis.
 
 Large language models (LLMs) like GPT-4 have revolutionized natural language processing, offering unparalleled capabilities for knowledge generation and reasoning. However, incorporating custom, private data into these models remains a challenge. ZenML, an extensible, open-source MLOps framework, can help overcome this limitation by versioning data and allowing for comparisons between summaries rather than raw data.
 
 # 🧑‍🎓 The you-tldr.com Case Study
 
-[you-tldr.com](https://you-tldr.com) is a website that provides concise summaries of YouTube videos. The site populates an analytics table in Supabase with the latest video data from its users. We'll demonstrate how ZenML can be used to analyze this data using GPT-4 and version the summaries for comparison.
+[you-tldr.com](https://you-tldr.com) is a website that provides concise summaries of YouTube videos. The site populates an analytics table in Supabase with information about the kinds of videos that users are choosing to summarize. We'll demonstrate how ZenML can be used to analyze this data using GPT-4 and version the summaries for comparison.
 
 ## 🛠️ Creating the ZenML pipeline
 
 ### 📊 Populating a Supabase Analytics Table
 
 The you-tldr.com website updates the Supabase analytics table with the latest video titles. This table serves as the data source for our ZenML pipeline, which will use GPT-4 to generate summaries of visitor activity over the last 24 hours. Here is a snapshot of the data:
-
-| video_title                                                                                          | created_at                    |
-| ---------------------------------------------------------------------------------------------------- | ----------------------------- |
-| $75,000 Grants Now Available 10,000 Grants - Startups - Existing - Self Employed FREE MONEY NOT LOAN | 2023-04-19 16:39:23.157915+00 |
-| $90 3v3 Challenge: Domi, Size, Hummi vs Crazy, Ammo, Boycah | C&C Generals Zero Hour                 | 2023-04-30 00:29:03.918995+00 |
-| $9000 Table Build                                                                                    |
-| 'A Bad Case of Stripes' read by Sean Astin                                                           | 2023-03-29 08:43:27.115494+00 |
-| 'A Bicycle of the Mind' - Steve Jobs on the Computer                                                 | 2023-04-11 13:47:25.8898+00   |
-| 'A Day in the Life' at My Off Grid Property! | Fish Pond, Forest Maintenance, Winching, Sawmill Shed | 2023-04-29 20:34:57.28206+00  |
-| 'A Tale of Two Beasts' read by Sarah Silverman                                                       | 2023-03-23 13:50:36.405557+00 |
-| 'Brave Irene' read by Al Gore                                                                        | 2023-03-29 02:40:08.482399+00 |
-| 'Brilliant' and 'disgusting': New Trump ad pokes fun at DeSantis' alleged eating habit               | 2023-04-18 01:45:52.157644+00 |
-| 'Censorship we can get behind': Elon Musk tears down tweet celebrating 'paedophile pride day'        | 2023-04-30 00:34:06.551438+00 |
-| 'Clark the Shark' read by Chris Pine                                                                 | 2023-03-27 02:49:25.704303+00 |
-| 'Emergency' Fed rate cut by June, only 6 U.S. banks will be left by 2025 paving way for CBDC - Dowd  | 2023-03-25 09:02:01.49922+00  |
-
 ### 🔄 Asynchronously Reading Data in a ZenML pipeline
 
 Once the analytics table is populated, ZenML asynchronously picks up the latest video data and processes it using GPT-4. 
@@ -145,7 +128,7 @@ The step first retrieves the secret API key for OpenAI and checks for any previo
 
 The step then calls the GPT-4 API with the specified parameters and input data, including the documents and the previous analysis. The API returns a summary, which is then returned as the output of the step.
 
-This custom step can be adapted for other use cases by modifying the input parameters, the GPT-4 model, or the API call. For example, you could use this step to generate summaries for different types of data, use a different language model, or customize the API call to suit your specific needs. By customizing this step, you can harness the power of GPT-4 and Zen
+This custom step can be adapted for other use cases by modifying the input parameters, the GPT-4 model, or the API call. For example, you could use this step to generate summaries for different types of data, use a different language model, or customize the API call to suit your specific needs. By customizing this step, you can harness the power of GPT-4 and ZenML.
 
 ### 📆 Daily reports on Slack
 
