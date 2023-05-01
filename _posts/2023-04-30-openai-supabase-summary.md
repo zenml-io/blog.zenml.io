@@ -12,7 +12,7 @@ image:
   path: /assets/posts/gpt-4-supabase-summary/youtldr_summarizer_slack.png
 ---
 
-**Last updated:** April 30, 2023
+**Last updated:** May 1, 2023
 
 In this blog post, we'll explore how [ZenML](https://zenml.io) can be used in conjunction with [OpenAI's GPT-4](https://openai.com/product/gpt-4) to analyze and version data from a [Supabase](https://supabase.com/) database. We'll use the [you-tldr.com](https://you-tldr.com/) website as an example, showcasing how the site populates an analytics table in Supabase and how ZenML asynchronously picks up the latest video data for analysis.
 
