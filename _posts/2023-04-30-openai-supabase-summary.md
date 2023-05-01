@@ -147,7 +147,7 @@ The step then calls the GPT-4 API with the specified parameters and input data, 
 
 This custom step can be adapted for other use cases by modifying the input parameters, the GPT-4 model, or the API call. For example, you could use this step to generate summaries for different types of data, use a different language model, or customize the API call to suit your specific needs.
 
-### 📆 Daily reports on Slack
+## 📆 Daily reports on Slack
 
 <figure>
   <img src="/assets/posts/gpt-4-supabase-summary/youtldr_summarizer_slack.png" alt="Analysis is reported to Slack every day.">
