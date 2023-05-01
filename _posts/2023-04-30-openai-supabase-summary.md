@@ -145,7 +145,7 @@ The step first retrieves the secret API key for OpenAI and checks for any previo
 
 The step then calls the GPT-4 API with the specified parameters and input data, including the documents and the previous analysis. The API returns a summary, which is then returned as the output of the step.
 
-This custom step can be adapted for other use cases by modifying the input parameters, the GPT-4 model, or the API call. For example, you could use this step to generate summaries for different types of data, use a different language model, or customize the API call to suit your specific needs. By customizing this step, you can harness the power of GPT-4 and ZenML.
+This custom step can be adapted for other use cases by modifying the input parameters, the GPT-4 model, or the API call. For example, you could use this step to generate summaries for different types of data, use a different language model, or customize the API call to suit your specific needs.
 
 ### 📆 Daily reports on Slack
 
@@ -153,6 +153,20 @@ This custom step can be adapted for other use cases by modifying the input param
   <img src="/assets/posts/gpt-4-supabase-summary/youtldr_summarizer_slack.png" alt="Analysis is reported to Slack every day.">
   <figcaption style="text-align:center;font-size:14px;color:#666;">Analysis is reported to Slack every day.</figcaption>
 </figure>
+
+The last step in the pipeline posts the latest summary every day to a shared Slack channel. This allows us to keep an overview of the changes happening to the data over time. For example, yesterday the report said:
+
+The latest data from the database indicates the following key insights:
+
+1. There is a diverse range of video topics, including technology, economics, philosophy, aviation, health, politics, and entertainment.
+2. Educational and informative content seems to be popular among users, with videos on subjects like economics, engineering, and artificial intelligence.
+3. There is a noticeable interest in videos featuring influential figures, such as Steve Jobs and Noam Chomsky.
+4. Users are also watching content related to personal development and self-improvement, such as videos on Landmark Forum and focusing the unconscious mind.
+5. There is a significant presence of videos discussing current events and global issues, such as the Russia-Ukraine conflict and climate change.
+6. Entertainment content includes gaming videos, comedy sketches, and movie reviews.
+7. Some users are watching videos in languages other than English, indicating a diverse user base.
+
+So now we know so much more about the usage of the website! Perhaps we could now cater it more for the needs of students watching educational content, or maybe have some affiliate marketing campaigns with self-improvement content creators online!
 
 ## 🚀 Overcoming GPT-4 Limitations with ZenML
 
