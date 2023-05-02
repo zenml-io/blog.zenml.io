@@ -1,7 +1,7 @@
 ---
 layout: post
 author: "Hamza Tahir"
-title: "Using ZenML with LLMs to Analyze and Version Data from Databases: A Case Study with you-tldr.com and Supabase/GPT-4"
+title: "Using ZenML with LLMs to Analyze Your Databases: A Case Study with you-tldr.com and Supabase/GPT-4"
 description: "Explore how ZenML, an MLOps framework, can be used with large language models (LLMs) like GPT-4 to analyze and version data from databases like Supabase. In this case study, we examine the you-tldr.com website, showcasing ZenML pipelines asynchronously processing video data and generating summaries with GPT-4. Understand how to tackle large language model limitations by versioning data and comparing summaries to unlock your data's potential. Learn how this approach can be easily adapted to work with other databases and LLMs, providing flexibility and versatility for your specific needs."
 category: zenml
 tags: tooling zenml evergreen llm foundationmodels
