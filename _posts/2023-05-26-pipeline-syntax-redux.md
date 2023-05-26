@@ -22,17 +22,45 @@ your ZenML steps and pipelines.
 
 In our continuous efforts to simplify and enhance your experience with ZenML,
 we're thrilled to roll out a significant update that relates to our pipeline and
-step definition syntax. This substantial modification, the culmination of user
+step ~~def~~inition syntax. This substantial modification, the culmination of user
 feedback and internal testing, is designed to make working with ZenML
 much more natural, intuitive, and enjoyable.
 
 At the core of this change we wanted to make it more flexible to work with two of ZenML's core building blocks: pipelines and steps. We've overhauled the syntax with the primary aim to get out of your way and allow you to focus on what really matters: building efficient, reproducible, and robust machine learning pipelines.
 
-We believe these improvements will make a considerable difference in your ZenML experience. Let's dive into the new features that you will love using!
+We believe these improvements will make a considerable difference in your ZenML experience. Let's dive into the new features that you will love using! First thing's first, new `Pipeline` goodies:
 
-## No More BaseParameters Class
+# Pipeline Definitions
 
-In the previous version, you had to define a separate class for step parameters using `BaseParameters`. This is no longer necessary, although it is still supported for backward compatibility. You can now pass parameters directly in the step function:
+## Use External Artifacts
+
+External artifacts can be used to pass values to steps that are not produced by an upstream step. This common use case provides more flexibility when working with external data or models:
+
+```python
+from zenml.steps.external_artifact import ExternalArtifact
+
+@pipeline
+def my_pipeline(lr: float):
+    data = process_data()
+    trainer(data=data, start_model=ExternalArtifact(svc.SVC(...)))
+```
+
+Instead of having to define an initial dataloader step, you can now just use these `ExternalArtifact` objects directly within your pipeline definition.
+
+## Pipelines take Input Parameters
+
+Pipelines now support input parameters, making it easier to pass values to your steps. You can use the step directly in the pipeline function and pass pipeline parameters or raw input parameters:
+
+```python
+@pipeline
+def my_pipeline(lr: float):
+    data = process_data()
+    trainer(data=data, lr=lr, gamma=0.0002)
+```
+
+This allows you to configure (and run using) flexible hyperparameters. These input parameters become supercharged with our next feature: pipelines within pipelines!
+
+Step parameters have also been improved: in previous versions, you had to define a separate class for step parameters using `BaseParameters`. This is no longer necessary, although it is still supported for backward compatibility. You can now pass parameters directly in the step function:
 
 ```python
 @step 
@@ -41,13 +69,34 @@ def trainer(data: pd.Dataframe, lr: float = 0.1, gamma: Optional[float] = 0.02) 
     print(gamma)
 ```
 
-## Simplified Pipeline Execution
+## Pipeline-ception!
 
-With the new changes, you no longer need to create a pipeline instance and then run it separately. You can now pass parameters directly at pipeline instance creation and execute the pipeline in a single step:
+You can now call pipelines within other pipelines. This does not execute the inner pipeline but instead adds its steps to the parent pipeline, allowing you to create modular and reusable workflows:
 
 ```python
-my_pipeline(lr=0.000001)
+@pipeline(enable_cache=False)
+def my_pipeline(a: int = 1):
+    p1_output = subpipeline(pipeline_param=22)
+    step_2(a=a, b=p1_output)
 ```
+
+We've heard from lots of users that they'd like to have this feature, which might neatly combine with the ability to pass in input parameters to your pipeline. As always, you can definitely go overboard with the layers of abstraction used, but at least now you have the power to tackle some of those more complicated workflows.
+
+## Defining Inputs and Outputs for Pipelines
+
+Pipelines can now define inputs and outputs, providing a clearer interface for working with data and dependencies between pipelines:
+
+```python
+@pipeline(enable_cache=False)
+def subpipeline(pipeline_param: int):
+    out = step_1(k=None)
+    step_2(a=3, b=pipeline_param)
+    return 17
+```
+
+This would be useful, for example, when running an embedded pipeline that needed to pass some value to either a step or another pipeline. Really the sky's the limit with these new flexible features!
+
+## Calling Steps Multiple Times Inside a Pipeline
 
 You can now call steps multiple times inside a pipeline, allowing you to create more complex workflows and reuse steps with different parameters:
 
@@ -62,55 +111,74 @@ def my_pipeline(step_count: int) -> None:
     model = select_model_step(..., after=after)
 ```
 
-Pipelines can now define inputs and outputs, providing a clearer interface for working with data and dependencies between pipelines:
+This was also a much-requested feature from our users and community members that the new release now unlocks.
+
+You'll not only want to configure context-specific hyperparameters for your pipelines, but infrastructure-specific configuration is also important. We have a new way to do that:
+
+## Configuring Pipelines with `.with_options()`
+
+When creating a pipeline, you should now use the `.with_options()` method to configure it:
 
 ```python
-@pipeline(enable_cache=False)
-def subpipeline(pipeline_param: int):
-    out = step_1(k=None)
-    step_2(a=3, b=pipeline_param)
-    return 17
+if __name__ == "__main__":
+    pipeline_copy = my_pipeline.with_options(
+        enable_cache=False,
+    )
+    pipeline_copy()
 ```
 
-You can now call pipelines within other pipelines. This currently does not execute the inner pipeline but instead adds its steps to the parent pipeline, allowing you to create modular and reusable workflows:
+# Using your Pipelines
+
+We added some quality-of-life improvements to how you can work with pipelines and steps:
+
+## Simplified Pipeline Execution
+
+You no longer need to create a pipeline instance and then run it separately. You can now pass parameters directly at pipeline instance creation and execute the pipeline in a single step:
 
 ```python
-@pipeline(enable_cache=False)
-def my_pipeline(a: int = 1):
-    p1_output = subpipeline(pipeline_param=22)
-    step_2(a=a, b=p1_output)
+my_pipeline(lr=0.000001)
 ```
 
-## Increased flexibility when defining steps
+This not only makes ZenML a little more Pythonic but it makes it easier to use because you can run our pipeline and steps just like you would imagine they'd work. To that end, you can now also call steps directly outside of a pipeline, making it easier to test and debug your code:
 
-Steps can now have `Optional`, `Union`, and `Any` type annotations for their inputs and outputs. Additionally, default values are allowed for step inputs.
+```python
+trainer(data=pd.Dataframe(...)
+start_model=svc.SVC(...))
+```
+
+Note that this just runs the function so if you want your artifacts tracked, your code and runs versioned (i.e. all the benefits that ZenML brings) you'll want to run these steps as part of a pipeline.
+
+# General Improvements
+
+We thought about how to make working with pipelines and steps cleaner and easier so here are two other small improvements:
+
+## Cleaner Imports
+
+We have made the imports cleaner by removing the need to import `BaseParameters` and `step` separately. Now, you can simply import `step` and `pipeline` from `zenml`:
+
+```python
+from zenml import step, pipeline
+```
+
+## Enhanced Type Annotations for Step Inputs/Outputs
+
+Steps can now have `Optional`, `Union`, and `Any` type annotations for their inputs and outputs. This allows you to pass different types of values at runtime, choose not to pass a value at all, or pass `None`. You can also return any type and specify a materializer for it, or use the default `cloudpickle` materializer:
 
 ```python
 @step
 def trainer(data: pd.Dataframe, start_model: Union[svm.SVC, svm.SVR], coef0: Optional[int] = None) -> Any:
-    pass
+    #...your code goes here...
 ```
 
-You can now easily run a step outside of a pipeline, making it easier to test and debug your code:
+Additionally, default values are allowed for step inputs.
 
-```python
-trainer(data=pd.Dataframe(...), start_model=svc.SVC(...))
-```
+# Migrating to the New Interface
 
-External artifacts can be used to pass values to steps that are not produced by an upstream step. This provides more flexibility when working with external data or models:
+The new interface is backwards-compatible, so you don't need to worry about it breaking your existing code. However, we recommend switching to the new way of doing things for a more streamlined experience and we do consider the old way deprecated. (It will be removed in the future).
 
-```python
-from zenml.steps.external_artifact import ExternalArtifact
+To migrate, simply update your imports, remove the `BaseParameters` class, pass parameters directly in the step function, and update your pipeline definition and execution as shown in the examples above.
 
-@pipeline
-def my_pipeline(lr: float):
-    data = process_data()
-    trainer(data=data, start_model=ExternalArtifact(svc.SVC(...)))
-```
-
-## Get Started with the new interface and features!
-
-To get started, simply import the new `@step` and `@pipeline` decorator and check out our new [starter guide](https://docs.zenml.io/user-guide/starter-guide) for more information.
+To get started, simply import the new `@step` and `@pipeline` decorator and check out [our new starter guide](https://docs.zenml.io/user-guide/starter-guide) for more information.
 
 ```python
 from zenml import step, pipeline
@@ -124,6 +192,6 @@ def my_pipeline(...):
     ...
 ```
 
-Note that the old pipeline and step interface is still working using the imports from previous ZenML releases but is deprecated and will be removed in the future.
+We hope you enjoy the improvements in ZenML 0.40.0 and find it easier to create and manage your pipelines. As always, we welcome your feedback and suggestions for future updates.
 
 If you run into any issues or want to discuss a specific use case, please reach out to us on [Slack](https://zenml.io/slack-invite/).
