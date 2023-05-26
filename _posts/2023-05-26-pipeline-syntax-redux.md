@@ -2,7 +2,8 @@
 layout: post
 author: "Alex Strick van Linschoten"
 title: "Unleashing More Power and Flexibility with ZenML's New Pipeline and Step Syntax"
-description: ""
+description: "The 0.40.0 release introduces a completely reworked interface for developing
+your ZenML steps and pipelines. It makes working with these components much more natural, intuitive, and enjoyable."
 category: zenml
 tags: zenml evergreen framework
 publish_date: May 26, 2023
