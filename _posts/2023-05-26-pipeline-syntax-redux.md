@@ -50,7 +50,7 @@ With the new changes, you no longer need to create a pipeline instance and then 
 my_pipeline(lr=0.000001)
 ```
 
-## You can now call steps multiple times inside a pipeline, allowing you to create more complex workflows and reuse steps with different parameters:
+You can now call steps multiple times inside a pipeline, allowing you to create more complex workflows and reuse steps with different parameters:
 
 ```python
 @pipeline
@@ -63,7 +63,7 @@ def my_pipeline(step_count: int) -> None:
     model = select_model_step(..., after=after)
 ```
 
-## Pipelines can now define inputs and outputs, providing a clearer interface for working with data and dependencies between pipelines:
+Pipelines can now define inputs and outputs, providing a clearer interface for working with data and dependencies between pipelines:
 
 ```python
 @pipeline(enable_cache=False)
@@ -73,7 +73,7 @@ def subpipeline(pipeline_param: int):
     return 17
 ```
 
-## You can now call pipelines within other pipelines. This currently does not execute the inner pipeline but instead adds its steps to the parent pipeline, allowing you to create modular and reusable workflows:
+You can now call pipelines within other pipelines. This currently does not execute the inner pipeline but instead adds its steps to the parent pipeline, allowing you to create modular and reusable workflows:
 
 ```python
 @pipeline(enable_cache=False)
@@ -82,7 +82,9 @@ def my_pipeline(a: int = 1):
     step_2(a=a, b=p1_output)
 ```
 
-## Increased flexibility when defining steps: Steps can now have `Optional`, `Union`, and `Any` type annotations for their inputs and outputs. Additionally, default values are allowed for step inputs.
+## Increased flexibility when defining steps
+
+Steps can now have `Optional`, `Union`, and `Any` type annotations for their inputs and outputs. Additionally, default values are allowed for step inputs.
 
 ```python
 @step
@@ -90,13 +92,13 @@ def trainer(data: pd.Dataframe, start_model: Union[svm.SVC, svm.SVR], coef0: Opt
     pass
 ```
 
-##  You can now easily run a step outside of a pipeline, making it easier to test and debug your code:
+You can now easily run a step outside of a pipeline, making it easier to test and debug your code:
 
 ```python
 trainer(data=pd.Dataframe(...), start_model=svc.SVC(...))
 ```
 
-## External artifacts can be used to pass values to steps that are not produced by an upstream step. This provides more flexibility when working with external data or models:
+External artifacts can be used to pass values to steps that are not produced by an upstream step. This provides more flexibility when working with external data or models:
 
 ```python
 from zenml.steps.external_artifact import ExternalArtifact
