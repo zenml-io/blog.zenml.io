@@ -28,7 +28,7 @@ much more natural, intuitive, and enjoyable.
 
 At the core of this change we wanted to make it more flexible to work with two of ZenML's core building blocks: pipelines and steps. We've overhauled the syntax with the primary aim to get out of your way and allow you to focus on what really matters: building efficient, reproducible, and robust machine learning pipelines.
 
-We believe these improvements will make a considerable difference in your ZenML experience. Let's dive into the new features that you will love using! First thing's first, new `Pipeline` goodies:
+We believe these improvements will make a considerable difference in your ZenML experience. Let's dive into the new features that you will love using! First things first: new `Pipeline` goodies:
 
 # Pipeline Definitions
 
