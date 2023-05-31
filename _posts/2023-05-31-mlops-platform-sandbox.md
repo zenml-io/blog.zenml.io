@@ -16,7 +16,7 @@ image:
 
 ![Screenshots of the MLOps Platform Sandbox](/assets/posts/sandbox/sandbox-launch.png)
 
-We are excited to launch the MLOps Platform Sandbox, a one-click deployment platform for an ephemeral MLOps stack that you can use to run production-ready MLOps pipelines in the cloud. The MLOps Platform Sandbox allows you to create a sandbox with a stack made up of ZenML, Kubeflow, MLflow, and Minio Bucket. The Sandbox comes with pre-built example pipelines that you can run and try out. It provides a seamless experience for you to experiment with these tools without worrying about infrastructure setup and management.
+We are excited to launch the MLOps Platform Sandbox, a one-click deployment platform for an ephemeral MLOps stack that you can use to run production-ready MLOps pipelines in the cloud. The MLOps Platform Sandbox allows you to create a sandbox with a stack made up of [ZenML](https://zenml.io/), [Kubeflow](https://www.kubeflow.org/), [MLflow](https://mlflow.org/), and [Minio ](https://min.io/) Bucket. The Sandbox comes with pre-built example pipelines that you can run and try out. It provides a seamless experience for you to experiment with these tools without worrying about infrastructure setup and management.
 
 ## Simplifying MLOps Platform Deployment
 
