@@ -30,11 +30,11 @@ You can sign up with Google and start a demo sandbox. After a few minutes, you'l
 
 ## Why ZenML On Kubeflow / MLflow / Minio?
 
-IMAGE OF STACK GOES HERE
-
 Using ZenML with Kubeflow, MLflow, and Minio is a representative stack as it includes a production-ready orchestrator, an object storage component for data versioning, and a popular experiment tracking tool in machine learning. ZenML's stack recipe system is designed to allow you to easily swap out components and infrastructure based on your company's needs.
 
 ## How to Use the Sandbox
+
+![Screenshot of the MLOps Platform Sandbox](/assets/posts/sandbox/zenml_sandbox_step_3_commands.png)
 
 The Sandbox provides you with pre-built pipelines that you can easily re-run or modify to suit your needs. If you want to run your own custom code inside your sandbox, there are a few more steps you'll have to do, all of which is [described in our dedicated documentation page](https://docs.zenml.io/user-guide/advanced-guide/sandbox).
 
