@@ -16,7 +16,7 @@ image:
 
 ![Screenshots of the MLOps Platform Sandbox](/assets/posts/sandbox/sandbox-launch.png)
 
-We are excited to launch the MLOps Platform Sandbox, a one-click deployment platform for an ephemeral MLOps stack that enables you to run production-ready MLOps pipelines in a deployed cloud stack. The MLOps Platform Sandbox allows users to create a sandbox with ZenML, Kubeflow, MLflow, and Minio Bucket stack, and to run pre-built example pipelines. It provides a seamless experience for users to experiment with these tools without worrying about infrastructure setup and management.
+We are excited to launch the MLOps Platform Sandbox, a one-click deployment platform for an ephemeral MLOps stack that you can use to run production-ready MLOps pipelines in the cloud. The MLOps Platform Sandbox allows users to create a sandbox with a stack made up of ZenML, Kubeflow, MLflow, and Minio Bucket. The Sandbox comes with pre-built example pipelines that you can run and try out. It provides a seamless experience for users to experiment with these tools without worrying about infrastructure setup and management.
 
 ## Simplifying MLOps Platform Deployment
 
@@ -32,9 +32,9 @@ Using ZenML with Kubeflow, MLflow, and Minio is a representative stack as it inc
 
 ## How to Use the Sandbox
 
-The sandbox provides users with pre-built pipelines that they can easily re-run or modify to suit their needs. However, users cannot (easily) create new pipeline builds within the sandbox, as the container registry used within the sandbox only provides read access and not write access to the public. This limitation is in place to control costs and showcase how MLOps engineers can gate their developers through a central control plane by enforcing these sorts of rules. (If you want to )
+The sandbox provides users with pre-built pipelines that they can easily re-run or modify to suit their needs. If you want to run your own custom code inside your sandbox, there are a few more steps you'll have to do, all of which is [described in our dedicated documentation page](https://docs.zenml.io/user-guide/advanced-guide/sandbox).
 
-The sandbox provides users with pre-built pipelines that they can easily re-run or modify to suit their needs. To list the available pre-built pipelines, simply use the command `zenml pipeline list`. This will display a list of pipelines, including their build IDs, which you can use to run a specific pipeline.
+To list the available pre-built pipelines with which your sandbox comes, simply use the command `zenml pipeline list`. This will display a list of pipelines, including their build IDs, which you can use to run a specific pipeline.
 
 To run a pipeline with a build, use the command `zenml pipeline run <PIPELINE_NAME> --build_id <BUILD_ID>`. For example, to run the `langchain_pipeline`, you would enter `zenml pipeline run langchain_pipeline --build_id <BUILD_ID>`, replacing `<BUILD_ID>` with the appropriate build ID from the list.
 
