@@ -2,7 +2,7 @@
 layout: post
 author: "Alex Strick van Linschoten"
 title: "Launching MLOps Platform Sandbox: A Production-Ready MLOps Platform in an Ephemeral Environment"
-# description: "TKTK"
+description: "An easy way to deploy an ephemeral MLOps stack, inclusive of ZenML, Kubeflow, MLflow, and Minio Bucket. This one-stop sandbox provides users an interactive playground to explore pre-built pipelines and effortlessly experiment with various MLOps tools, without the burden of infrastructure setup and management."
 category: zenml
 tags: tooling zenml evergreen mlops sandbox
 publish_date: May 31, 2023
