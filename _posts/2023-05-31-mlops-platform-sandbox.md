@@ -36,7 +36,7 @@ The Sandbox provides you with pre-built pipelines that you can easily re-run or 
 
 To list the available pre-built pipelines with which your sandbox comes, simply use the command `zenml pipeline list`. This will display a list of pipelines, including their build IDs, which you can use to run a specific pipeline.
 
-To run a pipeline with a build, use the command `zenml pipeline run <PIPELINE_NAME> --build_id <BUILD_ID>`. For example, to run the `langchain_pipeline`, you would enter `zenml pipeline run langchain_pipeline --build_id <BUILD_ID>`, replacing `<BUILD_ID>` with the appropriate build ID from the list.
+To run a pipeline with a build, use the command `zenml pipeline run <PIPELINE_NAME> --build_id <BUILD_ID>`. For example, to run the `mlflow_example_pipeline`, you would enter `zenml pipeline run mlflow_example_pipeline --build_id <BUILD_ID>`, replacing `<BUILD_ID>` with the appropriate build ID from the list.
 
 Using these pre-built pipelines makes it incredibly easy to reproduce results and experiment with powerful tools integrated into the ZenML framework. By leveraging the MLOps Platform Sandbox, you can quickly explore the capabilities of a unified MLOps platform in the context of real ML pipelines without the hassle of setting up and managing your own infrastructure.
 
