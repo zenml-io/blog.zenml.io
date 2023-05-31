@@ -14,6 +14,8 @@ image:
 
 **Last updated:** May 31, 2023
 
+![Screenshots of the MLOps Platform Sandbox](/assets/posts/sandbox/sandbox-launch.png)
+
 We are excited to launch the MLOps Platform Sandbox, a one-click deployment platform for an ephemeral MLOps stack that enables you to run production-ready MLOps pipelines in a deployed cloud stack. The MLOps Platform Sandbox allows users to create a sandbox with ZenML, Kubeflow, MLflow, and Minio Bucket stack, and to run pre-built example pipelines. It provides a seamless experience for users to experiment with these tools without worrying about infrastructure setup and management.
 
 ## Simplifying MLOps Platform Deployment
@@ -24,11 +26,13 @@ Users can sign up with Google and start a demo sandbox. After a few minutes, the
 
 ## Why ZenML On Kubeflow / MLflow / Minio
 
+IMAGE OF STACK GOES HERE
+
 Using ZenML with Kubeflow, MLflow, and Minio is a representative stack as it includes a production-ready orchestrator, an object storage for data versioning, and a popular experiment tracking tool in machine learning. ZenML's stack recipe system is designed to allow you to easily swap out components and infrastructure based on your company's needs.
 
 ## How to Use the Sandbox
 
-The sandbox provides users with pre-built pipelines that they can easily re-run or modify to suit their needs. However, users cannot create new pipeline builds within the sandbox, as the container registry used within the sandbox only provides read access and not write access to the public. This limitation is in place to control costs and showcase how MLOps engineers can gate their developers through a central control plane by enforcing these sorts of rules.
+The sandbox provides users with pre-built pipelines that they can easily re-run or modify to suit their needs. However, users cannot (easily) create new pipeline builds within the sandbox, as the container registry used within the sandbox only provides read access and not write access to the public. This limitation is in place to control costs and showcase how MLOps engineers can gate their developers through a central control plane by enforcing these sorts of rules. (If you want to )
 
 The sandbox provides users with pre-built pipelines that they can easily re-run or modify to suit their needs. To list the available pre-built pipelines, simply use the command `zenml pipeline list`. This will display a list of pipelines, including their build IDs, which you can use to run a specific pipeline.
 
