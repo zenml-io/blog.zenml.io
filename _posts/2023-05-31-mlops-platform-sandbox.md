@@ -20,7 +20,7 @@ We are excited to launch the MLOps Platform Sandbox, a one-click deployment plat
 
 ## Simplifying MLOps Platform Deployment
 
-The goal of [ZenML](https://www.zenml.io) is to give ML and MLOps Engineers the ability to pick and choose their preferred infrastructure and tooling to build a platform that fulfils their company's needs. However, deploying ZenML and a rudimentary MLOps platform can be time-consuming for new users. The MLOps Platform Sandbox bridges this gap by providing a one-click deployment platform for a pre-built ephemeral MLOps stack, simplifying the deployment process.
+The goal of [ZenML](https://www.zenml.io) is to give ML and MLOps Engineers the ability to pick and choose their preferred infrastructure and tooling to build a platform that fulfills their company's needs. However, deploying ZenML and a rudimentary MLOps platform can be time-consuming for new users. The MLOps Platform Sandbox bridges this gap by providing a one-click deployment platform for a pre-built ephemeral MLOps stack, simplifying the deployment process.
 
 You can sign up with Google and start a demo sandbox. After a few minutes, you'll receive credentials for Kubeflow, Minio, MLflow, and ZenML. You can then use commands like `zenml connect` and `zenml stack set` to set your stacks and `python run.py` to run the pipelines. The sandbox is deleted after 8 hours, and you can choose from a repository of pre-built pipelines to run.
 
