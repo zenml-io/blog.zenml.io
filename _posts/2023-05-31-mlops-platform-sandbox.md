@@ -46,7 +46,21 @@ Using these pre-built pipelines makes it incredibly easy to reproduce results an
 
 ## What To Do After Your Sandbox Expires
 
-Once you have experimented with the MLOps Platform Sandbox and gained a better understanding of how the ZenML frameworks work, you may want to deploy your own MLOps stack tailored to your specific needs. To help you with this process, ZenML offers [Stack Recipes](https://github.com/zenml-io/mlops-stacks), which provide a starting point for deploying various MLOps stacks on different cloud providers and with different components.
+Once you have experimented with the MLOps Platform Sandbox and gained a better
+understanding of how the ZenML frameworks work, you may want to deploy your own
+MLOps stack tailored to your specific needs. To help you with this process,
+ZenML offers [Stack Recipes](https://github.com/zenml-io/mlops-stacks), which
+provide a starting point for deploying various MLOps stacks on different cloud
+providers and with different components. Our documentation also includes [a
+guide to the specific steps to
+follow](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-and-set-up-a-cloud-stack/deploy-a-stack-post-sandbox)
+for when your sandbox has expired and you want
+to create your own MLOps stack.
+
+If you would like to extend your sandbox, you can request an extension by
+[filling in the form here](https://zenml.io/extend-sandbox). We will get back to
+you as soon as possible, but please be sure to fill in the form in good time to
+allow us to review your request.
 
 [Stack Recipes](https://github.com/zenml-io/mlops-stacks) are designed to be customizable, allowing you to easily swap out components and infrastructure based on your company's requirements. You can replace Kubeflow with Vertex AI Pipelines or Sagemaker Pipelines, use S3 or GCS storage instead of Minio, and choose Weights and Biases or Neptune over MLflow.
 
