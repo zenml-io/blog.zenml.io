@@ -30,7 +30,17 @@ You can sign up with Google and start a demo sandbox. After a few minutes, you'l
 
 ## Why ZenML On Kubeflow / MLflow / Minio?
 
-Using ZenML with Kubeflow, MLflow, and Minio is a representative stack as it includes a production-ready orchestrator, an object storage component for data versioning, and a popular experiment tracking tool in machine learning. ZenML's stack recipe system is designed to allow you to easily swap out components and infrastructure based on your company's needs.
+Using ZenML with Kubeflow, MLflow, and Minio is a representative stack as it
+includes a production-ready orchestrator, an object storage component for data
+versioning, and a popular experiment tracking tool in machine learning. ZenML's
+stack recipe system is designed to allow you to easily swap out components and
+infrastructure based on your company's needs.
+
+Our [Stack Recipes](https://github.com/zenml-io/mlops-stacks) allow you to take
+the next step after using the sandbox. These recipes are designed to be customizable, allowing you to easily swap out
+components and infrastructure based on your company's requirements. You can
+replace Kubeflow with Vertex AI Pipelines or Sagemaker Pipelines, use S3 or GCS
+storage instead of Minio, and choose Weights and Biases or Neptune over MLflow.
 
 ## How to Use the Sandbox
 
@@ -61,10 +71,6 @@ If you would like to extend your sandbox, you can request an extension by
 [filling in the form here](https://zenml.io/extend-sandbox). We will get back to
 you as soon as possible, but please be sure to fill in the form in good time to
 allow us to review your request.
-
-[Stack Recipes](https://github.com/zenml-io/mlops-stacks) are designed to be customizable, allowing you to easily swap out components and infrastructure based on your company's requirements. You can replace Kubeflow with Vertex AI Pipelines or Sagemaker Pipelines, use S3 or GCS storage instead of Minio, and choose Weights and Biases or Neptune over MLflow.
-
-To get started with deploying your own MLOps stack, visit the [ZenML Stack Recipes](https://github.com/zenml-io/mlops-stacks) repository along with [our documentation page](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-and-set-up-a-cloud-stack/deploy-a-stack-post-sandbox) and follow the instructions provided for your desired stack configuration. This will enable you to build a robust, production-ready MLOps platform tailored to your specific needs, while leveraging the knowledge and experience gained from using the MLOps Platform Sandbox.
 
 ## Try out the Sandbox!
 
