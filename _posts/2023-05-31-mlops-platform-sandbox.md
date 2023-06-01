@@ -68,6 +68,8 @@ If you want to run your own custom code inside your sandbox, there are a few mor
 
 ## What To Do After Your Sandbox Expires
 
+![Blupus waits as sandbox expires](/assets/posts/sandbox/blupus_waiting.jpg)
+
 Once you have experimented with the MLOps Platform Sandbox and gained a better
 understanding of how the ZenML frameworks work, you may want to deploy your own
 MLOps stack tailored to your specific needs. To help you with this process,
