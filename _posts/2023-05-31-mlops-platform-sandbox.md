@@ -12,11 +12,11 @@ image:
   path: /assets/posts/sandbox/sandbox-launch.png
 ---
 
-**Last updated:** May 31, 2023
+**Last updated:** June 1st, 2023
 
 ![Screenshots of the MLOps Platform Sandbox](/assets/posts/sandbox/sandbox-launch.png)
 
-We are excited to launch the MLOps Platform Sandbox, a one-click deployment platform for an ephemeral MLOps stack that you can use to run production-ready MLOps pipelines in the cloud. The MLOps Platform Sandbox allows you to create a sandbox with a stack made up of [ZenML](https://zenml.io/), [Kubeflow](https://www.kubeflow.org/), [MLflow](https://mlflow.org/), and [Minio ](https://min.io/) Bucket. The Sandbox comes with pre-built example pipelines that you can run and try out. It provides a seamless experience for you to experiment with these tools without worrying about infrastructure setup and management.
+We are excited to launch the MLOps Platform Sandbox, a one-click deployment platform for an ephemeral MLOps stack that you can use to run production-ready MLOps pipelines in the cloud. The MLOps Platform Sandbox allows you to create a sandbox with a stack made up of [ZenML](https://zenml.io/), [Kubeflow](https://www.kubeflow.org/), [MLflow](https://mlflow.org/), and [Minio](https://min.io/) Bucket. The Sandbox comes with pre-built example pipelines that you can run and try out. It provides a seamless experience for you to experiment with these tools without worrying about infrastructure setup and management.
 
 ## Simplifying MLOps Platform Deployment
 
@@ -26,7 +26,7 @@ The goal of [ZenML](https://www.zenml.io) is to give ML and MLOps Engineers the 
   <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4oGF_utgJtE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-You can sign up with Google and start a demo sandbox. After a few minutes, you'll receive credentials for Kubeflow, Minio, MLflow, and ZenML. You can then use commands like `zenml connect` and `zenml stack set` to set your stacks and `python run.py` to run the pipelines. The sandbox is deleted after 8 hours, and you can choose from a repository of pre-built pipelines to run.
+You can sign up with Github and create a sandbox. After a few minutes, you'll receive credentials for Kubeflow, Minio, MLflow, and ZenML. You can then use commands like `zenml connect` and `zenml stack set` to set your stacks and `python run.py` to run the pipelines. The sandbox is deleted after 8 hours, and you can choose from a repository of pre-built pipelines to run.
 
 ## Why ZenML On Kubeflow / MLflow / Minio?
 
@@ -46,13 +46,25 @@ storage instead of Minio, and choose Weights and Biases or Neptune over MLflow.
 
 ![Screenshot of the MLOps Platform Sandbox](/assets/posts/sandbox/zenml_sandbox_step_3_commands.png)
 
-The Sandbox provides you with pre-built pipelines that you can easily re-run or modify to suit your needs. If you want to run your own custom code inside your sandbox, there are a few more steps you'll have to do, all of which is [described in our dedicated documentation page](https://docs.zenml.io/user-guide/advanced-guide/sandbox).
+The Sandbox provides you with pre-built pipelines that you can easily re-run or modify to suit your needs, if you follow the steps on screen. Using these pre-built pipelines makes it incredibly easy to reproduce results and experiment with powerful tools integrated into the ZenML framework. By leveraging the MLOps Platform Sandbox, you can quickly explore the capabilities of a unified MLOps platform in the context of real ML pipelines without the hassle of setting up and managing your own infrastructure.
 
-To list the available pre-built pipelines with which your sandbox comes, simply use the command `zenml pipeline list`. This will display a list of pipelines, including their build IDs, which you can use to run a specific pipeline.
+After you have run the pipelines, you can open the ZenML dashboard to see their status:
 
-To run a pipeline with a build, use the command `zenml pipeline run <PIPELINE_NAME> --build_id <BUILD_ID>`. For example, to run the `mlflow_example_pipeline`, you would enter `zenml pipeline run mlflow_example_pipeline --build_id <BUILD_ID>`, replacing `<BUILD_ID>` with the appropriate build ID from the list.
+![Sandbox pipelines running on ZenML](/assets/posts/sandbox/zenml_sandbox_zenml.png)
 
-Using these pre-built pipelines makes it incredibly easy to reproduce results and experiment with powerful tools integrated into the ZenML framework. By leveraging the MLOps Platform Sandbox, you can quickly explore the capabilities of a unified MLOps platform in the context of real ML pipelines without the hassle of setting up and managing your own infrastructure.
+You can also check the corresponding stack components to see the various services used. For example, Kubeflow would show you a similar DAG as ZenML running on a Kubernetes cluster:
+
+![Sandbox pipelines running on Kubeflow](/assets/posts/sandbox/zenml_sandbox_kubeflow.png)
+
+Minio will show you the versioned artifacts:
+
+![Sandbox pipelines running on Minio](/assets/posts/sandbox/zenml_sandbox_minio.png)
+
+And MLflow will show you the experiment metadata tracked as the pipeline ran through:
+
+![Sandbox pipelines running on MLflow](/assets/posts/sandbox/zenml_sandbox_mlflow.png)
+
+If you want to run your own custom code inside your sandbox, there are a few more steps you'll have to do, all of which is [described in our dedicated documentation page](https://docs.zenml.io/user-guide/advanced-guide/sandbox).
 
 ## What To Do After Your Sandbox Expires
 
