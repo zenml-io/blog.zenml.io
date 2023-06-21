@@ -40,7 +40,7 @@ Sound interesting? Alright, let's begin.
 ## **Building the Pipeline**
 
 When dealing with a dataset this large, its difficult to do some Pandas magic in a Jupyter notebook to wrangle with our data - I won't subject my poor ThinkPad to that punishment. That's why we created [ZenML](https://zenml.io/signup/) to deal with this problem ([amongst others](./2020-03-01-deep_learning_in_production_is_broken.md)).
-For this post, I will assume you have the `cengine` CLI [installed](https://docs.zenml.io/getting-started/installation) and ready to go.
+For this post, I will assume you have the `cengine` CLI [installed](https://docs.zenml.io/) and ready to go.
 
 As a summary, the `cengine` CLI will create, register and execute training pipelines,
 which will be managed by us on our cloud platform. One can create the pipeline declaratively by
@@ -80,7 +80,7 @@ The data contains 33,319,019 rows with 15 columns.
 ### **Step 1: Configure YAML - Features**
 
 Now we can build our YAML config. Usually I would use an easy-to-follow
-[configure command](https://docs.zenml.io/docs/developer_guide/pipelines_configure) to create this, but for this post its easier to go section by section and build it manually. So open up a text editor
+[configure command](https://docs.zenml.io/) to create this, but for this post it's easier to go section by section and build it manually. So open up a text editor
 (I'm a [Sublime Text](https://www.sublimetext.com/) guy but do it in [VIM](https://www.vim.org/) if you wish, whatever floats your boat):
 
 ```yaml
@@ -121,7 +121,7 @@ split:
   index_ratio: { train: 0.9, eval: 0.1 }
 ```
 
-Three lines of YAML, but they pack a punch. ZenML will let you [categorize your data before splitting it](https://docs.zenml.io/docs/developer_guide/pipelines_yaml).
+Three lines of YAML, but they pack a punch. ZenML will let you [categorize your data before splitting it](https://docs.zenml.io/).
 For our case, we want all start stations to be equally represented to avoid any biases. So we grouped by the `start_station_name` and divided each possible group in a 90-10 split. For you SQL folk, this is similar to doing a `GROUP BY` and then taking a partition over an index. This way our training and test data will have data with all the stations.
 
 I feel like splitting up data is a very under-appreciated part of machine learning and plays an important part in ML fairness, so I tried to make an appropriate split here.
@@ -148,11 +148,11 @@ trainer:
 
 It's quite straightforward really - we define 2 dense layers, set the optimizer and a few more nuts and bolts. The whole trainer follows quite closely the [Keras](https://www.tensorflow.org/guide/keras) API, so it would be quite straightforward for most people. The interesting bit about this trainer is the `train_steps` and `batch_size`. One step is one whole batch passing through the network, so with a **33 million datapoint dataset**, **230,000** steps of **256** would be roughly **2** epochs of the data. Trust me, I did the math.
 
-At this point you might be wondering what are the types of models you can create with this `trainer` key - so go ahead and read the developer [docs](https://docs.zenml.io/docs/developer_guide/pipelines_yaml) for it. This part we're really trying to nail down and support for different sorts of models are always a priority.
+At this point you might be wondering what are the types of models you can create with this `trainer` key - so go ahead and read the developer [docs](https://docs.zenml.io/) for it. This part we're really trying to nail down and support for different sorts of models are always a priority.
 
 ### **Step 5: Configure YAML - Evaluation (Splitting Metrics)**
 
-Almost there! One last thing we might want to do is to add some evaluator slices. What does that mean? Well it means that we might may not just want to look at the overall metrics (i.e. overall `mae`) of the model, but the `mae` across a categorical column.
+Almost there! One last thing we might want to do is to add some evaluator slices. What does that mean? Well it means that we may not just want to look at the overall metrics (i.e. overall `mae`) of the model, but the `mae` across a categorical column.
 
 ```yaml
 evaluator:
@@ -165,7 +165,7 @@ I defined three such columns which I was interested in seeing sliced metrics acr
 
 ### The full config YAML
 
-There are some things that I have intentionally skipped in the config for the sake of brevity. For reference, you can find the pipeline configuration ready to download [here]({{ site.url }}/assets/posts/train_30_mil_few_lines_yaml/citibike.yaml). I tried to annotate it with comments for clearer explanation. For further clarity, there is also always the [docs](https://docs.zenml.io/docs/developer_guide/pipelines_yaml) to refer to. Most notably, the `default` key is perhaps important to look at as it defines the pre-processing steps that we took to normalize the data.
+There are some things that I have intentionally skipped in the config for the sake of brevity. For reference, you can find the pipeline configuration ready to download [here]({{ site.url }}/assets/posts/train_30_mil_few_lines_yaml/citibike.yaml). I tried to annotate it with comments for clearer explanation. For further clarity, there is also always the [docs](https://docs.zenml.io/) to refer to. Most notably, the `default` key is perhaps important to look at as it defines the pre-processing steps that we took to normalize the data.
 
 ## **Run the pipeline**
 
@@ -232,7 +232,7 @@ A deeper dive reveals that the model actually guessed the year of people born in
 
 ## Wrap up
 
-Now that we have the baseline model, its very simple to iterate on different sorts of models very quickly. The cool thing is that ZenML has stored all [intermediate states of the pipeline](https://docs.zenml.io/v/0.6.0/features/caching) (i.e. the preprocessed data) in an efficient and compressed binary format. Subsequent pipeline runs will **warmstart** the pipeline straight to the training part, given that everything else stays the same. This caching mechanism is actually quite powerful at this stage and can save up to 80% on time and cost. But I would leave that for a separate post, where we can take the same pipeline and iterate on quickly to arrive at a more accurate model! So stay tuned for that.
+Now that we have the baseline model, its very simple to iterate on different sorts of models very quickly. The cool thing is that ZenML has stored all [intermediate states of the pipeline](https://docs.zenml.io/) (i.e. the preprocessed data) in an efficient and compressed binary format. Subsequent pipeline runs will **warmstart** the pipeline straight to the training part, given that everything else stays the same. This caching mechanism is actually quite powerful at this stage and can save up to 80% on time and cost. But I would leave that for a separate post, where we can take the same pipeline and iterate on quickly to arrive at a more accurate model! So stay tuned for that.
 
 If you liked this post, please make sure to follow us on [Twitter](https://twitter.com/zenml_io), [LinkedIn](https://www.linkedin.com/company/zenml/) or just chat with us on our [Discord](https://discord.gg/HPBUKru) server.
 

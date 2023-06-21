@@ -96,12 +96,11 @@ We deal with a decent volume of support requests in Slack, from the ultra-specif
 
 We benefited from many of ZenML's core features during this project:
 
-- [caching](https://docs.zenml.io/starter-guide/pipelines/parameters-and-caching) allowed us to run our pipelines without needing to wait excessively to repeatedly query the same (mostly-unchanging) documents or data sources
-- automatic data versioning for free! (ZenML handles all of this for you out of
-  the box))
-- [switching between local stacks](https://docs.zenml.io/advanced-guide/practical-mlops/switching-orchestration) and deployed cloud infrastructure was simple, as always!
-- using ZenML's post-execution workflow we were able to [query the artifact store](https://docs.zenml.io/starter-guide/pipelines/fetching-pipelines) and get the de-serialised FAISS vector store. This we then used within our deployed slack bot app.
-- [collaboration through the dashboard](https://docs.zenml.io/starter-guide/pipelines/dashboard): colleagues were able to inspect the progress of our pipelines as well as see where the underlying data was stored through the ZenML dashboard.
+- [caching](https://docs.zenml.io/user-guide/starter-guide/cache-previous-executions) allowed us to run our pipelines without needing to wait excessively to repeatedly query the same (mostly-unchanging) documents or data sources
+- automatic data versioning for free! (ZenML handles all of this for you out of the box)
+- [switching between local stacks](https://docs.zenml.io/user-guide/starter-guide/switch-to-production) and deployed cloud infrastructure was simple, as always!
+- using ZenML's post-execution workflow we were able to [query the artifact store](https://docs.zenml.io/user-guide/starter-guide/fetch-runs-after-execution) and get the de-serialised FAISS vector store. This we then used within our deployed slack bot app.
+- collaboration through the dashboard: colleagues were able to inspect the progress of our pipelines as well as see where the underlying data was stored through the ZenML dashboard.
 
 ## Where to go from here?
 

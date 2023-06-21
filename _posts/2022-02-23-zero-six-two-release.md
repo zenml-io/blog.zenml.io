@@ -49,8 +49,8 @@ We'll be writing more about how we integrated with `rich` on the blog in the com
 As the codebase and functionality of ZenML grows, we always want to make sure [our documentation](https://docs.zenml.io/) is clear, up-to-date and easy to use. We made a number of changes in this release that will improve your experience in this regard:
 
 - Ensure *quickstart* example code is identical across everywhere it is referenced.
-- Added core concepts back into the [main glossary](https://docs.zenml.io/reference/glossary) (sorted alphabetically and made concise).
-- Added [cloud-specific guide](https://docs.zenml.io/v/0.6.1/features/cloud-pipelines/guide-aws-gcp-azure) for deploying pipelines.
+- Added core concepts back into the [main glossary](https://docs.zenml.io/) (sorted alphabetically and made concise).
+- Added [cloud-specific guide](https://docs.zenml.io/) for deploying pipelines.
 - Inside the codebase itself, removed some parameters specified in docstrings that no longer existed in code.
 - Various spelling and typo corrections.
 

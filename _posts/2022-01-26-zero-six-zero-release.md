@@ -63,7 +63,7 @@ impact so involved changes in many files throughout the codebase, especially in
 the CLI which makes calls to all these pieces.
 
 We've already seen how it helps us move faster in building integrations and we
-hope it helps making contributions as pain-free as possible!
+hope it helps to make contributions as pain-free as possible!
 
 ## 🗒 Documentation and Example Updates
 
@@ -73,9 +73,9 @@ changes in this release that will improve your experience in this regard:
 
 - added a number of new explainers on key ZenML concepts and how to use them in
   your code, notably on
-  [how to create a custom materializer](https://docs.zenml.io/v/0.6.0/guides/index/custom-materializer)
+  [how to create a custom materializer](https://docs.zenml.io/user-guide/advanced-guide/handle-custom-data-types)
   and
-  [how to fetch historic pipeline runs](https://docs.zenml.io/v/0.6.0/guides/index/historic-runs)
+  [how to fetch historic pipeline runs](https://docs.zenml.io/user-guide/starter-guide/fetch-runs-after-execution)
   using the `StepContext`
 - fixed a number of typos and broken links
 - added versioning to our API documentation so you can choose to view the

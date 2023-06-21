@@ -33,9 +33,9 @@ ZenML pipelines:
 ## Use Case / Workflow Guides
 
 - **class_based_api**: All the code for the class-based API guide found in the
-  [docs](https://docs.zenml.io/v/0.5.7/guides/class-based-api).
+  [docs](https://docs.zenml.io/).
 - **functional_api**: All the code for the functional API guide found in the
-  [docs](https://docs.zenml.io/v/0.5.7/guides/functional-api).
+  [docs](https://docs.zenml.io/).
 - **caching**: Using caching to skip data-intensive tasks and save costs.
 - **not_so_quickstart**: Shows of the modularity of the pipelines with
   hot-swapping of TensorFlow, PyTorch, and scikit-learn trainers.

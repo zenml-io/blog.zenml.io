@@ -507,4 +507,4 @@ or the tutorial featured in this article, we encourage you to join our
 [weekly community hour](https://www.eventbrite.com/e/zenml-meet-the-community-tickets-354426688767).
 
 If you want to know more about ZenML or see more examples, check out our
-[docs](https://docs.zenml.io) and [examples](https://github.com/zenml-io/zenml/tree/main/examples).
+[docs](https://docs.zenml.io/v/0.13.2) and [examples](https://github.com/zenml-io/zenml/tree/main/examples).

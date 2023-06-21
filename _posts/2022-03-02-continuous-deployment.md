@@ -293,8 +293,8 @@ model serving platforms that are usually present in a production setting. This
 will be one of either [Seldon Core](https://www.seldon.io/tech/products/core/)
 or [KServe](https://kserve.github.io/website).</del>
 (Update: As of November 2022, we have already implemented Three more Model 
-Deployment Integrations: [Seldon Core](https://docs.zenml.io/component-gallery/model-deployers/seldon),
-[KServe](https://docs.zenml.io/component-gallery/model-deployers/kserve) and [BentoML](https://docs.zenml.io/component-gallery/model-deployers/bentoml))
+Deployment Integrations: [Seldon Core](https://docs.zenml.io/user-guide/component-guide/model-deployers/seldon),
+[KServe](https://docs.zenml.io/) and [BentoML](https://docs.zenml.io/user-guide/component-guide/model-deployers/bentoml))
 
 Developing the Service abstraction horizontally is also a priority, albeit more
 of a long-term goal. For the model serving case, the Service concept should

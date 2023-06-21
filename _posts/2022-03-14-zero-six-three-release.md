@@ -32,7 +32,7 @@ The code required to add this to your pipeline and step definition is as minimal
 @step(custom_step_operator='sagemaker') # or azureml
 ```
 
-Sagemaker and AzureML offers specialized compute instances to run your training jobs and offer a beautiful UI to track and manage your models and logs. All you have to do is configure your ZenML stack with the relevant parameters and you're good to go. You'll have to set up the infrastructure with credentials; check out [our documentation](https://docs.zenml.io/v/0.6.1/features/cloud-pipelines/guide-aws-gcp-azure) for a guide how to do that.
+Sagemaker and AzureML offers specialized compute instances to run your training jobs and offer a beautiful UI to track and manage your models and logs. All you have to do is configure your ZenML stack with the relevant parameters and you're good to go. You'll have to set up the infrastructure with credentials; check out [our documentation](https://docs.zenml.io/) for a guide how to do that.
 
 To get going with this, checkout the [two examples](https://github.com/zenml-io/zenml/blob/main/examples/step_operator_remote_training/README.md) we created, configure your stack and add that line mentioned above.
 

@@ -86,9 +86,9 @@ extremely useful for the visibility and explainability of a project.
 ### Keep Humans in the Loop
 
 Not everything in MLOps can be automated, nor should it. ZenML features such
-as [Experiment Trackers](https://docs.zenml.io/v/0.10.0/advanced-guide/track-your-experiments),
-[Alerters](https://docs.zenml.io/v/0.9.0/advanced-guide/send-automated-chat-alerts),
-artifact Visualizers and the [post-execution workflow](https://docs.zenml.io/v/0.9.0/developer-guide/post-execution-workflow)
+as [Experiment Trackers](https://docs.zenml.io/user-guide/component-guide/experiment-trackers),
+[Alerters](https://docs.zenml.io/user-guide/component-guide/alerters),
+artifact Visualizers and the [post-execution workflow](https://docs.zenml.io/user-guide/starter-guide/fetch-runs-after-execution)
 features are designed with this very principle in mind. They give users an
 easily comprehensible view into the otherwise complex structure of the information
 collected and stored throughout the lifecycle of a ML project.
@@ -164,7 +164,7 @@ you. Of course, [the ZenML integration gives you plenty of options](https://apid
 should you choose to migrate your existing Great Expectations configuration to
 ZenML, or to customize your configuration.
 * Great Expectations transparently works with any and all present and future
-[types of ZenML Artifact Store](https://docs.zenml.io/v/0.10.0/extending-zenml/artifact-stores#list-of-available-artifact-stores):
+[types of ZenML Artifact Store](https://docs.zenml.io/user-guide/component-guide/artifact-stores):
 local filesystem, AWS S3, GCS, Azure Blob Storage as well as any custom
 Artifact Store implementation.
 * ZenML users can manage multiple Great Expectation deployment configurations
@@ -208,7 +208,7 @@ lineage.
 
 We recognized the need to add Expectation Suites and Validation Results
 to this historical record as artifacts involved in the pipeline execution. As a
-result, the integration also includes [ZenML Materializers](https://docs.zenml.io/v/0.10.0/developer-guide/materializer)(mechanisms for serializing and storing artifacts in persistent storage) for
+result, the integration also includes [ZenML Materializers](https://docs.zenml.io/user-guide/advanced-guide/handle-custom-data-types)(mechanisms for serializing and storing artifacts in persistent storage) for
 these data types, allowing ZenML users to use Expectation Suites and
 Validation Results as return values in their pipeline steps, as exemplified
 below:
@@ -347,7 +347,7 @@ Data Docs.
 
 This is a ZenML stack that includes an Artifact Store connected to a cloud
 object storage. This example uses AWS as a backend, but
-[the ZenML documentation](https://docs.zenml.io/v/0.10.0/advanced-guide/execute-pipelines-in-cloud#artifact-store)
+[the ZenML documentation](https://docs.zenml.io/)
 has similar instructions on how to configure a GCP or Azure Blob Storage powered
 Artifact Store.
 

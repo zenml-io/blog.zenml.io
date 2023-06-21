@@ -80,7 +80,7 @@ are usually stored in the `~/.aws/credentials` file. You might find you need to
 access those secrets from within your Kubernetes cluster as it runs individual
 steps, or you might just want a centralized location for the storage of secrets
 across your project. As of this release, ZenML offers a basic
-[local secrets manager](https://docs.zenml.io/v/0.7.0/features/secrets) and an
+[local secrets manager](https://docs.zenml.io/) and an
 integration with the managed [AWS Secrets Manager](https://aws.amazon.com/secrets-manager).
 
 This now lets you easily specify secrets as dependencies for pipelines from
@@ -113,11 +113,11 @@ zenml step-operator register vertex \
  class definition of Vertex Step Operator in the [API docs](https://apidocs.zenml.io/0.7.0/api_docs/integrations/#zenml.integrations.vertex.step_operators.vertex_step_operator).
 
 Another change addresses the fact that while in most cases
-[materializers](https://docs.zenml.io/v/0.7.0/guides/functional-api/materialize-artifacts)
+[materializers](https://docs.zenml.io/)
 should be used to control how artifacts are consumed and output from steps in a
 pipeline, there is sometimes a need to have a completely non-materialized
 artifact in a step. ZenML now provides this option of
-[bypassing materialization](https://docs.zenml.io/v/0.7.0/guides/index/skip-materialization).
+[bypassing materialization](https://docs.zenml.io/).
 
 
 ## 🙌 Community Contributions

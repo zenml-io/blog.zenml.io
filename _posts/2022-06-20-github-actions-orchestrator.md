@@ -43,7 +43,7 @@ This tutorial assumes that you have:
 * [Git](https://git-scm.com/) installed
 * a [GitHub](https://github.com/) account
 * [Docker](https://www.docker.com/) installed and running
-* [Remote ZenML Server](https://docs.zenml.io/getting-started/deploying-zenml#deploying-zenml-in-the-cloud-remote-deployment-of-the-http-server-and-database) A Remote Deployment of the ZenML HTTP server and Database
+* [Remote ZenML Server](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml) A Remote Deployment of the ZenML HTTP server and Database
 
 ## Azure Setup
 
@@ -151,7 +151,7 @@ echo "$GITHUB_AUTHENTICATION_TOKEN" | docker login ghcr.io -u "$GITHUB_USERNAME"
 Time to fork and clone an [example repository](https://github.com/zenml-io/github-actions-orchestrator-tutorial) which contains a very simple ZenML pipeline that trains 
 a SKLearn SVC classifier on the [digits dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_digits_last_image.html).
 
-If you're new to ZenML, let's quickly go over some [basic concepts](https://docs.zenml.io/getting-started/core-concepts#pipelines-and-steps) that help you understand what the code in this repository is doing:
+If you're new to ZenML, let's quickly go over some [basic concepts](https://docs.zenml.io/user-guide/starter-guide) that help you understand what the code in this repository is doing:
 * A **pipeline** in ZenML allows you to group a series of steps in whatever order makes sense for your particular use case. The [example pipeline](https://github.com/zenml-io/github-actions-orchestrator-tutorial/blob/main/pipelines/training_pipeline/training_pipeline.py) consists of three steps which import data, train a model and evaluate the model.
 * A **step** is very similar to a Python function and contains arbitrary business logic. The three steps in our example do the following:
     - The [data loader step](https://github.com/zenml-io/github-actions-orchestrator-tutorial/blob/main/steps/data_loader_step/data_loader_step.py) loads the digits dataset and splits it into train and test set.
@@ -184,13 +184,13 @@ Now that we're done setting up and configuring all our infrastructure and extern
 ## Remote ZenML Server
 
 For Advanced use cases where we have a remote orchestrator such as Vertex AI
-or to share stacks and pipeline information with team we need to have a separated non local remote ZenML Server that it can be accessible from your
+or to share stacks and pipeline information with team we need to have a separated non-local remote ZenML Server that it can be accessible from your
 machine as well as all stack components that may need access to the server.
-[Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
+[Read more information about the use case here](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml)
 
 In order to achieve this there are two different ways to get access to a remote ZenML Server.
 
-1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml)/
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenmll)
 2. Sign up for [ZenML Enterprise](https://zenml.io/pricing) and get access to a hosted
    version of the ZenML Server with no setup required.
 
@@ -202,7 +202,7 @@ pip install zenml
 zenml integration install -y github azure sklearn
 ```
 
-We're also going to initialize a [ZenML repository](https://docs.zenml.io/reference/glossary#repository) to indicate which directories and files ZenML should include
+We're also going to initialize a ZenML repository to indicate which directories and files ZenML should include
 when building Docker images:
 ```bash
 zenml init
@@ -219,7 +219,7 @@ zenml connect --url=<DEPLOYMENT_URL>
 
 ### Registering the stack
 
-A [ZenML stack](https://docs.zenml.io/getting-started/core-concepts#stacks-and-stack-components) consists of many components which all play a role in making your ML pipeline run in a smooth and reproducible manner. Let's register all the components that we're going to need for this tutorial!
+A [ZenML stack](https://docs.zenml.io/user-guide/starter-guide/understand-stacks) consists of many components which all play a role in making your ML pipeline run in a smooth and reproducible manner. Let's register all the components that we're going to need for this tutorial!
 
 * The **orchestrator** is responsible for running all the steps in your machine learning pipeline. In this tutorial we'll use the new GitHub Actions orchestrator which, as the name already indicates, uses GitHub Actions workflows to orchestrate your ZenML pipeline. Registering the orchestrator is as simple as running the following command:
     ```bash
@@ -254,7 +254,7 @@ A [ZenML stack](https://docs.zenml.io/getting-started/core-concepts#stacks-and-s
 These are all the components that we're going to use for this tutorial, but ZenML offers additional components like:
 * **Step operators** to run individual steps of your pipeline in specialized environments.
 * **Model deployers** to deploy your trained machine learning model in production.
-* And many more. Check out [our docs](https://docs.zenml.io/component-gallery/categories) for a full list of available components.
+* And many more. Check out [our docs](https://docs.zenml.io/user-guide/component-guide) for a full list of available components.
 
 With all components registered, we can now create and activate our ZenML stack. This makes sure ZenML knows which components to use when we're going to run our pipeline later.
 ```bash
