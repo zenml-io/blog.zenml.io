@@ -80,7 +80,7 @@ The data contains 33,319,019 rows with 15 columns.
 ### **Step 1: Configure YAML - Features**
 
 Now we can build our YAML config. Usually I would use an easy-to-follow
-[configure command](https://docs.zenml.io/) to create this, but for this post it's easier to go section by section and build it manually. So open up a text editor
+configure command to create this, but for this post it's easier to go section by section and build it manually. So open up a text editor
 (I'm a [Sublime Text](https://www.sublimetext.com/) guy but do it in [VIM](https://www.vim.org/) if you wish, whatever floats your boat):
 
 ```yaml
@@ -121,7 +121,7 @@ split:
   index_ratio: { train: 0.9, eval: 0.1 }
 ```
 
-Three lines of YAML, but they pack a punch. ZenML will let you [categorize your data before splitting it](https://docs.zenml.io/).
+Three lines of YAML, but they pack a punch. ZenML will let you categorize your data before splitting it.
 For our case, we want all start stations to be equally represented to avoid any biases. So we grouped by the `start_station_name` and divided each possible group in a 90-10 split. For you SQL folk, this is similar to doing a `GROUP BY` and then taking a partition over an index. This way our training and test data will have data with all the stations.
 
 I feel like splitting up data is a very under-appreciated part of machine learning and plays an important part in ML fairness, so I tried to make an appropriate split here.
