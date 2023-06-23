@@ -97,7 +97,7 @@ In this release, we have also upgraded the Evidently and whylogs libraries to th
 
 Please refer to the examples provided for Evidently and whylogs to learn more about how to use the new integration versions:
 
-* [Evidently](https://github.com/zenml-io/zenml/tree/main/examples/evidently_drift_detection)
+* [Evidently](https://github.com/zenml-io/zenml/tree/main/examples/evidently_data_validation)
 * [whylogs/Whylabs](https://github.com/zenml-io/zenml/tree/main/examples/whylogs_data_profiling)
 
 ## 🙌 Community Contributions

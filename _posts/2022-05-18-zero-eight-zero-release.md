@@ -139,7 +139,7 @@ now]({{ site.url }}/assets/posts/release_0_8_0/zenml-cli.png)
   parameter from `requirements_file` to just `requirements`, but don't worry we
   just deprecated the old parameter to give you time to adjust your code.
 - We fixed [the Evidently drift detection
-  visualizer](https://github.com/zenml-io/zenml/tree/main/examples/evidently_drift_detection)
+  visualizer](https://github.com/zenml-io/zenml/tree/main/examples/evidently_data_validation)
   so that it now works on Google Colab notebooks again. (Hamza is doing an AMA
   with the Evidently community on May 24; [click
   here](https://www.eventbrite.co.uk/e/ama-whamza-tahir-co-founder-zenml-tickets-336732525047)
