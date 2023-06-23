@@ -170,7 +170,7 @@ reproducibility.
 
 While it may fall outside the scope of this blog, the open-source MLOps
 framework ZenML showcases a clear example of putting these principles in action
-[here](https://docs.zenml.io/benefits/ensuring-ml-reproducibility.html)
+[here](https://docs.zenml.io/)
 
 ## Conclusion
 

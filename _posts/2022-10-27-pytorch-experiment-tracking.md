@@ -52,9 +52,9 @@ Otherwise, let's dive in!
 ## ☕️ Installation
 Let's begin by installing all the packages we'll need.
 We'd highly recommend that you install ZenML in a virtual environment of your choice.
-Read more [in our docs](https://docs.zenml.io/getting-started/installation).
+Read more [in our docs](https://docs.zenml.io/v/0.21.0/getting-started/installation).
 
-Also note that if you're running this on an M1 Mac, we have a special guide [here](https://docs.zenml.io/getting-started/installation/m1-mac-installation) to set it up.
+Also note that if you're running this on an M1 Mac, we have a special guide [here](https://docs.zenml.io/v/0.21.0/getting-started/installation/m1-mac-installation) to set it up.
 
 Now in your virtual environment, run:
 
@@ -87,7 +87,7 @@ zenml integration install pytorch wandb tensorboard mlflow -y
 
 Wondering if you can use other tools instead? 
 Check out more integrations [here](https://zenml.io/integrations).
-You can even [write you own](https://docs.zenml.io/misc/integrating)!
+You can even [write you own](https://docs.zenml.io/v/0.21.0/misc/integrating)!
 
 
 ## ✅ Vanilla PyTorch Code
@@ -421,7 +421,7 @@ To open the dashboard, type in your terminal:
 zenml up
 ```
 
-This spins up a local [ZenML Server](https://docs.zenml.io/getting-started/core-concepts#zenml-server-and-dashboard) and launches the dashboard in the browser at `http://127.0.0.1:8237)`. Key in `default` as the username and leave the password empty, then click "Log in".
+This spins up a local [ZenML Server](https://docs.zenml.io/v/0.21.0/getting-started/core-concepts#zenml-server-and-dashboard) and launches the dashboard in the browser at `http://127.0.0.1:8237)`. Key in `default` as the username and leave the password empty, then click "Log in".
 
 ![login](../assets/posts/pytorch_wandb/dashboard.gif)
 
@@ -432,7 +432,7 @@ The ZenML dashboard lets you visually inspect if the pipeline and steps are in o
 
 So far we've only seen the details about the steps and pipelines in the dashboard. What about the experiment details like training accuracy, loss, etc? 
 
-In ZenML experiment details are logged using [Experiment Trackers](https://docs.zenml.io/component-gallery/experiment-trackers) - a component in ZenML.
+In ZenML experiment details are logged using [Experiment Trackers](https://docs.zenml.io/v/0.21.0/component-gallery/experiment-trackers) - a component in ZenML.
 
 In the next section, we will show how you can add Experiment Trackers into your workflow so you can monitor and share your experiment results.
 
@@ -450,7 +450,7 @@ We wouldn't recommend it.
 
 [via GIPHY](https://giphy.com/gifs/season-13-the-simpsons-13x20-xT5LMpPoihn5AsoNB6)
 
-ZenML handles secret information like access credentials with a component known as [Secret Managers](https://docs.zenml.io/component-gallery/secrets-managers).
+ZenML handles secret information like access credentials with a component known as [Secret Managers](https://docs.zenml.io/v/0.21.0/component-gallery/secrets-managers).
 Secrets Managers provide a secure way of storing and retrieving confidential information that is needed to run your ML pipelines.
 
 Now let's configure our W&B credentials into the Secret Manager by running several commands in your terminal.

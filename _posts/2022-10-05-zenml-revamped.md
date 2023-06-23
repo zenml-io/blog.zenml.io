@@ -20,9 +20,9 @@ image:
 
 ![PR Changes]({{ site.url }}/assets/posts/zenml_revamped/pr_changes.png)
 
-So what has changed? The new release brings a complete [architectural shift](https://docs.zenml.io/getting-started/core-concepts) from previous versions of ZenML. It features a new way of [sharing and configuring pipelines and stacks](https://docs.zenml.io/advanced-guide/pipelines/settings). Perhaps most excitingly, it brings with it a brand-new look for ZenML, which now comes bundled with a [React-based, open-source dashboard](https://github.com/zenml-io/zenml-dashboard), which can be launched (and [deployed](https://docs.zenml.io/getting-started/deploying-zenml)) directly from the CLI!
+So what has changed? The new release brings a complete [architectural shift](https://docs.zenml.io/v/0.20.0/getting-started/core-concepts) from previous versions of ZenML. It features a new way of [sharing and configuring pipelines and stacks](https://docs.zenml.io/v/0.20.0/advanced-guide/pipelines/settings). Perhaps most excitingly, it brings with it a brand-new look for ZenML, which now comes bundled with a [React-based, open-source dashboard](https://github.com/zenml-io/zenml-dashboard), which can be launched (and [deployed](https://docs.zenml.io/v/0.20.0/getting-started/deploying-zenml)) directly from the CLI!
 
-If you're already using ZenML, don't worry! Even though this is going to be a big breaking change, we have written an extensive [migration guide](https://docs.zenml.io/guidelines/migration-zero-twenty). As always, if you have any issues or questions regarding the new changes, please let us know over on the [Slack community](https://zenml.io/slack-invite).
+If you're already using ZenML, don't worry! Even though this is going to be a big breaking change, we have written an extensive [migration guide](https://docs.zenml.io/v/0.20.0/guidelines/migration-zero-twenty). As always, if you have any issues or questions regarding the new changes, please let us know over on the [Slack community](https://zenml.io/slack-invite).
 
 For now, let's dive right into the changes and share why we are so excited about the new direction ZenML is going.
 
@@ -48,7 +48,7 @@ And now, with our 0.20.0 release, you can see how things look:
 
 Extensive community feedback and our own experience over time had revealed that the metadata store connection was proving a bottleneck. By replacing the metadata store database with a FastAPI application, performance is more secure and easier to use. It will also reduce the likelihood of breaking changes of this scale going forward. 
 
-Getting started with the new server is painless: `zenml up` will handle spinning up a server locally. When you're ready to take things to the next level, `zenml deploy` will take care of deploying a ZenML server in the cloud. For more details on how to use a cloud ZenML server to help you collaborate with a team, please [check out our extensive deployment documentation](https://docs.zenml.io/getting-started/deploying-zenml).
+Getting started with the new server is painless: `zenml up` will handle spinning up a server locally. When you're ready to take things to the next level, `zenml deploy` will take care of deploying a ZenML server in the cloud. For more details on how to use a cloud ZenML server to help you collaborate with a team, please [check out our extensive deployment documentation](https://docs.zenml.io/v/0.20.0/getting-started/deploying-zenml).
 
 ## 🎠 ZenML Dashboard: A beautiful, new look
 
@@ -88,7 +88,7 @@ With ZenML 0.20.0, we introduce the `BaseSettings` class, a broad class that ser
 Pipelines and steps now allow all configurations on their decorators as well as the `.configure(...)` method. This includes configurations for stack components that are not infrastructure-related which was previously done using
 the `@enable_xxx` decorators). The same configurations can also be defined in a YAML file. 
 
-Read more about this paradigm in the [new docs section about settings](https://docs.zenml.io/advanced-guide/pipelines/settings).
+Read more about this paradigm in the [new docs section about settings](https://docs.zenml.io/v/0.20.0/advanced-guide/pipelines/settings).
 
 ## 👨‍🍳 Flavors: Separating configuration from implementation
 
@@ -112,11 +112,11 @@ You can see how it's now clear which properties are required and what types are 
 
 ## 🔥 Onwards and Upwards!
 
-The key changes highlighted above addresses most of the major use-cases, but there are many other additions, changes and tweaks in ZenML 0.20.0. To learn about all the updates, [visit our migration guide](https://docs.zenml.io/guidelines/migration-zero-twenty) which lists the changes as well as offers you a clear path to migrating your existing work to the new version.
+The key changes highlighted above addresses most of the major use-cases, but there are many other additions, changes and tweaks in ZenML 0.20.0. To learn about all the updates, [visit our migration guide](https://docs.zenml.io/v/0.20.0/guidelines/migration-zero-twenty) which lists the changes as well as offers you a clear path to migrating your existing work to the new version.
 
 We're really excited to have this latest version out in the world and for you to try it out! The best place to start is [our Quickstart example](https://github.com/zenml-io/zenml/tree/main/examples/quickstart). Instructions for how to get going are listed in the README.
 
 If you find any bugs or something doesn't work the way you expect, please [let
 us know in Slack](https://zenml.io/slack-invite) or also feel free to [open up a
-Github issue](https://github.com/zenml-io/zenml/issues/new/choose) if you
+GitHub issue](https://github.com/zenml-io/zenml/issues/new/choose) if you
 prefer. We welcome your feedback and we thank you for your support!

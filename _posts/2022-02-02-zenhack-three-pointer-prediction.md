@@ -177,7 +177,7 @@ though; we have some more MLFlow-related features coming up in our next
 releases.</del>
 (UPDATE: As of November 2022 we have a full-fledged MLFlow integration part of 
 the ZenML Expirement Tracking stack component. You can read more about it
-[here](https://docs.zenml.io/component-gallery/experiment-trackers/mlflow))
+[here](https://docs.zenml.io/user-guide/component-guide/experiment-trackers/mlflow))
 
 
 Within our ZenHack only two lines of code were really necessary to liftoff with
@@ -219,7 +219,7 @@ different runs.
 is a platform for building and deploying portable, scalable machine learning
 workflows based on Docker containers.
 
-Check out our [docs](https://docs.zenml.io/component-gallery/orchestrators/kubeflow) to find out how to
+Check out our [docs](https://docs.zenml.io/user-guide/component-guide/orchestrators/kubeflow) to find out how to
 quickly go from standard pipeline orchestration to using Kubeflow Pipelines for
 your own applications.
 

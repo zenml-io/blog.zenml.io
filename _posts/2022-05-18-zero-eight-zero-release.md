@@ -65,11 +65,11 @@ considerably when interacting with your stacks!
   directly.
 - When deleting stacks with `stack delete...`, we'll be sure to confirm with you
   before we go ahead and delete the stack now.
-- You can [export the stack](https://docs.zenml.io/v/0.8.0/collaborate/stack-export) to
+- You can [export the stack](https://docs.zenml.io/) to
   a shareable YAML file with `zenml stack export` and import from a compatible
   YAML file with `zenml stack import`. For the full collaborative experience
   you'll want to [use the
-  ZenServer](https://docs.zenml.io/v/0.8.0/collaborate/zenml-server), but this will
+  ZenServer](https://docs.zenml.io/getting-started/core-concepts#zenml-server), but this will
   still be a useful feature for some of you!
 
 ## 👭 Collaboration
@@ -77,10 +77,10 @@ considerably when interacting with your stacks!
 * The ZenServer now enables shared projects along with the foundations of a
   shared and collaborative user experience. We added some functionality to
   [manage
-  users](https://docs.zenml.io/v/0.8.0/collaborate/zenml-server#zenserver-user-management)
+  users](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/user-management)
   interacting with your shared ZenServer.
 - All of the new collaboration features have been fully documented
-  [here](https://docs.zenml.io/v/0.8.0/collaborate/collaborate).
+  [here](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/user-management).
 
 ## 🖥 CLI Improvements
 
@@ -139,7 +139,7 @@ now]({{ site.url }}/assets/posts/release_0_8_0/zenml-cli.png)
   parameter from `requirements_file` to just `requirements`, but don't worry we
   just deprecated the old parameter to give you time to adjust your code.
 - We fixed [the Evidently drift detection
-  visualizer](https://github.com/zenml-io/zenml/tree/main/examples/evidently_drift_detection)
+  visualizer](https://github.com/zenml-io/zenml/tree/main/examples/evidently_data_validation)
   so that it now works on Google Colab notebooks again. (Hamza is doing an AMA
   with the Evidently community on May 24; [click
   here](https://www.eventbrite.co.uk/e/ama-whamza-tahir-co-founder-zenml-tickets-336732525047)

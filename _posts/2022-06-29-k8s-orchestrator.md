@@ -78,7 +78,7 @@ installed on your local machine:
 * [Docker](https://www.docker.com/) installed on your machine
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed on your machine and authenticated
-* [Remote ZenML Server](https://docs.zenml.io/getting-started/deploying-zenml#deploying-zenml-in-the-cloud-remote-deployment-of-the-http-server-and-database) A Remote Deployment of the ZenML HTTP server and Database
+* [Remote ZenML Server](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml) A Remote Deployment of the ZenML HTTP server and Database
 
 ### 🚅 Take the Express Train: Terraform-based provisioning of resources
 
@@ -170,11 +170,11 @@ aws ecr get-login-password --region <AWS_REGION> | docker login
 For Advanced use cases where we have a remote orchestrator such as Vertex AI
 or to share stacks and pipeline information with team we need to have a separated non local remote ZenML Server that it can be accessible from your
 machine as well as all stack components that may need access to the server.
-[Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
+[Read more information about the use case here](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml)
 
 In order to achieve this there are two different ways to get access to a remote ZenML Server.
 
-1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml)/
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml)
 2. Sign up for [ZenML Enterprise](https://zenml.io/pricing) and get access to a hosted
    version of the ZenML Server with no setup required.
 

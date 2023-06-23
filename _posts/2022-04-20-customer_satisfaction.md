@@ -181,4 +181,4 @@ The e-commerce sector is rapidly evolving as internet accessibility increases in
 
 In this blog post, we have seen how to build a model that can predict customer satisfaction based on data provided by customers. We have also seen how to use MLflow to track the model's performance and how to deploy the model for online prediction. Finally, we have seen how one can deploy and interact with a web application that consumes a deployed model with Streamlit.
 
-If you're interested in learning more about ZenML, visit our [Github page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!
+If you're interested in learning more about ZenML, visit our [GitHub page](https://github.com/zenml-io/zenml), [read our docs](https://docs.zenml.io/). If you have questions or want to talk through your specific use case, feel free to [reach out to us on Slack](https://zenml.io/slack-invite/)!

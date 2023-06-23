@@ -57,7 +57,7 @@ You can simply run `zenml integration install airflow` to update your installati
 
 ## 🪲 Notable Bug Fixes and Improvements
 
-You can now use the ZenML Label Studio integration with non-local (i.e. deployed) instances. For more information, see the [Label Studio documentation](https://docs.zenml.io/component-gallery/annotators/label-studio).
+You can now use the ZenML Label Studio integration with non-local (i.e. deployed) instances. For more information, see the [Label Studio documentation](https://docs.zenml.io/user-guide/component-guide/annotators/label-studio).
 The Label Studio [example](https://github.com/zenml-io/zenml/tree/main/examples/label_studio_annotation) walks through how you can set it up on cloud infrastructures like Azure, GCP, and AWS.
 
 We fixed the Spark [example](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming) and it now works again end-to-end.

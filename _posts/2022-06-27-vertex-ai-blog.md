@@ -45,18 +45,18 @@ This tutorial assumes that you have:
 * Access to a [gcp](https://cloud.google.com/) project space
 * [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine
   and authenticated
-* [Remote ZenML Server](https://docs.zenml.io/getting-started/deploying-zenml#deploying-zenml-in-the-cloud-remote-deployment-of-the-http-server-and-database) A Remote Deployment of the ZenML HTTP server and Database
+* [Remote ZenML Server](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml) A Remote Deployment of the ZenML HTTP server and Database
 
 ## Remote ZenML Server
 
 For Advanced use cases where we have a remote orchestrator such as Vertex AI
 or to share stacks and pipelines with the team, we need to have a separate, remote ZenML Server. It should be accessible from your
 machine as well as all stack components that may need access to information or configurations from the server.
-[Read more information about the use case here](https://docs.zenml.io/getting-started/deploying-zenml)
+[Read more information about the use case here](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml)
 
 In order to achieve this there are two different ways to get access to a remote ZenML Server.
 
-1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/getting-started/deploying-zenml).
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml).
 2. Sign up for [ZenML Enterprise](https://zenml.io/pricing) and get access to a hosted
    version of the ZenML Server with no setup required.
 
@@ -153,7 +153,7 @@ And you'll probably get the following printout:
       'local' stack (ACTIVE) 
 ```
 
-This is your [ZenML stack](https://docs.zenml.io/v/0.9.0/advanced-guide/stacks-components-flavors)
+This is your [ZenML stack](https://docs.zenml.io/user-guide/starter-guide/understand-stacks)
 that describes the different components that work hand-in-hand to run and track 
 your pipeline including its artifacts and metadata. This is what we'll now need 
 to replace with a GCP stack later on.
