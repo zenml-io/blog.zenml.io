@@ -94,7 +94,7 @@ options are available in our documentation:
 - To try out `mlstacks` directly and see how easy it is to specify your stacks
   using the .yaml specification files, [check out one of our QuickStart
   guides](https://mlstacks.zenml.io/getting-started/quickstart) appropriate to
-  your favourite cloud platform (or use the `k3d` guide to test deployment
+  your favorite cloud platform (or use the `k3d` guide to test deployment
   locally)
 
 We'd love to hear your feedback, good and bad! Please [let us
