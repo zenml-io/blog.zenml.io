@@ -14,7 +14,7 @@ image:
 **Last updated:** August 30, 2023
 
 We're excited to launch [the new `mlstacks` Python package](https://mlstacks.zenml.io). MLStacks builds on
-the work done to create Stack Recipes, allowing you to quickly spin up MLOps
+the work done to create [Stack Recipes](https://github.com/zenml-io/mlstacks/tree/release/0.6.1#readme), allowing you to quickly spin up MLOps
 infrastructure using Terraform. It is designed to be used with ZenML, but can be
 used with any MLOps tool or platform.
 
@@ -26,7 +26,13 @@ modular MLOps stacks on AWS, GCP and K3D (for local use).
 
 We reworked the previous way of doing things to be more stable and reliable. We
 even added new features like the ability to get a cost estimate for your MLOps
-stacks. MLStacks is also designed to be able to work as a standalone deployment
+stacks. 
+
+![](/assets/posts/mlstacks/mlstacks_breakdown.png)
+
+We were inspired by [the work done by the FuzzyLabs team on Matcha](https://github.com/fuzzylabs/matcha) as well as by
+conversations with users of the old `mlops-stacks` repository / functionality.
+In that spirit, MLStacks is also designed to be able to work as a standalone deployment
 option independent of ZenML. All of this is available in the new `mlstacks`
 Python package and with ZenML's latest release (0.44.0).
 
