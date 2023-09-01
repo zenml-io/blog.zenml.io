@@ -5,13 +5,13 @@ title: "Introducing mlstacks: a refreshed way to deploy MLOps infrastructure"
 description: "Introducing mlstacks: a refreshed way to deploy MLOps infrastructure"
 category: zenml
 tags: mlstacks production mlops zenml evergreen tooling
-publish_date: August 30, 2023
-date: 2023-08-30T08:05:51Z
+publish_date: September 1, 2023
+date: 2023-09-01T08:05:51Z
 thumbnail: /assets/posts/mlstacks/mlstacks_logo.png
 image:
   path: /assets/posts/mlstacks/mlstacks_logo.png
 ---
-**Last updated:** August 30, 2023
+**Last updated:** September 1, 2023
 
 We're excited to launch [the new `mlstacks` Python package](https://mlstacks.zenml.io). MLStacks builds on
 the work done to create [Stack Recipes](https://github.com/zenml-io/mlstacks/tree/release/0.6.1#readme), allowing you to quickly spin up MLOps
@@ -34,7 +34,7 @@ We were inspired by [the work done by the FuzzyLabs team on Matcha](https://gith
 conversations with users of the old `mlops-stacks` repository / functionality.
 In that spirit, MLStacks is also designed to be able to work as a standalone deployment
 option independent of ZenML. All of this is available in the new `mlstacks`
-Python package and with ZenML's latest release (0.44.0).
+Python package and with [ZenML's latest release (0.44.1)](https://github.com/zenml-io/zenml/releases/tag/0.44.1).
 
 ## How can I try it out?
 
