@@ -2,7 +2,7 @@
 layout: post
 author: "Alex Strick van Linschoten"
 title: "Introducing mlstacks: a refreshed way to deploy MLOps infrastructure"
-description: "Introducing mlstacks: a refreshed way to deploy MLOps infrastructure"
+description: "We released an updated way to deploy MLOps infrastructure, building on the success of the `mlops-stack` repo and its stack recipes. All the new goodies are available via the `mlstacks` Python package."
 category: zenml
 tags: mlstacks production mlops zenml evergreen tooling
 publish_date: September 1, 2023
