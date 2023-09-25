@@ -177,7 +177,6 @@ though; we have some more MLFlow-related features coming up in our next
 releases.</del>
 (UPDATE: As of November 2022 we have a full-fledged MLFlow integration part of 
 the ZenML Expirement Tracking stack component. You can read more about it
-
 [here](https://docs.zenml.io/stacks-and-components/component-guide/experiment-trackers/mlflow))
 
 Within our ZenHack only two lines of code were really necessary to liftoff with
