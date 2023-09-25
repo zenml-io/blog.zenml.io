@@ -221,14 +221,14 @@ without having to modify the core code and without invalidating any of the
 interoperability guarantees that ZenML provides. The following are some
 examples of the extensibility options supported by ZenML:
 
-* you can [add a new Artifact Store flavor](https://docs.zenml.io/user-guide/component-guide/artifact-stores/custom)
+* you can [add a new Artifact Store flavor](https://docs.zenml.io/stacks-and-components/component-guide/artifact-stores/custom)
 by defining a few basic IO operations and seamlessly transition your existing
 code to use the storage backend of your choice
 * if you need to use a custom pipeline orchestration tool that is not already
 included in ZenML's list of integrations, you can
-[write your own Orchestrator plugin](https://docs.zenml.io/user-guide/component-guide/orchestrators/custom)
+[write your own Orchestrator plugin](https://docs.zenml.io/stacks-and-components/component-guide/orchestrators/custom)
 * to serve models using the model deployment tool of your choosing,
-the [Model Deployer interface can be extended](https://docs.zenml.io/user-guide/component-guide/model-deployers/custom)
+the [Model Deployer interface can be extended](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/custom)
 to accommodate any library or platform that serves that function
 
 The extensibility of ZenML gives ML practitioners the freedom of DIY with all

@@ -29,7 +29,7 @@ behind how they grew their community and blog along the way.
 <iframe src="https://player.fireside.fm/v2/vA-gqsEV+GvQsElUc?theme=dark" width="740" height="200" frameborder="0" scrolling="no"></iframe>
 
 For information on the ZenML integration with Evidently, check out [the blog we
-previously published](https://blog.zenml.io/zenml-loves-evidently/) on this as well as [our drift detection example](https://github.com/zenml-io/zenml/tree/main/examples/evidently_data_validation) that's ready
+previously published](https://blog.zenml.io/zenml-loves-evidently/) on this as well as [our drift detection example](https://docs.zenml.io/stacks-and-components/component-guide/data-validators/evidently) that's ready
 to try out.
 
 As always, full show notes and links are available on

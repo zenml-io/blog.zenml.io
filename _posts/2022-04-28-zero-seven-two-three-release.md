@@ -65,11 +65,11 @@ a16z](https://future.a16z.com/a-decade-of-deep-learning-ai-startup/).
 ![Richard Socher]({{ site.url }}/assets/posts/release_0_7_2_and_3/richard_socher_shoutout.png)
 
 [HuggingFace](https://huggingface.co) models are now supported to be passed through ZenML pipelines 
-[see full example](https://github.com/zenml-io/zenml/tree/main/examples/huggingface). 
+[see full example](https://zenml.io/integrations/huggingface). 
 Huge shoutout to [@Ankur3107](https://github.com/Ankur3107) for PR [#467](https://github.com/zenml-io/zenml/pull/467).
 
 You can also now track your pipeline runs with [Weights & Biases](https://wandb.ai) with the new `enable_wandb` decorator 
-[see full example](https://github.com/zenml-io/zenml/tree/main/examples/wandb_tracking). 
+[see full example](https://docs.zenml.io/stacks-and-components/component-guide/experiment-trackers/wandb). 
 Huge shoutout to [@soumik12345](https://github.com/soumik12345) for PR [#486](https://github.com/zenml-io/zenml/pull/486).
 
 ## 🔎 XGBoost and LightGBM support
@@ -138,7 +138,7 @@ to allow the configuration of ZenML secrets with credentials that authenticate
 Seldon to access the Artifact Store. The Seldon Core integration provides three
 different secret schemas for the three flavors of Artifact Store: AWS, GCP, and Azure,
 but custom secrets can be used as well. For more information on how to use this
-feature please refer to our [Seldon Core deployment example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).
+feature please refer to our [Seldon Core deployment example](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/seldon).
 
 Lastly, we had numerous other changes such as ensuring the PyTorch materializer works across all artifact stores 
 and the Kubeflow Metadata Store can be easily queried locally.

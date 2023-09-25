@@ -121,7 +121,7 @@ workflow and abstracted away from the user.
 
 ![Continuous Deployment Pipeline]({{ site.url }}/assets/posts/continuous-deployment/continuous-deployment.gif)
 
-The [MLflow Deployment Service example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment)
+The [MLflow Deployment Service example](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/mlflow)
 showcases the first of several concrete ZenML prediction service integrations to
 follow that take away the burden of managing and maintaining model prediction
 servers and make implementing continuous deployment a breeze. Here are some
@@ -237,7 +237,7 @@ else:
 
 ZenML Services allow you to start exploring the continuous model deployment
 paradigm even in the early experimentation stages of the ML development.
-[The MLflow Deployment Services](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment)
+[The MLflow Deployment Services](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/mlflow)
 are implemented as lightweight daemon processes that run locally on your
 machine, but otherwise exhibit the same general behavior as other model serving
 platforms that are usually encountered in production.
@@ -262,7 +262,7 @@ without having to worry about low-level communication details such as data
 serialization or handling HTTP requests and responses.
 
 This pipeline step extracted from the inference pipeline that is part of the
-[MLflow continuous deployment example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment)
+[MLflow continuous deployment example](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/mlflow)
 shows how to use a Service object to send inference requests to an externally
 running model server without having to worry about low-level details:
 
@@ -292,9 +292,10 @@ Service concept vertically to include an integration with one of the popular
 model serving platforms that are usually present in a production setting. This
 will be one of either [Seldon Core](https://www.seldon.io/tech/products/core/)
 or [KServe](https://kserve.github.io/website).</del>
-(Update: As of November 2022, we have already implemented Three more Model 
-Deployment Integrations: [Seldon Core](https://docs.zenml.io/user-guide/component-guide/model-deployers/seldon),
-[KServe](https://docs.zenml.io/) and [BentoML](https://docs.zenml.io/user-guide/component-guide/model-deployers/bentoml))
+(Update: As of November 2022, we have already implemented Three more Model
+Deployment Integrations: [Seldon Core](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/seldon),
+[KServe](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/kserve) and [BentoML](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/bentoml))
+
 
 Developing the Service abstraction horizontally is also a priority, albeit more
 of a long-term goal. For the model serving case, the Service concept should
@@ -304,6 +305,6 @@ pipelines to be portable not just across different infrastructure domains, but
 also across different model serving tools.
 
 If the continuous deployment approach described here is relevant to you or your
-team, you should also check out [the full example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_deployment)
+team, you should also check out [the full example](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/mlflow)
 that illustrates the MLFlow deployment integration. As always, we welcome your
 feedback and your questions in [our Slack workspace](https://zenml.io/slack-invite/).

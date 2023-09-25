@@ -45,7 +45,7 @@ It's a pain to work with. So, we've completely rewritten the Airflow orchestrato
 Watch the demo video below to see the revamped Airflow orchestrator in action.
 <iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/v-tEm4O61Y8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-And also, check out the example of the brand-new Airflow orchestrator [here](https://github.com/zenml-io/zenml/tree/main/examples/airflow_orchestration).
+And also, check out the example of the brand-new Airflow orchestrator [here](https://docs.zenml.io/stacks-and-components/component-guide/orchestrators/airflow).
 
 
 ## 💔 Breaking Changes
@@ -57,10 +57,10 @@ You can simply run `zenml integration install airflow` to update your installati
 
 ## 🪲 Notable Bug Fixes and Improvements
 
-You can now use the ZenML Label Studio integration with non-local (i.e. deployed) instances. For more information, see the [Label Studio documentation](https://docs.zenml.io/user-guide/component-guide/annotators/label-studio).
+You can now use the ZenML Label Studio integration with non-local (i.e. deployed) instances. For more information, see the [Label Studio documentation](https://docs.zenml.io/stacks-and-components/component-guide/annotators/label-studio).
 The Label Studio [example](https://github.com/zenml-io/zenml/tree/main/examples/label_studio_annotation) walks through how you can set it up on cloud infrastructures like Azure, GCP, and AWS.
 
-We fixed the Spark [example](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming) and it now works again end-to-end.
+We fixed the Spark [example](https://docs.zenml.io/stacks-and-components/component-guide/step-operators/spark-kubernetes) and it now works again end-to-end.
 
 We also included a fix that speeds up the data sync from the MLMD database to the ZenML server. 
 

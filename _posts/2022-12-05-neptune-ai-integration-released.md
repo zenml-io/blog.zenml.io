@@ -41,7 +41,7 @@ One of the coolest things about Neptune is how focused it is on what it does wel
 Being a kick-ass experiment tracker and model registry. Given ZenML does not have a
 model registry abstraction ([yet](https://zenml.io/roadmap)), we decided to focus on
 the experiment tracking part this time around, with the ZenML
-[experiment tracker](https://docs.zenml.io/user-guide/component-guide/experiment-trackers)
+[experiment tracker](https://docs.zenml.io/stacks-and-components/component-guide/experiment-trackers)
 abstraction.
 
 ZenML's experiment trackers let you track your ML experiments by logging information about your models, datasets, metrics, and other parameters. You can also browse, visualize, and compare between runs. Every pipeline run is considered an experiment in ZenML, and the Experiment Tracker component facilitates the storage of experiment results, establishing a clear link between pipeline runs and experiments.
@@ -59,7 +59,7 @@ the pipeline.
 With this integration, you can easily create a Neptune experiment tracker component and use it in any step in
 a pipeline.
 
-A concrete example with a pipeline can be viewed in the [example](https://github.com/zenml-io/zenml/tree/main/examples/neptune_tracking)
+A concrete example with a pipeline can be viewed in the [example](https://docs.zenml.io/stacks-and-components/component-guide/experiment-trackers/neptune)
 on GitHub. The following is a summary to you get started.
 
 ### 🥞 Create a stack with the Neptune experiment tracker
@@ -137,7 +137,7 @@ def tf_trainer(
 ```
 
 **Note**: The above code is only for illustration purposes. View the full code
-[here](https://github.com/zenml-io/zenml/tree/main/examples/neptune_tracking)
+[here](https://docs.zenml.io/stacks-and-components/component-guide/experiment-trackers/neptune)
 
 You can see that using `get_neptune_run` in the Neptune integration ensures that the user does not
 need to take care of creating and managing the lifecycle of the Neptune run. Instead, ZenML takes care
@@ -166,7 +166,7 @@ For each run, you should see the following visualizations:
 
 We hope this blog gave an insight into how the Neptune and ZenML team developed this integration
 together. It's easy for you to create your own experiment tracker integration as well. Just follow
-the guide [here](https://docs.zenml.io/user-guide/component-guide/experiment-trackers/custom).
+the guide [here](https://docs.zenml.io/stacks-and-components/component-guide/experiment-trackers/custom).
 
 We'd like to also thank the team behind Neptune especially Patrycja Jenkner and Aleksander Wojnarowicz
 who helped with the integration. Also, check out Neptune's blog post on the integration [here](https://neptune.ai/resources/track-visualize-pipelines-zenml-integration).

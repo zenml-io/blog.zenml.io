@@ -34,7 +34,7 @@ Got feedback or just want to let us know how you feel? [Connect with us](https:/
 
 ## 🔎 More Data Validation with Deepchecks, Evidently & whylogs
 
-We continued the work started in the previous release, adding a new integration with [Deepchecks](https://deepchecks.com/). Deepchecks is a feature-rich data validation open-source library to painlessly do data validation. Deepchecks can do a variety of data validation tasks, from data integrity checks that work with a single dataset to data+model evaluation to data drift analyses. All this can be done with minimal configuration input from the user, or customized with specialized conditions that the validation checks should perform. Check out [our example](https://github.com/zenml-io/zenml/tree/main/examples/deepchecks_data_validation) if you want to see it in action!
+We continued the work started in the previous release, adding a new integration with [Deepchecks](https://deepchecks.com/). Deepchecks is a feature-rich data validation open-source library to painlessly do data validation. Deepchecks can do a variety of data validation tasks, from data integrity checks that work with a single dataset to data+model evaluation to data drift analyses. All this can be done with minimal configuration input from the user, or customized with specialized conditions that the validation checks should perform. Check out [our example](https://docs.zenml.io/stacks-and-components/component-guide/data-validators/deepchecks) if you want to see it in action!
 
 We also updated our integrations with Great Expectations, Evidently and whylogs to support their latest releases. These tools have added lots of great new features in recent weeks and we now support most of them, all under the new data validator stack component and abstraction.
 
@@ -97,8 +97,8 @@ In this release, we have also upgraded the Evidently and whylogs libraries to th
 
 Please refer to the examples provided for Evidently and whylogs to learn more about how to use the new integration versions:
 
-* [Evidently](https://github.com/zenml-io/zenml/tree/main/examples/evidently_data_validation)
-* [whylogs/Whylabs](https://github.com/zenml-io/zenml/tree/main/examples/whylogs_data_profiling)
+* [Evidently](https://docs.zenml.io/stacks-and-components/component-guide/data-validators/evidently)
+* [whylogs/Whylabs](https://docs.zenml.io/stacks-and-components/component-guide/data-validators/whylogs)
 
 ## 🙌 Community Contributions
 

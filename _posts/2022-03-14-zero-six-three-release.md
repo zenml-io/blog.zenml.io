@@ -34,7 +34,7 @@ The code required to add this to your pipeline and step definition is as minimal
 
 Sagemaker and AzureML offers specialized compute instances to run your training jobs and offer a beautiful UI to track and manage your models and logs. All you have to do is configure your ZenML stack with the relevant parameters and you're good to go. You'll have to set up the infrastructure with credentials; check out [our documentation](https://docs.zenml.io/) for a guide how to do that.
 
-To get going with this, checkout the [two examples](https://github.com/zenml-io/zenml/blob/main/examples/step_operator_remote_training/README.md) we created, configure your stack and add that line mentioned above.
+To get going with this, checkout the [two examples](https://docs.zenml.io/stacks-and-components/component-guide/step-operators) we created, configure your stack and add that line mentioned above.
 
 We'll be publishing more about this use case in the coming days, so stay tuned for that!
 
@@ -46,7 +46,7 @@ We'll be publishing more about this use case in the coming days, so stay tuned f
 
 Behind the scenes, we implemented a `TensorboardService` which tracks and manages locally running Tensorboard daemons. This interactive UI runs in the background and works even while your pipeline is running. To use this feature, the easiest way is to click the 'Start Tensorboard' button inside the Kubeflow UI.
 
-This new functionality has also been integrated into [our Kubeflow example](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow_pipelines_orchestration) from previous releases.
+This new functionality has also been integrated into [our Kubeflow example](https://docs.zenml.io/stacks-and-components/component-guide/orchestrators/kubeflow) from previous releases.
 
 ## 💻 User Experience Improvements
 

@@ -222,7 +222,7 @@ Deepchecks validations at various points during a model training pipeline:
 the training vs the validation dataset
 
 A similar, up-to-date version of this example can be accessed in
-[the ZenML GitHub repository](https://github.com/zenml-io/zenml/tree/main/examples/deepchecks_data_validation).
+[the ZenML GitHub repository](https://docs.zenml.io/stacks-and-components/component-guide/data-validators/deepchecks).
 
 ### Setup ZenML
 
