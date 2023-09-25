@@ -125,11 +125,7 @@ The Training pipeline can be summarized as follows:
 Hugging Face's [transformers library](https://huggingface.co/docs/transformers/index) was used to fine-tune the model. To setup the Donut model using `transformers` we needed to load the configuration required to instantiate the model, the processor associated with the model along with the actual pretrained model.
 To enable the writing and retrieval of the config and processor associated with Donut model from the artifact store, I had to implement custom [`materializers`](https://github.com/shivalikasingh95/cheque-easy/tree/main/materializers). 
 
-<<<<<<< Updated upstream
-In ZenML pipelines, a materializer dictates how a given artifact can be written to and retrieved from the artifact store and also contains all serialization and deserialization logic. ZenML already supports most of the commonly used objects in ML pipelines with its inbuilt [materializers](https://docs.zenml.io/user-guide/advanced-guide/handle-custom-data-types) but in case you want to use some custom data types between the steps of your pipelines then ZenML also allows you to write your own [customized](https://docs.zenml.io/user-guide/advanced-guide/handle-custom-data-types) implementation.
-=======
 In ZenML pipelines, a materializer dictates how a given artifact can be written to and retrieved from the artifact store and also contains all serialization and deserialization logic. ZenML already supports most of the commonly used objects in ML pipelines with its inbuilt [materializers](https://docs.zenml.io/v/0.10.0/developer-guide/materializer) but in case you want to use some custom data types between the steps of your pipelines then ZenML also allows you to write your own [customized](https://docs.zenml.io/user-guide/advanced-guide/artifact-management) implementation.
->>>>>>> Stashed changes
 
 
 ### Train Donut
