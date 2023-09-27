@@ -127,7 +127,7 @@ machine learning pipelines.
 
 The best place to see MLflow Tracking and ZenML being used together in a simple
 use case is
-[our example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking)
+[our example](https://docs.zenml.io/stacks-and-components/component-guide/experiment-trackers/mlflow)
 that showcases the integration. It builds on the quickstart example, but shows
 how you can add in MLflow to handle the tracking. Adding MLflow tracking to a
 step is as simple as enabling the experiment tracker for a step. Now you're free to log
@@ -185,7 +185,7 @@ def tf_trainer(
 
 If you're inspired by this illustration of how you can make your machine
 learning workflow that little bit more reproducible and robust, check out
-[the full example](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking)
+[the full example](https://docs.zenml.io/stacks-and-components/component-guide/experiment-trackers/mlflow)
 that illustrates the integration. If you use it in your own codebase, please do
 let us know — [say hi on Slack](https://zenml.io/slack-invite/)! — and as always
 if you have any questions, we're here for you.

@@ -104,7 +104,7 @@ now]({{ site.url }}/assets/posts/release_0_8_0/zenml-cli.png)
 ## 🚀 New Integrations
 
 - We saw we didn't have [a PyTorch
-  example](https://github.com/zenml-io/zenml/tree/main/examples/pytorch) on the
+  example](https://zenml.io/integrations/pytorch) on the
   books yet, so we added that in.
 - We added a GCP ☁️ Secrets Manager to sit alongside our AWS Secrets Manager
   integration.
@@ -139,7 +139,7 @@ now]({{ site.url }}/assets/posts/release_0_8_0/zenml-cli.png)
   parameter from `requirements_file` to just `requirements`, but don't worry we
   just deprecated the old parameter to give you time to adjust your code.
 - We fixed [the Evidently drift detection
-  visualizer](https://github.com/zenml-io/zenml/tree/main/examples/evidently_data_validation)
+  visualizer](https://docs.zenml.io/stacks-and-components/component-guide/data-validators/evidently)
   so that it now works on Google Colab notebooks again. (Hamza is doing an AMA
   with the Evidently community on May 24; [click
   here](https://www.eventbrite.co.uk/e/ama-whamza-tahir-co-founder-zenml-tickets-336732525047)

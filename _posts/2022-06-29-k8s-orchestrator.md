@@ -78,7 +78,7 @@ installed on your local machine:
 * [Docker](https://www.docker.com/) installed on your machine
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed on your machine and authenticated
-* [Remote ZenML Server](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml) A Remote Deployment of the ZenML HTTP server and Database
+* [Remote ZenML Server](https://docs.zenml.io/user-guide/starter-guide/switch-to-production) A Remote Deployment of the ZenML HTTP server and Database
 
 ### 🚅 Take the Express Train: Terraform-based provisioning of resources
 
@@ -170,11 +170,11 @@ aws ecr get-login-password --region <AWS_REGION> | docker login
 For Advanced use cases where we have a remote orchestrator such as Vertex AI
 or to share stacks and pipeline information with team we need to have a separated non local remote ZenML Server that it can be accessible from your
 machine as well as all stack components that may need access to the server.
-[Read more information about the use case here](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml)
+[Read more information about the use case here](https://docs.zenml.io/user-guide/starter-guide/switch-to-production)
 
 In order to achieve this there are two different ways to get access to a remote ZenML Server.
 
-1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml)
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/user-guide/starter-guide/switch-to-production)/
 2. Sign up for [ZenML Enterprise](https://zenml.io/pricing) and get access to a hosted
    version of the ZenML Server with no setup required.
 
@@ -397,7 +397,6 @@ simply delete the respective resources in your AWS console if you had created th
    ```
    terraform destroy
    ```
-   If there's any error that pops up related to Kubernetes resources, there's a [cleanup script](https://github.com/zenml-io/mlops-stacks/blob/main/eks-s3-seldon-mlflow/cleanup.sh) in the repository that you can run.
 
 ## Conclusion
 

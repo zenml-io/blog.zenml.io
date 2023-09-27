@@ -86,8 +86,8 @@ extremely useful for the visibility and explainability of a project.
 ### Keep Humans in the Loop
 
 Not everything in MLOps can be automated, nor should it. ZenML features such
-as [Experiment Trackers](https://docs.zenml.io/user-guide/component-guide/experiment-trackers),
-[Alerters](https://docs.zenml.io/user-guide/component-guide/alerters),
+as [Experiment Trackers](https://docs.zenml.io/stacks-and-components/component-guide/experiment-trackers),
+[Alerters](https://docs.zenml.io/stacks-and-components/component-guide/alerters),
 artifact Visualizers and the [post-execution workflow](https://docs.zenml.io/user-guide/starter-guide/fetch-runs-after-execution)
 features are designed with this very principle in mind. They give users an
 easily comprehensible view into the otherwise complex structure of the information
@@ -164,7 +164,7 @@ you. Of course, [the ZenML integration gives you plenty of options](https://apid
 should you choose to migrate your existing Great Expectations configuration to
 ZenML, or to customize your configuration.
 * Great Expectations transparently works with any and all present and future
-[types of ZenML Artifact Store](https://docs.zenml.io/user-guide/component-guide/artifact-stores):
+[types of ZenML Artifact Store](https://docs.zenml.io/stacks-and-components/component-guide/artifact-stores):
 local filesystem, AWS S3, GCS, Azure Blob Storage as well as any custom
 Artifact Store implementation.
 * ZenML users can manage multiple Great Expectation deployment configurations
@@ -296,7 +296,7 @@ pipeline with Great Expectations and shows how to run it on top of those stacks
 with similar results.
 
 A similar, up-to-date version of this example can be accessed in
-[the ZenML GitHub repository](https://github.com/zenml-io/zenml/tree/main/examples/great_expectations_data_validation).
+[the ZenML GitHub repository](https://docs.zenml.io/stacks-and-components/component-guide/data-validators/great-expectations).
 
 ### Setup ZenML
 

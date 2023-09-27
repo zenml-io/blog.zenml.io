@@ -45,18 +45,18 @@ This tutorial assumes that you have:
 * Access to a [gcp](https://cloud.google.com/) project space
 * [gcloud CLI](https://cloud.google.com/sdk/gcloud) installed on your machine
   and authenticated
-* [Remote ZenML Server](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml) A Remote Deployment of the ZenML HTTP server and Database
+* [Remote ZenML Server](https://docs.zenml.io/user-guide/starter-guide/switch-to-production) A Remote Deployment of the ZenML HTTP server and Database
 
 ## Remote ZenML Server
 
 For Advanced use cases where we have a remote orchestrator such as Vertex AI
 or to share stacks and pipelines with the team, we need to have a separate, remote ZenML Server. It should be accessible from your
 machine as well as all stack components that may need access to information or configurations from the server.
-[Read more information about the use case here](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml)
+[Read more information about the use case here](https://docs.zenml.io/user-guide/starter-guide/switch-to-production)
 
 In order to achieve this there are two different ways to get access to a remote ZenML Server.
 
-1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml).
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/user-guide/starter-guide/switch-to-production).
 2. Sign up for [ZenML Enterprise](https://zenml.io/pricing) and get access to a hosted
    version of the ZenML Server with no setup required.
 
@@ -389,7 +389,7 @@ deploy it on Vertex AI pipelines through the magic of the ZenML Stack without
 changing the code itself. What this means is, that you will be fully free to 
 switch your orchestrator away from Vertex AI and GCP at any point with minimal
 effort. For example, you could switch to using our 
-[Kubeflow Pipelines Orchestrator](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow_pipelines_orchestration)
+[Kubeflow Pipelines Orchestrator](https://docs.zenml.io/stacks-and-components/component-guide/orchestrators/kubeflow)
 to run pipelines on top of Cloud or On-Prem Infrastructure. Alternatively,
 you could also switch to the completely free 
 [Github Actions Orchestrator](https://blog.zenml.io/github-actions-orchestrator/).

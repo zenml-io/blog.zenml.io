@@ -132,7 +132,7 @@ zenml stack register sagemaker_stack \
 zenml stack set sagemaker_stack
 ```
 
-And now you have the stack up and running! Note that similar steps can be undertaken with Vertex AI and Azure ML. See the [docs](https://docs.zenml.io/user-guide/component-guide/step-operators) for more information.
+And now you have the stack up and running! Note that similar steps can be undertaken with Vertex AI and Azure ML. See the [docs](https://docs.zenml.io/stacks-and-components/component-guide/step-operators) for more information.
 
 ## Create a pipeline with the step operator decorator
 

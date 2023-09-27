@@ -58,7 +58,7 @@ You can now run heavy data-processing workloads across machines/clusters as part
 We showcased how to use it in our community meetup on 17th August 2022 👇
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ai366Y3UoXY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Run the Spark integration example [here](https://github.com/zenml-io/zenml/tree/main/examples/spark_distributed_programming).
+Run the Spark integration example [here](https://docs.zenml.io/stacks-and-components/component-guide/step-operators/spark-kubernetes).
 
 ## 🎯 Custom Code Deployment
 

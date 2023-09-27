@@ -34,7 +34,7 @@ I show how I used a ZenML pipeline to build a customer churn model and present t
 
 To build a real-world workflow for predicting whether a customer will churn or not, you will probably develop your pipelines on your local machine initially, allowing for quick iteration and debugging. However, at a certain point, when you are finished with its design, you might want to transition to a more production-ready setting and deploy the pipeline to a more robust environment. This painless transition from development to production stack is where ZenML shines.
 
-I will be using ZenML's [Kubeflow](https://github.com/zenml-io/zenml/tree/main/examples/kubeflow_pipelines_orchestration) integration to deploy pipelines to production using Kubeflow Pipelines on the cloud. I will show you how to deploy your pipeline using Kubeflow Pipelines transitioning from local to cloud stack. ZenML supports Airflow and Kubeflow as third-party orchestrators for your ML pipeline code.
+I will be using ZenML's [Kubeflow](https://docs.zenml.io/stacks-and-components/component-guide/orchestrators/kubeflow) integration to deploy pipelines to production using Kubeflow Pipelines on the cloud. I will show you how to deploy your pipeline using Kubeflow Pipelines transitioning from local to cloud stack. ZenML supports Airflow and Kubeflow as third-party orchestrators for your ML pipeline code.
 
 ### Run the pipeline regularly
 
@@ -114,7 +114,7 @@ I will now run the same pipeline in Kubeflow Pipelines deployed to an AWS EKS cl
 
 #### Setup Infrastructure with ZenML Stack recipes:
 
-With [ZenML Stack Recipes](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-and-set-up-a-cloud-stack/deploy-a-stack-using-stack-recipes), you can now provision all the infrastructure you need to run your ZenML pipelines with just a few simple commands.
+With [ZenML Stack Recipes](https://docs.zenml.io/stacks-and-components/stack-deployment), you can now provision all the infrastructure you need to run your ZenML pipelines with just a few simple commands.
 
 The flow to get started for this example can be the following:
 
@@ -145,7 +145,7 @@ The flow to get started for this example can be the following:
 >
 >  You need to have your AWS credentials saved locally under ~/.aws/credentials
 
-You can now skip directly to the [part of this guide where you define ZenML secrets](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/use-the-secret-store) for Seldon! 
+You can now skip directly to the [part of this guide where you define ZenML secrets](https://docs.zenml.io/user-guide/advanced-guide/secret-management) for Seldon!
 
 #### Remote ZenML Server
 
@@ -153,11 +153,11 @@ In advanced use cases, for example when you have a remote orchestrator (such as 
 collaborate with a team, you need to set up a non-local remote ZenML server. This server acts as a central 
 component that communicates with all other stack components.
 
-More information about the use cases [here](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml).
+More information about the use cases [here](https://docs.zenml.io/user-guide/starter-guide/switch-to-production).
 
 To achieve this there are two different ways to get access to a remote ZenML Server.
 
-1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml).
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/user-guide/starter-guide/switch-to-production).
 2. Sign up for [ZenML Enterprise](https://zenml.io/pricing) and get access to a hosted
    version of the ZenML Server with no setup required.
 
@@ -235,7 +235,7 @@ streamlit run streamlit_apps/streamlit_app_kubeflow.py
 
 ## Continuous model deployment with Seldon Core
 
-While building the real-world workflow for predicting whether a customer will churn or not, you might not want to train the model once and deploy it to production. Instead, you might want to train the model and deploy it to production when something gets triggered. This is where one of our recent integrations is valuable: [Seldon Core](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).
+While building the real-world workflow for predicting whether a customer will churn or not, you might not want to train the model once and deploy it to production. Instead, you might want to train the model and deploy it to production when something gets triggered. This is where one of our recent integrations is valuable: [Seldon Core](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/seldon).
 
 [Seldon Core](https://github.com/SeldonIO/seldon-core) is a production-grade open-source model serving platform. It packs a wide range of features built around deploying models to REST/GRPC microservices, including monitoring and logging, model explainers, outlier detectors, and various continuous deployment strategies such as A/B testing and canary deployments, and more.
 
@@ -243,7 +243,7 @@ In this project, I built a continuous deployment pipeline that trains a model
 and then serves it with Seldon Core as the industry-ready model deployment tool
 of choice. If you are interested in learning more about Seldon Core, you can
 check out the [ZenML
-example](https://github.com/zenml-io/zenml/tree/main/examples/seldon_deployment).
+example](https://docs.zenml.io/stacks-and-components/component-guide/model-deployers/seldon).
 The following diagram shows the flow of the whole pipeline:
 
 ![seldondeployment]({{ site.url }}/assets/posts/customer-churn/seldoncondeploy.gif)

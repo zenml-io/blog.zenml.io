@@ -43,7 +43,7 @@ This tutorial assumes that you have:
 * [Git](https://git-scm.com/) installed
 * a [GitHub](https://github.com/) account
 * [Docker](https://www.docker.com/) installed and running
-* [Remote ZenML Server](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml) A Remote Deployment of the ZenML HTTP server and Database
+* [Remote ZenML Server](https://docs.zenml.io/user-guide/starter-guide/switch-to-production) A Remote Deployment of the ZenML HTTP server and Database
 
 ## Azure Setup
 
@@ -186,11 +186,11 @@ Now that we're done setting up and configuring all our infrastructure and extern
 For Advanced use cases where we have a remote orchestrator such as Vertex AI
 or to share stacks and pipeline information with team we need to have a separated non-local remote ZenML Server that it can be accessible from your
 machine as well as all stack components that may need access to the server.
-[Read more information about the use case here](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml)
+[Read more information about the use case here](https://docs.zenml.io/user-guide/starter-guide/switch-to-production)
 
 In order to achieve this there are two different ways to get access to a remote ZenML Server.
 
-1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/platform-guide/set-up-your-mlops-platform/deploy-zenml)
+1. Deploy and manage the server manually on [your own cloud](https://docs.zenml.io/user-guide/starter-guide/switch-to-production)/
 2. Sign up for [ZenML Enterprise](https://zenml.io/pricing) and get access to a hosted
    version of the ZenML Server with no setup required.
 
@@ -254,7 +254,7 @@ A [ZenML stack](https://docs.zenml.io/user-guide/starter-guide/understand-stacks
 These are all the components that we're going to use for this tutorial, but ZenML offers additional components like:
 * **Step operators** to run individual steps of your pipeline in specialized environments.
 * **Model deployers** to deploy your trained machine learning model in production.
-* And many more. Check out [our docs](https://docs.zenml.io/user-guide/component-guide) for a full list of available components.
+* And many more. Check out [our docs](https://docs.zenml.io/stacks-and-components/component-guide) for a full list of available components.
 
 With all components registered, we can now create and activate our ZenML stack. This makes sure ZenML knows which components to use when we're going to run our pipeline later.
 ```bash

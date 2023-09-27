@@ -113,7 +113,7 @@ deployment = continuous_deployment_pipeline(
 deployment.run()
 ```
 
-In the deployment pipeline, ZenML's [MLflow tracking integration](https://github.com/zenml-io/zenml/tree/main/examples/mlflow_tracking) is used for logging the hyperparameter values and the trained model itself and the model evaluation metrics -- as MLflow experiment tracking artifacts -- into the local MLflow backend. This pipeline also launches a local MLflow deployment server to serve the latest MLflow model if its accuracy is above a configured threshold.
+In the deployment pipeline, ZenML's [MLflow tracking integration](https://docs.zenml.io/stacks-and-components/component-guide/experiment-trackers/mlflow) is used for logging the hyperparameter values and the trained model itself and the model evaluation metrics -- as MLflow experiment tracking artifacts -- into the local MLflow backend. This pipeline also launches a local MLflow deployment server to serve the latest MLflow model if its accuracy is above a configured threshold.
 
 The MLflow deployment server runs locally as a daemon process that will continue to run in the background after the example execution is complete. When a new pipeline is run which produces a model that passes the accuracy threshold validation, the pipeline automatically updates the currently running MLflow deployment server to serve the new model instead of the old one. While this ZenML Project trains and deploys a model locally, other ZenML integrations such as the [Seldon](https://github.com/zenml-io/zenml/tree/main/examples/) deployer can also be used in a similarly manner to deploy the model in a more production setting (such as on a Kubernetes cluster).
 
