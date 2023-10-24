@@ -140,7 +140,7 @@ trainer:
   num_output_units: 1 # How many units in the last layer? We choose 1 because we want to regress one number (i.e. date_of_birth)
   optimizer: adam # optimizer for loss function
   save_checkpoints_steps: 15000 # how many steps before we do a checkpoint evaluation for our Tensorboard logs
-  eval_batch_size: 256 # batch size for evalulation that happens at every checkpoint
+  eval_batch_size: 256 # batch size for evaluation that happens at every checkpoint
   train_batch_size: 256 # batch size for training
   train_steps: 230000 # two epochs
   type: regression # choose from [regression, classification, autoencoder]
