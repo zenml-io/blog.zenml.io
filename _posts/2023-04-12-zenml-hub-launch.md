@@ -105,7 +105,7 @@ from zenml.hub.langchain_qa_example import build_zenml_docs_qa_pipeline
 pipeline = build_zenml_docs_qa_pipeline(question="What is ZenML?", load_all_paths=False).run()
 ```
 
-(When you first run this pipeline, it will run a series of steps that will scrape the [ZenML docs](https://docs.zenml.io), and build an index. Subsequent runs will be faster and re-use the index because of ZenML’s internal cache.)
+(When you first run this pipeline, it will run a series of steps that will scrape the [ZenML docs](https://docs.zenml.io), and build an index. Subsequent runs will be faster and reuse the index because of ZenML’s internal cache.)
 
 And there you go: You can now recreate a simple question-answering MLOps pipeline using cutting-edge LLMs and the latest libraries, which you can now go on to deploy on custom infrastructure. Of course, if you did want to use the individual steps or pipelines directly, feel free to check out the corresponding project and source code [here]( https://github.com/zenml-io/zenml-projects/tree/main/langchain-qa-hub).
 

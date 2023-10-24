@@ -74,7 +74,7 @@ and they are only loaded when you actually need them.
 ## How are the Integrations implemented?
 
 In **ZenML**, an **Integration** is a simple Python class which features a
-`NAME`, a list of `REQIUREMENTS`, and a few helper functions, namely
+`NAME`, a list of `REQUIREMENTS`, and a few helper functions, namely
 `check_installation` and `activate`:
 
 ```python
